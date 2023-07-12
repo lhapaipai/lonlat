@@ -2,7 +2,32 @@ lockfileVersion: '6.0'
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.0.0
+        version: 6.0.0(@typescript-eslint/parser@6.0.0)(eslint@8.44.0)(typescript@5.1.6)
+      '@typescript-eslint/parser':
+        specifier: ^6.0.0
+        version: 6.0.0(eslint@8.44.0)(typescript@5.1.6)
+      eslint:
+        specifier: ^8.44.0
+        version: 8.44.0
+      eslint-config-prettier:
+        specifier: ^8.8.0
+        version: 8.8.0(eslint@8.44.0)
+      eslint-plugin-prettier:
+        specifier: ^5.0.0
+        version: 5.0.0(eslint-config-prettier@8.8.0)(eslint@8.44.0)(prettier@3.0.0)
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.0
+        version: 4.6.0(eslint@8.44.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.3
+        version: 0.4.3(eslint@8.44.0)
+      prettier:
+        specifier: ^3.0.0
+        version: 3.0.0
 
   apps/storybook:
     dependencies:
@@ -46,9 +71,6 @@ importers:
       '@types/react':
         specifier: ^18.2.14
         version: 18.2.14
-      include-media:
-        specifier: ^2.0.0
-        version: 2.0.0
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -92,33 +114,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.6
         version: 18.2.6
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.0.0
-        version: 6.0.0(@typescript-eslint/parser@6.0.0)(eslint@8.44.0)(typescript@5.1.6)
-      '@typescript-eslint/parser':
-        specifier: ^6.0.0
-        version: 6.0.0(eslint@8.44.0)(typescript@5.1.6)
       '@vitejs/plugin-react-swc':
         specifier: ^3.3.2
         version: 3.3.2(vite@4.4.3)
-      eslint:
-        specifier: ^8.44.0
-        version: 8.44.0
-      eslint-config-prettier:
-        specifier: ^8.8.0
-        version: 8.8.0(eslint@8.44.0)
-      eslint-plugin-prettier:
-        specifier: ^5.0.0
-        version: 5.0.0(eslint-config-prettier@8.8.0)(eslint@8.44.0)(prettier@3.0.0)
-      eslint-plugin-react-hooks:
-        specifier: ^4.6.0
-        version: 4.6.0(eslint@8.44.0)
-      eslint-plugin-react-refresh:
-        specifier: ^0.4.1
-        version: 0.4.3(eslint@8.44.0)
-      prettier:
-        specifier: ^3.0.0
-        version: 3.0.0
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -126,11 +124,7 @@ importers:
         specifier: ^4.4.0
         version: 4.4.3(sass@1.63.6)
 
-  libs/styles:
-    dependencies:
-      include-media:
-        specifier: ^2.0.0
-        version: 2.0.0
+  libs/styles: {}
 
 packages:
 
@@ -6463,9 +6457,6 @@ packages:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
     dev: true
-
-  /include-media@2.0.0:
-    resolution: {integrity: sha512-LSJcffPYIZ/Kln0rIi5UhqQbZxElDCMYA4dPC5MI1rkwwjptgEiOicHnzB0MMhMNJver0+4zULb4MKlgDyapZg==}
 
   /indent-string@4.0.0:
     resolution: {integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==}
