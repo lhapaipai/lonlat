@@ -1,0 +1,32 @@
+{
+  "name": "@lonlat/storybook",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "storybook": "storybook dev -p 6006 --docs",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "Hugues Tavernier",
+  "license": "ISC",
+  "dependencies": {
+    "@lonlat/components": "link:../../libs/components",
+    "@lonlat/styles": "link:../../libs/styles",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.26",
+    "@storybook/addon-links": "^7.0.26",
+    "@storybook/blocks": "^7.0.26",
+    "@storybook/react": "^7.0.26",
+    "@storybook/react-vite": "^7.0.26",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "@types/react": "^18.2.14",
+    "prop-types": "^15.8.1",
+    "react-dom": "^18.2.0",
+    "sass": "^1.63.6",
+    "storybook": "^7.0.26",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.3"
+  }
+}

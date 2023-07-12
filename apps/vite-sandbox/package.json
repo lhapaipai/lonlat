@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lonlat/components": "link:../../libs/components",
+    "@lonlat/styles": "link:../../libs/styles",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.63.6"
