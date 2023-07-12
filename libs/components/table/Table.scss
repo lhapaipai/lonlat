@@ -1,0 +1,55 @@
+@import '@lonlat/styles/config';
+
+.table {
+    width: 100%;
+
+    tr {
+        border-bottom: 1px solid var(--border-default);
+    }
+
+    th {
+        text-align: left;
+        font-weight: var(--font-weight-bold);
+    }
+
+    td,
+    th {
+        padding: var(--space-2);
+    }
+
+
+    .cell-label {
+        display: none;
+
+    }
+
+    --bp-medium: 910px;
+
+    @media (max-width: $bp-medium) {
+        thead {
+            display: none;
+        }
+
+        tr,
+        td {
+            display: block;
+        }
+
+        tr {
+            padding: var(--space-2);
+            border: 1px solid var(--border-default);
+            border-radius: var(--border-radius-md);
+
+            &:not(:last-child) {
+                margin-bottom: var(--space-3);
+            }
+        }
+
+        .cell-label {
+            display: block;
+            font-weight: var(--font-weight-medium);
+            font-size: .8rem;
+            color: var(--text-weak);
+        }
+    }
+}

@@ -1,0 +1,40 @@
+@use 'sass:math';
+
+$root-default-font-size: 16;
+$base-font-size: 14;
+
+$title-sizes: (
+    h1: 36,
+    h2: 28,
+    h3: 20,
+    h4: 18,
+    h5: 17,
+    h6: 16,
+);
+
+$text-sizes: (
+    2xl: 20,
+    xl: 18,
+    lg: 16,
+    rg: 14,
+    sm: 13,
+    xs: 12,
+    2xs: 10
+);
+
+$spacings: (
+    '0': 0rem,
+    '0-5': 0.125rem,
+    '1': 0.25rem,
+    '2': 0.5rem,
+    '3': 1.5rem,
+    '4': 2rem,
+    '8': 4rem,
+    '12': 6rem,
+);
+
+$bp-xlarge: 1500px;
+$bp-large: 1100px;
+$bp-medium: 910px;
+$bp-small: 680px;
+$bp-xsmall: 450px;

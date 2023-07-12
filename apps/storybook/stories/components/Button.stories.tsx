@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '@lonlat/components/button/Button';
+import { Button } from '@lonlat/components';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: 'Components/Button',
   component: Button,
   parameters: {
-      
+
   },
   // tags: ['autodocs'],
   argTypes: {

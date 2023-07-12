@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/react";
-import '@lonlat/styles/scss/_storybook.scss';
+import '@lonlat/styles/_storybook.scss';
 
+// https://storybook.js.org/docs/react/configure/overview#configure-story-rendering
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -9,7 +10,7 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
-    },
+    }
   },
 };
 

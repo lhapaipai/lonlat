@@ -1,0 +1,33 @@
+html {
+    font-size: pixel-to-rem($root-default-font-size);
+}
+
+body {
+    font-size: pixel-to-rem($base-font-size);
+    line-height: 1.5;
+    font-family: 'sans-serif';
+}
+
+:root {
+    --font-weight-normal: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+}
+
+@each $tag,
+$size in $title-sizes {
+
+    #{$tag},
+    .#{$tag} {
+        display: block;
+        margin: 0;
+        font-size: pixel-to-rem($size);
+    }
+}
+
+@each $label,
+$size in $text-sizes {
+    .text-#{$label} {
+        font-size: pixel-to-rem($size);
+    }
+}

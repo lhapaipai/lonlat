@@ -4,5 +4,8 @@
   "description": "",
   "keywords": [],
   "author": "Hugues Tavernier",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "include-media": "^2.0.0"
+  }
 }

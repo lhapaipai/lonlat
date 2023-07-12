@@ -1,0 +1,29 @@
+$color-names: "default", "weak", "hint", "disabled";
+
+@each $color-name in $color-names {
+    .color-#{$color-name} {
+        color: var(--text-#{$color-name});
+    }
+}
+
+$radius: "sm", "md", "lg", "xl";
+
+@each $r in $radius {
+    .rounded-#{$r} {
+        border-radius: var(--border-radius-#{$r});
+    }
+}
+
+
+$sizes: 1, 2, 3, 4, 8;
+
+@each $size in $sizes {
+
+    .p-#{$size} {
+        padding: var(--space-#{$size})
+    }
+
+    .m-#{$size} {
+        margin: var(--space-#{$size})
+    }
+}
