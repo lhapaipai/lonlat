@@ -1,0 +1,70 @@
+.scroll-zone {
+    position: relative;
+    border: 1px solid var(--border-weak);
+
+    .scroll-shadow {
+        z-index: 1;
+        position: absolute;
+        opacity: 0;
+        transition: .3s ease;
+
+        &.visible {
+            opacity: 1;
+        }
+    }
+
+    &.vertical {
+        .scroll-inner {
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .scroll-shadow {
+            height: 5px;
+            left: 0;
+            right: 0;
+
+            &.start {
+                background: linear-gradient(180deg, rgb(0 0 0 / .1), transparent);
+                top: 0;
+            }
+
+            &.end {
+                background: linear-gradient(0deg, rgb(0 0 0 / .1), transparent);
+                bottom: 0;
+            }
+
+        }
+    }
+
+    &.horizontal {
+        .scroll-inner {
+            overflow-x: auto;
+        }
+
+        .scroll-child {
+            display: inline-block;
+        }
+
+        .scroll-shadow {
+            width: 5px;
+            top: 0;
+            bottom: 0;
+
+
+            &.start {
+                background: linear-gradient(90deg, rgb(0 0 0 / .1), transparent);
+                left: 0;
+            }
+
+            &.end {
+                background: linear-gradient(270deg, rgb(0 0 0 / .1), transparent);
+                right: 0;
+            }
+        }
+
+    }
+
+
+
+}

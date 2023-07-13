@@ -58,3 +58,9 @@ $sizes: 1, 2, 3, 4, 8;
     align-items: center;
     justify-content: center;
 }
+
+.sticky-top {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+}

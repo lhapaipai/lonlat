@@ -10,7 +10,7 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
 
   useEffect(() => {
     //add a click handler for the ripple
-    const clickHandler = (e: MouseEvent) => {
+    const handlePointerDown = (e: MouseEvent) => {
       if (ref.current) {
         console.log("click handler");
 
@@ -41,11 +41,11 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
       const elem = ref.current;
 
       //add an event listener to the button
-      elem.addEventListener("pointerdown", clickHandler);
+      elem.addEventListener("pointerdown", handlePointerDown);
 
       //clean up when the component is unmounted
       return () => {
-        elem.removeEventListener("pointerdown", clickHandler);
+        elem.removeEventListener("pointerdown", handlePointerDown);
       };
     }
   }, [ref, ripples]);
