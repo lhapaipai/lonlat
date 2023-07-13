@@ -1,0 +1,52 @@
+@use 'sass:math';
+
+.loader {
+    $total-length: 43.699; // total length of path, calculated by getTotalLength() in JS
+    $looping-percent: 40;
+    $looping-length: math.div($looping-percent * $total-length, 100);
+
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+
+    .track,
+    .circle {
+        fill: none;
+        stroke-width: var(--stroke-width, 2);
+        stroke-linecap: round;
+        stroke: currentColor;
+    }
+
+    .track {
+        opacity: .2;
+    }
+
+    .circle {
+        stroke-dasharray: #{$looping-length * 1px},
+        #{($total-length - $looping-length) * 1px};
+        animation: anime-loader-stroke 1s linear infinite;
+
+        @keyframes anime-loader-stroke {
+            from {
+                stroke-dashoffset: $total-length;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    }
+
+    &.size-small {
+        font-size: 16px;
+    }
+
+    &.size-medium {
+        font-size: 32px;
+    }
+
+    &.size-large {
+        font-size: 48px;
+    }
+}

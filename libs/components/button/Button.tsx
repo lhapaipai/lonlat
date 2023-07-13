@@ -3,6 +3,7 @@ import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "
 import cn from "classnames";
 import { ThemeColor } from "../types";
 import useRipple from "../hooks/useRipple";
+import { Loader } from "..";
 
 export interface Props extends ComponentPropsWithRef<"button"> {
   shape?: "solid" | "outline" | "ghost" | "underline";
@@ -72,7 +73,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       >
         {!notClickable && ripples}
         {children}
-        {loading && <span className="button-loader-container">Loading</span>}
+        {loading && <Loader type={color} size="small" className="ml-2" />}
       </button>
     );
   },

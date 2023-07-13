@@ -1,0 +1,50 @@
+/* Many thanks to https://github.com/ProtonMail/WebClients */
+@use 'sass:math';
+
+$scrollbar-size: 6px;
+$scrollbar-margin: 2px;
+
+* {
+    /*
+    $real-size: $scrollbar-size +($scrollbar-margin * 2);
+    hard coded because issue with vscode.css-language-features
+    */
+    $real-size: 8px;
+
+    // W3C, Firefox
+    scrollbar-color: var(--scrollbar-thumb-color) transparent;
+
+    // webkit specific
+    &::-webkit-scrollbar {
+        inline-size: $real-size;
+        block-size: $real-size;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: $scrollbar-margin solid transparent; // Margin
+        background-clip: padding-box; // Booyah!
+        border-radius: math.div($real-size, 2);
+        background-color: var(--scrollbar-thumb-color);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:horizontal,
+    &::-webkit-scrollbar-thumb:vertical {
+        &:hover {
+            background-color: var(--scrollbar-thumb-hover-color);
+        }
+    }
+
+    &::-webkit-scrollbar-corner {
+        visibility: hidden;
+    }
+}
+
+body *:not(:hover, :focus, :focus-within) {
+    &::-webkit-scrollbar-thumb {
+        visibility: hidden;
+    }
+}
