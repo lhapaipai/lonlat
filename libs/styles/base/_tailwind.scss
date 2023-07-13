@@ -20,10 +20,41 @@ $sizes: 1, 2, 3, 4, 8;
 @each $size in $sizes {
 
     .p-#{$size} {
-        padding: var(--space-#{$size})
+        padding: var(--space-#{$size});
     }
 
     .m-#{$size} {
-        margin: var(--space-#{$size})
+        margin: var(--space-#{$size});
     }
+
+    .ml-#{$size} {
+        margin-left: var(--space-#{$size});
+    }
+
+    .mr-#{$size} {
+        margin-right: var(--space-#{$size});
+    }
+
+    .gap-#{$size} {
+        gap: var(--space-#{$size});
+    }
+}
+
+.flex {
+    display: flex;
+
+    >* {
+        min-height: 0;
+        min-width: 0;
+    }
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

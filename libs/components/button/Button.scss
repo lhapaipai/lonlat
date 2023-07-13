@@ -1,19 +1,148 @@
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
+.button {
+    display: inline-block;
+    padding: .5rem 1rem;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--button-default-border-color, transparent);
+    outline: none;
     cursor: pointer;
-    transition: border-color 0.25s;
-}
+    background-color: var(--button-default-background-color);
+    color: var(--button-default-text-color);
+    transition: all .3s ease, outline 0s;
+    position: relative;
+    overflow: clip;
+    overflow-clip-margin: 1px;
 
-button:hover {
-    border-color: #646cff;
-}
+    &,
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+        text-decoration: none;
+    }
 
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    &.size-small {
+        padding: .125rem .5rem;
+    }
+
+    &.size-large {
+        padding: 1rem 2rem;
+    }
+
+    &.shape-solid {
+        box-shadow: var(--shadow);
+    }
+
+    &.shape-underline {
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &:focus {
+        border-color: var(--button-focus-border-color);
+        // outline: solid 3px var(--color-weak-200);
+
+
+        &.shape-solid {
+            box-shadow: var(--shadow-md);
+        }
+    }
+
+    &:hover {
+        background-color: var(--button-hover-background-color);
+        color: var(--button-hover-text-color);
+
+        box-shadow: var(--shadow-light);
+
+
+        &.shape-solid {
+            box-shadow: var(--shadow-md);
+        }
+
+        &.shape-underline {
+            text-decoration: none;
+        }
+    }
+
+    &:active {
+        color: var(--button-active-text-color);
+
+        box-shadow: var(--shadow-light-md);
+
+        &.shape-solid {
+            box-shadow: var(--shadow-lg);
+        }
+    }
+
+
+    &.not-cliquable {
+        pointer-events: none;
+        color: var(--text-weak, inherit);
+
+        &[disabled] {
+            opacity: .5;
+        }
+    }
+
+    @each $color in (primary, weak, danger, warning, success, info) {
+
+        &.button-solid-#{$color} {
+            $solid-text-color: --text-invert;
+
+            @if $color==primary or $color==weak {
+                $solid-text-color: --text-default;
+            }
+
+            --button-default-background-color: var(--color-#{$color}-500);
+            --button-hover-background-color: var(--color-#{$color}-600);
+            --button-active-background-color: var(--color-#{$color}-700);
+            --button-default-text-color: var(#{$solid-text-color});
+            --button-hover-text-color: var(#{$solid-text-color});
+            --button-active-text-color: var(#{$solid-text-color});
+            --button-focus-border-color: transparent;
+        }
+
+        &.button-outline-#{$color} {
+            $outline-text-color: var(--color-#{$color}-700);
+
+            @if $color==primary or $color==weak {
+                $outline-text-color: var(--text-default);
+            }
+
+            --button-default-background-color: var(--background-default);
+            --button-hover-background-color: var(--color-#{$color}-100);
+            --button-active-background-color: var(--color-#{$color}-200);
+            --button-default-border-color: var(--color-#{$color}-500);
+            --button-default-text-color: #{$outline-text-color};
+            --button-hover-text-color: #{$outline-text-color};
+            --button-active-text-color: #{$outline-text-color};
+            --button-focus-border-color: var(--color-#{$color}-900);
+        }
+
+        &.button-ghost-#{$color} {
+            $ghost-text-color: var(--color-#{$color}-700);
+
+            --button-default-background-color: var(--background-default);
+            --button-hover-background-color: var(--color-#{$color}-100);
+            --button-active-background-color: var(--color-#{$color}-200);
+            --button-default-text-color: #{$ghost-text-color};
+            --button-hover-text-color: #{$ghost-text-color};
+            --button-active-text-color: #{$ghost-text-color};
+            --button-focus-border-color: transparent;
+        }
+
+        &.button-underline-#{$color} {
+            $underline-text-color: var(--color-#{$color}-700);
+
+            --button-default-background-color: var(--background-default);
+            --button-hover-background-color: var(--color-#{$color}-100);
+            --button-active-background-color: var(--color-#{$color}-200);
+            --button-default-text-color: #{$underline-text-color};
+            --button-hover-text-color: #{$underline-text-color};
+            --button-active-text-color: #{$underline-text-color};
+            --button-focus-border-color: var(--color-#{$color}-500);
+        }
+    }
 }

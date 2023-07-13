@@ -1,47 +1,81 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
-import { Button } from "@lonlat/components";
+import type { Meta } from "@storybook/react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  Button,
+} from "@lonlat/components";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: "Components/Button",
   component: Button,
   parameters: {},
-  // tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary: Story = {
-  args: {
-    primary: true,
-    children: "Button",
-  },
-};
+export const Shapes = () => (
+  <div className="flex gap-2">
+    <Button shape="solid">solid</Button>
+    <Button shape="outline">outline</Button>
+    <Button shape="underline">underline</Button>
+    <Button shape="ghost">ghost</Button>
+  </div>
+);
 
-export const Test = () => <Button>Coucou</Button>;
+export const Sizes = () => (
+  <div className="flex gap-2" style={{ alignItems: "center" }}>
+    <Button size="small">small</Button>
+    <Button size="medium">medium</Button>
+    <Button size="large">large</Button>
+  </div>
+);
 
-export const Secondary: Story = {
-  args: {
-    children: "Button",
-  },
-};
+export const States = () => (
+  <div className="flex gap-2" style={{ alignItems: "center" }}>
+    <Button disabled={true}>disabled</Button>
+    <Button loading={true}>isLoading</Button>
+  </div>
+);
 
-export const Large: Story = {
-  args: {
-    size: "large",
-    children: "Button",
-  },
-};
+const shapes = ["solid", "outline", "ghost", "underline"] as const;
+const colors = ["primary", "weak", "danger", "warning", "success", "info"] as const;
 
-export const Small: Story = {
-  args: {
-    size: "small",
-    children: "Button",
-  },
+export const Variants = () => {
+  return (
+    <div style={{ backgroundColor: "transparent" }}>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderCell>
+              <></>
+            </TableHeaderCell>
+            {colors.map((color) => (
+              <TableHeaderCell key={color}>{color}</TableHeaderCell>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {shapes.map((shape) => (
+            <TableRow key={shape}>
+              <TableCell>{shape}</TableCell>
+              {colors.map((color) => (
+                <TableCell key={color} label={color}>
+                  <div className="flex gap-2">
+                    <Button shape={shape} color={color}>
+                      Lorem
+                    </Button>
+                  </div>
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
 };

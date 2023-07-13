@@ -8,11 +8,7 @@ body {
     font-family: 'sans-serif';
 }
 
-:root {
-    --font-weight-normal: 400;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-}
+
 
 @each $tag,
 $size in $title-sizes {
