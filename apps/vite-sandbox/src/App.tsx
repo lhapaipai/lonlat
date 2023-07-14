@@ -1,19 +1,37 @@
-import { useState } from "react";
-import { Button } from "@lonlat/components";
-function App() {
-  const [count, setCount] = useState(0);
+import { Badge, Tooltip, TooltipContent, TooltipTrigger } from "@lonlat/components";
 
+function App() {
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <Button onClick={() => setCount((count) => count + 1)}>count is {count}</Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <div id="my-app">
+      <div>
+        <Badge>Badge</Badge>
+        <Badge type="primary">Primary</Badge>
+        <Badge type="warning">Warning</Badge>
+        <Badge type="warning" tooltip="attention mon amis">
+          Warning with tooltip
+        </Badge>
+        <Badge type="success">Success</Badge>
+        <Badge type="danger">Danger</Badge>
+        <Badge type="info">Info</Badge>
+        <Badge type="weak">Weak</Badge>
       </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+      <Tooltip open={true} placement="top">
+        <TooltipContent>infos</TooltipContent>
+        <TooltipTrigger asChild={true}>bonjour tout le monde</TooltipTrigger>
+      </Tooltip>
+      <Tooltip open={true} placement="bottom">
+        <TooltipContent>infos</TooltipContent>
+        <TooltipTrigger asChild={true}>bonjour tout le monde</TooltipTrigger>
+      </Tooltip>
+      <Tooltip open={true} placement="left">
+        <TooltipContent>infos</TooltipContent>
+        <TooltipTrigger asChild={true}>bonjour tout le monde</TooltipTrigger>
+      </Tooltip>
+      <Tooltip open={true} placement="right">
+        <TooltipContent>infos</TooltipContent>
+        <TooltipTrigger asChild={true}>bonjour tout le monde</TooltipTrigger>
+      </Tooltip>
+    </div>
   );
 }
 

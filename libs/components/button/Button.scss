@@ -86,63 +86,63 @@
         }
     }
 
-    @each $color in (primary, weak, danger, warning, success, info) {
+    @each $colorType in (primary, weak, danger, warning, success, info) {
 
-        &.button-solid-#{$color} {
+        &.button-solid-#{$colorType} {
             $solid-text-color: --text-invert;
 
-            @if $color==primary or $color==weak {
+            @if $colorType==primary or $colorType==weak {
                 $solid-text-color: --text-default;
             }
 
-            --button-default-background-color: var(--color-#{$color}-500);
-            --button-hover-background-color: var(--color-#{$color}-600);
-            --button-active-background-color: var(--color-#{$color}-700);
+            --button-default-background-color: var(--color-#{$colorType}-500);
+            --button-hover-background-color: var(--color-#{$colorType}-600);
+            --button-active-background-color: var(--color-#{$colorType}-700);
             --button-default-text-color: var(#{$solid-text-color});
             --button-hover-text-color: var(#{$solid-text-color});
             --button-active-text-color: var(#{$solid-text-color});
             --button-focus-border-color: transparent;
         }
 
-        &.button-outline-#{$color} {
-            $outline-text-color: var(--color-#{$color}-700);
+        &.button-outline-#{$colorType} {
+            $outline-text-color: var(--color-#{$colorType}-700);
 
-            @if $color==primary or $color==weak {
+            @if $colorType==primary or $colorType==weak {
                 $outline-text-color: var(--text-default);
             }
 
             --button-default-background-color: var(--background-default);
-            --button-hover-background-color: var(--color-#{$color}-100);
-            --button-active-background-color: var(--color-#{$color}-200);
-            --button-default-border-color: var(--color-#{$color}-500);
+            --button-hover-background-color: var(--color-#{$colorType}-100);
+            --button-active-background-color: var(--color-#{$colorType}-200);
+            --button-default-border-color: var(--color-#{$colorType}-500);
             --button-default-text-color: #{$outline-text-color};
             --button-hover-text-color: #{$outline-text-color};
             --button-active-text-color: #{$outline-text-color};
-            --button-focus-border-color: var(--color-#{$color}-900);
+            --button-focus-border-color: var(--color-#{$colorType}-900);
         }
 
-        &.button-ghost-#{$color} {
-            $ghost-text-color: var(--color-#{$color}-700);
+        &.button-ghost-#{$colorType} {
+            $ghost-text-color: var(--color-#{$colorType}-700);
 
             --button-default-background-color: var(--background-default);
-            --button-hover-background-color: var(--color-#{$color}-100);
-            --button-active-background-color: var(--color-#{$color}-200);
+            --button-hover-background-color: var(--color-#{$colorType}-100);
+            --button-active-background-color: var(--color-#{$colorType}-200);
             --button-default-text-color: #{$ghost-text-color};
             --button-hover-text-color: #{$ghost-text-color};
             --button-active-text-color: #{$ghost-text-color};
             --button-focus-border-color: transparent;
         }
 
-        &.button-underline-#{$color} {
-            $underline-text-color: var(--color-#{$color}-700);
+        &.button-underline-#{$colorType} {
+            $underline-text-color: var(--color-#{$colorType}-700);
 
             --button-default-background-color: var(--background-default);
-            --button-hover-background-color: var(--color-#{$color}-100);
-            --button-active-background-color: var(--color-#{$color}-200);
+            --button-hover-background-color: var(--color-#{$colorType}-100);
+            --button-active-background-color: var(--color-#{$colorType}-200);
             --button-default-text-color: #{$underline-text-color};
             --button-hover-text-color: #{$underline-text-color};
             --button-active-text-color: #{$underline-text-color};
-            --button-focus-border-color: var(--color-#{$color}-500);
+            --button-focus-border-color: var(--color-#{$colorType}-500);
         }
     }
 }

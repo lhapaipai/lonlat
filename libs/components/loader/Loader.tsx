@@ -1,11 +1,11 @@
 import { ComponentPropsWithoutRef, useId } from "react";
-import { ThemeColor } from "../types";
+import { ColorType } from "../types";
 import cn from "classnames";
 import "./Loader.scss";
 
 interface Props extends ComponentPropsWithoutRef<"svg"> {
   size?: "small" | "medium" | "large";
-  type?: ThemeColor;
+  type?: ColorType;
 }
 export default function Loader({ size = "medium", type = "info", className, ...rest }: Props) {
   const id = useId();

@@ -27,3 +27,16 @@ $size in $text-sizes {
         font-size: pixel-to-rem($size);
     }
 }
+
+a {
+    color: var(--color-primary-900);
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary-500);
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color .3s ease;
+
+    &:hover {
+        text-decoration-color: var(--color-primary-600);
+        text-decoration-thickness: 2px;
+    }
+}

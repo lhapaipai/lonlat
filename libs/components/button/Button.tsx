@@ -1,7 +1,7 @@
 import "./Button.scss";
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import cn from "classnames";
-import { ThemeColor } from "../types";
+import { ColorType } from "../types";
 import useRipple from "../hooks/useRipple";
 import { Loader } from "..";
 
@@ -10,7 +10,7 @@ export interface Props extends ComponentPropsWithRef<"button"> {
 
   size?: "small" | "medium" | "large";
 
-  color?: ThemeColor;
+  type?: ColorType;
 
   children?: React.ReactNode;
 
@@ -31,7 +31,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     {
       shape = "solid",
       loading = false,
-      color = "weak",
+      type = "weak",
       size = "medium",
       fullWidth,
       className,
@@ -55,8 +55,8 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       className,
       fullWidth && "w100",
       size !== "medium" && `size-${size}`,
-      `button-${shape}-${color}`,
-      `button-${color}`,
+      `button-${shape}-${type}`,
+      `button-${type}`,
       `shape-${shape}`,
       notClickable && "not-cliquable",
     );
@@ -73,7 +73,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       >
         {!notClickable && ripples}
         {children}
-        {loading && <Loader type={color} size="small" className="ml-2" />}
+        {loading && <Loader type={type} size="small" className="ml-2" />}
       </button>
     );
   },

@@ -1,0 +1,20 @@
+.ll-badge {
+    border-radius: var(--border-radius-md);
+    width: fit-content;
+    box-shadow: var(--shadow-light);
+    padding: 0 .5rem;
+
+    @each $colorType in (success, info, warning, danger) {
+        &.type-#{$colorType} {
+            background-color: var(--color-#{$colorType}-300);
+            color: var(--color-#{$colorType}-900);
+        }
+    }
+
+    @each $colorType in (primary, weak) {
+        &.type-#{$colorType} {
+            background-color: var(--color-#{$colorType}-300);
+            color: var(--text-default);
+        }
+    }
+}

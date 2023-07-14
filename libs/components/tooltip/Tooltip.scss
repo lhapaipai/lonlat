@@ -1,0 +1,72 @@
+.ll-tooltip {
+
+    .box {
+        background-color: white;
+
+        border-radius: var(--border-radius-sm);
+        padding: .25rem .5rem;
+        box-shadow: var(--shadow);
+        position: relative;
+        z-index: 2;
+    }
+
+    .arrow {
+        position: absolute;
+        display: block;
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+    }
+
+    .arrow-bg {
+        background-color: white;
+        z-index: 3;
+    }
+
+    .arrow-shadow {
+        box-shadow: var(--shadow);
+        z-index: 1;
+    }
+
+    @each $colorType in (success, info, warning, danger) {
+        &.type-#{$colorType} {
+            .box {
+                background-color: var(--color-#{$colorType}-300);
+                color: var(--color-#{$colorType}-900);
+            }
+
+            .arrow-bg {
+                background-color: var(--color-#{$colorType}-300);
+            }
+        }
+    }
+
+    @each $colorType in (primary, weak) {
+        &.type-#{$colorType} {
+            .box {
+                background-color: var(--color-#{$colorType}-300);
+                color: var(--text-default);
+            }
+
+            .arrow-bg {
+                background-color: var(--color-#{$colorType}-300);
+            }
+        }
+    }
+
+    &[class*="top"] .arrow {
+        border-bottom-right-radius: 3px;
+    }
+
+    &[class*="bottom"] .arrow {
+        border-top-left-radius: 3px;
+    }
+
+    &[class*="left"] .arrow {
+        border-top-right-radius: 3px;
+    }
+
+    &[class*="right"] .arrow {
+        border-bottom-left-radius: 3px;
+    }
+}

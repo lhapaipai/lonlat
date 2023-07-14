@@ -64,3 +64,11 @@ $sizes: 1, 2, 3, 4, 8;
     z-index: 1;
     top: 0;
 }
+
+.text-no-decoration {
+    text-decoration: none;
+}
+
+.hidden {
+    visibility: hidden;
+}

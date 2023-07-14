@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import { ThemeColor } from "../types";
+import { ColorType } from "../types";
 import "./Alert.scss";
 import cn from "classnames";
 
 interface Props {
-  type?: ThemeColor;
+  type?: ColorType;
   children?: ReactNode;
   className?: string;
 }
