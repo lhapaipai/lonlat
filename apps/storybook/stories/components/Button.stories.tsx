@@ -1,4 +1,4 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   Table,
   TableBody,
@@ -9,14 +9,26 @@ import {
   Button,
 } from "@lonlat/components";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
   title: "Components/Button",
   component: Button,
   parameters: {},
 } satisfies Meta<typeof Button>;
-
 export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Basic: Story = {
+  args: {
+    shape: "solid",
+    size: "medium",
+    type: "primary",
+    children: "My button",
+    loading: false,
+    disabled: false,
+    fullWidth: false,
+  },
+};
 
 export const Shapes = () => (
   <div className="flex gap-2">

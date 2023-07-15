@@ -28,7 +28,8 @@ $size in $text-sizes {
     }
 }
 
-a {
+a,
+.button.shape-underline {
     color: var(--color-primary-900);
     text-decoration: underline;
     text-decoration-color: var(--color-primary-500);

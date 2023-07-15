@@ -10,3 +10,4 @@ export { default as Portal } from "./portal/Portal";
 export { default as Badge } from "./badge/Badge";
 export { default as Href } from "./href/Href";
 export * from "./tooltip";
+export * from "./popover";

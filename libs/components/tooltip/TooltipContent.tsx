@@ -1,48 +1,23 @@
-import { HTMLProps, forwardRef } from "react";
+import { ComponentProps, forwardRef } from "react";
 import useTooltipContext from "./useTooltipContext";
-import { FloatingPortal, Placement, Side, useMergeRefs } from "@floating-ui/react";
-import { useTooltip } from ".";
+import { FloatingPortal, useMergeRefs } from "@floating-ui/react";
 import cn from "classnames";
+import { computeArrowStyle } from "../dialog/util";
 
-function getSide(placement: Placement): Side {
-  return placement.split("-")[0] as Side;
-}
-
-function computeArrowStyle({ middlewareData, placement }: ReturnType<typeof useTooltip>) {
-  if (!middlewareData.arrow) {
-    return {
-      display: "none",
-    };
-  }
-
-  const { x, y } = middlewareData.arrow;
-  const staticSide: "bottom" | "left" | "top" | "right" = (
-    {
-      top: "bottom",
-      right: "left",
-      bottom: "top",
-      left: "right",
-    } as const
-  )[getSide(placement)];
-
-  return {
-    left: x != null ? `${x}px` : "",
-    top: y != null ? `${y}px` : "",
-    [staticSide]: "-6px",
-  };
-}
-
-const TooltipContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
+const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, children, ...props }, propRef) => {
     const context = useTooltipContext();
     const ref = useMergeRefs([context.refs.setFloating, propRef]);
-    if (!context.transitionStatus.isMounted) return null;
+    if (!context.transitionStatus.isMounted) {
+      return null;
+    }
     return (
       <FloatingPortal>
         <div
           ref={ref}
           className={cn(
             "ll-tooltip",
+            "ll-dialog",
             context.placement,
             `type-${context.type}`,
             context.middlewareData.hide?.referenceHidden && "hidden",

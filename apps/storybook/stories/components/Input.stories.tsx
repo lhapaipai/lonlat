@@ -1,11 +1,31 @@
 import { Input, Button } from "@lonlat/components";
+import { Meta, StoryObj } from "@storybook/react";
 
-export default {
+const meta = {
   title: "Components/Input",
   component: Input,
+  argTypes: {
+    prefix: {
+      control: "text",
+    },
+    suffix: {
+      control: "text",
+    },
+  },
+} satisfies Meta<typeof Input>;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Basic: Story = {
+  args: {
+    disabled: false,
+    prefix: "",
+    suffix: "",
+  },
 };
 
-export const Basic = () => (
+export const Context = () => (
   <div className="flex gap-2 flex-column">
     <Input />
     <Input placeholder="Your first name" />

@@ -1,9 +1,9 @@
-import { HTMLAttributes, ReactNode } from "react";
+import { ComponentProps, ReactNode } from "react";
 
-interface Props extends HTMLAttributes<HTMLTableRowElement> {
-    children: ReactNode;
+interface Props extends ComponentProps<"tr"> {
+  children: ReactNode;
 }
 
 export default function Table({ children, ...props }: Props) {
-    return <tr {...props}>{children}</tr>;
+  return <tr {...props}>{children}</tr>;
 }

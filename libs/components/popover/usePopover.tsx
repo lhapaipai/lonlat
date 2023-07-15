@@ -1,16 +1,14 @@
 import { useMemo, useRef, useState } from "react";
-import { TooltipOptions } from "./interface";
+import { PopoverOptions } from "./interface";
 import {
   arrow,
   autoUpdate,
   flip,
-  hide,
   offset,
   shift,
+  useClick,
   useDismiss,
   useFloating,
-  useFocus,
-  useHover,
   useInteractions,
   useRole,
   useTransitionStatus,
@@ -18,24 +16,23 @@ import {
 
 const arrowWidth = 12;
 
-export default function useTooltip({
+export default function usePopover({
   initialOpen = false,
-  placement = "top",
+  placement = "bottom",
   open: controlledOpen,
   onOpen: setControlledOpen,
-  openDelay = 500,
-  closeDelay = 500,
   type = "default",
-}: TooltipOptions = {}) {
+  modal = false,
+}: PopoverOptions) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
+  const [labelId, setLabelId] = useState<string | undefined>();
+  const [descriptionId, setDescriptionId] = useState<string | undefined>();
 
   const isUncontrolled = controlledOpen === null || controlledOpen === undefined;
-
   const open = isUncontrolled ? uncontrolledOpen : controlledOpen;
   const setOpen = isUncontrolled ? setUncontrolledOpen : setControlledOpen;
 
   const arrowRef = useRef<HTMLDivElement>(null);
-
   const offsetVal = 2 + arrowWidth / 2;
 
   const data = useFloating({
@@ -45,39 +42,32 @@ export default function useTooltip({
     whileElementsMounted: autoUpdate,
     middleware: [
       offset(offsetVal),
-      flip(),
+      flip({
+        // crossAxis: placement.includes('-'),
+        // fallbackAxisSideDirection: "end",
+      }),
       shift({ padding: 5 }),
       arrow({
         element: arrowRef,
         padding: 8,
       }),
-      hide({
-        padding: 20,
-      }),
     ],
     transform: false,
   });
+
   const { context } = data;
+
+  const click = useClick(context, {
+    enabled: isUncontrolled,
+  });
+  const dismiss = useDismiss(context);
+  const role = useRole(context);
+
+  const interactions = useInteractions([click, dismiss, role]);
 
   const transitionStatus = useTransitionStatus(context, {
     duration: 250,
   });
-
-  const hover = useHover(context, {
-    move: false,
-    enabled: isUncontrolled,
-    delay: {
-      open: openDelay,
-      close: closeDelay,
-    },
-  });
-  const focus = useFocus(context, {
-    enabled: isUncontrolled,
-  });
-  const dismiss = useDismiss(context);
-  const role = useRole(context, { role: "tooltip" });
-
-  const interactions = useInteractions([hover, focus, dismiss, role]);
 
   return useMemo(
     () => ({
@@ -88,7 +78,12 @@ export default function useTooltip({
       transitionStatus,
       arrowRef,
       type,
+      modal,
+      labelId,
+      descriptionId,
+      setLabelId,
+      setDescriptionId,
     }),
-    [open, setOpen, type, interactions, data, transitionStatus],
+    [open, setOpen, interactions, data, transitionStatus, type, modal, labelId, descriptionId],
   );
 }

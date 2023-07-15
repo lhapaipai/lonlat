@@ -5,7 +5,7 @@ import { ColorType } from "../types";
 import useRipple from "../hooks/useRipple";
 import { Loader } from "..";
 
-export interface Props extends ComponentPropsWithRef<"button"> {
+export interface Props extends Omit<ComponentPropsWithRef<"button">, "type"> {
   shape?: "solid" | "outline" | "ghost" | "underline";
 
   size?: "small" | "medium" | "large";

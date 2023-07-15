@@ -1,6 +1,5 @@
 .button {
     display: inline-block;
-    padding: .5rem 1rem;
     border-radius: var(--border-radius-md);
     border: 1px solid var(--button-default-border-color, transparent);
     outline: none;
@@ -12,70 +11,61 @@
     overflow: clip;
     overflow-clip-margin: 1px;
 
-    &,
-    &:hover,
-    &:focus,
-    &:focus-within,
-    &:active {
-        text-decoration: none;
+    &:not(.shape-underline) {
+        padding: .5rem 1rem;
+
+        &.size-small {
+            padding: .125rem .5rem;
+        }
+
+        &.size-large {
+            padding: 1rem 2rem;
+        }
+
+        &,
+        &:hover,
+        &:focus,
+        &:focus-within,
+        &:active {
+            text-decoration: none;
+        }
+
+        &:focus {
+            border-color: var(--button-focus-border-color);
+
+            &.shape-solid {
+                box-shadow: var(--shadow-md);
+            }
+        }
+
+        &:hover {
+            background-color: var(--button-hover-background-color);
+            color: var(--button-hover-text-color);
+            box-shadow: var(--shadow-light);
+
+            &.shape-solid {
+                box-shadow: var(--shadow-md);
+            }
+        }
+
+        &:active {
+            color: var(--button-active-text-color);
+
+            box-shadow: var(--shadow-light-md);
+
+            &.shape-solid {
+                box-shadow: var(--shadow-lg);
+            }
+        }
     }
 
-    &.size-small {
-        padding: .125rem .5rem;
-    }
-
-    &.size-large {
-        padding: 1rem 2rem;
-    }
+    /* for .shape-underline : libs/styles/base/_typography.scss
+       same style as <a> tag
+    */
 
     &.shape-solid {
         box-shadow: var(--shadow);
     }
-
-    &.shape-underline {
-        text-decoration: underline;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
-
-    &:focus {
-        border-color: var(--button-focus-border-color);
-        // outline: solid 3px var(--color-weak-200);
-
-
-        &.shape-solid {
-            box-shadow: var(--shadow-md);
-        }
-    }
-
-    &:hover {
-        background-color: var(--button-hover-background-color);
-        color: var(--button-hover-text-color);
-
-        box-shadow: var(--shadow-light);
-
-
-        &.shape-solid {
-            box-shadow: var(--shadow-md);
-        }
-
-        &.shape-underline {
-            text-decoration: none;
-        }
-    }
-
-    &:active {
-        color: var(--button-active-text-color);
-
-        box-shadow: var(--shadow-light-md);
-
-        &.shape-solid {
-            box-shadow: var(--shadow-lg);
-        }
-    }
-
 
     &.not-cliquable {
         pointer-events: none;

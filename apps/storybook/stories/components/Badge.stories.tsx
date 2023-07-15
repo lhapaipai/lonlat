@@ -1,11 +1,24 @@
 import { Badge } from "@lonlat/components";
+import { Meta, StoryObj } from "@storybook/react";
 
-export default {
+const meta = {
   title: "Components/Badge",
   component: Badge,
+} satisfies Meta<typeof Badge>;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Basic: Story = {
+  args: {
+    tooltip: "More infos...",
+    url: "https://lonlat.org",
+    type: "primary",
+    children: "Lonlat",
+  },
 };
 
-export const Basic = () => (
+export const Context = () => (
   <div className="flex flex-column gap-2">
     <Badge type="primary">Primary</Badge>
     <Badge type="warning">Warning</Badge>

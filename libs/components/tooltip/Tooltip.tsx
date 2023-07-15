@@ -3,6 +3,7 @@ import { TooltipOptions } from "./interface";
 import useTooltip from "./useTooltip";
 import { TooltipContext } from "./useTooltipContext";
 
+import "../dialog/Dialog.scss";
 import "./Tooltip.scss";
 
 interface Props extends TooltipOptions {
