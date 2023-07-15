@@ -36,8 +36,7 @@ const TooltipContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
   ({ style, children, ...props }, propRef) => {
     const context = useTooltipContext();
     const ref = useMergeRefs([context.refs.setFloating, propRef]);
-    if (!context.open) return null;
-
+    if (!context.transitionStatus.isMounted) return null;
     return (
       <FloatingPortal>
         <div
@@ -49,6 +48,7 @@ const TooltipContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
             context.middlewareData.hide?.referenceHidden && "hidden",
           )}
           style={{ ...context.floatingStyles, ...style }}
+          data-status={context.transitionStatus.status}
           {...context.getFloatingProps(props)}
         >
           <div className="box">{children}</div>

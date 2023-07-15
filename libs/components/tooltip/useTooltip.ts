@@ -13,6 +13,7 @@ import {
   useHover,
   useInteractions,
   useRole,
+  useTransitionStatus,
 } from "@floating-ui/react";
 
 const arrowWidth = 12;
@@ -22,8 +23,8 @@ export default function useTooltip({
   placement = "top",
   open: controlledOpen,
   onOpenChange: setControlledOpen,
-  openDelay = 0,
-  closeDelay = 300,
+  openDelay = 500,
+  closeDelay = 500,
   type = "default",
 }: TooltipOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
@@ -54,8 +55,13 @@ export default function useTooltip({
         padding: 20,
       }),
     ],
+    transform: false,
   });
   const { context } = data;
+
+  const transitionStatus = useTransitionStatus(context, {
+    duration: 250,
+  });
 
   const hover = useHover(context, {
     move: false,
@@ -77,11 +83,12 @@ export default function useTooltip({
     () => ({
       open,
       setOpen,
-      arrowRef,
-      type,
       ...interactions,
       ...data,
+      transitionStatus,
+      arrowRef,
+      type,
     }),
-    [open, setOpen, type, interactions, data],
+    [open, setOpen, type, interactions, data, transitionStatus],
   );
 }

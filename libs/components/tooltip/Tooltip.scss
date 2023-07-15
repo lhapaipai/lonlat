@@ -54,19 +54,58 @@
         }
     }
 
-    &[class*="top"] .arrow {
-        border-bottom-right-radius: 3px;
+    &[data-status='initial'],
+    &[data-status='close'] {
+        opacity: 0;
+        transform: scale(.9);
     }
 
-    &[class*="bottom"] .arrow {
-        border-top-left-radius: 3px;
+    &[data-status='open'],
+    &[data-status='close'] {
+        transition: opacity 250ms ease, transform 250ms ease;
     }
 
-    &[class*="left"] .arrow {
-        border-top-right-radius: 3px;
+    &[class*="top"] {
+        .arrow {
+            border-bottom-right-radius: 3px;
+        }
+
+        &[data-status='open'],
+        &[data-status='close'] {
+            transform-origin: bottom center;
+        }
     }
 
-    &[class*="right"] .arrow {
-        border-bottom-left-radius: 3px;
+    &[class*="bottom"] {
+        .arrow {
+            border-top-left-radius: 3px;
+        }
+
+        &[data-status='open'],
+        &[data-status='close'] {
+            transform-origin: top center;
+        }
+    }
+
+    &[class*="left"] {
+        .arrow {
+            border-top-right-radius: 3px;
+        }
+
+        &[data-status='open'],
+        &[data-status='close'] {
+            transform-origin: center right;
+        }
+    }
+
+    &[class*="right"] {
+        .arrow {
+            border-bottom-left-radius: 3px;
+        }
+
+        &[data-status='open'],
+        &[data-status='close'] {
+            transform-origin: center left;
+        }
     }
 }
