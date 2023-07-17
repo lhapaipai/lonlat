@@ -34,6 +34,9 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@lonlat/fonts':
+        specifier: link:../../extra/fonts/dist
+        version: link:../../extra/fonts/dist
       '@lonlat/shared':
         specifier: link:../../extra/shared
         version: link:../../extra/shared
@@ -95,6 +98,9 @@ importers:
       '@floating-ui/react':
         specifier: ^0.24.7
         version: 0.24.7(react-dom@18.2.0)(react@18.2.0)
+      '@lonlat/fonts':
+        specifier: link:../../extra/fonts/dist
+        version: link:../../extra/fonts/dist
       '@lonlat/shared':
         specifier: link:../../extra/shared
         version: link:../../extra/shared
@@ -129,6 +135,9 @@ importers:
       '@floating-ui/react':
         specifier: ^0.24.7
         version: 0.24.7(react-dom@18.2.0)(react@18.2.0)
+      '@lonlat/fonts':
+        specifier: link:../fonts/dist
+        version: link:../fonts/dist
       classnames:
         specifier: ^2.3.2
         version: 2.3.2

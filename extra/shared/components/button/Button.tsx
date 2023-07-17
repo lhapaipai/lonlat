@@ -24,6 +24,8 @@ export interface Props extends Omit<ComponentPropsWithRef<"button">, "type"> {
    * For a selected item inside a group.
    */
   selected?: boolean;
+
+  icon?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>(
@@ -37,6 +39,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       className,
       disabled,
       children,
+      icon = false,
       ...props
     },
     ref,
@@ -53,6 +56,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     const classNames = cn(
       "ll-button",
       className,
+      icon && "icon",
       fullWidth && "w100",
       size !== "medium" && `size-${size}`,
       `shape-${shape}-${type}`,

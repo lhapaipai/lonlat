@@ -7,9 +7,8 @@ export const TooltipContext = createContext<ContextType>(null);
 
 export default function useTooltipContext() {
   const context = useContext(TooltipContext);
-  // TODO Fix !! ===
 
-  if (context == null) {
+  if (context === null) {
     throw new Error("Tooltip components must be wrapped in <Tooltip />");
   }
 

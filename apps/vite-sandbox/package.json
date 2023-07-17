@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@floating-ui/react": "^0.24.7",
+        "@lonlat/fonts": "link:../../extra/fonts/dist",
         "@lonlat/shared": "link:../../extra/shared",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

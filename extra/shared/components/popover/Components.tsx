@@ -1,26 +1,35 @@
 import { ComponentProps } from "react";
 import { usePopoverContext } from ".";
+import cn from "classnames";
+import { Button } from "../..";
 
-export function PopoverHeading({ children, ...props }: ComponentProps<"h2">) {
-  return <h2 {...props}>{children}</h2>;
+interface PopoverHeaderProps extends ComponentProps<"h2"> {
+  closeButton?: boolean;
+}
+export function PopoverHeader({
+  children,
+  closeButton = true,
+  className,
+  ...props
+}: PopoverHeaderProps) {
+  const { setOpen } = usePopoverContext();
+  return (
+    <header className={cn("header", className)} {...props}>
+      <h4>{children}</h4>
+      <div className="actions">
+        {closeButton && (
+          <Button icon shape="ghost" onClick={() => setOpen(false)}>
+            <i className="fe-cancel"></i>
+          </Button>
+        )}
+      </div>
+    </header>
+  );
 }
 export function PopoverDescription({ children, ...props }: ComponentProps<"div">) {
   return <div {...props}>{children}</div>;
 }
 
-export function PopoverClose(props: ComponentProps<"button">) {
-  const { setOpen } = usePopoverContext();
-
-  return (
-    <div>
-      <button
-        type="button"
-        {...props}
-        onClick={(e) => {
-          props.onClick?.(e);
-          setOpen(false);
-        }}
-      ></button>
-    </div>
-  );
+export function PopoverFooter(props: ComponentProps<"footer">) {
+  return <footer {...props}></footer>;
 }

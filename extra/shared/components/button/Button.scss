@@ -93,4 +93,25 @@
         }
     }
 
+    &.icon {
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+
+        &,
+        &:hover,
+        &:focus,
+        &:focus-within,
+        &:active {
+            color: var(--text-default);
+        }
+
+        i {
+            margin-bottom: 2px;
+        }
+    }
 }

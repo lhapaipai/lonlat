@@ -2,9 +2,9 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-  PopoverHeading,
+  PopoverHeader,
   PopoverDescription,
-  PopoverClose,
+  PopoverFooter,
 } from "@lonlat/shared";
 
 import { Meta, StoryObj } from "@storybook/react";
@@ -22,10 +22,9 @@ export const Basic: Story = {
   render: ({ children, ...args }) => (
     <Popover {...args}>
       <PopoverTrigger>My trigger</PopoverTrigger>
-      <PopoverContent>
-        <PopoverHeading>Heading</PopoverHeading>
+      <PopoverContent style={{ width: "400px" }}>
+        <PopoverHeader>Heading</PopoverHeader>
         <PopoverDescription>description</PopoverDescription>
-        <PopoverClose>Close</PopoverClose>
       </PopoverContent>
     </Popover>
   ),
@@ -42,9 +41,8 @@ export const Context = () => (
   <Popover type="primary">
     <PopoverTrigger>My trigger</PopoverTrigger>
     <PopoverContent>
-      <PopoverHeading>Heading</PopoverHeading>
+      <PopoverHeader>Heading</PopoverHeader>
       <PopoverDescription>description</PopoverDescription>
-      <PopoverClose>Close</PopoverClose>
     </PopoverContent>
   </Popover>
 );

@@ -11,3 +11,4 @@ export { default as Badge } from "./components/badge/Badge";
 export { default as Href } from "./components/href/Href";
 export * from "./components/tooltip";
 export * from "./components/popover";
+export * from "./components/modal";

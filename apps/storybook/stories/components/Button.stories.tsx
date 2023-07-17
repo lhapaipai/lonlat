@@ -54,6 +54,23 @@ export const States = () => (
   </div>
 );
 
+export const Icons = () => (
+  <div className="flex gap-2" style={{ alignItems: "center" }}>
+    <Button icon shape="solid">
+      <i className="fe-cancel"></i>
+    </Button>
+    <Button icon shape="outline">
+      <i className="fe-cancel"></i>
+    </Button>
+    <Button icon shape="ghost">
+      <i className="fe-cancel"></i>
+    </Button>
+    <Button icon shape="underline">
+      <i className="fe-cancel"></i>
+    </Button>
+  </div>
+);
+
 const shapes = ["solid", "outline", "ghost", "underline"] as const;
 const types = ["primary", "weak", "danger", "warning", "success", "info"] as const;
 

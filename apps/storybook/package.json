@@ -11,6 +11,7 @@
     "author": "Hugues Tavernier",
     "license": "ISC",
     "dependencies": {
+        "@lonlat/fonts": "link:../../extra/fonts/dist",
         "@lonlat/shared": "link:../../extra/shared",
         "react": "^18.2.0"
     },

@@ -1,4 +1,5 @@
 .ll-dialog {
+    position: relative;
 
     .box {
         background-color: white;
@@ -8,6 +9,15 @@
         box-shadow: var(--shadow);
         position: relative;
         z-index: 2;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+    }
+
+    .actions {
+        margin-left: auto;
     }
 
     .arrow {
