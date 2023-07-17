@@ -58,7 +58,8 @@ export default function usePopover({
   const { context } = data;
 
   const click = useClick(context, {
-    enabled: isUncontrolled,
+    // TODO verify if use case to disable it
+    // enabled: isUncontrolled,
   });
   const dismiss = useDismiss(context);
   const role = useRole(context);

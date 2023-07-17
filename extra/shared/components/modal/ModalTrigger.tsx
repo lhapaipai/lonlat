@@ -14,6 +14,7 @@ const ModalTrigger = forwardRef<HTMLElement, Props>(
 
     const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
 
+    console.log("reference props", context.getReferenceProps(props));
     if (asChild && isValidElement(children)) {
       return cloneElement(
         children,
@@ -28,7 +29,6 @@ const ModalTrigger = forwardRef<HTMLElement, Props>(
 
     return (
       <Button
-        shape="underline"
         ref={ref}
         data-state={context.open ? "open" : "closed"}
         {...context.getReferenceProps(props)}

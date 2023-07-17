@@ -1,11 +1,11 @@
 .ll-dialog {
+    $padding: 1rem;
     position: relative;
 
     .box {
         background-color: white;
 
         border-radius: var(--border-radius-sm);
-        padding: .25rem .5rem;
         box-shadow: var(--shadow);
         position: relative;
         z-index: 2;
@@ -14,11 +14,37 @@
     .header {
         display: flex;
         align-items: center;
+        padding: $padding $padding 0;
+
+        .actions {
+            margin-left: auto;
+        }
+
     }
 
-    .actions {
-        margin-left: auto;
+    .description {
+        padding: $padding;
+
+        &.scrollable {
+            padding: $padding 0;
+
+            .scroll-inner {
+                padding: 0 $padding;
+            }
+        }
     }
+
+    .footer {
+        position: relative;
+        z-index: 4;
+        padding: 0 $padding $padding;
+
+        .actions {
+            display: flex;
+            justify-content: space-between
+        }
+    }
+
 
     .arrow {
         position: absolute;

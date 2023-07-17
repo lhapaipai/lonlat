@@ -26,10 +26,18 @@ export function PopoverHeader({
     </header>
   );
 }
-export function PopoverDescription({ children, ...props }: ComponentProps<"div">) {
-  return <div {...props}>{children}</div>;
+export function PopoverDescription({ children, className, ...props }: ComponentProps<"div">) {
+  return (
+    <div className={cn("description", className)} {...props}>
+      {children}
+    </div>
+  );
 }
 
-export function PopoverFooter(props: ComponentProps<"footer">) {
-  return <footer {...props}></footer>;
+export function PopoverFooter({ children, className, ...props }: ComponentProps<"footer">) {
+  return (
+    <footer className={cn("footer", className)} {...props}>
+      {children}
+    </footer>
+  );
 }

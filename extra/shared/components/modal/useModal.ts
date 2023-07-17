@@ -20,9 +20,8 @@ export default function useModal({
   const [descriptionId, setDescriptionId] = useState<string | undefined>();
 
   const isUncontrolled = controlledOpen === null || controlledOpen === undefined;
-
   const open = isUncontrolled ? uncontrolledOpen : controlledOpen;
-  const setOpen = isUncontrolled ? setUncontrolledOpen : setControlledOpen!;
+  const setOpen = isUncontrolled ? setUncontrolledOpen : setControlledOpen;
 
   const data = useFloating({
     open,
@@ -32,7 +31,8 @@ export default function useModal({
   const { context } = data;
 
   const click = useClick(context, {
-    enabled: isUncontrolled,
+    // TODO verify if use case to disable it
+    // enabled: isUncontrolled,
   });
   const dismiss = useDismiss(context, {
     outsidePressEvent: "mousedown",

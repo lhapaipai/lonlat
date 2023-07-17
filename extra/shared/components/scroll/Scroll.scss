@@ -1,6 +1,9 @@
 .ll-scroll-zone {
     position: relative;
-    border: 1px solid var(--border-weak);
+
+    &.with-border {
+        border: 1px solid var(--border-weak);
+    }
 
     .scroll-shadow {
         z-index: 1;

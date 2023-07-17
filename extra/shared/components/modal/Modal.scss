@@ -1,0 +1,21 @@
+.ll-modal-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(40, 40, 40, .5);
+
+    &[data-status='initial'],
+    &[data-status='close'] {
+        opacity: 0;
+    }
+
+    &[data-status='open'],
+    &[data-status='close'] {
+        transition: opacity 250ms ease;
+    }
+}
+
+.ll-modal {
+    width: 400px;
+    max-width: 100%;
+}

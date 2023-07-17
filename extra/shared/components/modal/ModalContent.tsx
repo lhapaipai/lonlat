@@ -20,10 +20,14 @@ const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
     return (
       <FloatingPortal>
-        <FloatingOverlay className="ll-modal-overlay" lockScroll>
+        <FloatingOverlay
+          className="ll-modal-overlay"
+          lockScroll
+          data-status={context.transitionStatus.status}
+        >
           <FloatingFocusManager context={floatingContext}>
             <div
-              className={cn("ll-dialog", `type-${context.type}`)}
+              className={cn("ll-modal", "ll-dialog", `type-${context.type}`)}
               ref={ref}
               aria-labelledby={context.labelId}
               aria-describedby={context.descriptionId}

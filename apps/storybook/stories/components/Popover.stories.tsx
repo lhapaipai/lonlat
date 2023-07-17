@@ -40,7 +40,7 @@ export const Basic: Story = {
 export const Context = () => (
   <Popover type="primary">
     <PopoverTrigger>My trigger</PopoverTrigger>
-    <PopoverContent>
+    <PopoverContent style={{ width: "400px" }}>
       <PopoverHeader>Heading</PopoverHeader>
       <PopoverDescription>description</PopoverDescription>
     </PopoverContent>
