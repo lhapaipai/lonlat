@@ -1,4 +1,4 @@
-import { Badge } from "@lonlat/components";
+import { Badge } from "@lonlat/shared";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

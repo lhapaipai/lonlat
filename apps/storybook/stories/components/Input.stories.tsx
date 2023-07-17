@@ -1,4 +1,4 @@
-import { Input, Button } from "@lonlat/components";
+import { Input, Button } from "@lonlat/shared";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

@@ -1,4 +1,4 @@
-import { Href, Button } from "@lonlat/components";
+import { Href, Button } from "@lonlat/shared";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

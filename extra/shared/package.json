@@ -1,5 +1,5 @@
 {
-    "name": "@lonlat/components",
+    "name": "@lonlat/shared",
     "version": "1.0.0",
     "private": true,
     "description": "",
@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@floating-ui/react": "^0.24.7",
+        "classnames": "^2.3.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "sass": "^1.63.6",

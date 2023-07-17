@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import App from "./App.tsx";
 
-import "@lonlat/styles/_vite-sandbox.scss";
+import "@lonlat/shared/styles/_vite-sandbox.scss";
 /*
 
  <React.StrictMode>

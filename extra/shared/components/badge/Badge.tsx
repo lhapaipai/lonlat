@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import "./Badge.scss";
 import { ColorType } from "../types";
 import cn from "classnames";
-import { Href, Tooltip, TooltipContent, TooltipTrigger } from "..";
+import { Href, Tooltip, TooltipContent, TooltipTrigger } from "../..";
 interface Props {
   children: ReactNode;
   className?: string;

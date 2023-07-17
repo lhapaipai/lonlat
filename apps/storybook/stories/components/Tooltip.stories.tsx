@@ -1,4 +1,4 @@
-import { Tooltip, SimpleTooltip } from "@lonlat/components";
+import { Tooltip, SimpleTooltip } from "@lonlat/shared";
 import { HTMLProps, forwardRef } from "react";
 
 export default {

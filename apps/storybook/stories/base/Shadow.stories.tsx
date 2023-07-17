@@ -1,4 +1,4 @@
-import { Code } from "@lonlat/components";
+import { Code } from "@lonlat/shared";
 
 export default {
   title: "Base",

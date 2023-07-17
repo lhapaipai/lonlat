@@ -1,4 +1,4 @@
-import { Scroll } from "@lonlat/components";
+import { Scroll } from "@lonlat/shared";
 
 export default {
   component: Scroll,

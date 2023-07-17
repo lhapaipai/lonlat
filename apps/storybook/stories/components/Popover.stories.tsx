@@ -5,7 +5,7 @@ import {
   PopoverHeading,
   PopoverDescription,
   PopoverClose,
-} from "@lonlat/components";
+} from "@lonlat/shared";
 
 import { Meta, StoryObj } from "@storybook/react";
 

@@ -1,17 +1,17 @@
-import { HTMLProps, cloneElement, forwardRef, isValidElement } from "react";
-import { usePopoverContext } from ".";
+import { HTMLProps, ReactNode, cloneElement, forwardRef, isValidElement } from "react";
+import useTooltipContext from "./useTooltipContext";
 import { useMergeRefs } from "@floating-ui/react";
-import { Button } from "..";
+import { Button } from "../..";
 
 interface Props extends HTMLProps<HTMLElement> {
+  /* allows the user to pass any element as the anchor instead of <button> */
   asChild?: boolean;
 }
 
-const PopoverTrigger = forwardRef<HTMLElement, Props>(
+const TooltipTrigger = forwardRef<HTMLElement, Props>(
   ({ children, asChild = false, ...props }, propRef) => {
-    const context = usePopoverContext();
+    const context = useTooltipContext();
     const childrenRef = (children as any).ref;
-
     const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
 
     if (asChild && isValidElement(children)) {
@@ -39,4 +39,4 @@ const PopoverTrigger = forwardRef<HTMLElement, Props>(
   },
 );
 
-export default PopoverTrigger;
+export default TooltipTrigger;

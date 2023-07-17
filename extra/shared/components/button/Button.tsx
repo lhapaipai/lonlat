@@ -2,8 +2,8 @@ import "./Button.scss";
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import cn from "classnames";
 import { ColorType } from "../types";
-import useRipple from "../hooks/useRipple";
-import { Loader } from "..";
+import useRipple from "../../hooks/useRipple";
+import { Loader } from "../..";
 
 export interface Props extends Omit<ComponentPropsWithRef<"button">, "type"> {
   shape?: "solid" | "outline" | "ghost" | "underline";

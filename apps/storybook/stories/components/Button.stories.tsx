@@ -7,7 +7,7 @@ import {
   TableHeaderCell,
   TableRow,
   Button,
-} from "@lonlat/components";
+} from "@lonlat/shared";
 
 const meta = {
   title: "Components/Button",

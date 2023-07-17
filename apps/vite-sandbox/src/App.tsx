@@ -6,7 +6,7 @@ import {
   PopoverHeading,
   PopoverDescription,
   PopoverClose,
-} from "@lonlat/components";
+} from "@lonlat/shared";
 import "./App.scss";
 function App() {
   return (

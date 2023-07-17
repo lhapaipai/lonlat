@@ -11,8 +11,7 @@
     "author": "Hugues Tavernier",
     "license": "ISC",
     "dependencies": {
-        "@lonlat/components": "link:../../libs/components",
-        "@lonlat/styles": "link:../../libs/styles",
+        "@lonlat/shared": "link:../../extra/shared",
         "react": "^18.2.0"
     },
     "devDependencies": {

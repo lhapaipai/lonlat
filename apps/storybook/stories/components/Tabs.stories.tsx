@@ -1,4 +1,4 @@
-import { Tabs } from "@lonlat/components/index";
+import { Tabs } from "@lonlat/shared";
 import { useState } from "react";
 
 export default {

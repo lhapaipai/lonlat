@@ -25,11 +25,8 @@
             "react/experimental"
         ],
         "paths": {
-            "@lonlat/components/*": [
-                "./libs/components/*"
-            ],
-            "@lonlat/styles/*": [
-                "./libs/styles/*"
+            "@lonlat/shared/*": [
+                "./extra/shared/*"
             ]
         }
     },

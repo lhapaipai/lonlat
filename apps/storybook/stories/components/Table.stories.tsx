@@ -5,7 +5,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-} from "@lonlat/components";
+} from "@lonlat/shared";
 
 export default {
   title: "Components/Tables",

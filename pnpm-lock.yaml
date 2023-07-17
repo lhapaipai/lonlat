@@ -34,12 +34,9 @@ importers:
 
   apps/storybook:
     dependencies:
-      '@lonlat/components':
-        specifier: link:../../libs/components
-        version: link:../../libs/components
-      '@lonlat/styles':
-        specifier: link:../../libs/styles
-        version: link:../../libs/styles
+      '@lonlat/shared':
+        specifier: link:../../extra/shared
+        version: link:../../extra/shared
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -98,12 +95,9 @@ importers:
       '@floating-ui/react':
         specifier: ^0.24.7
         version: 0.24.7(react-dom@18.2.0)(react@18.2.0)
-      '@lonlat/components':
-        specifier: link:../../libs/components
-        version: link:../../libs/components
-      '@lonlat/styles':
-        specifier: link:../../libs/styles
-        version: link:../../libs/styles
+      '@lonlat/shared':
+        specifier: link:../../extra/shared
+        version: link:../../extra/shared
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -130,11 +124,14 @@ importers:
         specifier: ^4.4.0
         version: 4.4.3(sass@1.63.6)
 
-  libs/components:
+  extra/shared:
     dependencies:
       '@floating-ui/react':
         specifier: ^0.24.7
         version: 0.24.7(react-dom@18.2.0)(react@18.2.0)
+      classnames:
+        specifier: ^2.3.2
+        version: 2.3.2
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -181,8 +178,6 @@ importers:
       vitest:
         specifier: ^0.33.0
         version: 0.33.0(@vitest/ui@0.33.0)(jsdom@22.1.0)(sass@1.63.6)
-
-  libs/styles: {}
 
 packages:
 
@@ -5466,7 +5461,6 @@ packages:
 
   /classnames@2.3.2:
     resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
-    dev: true
 
   /clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}

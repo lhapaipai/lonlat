@@ -1,4 +1,4 @@
-import { Loader } from "@lonlat/components";
+import { Loader } from "@lonlat/shared";
 
 export default {
   title: "Components/Loader",

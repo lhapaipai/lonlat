@@ -1,4 +1,4 @@
-import { Alert } from "@lonlat/components";
+import { Alert } from "@lonlat/shared";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
