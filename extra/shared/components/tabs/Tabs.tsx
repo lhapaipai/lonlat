@@ -34,7 +34,7 @@ export default function Tabs({
   const content = tabs[value]?.content;
 
   return (
-    <div className="tabs rounded-sm">
+    <div className="ll-tabs rounded-sm">
       <ul
         role="tablist"
         className={cn("tabs-list", fullWidth && "full-width", stickyTabs && "sticky-top")}

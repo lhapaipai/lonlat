@@ -38,5 +38,13 @@ export const Context = () => (
       the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
       publishing software like Aldus PageMaker including versions of Lorem Ipsum.
     </p>
+    <h2>With ghost</h2>
+    <p>
+      There is a{" "}
+      <Href ghost={true} href="https://lonlat.org">
+        ghost
+      </Href>{" "}
+      link.
+    </p>
   </>
 );

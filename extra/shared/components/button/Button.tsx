@@ -1,7 +1,7 @@
 import "./Button.scss";
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import cn from "classnames";
-import { ColorType } from "../types";
+import { ColorType } from "../../types";
 import useRipple from "../../hooks/useRipple";
 import { Loader } from "../..";
 
@@ -51,11 +51,11 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     const notClickable = loading || disabled;
 
     const classNames = cn(
-      "button",
+      "ll-button",
       className,
       fullWidth && "w100",
       size !== "medium" && `size-${size}`,
-      `button-${shape}-${type}`,
+      `shape-${shape}-${type}`,
       `button-${type}`,
       `shape-${shape}`,
       notClickable && "not-cliquable",

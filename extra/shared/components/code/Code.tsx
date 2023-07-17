@@ -6,5 +6,5 @@ interface Props {
 }
 
 export default function Code({ children }: Props) {
-  return <code className="code">{children}</code>;
+  return <code className="ll-code">{children}</code>;
 }

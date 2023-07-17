@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, useId } from "react";
-import { ColorType } from "../types";
+import { ColorType } from "../../types";
 import cn from "classnames";
 import "./Loader.scss";
 
@@ -12,7 +12,7 @@ export default function Loader({ size = "medium", type = "info", className, ...r
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("loader", `size-${size}`, `size-${type}`, className)}
+      className={cn("ll-loader", `size-${size}`, `size-${type}`, className)}
       style={{
         color: `var(--color-${type}-700)`,
       }}

@@ -1,0 +1,51 @@
+@each $colorType in (primary, weak, danger, warning, success, info) {
+
+    .shape-solid-#{$colorType} {
+        $solid-text-color: --color-#{$colorType}-text-invert;
+
+        --button-default-background-color: var(--color-#{$colorType}-500);
+        --button-hover-background-color: var(--color-#{$colorType}-600);
+        --button-active-background-color: var(--color-#{$colorType}-700);
+        --button-default-text-color: var(#{$solid-text-color});
+        --button-hover-text-color: var(#{$solid-text-color});
+        --button-active-text-color: var(#{$solid-text-color});
+        --button-focus-border-color: transparent;
+    }
+
+    .shape-outline-#{$colorType} {
+        $outline-text-color: var(--color-#{$colorType}-text);
+
+        --button-default-background-color: var(--background-default);
+        --button-hover-background-color: var(--color-#{$colorType}-100);
+        --button-active-background-color: var(--color-#{$colorType}-200);
+        --button-default-border-color: var(--color-#{$colorType}-500);
+        --button-default-text-color: #{$outline-text-color};
+        --button-hover-text-color: #{$outline-text-color};
+        --button-active-text-color: #{$outline-text-color};
+        --button-focus-border-color: var(--color-#{$colorType}-900);
+    }
+
+    .shape-ghost-#{$colorType} {
+        $ghost-text-color: var(--color-#{$colorType}-700);
+
+        --button-default-background-color: var(--background-default);
+        --button-hover-background-color: var(--color-#{$colorType}-100);
+        --button-active-background-color: var(--color-#{$colorType}-200);
+        --button-default-text-color: #{$ghost-text-color};
+        --button-hover-text-color: #{$ghost-text-color};
+        --button-active-text-color: #{$ghost-text-color};
+        --button-focus-border-color: transparent;
+    }
+
+    .shape-underline-#{$colorType} {
+        $underline-text-color: var(--color-#{$colorType}-700);
+
+        --button-default-background-color: var(--background-default);
+        --button-hover-background-color: var(--color-#{$colorType}-100);
+        --button-active-background-color: var(--color-#{$colorType}-200);
+        --button-default-text-color: #{$underline-text-color};
+        --button-hover-text-color: #{$underline-text-color};
+        --button-active-text-color: #{$underline-text-color};
+        --button-focus-border-color: var(--color-#{$colorType}-500);
+    }
+}

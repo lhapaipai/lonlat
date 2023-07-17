@@ -28,24 +28,11 @@
         z-index: 1;
     }
 
-    @each $colorType in (success, info, warning, danger) {
+    @each $colorType in (success, info, warning, danger, primary, weak) {
         &.type-#{$colorType} {
             .box {
                 background-color: var(--color-#{$colorType}-300);
-                color: var(--color-#{$colorType}-900);
-            }
-
-            .arrow-bg {
-                background-color: var(--color-#{$colorType}-300);
-            }
-        }
-    }
-
-    @each $colorType in (primary, weak) {
-        &.type-#{$colorType} {
-            .box {
-                background-color: var(--color-#{$colorType}-300);
-                color: var(--text-default);
+                color: var(--color-#{$colorType}-text);
             }
 
             .arrow-bg {

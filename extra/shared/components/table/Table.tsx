@@ -8,7 +8,7 @@ interface Props extends ComponentProps<"table"> {
 
 export default function Table({ children, ...props }: Props) {
   return (
-    <table className="table" {...props}>
+    <table className="ll-table" {...props}>
       {children}
     </table>
   );

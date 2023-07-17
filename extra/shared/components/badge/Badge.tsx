@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import "./Badge.scss";
-import { ColorType } from "../types";
+import { ColorType } from "../../types";
 import cn from "classnames";
 import { Href, Tooltip, TooltipContent, TooltipTrigger } from "../..";
 interface Props {
@@ -13,9 +13,17 @@ interface Props {
 
 export default function Badge({ children, className, tooltip, url, type = "primary" }: Props) {
   const badge = (
-    <span className={cn("ll-badge", "text-xs", `type-${type}`, className)}>{children}</span>
+    <span className={cn("ll-badge", "text-xs", `shape-solid-${type}`, `type-${type}`, className)}>
+      {children}
+    </span>
   );
-  const wrappedBadge = url ? <Href href={url}>{badge}</Href> : badge;
+  const wrappedBadge = url ? (
+    <Href href={url} ghost={true}>
+      {badge}
+    </Href>
+  ) : (
+    badge
+  );
 
   if (!tooltip) {
     return wrappedBadge;

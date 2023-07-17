@@ -61,7 +61,10 @@ export default function Scroll({ horizontal = false, className, children, ...res
   }
 
   return (
-    <div className={cn("scroll-zone", horizontal ? "horizontal" : "vertical", className)} {...rest}>
+    <div
+      className={cn("ll-scroll-zone", horizontal ? "horizontal" : "vertical", className)}
+      {...rest}
+    >
       <div className={cn("scroll-shadow", "start", showStartShadow && "visible")}></div>
       <div className={cn("scroll-shadow", "end", showEndShadow && "visible")}></div>
       <div className="scroll-inner" ref={scrollContainerRef} onScroll={handleScroll}>

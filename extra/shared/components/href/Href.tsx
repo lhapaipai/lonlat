@@ -3,11 +3,12 @@ import cn from "classnames";
 
 interface Props extends ComponentPropsWithRef<"a"> {
   children: ReactNode;
+  ghost?: boolean;
 }
 const Href = forwardRef<HTMLAnchorElement, Props>(
-  ({ href = "#", children, className, ...rest }, ref) => {
+  ({ href = "#", ghost = false, children, className, ...rest }, ref) => {
     return (
-      <a ref={ref} href={href} className={cn("ll-link", className)} {...rest}>
+      <a ref={ref} href={href} className={cn("ll-href", ghost && "ghost", className)} {...rest}>
         {children}
       </a>
     );

@@ -21,15 +21,9 @@ $size in $title-sizes {
     }
 }
 
-@each $label,
-$size in $text-sizes {
-    .text-#{$label} {
-        font-size: pixel-to-rem($size);
-    }
-}
 
-a,
-.button.shape-underline {
+
+a {
     color: var(--color-primary-900);
     text-decoration: underline;
     text-decoration-color: var(--color-primary-500);
@@ -39,5 +33,15 @@ a,
     &:hover {
         text-decoration-color: var(--color-primary-600);
         text-decoration-thickness: 2px;
+    }
+}
+
+
+a.ghost {
+    color: var(--text-default);
+
+    &,
+    &:hover {
+        text-decoration: none;
     }
 }

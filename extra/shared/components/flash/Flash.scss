@@ -1,4 +1,4 @@
-.alert-block {
+.ll-flash {
     box-shadow: var(--shadow-light);
 
     @each $color in (primary, info, weak, warning, danger, success, info) {

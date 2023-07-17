@@ -1,3 +1,10 @@
+@each $label,
+$size in $text-sizes {
+    .text-#{$label} {
+        font-size: pixel-to-rem($size);
+    }
+}
+
 $color-names: "default", "weak", "hint", "disabled";
 
 @each $color-name in $color-names {

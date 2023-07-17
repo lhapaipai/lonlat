@@ -1,5 +1,5 @@
 import { Placement } from "@floating-ui/react";
-import { ColorType } from "../types";
+import { ColorType } from "../../types";
 
 export interface PopoverOptions {
   initialOpen?: boolean;
