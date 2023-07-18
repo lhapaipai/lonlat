@@ -81,6 +81,10 @@
     &[data-status='close'] {
         opacity: 0;
         transform: scale(.9);
+
+        .ll-select & {
+            transform: none;
+        }
     }
 
     &[data-status='open'],

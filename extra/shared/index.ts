@@ -13,4 +13,4 @@ export * from "./components/tooltip";
 export * from "./components/popover";
 export * from "./components/modal";
 export * from "./components/select";
-export * from "./components/dropdown";
+// export * from "./components/dropdown";

@@ -1,8 +1,10 @@
-.ll-input {
+.ll-input,
+.ll-select .selection {
     border-radius: var(--border-radius-md);
     transition: all .3s ease;
     border: solid 1px var(--color-weak-100);
     display: flex;
+    outline: none;
 
     &:hover {
         border-color: var(--color-weak-400);

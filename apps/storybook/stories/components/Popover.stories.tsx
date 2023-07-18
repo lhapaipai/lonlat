@@ -4,7 +4,6 @@ import {
   PopoverTrigger,
   PopoverHeader,
   PopoverDescription,
-  PopoverFooter,
 } from "@lonlat/shared";
 
 import { Meta, StoryObj } from "@storybook/react";

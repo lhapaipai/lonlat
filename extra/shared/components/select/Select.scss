@@ -1,1 +1,35 @@
-.ll-select {}
+.ll-select {
+    .selection {
+        min-width: 400px;
+        cursor: default;
+        user-select: none;
+        display: flex;
+
+        .arrow {
+            display: flex;
+        }
+    }
+
+    .box {
+        border-radius: var(--border-radius-md);
+        outline: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .option {
+        padding: .5rem .5rem;
+        text-align: left;
+        outline: 0;
+
+        &.active {
+            background-color: var(--background-weak);
+        }
+
+        &.selected {
+            background-color: var(--background-strong);
+            font-weight: bold;
+        }
+    }
+}

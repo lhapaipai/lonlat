@@ -7,7 +7,7 @@ import {
   ModalFooter,
 } from "@lonlat/shared";
 import { Meta, StoryObj } from "@storybook/react";
-import { Button, Scroll } from "@lonlat/shared";
+import { Button } from "@lonlat/shared";
 import { useState } from "react";
 
 const meta = {

@@ -1,49 +1,87 @@
-import {
-  SimpleTooltip,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  PopoverHeader,
-  PopoverDescription,
-  PopoverFooter,
-  ModalHeader,
-  ModalFooter,
-  Modal,
-  ModalContent,
-  ModalTrigger,
-  ModalDescription,
-} from "@lonlat/shared";
+import { Select, Option } from "@lonlat/shared";
 import "./App.scss";
-import { createContext, useContext } from "react";
 
-const ThemeContext = createContext("light");
+import SelectOne from "./SelectOne";
+import { useRef, useState } from "react";
+
+type SelectOption = {
+  label: string;
+  value: string;
+};
 
 function App() {
-  const context = useContext(ThemeContext);
-  console.log(context);
+  const [options, setOptions] = useState([
+    { label: "a", value: "a" },
+    { label: "baac", value: "baac" },
+    { label: "baad", value: "baad" },
+    { label: "bab", value: "bab" },
+    { label: "c", value: "c" },
+    { label: "d", value: "d" },
+    { label: "e", value: "e" },
+    { label: "f", value: "f" },
+    { label: "g", value: "g" },
+    { label: "h", value: "h" },
+    { label: "i", value: "i" },
+    { label: "j", value: "j" },
+    { label: "k", value: "k" },
+    { label: "l", value: "l" },
+    { label: "m", value: "m" },
+    { label: "n", value: "n" },
+    { label: "o", value: "o" },
+    { label: "p", value: "p" },
+  ]);
+
+  const [value, setValue] = useState<SelectOption | null>(options[1]);
+  const [strValue, setStrValue] = useState<string | null>(null);
+
   return (
     <div id="my-app">
-      <SimpleTooltip content="infos" placement="bottom">
-        dessous
-      </SimpleTooltip>
-      <div style={{ width: "200px", height: "200px" }}></div>
-      <Modal>
-        <ModalTrigger>Modal Trigger</ModalTrigger>
-        <ModalContent className="Modal">
-          <ModalHeader>I opened automatically</ModalHeader>
-          <ModalDescription>After 2 seconds</ModalDescription>
-          <ModalFooter>Close</ModalFooter>
-        </ModalContent>
-      </Modal>
-      <div style={{ width: "200px", height: "200px" }}></div>
-      <Popover type="primary">
-        <PopoverTrigger>My trigger</PopoverTrigger>
-        <PopoverContent>
-          <PopoverHeader>Heading</PopoverHeader>
-          <PopoverDescription>description</PopoverDescription>
-          <PopoverFooter>Close</PopoverFooter>
-        </PopoverContent>
-      </Popover>
+      <div style={{ height: "300px" }}></div>
+
+      <button
+        className="ll-button"
+        onClick={() =>
+          setOptions([
+            { label: "a", value: "a" },
+            { label: "b", value: "b" },
+            { label: "c", value: "c" },
+            { label: "d", value: "d" },
+          ])
+        }
+      >
+        Change
+      </button>
+      <h3>select with string</h3>
+      <Select
+        searchable={true}
+        valueIsObject={false}
+        value={strValue}
+        options={options}
+        onChange={(newValue) => {
+          console.log("newValue", newValue);
+          setStrValue(newValue);
+        }}
+      ></Select>
+      <p>strValue: {strValue}</p>
+      <div style={{ margin: "2rem 0" }}>
+        <input type="text" />
+      </div>
+      <h3>select with object</h3>
+      <Select
+        valueIsObject={true}
+        value={value}
+        options={options}
+        onChange={(newValue) => {
+          console.log("newValue", newValue);
+          setValue(newValue);
+        }}
+      ></Select>
+      <p>value: {value?.label}</p>
+      <div style={{ margin: "2rem 0" }}>
+        <input type="text" />
+      </div>
+
+      <div style={{ height: "300px" }}></div>
     </div>
   );
 }
