@@ -3,11 +3,11 @@ import { useSelect } from ".";
 import cn from "classnames";
 import { Option } from "./interface";
 
-interface Props {
-  option: Option;
+export interface SelectOptionProps<O extends Option> {
+  option: O;
 }
 
-export default function SelectOption({ option }: Props) {
+export default function SelectOption<O extends Option>({ option }: SelectOptionProps<O>) {
   const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
 
   const { ref, index } = useListItem({ label: option.label });

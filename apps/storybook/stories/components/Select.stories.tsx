@@ -1,12 +1,42 @@
 import { Meta } from "@storybook/react";
-import { Select } from "@lonlat/shared";
-import { Props } from "@lonlat/shared/components/select/Select";
+import { Select, useSelect } from "@lonlat/shared";
+import { useListItem } from "@floating-ui/react";
 import { useState } from "react";
+import { SelectSelectionProps } from "@lonlat/shared/components/select/SelectSelection";
+import { SelectOptionProps } from "@lonlat/shared/components/select/SelectOption";
+import cn from "classnames";
+import { action } from "@storybook/addon-actions";
+
+const onChangeAction = action("onChange");
+
 const meta = {
   title: "Components/Select",
   component: Select,
 } satisfies Meta<typeof Select>;
 export default meta;
+
+const departments = [
+  { value: "38", label: "Isère" },
+  { value: "74", label: "Haute-Savoie" },
+  { value: "73", label: "Savoie" },
+];
+
+const townsByDepartment = {
+  "38": [
+    { value: "grenoble", label: "Grenoble" },
+    { value: "meylan", label: "Meylan" },
+    { value: "voreppe", label: "Voreppe" },
+  ],
+  "73": [
+    { value: "chambery", label: "Chambéry" },
+    { value: "albertville", label: "Albertville" },
+  ],
+  "74": [
+    { value: "annecy", label: "Annecy" },
+    { value: "annemasse", label: "Annemasse" },
+    { value: "avoriaz", label: "Avoriaz" },
+  ],
+};
 
 const options = [
   { value: "abbeville", label: "Abbeville" },
@@ -19,8 +49,6 @@ const options = [
   { value: "amiens", label: "Amiens" },
   { value: "angers", label: "Angers" },
   { value: "angouleme", label: "Angoulême" },
-  { value: "annecy", label: "Annecy" },
-  { value: "annemasse", label: "Annemasse" },
   { value: "annonay", label: "Annonay" },
   { value: "antibes", label: "Antibes" },
   { value: "arcachon", label: "Arcachon" },
@@ -36,30 +64,157 @@ const options = [
   { value: "avray", label: "Avray" },
 ];
 
-const SelectWithState = (props: Pick<Props, "placeholder" | "searchable" | "options">) => {
-  const [value, setValue] = useState<string | null>(null);
-  return <Select {...props} value={value} onChange={(o) => setValue(o?.value ?? null)}></Select>;
-};
+const stars = [
+  { value: "empty", label: "Empty", icon: "fe-star-empty" },
+  { value: "half", label: "Half", icon: "fe-star-half" },
+  { value: "fill", label: "Fill", icon: "fe-star" },
+];
 
-export const Basic = {
-  render: ({ placeholder, searchable }: Pick<Props, "placeholder" | "searchable">) => {
-    return (
-      <SelectWithState
-        searchable={searchable}
-        placeholder={placeholder}
-        options={options}
-      ></SelectWithState>
-    );
-  },
-  args: {
-    placeholder: "Select your town...",
-    searchable: false,
-  },
-};
-
-export const Context = () => {
+export const Basic = () => {
   const [value, setValue] = useState<string | null>(null);
   return (
-    <Select options={options} value={value} onChange={(o) => setValue(o?.value ?? null)}></Select>
+    <Select
+      searchable={false}
+      placeholder="Select your town..."
+      options={options}
+      value={value}
+      onChange={(o) => {
+        onChangeAction(o);
+        setValue(o?.value ?? null);
+      }}
+    ></Select>
+  );
+};
+
+export const NotRequired = () => {
+  const [value, setValue] = useState<string | null>(null);
+  return (
+    <Select
+      required={false}
+      searchable={true}
+      placeholder="Select your town..."
+      options={options}
+      value={value}
+      onChange={(o) => {
+        onChangeAction(o);
+        setValue(o?.value ?? null);
+      }}
+    ></Select>
+  );
+};
+
+export const Searchable = () => {
+  const [value, setValue] = useState<string | null>(null);
+  return (
+    <Select
+      searchable={true}
+      placeholder="Select your town..."
+      options={options}
+      value={value}
+      onChange={(o) => {
+        onChangeAction(o);
+        setValue(o?.value ?? null);
+      }}
+    ></Select>
+  );
+};
+
+function isDepartment(department: string | null): department is "38" | "73" | "74" {
+  return department !== null && ["38", "73", "74"].indexOf(department) !== -1;
+}
+
+export const Dynamic = () => {
+  const [town, setTown] = useState<string | null>(null);
+  const [department, setDepartment] = useState<string | null>(null);
+  return (
+    <>
+      <div className="flex flex-column gap-2">
+        <Select
+          required={false}
+          placeholder="Select your department..."
+          options={departments}
+          value={department}
+          onChange={(o) => {
+            onChangeAction(o);
+            setDepartment(o?.value ?? null);
+            setTown(null);
+          }}
+        ></Select>
+        {isDepartment(department) && (
+          <Select
+            required={false}
+            placeholder="Select your town..."
+            options={townsByDepartment[department] ?? []}
+            value={town}
+            onChange={(o) => {
+              onChangeAction(o);
+              setTown(o?.value ?? null);
+            }}
+          ></Select>
+        )}
+      </div>
+    </>
+  );
+};
+
+type StarOption = (typeof stars)[number];
+
+function SelectOptionCustom({ option }: SelectOptionProps<StarOption>) {
+  const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
+
+  const { ref, index } = useListItem({ label: option.label });
+  const isActive = activeIndex === index;
+  const isSelected = selectedIndex === index;
+
+  return (
+    <button
+      className={cn("option", isSelected && "selected", isActive && "active")}
+      ref={ref}
+      role="option"
+      aria-selected={isActive && isSelected}
+      tabIndex={isActive ? 0 : -1}
+      {...getItemProps({
+        onClick: () => handleSelect(index),
+      })}
+    >
+      <i className={option.icon}></i> {option.label}
+    </button>
+  );
+}
+
+function SelectSelectionCustom({ option }: SelectSelectionProps<StarOption>) {
+  return (
+    <span className="input-element">
+      {option?.label ? (
+        <span>
+          <i className={option.icon}></i>
+        </span>
+      ) : (
+        <span>?</span>
+      )}
+    </span>
+  );
+}
+
+export const CustomRenderer = () => {
+  const [value, setValue] = useState<string | null>("fill");
+  return (
+    <>
+      <Select
+        showArrow={false}
+        selectionClassName="ml-auto"
+        width="37px"
+        placement="bottom-end"
+        searchable={false}
+        options={stars}
+        value={value}
+        onChange={(o) => {
+          onChangeAction(o);
+          setValue(o?.value ?? null);
+        }}
+        SelectSelectionCustom={SelectSelectionCustom}
+        SelectOptionCustom={SelectOptionCustom}
+      ></Select>
+    </>
   );
 };

@@ -1,9 +1,12 @@
-import { Option } from "./interface";
+import type { Option } from "./interface.d.ts";
 
-interface Props {
+export interface SelectSelectionProps<O extends Option> {
   placeholder?: string;
-  option: Option;
+  option: O;
 }
-export default function SelectSelection({ placeholder, option }: Props) {
+export default function SelectSelection<O extends Option>({
+  placeholder,
+  option,
+}: SelectSelectionProps<O>) {
   return <span className="input-element">{option?.label ?? placeholder}</span>;
 }

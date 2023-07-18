@@ -1,9 +1,10 @@
 .ll-select {
     .selection {
-        min-width: 400px;
+        width: fit-content;
         cursor: default;
         user-select: none;
         display: flex;
+        align-items: center;
 
         .arrow {
             display: flex;
@@ -18,10 +19,18 @@
         overflow: auto;
     }
 
+    .search-container {
+        padding: var(--space-4);
+    }
+
     .option {
         padding: .5rem .5rem;
         text-align: left;
         outline: 0;
+
+        &:hover {
+            background-color: var(--background-light);
+        }
 
         &.active {
             background-color: var(--background-weak);

@@ -12,8 +12,6 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
     //add a click handler for the ripple
     const handlePointerDown = (e: MouseEvent) => {
       if (ref.current) {
-        console.log("click handler");
-
         const elem = ref.current;
 
         //calculate the position and dimensions of the ripple.

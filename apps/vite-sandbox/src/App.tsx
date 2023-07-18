@@ -1,85 +1,48 @@
-import { Select, Option } from "@lonlat/shared";
+import { Select } from "@lonlat/shared";
 import "./App.scss";
+import { useState } from "react";
 
-import SelectOne from "./SelectOne";
-import { useRef, useState } from "react";
-
-type SelectOption = {
-  label: string;
-  value: string;
-};
-
+const options = [
+  { value: "abbeville", label: "Abbeville" },
+  { value: "agde", label: "Agde" },
+  { value: "agen", label: "Agen" },
+  { value: "aixenprovence", label: "Aix-en-Provence" },
+  { value: "ajaccio", label: "Ajaccio" },
+  { value: "albi", label: "Albi" },
+  { value: "alencon", label: "Alençon" },
+  { value: "amiens", label: "Amiens" },
+  { value: "angers", label: "Angers" },
+  { value: "angouleme", label: "Angoulême" },
+  { value: "annonay", label: "Annonay" },
+  { value: "antibes", label: "Antibes" },
+  { value: "arcachon", label: "Arcachon" },
+  { value: "arles", label: "Arles" },
+  { value: "arras", label: "Arras" },
+  { value: "asnieres-sur-seine", label: "Asnières-sur-Seine" },
+  { value: "aubagne", label: "Aubagne" },
+  { value: "aubervilliers", label: "Aubervilliers" },
+  { value: "aulnay-sous-bois", label: "Aulnay-sous-Bois" },
+  { value: "avignon", label: "Avignon" },
+  { value: "avranches", label: "Avranches" },
+  { value: "avoriaz", label: "Avoriaz" },
+  { value: "avray", label: "Avray" },
+];
 function App() {
-  const [options, setOptions] = useState([
-    { label: "a", value: "a" },
-    { label: "baac", value: "baac" },
-    { label: "baad", value: "baad" },
-    { label: "bab", value: "bab" },
-    { label: "c", value: "c" },
-    { label: "d", value: "d" },
-    { label: "e", value: "e" },
-    { label: "f", value: "f" },
-    { label: "g", value: "g" },
-    { label: "h", value: "h" },
-    { label: "i", value: "i" },
-    { label: "j", value: "j" },
-    { label: "k", value: "k" },
-    { label: "l", value: "l" },
-    { label: "m", value: "m" },
-    { label: "n", value: "n" },
-    { label: "o", value: "o" },
-    { label: "p", value: "p" },
-  ]);
-
-  const [value, setValue] = useState<SelectOption | null>(options[1]);
-  const [strValue, setStrValue] = useState<string | null>(null);
-
+  const [value, setValue] = useState<string | null>(null);
   return (
     <div id="my-app">
       <div style={{ height: "300px" }}></div>
-
-      <button
-        className="ll-button"
-        onClick={() =>
-          setOptions([
-            { label: "a", value: "a" },
-            { label: "b", value: "b" },
-            { label: "c", value: "c" },
-            { label: "d", value: "d" },
-          ])
-        }
-      >
-        Change
-      </button>
-      <h3>select with string</h3>
       <Select
+        required={false}
         searchable={true}
-        valueIsObject={false}
-        value={strValue}
+        placeholder="Select your town..."
         options={options}
-        onChange={(newValue) => {
-          console.log("newValue", newValue);
-          setStrValue(newValue);
-        }}
-      ></Select>
-      <p>strValue: {strValue}</p>
-      <div style={{ margin: "2rem 0" }}>
-        <input type="text" />
-      </div>
-      <h3>select with object</h3>
-      <Select
-        valueIsObject={true}
         value={value}
-        options={options}
-        onChange={(newValue) => {
-          console.log("newValue", newValue);
-          setValue(newValue);
+        onChange={(o) => {
+          console.log("onChange", o);
+          setValue(o?.value ?? null);
         }}
       ></Select>
-      <p>value: {value?.label}</p>
-      <div style={{ margin: "2rem 0" }}>
-        <input type="text" />
-      </div>
 
       <div style={{ height: "300px" }}></div>
     </div>

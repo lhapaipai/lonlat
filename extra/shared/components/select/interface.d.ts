@@ -4,8 +4,6 @@ export type Option = {
   label: string;
 };
 
-
-
 type Options = {
   value: string;
   label: string;

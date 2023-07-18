@@ -1,9 +1,10 @@
-import { ReactNode, useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import "../dialog/Dialog.scss";
 import "./Select.scss";
 import {
   FloatingFocusManager,
   FloatingList,
+  Placement,
   autoUpdate,
   flip,
   offset,
@@ -18,39 +19,49 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 import { SelectContext } from "./useSelectContext";
-import { SelectOption, SelectSelection } from ".";
-import { Input } from "../..";
+import SelectOption from "./SelectOption";
+import SelectSelection from "./SelectSelection";
+
+import { Input, Button } from "../..";
 import type { Option } from "./interface.d.ts";
 
-export type Props = {
-  value: string;
-  onChange: (option: Option | null) => void;
-  options: Option[];
+import cn from "classnames";
+
+type Props<O extends Option> = {
+  showArrow?: boolean;
+  selectionClassName?: string;
+  width?: string;
+  placement?: Placement;
+  value: string | null;
+  onChange: (option: O | null) => void;
+  options: O[];
   placeholder?: string;
-  getSearchableValue?: (matchReg: RegExp, option: Option) => string;
+  getSearchableValue?: (matchReg: RegExp, option: O) => string;
   searchable?: boolean;
-  /**
-   * Render function to render the displayed value inside the select's
-   * anchor. If null is returned, will fall back to the internal implementation.
-   */
-  renderOption?: (option: Option) => ReactNode;
-  renderSelected?: (placeholder: string, selected?: Option) => ReactNode;
+  required?: boolean;
+  SelectOptionCustom?: typeof SelectOption<O>;
+  SelectSelectionCustom?: typeof SelectSelection<O>;
 };
 
 function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
   return matchReg.test(option.label.toLowerCase().trim());
 }
 
-export default function Select({
+export default function Select<O extends Option>({
+  showArrow = true,
+  selectionClassName,
+  width = "100%",
+  placement = "bottom-start",
   value,
   searchable = false,
+  required = true,
   onChange,
   placeholder = "Select ...",
   getSearchableValue,
-  renderSelected,
-  renderOption,
+  SelectSelectionCustom,
+  SelectOptionCustom,
   options = [],
-}: Props) {
+}: Props<O>) {
   const [search, setSearch] = useState("");
   const filteredOptions = options.filter((option) => {
     if (!searchable || search.trim() === "") {
@@ -65,10 +76,13 @@ export default function Select({
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [searchHasFocus, setSearchHasFocus] = useState(false);
 
-  const selectedIndex = filteredOptions.findIndex((o) => o.value === value) ?? null;
+  const selectedIndex = filteredOptions.findIndex((o) => o.value === value);
+
+  const SelectSelectionComponent = SelectSelectionCustom ?? SelectSelection;
+  const SelectOptionComponent = SelectOptionCustom ?? SelectOption;
 
   const { refs, floatingStyles, context } = useFloating({
-    placement: "bottom-start",
+    placement,
     open: isOpen,
     onOpenChange: setIsOpen,
     whileElementsMounted: autoUpdate,
@@ -79,7 +93,7 @@ export default function Select({
         apply({ rects, elements, availableHeight }) {
           Object.assign(elements.floating.style, {
             maxHeight: `${Math.min(availableHeight, 300)}px`,
-            width: `${rects.reference.width}px`,
+            width: `${Math.max(200, rects.reference.width)}px`,
           });
         },
         padding: 10,
@@ -90,15 +104,20 @@ export default function Select({
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
 
-  const handleSelect = useCallback((index: number | null) => {
-    setIsOpen(false);
-    if (index === null || !options[index]) {
-      onChange(null);
-    } else {
-      onChange(options[index]);
-    }
+  const handleSelect = useCallback(
+    (index: number | null) => {
+      setIsOpen(false);
+
+      if (index === null || !filteredOptions[index]) {
+        onChange(null);
+      } else {
+        onChange(filteredOptions[index]);
+      }
+      setSearch("");
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    [filteredOptions],
+  );
 
   function handleTypeaheadMatch(index: number | null) {
     if (isOpen) {
@@ -114,6 +133,7 @@ export default function Select({
   const listNav = useListNavigation(context, {
     listRef: elementsRef,
     activeIndex,
+    focusItemOnHover: searchable ? false : true,
     // when we open the dropdown menu we want to have the focus on selectedItem
     selectedIndex,
     onNavigate: setActiveIndex,
@@ -148,15 +168,40 @@ export default function Select({
     }),
     [activeIndex, selectedIndex, getItemProps, handleSelect],
   );
+
   return (
     <div className="ll-select">
-      <div className="selection" ref={refs.setReference} tabIndex={0} {...getReferenceProps()}>
-        {renderSelected?.(placeholder, options[selectedIndex]) ?? (
-          <SelectSelection placeholder={placeholder} option={options[selectedIndex]} />
+      <div
+        className={cn("selection", selectionClassName)}
+        ref={refs.setReference}
+        tabIndex={0}
+        style={{
+          width,
+        }}
+        {...getReferenceProps()}
+      >
+        <SelectSelectionComponent placeholder={placeholder} option={options[selectedIndex]} />
+        {!required && value !== null && (
+          <Button
+            withRipple={false}
+            icon
+            shape="ghost"
+            onMouseDown={(e) => {
+              // we don't want dropdown to open
+              e.stopPropagation();
+            }}
+            onClick={(e) => {
+              onChange(null);
+            }}
+          >
+            <i className="fe-cancel"></i>
+          </Button>
         )}
-        <div className="arrow flex-center mr-2">
-          <i className={isOpen ? "fe-up-dir" : "fe-down-dir"}></i>
-        </div>
+        {showArrow && (
+          <div className="arrow flex-center mr-2">
+            <i className={isOpen ? "fe-up-dir" : "fe-down-dir"}></i>
+          </div>
+        )}
       </div>
       <SelectContext.Provider value={selectContext}>
         {transitionStatus.isMounted && (
@@ -169,9 +214,10 @@ export default function Select({
                 {...getFloatingProps()}
               >
                 {searchable && (
-                  <div>
+                  <div className="search-container">
                     <Input
-                      tabIndex={0}
+                      placeholder="Search"
+                      tabIndex={selectedIndex === -1 ? 0 : -1}
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       onFocus={() => setSearchHasFocus(true)}
@@ -180,13 +226,9 @@ export default function Select({
                   </div>
                 )}
                 <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-                  {filteredOptions.map((option) => {
-                    return renderOption ? (
-                      renderOption(option)
-                    ) : (
-                      <SelectOption option={option} key={option.value} />
-                    );
-                  })}
+                  {filteredOptions.map((option) => (
+                    <SelectOptionComponent option={option} key={option.value} />
+                  ))}
                 </FloatingList>
               </div>
             </div>

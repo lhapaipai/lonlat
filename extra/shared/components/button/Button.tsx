@@ -6,6 +6,8 @@ import useRipple from "../../hooks/useRipple";
 import { Loader } from "../..";
 
 export interface Props extends Omit<ComponentPropsWithRef<"button">, "type"> {
+  withRipple?: boolean;
+
   shape?: "solid" | "outline" | "ghost" | "underline";
 
   size?: "small" | "medium" | "large";
@@ -31,6 +33,7 @@ export interface Props extends Omit<ComponentPropsWithRef<"button">, "type"> {
 const Button = forwardRef<HTMLButtonElement, Props>(
   (
     {
+      withRipple = true,
       shape = "solid",
       loading = false,
       type = "weak",
@@ -75,7 +78,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
         aria-busy={loading}
         {...props}
       >
-        {!notClickable && ripples}
+        {!notClickable && withRipple && ripples}
         {children}
         {loading && <Loader type={type} size="small" className="ml-2" />}
       </button>
