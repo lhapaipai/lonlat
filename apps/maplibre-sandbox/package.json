@@ -1,5 +1,5 @@
 {
-    "name": "@lonlat/vite-sandbox",
+    "name": "@lonlat/maplibre-sandbox",
     "private": true,
     "version": "0.0.0",
     "type": "module",

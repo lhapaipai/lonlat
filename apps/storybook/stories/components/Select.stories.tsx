@@ -91,7 +91,6 @@ export const NotRequired = () => {
   return (
     <Select
       required={false}
-      searchable={true}
       placeholder="Select your town..."
       options={options}
       value={value}
@@ -124,11 +123,10 @@ export const Multiple = () => {
   return (
     <Select
       multiple={true}
-      searchable={true}
       placeholder="Select your towns..."
       options={options}
-      values={values}
-      onChangeValues={(options) => {
+      value={values}
+      onChangeValue={(options) => {
         onChangeAction(options);
         setValues(options.map((o) => o.value));
       }}
@@ -177,11 +175,11 @@ export const Dynamic = () => {
 type StarOption = (typeof stars)[number];
 
 function SelectOptionCustom({ option }: SelectOptionProps<StarOption>) {
-  const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
+  const { activeIndex, selectedIndexes, getItemProps, handleSelect } = useSelect();
 
   const { ref, index } = useListItem({ label: option.label });
   const isActive = activeIndex === index;
-  const isSelected = selectedIndex === index;
+  const isSelected = selectedIndexes.indexOf(index) !== -1;
 
   return (
     <button
@@ -200,16 +198,12 @@ function SelectOptionCustom({ option }: SelectOptionProps<StarOption>) {
 }
 
 function SelectSelectionCustom({ option }: SelectSelectionProps<StarOption>) {
-  return (
-    <span className="input-element">
-      {option?.label ? (
-        <span>
-          <i className={option.icon}></i>
-        </span>
-      ) : (
-        <span>?</span>
-      )}
+  return option?.label ? (
+    <span>
+      <i className={option.icon}></i>
     </span>
+  ) : (
+    <span>?</span>
   );
 }
 

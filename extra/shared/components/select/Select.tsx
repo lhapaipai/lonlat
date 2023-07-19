@@ -27,16 +27,23 @@ import type { Option } from "./interface.d.ts";
 
 import cn from "classnames";
 
-type Props<O extends Option> = {
-  multiple?: boolean;
+type SimpleProps<O extends Option> = {
+  multiple?: false;
+  value: string | null;
+  onChangeValue: (option: O | null) => void;
+};
+
+type MultipleProps<O extends Option> = {
+  multiple: true;
+  value: string[];
+  onChangeValue: (options: O[]) => void;
+};
+
+type BaseProps<O extends Option> = {
   showArrow?: boolean;
   selectionClassName?: string;
   width?: string;
   placement?: Placement;
-  value?: string | null;
-  onChangeValue?: (option: O | null) => void;
-  values?: string[];
-  onChangeValues?: (options: O[]) => void;
   options: O[];
   placeholder?: string;
   getSearchableValue?: (matchReg: RegExp, option: O) => string;
@@ -46,11 +53,20 @@ type Props<O extends Option> = {
   SelectSelectionCustom?: typeof SelectSelection<O>;
 };
 
+type Props<O extends Option> = BaseProps<O> & (SimpleProps<O> | MultipleProps<O>);
+
 function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
   return matchReg.test(option.label.toLowerCase().trim());
 }
 
-export default function Select<O extends Option>({
+function cbForMultiple<O extends Option>(
+  multiple: boolean,
+  cb: SimpleProps<O>["onChangeValue"] | MultipleProps<O>["onChangeValue"],
+): cb is MultipleProps<O>["onChangeValue"] {
+  return multiple;
+}
+
+export default function Select<O extends Option = Option>({
   multiple = false,
   showArrow = true,
   selectionClassName,
@@ -58,18 +74,14 @@ export default function Select<O extends Option>({
   placement = "bottom-start",
   searchable = false,
   required = true,
-  value = null,
-  values: initialValues,
+  value: valueOrValues = null,
   onChangeValue = () => {},
-  onChangeValues = () => {},
   placeholder = "Select ...",
   getSearchableValue,
   SelectSelectionCustom,
   SelectOptionCustom,
   options = [],
 }: Props<O>) {
-  multiple = multiple ?? false;
-
   const [search, setSearch] = useState("");
   const filteredOptions = options.filter((option) => {
     if (!searchable || search.trim() === "") {
@@ -84,7 +96,13 @@ export default function Select<O extends Option>({
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [searchHasFocus, setSearchHasFocus] = useState(false);
 
-  const values = (multiple ? initialValues : value === null ? [] : [value]) as string[];
+  if (multiple) {
+    console.log(valueOrValues);
+  }
+
+  const values = (
+    multiple ? valueOrValues : valueOrValues === null ? [] : [valueOrValues]
+  ) as string[];
 
   const selectedIndexes = filteredOptions
     .map((o, i) => (values.indexOf(o.value) !== -1 ? i : null))
@@ -105,7 +123,7 @@ export default function Select<O extends Option>({
         apply({ rects, elements, availableHeight }) {
           Object.assign(elements.floating.style, {
             maxHeight: `${Math.min(availableHeight, 300)}px`,
-            width: `${Math.max(200, rects.reference.width)}px`,
+            width: `${Math.max(130, rects.reference.width)}px`,
           });
         },
         padding: 10,
@@ -118,7 +136,7 @@ export default function Select<O extends Option>({
 
   const handleSelect = useCallback(
     (index: number | null) => {
-      if (multiple) {
+      if (cbForMultiple(multiple, onChangeValue)) {
         let newIndexes: number[];
         if (index === null) {
           newIndexes = selectedIndexes;
@@ -127,7 +145,8 @@ export default function Select<O extends Option>({
         } else {
           newIndexes = [...selectedIndexes, index];
         }
-        onChangeValues(newIndexes.map((idx) => filteredOptions[idx]));
+        const newValues = newIndexes.map((idx) => filteredOptions[idx]);
+        onChangeValue(newValues);
       } else {
         if (index === null || !filteredOptions[index]) {
           onChangeValue(null);
@@ -203,33 +222,39 @@ export default function Select<O extends Option>({
         }}
         {...getReferenceProps()}
       >
-        {selectedIndexes.length > 0 ? (
-          selectedIndexes.map((idx) => (
-            <SelectSelectionComponent placeholder={placeholder} option={options[idx]} key={idx} />
-          ))
-        ) : (
-          <span>{placeholder}</span>
-        )}
+        <span className="input-element">
+          {selectedIndexes.length > 0
+            ? selectedIndexes.map((idx) => (
+                <SelectSelectionComponent multiple={multiple} option={options[idx]} key={idx} />
+              ))
+            : placeholder}
+        </span>
         {!required && !multiple && selectedIndexes.length > 0 && (
           <Button
             withRipple={false}
             icon
-            shape="ghost"
+            shape="underline"
             onMouseDown={(e) => {
               // we don't want dropdown to open
               e.stopPropagation();
             }}
             onClick={() => {
-              onChangeValue(null);
-              onChangeValues([]);
+              if (cbForMultiple(multiple, onChangeValue)) {
+                onChangeValue([]);
+              } else {
+                onChangeValue(null);
+              }
             }}
           >
             <i className="fe-cancel"></i>
           </Button>
         )}
         {showArrow && (
-          <div className="arrow flex-center mr-2">
-            <i className={isOpen ? "fe-up-dir" : "fe-down-dir"}></i>
+          <div className="arrow">
+            <div className="ll-indicator"></div>
+            <Button withRipple={false} icon shape="underline">
+              <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
+            </Button>
           </div>
         )}
       </div>

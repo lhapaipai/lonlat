@@ -109,8 +109,19 @@
             color: var(--text-default);
         }
 
-        i {
-            margin-bottom: 2px;
+        // i {
+        //     margin-bottom: 2px;
+        // }
+
+        &.shape-underline {
+            color: var(--text-hint);
+
+            &:hover,
+            &:focus,
+            &:focus-within,
+            &:active {
+                color: var(--text-default);
+            }
         }
     }
 }
