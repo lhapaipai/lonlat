@@ -33,6 +33,7 @@ function App() {
     <div id="my-app">
       <div style={{ height: "300px" }}></div>
       <Select
+        multiple={true}
         required={false}
         searchable={true}
         placeholder="Select your town..."

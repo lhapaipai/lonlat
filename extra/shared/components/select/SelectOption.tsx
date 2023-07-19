@@ -8,11 +8,11 @@ export interface SelectOptionProps<O extends Option> {
 }
 
 export default function SelectOption<O extends Option>({ option }: SelectOptionProps<O>) {
-  const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
+  const { activeIndex, selectedIndexes, getItemProps, handleSelect } = useSelect();
 
   const { ref, index } = useListItem({ label: option.label });
   const isActive = activeIndex === index;
-  const isSelected = selectedIndex === index;
+  const isSelected = selectedIndexes.indexOf(index) !== -1;
 
   return (
     <button

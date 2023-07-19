@@ -78,7 +78,7 @@ export const Basic = () => {
       placeholder="Select your town..."
       options={options}
       value={value}
-      onChange={(o) => {
+      onChangeValue={(o) => {
         onChangeAction(o);
         setValue(o?.value ?? null);
       }}
@@ -95,7 +95,7 @@ export const NotRequired = () => {
       placeholder="Select your town..."
       options={options}
       value={value}
-      onChange={(o) => {
+      onChangeValue={(o) => {
         onChangeAction(o);
         setValue(o?.value ?? null);
       }}
@@ -111,9 +111,26 @@ export const Searchable = () => {
       placeholder="Select your town..."
       options={options}
       value={value}
-      onChange={(o) => {
+      onChangeValue={(o) => {
         onChangeAction(o);
         setValue(o?.value ?? null);
+      }}
+    ></Select>
+  );
+};
+
+export const Multiple = () => {
+  const [values, setValues] = useState<string[]>([]);
+  return (
+    <Select
+      multiple={true}
+      searchable={true}
+      placeholder="Select your towns..."
+      options={options}
+      values={values}
+      onChangeValues={(options) => {
+        onChangeAction(options);
+        setValues(options.map((o) => o.value));
       }}
     ></Select>
   );
@@ -134,7 +151,7 @@ export const Dynamic = () => {
           placeholder="Select your department..."
           options={departments}
           value={department}
-          onChange={(o) => {
+          onChangeValue={(o) => {
             onChangeAction(o);
             setDepartment(o?.value ?? null);
             setTown(null);
@@ -146,7 +163,7 @@ export const Dynamic = () => {
             placeholder="Select your town..."
             options={townsByDepartment[department] ?? []}
             value={town}
-            onChange={(o) => {
+            onChangeValue={(o) => {
               onChangeAction(o);
               setTown(o?.value ?? null);
             }}
@@ -208,7 +225,7 @@ export const CustomRenderer = () => {
         searchable={false}
         options={stars}
         value={value}
-        onChange={(o) => {
+        onChangeValue={(o) => {
           onChangeAction(o);
           setValue(o?.value ?? null);
         }}

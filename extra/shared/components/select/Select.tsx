@@ -28,12 +28,15 @@ import type { Option } from "./interface.d.ts";
 import cn from "classnames";
 
 type Props<O extends Option> = {
+  multiple?: boolean;
   showArrow?: boolean;
   selectionClassName?: string;
   width?: string;
   placement?: Placement;
-  value: string | null;
-  onChange: (option: O | null) => void;
+  value?: string | null;
+  onChangeValue?: (option: O | null) => void;
+  values?: string[];
+  onChangeValues?: (options: O[]) => void;
   options: O[];
   placeholder?: string;
   getSearchableValue?: (matchReg: RegExp, option: O) => string;
@@ -48,20 +51,25 @@ function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
 }
 
 export default function Select<O extends Option>({
+  multiple = false,
   showArrow = true,
   selectionClassName,
   width = "100%",
   placement = "bottom-start",
-  value,
   searchable = false,
   required = true,
-  onChange,
+  value = null,
+  values: initialValues,
+  onChangeValue = () => {},
+  onChangeValues = () => {},
   placeholder = "Select ...",
   getSearchableValue,
   SelectSelectionCustom,
   SelectOptionCustom,
   options = [],
 }: Props<O>) {
+  multiple = multiple ?? false;
+
   const [search, setSearch] = useState("");
   const filteredOptions = options.filter((option) => {
     if (!searchable || search.trim() === "") {
@@ -76,7 +84,11 @@ export default function Select<O extends Option>({
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [searchHasFocus, setSearchHasFocus] = useState(false);
 
-  const selectedIndex = filteredOptions.findIndex((o) => o.value === value);
+  const values = (multiple ? initialValues : value === null ? [] : [value]) as string[];
+
+  const selectedIndexes = filteredOptions
+    .map((o, i) => (values.indexOf(o.value) !== -1 ? i : null))
+    .filter((idx) => idx !== null) as number[];
 
   const SelectSelectionComponent = SelectSelectionCustom ?? SelectSelection;
   const SelectOptionComponent = SelectOptionCustom ?? SelectOption;
@@ -106,12 +118,23 @@ export default function Select<O extends Option>({
 
   const handleSelect = useCallback(
     (index: number | null) => {
-      setIsOpen(false);
-
-      if (index === null || !filteredOptions[index]) {
-        onChange(null);
+      if (multiple) {
+        let newIndexes: number[];
+        if (index === null) {
+          newIndexes = selectedIndexes;
+        } else if (selectedIndexes.indexOf(index) !== -1) {
+          newIndexes = selectedIndexes.filter((i) => i !== index);
+        } else {
+          newIndexes = [...selectedIndexes, index];
+        }
+        onChangeValues(newIndexes.map((idx) => filteredOptions[idx]));
       } else {
-        onChange(filteredOptions[index]);
+        if (index === null || !filteredOptions[index]) {
+          onChangeValue(null);
+        } else {
+          onChangeValue(filteredOptions[index]);
+        }
+        setIsOpen(false);
       }
       setSearch("");
     },
@@ -135,7 +158,7 @@ export default function Select<O extends Option>({
     activeIndex,
     focusItemOnHover: searchable ? false : true,
     // when we open the dropdown menu we want to have the focus on selectedItem
-    selectedIndex,
+    selectedIndex: selectedIndexes[0] ?? null,
     onNavigate: setActiveIndex,
     loop: true,
   });
@@ -144,7 +167,7 @@ export default function Select<O extends Option>({
     enabled: !searchHasFocus,
     listRef: labelsRef,
     activeIndex,
-    selectedIndex,
+    selectedIndex: selectedIndexes[0] ?? null,
     onMatch: handleTypeaheadMatch,
   });
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
@@ -162,13 +185,13 @@ export default function Select<O extends Option>({
   const selectContext = useMemo(
     () => ({
       activeIndex,
-      selectedIndex,
+      selectedIndexes,
       getItemProps,
       handleSelect,
     }),
-    [activeIndex, selectedIndex, getItemProps, handleSelect],
+    [activeIndex, values, getItemProps, handleSelect],
   );
-
+  console.log("refresh");
   return (
     <div className="ll-select">
       <div
@@ -180,8 +203,14 @@ export default function Select<O extends Option>({
         }}
         {...getReferenceProps()}
       >
-        <SelectSelectionComponent placeholder={placeholder} option={options[selectedIndex]} />
-        {!required && value !== null && (
+        {selectedIndexes.length > 0 ? (
+          selectedIndexes.map((idx) => (
+            <SelectSelectionComponent placeholder={placeholder} option={options[idx]} key={idx} />
+          ))
+        ) : (
+          <span>{placeholder}</span>
+        )}
+        {!required && !multiple && selectedIndexes.length > 0 && (
           <Button
             withRipple={false}
             icon
@@ -190,8 +219,9 @@ export default function Select<O extends Option>({
               // we don't want dropdown to open
               e.stopPropagation();
             }}
-            onClick={(e) => {
-              onChange(null);
+            onClick={() => {
+              onChangeValue(null);
+              onChangeValues([]);
             }}
           >
             <i className="fe-cancel"></i>
@@ -217,7 +247,7 @@ export default function Select<O extends Option>({
                   <div className="search-container">
                     <Input
                       placeholder="Search"
-                      tabIndex={selectedIndex === -1 ? 0 : -1}
+                      tabIndex={selectedIndexes.length === 0 ? 0 : -1}
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       onFocus={() => setSearchHasFocus(true)}
