@@ -9,8 +9,4 @@ import "@lonlat/shared/styles/_vite-sandbox.scss";
     <App />
   </React.StrictMode>
 */
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);

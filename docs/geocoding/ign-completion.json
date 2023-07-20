@@ -1,0 +1,293 @@
+{
+    "status": "OK",
+    "results": [
+        {
+            "fulltext": "saint-gervais-les-bains, 74170",
+            "names": [
+                "saint-gervais-les-bains"
+            ],
+            "city": "saint-gervais-les-bains",
+            "zipcode": "74170",
+            "zipcodes": [
+                "74170"
+            ],
+            "street": "saint-gervais-les-bains",
+            "metropole": true,
+            "poiType": [
+                "administratif",
+                "commune"
+            ],
+            "kind": "commune",
+            "country": "PositionOfInterest",
+            "classification": 5,
+            "x": 6.712132447,
+            "y": 45.892054622
+        },
+        {
+            "fulltext": "saint-gervais-les-bains, 74170 Saint-Gervais-les-Bains",
+            "names": [
+                "saint-gervais-les-bains"
+            ],
+            "city": "Saint-Gervais-les-Bains",
+            "zipcode": "74170",
+            "zipcodes": [
+                "74170"
+            ],
+            "street": "saint-gervais-les-bains",
+            "metropole": true,
+            "poiType": [
+                "zone d'habitation",
+                "lieu-dit habité"
+            ],
+            "kind": "lieu-dit habité",
+            "country": "PositionOfInterest",
+            "classification": 7,
+            "x": 6.709792801,
+            "y": 45.876844089
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "21 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "21 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.697567,
+            "y": 45.904908
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "22 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "22 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.697624,
+            "y": 45.904863
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "44 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "44 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.697327,
+            "y": 45.904957
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "48 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "48 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.697277,
+            "y": 45.904986
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "51 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "51 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.697219,
+            "y": 45.904926
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "60 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "60 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.697545,
+            "y": 45.905148
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "94 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "94 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.697058,
+            "y": 45.905026
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "98 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "98 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.696938,
+            "y": 45.905051
+        },
+        {
+            "fulltext": "city-stade saint-gervais-les-bains, 74170 Saint-Gervais-les-Bains",
+            "names": [
+                "city-stade saint-gervais-les-bains"
+            ],
+            "city": "Saint-Gervais-les-Bains",
+            "zipcode": "74170",
+            "zipcodes": [
+                "74170"
+            ],
+            "street": "city-stade",
+            "metropole": true,
+            "poiType": [
+                "zone d'activité ou d'intérêt",
+                "terrain de sport",
+                "city-stade"
+            ],
+            "kind": "terrain de sport",
+            "country": "PositionOfInterest",
+            "classification": 7,
+            "x": 6.714218677,
+            "y": 45.891080964
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "175 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "175 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.695822,
+            "y": 45.905263
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "329 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "329 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.69599,
+            "y": 45.907838
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "463 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "463 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.696841,
+            "y": 45.907513
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "483 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "483 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.69702,
+            "y": 45.90755
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "798 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "798 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.700141,
+            "y": 45.908244
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Saint-Gervais-les-Bains",
+            "oldcity": "",
+            "zipcode": "74170",
+            "street": "823 rue du stade",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "823 rue du stade, 74170 Saint-Gervais-les-Bains",
+            "classification": 7,
+            "x": 6.700336,
+            "y": 45.90828
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Leigné-sur-Usseau",
+            "oldcity": "",
+            "zipcode": "86230",
+            "street": "1 rte de st gervais les 3 clochers",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "1 rte de st gervais les 3 clochers, 86230 Leigné-sur-Usseau",
+            "classification": 7,
+            "x": 0.471714,
+            "y": 46.91303
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Leigné-sur-Usseau",
+            "oldcity": "",
+            "zipcode": "86230",
+            "street": "2 rte de st gervais les 3 clochers",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "2 rte de st gervais les 3 clochers, 86230 Leigné-sur-Usseau",
+            "classification": 7,
+            "x": 0.471694,
+            "y": 46.913084
+        },
+        {
+            "country": "StreetAddress",
+            "city": "Leigné-sur-Usseau",
+            "oldcity": "",
+            "zipcode": "86230",
+            "street": "3 rte de st gervais les 3 clochers",
+            "metropole": true,
+            "kind": "",
+            "fulltext": "3 rte de st gervais les 3 clochers, 86230 Leigné-sur-Usseau",
+            "classification": 7,
+            "x": 0.471447,
+            "y": 46.912986
+        }
+    ]
+}

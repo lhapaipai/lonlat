@@ -1,0 +1,44 @@
+{
+    "type": "FeatureCollection",
+    "version": "draft",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.717797,
+                    45.872554
+                ]
+            },
+            "properties": {
+                "label": "Saint-Gervais-les-Bains",
+                "score": 0.7060233310687971,
+                "id": "74236",
+                "type": "municipality",
+                "name": "Saint-Gervais-les-Bains",
+                "postcode": "74170",
+                "citycode": "74236",
+                "x": 988291.09,
+                "y": 6537109.01,
+                "population": 5606,
+                "city": "Saint-Gervais-les-Bains",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "importance": 0.37668,
+                "municipality": "Saint-Gervais-les-Bains",
+                "distance": 57252
+            }
+        }
+    ],
+    "attribution": "BAN",
+    "licence": "ETALAB-2.0",
+    "query": "st gervais les bains",
+    "filters": {
+        "type": "municipality"
+    },
+    "center": [
+        6,
+        46
+    ],
+    "limit": 10
+}

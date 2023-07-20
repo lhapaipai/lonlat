@@ -1,0 +1,1030 @@
+openapi: 3.0.1
+info:
+  title: Service de géocodage
+  description: Description de l'API de Nominatim
+servers:
+  - url: 'https://nominatim.openstreetmap.org'
+paths:
+  /search:
+    get:
+      summary: search OSM objects by name or type
+      description: >-
+        The search API allows you to look up a location from a textual
+        description or address. Nominatim supports structured and free-form
+        search queries.
+      operationId: search
+      parameters:
+        - name: q
+          in: query
+          description: >-
+            Free-form query string to search for. Free-form queries are
+            processed first left-to-right and then right-to-left if that fails.
+            So you may search for pilkington avenue, birmingham as well as for
+            birmingham, pilkington avenue. Commas are optional, but improve
+            performance by reducing the complexity of the search.
+          schema:
+            type: string
+        - name: street
+          in: query
+          example: <housenumber> <streetname>
+          schema:
+            type: string
+        - name: city
+          in: query
+          example: <city>
+          schema:
+            type: string
+        - name: county
+          in: query
+          example: <county>
+          schema:
+            type: string
+        - name: state
+          in: query
+          example: <state>
+          schema:
+            type: string
+        - name: country
+          in: query
+          example: <country>
+          schema:
+            type: string
+        - name: postalcode
+          in: query
+          example: <postalcode>
+          schema:
+            type: string
+        - name: format
+          in: query
+          schema:
+            $ref: '#/components/schemas/Format'
+        - name: json_callback
+          in: query
+          description: >-
+            Wrap JSON output in a callback function (JSONP) i.e.
+            <string>(<json>). Only has an effect for JSON output formats.
+          schema:
+            type: string
+        - name: addressdetails
+          in: query
+          description: Include a breakdown of the address into elements
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: extratags
+          in: query
+          description: >-
+            Include additional information in the result if available, e.g.
+            wikipedia link, opening hours.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: namedetails
+          in: query
+          description: >-
+            Include a list of alternative names in the results. These may
+            include language variants, references, operator and brand
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: accept-language
+          in: query
+          description: >-
+            Preferred language order for showing search results, overrides the
+            value specified in the "Accept-Language" HTTP header. Either use a
+            standard RFC2616 accept-language string or a simple comma-separated
+            list of language codes.
+          example: <browser language string>
+          schema:
+            type: string
+        - name: countrycodes
+          in: query
+          description: >-
+            Limit search results to one or more countries. <countrycode> must be
+            the ISO 3166-1alpha2 code, e.g. gb for the United Kingdom, de for
+            Germany (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Each
+            place in Nominatim is assigned to one country code based on OSM
+            country boundaries. In rare cases a place may not be in any country
+            at all, for example, in international waters.
+          example: '<countrycode>[,<countrycode>][,<countrycode>]...'
+          schema:
+            type: string
+        - name: exclude_place_ids
+          in: query
+          description: >-
+            If you do not want certain OSM objects to appear in the search
+            result, give a comma separated list of the place_ids you want to
+            skip. This can be used to retrieve additional search results. For
+            example, if a previous query only returned a few results, then
+            including those here would cause the search to return other, less
+            accurate, matches (if possible).
+          example: '<place_id,[place_id],[place_id]'
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Limit the number of returned results.
+          schema:
+            type: number
+            default: 10
+            maximum: 50
+        - name: viewbox
+          in: query
+          description: >-
+            The preferred area to find search results. Any two corner points of
+            the box are accepted as long as they span a real box. x is
+            longitude, y is latitude.
+          example: '<x1>,<y1>,<x2>,<y2>'
+          schema:
+            type: string
+        - name: bounded
+          in: query
+          description: >-
+            When a viewbox is given, restrict the result to items contained
+            within that viewbox (see above). When viewbox and bounded=1 are
+            given, an amenity only search is allowed. Give the special keyword
+            for the amenity in square brackets, e.g. [pub] and a selection of
+            objects of this type is returned. There is no guarantee that the
+            result is complete.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_geojson
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_kml
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_svg
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_text
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_threshold
+          in: query
+          description: >-
+            Return a simplified version of the output geometry. The parameter is
+            the tolerance in degrees with which the geometry may differ from the
+            original geometry. Topology is preserved in the result.
+          schema:
+            type: number
+            default: 0
+        - name: email
+          in: query
+          description: >-
+            If you are making large numbers of request please include an
+            appropriate email address to identify your requests. See Nominatim's
+            Usage Policy for more details.
+          schema:
+            type: string
+        - name: dedupe
+          in: query
+          description: >-
+            Sometimes you have several objects in OSM identifying the same place
+            or object in reality. The simplest case is a street being split into
+            many different OSM ways due to different characteristics. Nominatim
+            will attempt to detect such duplicates and only return one match
+            unless this parameter is set to 0.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 1
+        - name: debug
+          in: query
+          description: >-
+            Output assorted developer debug information. Data on internals of
+            Nominatim's "Search Loop" logic, and SQL queries. The output is
+            (rough) HTML format. This overrides the specified machine readable
+            format.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+      responses:
+        '200':
+          content:
+            application/geojson:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: FeatureCollection
+                  licence:
+                    type: string
+                    example: >-
+                      Data © OpenStreetMap contributors, ODbL 1.0.
+                      https://osm.org/copyright
+                  features:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SearchFeature'
+  /reverse:
+    get:
+      summary: search OSM object by their location
+      description: Reverse geocoding generates an address from a latitude and longitude.
+      operationId: reverse
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: format
+          in: query
+          schema:
+            $ref: '#/components/schemas/Format'
+        - name: json_callback
+          in: query
+          description: >-
+            Wrap JSON output in a callback function (JSONP) i.e.
+            <string>(<json>). Only has an effect for JSON output formats.
+          schema:
+            type: string
+        - name: addressdetails
+          in: query
+          description: Include a breakdown of the address into elements
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: extratags
+          in: query
+          description: >-
+            Include additional information in the result if available, e.g.
+            wikipedia link, opening hours.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: namedetails
+          in: query
+          description: >-
+            Include a list of alternative names in the results. These may
+            include language variants, references, operator and brand
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: accept-language
+          in: query
+          description: >-
+            Preferred language order for showing search results, overrides the
+            value specified in the "Accept-Language" HTTP header. Either use a
+            standard RFC2616 accept-language string or a simple comma-separated
+            list of language codes.
+          example: <browser language string>
+          schema:
+            type: string
+        - name: zoom
+          in: query
+          description: >-
+            Level of detail required for the address. Default 18. This is a
+            number that corresponds roughly to the zoom level used in XYZ tile
+            sources in frameworks like Leaflet.js, Openlayers etc. In terms of
+            address details the zoom levels are as follows (3 country, 5 state,
+            8 county, 10 city, 14 suburb, 16 major streets, 17 major and minor
+            streets, 18 building)
+          example: '[0-18]'
+          schema:
+            type: number
+            minimum: 0
+            maximum: 18
+        - name: polygon_geojson
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_kml
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_svg
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_text
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_threshold
+          in: query
+          description: >-
+            Return a simplified version of the output geometry. The parameter is
+            the tolerance in degrees with which the geometry may differ from the
+            original geometry. Topology is preserved in the result.
+          schema:
+            type: number
+            default: 0
+        - name: email
+          in: query
+          description: >-
+            If you are making large numbers of request please include an
+            appropriate email address to identify your requests. See Nominatim's
+            Usage Policy for more details.
+          schema:
+            type: string
+        - name: debug
+          in: query
+          description: >-
+            Output assorted developer debug information. Data on internals of
+            Nominatim's "Search Loop" logic, and SQL queries. The output is
+            (rough) HTML format. This overrides the specified machine readable
+            format.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+      responses:
+        '200':
+          content:
+            application/geojson:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: FeatureCollection
+                  licence:
+                    type: string
+                    example: >-
+                      Data © OpenStreetMap contributors, ODbL 1.0.
+                      https://osm.org/copyright
+                  features:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReverseFeature'
+  /lookup:
+    get:
+      summary: look up address details for OSM objects by their ID
+      description: >-
+        The lookup API allows to query the address and other details of one or
+        multiple OSM objects like node, way or relation.
+      operationId: lookup
+      parameters:
+        - name: osm_ids
+          in: query
+          description: >-
+            osm_ids is mandatory and must contain a comma-separated list of OSM
+            ids each prefixed with its type, one of node(N), way(W) or
+            relation(R). Up to 50 ids can be queried at the same time.
+          required: true
+          example: '[N|W|R]<value>,...,...,'
+          schema:
+            type: number
+        - name: format
+          in: query
+          schema:
+            $ref: '#/components/schemas/Format'
+        - name: json_callback
+          in: query
+          description: >-
+            Wrap JSON output in a callback function (JSONP) i.e.
+            <string>(<json>). Only has an effect for JSON output formats.
+          schema:
+            type: string
+        - name: addressdetails
+          in: query
+          description: Include a breakdown of the address into elements
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: extratags
+          in: query
+          description: >-
+            Include additional information in the result if available, e.g.
+            wikipedia link, opening hours.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: namedetails
+          in: query
+          description: >-
+            Include a list of alternative names in the results. These may
+            include language variants, references, operator and brand
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: accept-language
+          in: query
+          description: >-
+            Preferred language order for showing search results, overrides the
+            value specified in the "Accept-Language" HTTP header. Either use a
+            standard RFC2616 accept-language string or a simple comma-separated
+            list of language codes.
+          example: <browser language string>
+          schema:
+            type: string
+        - name: polygon_geojson
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_kml
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_svg
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_text
+          in: query
+          description: null
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_threshold
+          in: query
+          description: >-
+            Return a simplified version of the output geometry. The parameter is
+            the tolerance in degrees with which the geometry may differ from the
+            original geometry. Topology is preserved in the result.
+          schema:
+            type: number
+            default: 0
+        - name: email
+          in: query
+          description: >-
+            If you are making large numbers of request please include an
+            appropriate email address to identify your requests. See Nominatim's
+            Usage Policy for more details.
+          schema:
+            type: string
+        - name: debug
+          in: query
+          description: >-
+            Output assorted developer debug information. Data on internals of
+            Nominatim's "Search Loop" logic, and SQL queries. The output is
+            (rough) HTML format. This overrides the specified machine readable
+            format.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+      responses:
+        '200':
+          content:
+            application/geojson:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: FeatureCollection
+                  licence:
+                    type: string
+                    example: >-
+                      Data © OpenStreetMap contributors, ODbL 1.0.
+                      https://osm.org/copyright
+                  features:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LookupFeature'
+  /status:
+    get:
+      summary: query the status of the server
+      description: >-
+        Useful for checking if the service and database is running. The JSON
+        output also shows when the database was last updated.
+      operationId: status
+      parameters:
+        - name: format
+          in: query
+          schema:
+            type: string
+            enum:
+              - text
+              - json
+            default: text
+      responses:
+        '200':
+          content:
+            application/geojson:
+              schema:
+                $ref: '#/components/schemas/Status'
+  /deletable:
+    get:
+      summary: >-
+        list objects that have been deleted in OSM but are held back in
+        Nominatim in case the deletion was accidental
+      description: null
+      operationId: deletable
+  /polygons:
+    get:
+      summary: list of broken polygons detected by Nominatim
+      description: null
+      operationId: polygons
+  /details:
+    get:
+      summary: show internal details for an object
+      description: >-
+        Show all details about a single place saved in the database. (debugging
+        only)
+      operationId: details
+      parameters:
+        - name: osmtype
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - 'N'
+              - W
+              - R
+        - name: osmid
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: class
+          in: query
+          description: >-
+            The class parameter is optional and allows to distinguish between
+            entries, when the corresponding OSM object has more than one main
+            tag. For example, when a place is tagged with tourism=hotel and
+            amenity=restaurant, there will be two place entries in Nominatim,
+            one for a restaurant, one for a hotel. You need to specify
+            class=tourism or class=amentity to get exactly the one you want. If
+            there are multiple places in the database but the class parameter is
+            left out, then one of the places will be chosen at random and
+            displayed.
+          schema:
+            type: string
+
+        - name: place_id
+          in: query
+          description: >-
+            Place IDs are assigned sequentially during Nominatim data import.
+            The ID for a place is different between Nominatim installation
+            (servers) and changes when data gets reimported. Therefore it cannot
+            be used as a permanent id and shouldn't be used in bug reports.
+          schema:
+            type: number
+        - name: json_callback
+          in: query
+          description: >-
+            Wrap JSON output in a callback function (JSONP) i.e.
+            <string>(<json>). Only has an effect for JSON output formats.
+          schema:
+            type: string
+        - name: pretty
+          in: query
+          description: Add indentation to make it more human-readable
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: addressdetails
+          in: query
+          description: Include a breakdown of the address into elements
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: keywords
+          in: query
+          description: Include a list of name keywords and address keywords (word ids).
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: linkedplaces
+          in: query
+          description: >-
+            Include a details of places that are linked with this one. Places
+            get linked together when they are different forms of the same
+            physical object. Nominatim links two kinds of objects together.
+            place nodes get linked with the corresponding administrative
+            boundaries. Waterway relations get linked together with their
+            members.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 1
+        - name: hierarchy
+          in: query
+          description: Include details of places lower in the address hierarchy
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: group_hierarchy
+          in: query
+          description: For JSON output will group the places by type
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: polygon_geojson
+          in: query
+          description: Include geometry of result.
+          schema:
+            type: string
+            enum:
+              - 0
+              - 1
+            default: 0
+        - name: accept-language
+          in: query
+          description: >-
+            Preferred language order for showing search results, overrides the
+            value specified in the "Accept-Language" HTTP header. Either use a
+            standard RFC2616 accept-language string or a simple comma-separated
+            list of language codes.
+          example: <browser language string>
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/geojson:
+              schema:
+                $ref: '#/components/schemas/Details'
+components:
+  schemas:
+    Format:
+      type: string
+      enum:
+        - xml
+        - json
+        - jsonv2
+        - geojson
+        - geocodejson
+      default: jsonv2
+    SearchFeature:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/SearchProperties'
+        bbox:
+          $ref: '#/components/schemas/BBox'
+        geometry:
+          oneOf:
+            - $ref: '#/components/schemas/Point'
+            - $ref: '#/components/schemas/LineString'
+            - $ref: '#/components/schemas/Polygon'
+    SearchProperties:
+      type: object
+      properties:
+        place_id:
+          type: number
+          example: 298248090
+        osm_type:
+          type: string
+          example: relation
+          enum:
+            - relation
+        osm_id:
+          type: number
+          example: 104744
+        display_name:
+          type: string
+          example: Saint-Gervais-les-Bains, Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, 74170, France
+        place_rank:
+          type: number
+          example: 16
+        category:
+          type: string
+          example: boundary
+        type:
+          type: string
+          example: administrative
+        importance:
+          type: number
+          example: 0.8145987538280018
+        icon:
+          type: string
+          example: https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png
+        address:
+          $ref: '#/components/schemas/Address'
+
+    ReverseFeature:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/ReverseProperties'
+        bbox:
+          $ref: '#/components/schemas/BBox'
+        geometry:
+          oneOf:
+            - $ref: '#/components/schemas/Point'
+            - $ref: '#/components/schemas/LineString'
+            - $ref: '#/components/schemas/Polygon'
+    ReverseProperties:
+      type: object
+      properties:
+        place_id:
+          type: number
+    LookupFeature:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/LookupProperties'
+        bbox:
+          $ref: '#/components/schemas/BBox'
+        geometry:
+          oneOf:
+            - $ref: '#/components/schemas/Point'
+            - $ref: '#/components/schemas/LineString'
+            - $ref: '#/components/schemas/Polygon'
+
+    LookupProperties:
+      type: object
+      properties:
+        place_id:
+          type: number
+
+
+    Status:
+      type: object
+    Details:
+      type: object
+
+    Address:
+      type: object
+      properties:
+        village:
+          type: string
+          example: Saint-Gervais-les-Bains
+        municipality:
+          type: string
+          example: Bonneville
+        county:
+          type: string
+          example: Haute-Savoie
+        ISO3166-2-lvl6:
+          type: string
+          example: FR-74
+        state:
+          type: string
+          example: Auvergne-Rhône-Alpes
+        ISO3166-2-lvl4:
+          type: string
+          example: FR-ARA
+        region:
+          type: string
+          example: France métropolitaine
+        postcode:
+          type: string
+          example: "74170"
+        country:
+          type: string
+          example: France
+        country_code:
+          type: string
+          example: fr
+
+    BBox:
+      type: array
+      minItems: 4
+      maxItems: 4
+      items:
+        type: number
+
+    Position:
+      description: >-
+        GeoJSon fundamental geometry construct. A position is an array of
+        numbers. There MUST be two or more elements. The first two elements are
+        longitude and latitude, or easting and northing, precisely in that order
+        and using decimal numbers. Altitude or elevation MAY be included as an
+        optional third element. Implementations SHOULD NOT extend positions
+        beyond three elements because the semantics of extra elements are
+        unspecified and ambiguous. Historically, some implementations have used
+        a fourth element to carry a linear referencing measure (sometimes
+        denoted as "M") or a numerical timestamp, but in most situations a
+        parser will not be able to properly interpret these values. The
+        interpretation and meaning of additional elements is beyond the scope of
+        this specification, and additional elements MAY be ignored by parsers.
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.1'
+      type: array
+      minItems: 2
+      maxItems: 3
+      items:
+        type: number
+    LineStringCoordinates:
+      description: |
+        GeoJSon fundamental geometry construct, array of two or more positions.
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.4'
+      type: array
+      items:
+        $ref: '#/components/schemas/Position'
+      minItems: 2
+    LinearRing:
+      description: >-
+        A linear ring is a closed LineString with four or more positions. The
+        first and last positions are equivalent, and they MUST contain identical
+        values; their representation SHOULD also be identical. A linear ring is
+        the boundary of a surface or the boundary of a hole in a surface. A
+        linear ring MUST follow the right-hand rule with respect to the area it
+        bounds, i.e., exterior rings are counterclockwise, and holes are
+        clockwise.
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.6'
+      type: array
+      items:
+        $ref: '#/components/schemas/Position'
+      minItems: 4
+
+    Point:
+      description: GeoJSon geometry
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.2'
+      type: object
+      required:
+        - type
+        - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+            - Point
+        coordinates:
+          $ref: '#/components/schemas/Position'
+
+    MultiPoint:
+      description: GeoJSon geometry
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.3'
+      type: object
+      required:
+        - coordinates
+      properties:
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Position'
+
+    LineString:
+      description: GeoJSon geometry
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.4'
+      type: object
+      required:
+        - coordinates
+      properties:
+        coordinates:
+          $ref: '#/components/schemas/LineStringCoordinates'
+
+    MultiLineString:
+      description: GeoJSon geometry
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.5'
+      type: object
+      required:
+        - coordinates
+      properties:
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineStringCoordinates'
+    Polygon:
+      description: GeoJSon geometry
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.6'
+      type: object
+      required:
+        - coordinates
+      properties:
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinearRing'
+    MultiPolygon:
+      description: GeoJSon geometry
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.7'
+      type: object
+      required:
+        - coordinates
+      properties:
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/LinearRing'

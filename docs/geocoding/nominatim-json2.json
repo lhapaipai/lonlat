@@ -1,0 +1,42 @@
+[
+    {
+        "place_id": 298248090,
+        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "osm_type": "relation",
+        "osm_id": 104744,
+        "boundingbox": [
+            "45.8005496",
+            "45.9102195",
+            "6.6572016",
+            "6.8536325"
+        ],
+        "lat": "45.8928549",
+        "lon": "6.7113338",
+        "display_name": "Saint-Gervais-les-Bains, Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, 74170, France",
+        "place_rank": 16,
+        "category": "boundary",
+        "type": "administrative",
+        "importance": 0.8145987538280018,
+        "icon": "https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png",
+        "address": {
+            "village": "Saint-Gervais-les-Bains",
+            "municipality": "Bonneville",
+            "county": "Haute-Savoie",
+            "ISO3166-2-lvl6": "FR-74",
+            "state": "Auvergne-Rhône-Alpes",
+            "ISO3166-2-lvl4": "FR-ARA",
+            "region": "France métropolitaine",
+            "postcode": "74170",
+            "country": "France",
+            "country_code": "fr"
+        },
+        "geojson": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    "..."
+                ]
+            ]
+        }
+    }
+]

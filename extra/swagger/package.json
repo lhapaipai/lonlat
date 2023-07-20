@@ -1,0 +1,28 @@
+{
+    "name": "@lonlat/swagger",
+    "version": "1.0.0",
+    "private": true,
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "swagger": "vite preview",
+        "generate-nominatim": "o2ts ./public/nominatim.yaml ./export/nominatim.ts",
+        "generate-ign-completion": "o2ts ./public/ign-completion.yaml ./export/ign-completion.ts",
+        "generate-ign-geocodage": "o2ts ./public/ign-geocodage.yaml ./export/ign-geocodage.ts",
+        "generate": "npm run generate-nominatim && npm run generate-ign-completion && npm run generate-ign-geocodage"
+    },
+    "keywords": [],
+    "author": "Hugues Tavernier",
+    "license": "ISC",
+    "dependencies": {
+        "@grafikart/o2ts": "^0.1.13",
+        "swagger-ui": "^5.1.3"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.14",
+        "typescript": "^5.1.6",
+        "vite": "^4.4.4"
+    }
+}

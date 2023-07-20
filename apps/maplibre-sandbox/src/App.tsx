@@ -12,6 +12,10 @@ function App() {
     setCoords([Math.random() * 300 - 150, Math.random() * 150 - 75]);
   }
 
+  function handleReady(map: maplibre.Map) {
+    console.log("map ready", map);
+  }
+
   return (
     <>
       <div className="sidebar">
@@ -19,8 +23,8 @@ function App() {
         <button onClick={handleChangeMarkerCoords}>change marker cords</button>
       </div>
       {show && (
-        <RMap>
-          <RMarker lnglat={coords}></RMarker>{" "}
+        <RMap onReady={handleReady}>
+          <RMarker lnglat={coords}></RMarker>
         </RMap>
       )}
     </>

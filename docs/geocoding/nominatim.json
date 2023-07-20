@@ -1,0 +1,233 @@
+[
+    {
+        "place_id": 298248090,
+        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "osm_type": "relation",
+        "osm_id": 104744,
+        "boundingbox": [
+            "45.8005496",
+            "45.9102195",
+            "6.6572016",
+            "6.8536325"
+        ],
+        "lat": "45.8928549",
+        "lon": "6.7113338",
+        "display_name": "Saint-Gervais-les-Bains, Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, 74170, France",
+        "place_rank": 16,
+        "category": "boundary",
+        "type": "administrative",
+        "importance": 0.8145987538280018,
+        "icon": "https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png",
+        "address": {
+            "village": "Saint-Gervais-les-Bains",
+            "municipality": "Bonneville",
+            "county": "Haute-Savoie",
+            "ISO3166-2-lvl6": "FR-74",
+            "state": "Auvergne-Rhône-Alpes",
+            "ISO3166-2-lvl4": "FR-ARA",
+            "region": "France métropolitaine",
+            "postcode": "74170",
+            "country": "France",
+            "country_code": "fr"
+        },
+        "geojson": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    "Complete coordinates"
+                ]
+            ]
+        }
+    },
+    {
+        "place_id": 15931939,
+        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "osm_type": "node",
+        "osm_id": 1738253488,
+        "boundingbox": [
+            "45.8905537",
+            "45.8906537",
+            "6.7135877",
+            "6.7136877"
+        ],
+        "lat": "45.8906037",
+        "lon": "6.7136377",
+        "display_name": "Saint-Gervais-les-Bains, Avenue de Miage, Les Granges, Saint-Gervais-les-Bains, Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, 74170, France",
+        "place_rank": 30,
+        "category": "amenity",
+        "type": "post_office",
+        "importance": 0.30001,
+        "icon": "https://nominatim.openstreetmap.org/ui/mapicons/amenity_post_office.p.20.png",
+        "address": {
+            "amenity": "Saint-Gervais-les-Bains",
+            "road": "Avenue de Miage",
+            "hamlet": "Les Granges",
+            "village": "Saint-Gervais-les-Bains",
+            "municipality": "Bonneville",
+            "county": "Haute-Savoie",
+            "ISO3166-2-lvl6": "FR-74",
+            "state": "Auvergne-Rhône-Alpes",
+            "ISO3166-2-lvl4": "FR-ARA",
+            "region": "France métropolitaine",
+            "postcode": "74170",
+            "country": "France",
+            "country_code": "fr"
+        },
+        "geojson": {
+            "type": "Point",
+            "coordinates": [
+                6.7136377,
+                45.8906037
+            ]
+        }
+    },
+    {
+        "place_id": 370755323,
+        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "osm_type": "node",
+        "osm_id": 11025882431,
+        "boundingbox": [
+            "45.8978548",
+            "45.8979548",
+            "6.7111565",
+            "6.7112565"
+        ],
+        "lat": "45.8979048",
+        "lon": "6.7112065",
+        "display_name": "Saint-Gervais-les-Bains, Rue du Mont Lachat, Le Fayet, Saint-Gervais-les-Bains, Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, 74170, France",
+        "place_rank": 30,
+        "category": "railway",
+        "type": "stop",
+        "importance": 0.30001,
+        "address": {
+            "railway": "Saint-Gervais-les-Bains",
+            "road": "Rue du Mont Lachat",
+            "suburb": "Le Fayet",
+            "village": "Saint-Gervais-les-Bains",
+            "municipality": "Bonneville",
+            "county": "Haute-Savoie",
+            "ISO3166-2-lvl6": "FR-74",
+            "state": "Auvergne-Rhône-Alpes",
+            "ISO3166-2-lvl4": "FR-ARA",
+            "region": "France métropolitaine",
+            "postcode": "74170",
+            "country": "France",
+            "country_code": "fr"
+        },
+        "geojson": {
+            "type": "Point",
+            "coordinates": [
+                6.7112065,
+                45.8979048
+            ]
+        }
+    },
+    {
+        "place_id": 167024563,
+        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "osm_type": "way",
+        "osm_id": 246403305,
+        "boundingbox": [
+            "45.8977861",
+            "45.8979367",
+            "6.710946",
+            "6.7111439"
+        ],
+        "lat": "45.8978614",
+        "lon": "6.711044935586015",
+        "display_name": "Saint-Gervais-les-Bains, Rue du Mont Lachat, Le Fayet, Saint-Gervais-les-Bains, Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, 74170, France",
+        "place_rank": 30,
+        "category": "building",
+        "type": "train_station",
+        "importance": 0.30001,
+        "address": {
+            "building": "Saint-Gervais-les-Bains",
+            "road": "Rue du Mont Lachat",
+            "suburb": "Le Fayet",
+            "village": "Saint-Gervais-les-Bains",
+            "municipality": "Bonneville",
+            "county": "Haute-Savoie",
+            "ISO3166-2-lvl6": "FR-74",
+            "state": "Auvergne-Rhône-Alpes",
+            "ISO3166-2-lvl4": "FR-ARA",
+            "region": "France métropolitaine",
+            "postcode": "74170",
+            "country": "France",
+            "country_code": "fr"
+        },
+        "geojson": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        6.710946,
+                        45.8978919
+                    ],
+                    [
+                        6.711047,
+                        45.8977861
+                    ],
+                    [
+                        6.7111439,
+                        45.8978309
+                    ],
+                    [
+                        6.7110428,
+                        45.8979367
+                    ],
+                    [
+                        6.710946,
+                        45.8978919
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "place_id": 168701243,
+        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "osm_type": "way",
+        "osm_id": 255390132,
+        "boundingbox": [
+            "45.897845",
+            "45.8980382",
+            "6.7110043",
+            "6.7111798"
+        ],
+        "lat": "45.897845",
+        "lon": "6.7111798",
+        "display_name": "Saint-Gervais-les-Bains, Rue du Mont Lachat, Le Fayet, Saint-Gervais-les-Bains, Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, 74170, France",
+        "place_rank": 30,
+        "category": "railway",
+        "type": "platform",
+        "importance": 0.30001,
+        "address": {
+            "railway": "Saint-Gervais-les-Bains",
+            "road": "Rue du Mont Lachat",
+            "suburb": "Le Fayet",
+            "village": "Saint-Gervais-les-Bains",
+            "municipality": "Bonneville",
+            "county": "Haute-Savoie",
+            "ISO3166-2-lvl6": "FR-74",
+            "state": "Auvergne-Rhône-Alpes",
+            "ISO3166-2-lvl4": "FR-ARA",
+            "region": "France métropolitaine",
+            "postcode": "74170",
+            "country": "France",
+            "country_code": "fr"
+        },
+        "geojson": {
+            "type": "LineString",
+            "coordinates": [
+                [
+                    6.7110043,
+                    45.8980382
+                ],
+                [
+                    6.7111798,
+                    45.897845
+                ]
+            ]
+        }
+    }
+]

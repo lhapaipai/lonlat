@@ -1,0 +1,400 @@
+{
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    6.7113338,
+                    45.8928549
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "R",
+                "osm_id": 104744,
+                "extent": [
+                    6.6572016,
+                    45.9102195,
+                    6.8536325,
+                    45.8005496
+                ],
+                "country": "France",
+                "osm_key": "place",
+                "countrycode": "FR",
+                "osm_value": "village",
+                "postcode": "74170",
+                "name": "Saint-Gervais-les-Bains",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "city"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.70144050747177,
+                    45.9064444
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_id": 84127912,
+                "extent": [
+                    6.7006021,
+                    45.9067054,
+                    6.7023796,
+                    45.9061803
+                ],
+                "country": "France",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "postcode": "74170",
+                "county": "Haute-Savoie",
+                "type": "house",
+                "osm_type": "W",
+                "osm_key": "building",
+                "street": "Place de la Gare",
+                "district": "Le Fayet",
+                "osm_value": "train_station",
+                "name": "Saint-Gervais-les-Bains - Le Fayet",
+                "state": "Auvergne-Rhône-Alpes"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.7014569,
+                    45.9065724
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_id": 7092852440,
+                "country": "France",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "postcode": "74170",
+                "county": "Haute-Savoie",
+                "type": "house",
+                "osm_type": "N",
+                "osm_key": "railway",
+                "street": "Place de la Gare",
+                "district": "Le Fayet",
+                "osm_value": "station",
+                "name": "Saint-Gervais-les-Bains - Le Fayet",
+                "state": "Auvergne-Rhône-Alpes"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.7064185,
+                    45.8651951
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "N",
+                "osm_id": 7080388465,
+                "country": "France",
+                "osm_key": "place",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "osm_value": "hamlet",
+                "postcode": "74170",
+                "name": "Les Truz",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "district"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.7228206,
+                    45.8490284
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "N",
+                "osm_id": 8761698943,
+                "country": "France",
+                "osm_key": "place",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "osm_value": "hamlet",
+                "postcode": "74170",
+                "name": "Les Senards",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "district"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.7085786,
+                    45.8807494
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "N",
+                "osm_id": 7080756543,
+                "country": "France",
+                "osm_key": "place",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "osm_value": "hamlet",
+                "postcode": "74170",
+                "name": "Les Granges",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "district"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.685293,
+                    45.8623563
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "N",
+                "osm_id": 2318549373,
+                "country": "France",
+                "osm_key": "place",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "osm_value": "hamlet",
+                "postcode": "74170",
+                "name": "Les Orgeres",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "district"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.7124224,
+                    45.8779654
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "N",
+                "osm_id": 3016585010,
+                "country": "France",
+                "osm_key": "place",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "osm_value": "hamlet",
+                "postcode": "74170",
+                "name": "Les Margagnes",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "district"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.6797006,
+                    45.8819274
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "N",
+                "osm_id": 2312757170,
+                "country": "France",
+                "osm_key": "place",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "osm_value": "hamlet",
+                "postcode": "74170",
+                "name": "Les Monts Rosset",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "district"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.7233026,
+                    45.8455583
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "N",
+                "osm_id": 5243903800,
+                "country": "France",
+                "osm_key": "place",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "osm_value": "hamlet",
+                "postcode": "74170",
+                "name": "Les Houchettes",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "district"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.6954205064917165,
+                    45.907154000000006
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_id": 388777269,
+                "extent": [
+                    6.6925878,
+                    45.9089024,
+                    6.6985404,
+                    45.9056593
+                ],
+                "country": "France",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "postcode": "74170",
+                "county": "Haute-Savoie",
+                "type": "locality",
+                "osm_type": "W",
+                "osm_key": "landuse",
+                "district": "Le Fayet",
+                "osm_value": "industrial",
+                "name": "ZA Saint-Gervais",
+                "state": "Auvergne-Rhône-Alpes"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.9310892,
+                    46.0008871
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_id": 25627411,
+                "extent": [
+                    6.9225555,
+                    46.0124373,
+                    6.9335336,
+                    45.9975781
+                ],
+                "country": "France",
+                "city": "Vallorcine",
+                "countrycode": "FR",
+                "postcode": "74660",
+                "county": "Haute-Savoie",
+                "type": "house",
+                "osm_type": "W",
+                "osm_key": "railway",
+                "osm_value": "narrow_gauge",
+                "name": "Ligne de Saint-Gervais-les-Bains-Le Fayet à Vallorcine (frontière)",
+                "state": "Auvergne-Rhône-Alpes"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -11.7206,
+                    7.945494
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_id": 119491570,
+                "extent": [
+                    -11.7216729,
+                    7.945891,
+                    -11.719698,
+                    7.9449805
+                ],
+                "country": "Sierra Leone",
+                "city": "Bo",
+                "countrycode": "SL",
+                "county": "Bo",
+                "type": "street",
+                "osm_type": "W",
+                "osm_key": "highway",
+                "district": "Gbondo Town 1",
+                "osm_value": "residential",
+                "name": "Baindu Street",
+                "state": "Southern Province"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    5.7048056,
+                    47.9480828
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_id": 8002306541,
+                "country": "France",
+                "city": "Bourbonne-les-Bains",
+                "countrycode": "FR",
+                "postcode": "52400",
+                "county": "Haute-Marne",
+                "type": "locality",
+                "osm_type": "N",
+                "osm_key": "place",
+                "district": "Bourbonne-les-Bains",
+                "osm_value": "locality",
+                "name": "Champ des Geais",
+                "state": "Grand Est"
+            }
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    6.7138061,
+                    45.8654623
+                ],
+                "type": "Point"
+            },
+            "type": "Feature",
+            "properties": {
+                "osm_type": "N",
+                "osm_id": 5243288430,
+                "country": "France",
+                "osm_key": "place",
+                "city": "Saint-Gervais-les-Bains",
+                "countrycode": "FR",
+                "osm_value": "hamlet",
+                "postcode": "74170",
+                "name": "Les Plans",
+                "county": "Haute-Savoie",
+                "state": "Auvergne-Rhône-Alpes",
+                "type": "district"
+            }
+        }
+    ],
+    "type": "FeatureCollection"
+}

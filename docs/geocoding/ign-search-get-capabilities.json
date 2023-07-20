@@ -1,0 +1,890 @@
+{
+    "info": {
+        "name": "Géocodage",
+        "url": "https://wxs.ign.fr/#KEY/geoportail/geocodage/",
+        "description": "Service de géocodage et géocodage inverse."
+    },
+    "api": {
+        "name": "rest",
+        "version": "1.0.0"
+    },
+    "operations": [
+        {
+            "id": "search",
+            "description": "fourni les coordonnées géographiques d'un lieu (adresse, point d'intérêt, parcelle cadastrale...)",
+            "url": "/search?",
+            "methods": [
+                "GET"
+            ],
+            "parameters": [
+                {
+                    "name": "index",
+                    "in": "query",
+                    "description": "index(es) de recherche",
+                    "required": false,
+                    "default": "address",
+                    "schema": {
+                        "type": "string",
+                        "example": "address,parcel,poi"
+                    }
+                },
+                {
+                    "name": "q",
+                    "in": "query",
+                    "description": "chaîne décrivant la localisation à rechercher",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "example": "73 Avenue de Paris Saint-Mandé"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "nombre maximum de candidats retournés",
+                    "required": false,
+                    "default": 10,
+                    "schema": {
+                        "type": "integer",
+                        "example": "5"
+                    }
+                },
+                {
+                    "name": "lon",
+                    "in": "query",
+                    "description": "longitude d'un localisant pour favoriser les candidats les plus proches",
+                    "required": false,
+                    "schema": {
+                        "type": "number",
+                        "example": "2.347640"
+                    }
+                },
+                {
+                    "name": "lat",
+                    "in": "query",
+                    "description": "latitude d'un localisant pour favoriser les candidats les plus proches",
+                    "required": false,
+                    "schema": {
+                        "type": "number",
+                        "example": "48.835187"
+                    }
+                },
+                {
+                    "name": "returntruegeometry",
+                    "in": "query",
+                    "description": "indique si la vraie géométrie doit être retournée",
+                    "required": false,
+                    "default": false,
+                    "schema": {
+                        "type": "boolean",
+                        "example": "false"
+                    }
+                },
+                {
+                    "name": "postcode",
+                    "in": "query",
+                    "description": "filtre pour les index address et poi. Il permet de filtrer les résultats par code postal",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "94160"
+                    }
+                },
+                {
+                    "name": "citycode",
+                    "in": "query",
+                    "description": "filtre pour les index address et poi. Il permet de filtrer les résultats par code INSEE",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "94067"
+                    }
+                },
+                {
+                    "name": "type",
+                    "in": "query",
+                    "description": "filtre pour l'index address. Il permet de filtrer par type de données adresse : numéro de maison, rue, commune, ...",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "municipality"
+                    }
+                },
+                {
+                    "name": "city",
+                    "in": "query",
+                    "description": "filtre pour les index address et parcel. Il permet de filtrer par nom de commune",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "saint-mandé"
+                    }
+                },
+                {
+                    "name": "category",
+                    "in": "query",
+                    "description": "filtre pour l'index poi. Il permet de filtrer par catégorie de poi",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "administratif"
+                    }
+                },
+                {
+                    "name": "departmentcode",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par code de département",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "94"
+                    }
+                },
+                {
+                    "name": "municipalitycode",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par code de commune",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "067"
+                    }
+                },
+                {
+                    "name": "oldmunicipalitycode",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par code d'ancienne commune",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "000"
+                    }
+                },
+                {
+                    "name": "districtcode",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par code d'arrondissement",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "105"
+                    }
+                },
+                {
+                    "name": "section",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par section",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "AC"
+                    }
+                },
+                {
+                    "name": "number",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par numéro",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "0035"
+                    }
+                },
+                {
+                    "name": "sheet",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par feuille",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "1"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "reverse",
+            "description": "fourni des lieux (adresse, point d'intérêt, parcelle cadastrale...) à partir de coordonnées géographiques",
+            "url": "/reverse?",
+            "methods": [
+                "GET"
+            ],
+            "parameters": [
+                {
+                    "name": "index",
+                    "in": "query",
+                    "description": "index(es) de recherche",
+                    "required": false,
+                    "default": "address",
+                    "schema": {
+                        "type": "string",
+                        "example": "address,parcel,poi"
+                    }
+                },
+                {
+                    "name": "searchgeom",
+                    "in": "query",
+                    "description": "géométrie de recherche",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "example": "{\"type\":\"Polygon\",\"coordinates\":[[[2.354550,48.837961],[2.354550,48.839232],[2.357211,48.839232],[2.357211,48.837961],[2.354550,48.837961]]]}"
+                    }
+                },
+                {
+                    "name": "lon",
+                    "in": "query",
+                    "description": "longitude d'un localisant de référence pour l'ordonnancement des candidats en fonction de leur proximité à ce point",
+                    "required": false,
+                    "schema": {
+                        "type": "number",
+                        "example": "2.347640"
+                    }
+                },
+                {
+                    "name": "lat",
+                    "in": "query",
+                    "description": "latitude d'un localisant de référence pour l'ordonnancement des candidats en fonction de leur proximité à ce point",
+                    "required": false,
+                    "schema": {
+                        "type": "number",
+                        "example": "48.835187"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "nombre maximum de candidats retournés",
+                    "required": false,
+                    "default": 10,
+                    "schema": {
+                        "type": "integer",
+                        "example": "5"
+                    }
+                },
+                {
+                    "name": "returntruegeometry",
+                    "in": "query",
+                    "description": "indique si la vraie géométrie doit être retournée",
+                    "required": false,
+                    "default": false,
+                    "schema": {
+                        "type": "boolean",
+                        "example": "false"
+                    }
+                },
+                {
+                    "name": "postcode",
+                    "in": "query",
+                    "description": "filtre pour les index address et poi. Il permet de filtrer les résultats par code postal",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "94160"
+                    }
+                },
+                {
+                    "name": "citycode",
+                    "in": "query",
+                    "description": "filtre pour les index address et poi. Il permet de filtrer les résultats par code INSEE",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "94067"
+                    }
+                },
+                {
+                    "name": "type",
+                    "in": "query",
+                    "description": "filtre pour l'index address. Il permet de filtrer par type de données adresse : numéro de maison, rue, commune, ...",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "municipality"
+                    }
+                },
+                {
+                    "name": "city",
+                    "in": "query",
+                    "description": "filtre pour les index address et parcel. Il permet de filtrer par nom de commune",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "saint-mandé"
+                    }
+                },
+                {
+                    "name": "category",
+                    "in": "query",
+                    "description": "filtre pour l'index poi. Il permet de filtrer par catégorie de poi",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "administratif"
+                    }
+                },
+                {
+                    "name": "departmentcode",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par code de département",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "94"
+                    }
+                },
+                {
+                    "name": "municipalitycode",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par code de commune",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "067"
+                    }
+                },
+                {
+                    "name": "oldmunicipalitycode",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par code d'ancienne commune",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "000"
+                    }
+                },
+                {
+                    "name": "districtcode",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par code d'arrondissement",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "105"
+                    }
+                },
+                {
+                    "name": "section",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par section",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "AC"
+                    }
+                },
+                {
+                    "name": "number",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par numéro",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "0035"
+                    }
+                },
+                {
+                    "name": "sheet",
+                    "in": "query",
+                    "description": "filtre pour l'index parcel. Il permet de filtrer par feuille",
+                    "required": false,
+                    "schema": {
+                        "type": "string",
+                        "example": "1"
+                    }
+                }
+            ]
+        }
+    ],
+    "indexes": [
+        {
+            "id": "address",
+            "description": "adresses postales",
+            "metadataurl": "https://wxs.ign.fr/look4/user/discover/address",
+            "fields": [
+                {
+                    "name": "id",
+                    "description": "identifiant de l’adresse (clef d’interopérabilité)",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "type",
+                    "description": "type de résultat trouvé (housenumber, street, locality, municipality)",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true,
+                    "values": [
+                        "housenumber",
+                        "street",
+                        "locality",
+                        "municipality"
+                    ]
+                },
+                {
+                    "name": "score",
+                    "description": "valeur de 0 à 1 indiquant la pertinence du résultat",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "housenumber",
+                    "description": "numéro avec indice de répétition éventuel (bis, ter, A, B)",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": false
+                },
+                {
+                    "name": "street",
+                    "description": "nom de la voie",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": false
+                },
+                {
+                    "name": "name",
+                    "description": "numéro éventuel et nom de voie ou lieu dit",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "postcode",
+                    "description": "code postal",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "citycode",
+                    "description": "code INSEE de la commune",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "city",
+                    "description": "nom de la commune",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "district",
+                    "description": "nom de l’arrondissement (Paris/Lyon/Marseille)",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "oldcitycode",
+                    "description": "code INSEE de la commune ancienne (le cas échéant)",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "oldcity",
+                    "description": "nom de la commune ancienne (le cas échéant)",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "context",
+                    "description": "n° de département, nom de département et de région",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "label",
+                    "description": "libellé complet de l’adresse",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "x",
+                    "description": "coordonnées géographique en projection légale",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "y",
+                    "description": "coordonnées géographique en projection légale",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "importance",
+                    "description": "indicateur d’importance (champ technique)",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                }
+            ]
+        },
+        {
+            "id": "poi",
+            "description": "points d'intérêt",
+            "metadataurl": "https://wxs.ign.fr/look4/user/discover/poi",
+            "fields": [
+                {
+                    "name": "category",
+                    "description": "le type du lieu",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true,
+                    "values": {
+                        "cimetière": [],
+                        "réservoir": [
+                            "réservoir industriel",
+                            "château d'eau",
+                            "réservoir d'eau ou château d'eau au sol"
+                        ],
+                        "administratif": [
+                            "région",
+                            "département",
+                            "epci",
+                            "commune",
+                            "arrondissement municipal"
+                        ],
+                        "construction": [
+                            "construction linéaire",
+                            "pont",
+                            "barrage",
+                            "tremplin de ski",
+                            "passerelle",
+                            "aqueduc",
+                            "pont mobile",
+                            "pont isolé",
+                            "piste de bobsleigh",
+                            "pont tournant",
+                            "piste de luge",
+                            "viaduc",
+                            "sport de montagne",
+                            "construction ponctuelle",
+                            "phare",
+                            "clocher",
+                            "calvaire",
+                            "croix",
+                            "autre construction élevée",
+                            "construction surfacique",
+                            "dalle",
+                            "cale",
+                            "ecluse"
+                        ],
+                        "hydrographie": [
+                            "cours d'eau",
+                            "détail hydrographique",
+                            "perte",
+                            "espace maritime",
+                            "point d'eau",
+                            "résurgence",
+                            "banc",
+                            "embouchure",
+                            "balise",
+                            "baie",
+                            "feu",
+                            "marais",
+                            "source",
+                            "lavoir",
+                            "source captée",
+                            "fontaine",
+                            "plan d'eau",
+                            "plan d'eau de gravière",
+                            "réservoir-bassin",
+                            "glacier, névé",
+                            "lac",
+                            "lagune",
+                            "retenue",
+                            "inconnue",
+                            "retenue-barrage",
+                            "ecoulement naturel",
+                            "mare",
+                            "retenue-digue"
+                        ],
+                        "élément topographique ou forestier": [
+                            "détail orographique",
+                            "vallée",
+                            "plaine",
+                            "escarpement",
+                            "dépression",
+                            "grotte",
+                            "montagne",
+                            "volcan",
+                            "récif",
+                            "dune",
+                            "isthme",
+                            "crête",
+                            "plage",
+                            "col",
+                            "terril",
+                            "rochers",
+                            "cirque",
+                            "gouffre",
+                            "gorge",
+                            "pic",
+                            "ile",
+                            "cap",
+                            "sommet",
+                            "lieu-dit non habité",
+                            "arbre",
+                            "bois",
+                            "pare-feu"
+                        ],
+                        "transport": [
+                            "équipement de transport",
+                            "gare routière",
+                            "station de métro",
+                            "service dédié aux vélos",
+                            "arrêt voyageurs",
+                            "parking",
+                            "aire de triage",
+                            "aérogare",
+                            "gare maritime",
+                            "gare voyageurs et fret",
+                            "aire de repos ou de service",
+                            "gare voyageurs uniquement",
+                            "gare téléphérique",
+                            "service dédié aux véhicules",
+                            "port",
+                            "gare fret uniquement",
+                            "station de tramway",
+                            "transport par câble",
+                            "télécabine, téléphérique",
+                            "câble transporteur",
+                            "aérodrome",
+                            "héliport",
+                            "altiport"
+                        ],
+                        "poste de transformation": [],
+                        "zone d'activité ou d'intérêt": [
+                            "sous-préfecture",
+                            "caserne de pompiers",
+                            "collège",
+                            "parc des expositions",
+                            "site d'escalade",
+                            "stand de tir",
+                            "hôpital",
+                            "préfecture",
+                            "autre service déconcentré de l'etat",
+                            "déchèterie",
+                            "haras",
+                            "etablissement extraterritorial",
+                            "marais salant",
+                            "etablissement hospitalier",
+                            "culte divers",
+                            "parc de loisirs",
+                            "mairie",
+                            "palais de justice",
+                            "etablissement pénitentiaire",
+                            "capitainerie",
+                            "hébergement de loisirs",
+                            "mine",
+                            "enseignement supérieur",
+                            "préfecture de région",
+                            "sentier de découverte",
+                            "office de tourisme",
+                            "lycée",
+                            "camping",
+                            "culte israélite",
+                            "autre établissement d'enseignement",
+                            "piscine",
+                            "siège d'epci",
+                            "maison du parc",
+                            "culte musulman",
+                            "divers agricole",
+                            "parc zoologique",
+                            "police",
+                            "université",
+                            "usine",
+                            "hôtel de département",
+                            "patinoire",
+                            "divers commercial",
+                            "enseignement primaire",
+                            "poste",
+                            "caserne",
+                            "refuge",
+                            "baignade surveillée",
+                            "divers public ou administratif",
+                            "ecomusée",
+                            "centre équestre",
+                            "divers industriel",
+                            "musée",
+                            "zone industrielle",
+                            "structure d'accueil pour personnes handicapées",
+                            "monument",
+                            "hôtel de région",
+                            "gendarmerie",
+                            "tombeau",
+                            "maison forestière",
+                            "golf",
+                            "stade",
+                            "site de vol libre",
+                            "ouvrage militaire",
+                            "complexe sportif couvert",
+                            "habitation troglodytique",
+                            "culte chrétien",
+                            "marché",
+                            "etablissement thermal",
+                            "mégalithe",
+                            "hippodrome",
+                            "maison de retraite",
+                            "terrain de sport",
+                            "terrain de handball",
+                            "terrain de rugby",
+                            "piste de sports mécaniques",
+                            "grand terrain de sport",
+                            "terrain de tennis",
+                            "piste de vélodrome",
+                            "piste d'hippodrome",
+                            "stade d'athlétisme",
+                            "piste de sport",
+                            "bassin de natation",
+                            "petit terrain multi-sports",
+                            "terrain de volley-ball",
+                            "piste de cynodrome",
+                            "city-stade",
+                            "terrain de football",
+                            "terrain de basket-ball",
+                            "terrain de pelote basque"
+                        ],
+                        "zone d'habitation": [
+                            "lieu-dit habité",
+                            "château",
+                            "moulin",
+                            "habitat temporaire",
+                            "ruines",
+                            "grange"
+                        ]
+                    }
+                },
+                {
+                    "name": "toponyme",
+                    "description": "le toponyme",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": false
+                },
+                {
+                    "name": "postcode",
+                    "description": "le code postal",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "citycode",
+                    "description": "le code insee",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "city",
+                    "description": "le nom de commune",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "extrafields",
+                    "description": "les champs supplementaires",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                },
+                {
+                    "name": "truegeometry",
+                    "description": "la géometrie réelle",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                }
+            ]
+        },
+        {
+            "id": "parcel",
+            "description": "parcelles cadastrales",
+            "metadataurl": "https://wxs.ign.fr/look4/user/discover/parcel",
+            "fields": [
+                {
+                    "name": "id",
+                    "description": "l'identifiant de la parcelle",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": false
+                },
+                {
+                    "name": "departmentcode",
+                    "description": "le code du département",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "municipalitycode",
+                    "description": "le code insee de la commune",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "city",
+                    "description": "le nom de la commune",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "oldmunicipalitycode",
+                    "description": "le code insee de la commune absorbée",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "districtcode",
+                    "description": "le code insee de l'arrondissement",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "section",
+                    "description": "le code de la section cadastrale",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "number",
+                    "description": "le numéro de la parcelle",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "sheet",
+                    "description": "le numero de la feuille cadastrale",
+                    "type": "string",
+                    "queryable": true,
+                    "filter": true
+                },
+                {
+                    "name": "truegeometry",
+                    "description": "la géométrie de la parcelle",
+                    "type": "string",
+                    "queryable": false,
+                    "filter": false
+                }
+            ]
+        }
+    ]
+}

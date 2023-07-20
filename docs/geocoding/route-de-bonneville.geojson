@@ -1,0 +1,1238 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74100 Annemasse",
+                "score": 0.9724727272727272,
+                "id": "74012_0190",
+                "name": "Route de bonneville",
+                "postcode": "74100",
+                "citycode": "74012",
+                "x": 949685.11,
+                "y": 6569941.62,
+                "city": "Annemasse",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.6972,
+                "_score": 0.9724727272727272,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.237885,
+                    46.18323
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74100 Vétraz-Monthoux",
+                "score": 0.9625427272727272,
+                "id": "74298_0060",
+                "name": "Route de bonneville",
+                "postcode": "74100",
+                "citycode": "74298",
+                "x": 950656.13,
+                "y": 6568886.53,
+                "city": "Vétraz-Monthoux",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.58797,
+                "_score": 0.9625427272727272,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.2499,
+                    46.173378
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74130 Ayse",
+                "score": 0.9584490909090909,
+                "id": "74024_0023",
+                "name": "Route de bonneville",
+                "postcode": "74130",
+                "citycode": "74024",
+                "x": 964969.87,
+                "y": 6559319.74,
+                "city": "Ayse",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.54294,
+                "_score": 0.9584490909090909,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.429874,
+                    46.081857
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 74800 Arenthon",
+                "score": 0.9574363636363635,
+                "id": "74018_0030",
+                "name": "Route de Bonneville",
+                "postcode": "74800",
+                "citycode": "74018",
+                "x": 958718.06,
+                "y": 6560049.91,
+                "city": "Arenthon",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.5318,
+                "_score": 0.9574363636363635,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.349447,
+                    46.090842
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74250 Peillonnex",
+                "score": 0.9571872727272726,
+                "id": "74209_0010",
+                "name": "Route de bonneville",
+                "postcode": "74250",
+                "citycode": "74209",
+                "x": 960964.51,
+                "y": 6564458.06,
+                "city": "Peillonnex",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.52906,
+                "_score": 0.9571872727272726,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.380937,
+                    46.129639
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 74800 Amancy",
+                "score": 0.9552736363636364,
+                "id": "74007_0008",
+                "name": "Route de Bonneville",
+                "postcode": "74800",
+                "citycode": "74007",
+                "x": 957687.1,
+                "y": 6557689.54,
+                "city": "Amancy",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.50801,
+                "_score": 0.9552736363636364,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.334826,
+                    46.069999
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74130 Contamine-sur-Arve",
+                "score": 0.9552290909090907,
+                "id": "74087_0036",
+                "name": "Route de bonneville",
+                "postcode": "74130",
+                "citycode": "74087",
+                "x": 958255.45,
+                "y": 6563247.99,
+                "city": "Contamine-sur-Arve",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.50752,
+                "_score": 0.9552290909090907,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.345218,
+                    46.119791
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74380 Nangy",
+                "score": 0.9544899999999998,
+                "id": "74197_0100",
+                "name": "Route de bonneville",
+                "postcode": "74380",
+                "citycode": "74197",
+                "x": 955252.76,
+                "y": 6566814.68,
+                "city": "Nangy",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.49939,
+                "_score": 0.9544899999999998,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.308304,
+                    46.153019
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74970 Marignier",
+                "score": 0.9527336363636362,
+                "id": "74164_0098",
+                "name": "Route de bonneville",
+                "postcode": "74970",
+                "citycode": "74164",
+                "x": 969292.41,
+                "y": 6559047.28,
+                "city": "Marignier",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.48007,
+                "_score": 0.9527336363636362,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.485599,
+                    46.077702
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74250 Marcellaz",
+                "score": 0.9522172727272726,
+                "id": "74162_0024",
+                "name": "Route de bonneville",
+                "postcode": "74250",
+                "citycode": "74162",
+                "x": 958912.84,
+                "y": 6565676.87,
+                "city": "Marcellaz",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.47439,
+                "_score": 0.9522172727272726,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.355059,
+                    46.141392
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 14130 Blangy-le-Château",
+                "score": 0.9511681818181816,
+                "id": "14077_0015",
+                "name": "Route de Bonneville",
+                "postcode": "14130",
+                "citycode": "14077",
+                "x": 502720.45,
+                "y": 6909274.07,
+                "city": "Blangy-le-Château",
+                "context": "14, Calvados, Normandie",
+                "type": "street",
+                "importance": 0.46285,
+                "_score": 0.9511681818181816,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.290176,
+                    49.252662
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 16170 Rouillac",
+                "score": 0.9503899999999998,
+                "id": "16286_0552",
+                "name": "Route de Bonneville",
+                "postcode": "16170",
+                "citycode": "16286",
+                "oldcitycode": "16156",
+                "x": 465876.06,
+                "y": 6529988.75,
+                "city": "Rouillac",
+                "oldcity": "Gourville",
+                "context": "16, Charente, Nouvelle-Aquitaine",
+                "type": "street",
+                "importance": 0.45429,
+                "_score": 0.9503899999999998,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.016511,
+                    45.829288
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 41220 La Ferté-Saint-Cyr",
+                "score": 0.9502027272727273,
+                "id": "41085_0020",
+                "name": "Route de Bonneville",
+                "postcode": "41220",
+                "citycode": "41085",
+                "x": 600338.52,
+                "y": 6728656.05,
+                "city": "La Ferté-Saint-Cyr",
+                "context": "41, Loir-et-Cher, Centre-Val de Loire",
+                "type": "street",
+                "importance": 0.45223,
+                "_score": 0.9502027272727273,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.672375,
+                    47.650749
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 74130 Mont-Saxonnex",
+                "score": 0.9494836363636363,
+                "id": "74189_0021",
+                "name": "Route de Bonneville",
+                "postcode": "74130",
+                "citycode": "74189",
+                "x": 968672.49,
+                "y": 6555974.97,
+                "city": "Mont-Saxonnex",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.44432,
+                "_score": 0.9494836363636363,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.475836,
+                    46.050309
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 14130 Saint-Gatien-des-Bois",
+                "score": 0.9456981818181817,
+                "id": "14578_mfajxw",
+                "name": "Route de Bonneville",
+                "postcode": "14130",
+                "citycode": "14578",
+                "x": 493740.79,
+                "y": 6920582.29,
+                "city": "Saint-Gatien-des-Bois",
+                "context": "14, Calvados, Normandie",
+                "type": "street",
+                "importance": 0.40268,
+                "_score": 0.9456981818181817,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.161354,
+                    49.351417
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 50530 Champeaux",
+                "score": 0.9447745454545454,
+                "id": "50117_0008",
+                "name": "Route de Bonneville",
+                "postcode": "50530",
+                "citycode": "50117",
+                "x": 368600.01,
+                "y": 6857885.51,
+                "city": "Champeaux",
+                "context": "50, Manche, Normandie",
+                "type": "street",
+                "importance": 0.39252,
+                "_score": 0.9447745454545454,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.508615,
+                    48.735918
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 24230 Bonneville-et-Saint-Avit-de-Fumadières",
+                "score": 0.9443381818181817,
+                "id": "24048_3awy8k",
+                "name": "Route de Bonneville",
+                "postcode": "24230",
+                "citycode": "24048",
+                "x": 469633.19,
+                "y": 6423990.35,
+                "city": "Bonneville-et-Saint-Avit-de-Fumadières",
+                "context": "24, Dordogne, Nouvelle-Aquitaine",
+                "type": "street",
+                "importance": 0.38772,
+                "_score": 0.9443381818181817,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.082292,
+                    44.876784
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de bonneville 74130 Faucigny",
+                "score": 0.9416754545454545,
+                "id": "74122_0010",
+                "name": "Route de bonneville",
+                "postcode": "74130",
+                "citycode": "74122",
+                "x": 959217.97,
+                "y": 6563150.37,
+                "city": "Faucigny",
+                "context": "74, Haute-Savoie, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.35843,
+                "_score": 0.9416754545454545,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.357617,
+                    46.118545
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 27210 Martainville",
+                "score": 0.9396972727272725,
+                "id": "27393_0020",
+                "name": "Route de Bonneville",
+                "postcode": "27210",
+                "citycode": "27393",
+                "x": 508558.08,
+                "y": 6913893.98,
+                "city": "Martainville",
+                "context": "27, Eure, Normandie",
+                "type": "street",
+                "importance": 0.33667,
+                "_score": 0.9396972727272725,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.368187,
+                    49.295944
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "label": "Route de Bonneville 24230 Vélines",
+                "score": 0.9388945454545453,
+                "id": "24568_0017",
+                "name": "Route de Bonneville",
+                "postcode": "24230",
+                "citycode": "24568",
+                "x": 470871.31,
+                "y": 6423189.25,
+                "city": "Vélines",
+                "context": "24, Dordogne, Nouvelle-Aquitaine",
+                "type": "street",
+                "importance": 0.32784,
+                "_score": 0.9388945454545453,
+                "_type": "ban"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.098332,
+                    44.869987
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "74130"
+                ],
+                "citycode": [
+                    "74042",
+                    "74"
+                ],
+                "city": [
+                    "Bonneville"
+                ],
+                "toponym": "Détail hydrographique",
+                "category": [
+                    "hydrographie",
+                    "détail hydrographique",
+                    "source"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHYDRO0000000340949058",
+                    "names": [
+                        "source bonneville"
+                    ]
+                },
+                "_score": 0.5322314049586776,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.428962521,
+                    46.063872747
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "74130"
+                ],
+                "citycode": [
+                    "74042",
+                    "74"
+                ],
+                "city": [
+                    "Bonneville"
+                ],
+                "toponym": "Détail hydrographique",
+                "category": [
+                    "hydrographie",
+                    "détail hydrographique",
+                    "source"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHYDRO0000000320262825",
+                    "names": [
+                        "source bonneville"
+                    ]
+                },
+                "_score": 0.5322314049586776,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.405436865,
+                    46.046306548
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "74130"
+                ],
+                "citycode": [
+                    "74042",
+                    "74"
+                ],
+                "city": [
+                    "Bonneville"
+                ],
+                "toponym": "Détail hydrographique",
+                "category": [
+                    "hydrographie",
+                    "détail hydrographique",
+                    "source"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHYDRO0000000340949068",
+                    "names": [
+                        "source bonneville"
+                    ]
+                },
+                "_score": 0.5322314049586776,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.431433445,
+                    46.048830299
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "74130"
+                ],
+                "citycode": [
+                    "74042",
+                    "74"
+                ],
+                "city": [
+                    "bonneville"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "administratif",
+                    "commune"
+                ],
+                "extrafields": {
+                    "population": "12511",
+                    "cleabs": "COMMUNE_0000000009750422",
+                    "status": "chef lieu d'arrondissement",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.5272727272727273,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.409019739,
+                    46.077790462
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "89500"
+                ],
+                "citycode": [
+                    "89464",
+                    "89"
+                ],
+                "city": [
+                    "Villeneuve-sur-Yonne"
+                ],
+                "toponym": "Tour Bonneville",
+                "category": [
+                    "zone d'activité ou d'intérêt",
+                    "construction"
+                ],
+                "extrafields": {
+                    "cleabs": "SURFACTI0000000224938383",
+                    "names": [
+                        "tour bonneville"
+                    ]
+                },
+                "_score": 0.5125541125541125,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.291200743,
+                    48.080726437
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "74130"
+                ],
+                "citycode": [
+                    "74042",
+                    "74"
+                ],
+                "city": [
+                    "Bonneville"
+                ],
+                "toponym": "Construction ponctuelle",
+                "category": [
+                    "construction",
+                    "construction ponctuelle",
+                    "croix"
+                ],
+                "extrafields": {
+                    "cleabs": "CONSPONC0000000229638180",
+                    "names": [
+                        "croix bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.393365573,
+                    46.062114612
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "53640"
+                ],
+                "citycode": [
+                    "53051",
+                    "53"
+                ],
+                "city": [
+                    "Champéon"
+                ],
+                "toponym": "la Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000026319501",
+                    "names": [
+                        "la bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.519564469,
+                    48.362865104
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "82500"
+                ],
+                "citycode": [
+                    "82180",
+                    "82"
+                ],
+                "city": [
+                    "Sérignac"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000025716161",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.056932185,
+                    43.922473914
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "44000"
+                ],
+                "citycode": [
+                    "44109",
+                    "44"
+                ],
+                "city": [
+                    "Nantes"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000028851863",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.534384458,
+                    47.242962226
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "91630"
+                ],
+                "citycode": [
+                    "91156",
+                    "91"
+                ],
+                "city": [
+                    "Cheptainville"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000003120290",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.284070482,
+                    48.557233104
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "41220"
+                ],
+                "citycode": [
+                    "41285",
+                    "41"
+                ],
+                "city": [
+                    "Villeny"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000016133930",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.712449266,
+                    47.623190351
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "23250"
+                ],
+                "citycode": [
+                    "23253",
+                    "23"
+                ],
+                "city": [
+                    "Thauron"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000110534276",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.79689788,
+                    46.021400066
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "74130"
+                ],
+                "citycode": [
+                    "74042",
+                    "74"
+                ],
+                "city": [
+                    "Bonneville"
+                ],
+                "toponym": "Construction ponctuelle",
+                "category": [
+                    "construction",
+                    "construction ponctuelle",
+                    "croix"
+                ],
+                "extrafields": {
+                    "cleabs": "CONSPONC0000000244127220",
+                    "names": [
+                        "croix bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.41759313,
+                    46.080134539
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "61240"
+                ],
+                "citycode": [
+                    "61272",
+                    "61"
+                ],
+                "city": [
+                    "Le Ménil-Vicomte"
+                ],
+                "toponym": "la Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000019088823",
+                    "names": [
+                        "la bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.280092625,
+                    48.745799967
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "78910"
+                ],
+                "citycode": [
+                    "78163",
+                    "78"
+                ],
+                "city": [
+                    "Civry-la-Forêt"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000004826976",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.597924634,
+                    48.850228264
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "73640"
+                ],
+                "citycode": [
+                    "73323",
+                    "73"
+                ],
+                "city": [
+                    "Villaroger"
+                ],
+                "toponym": "la Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000000012600426",
+                    "names": [
+                        "la bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.854561191,
+                    45.603159072
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "74130"
+                ],
+                "citycode": [
+                    "74042",
+                    "74"
+                ],
+                "city": [
+                    "Bonneville"
+                ],
+                "toponym": "Construction ponctuelle",
+                "category": [
+                    "construction",
+                    "construction ponctuelle",
+                    "croix"
+                ],
+                "extrafields": {
+                    "cleabs": "CONSPONC0000000229638181",
+                    "names": [
+                        "croix bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.393545934,
+                    46.062204753
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "97220"
+                ],
+                "citycode": [
+                    "97230",
+                    "972"
+                ],
+                "city": [
+                    "La Trinité"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "zone d'habitation",
+                    "lieu-dit habité"
+                ],
+                "extrafields": {
+                    "cleabs": "PAIHABIT0000001270010841",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -60.985272753,
+                    14.749590263
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "80670"
+                ],
+                "citycode": [
+                    "80113",
+                    "80"
+                ],
+                "city": [
+                    "bonneville"
+                ],
+                "toponym": "Bonneville",
+                "category": [
+                    "administratif",
+                    "commune"
+                ],
+                "extrafields": {
+                    "population": "337",
+                    "cleabs": "COMMUNE_0000000009728701",
+                    "status": "",
+                    "names": [
+                        "bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.24793544,
+                    50.083213589
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "postcode": [
+                    "74130"
+                ],
+                "citycode": [
+                    "74042",
+                    "74"
+                ],
+                "city": [
+                    "Bonneville"
+                ],
+                "toponym": "Construction ponctuelle",
+                "category": [
+                    "construction",
+                    "construction ponctuelle",
+                    "croix"
+                ],
+                "extrafields": {
+                    "cleabs": "CONSPONC0000000244127217",
+                    "names": [
+                        "croix bonneville"
+                    ]
+                },
+                "_score": 0.4909090909090909,
+                "_type": "poi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.428370546,
+                    46.063972674
+                ]
+            }
+        }
+    ]
+}
