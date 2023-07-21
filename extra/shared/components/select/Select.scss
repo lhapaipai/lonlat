@@ -15,8 +15,11 @@
 
 .ll-select-dialog {
     outline: none;
+    height: 100%;
+    pointer-events: none;
 
     .box {
+        pointer-events: all;
         border-radius: var(--border-radius-md);
         outline: 0;
         position: relative;

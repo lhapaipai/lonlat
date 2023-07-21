@@ -21,6 +21,7 @@ import { AutocompleteContext } from "./useAutocompleteContext.ts";
 import "./Autocomplete.scss";
 import "../button/Button.scss";
 import cn from "classnames";
+import { Button } from "../..";
 interface Props<O extends Option> {
   placement?: Placement;
   placeholder?: string;
@@ -42,6 +43,8 @@ interface Props<O extends Option> {
 
   AutocompleteOptionCustom?: typeof AutocompleteOption;
 }
+
+const TRANSITION_DURATION = 250;
 
 export default function Autocomplete<O extends Option = Option>({
   placeholder = "Search...",
@@ -73,7 +76,6 @@ export default function Autocomplete<O extends Option = Option>({
           Object.assign(elements.floating.style, {
             maxHeight: `${Math.min(availableHeight, 300)}px`,
             width: `${Math.max(130, rects.reference.width)}px`,
-            height: "100%",
           });
         },
         padding: 10,
@@ -100,6 +102,11 @@ export default function Autocomplete<O extends Option = Option>({
 
   function handleChangeSearchValue(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
+
+    if (value !== searchValue && selection !== null) {
+      onChangeSelection(null);
+    }
+
     onChangeSearchValue(value);
 
     if (value) {
@@ -120,6 +127,7 @@ export default function Autocomplete<O extends Option = Option>({
         onChangeSearchValue(newSelection.label);
       }
       setActiveIndex(null);
+
       setIsOpen(false);
     },
     // TODO with SimpleAutocomplete onChangeSelection and onChangeSearchValue
@@ -128,7 +136,7 @@ export default function Autocomplete<O extends Option = Option>({
   );
 
   const transitionStatus = useTransitionStatus(context, {
-    duration: 250,
+    duration: TRANSITION_DURATION,
   });
 
   const autocompleteContext = useMemo(
@@ -155,6 +163,19 @@ export default function Autocomplete<O extends Option = Option>({
           aria-autocomplete="list"
           {...getReferenceProps({
             onChange: handleChangeSearchValue,
+            onMouseDown() {
+              if (options.length === 0) {
+                return;
+              }
+              /**
+               * the only element available is already the selection,
+               * no need to display the dropdown.
+               */
+              if (options.length === 1 && options[0].value === selection?.value) {
+                return;
+              }
+              setIsOpen((isOpen) => !isOpen);
+            },
             onKeyDown(e: KeyboardEvent<HTMLInputElement>) {
               if (e.key === "Enter" && activeIndex != null) {
                 handleSelect(activeIndex);
@@ -162,8 +183,28 @@ export default function Autocomplete<O extends Option = Option>({
             },
           })}
         />
+        {(searchValue.trim() !== "" || selection !== null) && (
+          <Button
+            withRipple={false}
+            icon
+            shape="underline"
+            onClick={() => {
+              setIsOpen(false);
+              onChangeSelection(null);
+              setActiveIndex(null);
 
-        {/* {suffix && <div className="mr-2 flex-center adornment">{suffix}</div>} */}
+              /**
+               * if we don't put a delay all unfiltered options
+               * will reappear for the duration of fade out.
+               */
+              setTimeout(() => {
+                onChangeSearchValue("");
+              }, TRANSITION_DURATION);
+            }}
+          >
+            <i className="fe-cancel"></i>
+          </Button>
+        )}
       </div>
       <FloatingPortal>
         <AutocompleteContext.Provider value={autocompleteContext}>

@@ -122,7 +122,6 @@ export default function Select<O extends Option = Option>({
           Object.assign(elements.floating.style, {
             maxHeight: `${Math.min(availableHeight, 300)}px`,
             width: `${Math.max(130, rects.reference.width)}px`,
-            height: "100%",
           });
         },
         padding: 10,

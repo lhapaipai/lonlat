@@ -1,7 +1,8 @@
-import { SimpleAutocomplete, Autocomplete } from "@lonlat/shared/index";
+import { SimpleAutocomplete, Autocomplete, LazyAutocomplete } from "@lonlat/shared/index";
 import { Meta, StoryObj } from "@storybook/react";
 
 import type { Option } from "@lonlat/shared/components/autocomplete/interface.d.ts";
+import { useCallback } from "react";
 
 const meta = {
   title: "Components/Autocomplete",
@@ -41,6 +42,51 @@ export const Basic = () => {
   return (
     <>
       <SimpleAutocomplete options={options} />
+    </>
+  );
+};
+
+interface Town {
+  insee: number;
+  code_postal: number;
+  latitude: number;
+  longitude: number;
+  nom_commune: string;
+  code_departement: number;
+  nom_departement: string;
+  code_region: number;
+  nom_region: string;
+  context: string;
+}
+
+async function mockServerRequest() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, Math.random() * 1000);
+  });
+  const res = await fetch(`/town-74.json`);
+  const towns = (await res.json()) as Town[];
+  return towns;
+}
+
+export const Lazy = () => {
+  const handleChangeSearchValue = useCallback(async (searchValue: string) => {
+    if (searchValue.trim() === "") return [] as Option[];
+    const searchValueNormalized = searchValue.trim().toLowerCase();
+
+    const towns = await mockServerRequest();
+    return towns
+      .filter((town) => town.context.toLowerCase().startsWith(searchValueNormalized))
+      .map((town) => {
+        return {
+          label: town.context,
+          value: town.insee.toString(),
+        };
+      });
+  }, []);
+
+  return (
+    <>
+      <LazyAutocomplete onChangeSearchValue={handleChangeSearchValue} />
     </>
   );
 };
