@@ -1,0 +1,263 @@
+openapi: 3.0.1
+info:
+  title: Photon geocoder
+  description: photon is an open source geocoder built for OpenStreetMap data. It is based on elasticsearch - an efficient, powerful and highly scalable search platform.
+servers:
+  - url: https://photon.komoot.io
+paths:
+  /api/:
+    get:
+      summary: Default search
+      operationId: Search
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Free-form query string to search for
+          example: berlin
+          schema:
+            type: string
+        - name: lat
+          in: query
+          schema:
+            type: number
+        - name: lon
+          in: query
+          schema:
+            type: number
+        - name: zoom
+          description: optional parameter to influence the location bias. describes the radius around the center to focus on. This is a number that should correspond roughly to the map zoom parameter of a corresponding map.
+          in: query
+          schema:
+            type: number
+            default: 16
+        - name: location_bias_scale
+          description: optional parameter to influence the location bias. describes how much the prominence of a result should still be taken into account. Sensible values go from 0.0 (ignore prominence almost completely) to 1.0 (prominence has approximately the same influence).
+          in: query
+          schema:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+            default: 0.2
+        - name: limit
+          description: adapt number of results
+          in: query
+          schema:
+            type: number
+        - name: lang
+          in: query
+          description: adjust language
+          example: fr
+          schema:
+            type: string
+            enum:
+              - default
+              - en
+              - de
+              - fr
+        - name: bbox
+          in: query
+          description: Filter results by bounding box. Expected format is minLon,minLat,maxLon,maxLat.
+          example: 9.5,51.5,11.5,53.5
+          schema:
+            type: string
+        - name: osm_tag
+          description: >-
+            Filter results by tags and values
+            Note: the filter only works on principal OSM tags and not all OSM tag/value combinations can be searched. The actual list depends on the import style used for the Nominatim database (e.g. settings/import-full.style). All tag/value combinations with a property 'main' are included in the photon database. If one or many query parameters named osm_tag are present, photon will attempt to filter results by those tags. In general, here is the expected format (syntax) for the value of osm_tag request parameters.
+
+                Include places with tag: osm_tag=key:value
+                Exclude places with tag: osm_tag=!key:value
+                Include places with tag key: osm_tag=key
+                Include places with tag value: osm_tag=:value
+                Exclude places with tag key: osm_tag=!key
+                Exclude places with tag value: osm_tag=:!value
+
+            For example, to search for all places named berlin with tag of tourism=museum, one should construct url as follows:
+
+            /api?q=berlin&osm_tag=tourism:museum
+
+            Or, just by they key
+
+            /api?q=berlin&osm_tag=tourism
+
+          in: query
+          example: tourism:museum
+          schema:
+            type: string
+        - name: layer
+          in: query
+          description: >-
+            List of available layers:
+
+                house
+                street
+                locality
+                district
+                city
+                county
+                state
+                country
+
+            http://localhost:2322/api?q=berlin&layer=city&layer=locality
+          example: locality
+          schema:
+            type: string
+            enum:
+              - house
+              - street
+              - locality
+              - district
+              - city
+              - county
+              - state
+              - country
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  features:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SearchFeature'
+
+  /reverse:
+    get:
+      summary: Reverse search
+      operationId: Reverse
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: FeatureCollection
+                  licence:
+                    type: string
+                    example: >-
+                      Data © OpenStreetMap contributors, ODbL 1.0.
+                      https://osm.org/copyright
+
+components:
+  schemas:
+    SearchFeature:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Feature
+        properties:
+          $ref: '#/components/schemas/SearchProperties'
+        geometry:
+          oneOf:
+            - $ref: '#/components/schemas/Point'
+
+    SearchProperties:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Berlin
+        state:
+          type: string
+          example: Berlin
+        country:
+          type: string
+          example: Germany
+        countrycode:
+          type: string
+          example: DE
+        osm_key:
+          type: string
+          example: place
+        osm_value:
+          type: string
+          example: city
+        osm_type:
+          type: string
+          example: N
+          enum:
+            - N
+            - W
+            - R
+        osm_id:
+          type: number
+          example: 240109189
+
+        street:
+          type: string
+          example: Olympischer Platz
+        housenumber:
+          type: string
+          example: "3"
+        postcode:
+          type: string
+          example: "14053"
+        extent:
+          $ref: '#/components/schemas/BBox'
+
+
+
+    Point:
+      description: GeoJSon geometry
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.2'
+      type: object
+      required:
+        - type
+        - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+            - Point
+        coordinates:
+          $ref: '#/components/schemas/Position'
+
+    Position:
+      description: >-
+        GeoJSon fundamental geometry construct. A position is an array of
+        numbers. There MUST be two or more elements. The first two elements are
+        longitude and latitude, or easting and northing, precisely in that order
+        and using decimal numbers. Altitude or elevation MAY be included as an
+        optional third element. Implementations SHOULD NOT extend positions
+        beyond three elements because the semantics of extra elements are
+        unspecified and ambiguous. Historically, some implementations have used
+        a fourth element to carry a linear referencing measure (sometimes
+        denoted as "M") or a numerical timestamp, but in most situations a
+        parser will not be able to properly interpret these values. The
+        interpretation and meaning of additional elements is beyond the scope of
+        this specification, and additional elements MAY be ignored by parsers.
+      externalDocs:
+        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.1'
+      type: array
+      minItems: 2
+      maxItems: 3
+      items:
+        type: number
+
+    BBox:
+      type: array
+      minItems: 4
+      maxItems: 4
+      items:
+        type: number

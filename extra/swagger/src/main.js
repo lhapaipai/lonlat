@@ -1,6 +1,7 @@
 import SwaggerUI from "swagger-ui";
 import "swagger-ui/dist/swagger-ui.css";
 import SwaggerUIStandalonePreset from "swagger-ui/dist/swagger-ui-standalone-preset";
+import "./style.css";
 
 SwaggerUI({
   urls: [
@@ -16,6 +17,10 @@ SwaggerUI({
     {
       name: "Nominatim",
       url: "/nominatim.yaml",
+    },
+    {
+      name: "Photon",
+      url: "/photon.yaml",
     },
   ],
   dom_id: "#root",

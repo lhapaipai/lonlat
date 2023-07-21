@@ -82,7 +82,11 @@
         opacity: 0;
         transform: scale(.9);
 
-        .ll-select & {
+        &.ll-select-dialog {
+            transform: none;
+        }
+
+        &.ll-autocomplete-dialog {
             transform: none;
         }
     }

@@ -4,6 +4,7 @@ import "./Select.scss";
 import {
   FloatingFocusManager,
   FloatingList,
+  FloatingPortal,
   Placement,
   autoUpdate,
   flip,
@@ -61,8 +62,8 @@ function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
 
 function cbForMultiple<O extends Option>(
   multiple: boolean,
-  cb: SimpleProps<O>["onChangeValue"] | MultipleProps<O>["onChangeValue"],
-): cb is MultipleProps<O>["onChangeValue"] {
+  _cb: SimpleProps<O>["onChangeValue"] | MultipleProps<O>["onChangeValue"],
+): _cb is MultipleProps<O>["onChangeValue"] {
   return multiple;
 }
 
@@ -96,10 +97,6 @@ export default function Select<O extends Option = Option>({
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [searchHasFocus, setSearchHasFocus] = useState(false);
 
-  if (multiple) {
-    console.log(valueOrValues);
-  }
-
   const values = (
     multiple ? valueOrValues : valueOrValues === null ? [] : [valueOrValues]
   ) as string[];
@@ -121,9 +118,11 @@ export default function Select<O extends Option = Option>({
       flip({ padding: 10 }),
       size({
         apply({ rects, elements, availableHeight }) {
+          console.log(rects.floating.height);
           Object.assign(elements.floating.style, {
             maxHeight: `${Math.min(availableHeight, 300)}px`,
             width: `${Math.max(130, rects.reference.width)}px`,
+            height: "100%",
           });
         },
         padding: 10,
@@ -210,7 +209,7 @@ export default function Select<O extends Option = Option>({
     }),
     [activeIndex, values, getItemProps, handleSelect],
   );
-  console.log("refresh");
+
   return (
     <div className="ll-select">
       <div
@@ -258,38 +257,40 @@ export default function Select<O extends Option = Option>({
           </div>
         )}
       </div>
-      <SelectContext.Provider value={selectContext}>
-        {transitionStatus.isMounted && (
-          <FloatingFocusManager context={context} modal={false}>
-            <div className="ll-dialog" data-status={transitionStatus.status}>
+      <FloatingPortal>
+        <SelectContext.Provider value={selectContext}>
+          {transitionStatus.isMounted && (
+            <FloatingFocusManager context={context} modal={false}>
               <div
+                className={cn("ll-dialog", "ll-select-dialog")}
+                data-status={transitionStatus.status}
                 ref={refs.setFloating}
                 style={floatingStyles}
-                className="box"
-                {...getFloatingProps()}
               >
-                {searchable && (
-                  <div className="search-container">
-                    <Input
-                      placeholder="Search"
-                      tabIndex={selectedIndexes.length === 0 ? 0 : -1}
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                      onFocus={() => setSearchHasFocus(true)}
-                      onBlur={() => setSearchHasFocus(false)}
-                    ></Input>
-                  </div>
-                )}
-                <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-                  {filteredOptions.map((option) => (
-                    <SelectOptionComponent option={option} key={option.value} />
-                  ))}
-                </FloatingList>
+                <div className="box" {...getFloatingProps()}>
+                  {searchable && (
+                    <div className="search-container">
+                      <Input
+                        placeholder="Search"
+                        tabIndex={selectedIndexes.length === 0 ? 0 : -1}
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        onFocus={() => setSearchHasFocus(true)}
+                        onBlur={() => setSearchHasFocus(false)}
+                      ></Input>
+                    </div>
+                  )}
+                  <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+                    {filteredOptions.map((option) => (
+                      <SelectOptionComponent option={option} key={option.value} />
+                    ))}
+                  </FloatingList>
+                </div>
               </div>
-            </div>
-          </FloatingFocusManager>
-        )}
-      </SelectContext.Provider>
+            </FloatingFocusManager>
+          )}
+        </SelectContext.Provider>
+      </FloatingPortal>
     </div>
   );
 }

@@ -14,9 +14,13 @@ export default function RMap({ children, onReady = () => {}, onDestroy = () => {
   const [mapAvailable, setMapAvailable] = useState(false);
 
   useEffect(() => {
+    if (!mapRef.current) {
+      throw new Error("mapRef is not assigned");
+    }
+
     if (mapInstance.current === null) {
       mapInstance.current = new maplibre.Map({
-        container: mapRef.current!,
+        container: mapRef.current,
         style: "https://demotiles.maplibre.org/style.json", // style URL
         center: [5, 45],
         zoom: 4,

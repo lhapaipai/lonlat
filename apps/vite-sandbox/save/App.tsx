@@ -2,7 +2,6 @@ import { ChangeEvent, ComponentPropsWithRef, forwardRef, useId, useRef, useState
 import "./App.scss";
 import {
   FloatingFocusManager,
-  FloatingOverlay,
   FloatingPortal,
   autoUpdate,
   flip,
@@ -55,9 +54,7 @@ function AutoComplete() {
     middleware: [
       flip({ padding: 10 }),
       size({
-        apply(state) {
-          console.log("state", state);
-          const { rects, availableHeight, elements } = state;
+        apply({ rects, availableHeight, elements }) {
           Object.assign(elements.floating.style, {
             width: `${rects.reference.width}px`,
             maxHeight: `${availableHeight}px`,
@@ -69,10 +66,7 @@ function AutoComplete() {
   });
 
   const role = useRole(context, { role: "listbox" });
-  const dismiss = useDismiss(context, {
-    // enabled: false,
-    outsidePress: false,
-  });
+  const dismiss = useDismiss(context);
   const listNav = useListNavigation(context, {
     listRef,
     activeIndex,
@@ -121,40 +115,38 @@ function AutoComplete() {
       />
       <FloatingPortal>
         {open && (
-          <FloatingOverlay style={{ backgroundColor: "rgba(0, 0, 0, .5)" }}>
-            <FloatingFocusManager context={context} initialFocus={-1}>
-              <div
-                {...getFloatingProps({
-                  ref: refs.setFloating,
-                  style: {
-                    ...floatingStyles,
-                    background: "#eee",
-                    color: "black",
-                    overflowY: "auto",
-                  },
-                })}
-              >
-                {items.map((item, index) => (
-                  <Item
-                    {...getItemProps({
-                      key: item,
-                      ref(node) {
-                        listRef.current[index] = node;
-                      },
-                      onClick() {
-                        setInputValue(item);
-                        setOpen(false);
-                        refs.domReference.current?.focus();
-                      },
-                    })}
-                    active={activeIndex === index}
-                  >
-                    {item}
-                  </Item>
-                ))}
-              </div>
-            </FloatingFocusManager>
-          </FloatingOverlay>
+          <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss>
+            <div
+              {...getFloatingProps({
+                ref: refs.setFloating,
+                style: {
+                  ...floatingStyles,
+                  background: "#eee",
+                  color: "black",
+                  overflowY: "auto",
+                },
+              })}
+            >
+              {items.map((item, index) => (
+                <Item
+                  {...getItemProps({
+                    key: item,
+                    ref(node) {
+                      listRef.current[index] = node;
+                    },
+                    onClick() {
+                      setInputValue(item);
+                      setOpen(false);
+                      refs.domReference.current?.focus();
+                    },
+                  })}
+                  active={activeIndex === index}
+                >
+                  {item}
+                </Item>
+              ))}
+            </div>
+          </FloatingFocusManager>
         )}
       </FloatingPortal>
     </>

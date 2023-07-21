@@ -29,6 +29,7 @@ export const Context = () => (
   <div className="flex gap-2 flex-column">
     <Input />
     <Input placeholder="Your first name" />
+    <Input prefix={<i className="fe-search"></i>} />
     <Input prefix={<span>prefix</span>} />
     <Input suffix={<span>suffix</span>} />
     <div className="flex gap-2 ">

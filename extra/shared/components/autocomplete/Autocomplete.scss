@@ -1,20 +1,4 @@
-.ll-select {
-    .selection {
-        width: fit-content;
-        cursor: default;
-        user-select: none;
-        display: flex;
-        align-items: center;
-
-        .arrow {
-            display: flex;
-            align-items: center;
-        }
-    }
-}
-
-.ll-select-dialog {
-    outline: none;
+.ll-autocomplete-dialog {
 
     .box {
         border-radius: var(--border-radius-md);
@@ -24,10 +8,6 @@
         overflow: auto;
         display: flex;
         flex-direction: column;
-    }
-
-    .search-container {
-        padding: var(--space-4);
     }
 
     .option {
