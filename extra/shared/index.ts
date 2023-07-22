@@ -15,3 +15,5 @@ export * from "./components/modal";
 export * from "./components/select";
 // export * from "./components/dropdown";
 export * from "./components/autocomplete";
+
+export * from "./lib/fetch";

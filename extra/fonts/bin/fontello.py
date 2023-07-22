@@ -89,9 +89,7 @@ def save_font():
 
     # extra actions
     project_dir = fonts_dir.parent.parent
-    storybook_public_dir = project_dir / 'apps/storybook/public'
-    shutil.copyfile(tmp_fonts_dir / "config.json", storybook_public_dir / "config.json")
-
+    shutil.copyfile(tmp_fonts_dir / "config.json", project_dir / "apps/storybook/stories/base/icons.json")
     # cleanup
     shutil.rmtree(tmp_dir)
 

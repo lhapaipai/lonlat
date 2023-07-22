@@ -211,7 +211,7 @@ export default function Autocomplete<O extends Option = Option>({
           {transitionStatus.isMounted && (
             <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss>
               <div
-                className={cn("ll-dialog", "ll-autocomplete-dialog")}
+                className={cn("ll-dialog", "ll-portail-dialog", "ll-autocomplete-dialog")}
                 data-status={transitionStatus.status}
                 ref={refs.setFloating}
                 style={floatingStyles}

@@ -261,7 +261,7 @@ export default function Select<O extends Option = Option>({
           {transitionStatus.isMounted && (
             <FloatingFocusManager context={context} modal={false}>
               <div
-                className={cn("ll-dialog", "ll-select-dialog")}
+                className={cn("ll-dialog", "ll-portail-dialog", "ll-select-dialog")}
                 data-status={transitionStatus.status}
                 ref={refs.setFloating}
                 style={floatingStyles}

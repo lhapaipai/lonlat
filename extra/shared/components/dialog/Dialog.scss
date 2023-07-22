@@ -152,4 +152,44 @@
             transform-origin: center left;
         }
     }
+
+
+
+
+    .option {
+        padding: .5rem .5rem;
+        text-align: left;
+        outline: 0;
+        transition: all .3s ease;
+
+        &:hover {
+            background-color: var(--background-light);
+        }
+
+        &.active {
+            background-color: var(--background-weak);
+        }
+
+        &.selected {
+            background-color: var(--background-strong);
+            font-weight: bold;
+        }
+    }
+}
+
+.ll-portail-dialog {
+    outline: none;
+    height: 100%;
+    pointer-events: none;
+
+    .box {
+        pointer-events: all;
+        border-radius: var(--border-radius-md);
+        outline: 0;
+        position: relative;
+        max-height: 100%;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+    }
 }

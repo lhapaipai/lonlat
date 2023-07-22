@@ -90,3 +90,71 @@ export const Lazy = () => {
     </>
   );
 };
+
+export const Search = () => {
+  return (
+    <div className="flex flex-column gap-2">
+      <div className="ll-dialog ll-autocomplete-dialog">
+        <div className="box">
+          <div className="option">Default state 1</div>
+          <div className="option active">Active state 2 (keyboard navigation)</div>
+          <div className="option">Default state 3</div>
+          <div className="option selected">Selected state 4</div>
+          <div className="option">Default state 5</div>
+          <div className="option">Default state 6</div>
+        </div>
+      </div>
+      <div className="ll-dialog ll-autocomplete-dialog">
+        <div className="box">
+          <div className="option search">
+            <div className="icon flex-center">
+              <i className="fe-town"></i>
+            </div>
+            <div className="content">
+              <div>
+                <em>Bonnevil</em>le
+              </div>
+              <div className="hint">Haute-Savoie, Auvergne Rhône-Alpes</div>
+            </div>
+          </div>
+          <div className="option search">
+            <div className="icon flex-center">
+              <i className="fe-street"></i>
+            </div>
+            <div className="content">
+              <div>Annemasse</div>
+              <div className="hint">
+                route de <em>Bonnevil</em>le, Haute-Savoie, Auvergne Rhône-Alpes
+              </div>
+            </div>
+          </div>
+          <div className="option search">
+            <div className="icon flex-center">
+              <i className="fe-street"></i>
+            </div>
+            <div className="content">
+              <div>Chamblac</div>
+              <div className="hint">
+                route de <em>Bonnevil</em>le, Eure, Normandie
+              </div>
+            </div>
+          </div>
+          <div className="option search">
+            <div className="icon flex-center">
+              <i className="fe-municipality"></i>
+            </div>
+            <div className="content">
+              <div>
+                Cheptainville{" "}
+                <span className="color-hint">
+                  lieux-dit : <em>Bonnevil</em>le
+                </span>
+              </div>
+              <div className="hint">Essonne, Île-de-France</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
