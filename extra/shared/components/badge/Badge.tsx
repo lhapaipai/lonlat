@@ -9,12 +9,33 @@ interface Props {
   tooltip?: string;
   url?: string;
   type?: ColorType;
+  onClick?: () => void;
+  onRemove?: () => void;
 }
 
-export default function Badge({ children, className, tooltip, url, type = "primary" }: Props) {
+export default function Badge({
+  children,
+  className,
+  onRemove,
+  onClick,
+  tooltip,
+  url,
+  type = "primary",
+}: Props) {
   const badge = (
     <span className={cn("ll-badge", "text-xs", `shape-solid-${type}`, `type-${type}`, className)}>
-      {children}
+      {onClick ? (
+        <button className="inner" onClick={onClick}>
+          {children}
+        </button>
+      ) : (
+        <span className="inner">{children}</span>
+      )}
+      {onRemove && (
+        <button className="remove" onClick={onRemove}>
+          <i className="fe-cancel"></i>
+        </button>
+      )}
     </span>
   );
   const wrappedBadge = url ? (

@@ -62,7 +62,7 @@ export const Basic = () => {
       </p>
 
       <div className="storybook-grid-cols">
-        <SimpleTooltip open={true} placement="right-start" content="infos">
+        <SimpleTooltip type="primary" open={true} placement="right-start" content="infos">
           <Box />
         </SimpleTooltip>
         <SimpleTooltip open={true} placement="right" content="infos">
@@ -89,7 +89,7 @@ export const Basic = () => {
         <SimpleTooltip type="success" open={true} placement="top-end" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip open={true} placement="bottom-start" content="infos">
+        <SimpleTooltip type="danger" open={true} placement="bottom-start" content="infos">
           <Box />
         </SimpleTooltip>
         <SimpleTooltip open={true} placement="bottom" content="infos">

@@ -31,7 +31,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog bottom type-default"
+          className="ll-dialog top type-primary"
           style={{ width: 300 }}
           data-status="open"
           role="dialog"
@@ -57,7 +57,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog bottom type-default"
+          className="ll-dialog top type-primary"
           style={{ width: 300 }}
           data-status="open"
           role="dialog"
