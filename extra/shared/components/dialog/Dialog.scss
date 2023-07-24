@@ -170,10 +170,17 @@
             background-color: var(--background-weak);
         }
 
-        &.selected {
+        &.selected,
+        &:focus {
             background-color: var(--background-strong);
-            font-weight: bold;
+            color: var(--text-strong);
         }
+
+        &[disabled] {
+            color: var(--text-disabled);
+            pointer-events: none;
+        }
+
     }
 }
 

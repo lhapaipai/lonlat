@@ -1,0 +1,29 @@
+.ll-dropdown-menu-trigger {
+
+    &[data-open],
+    &:hover {
+        background: pink;
+    }
+}
+
+.ll-dropdown-menu {
+    outline: none;
+
+    .box {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .option {
+        display: flex;
+    }
+
+
+    .option[data-nested][data-open]:not([data-focus-inside]) {
+        background-color: var(--background-weak);
+    }
+
+    .option[data-focus-inside][data-open] {
+        background: var(--background-light);
+    }
+}
