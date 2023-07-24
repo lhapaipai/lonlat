@@ -1,0 +1,15 @@
+.ll-dropdown-menu {
+    outline: none;
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        padding: .5rem;
+    }
+
+    .option {
+        display: flex;
+        border-radius: var(--border-radius-sm);
+    }
+
+}

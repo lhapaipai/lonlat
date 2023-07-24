@@ -194,7 +194,7 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
                 <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
                   <div
                     ref={refs.setFloating}
-                    className={cn("ll-dialog", "ll-dropdown-menu")}
+                    className={cn("ll-dialog", "ll-dropdown-menu-nested")}
                     style={floatingStyles}
                   >
                     <div className="box" {...getFloatingProps()}>
