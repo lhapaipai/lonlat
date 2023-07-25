@@ -1,5 +1,5 @@
 html {
-    font-size: pixel-to-rem($root-default-font-size);
+    font-size: #{$root-default-font-size}px;
 }
 
 body {
@@ -62,4 +62,9 @@ a.ghost {
 mark {
     background-color: var(--color-primary-200);
     color: var(--text-strong);
+}
+
+.text-hint {
+    color: var(--text-hint);
+    font-size: .9rem;
 }

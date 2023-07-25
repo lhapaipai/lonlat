@@ -6,10 +6,20 @@
     display: flex;
     outline: none;
 
+
     &:hover {
         border-color: var(--color-weak-400);
         box-shadow: var(--shadow-light-sm);
     }
+
+    &.warning {
+        border-color: var(--color-warning-600);
+    }
+
+    &.error {
+        border-color: var(--color-danger-600);
+    }
+
 
     &:focus-within {
         box-shadow: var(--ring-shadow-light);

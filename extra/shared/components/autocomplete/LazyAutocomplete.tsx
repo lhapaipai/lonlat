@@ -31,7 +31,7 @@ export default function LazyAutocomplete({ onChangeSearchValue, debounce = 200, 
         }
       })
       .catch((err) => {
-        if (err instanceof FetchError) {
+        if (err instanceof FetchError || err instanceof TypeError) {
           notificationManager.addNotification(err.message);
         } else {
           throw err;

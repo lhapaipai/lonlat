@@ -8,7 +8,7 @@ interface Props extends ComponentPropsWithRef<"input"> {
 }
 
 const Checkbox = forwardRef<HTMLInputElement, Props>(
-  ({ disabled = false, checked, children, ...rest }, ref) => {
+  ({ disabled = false, checked, className, children, ...rest }, ref) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     return (
@@ -17,7 +17,7 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
           ref={combinedRef}
           disabled={disabled}
           type="checkbox"
-          className={cn("ll-toggle")}
+          className={cn("ll-toggle", className)}
           checked={checked}
           {...rest}
         />

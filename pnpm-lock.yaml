@@ -283,6 +283,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-polymorphic-types:
+        specifier: ^2.0.0
+        version: 2.0.0(@types/react@18.2.14)
       sass:
         specifier: ^1.63.6
         version: 1.63.6
@@ -9242,6 +9245,14 @@ packages:
 
   /react-is@18.1.0:
     resolution: {integrity: sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==}
+
+  /react-polymorphic-types@2.0.0(@types/react@18.2.14):
+    resolution: {integrity: sha512-Xfz5qfEzLAvB2ijL9hZfHRa9bsQG6te262KHjnbezZ2XyubnSDzh3TV6OgvBsQsz7FCRHjbDbqA5UTkNEziTlw==}
+    peerDependencies:
+      '@types/react': '>=16.8.6'
+    dependencies:
+      '@types/react': 18.2.14
+    dev: false
 
   /react-redux@8.1.1(@types/react@18.2.14)(react-dom@17.0.2)(react@17.0.2)(redux@4.2.1):
     resolution: {integrity: sha512-5W0QaKtEhj+3bC0Nj0NkqkhIv8gLADH/2kYFMTHxCVqQILiWzLv6MaLuV5wJU3BQEdHKzTfcvPN0WMS6SC1oyA==}

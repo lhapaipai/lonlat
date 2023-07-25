@@ -8,7 +8,7 @@ import {
   prepareTownsResult,
   NotificationsProvider,
 } from "@lonlat/shared/index";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta } from "@storybook/react";
 
 import type { Option } from "@lonlat/shared/components/autocomplete/interface.d.ts";
 import { useCallback } from "react";

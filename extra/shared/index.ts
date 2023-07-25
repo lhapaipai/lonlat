@@ -8,6 +8,7 @@ export { default as Loader } from "./components/loader/Loader";
 export { default as Portal } from "./components/portal/Portal";
 export { default as Badge } from "./components/badge/Badge";
 export { default as Highlight } from "./components/highlight/Highlight";
+export { default as InputField } from "./components/input-field/InputField";
 
 export { default as Href } from "./components/href/Href";
 export * from "./components/input";

@@ -7,6 +7,6 @@
 
 - [ ] fix select component multiple searchable when search string
 
-- [ ] composant InputField
+- [X] composant InputField
 - [X] composant Checkbox/Radio/Switch
 - [ ] storybook calibrer fuse.js

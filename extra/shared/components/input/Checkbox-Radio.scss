@@ -50,6 +50,14 @@
         background-color: currentColor;
     }
 
+    &.warning {
+        border-color: var(--color-warning-600);
+    }
+
+    &.error {
+        border-color: var(--color-danger-600);
+    }
+
     &:focus {
         box-shadow: var(--ring-shadow-light);
         border-color: var(--color-primary-700);

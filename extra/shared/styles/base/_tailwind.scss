@@ -13,6 +13,15 @@ $color-names: "default", "weak", "hint", "disabled";
     }
 }
 
+$color-types: "primary", "success", "info", "warning", "danger";
+
+@each $color-type in $color-types {
+    .color-#{$color-type} {
+        color: var(--color-#{$color-type}-600);
+    }
+
+}
+
 $radius: "sm", "md", "lg", "xl";
 
 @each $r in $radius {
@@ -87,6 +96,15 @@ $sizes: 1, 2, 3, 4, 8;
 .text-no-decoration {
     text-decoration: none;
 }
+
+.text-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.text-bold {
+    font-weight: var(--font-weight-bold);
+}
+
 
 .hidden {
     visibility: hidden;
