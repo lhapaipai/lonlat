@@ -8,4 +8,5 @@
 - [ ] fix select component multiple searchable when search string
 
 - [ ] composant InputField
-- [ ] composant Checkbox/Radio/Switch
+- [X] composant Checkbox/Radio/Switch
+- [ ] storybook calibrer fuse.js

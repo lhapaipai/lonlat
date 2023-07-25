@@ -12,6 +12,7 @@
     }
 
     &:focus-within {
+        box-shadow: var(--ring-shadow-light);
         border-color: var(--color-primary-600);
     }
 
