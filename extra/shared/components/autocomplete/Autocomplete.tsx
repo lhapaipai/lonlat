@@ -219,7 +219,11 @@ export default function Autocomplete<O extends Option = Option>({
                 <div className="box" {...getFloatingProps()}>
                   <FloatingList elementsRef={listRef}>
                     {options.map((option) => (
-                      <OptionComponent option={option} key={option.value} />
+                      <OptionComponent
+                        option={option}
+                        searchValue={searchValue}
+                        key={option.value}
+                      />
                     ))}
                   </FloatingList>
                 </div>

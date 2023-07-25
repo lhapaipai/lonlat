@@ -28,6 +28,7 @@
         "@floating-ui/react": "^0.24.7",
         "@lonlat/fonts": "link:../fonts/dist",
         "classnames": "^2.3.2",
+        "fuse.js": "^6.6.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "sass": "^1.63.6",

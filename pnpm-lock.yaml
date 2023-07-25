@@ -86,6 +86,9 @@ importers:
       '@lonlat/shared':
         specifier: link:../../extra/shared
         version: link:../../extra/shared
+      fuse.js:
+        specifier: ^6.6.2
+        version: 6.6.2
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -159,6 +162,9 @@ importers:
       '@lonlat/shared':
         specifier: link:../../extra/shared
         version: link:../../extra/shared
+      fuse.js:
+        specifier: ^6.6.2
+        version: 6.6.2
       maplibre-gl:
         specifier: ^3.2.0
         version: 3.2.0
@@ -171,6 +177,9 @@ importers:
       sass:
         specifier: ^1.63.6
         version: 1.63.6
+      usehooks-ts:
+        specifier: ^2.9.1
+        version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@types/react':
         specifier: ^18.2.14
@@ -265,6 +274,9 @@ importers:
       classnames:
         specifier: ^2.3.2
         version: 2.3.2
+      fuse.js:
+        specifier: ^6.6.2
+        version: 6.6.2
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -6400,6 +6412,11 @@ packages:
 
   /functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+
+  /fuse.js@6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}

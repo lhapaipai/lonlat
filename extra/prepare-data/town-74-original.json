@@ -9,9 +9,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Abondance, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1297,
-        "icon": "fe-municipality"
+        "context": "Abondance, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74002,
@@ -23,9 +21,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Alby-sur-Chéran, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1631,
-        "icon": "fe-municipality"
+        "context": "Alby-sur-Chéran, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74003,
@@ -37,9 +33,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Alex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 791,
-        "icon": "fe-municipality"
+        "context": "Alex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74004,
@@ -51,9 +45,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Allèves, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 264,
-        "icon": "fe-municipality"
+        "context": "Allèves, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74005,
@@ -65,9 +57,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Allinges, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3022,
-        "icon": "fe-municipality"
+        "context": "Allinges, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74006,
@@ -79,9 +69,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Allonzier-la-Caille, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1080,
-        "icon": "fe-municipality"
+        "context": "Allonzier-la-Caille, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74007,
@@ -93,9 +81,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Amancy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1757,
-        "icon": "fe-municipality"
+        "context": "Amancy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74008,
@@ -107,9 +93,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Ambilly, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5811,
-        "icon": "fe-municipality"
+        "context": "Ambilly, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74009,
@@ -121,9 +105,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Andilly, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 594,
-        "icon": "fe-municipality"
+        "context": "Andilly, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74010,
@@ -135,9 +117,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Annecy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 50324,
-        "icon": "fe-town"
+        "context": "Annecy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74011,
@@ -149,9 +129,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Annecy-le-Vieux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 18892,
-        "icon": "fe-town"
+        "context": "Annecy-le-Vieux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74012,
@@ -163,9 +141,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Annemasse, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 27238,
-        "icon": "fe-town"
+        "context": "Annemasse, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74013,
@@ -177,9 +153,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Anthy-sur-Léman, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1765,
-        "icon": "fe-municipality"
+        "context": "Anthy-sur-Léman, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74014,
@@ -191,9 +165,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Arâches-la-Frasse, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1695,
-        "icon": "fe-municipality"
+        "context": "Arâches-la-Frasse, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74015,
@@ -205,9 +177,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Arbusigny, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 689,
-        "icon": "fe-municipality"
+        "context": "Arbusigny, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74016,
@@ -219,9 +189,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Archamps, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1256,
-        "icon": "fe-municipality"
+        "context": "Archamps, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74018,
@@ -233,9 +201,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Arenthon, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1142,
-        "icon": "fe-municipality"
+        "context": "Arenthon, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74019,
@@ -247,9 +213,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Argonay, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1887,
-        "icon": "fe-municipality"
+        "context": "Argonay, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74020,
@@ -261,9 +225,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Armoy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 939,
-        "icon": "fe-municipality"
+        "context": "Armoy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74021,
@@ -275,9 +237,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Arthaz-Pont-Notre-Dame, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1167,
-        "icon": "fe-municipality"
+        "context": "Arthaz-Pont-Notre-Dame, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74022,
@@ -289,9 +249,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Aviernoz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 615,
-        "icon": "fe-municipality"
+        "context": "Aviernoz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74024,
@@ -303,9 +261,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Ayse, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1815,
-        "icon": "fe-municipality"
+        "context": "Ayse, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74025,
@@ -317,9 +273,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Ballaison, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1097,
-        "icon": "fe-municipality"
+        "context": "Ballaison, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74026,
@@ -331,9 +285,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Balme-de-Sillingy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3726,
-        "icon": "fe-municipality"
+        "context": "Balme-de-Sillingy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74027,
@@ -345,9 +297,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Balme-de-Thuy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 328,
-        "icon": "fe-municipality"
+        "context": "Balme-de-Thuy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74029,
@@ -359,9 +309,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bassy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 328,
-        "icon": "fe-municipality"
+        "context": "Bassy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74030,
@@ -373,9 +321,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Baume, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 226,
-        "icon": "fe-municipality"
+        "context": "Baume, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74031,
@@ -387,9 +333,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Beaumont, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1294,
-        "icon": "fe-municipality"
+        "context": "Beaumont, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74032,
@@ -401,9 +345,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bellevaux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1157,
-        "icon": "fe-municipality"
+        "context": "Bellevaux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74033,
@@ -415,9 +357,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bernex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 853,
-        "icon": "fe-municipality"
+        "context": "Bernex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74034,
@@ -429,9 +369,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Biot, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 340,
-        "icon": "fe-municipality"
+        "context": "Biot, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74035,
@@ -443,9 +381,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bloye, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 428,
-        "icon": "fe-municipality"
+        "context": "Bloye, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74036,
@@ -457,9 +393,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bluffy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 248,
-        "icon": "fe-municipality"
+        "context": "Bluffy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74037,
@@ -471,9 +405,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Boëge, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1412,
-        "icon": "fe-municipality"
+        "context": "Boëge, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74038,
@@ -485,9 +417,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bogève, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 831,
-        "icon": "fe-municipality"
+        "context": "Bogève, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74040,
@@ -499,9 +429,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bonne, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2099,
-        "icon": "fe-municipality"
+        "context": "Bonne, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74041,
@@ -513,9 +441,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bonnevaux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 239,
-        "icon": "fe-municipality"
+        "context": "Bonnevaux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74042,
@@ -527,9 +453,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 10457,
-        "icon": "fe-town"
+        "context": "Bonneville, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74043,
@@ -541,9 +465,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bons-en-Chablais, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3980,
-        "icon": "fe-municipality"
+        "context": "Bons-en-Chablais, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74044,
@@ -555,9 +477,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bossey, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 546,
-        "icon": "fe-municipality"
+        "context": "Bossey, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74045,
@@ -569,9 +489,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Bouchet-Mont-Charvin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 174,
-        "icon": "fe-municipality"
+        "context": "Bouchet-Mont-Charvin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74046,
@@ -583,9 +501,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Boussy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 344,
-        "icon": "fe-municipality"
+        "context": "Boussy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74048,
@@ -597,9 +513,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Brenthonne, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 670,
-        "icon": "fe-municipality"
+        "context": "Brenthonne, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74049,
@@ -611,9 +525,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Brizon, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 383,
-        "icon": "fe-municipality"
+        "context": "Brizon, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74050,
@@ -625,9 +537,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Burdignin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 569,
-        "icon": "fe-municipality"
+        "context": "Burdignin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74051,
@@ -639,9 +549,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cercier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 518,
-        "icon": "fe-municipality"
+        "context": "Cercier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74052,
@@ -653,9 +561,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cernex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 698,
-        "icon": "fe-municipality"
+        "context": "Cernex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74053,
@@ -667,9 +573,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cervens, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 729,
-        "icon": "fe-municipality"
+        "context": "Cervens, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74054,
@@ -681,9 +585,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chainaz-les-Frasses, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 517,
-        "icon": "fe-municipality"
+        "context": "Chainaz-les-Frasses, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74055,
@@ -695,9 +597,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Challonges, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 337,
-        "icon": "fe-municipality"
+        "context": "Challonges, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74056,
@@ -709,9 +609,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chamonix-Mont-Blanc, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 9829,
-        "icon": "fe-municipality"
+        "context": "Chamonix-Mont-Blanc, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74057,
@@ -723,9 +621,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Champanges, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 753,
-        "icon": "fe-municipality"
+        "context": "Champanges, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74058,
@@ -737,9 +633,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chapelle-d'Abondance, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 719,
-        "icon": "fe-municipality"
+        "context": "Chapelle-d'Abondance, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74059,
@@ -751,9 +645,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chapelle-Rambaud, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 178,
-        "icon": "fe-municipality"
+        "context": "Chapelle-Rambaud, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74060,
@@ -765,9 +657,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chapelle-Saint-Maurice, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 115,
-        "icon": "fe-municipality"
+        "context": "Chapelle-Saint-Maurice, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74061,
@@ -779,9 +669,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chapeiry, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 598,
-        "icon": "fe-municipality"
+        "context": "Chapeiry, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74062,
@@ -793,9 +681,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Charvonnex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 757,
-        "icon": "fe-municipality"
+        "context": "Charvonnex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74063,
@@ -807,9 +693,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Châtel, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1195,
-        "icon": "fe-municipality"
+        "context": "Châtel, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74064,
@@ -821,9 +705,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Châtillon-sur-Cluses, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1061,
-        "icon": "fe-municipality"
+        "context": "Châtillon-sur-Cluses, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74065,
@@ -835,9 +717,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chaumont, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 382,
-        "icon": "fe-municipality"
+        "context": "Chaumont, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74066,
@@ -849,9 +729,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chavannaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 137,
-        "icon": "fe-municipality"
+        "context": "Chavannaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74067,
@@ -863,9 +741,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chavanod, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1883,
-        "icon": "fe-municipality"
+        "context": "Chavanod, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74068,
@@ -877,9 +753,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chêne-en-Semine, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 257,
-        "icon": "fe-municipality"
+        "context": "Chêne-en-Semine, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74069,
@@ -891,9 +765,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chênex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 365,
-        "icon": "fe-municipality"
+        "context": "Chênex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74070,
@@ -905,9 +777,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chens-sur-Léman, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1274,
-        "icon": "fe-municipality"
+        "context": "Chens-sur-Léman, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74071,
@@ -919,9 +789,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chessenaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 154,
-        "icon": "fe-municipality"
+        "context": "Chessenaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74072,
@@ -933,9 +801,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chevaline, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 196,
-        "icon": "fe-municipality"
+        "context": "Chevaline, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74073,
@@ -947,9 +813,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chevenoz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 502,
-        "icon": "fe-municipality"
+        "context": "Chevenoz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74074,
@@ -961,9 +825,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chevrier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 306,
-        "icon": "fe-municipality"
+        "context": "Chevrier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74075,
@@ -975,9 +837,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Chilly, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 939,
-        "icon": "fe-municipality"
+        "context": "Chilly, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74076,
@@ -989,9 +849,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Choisy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1364,
-        "icon": "fe-municipality"
+        "context": "Choisy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74077,
@@ -1003,9 +861,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Clarafond-Arcine, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 707,
-        "icon": "fe-municipality"
+        "context": "Clarafond-Arcine, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74078,
@@ -1017,9 +873,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Clermont, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 331,
-        "icon": "fe-municipality"
+        "context": "Clermont, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74079,
@@ -1031,9 +885,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Clefs, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 472,
-        "icon": "fe-municipality"
+        "context": "Clefs, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74080,
@@ -1045,9 +897,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Clusaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2026,
-        "icon": "fe-municipality"
+        "context": "Clusaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74081,
@@ -1059,9 +909,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cluses, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 17720,
-        "icon": "fe-town"
+        "context": "Cluses, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74082,
@@ -1073,9 +921,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Collonges-sous-Salève, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3163,
-        "icon": "fe-municipality"
+        "context": "Collonges-sous-Salève, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74083,
@@ -1087,9 +933,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Combloux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1992,
-        "icon": "fe-municipality"
+        "context": "Combloux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74085,
@@ -1101,9 +945,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Contamines-Montjoie, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1126,
-        "icon": "fe-municipality"
+        "context": "Contamines-Montjoie, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74086,
@@ -1115,9 +957,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Contamine-Sarzin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 350,
-        "icon": "fe-municipality"
+        "context": "Contamine-Sarzin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74087,
@@ -1129,9 +969,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Contamine-sur-Arve, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1345,
-        "icon": "fe-municipality"
+        "context": "Contamine-sur-Arve, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74088,
@@ -1143,9 +981,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Copponex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 619,
-        "icon": "fe-municipality"
+        "context": "Copponex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74089,
@@ -1157,9 +993,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cordon, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 878,
-        "icon": "fe-municipality"
+        "context": "Cordon, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74090,
@@ -1171,9 +1005,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cornier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 936,
-        "icon": "fe-municipality"
+        "context": "Cornier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74091,
@@ -1185,9 +1017,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Côte-d'Arbroz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 175,
-        "icon": "fe-municipality"
+        "context": "Côte-d'Arbroz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74093,
@@ -1199,9 +1029,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cran-Gevrier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 16442,
-        "icon": "fe-town"
+        "context": "Cran-Gevrier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74094,
@@ -1213,9 +1041,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cranves-Sales, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 4361,
-        "icon": "fe-municipality"
+        "context": "Cranves-Sales, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74095,
@@ -1227,9 +1053,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Crempigny-Bonneguête, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 167,
-        "icon": "fe-municipality"
+        "context": "Crempigny-Bonneguête, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74096,
@@ -1241,9 +1065,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cruseilles, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3184,
-        "icon": "fe-municipality"
+        "context": "Cruseilles, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74097,
@@ -1255,9 +1077,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cusy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1280,
-        "icon": "fe-municipality"
+        "context": "Cusy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74098,
@@ -1269,9 +1089,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Cuvat, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 773,
-        "icon": "fe-municipality"
+        "context": "Cuvat, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74099,
@@ -1283,9 +1101,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Demi-Quartier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1031,
-        "icon": "fe-municipality"
+        "context": "Demi-Quartier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74100,
@@ -1297,9 +1113,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Desingy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 603,
-        "icon": "fe-municipality"
+        "context": "Desingy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74101,
@@ -1311,9 +1125,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Dingy-en-Vuache, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 395,
-        "icon": "fe-municipality"
+        "context": "Dingy-en-Vuache, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74102,
@@ -1325,9 +1137,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Dingy-Saint-Clair, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 916,
-        "icon": "fe-municipality"
+        "context": "Dingy-Saint-Clair, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74103,
@@ -1339,9 +1149,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Domancy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1710,
-        "icon": "fe-municipality"
+        "context": "Domancy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74104,
@@ -1353,9 +1161,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Doussard, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2780,
-        "icon": "fe-municipality"
+        "context": "Doussard, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74105,
@@ -1367,9 +1173,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Douvaine, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3871,
-        "icon": "fe-municipality"
+        "context": "Douvaine, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74106,
@@ -1381,9 +1185,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Draillant, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1830,
-        "icon": "fe-municipality"
+        "context": "Draillant, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74107,
@@ -1395,9 +1197,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Droisy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 70,
-        "icon": "fe-municipality"
+        "context": "Droisy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74108,
@@ -1409,9 +1209,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Duingt, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 798,
-        "icon": "fe-municipality"
+        "context": "Duingt, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74109,
@@ -1423,9 +1221,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Éloise, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 719,
-        "icon": "fe-municipality"
+        "context": "Éloise, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74110,
@@ -1437,9 +1233,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Entremont, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 461,
-        "icon": "fe-municipality"
+        "context": "Entremont, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74111,
@@ -1451,9 +1245,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Entrevernes, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 168,
-        "icon": "fe-municipality"
+        "context": "Entrevernes, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74112,
@@ -1465,9 +1257,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Epagny Metz-Tessy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3233,
-        "icon": "fe-municipality"
+        "context": "Epagny Metz-Tessy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74114,
@@ -1479,9 +1269,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Essert-Romand, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 352,
-        "icon": "fe-municipality"
+        "context": "Essert-Romand, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74116,
@@ -1493,9 +1281,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Etaux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1089,
-        "icon": "fe-municipality"
+        "context": "Etaux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74117,
@@ -1507,9 +1293,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Étercy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 630,
-        "icon": "fe-municipality"
+        "context": "Étercy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74118,
@@ -1521,9 +1305,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Étrembières, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1429,
-        "icon": "fe-municipality"
+        "context": "Étrembières, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74119,
@@ -1535,9 +1317,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Évian-les-Bains, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 7278,
-        "icon": "fe-municipality"
+        "context": "Évian-les-Bains, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74120,
@@ -1549,9 +1329,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Évires, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1062,
-        "icon": "fe-municipality"
+        "context": "Évires, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74121,
@@ -1563,9 +1341,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Excenevex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 681,
-        "icon": "fe-municipality"
+        "context": "Excenevex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74122,
@@ -1577,9 +1353,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Faucigny, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 411,
-        "icon": "fe-municipality"
+        "context": "Faucigny, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74123,
@@ -1591,9 +1365,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Faverges-Seythenex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 6305,
-        "icon": "fe-municipality"
+        "context": "Faverges-Seythenex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74124,
@@ -1605,9 +1377,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Feigères, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1231,
-        "icon": "fe-municipality"
+        "context": "Feigères, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74126,
@@ -1619,9 +1389,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Fessy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 590,
-        "icon": "fe-municipality"
+        "context": "Fessy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74127,
@@ -1633,9 +1401,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Féternes, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1153,
-        "icon": "fe-municipality"
+        "context": "Féternes, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74128,
@@ -1647,9 +1413,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Fillinges, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2442,
-        "icon": "fe-municipality"
+        "context": "Fillinges, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74129,
@@ -1661,9 +1425,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Forclaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 195,
-        "icon": "fe-municipality"
+        "context": "Forclaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74130,
@@ -1675,9 +1437,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Franclens, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 335,
-        "icon": "fe-municipality"
+        "context": "Franclens, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74131,
@@ -1689,9 +1449,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Frangy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1596,
-        "icon": "fe-municipality"
+        "context": "Frangy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74133,
@@ -1703,9 +1461,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Gaillard, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 9949,
-        "icon": "fe-municipality"
+        "context": "Gaillard, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74134,
@@ -1717,9 +1473,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Gets, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1352,
-        "icon": "fe-municipality"
+        "context": "Gets, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74135,
@@ -1731,9 +1485,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Giez, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 448,
-        "icon": "fe-municipality"
+        "context": "Giez, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74136,
@@ -1745,9 +1497,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Grand-Bornand, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2130,
-        "icon": "fe-municipality"
+        "context": "Grand-Bornand, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74137,
@@ -1759,9 +1509,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Groisy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2606,
-        "icon": "fe-municipality"
+        "context": "Groisy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74138,
@@ -1773,9 +1521,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Gruffy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1161,
-        "icon": "fe-municipality"
+        "context": "Gruffy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74139,
@@ -1787,9 +1533,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Habère-Lullin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 634,
-        "icon": "fe-municipality"
+        "context": "Habère-Lullin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74140,
@@ -1801,9 +1545,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Habère-Poche, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 729,
-        "icon": "fe-municipality"
+        "context": "Habère-Poche, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74141,
@@ -1815,9 +1557,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Hauteville-sur-Fier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 685,
-        "icon": "fe-municipality"
+        "context": "Hauteville-sur-Fier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74142,
@@ -1829,9 +1569,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Héry-sur-Alby, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 709,
-        "icon": "fe-municipality"
+        "context": "Héry-sur-Alby, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74143,
@@ -1843,9 +1581,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Houches, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2708,
-        "icon": "fe-municipality"
+        "context": "Houches, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74144,
@@ -1857,9 +1593,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Jonzier-Épagny, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 515,
-        "icon": "fe-municipality"
+        "context": "Jonzier-Épagny, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74145,
@@ -1871,9 +1605,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Juvigny, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 540,
-        "icon": "fe-municipality"
+        "context": "Juvigny, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74146,
@@ -1885,9 +1617,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Larringes, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 974,
-        "icon": "fe-municipality"
+        "context": "Larringes, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74147,
@@ -1899,9 +1629,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Lathuile, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 729,
-        "icon": "fe-municipality"
+        "context": "Lathuile, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74148,
@@ -1913,9 +1641,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Leschaux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 258,
-        "icon": "fe-municipality"
+        "context": "Leschaux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74150,
@@ -1927,9 +1653,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Loisin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1140,
-        "icon": "fe-municipality"
+        "context": "Loisin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74151,
@@ -1941,9 +1665,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Lornay, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 348,
-        "icon": "fe-municipality"
+        "context": "Lornay, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74152,
@@ -1955,9 +1677,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Lovagny, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 720,
-        "icon": "fe-municipality"
+        "context": "Lovagny, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74153,
@@ -1969,9 +1689,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Lucinges, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1212,
-        "icon": "fe-municipality"
+        "context": "Lucinges, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74154,
@@ -1983,9 +1701,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Lugrin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2002,
-        "icon": "fe-municipality"
+        "context": "Lugrin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74155,
@@ -1997,9 +1713,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Lullin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 602,
-        "icon": "fe-municipality"
+        "context": "Lullin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74156,
@@ -2011,9 +1725,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Lully, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 512,
-        "icon": "fe-municipality"
+        "context": "Lully, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74157,
@@ -2025,9 +1737,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Lyaud, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1042,
-        "icon": "fe-municipality"
+        "context": "Lyaud, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74158,
@@ -2039,9 +1749,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Machilly, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 860,
-        "icon": "fe-municipality"
+        "context": "Machilly, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74159,
@@ -2053,9 +1761,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Magland, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2800,
-        "icon": "fe-municipality"
+        "context": "Magland, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74160,
@@ -2067,9 +1773,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Manigod, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 790,
-        "icon": "fe-municipality"
+        "context": "Manigod, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74161,
@@ -2081,9 +1785,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Marcellaz-Albanais, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1405,
-        "icon": "fe-municipality"
+        "context": "Marcellaz-Albanais, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74162,
@@ -2095,9 +1797,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Marcellaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 707,
-        "icon": "fe-municipality"
+        "context": "Marcellaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74163,
@@ -2109,9 +1809,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Margencel, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1435,
-        "icon": "fe-municipality"
+        "context": "Margencel, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74164,
@@ -2123,9 +1821,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Marignier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5327,
-        "icon": "fe-municipality"
+        "context": "Marignier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74165,
@@ -2137,9 +1833,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Marigny-Saint-Marcel, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 630,
-        "icon": "fe-municipality"
+        "context": "Marigny-Saint-Marcel, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74166,
@@ -2151,9 +1845,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Marin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1283,
-        "icon": "fe-municipality"
+        "context": "Marin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74167,
@@ -2165,9 +1857,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Val de Chaise, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 699,
-        "icon": "fe-municipality"
+        "context": "Val de Chaise, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74168,
@@ -2179,9 +1869,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Marlioz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 441,
-        "icon": "fe-municipality"
+        "context": "Marlioz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74169,
@@ -2193,9 +1881,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Marnaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 4450,
-        "icon": "fe-municipality"
+        "context": "Marnaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74170,
@@ -2207,9 +1893,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Massingy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 607,
-        "icon": "fe-municipality"
+        "context": "Massingy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74171,
@@ -2221,9 +1905,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Massongy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1150,
-        "icon": "fe-municipality"
+        "context": "Massongy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74172,
@@ -2235,9 +1917,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Maxilly-sur-Léman, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1018,
-        "icon": "fe-municipality"
+        "context": "Maxilly-sur-Léman, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74173,
@@ -2249,9 +1929,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Megève, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 4518,
-        "icon": "fe-municipality"
+        "context": "Megève, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74174,
@@ -2263,9 +1941,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Mégevette, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 366,
-        "icon": "fe-municipality"
+        "context": "Mégevette, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74175,
@@ -2277,9 +1953,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Meillerie, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 279,
-        "icon": "fe-municipality"
+        "context": "Meillerie, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74176,
@@ -2291,9 +1965,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Menthon-Saint-Bernard, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1668,
-        "icon": "fe-municipality"
+        "context": "Menthon-Saint-Bernard, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74177,
@@ -2305,9 +1977,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Menthonnex-en-Bornes, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 611,
-        "icon": "fe-municipality"
+        "context": "Menthonnex-en-Bornes, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74178,
@@ -2319,9 +1989,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Menthonnex-sous-Clermont, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 509,
-        "icon": "fe-municipality"
+        "context": "Menthonnex-sous-Clermont, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74179,
@@ -2333,9 +2001,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Mésigny, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 630,
-        "icon": "fe-municipality"
+        "context": "Mésigny, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74180,
@@ -2347,9 +2013,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Messery, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1435,
-        "icon": "fe-municipality"
+        "context": "Messery, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74182,
@@ -2361,9 +2025,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Meythet, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 7697,
-        "icon": "fe-municipality"
+        "context": "Meythet, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74183,
@@ -2375,9 +2037,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Mieussy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1739,
-        "icon": "fe-municipality"
+        "context": "Mieussy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74184,
@@ -2389,9 +2049,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Minzier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 498,
-        "icon": "fe-municipality"
+        "context": "Minzier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74185,
@@ -2403,9 +2061,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Monnetier-Mornex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1792,
-        "icon": "fe-municipality"
+        "context": "Monnetier-Mornex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74186,
@@ -2417,9 +2073,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Montagny-les-Lanches, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 374,
-        "icon": "fe-municipality"
+        "context": "Montagny-les-Lanches, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74188,
@@ -2431,9 +2085,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Montriond, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 768,
-        "icon": "fe-municipality"
+        "context": "Montriond, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74189,
@@ -2445,9 +2097,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Mont-Saxonnex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1155,
-        "icon": "fe-municipality"
+        "context": "Mont-Saxonnex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74190,
@@ -2459,9 +2109,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Morillon, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 503,
-        "icon": "fe-municipality"
+        "context": "Morillon, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74191,
@@ -2473,9 +2121,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Morzine, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2959,
-        "icon": "fe-municipality"
+        "context": "Morzine, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74192,
@@ -2487,9 +2133,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Moye, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 851,
-        "icon": "fe-municipality"
+        "context": "Moye, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74193,
@@ -2501,9 +2145,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Muraz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 704,
-        "icon": "fe-municipality"
+        "context": "Muraz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74194,
@@ -2515,9 +2157,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Mûres, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 646,
-        "icon": "fe-municipality"
+        "context": "Mûres, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74195,
@@ -2529,9 +2169,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Musièges, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 269,
-        "icon": "fe-municipality"
+        "context": "Musièges, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74196,
@@ -2543,9 +2181,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Nancy-sur-Cluses, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 357,
-        "icon": "fe-municipality"
+        "context": "Nancy-sur-Cluses, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74197,
@@ -2557,9 +2193,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Nangy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 785,
-        "icon": "fe-municipality"
+        "context": "Nangy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74198,
@@ -2571,9 +2205,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Nâves-Parmelan, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 862,
-        "icon": "fe-municipality"
+        "context": "Nâves-Parmelan, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74199,
@@ -2585,9 +2217,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Nernier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 361,
-        "icon": "fe-municipality"
+        "context": "Nernier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74200,
@@ -2599,9 +2229,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Neuvecelle, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2214,
-        "icon": "fe-municipality"
+        "context": "Neuvecelle, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74201,
@@ -2613,9 +2241,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Neydens, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1127,
-        "icon": "fe-municipality"
+        "context": "Neydens, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74202,
@@ -2627,9 +2253,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Nonglard, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 472,
-        "icon": "fe-municipality"
+        "context": "Nonglard, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74203,
@@ -2641,9 +2265,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Novel, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 58,
-        "icon": "fe-municipality"
+        "context": "Novel, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74204,
@@ -2655,9 +2277,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Ollières, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 737,
-        "icon": "fe-municipality"
+        "context": "Ollières, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74205,
@@ -2669,9 +2289,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Onnion, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 786,
-        "icon": "fe-municipality"
+        "context": "Onnion, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74206,
@@ -2683,9 +2301,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Orcier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 683,
-        "icon": "fe-municipality"
+        "context": "Orcier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74208,
@@ -2697,9 +2313,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Passy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 10094,
-        "icon": "fe-town"
+        "context": "Passy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74209,
@@ -2711,9 +2325,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Peillonnex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1060,
-        "icon": "fe-municipality"
+        "context": "Peillonnex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74210,
@@ -2725,9 +2337,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Perrignier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1919,
-        "icon": "fe-municipality"
+        "context": "Perrignier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74211,
@@ -2739,9 +2349,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Pers-Jussy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2106,
-        "icon": "fe-municipality"
+        "context": "Pers-Jussy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74212,
@@ -2753,9 +2361,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Petit-Bornand-les-Glières, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 871,
-        "icon": "fe-municipality"
+        "context": "Petit-Bornand-les-Glières, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74213,
@@ -2767,9 +2373,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Poisy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5486,
-        "icon": "fe-municipality"
+        "context": "Poisy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74215,
@@ -2781,9 +2385,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Praz-sur-Arly, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1083,
-        "icon": "fe-municipality"
+        "context": "Praz-sur-Arly, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74216,
@@ -2795,9 +2397,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Présilly, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 622,
-        "icon": "fe-municipality"
+        "context": "Présilly, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74217,
@@ -2809,9 +2409,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Pringy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2615,
-        "icon": "fe-municipality"
+        "context": "Pringy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74218,
@@ -2823,9 +2421,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Publier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 4951,
-        "icon": "fe-municipality"
+        "context": "Publier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74219,
@@ -2837,9 +2433,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Quintal, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 882,
-        "icon": "fe-municipality"
+        "context": "Quintal, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74220,
@@ -2851,9 +2445,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Reignier-Ésery, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5266,
-        "icon": "fe-municipality"
+        "context": "Reignier-Ésery, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74221,
@@ -2865,9 +2457,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Reposoir, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 375,
-        "icon": "fe-municipality"
+        "context": "Reposoir, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74222,
@@ -2879,9 +2469,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Reyvroz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 420,
-        "icon": "fe-municipality"
+        "context": "Reyvroz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74223,
@@ -2893,9 +2481,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Rivière-Enverse, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 393,
-        "icon": "fe-municipality"
+        "context": "Rivière-Enverse, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74224,
@@ -2907,9 +2493,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Roche-sur-Foron, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 8545,
-        "icon": "fe-municipality"
+        "context": "Roche-sur-Foron, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74225,
@@ -2921,9 +2505,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Rumilly, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 11223,
-        "icon": "fe-town"
+        "context": "Rumilly, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74226,
@@ -2935,9 +2517,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-André-de-Boëge, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 517,
-        "icon": "fe-municipality"
+        "context": "Saint-André-de-Boëge, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74228,
@@ -2949,9 +2529,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Blaise, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 198,
-        "icon": "fe-municipality"
+        "context": "Saint-Blaise, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74229,
@@ -2963,9 +2541,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Cergues, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2487,
-        "icon": "fe-municipality"
+        "context": "Saint-Cergues, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74231,
@@ -2977,9 +2553,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Eusèbe, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 361,
-        "icon": "fe-municipality"
+        "context": "Saint-Eusèbe, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74232,
@@ -2991,9 +2565,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Eustache, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 392,
-        "icon": "fe-municipality"
+        "context": "Saint-Eustache, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74233,
@@ -3005,9 +2577,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Félix, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1617,
-        "icon": "fe-municipality"
+        "context": "Saint-Félix, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74234,
@@ -3019,9 +2589,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Ferréol, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 799,
-        "icon": "fe-municipality"
+        "context": "Saint-Ferréol, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74235,
@@ -3033,9 +2601,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Germain-sur-Rhône, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 305,
-        "icon": "fe-municipality"
+        "context": "Saint-Germain-sur-Rhône, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74236,
@@ -3047,9 +2613,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Gervais-les-Bains, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5290,
-        "icon": "fe-municipality"
+        "context": "Saint-Gervais-les-Bains, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74237,
@@ -3061,9 +2625,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Gingolph, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 564,
-        "icon": "fe-municipality"
+        "context": "Saint-Gingolph, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74238,
@@ -3075,9 +2637,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Jean-d'Aulps, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1028,
-        "icon": "fe-municipality"
+        "context": "Saint-Jean-d'Aulps, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74239,
@@ -3089,9 +2649,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Jean-de-Sixt, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1007,
-        "icon": "fe-municipality"
+        "context": "Saint-Jean-de-Sixt, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74240,
@@ -3103,9 +2661,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Jean-de-Tholome, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 745,
-        "icon": "fe-municipality"
+        "context": "Saint-Jean-de-Tholome, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74241,
@@ -3117,9 +2673,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Jeoire, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2754,
-        "icon": "fe-municipality"
+        "context": "Saint-Jeoire, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74242,
@@ -3131,9 +2685,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Jorioz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5000,
-        "icon": "fe-municipality"
+        "context": "Saint-Jorioz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74243,
@@ -3145,9 +2697,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Julien-en-Genevois, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 9191,
-        "icon": "fe-municipality"
+        "context": "Saint-Julien-en-Genevois, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74244,
@@ -3159,9 +2709,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Laurent, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 603,
-        "icon": "fe-municipality"
+        "context": "Saint-Laurent, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74245,
@@ -3173,9 +2721,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Martin-Bellevue, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1739,
-        "icon": "fe-municipality"
+        "context": "Saint-Martin-Bellevue, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74249,
@@ -3187,9 +2733,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Paul-en-Chablais, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1700,
-        "icon": "fe-municipality"
+        "context": "Saint-Paul-en-Chablais, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74250,
@@ -3201,9 +2745,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Pierre-en-Faucigny, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5057,
-        "icon": "fe-municipality"
+        "context": "Saint-Pierre-en-Faucigny, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74252,
@@ -3215,9 +2757,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Sigismond, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 586,
-        "icon": "fe-municipality"
+        "context": "Saint-Sigismond, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74253,
@@ -3229,9 +2769,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Sixt, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 606,
-        "icon": "fe-municipality"
+        "context": "Saint-Sixt, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74254,
@@ -3243,9 +2781,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saint-Sylvestre, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 512,
-        "icon": "fe-municipality"
+        "context": "Saint-Sylvestre, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74255,
@@ -3257,9 +2793,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Sales, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1552,
-        "icon": "fe-municipality"
+        "context": "Sales, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74256,
@@ -3271,9 +2805,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Sallanches, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 14387,
-        "icon": "fe-town"
+        "context": "Sallanches, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74257,
@@ -3285,9 +2817,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Sallenôves, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 474,
-        "icon": "fe-municipality"
+        "context": "Sallenôves, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74258,
@@ -3299,9 +2829,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Samoëns, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2324,
-        "icon": "fe-municipality"
+        "context": "Samoëns, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74259,
@@ -3313,9 +2841,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Sappey, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 333,
-        "icon": "fe-municipality"
+        "context": "Sappey, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74260,
@@ -3327,9 +2853,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Savigny, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 500,
-        "icon": "fe-municipality"
+        "context": "Savigny, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74261,
@@ -3341,9 +2865,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Saxel, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 347,
-        "icon": "fe-municipality"
+        "context": "Saxel, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74262,
@@ -3355,9 +2877,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Scientrier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 661,
-        "icon": "fe-municipality"
+        "context": "Scientrier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74263,
@@ -3369,9 +2889,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Sciez, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 4283,
-        "icon": "fe-municipality"
+        "context": "Sciez, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74264,
@@ -3383,9 +2901,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Scionzier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 6164,
-        "icon": "fe-municipality"
+        "context": "Scionzier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74265,
@@ -3397,9 +2913,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Serraval, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 487,
-        "icon": "fe-municipality"
+        "context": "Serraval, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74266,
@@ -3411,9 +2925,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Servoz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 819,
-        "icon": "fe-municipality"
+        "context": "Servoz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74267,
@@ -3425,9 +2937,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Sevrier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3422,
-        "icon": "fe-municipality"
+        "context": "Sevrier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74268,
@@ -3439,9 +2949,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Seynod, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 16367,
-        "icon": "fe-town"
+        "context": "Seynod, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74269,
@@ -3453,9 +2961,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Seyssel, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1800,
-        "icon": "fe-municipality"
+        "context": "Seyssel, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74271,
@@ -3467,9 +2973,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Seytroux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 285,
-        "icon": "fe-municipality"
+        "context": "Seytroux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74272,
@@ -3481,9 +2985,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Sillingy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2878,
-        "icon": "fe-municipality"
+        "context": "Sillingy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74273,
@@ -3495,9 +2997,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Sixt-Fer-à-Cheval, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 708,
-        "icon": "fe-municipality"
+        "context": "Sixt-Fer-à-Cheval, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74274,
@@ -3509,9 +3009,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Val-de-Fier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 389,
-        "icon": "fe-municipality"
+        "context": "Val-de-Fier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74275,
@@ -3523,9 +3021,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Talloires-Montmin, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1447,
-        "icon": "fe-municipality"
+        "context": "Talloires-Montmin, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74276,
@@ -3537,9 +3033,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Taninges, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3138,
-        "icon": "fe-municipality"
+        "context": "Taninges, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74278,
@@ -3551,9 +3045,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Thyez, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 4869,
-        "icon": "fe-municipality"
+        "context": "Thyez, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74279,
@@ -3565,9 +3057,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Thollon-les-Mémises, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 592,
-        "icon": "fe-municipality"
+        "context": "Thollon-les-Mémises, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74280,
@@ -3579,9 +3069,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Thônes, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5189,
-        "icon": "fe-municipality"
+        "context": "Thônes, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74281,
@@ -3593,9 +3081,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Thonon-les-Bains, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 28980,
-        "icon": "fe-town"
+        "context": "Thonon-les-Bains, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74282,
@@ -3607,9 +3093,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Fillière, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2558,
-        "icon": "fe-municipality"
+        "context": "Fillière, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74283,
@@ -3621,9 +3105,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Thusy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 840,
-        "icon": "fe-municipality"
+        "context": "Thusy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74284,
@@ -3635,9 +3117,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Tour, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1120,
-        "icon": "fe-municipality"
+        "context": "Tour, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74285,
@@ -3649,9 +3129,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Usinens, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 255,
-        "icon": "fe-municipality"
+        "context": "Usinens, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74286,
@@ -3663,9 +3141,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vacheresse, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 604,
-        "icon": "fe-municipality"
+        "context": "Vacheresse, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74287,
@@ -3677,9 +3153,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vailly, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 613,
-        "icon": "fe-municipality"
+        "context": "Vailly, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74288,
@@ -3691,9 +3165,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Valleiry, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2195,
-        "icon": "fe-municipality"
+        "context": "Valleiry, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74289,
@@ -3705,9 +3177,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vallières, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1278,
-        "icon": "fe-municipality"
+        "context": "Vallières, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74290,
@@ -3719,9 +3189,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vallorcine, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 390,
-        "icon": "fe-municipality"
+        "context": "Vallorcine, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74291,
@@ -3733,9 +3201,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vanzy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 242,
-        "icon": "fe-municipality"
+        "context": "Vanzy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74292,
@@ -3747,9 +3213,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vaulx, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 739,
-        "icon": "fe-municipality"
+        "context": "Vaulx, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74293,
@@ -3761,9 +3225,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Veigy-Foncenex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2503,
-        "icon": "fe-municipality"
+        "context": "Veigy-Foncenex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74294,
@@ -3775,9 +3237,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Verchaix, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 558,
-        "icon": "fe-municipality"
+        "context": "Verchaix, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74295,
@@ -3789,9 +3249,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vernaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 217,
-        "icon": "fe-municipality"
+        "context": "Vernaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74296,
@@ -3803,9 +3261,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vers, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 528,
-        "icon": "fe-municipality"
+        "context": "Vers, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74297,
@@ -3817,9 +3273,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Versonnex, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 312,
-        "icon": "fe-municipality"
+        "context": "Versonnex, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74298,
@@ -3831,9 +3285,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vétraz-Monthoux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 5300,
-        "icon": "fe-municipality"
+        "context": "Vétraz-Monthoux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74299,
@@ -3845,9 +3297,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Veyrier-du-Lac, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2064,
-        "icon": "fe-municipality"
+        "context": "Veyrier-du-Lac, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74301,
@@ -3859,9 +3309,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Villard, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 667,
-        "icon": "fe-municipality"
+        "context": "Villard, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74302,
@@ -3873,9 +3321,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Villards-sur-Thônes, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 899,
-        "icon": "fe-municipality"
+        "context": "Villards-sur-Thônes, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74303,
@@ -3887,9 +3333,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Villaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 2067,
-        "icon": "fe-municipality"
+        "context": "Villaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74304,
@@ -3901,9 +3345,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Ville-en-Sallaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 676,
-        "icon": "fe-municipality"
+        "context": "Ville-en-Sallaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74305,
@@ -3915,9 +3357,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Ville-la-Grand, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 6983,
-        "icon": "fe-municipality"
+        "context": "Ville-la-Grand, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74306,
@@ -3929,9 +3369,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Villy-le-Bouveret, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 396,
-        "icon": "fe-municipality"
+        "context": "Villy-le-Bouveret, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74307,
@@ -3943,9 +3381,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Villy-le-Pelloux, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 456,
-        "icon": "fe-municipality"
+        "context": "Villy-le-Pelloux, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74308,
@@ -3957,9 +3393,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vinzier, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 659,
-        "icon": "fe-municipality"
+        "context": "Vinzier, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74309,
@@ -3971,9 +3405,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Viry, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3030,
-        "icon": "fe-municipality"
+        "context": "Viry, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74310,
@@ -3985,9 +3417,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Viuz-la-Chiésaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 1022,
-        "icon": "fe-municipality"
+        "context": "Viuz-la-Chiésaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74311,
@@ -3999,9 +3429,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Viuz-en-Sallaz, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 3374,
-        "icon": "fe-municipality"
+        "context": "Viuz-en-Sallaz, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74312,
@@ -4013,9 +3441,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vougy, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 963,
-        "icon": "fe-municipality"
+        "context": "Vougy, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74313,
@@ -4027,9 +3453,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vovray-en-Bornes, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 274,
-        "icon": "fe-municipality"
+        "context": "Vovray-en-Bornes, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74314,
@@ -4041,9 +3465,7 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Vulbens, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 786,
-        "icon": "fe-municipality"
+        "context": "Vulbens, Haute-Savoie, Auvergne-Rhône-Alpes"
     },
     {
         "insee": 74315,
@@ -4055,8 +3477,6 @@
         "nom_departement": "Haute-Savoie",
         "code_region": 84,
         "nom_region": "Auvergne-Rhône-Alpes",
-        "context": "Yvoire, Haute-Savoie, Auvergne-Rhône-Alpes",
-        "population": 631,
-        "icon": "fe-municipality"
+        "context": "Yvoire, Haute-Savoie, Auvergne-Rhône-Alpes"
     }
 ]

@@ -3,13 +3,14 @@ import { Option } from "./interface";
 import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";
+import { Highlight } from "../..";
 
 interface Props<O extends Option> {
   option: O;
   searchValue: string;
 }
 
-export default function AutocompleteOption<O extends Option>({ option }: Props<O>) {
+export default function AutocompleteGeocodageOption<O extends Option>({ option }: Props<O>) {
   const id = useId();
   const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
   const { ref, index } = useListItem({ label: option.label });
@@ -18,7 +19,7 @@ export default function AutocompleteOption<O extends Option>({ option }: Props<O
 
   return (
     <div
-      className={cn("option", isSelected && "selected", isActive && "active")}
+      className={cn("option", "search", isSelected && "selected", isActive && "active")}
       ref={ref}
       role="option"
       id={id}
@@ -27,7 +28,17 @@ export default function AutocompleteOption<O extends Option>({ option }: Props<O
         onClick: () => handleSelect(index),
       })}
     >
-      {option.label}
+      <div className="icon flex-center">
+        <i className={option.icon}></i>
+      </div>
+      <div className="content">
+        <div>
+          <Highlight fallback={option.nom_commune} zones={option?._formatted?.nom_commune} />
+        </div>
+        <div className="hint">
+          <Highlight fallback={option.context} zones={option?._formatted?.context} />
+        </div>
+      </div>
     </div>
   );
 }

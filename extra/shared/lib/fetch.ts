@@ -1,4 +1,4 @@
-type Options = RequestInit & {
+export type CustomFetchOptions = RequestInit & {
   urlParams?: {
     [key: string]: string;
   };
@@ -7,23 +7,10 @@ type Options = RequestInit & {
   };
 };
 
-export async function withNotifierCustomFetch(
+export async function customFetch(
   urlObjOrString: string | URL,
-  enhancedOptions: Options = {},
+  enhancedOptions: CustomFetchOptions = {},
 ) {
-  try {
-    const response = await customFetch.apply(null, [urlObjOrString, enhancedOptions]);
-    return response;
-  } catch (err) {
-    if (err instanceof FetchError) {
-      console.log("FetchError error :", err, err.name, err.message);
-    } else {
-      throw err;
-    }
-  }
-}
-
-export async function customFetch(urlObjOrString: string | URL, enhancedOptions: Options = {}) {
   const { urlParams, query, ...options } = enhancedOptions;
 
   const url = urlObjOrString instanceof URL ? urlObjOrString : new URL(urlObjOrString);

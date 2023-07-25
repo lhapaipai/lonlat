@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "api": "json-server --delay 300 --watch db.json"
+        "api": "json-server --delay 300 --port 6005 --watch db.json"
     },
     "keywords": [],
     "author": "Hugues Tavernier",

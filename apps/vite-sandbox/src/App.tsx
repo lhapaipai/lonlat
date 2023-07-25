@@ -1,81 +1,119 @@
+import {
+  Button,
+  FetchError,
+  FormattedItem,
+  Highlight,
+  Input,
+  NotificationsProvider,
+  customFetch,
+  prepareTownsResult,
+  useNotifications,
+} from "@lonlat/shared/index";
 import "./App.scss";
+import { useEffect, useState } from "react";
+import debounce from "lodash/debounce";
+import { useDebounce } from "usehooks-ts";
+interface Town {
+  insee: number;
+  code_postal: number;
+  latitude: number;
+  longitude: number;
+  nom_commune: string;
+  code_departement: number;
+  nom_departement: string;
+  code_region: number;
+  nom_region: string;
+  context: string;
+  population: number;
+  icon: string;
+}
 
-// import { MenuItem, MenuItemWithChildren, DropdownMenu } from "./dropdown";
+type FormattedTown = FormattedItem<Town>;
 
-// import { ContextMenu, ContextMenuItem } from "./context-menu";
-import { Button, MenuItem, MenuItemWithChildren, DropdownMenu } from "@lonlat/shared/index";
+function Inner() {
+  const notificationManager = useNotifications();
+  const [search, setSearch] = useState("");
+  const searchDebounced = useDebounce(search, 200);
+
+  const [results, setResults] = useState<FormattedTown[]>([]);
+
+  useEffect(() => {
+    console.log("fetch", searchDebounced);
+
+    let abort = false;
+    customFetch(`http://localhost:6005/towns?q=${searchDebounced}`)
+      .then((results: FormattedTown[]) => {
+        if (!abort) {
+          const towns = prepareTownsResult(results, searchDebounced);
+          setResults(towns);
+        }
+      })
+      .catch((err) => {
+        if (err instanceof FetchError) {
+          notificationManager.addNotification(err.message);
+        } else {
+          throw err;
+        }
+      });
+
+    return () => {
+      abort = true;
+    };
+  }, [searchDebounced, notificationManager]);
+
+  async function handleClick() {
+    try {
+      const response = await customFetch("http://localhost:6005/post");
+      console.log(response);
+    } catch (err) {
+      if (err instanceof FetchError) {
+        notificationManager.addNotification(err.message);
+        // console.log("FetchError error :", err, err.name, err.message);
+      }
+    }
+  }
+
+  return (
+    <>
+      <Button className="ll-button" onClick={handleClick}>
+        Fetch
+      </Button>
+      <Input value={search} onChange={(e) => setSearch(e.target.value)} />
+      <div className="ll-dialog ll-autocomplete-dialog">
+        <div className="box">
+          {results.map((result) => {
+            return (
+              <div className="option search" key={result.insee}>
+                <div className="icon flex-center">
+                  <i className={result.icon}></i>
+                </div>
+                <div className="content">
+                  <div>
+                    <Highlight
+                      fallback={result.nom_commune}
+                      zones={result?._formatted?.nom_commune}
+                    />
+                  </div>
+                  <div className="hint">
+                    <Highlight fallback={result.context} zones={result?._formatted?.context} />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
+}
 
 function App() {
   return (
-    <>
-      {/* {<Dropdown>
-        <DropdownTrigger>
-          <Button>open menu !</Button>
-        </DropdownTrigger>
-        <DropdownContent>
-          <MenuItem label="Undo" onClick={() => console.log("Undo")} />
-          <MenuItem label="Redo" disabled />
-          <MenuItem label="Cut" />
-          <MenuItemWithChildren label="Copy as">
-            <MenuItem label="Text" />
-            <MenuItem label="Video" />
-            <MenuItemWithChildren label="Image">
-              <MenuItem label=".png" />
-              <MenuItem label=".jpg" />
-              <MenuItem label=".svg" />
-              <MenuItem label=".gif" />
-            </MenuItemWithChildren>
-            <MenuItem label="Audio" />
-          </MenuItemWithChildren>
-          <MenuItemWithChildren label="Share">
-            <MenuItem label="Mail" />
-            <MenuItem label="Instagram" />
-          </MenuItemWithChildren>
-        </DropdownContent>
-      </Dropdown>} */}
-
-      {/* <ContextMenu>
-        <ContextMenuItem label="Back" onClick={() => console.log("Back")} />
-        <ContextMenuItem label="Forward" />
-        <ContextMenuItem label="Reload" disabled />
-        <ContextMenuItem label="Save As..." />
-        <ContextMenuItem label="Print" />
-      </ContextMenu> */}
-
-      <DropdownMenu label="Edit" triggerComponent={Button}>
-        <MenuItem label="Undo" onClick={() => console.log("Undo")} />
-        <MenuItem label="Redo" disabled />
-        <MenuItem label="Cut" />
-        <MenuItemWithChildren label="Copy as">
-          <MenuItem label="Text" />
-          <MenuItem label="Video" />
-          <MenuItemWithChildren label="Image">
-            <MenuItem label=".png" />
-            <MenuItem label=".jpg" />
-            <MenuItem label=".svg" />
-            <MenuItem label=".gif" />
-          </MenuItemWithChildren>
-          <MenuItem label="Audio" />
-        </MenuItemWithChildren>
-        <MenuItemWithChildren label="Share">
-          <MenuItem label="Mail" />
-          <MenuItem label="Instagram" />
-        </MenuItemWithChildren>
-      </DropdownMenu>
-
-      {/* <Menu>
-        <MenuTrigger>Edit</MenuTrigger>
-        <MenuContent>
-          <MenuItem label="a"></MenuItem>
-          <MenuItem label="b"></MenuItem>
-          <MenuItem label="c">
-            <MenuItem label="c-1"></MenuItem>
-            <MenuItem label="c-2"></MenuItem>
-            <MenuItem label="c-3"></MenuItem>
-          </MenuItem>
-        </MenuContent>
-      </Menu> */}
-    </>
+    <div id="my-app">
+      <NotificationsProvider>
+        <Inner />
+      </NotificationsProvider>
+    </div>
   );
 }
 
