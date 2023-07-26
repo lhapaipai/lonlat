@@ -13,7 +13,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {
+export const Playbook: Story = {
   args: {
     tooltip: "More infos...",
     url: "https://lonlat.org",

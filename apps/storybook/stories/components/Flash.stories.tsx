@@ -4,13 +4,12 @@ import { Meta, StoryObj } from "@storybook/react";
 const meta = {
   title: "Components/Flash",
   component: Flash,
-  tags: ["autodocs"],
 } satisfies Meta<typeof Flash>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {
+export const Playbook: Story = {
   args: {
     type: "primary",
     children:

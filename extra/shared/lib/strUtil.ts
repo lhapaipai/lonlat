@@ -25,10 +25,14 @@ export interface HighlightZone {
 }
 
 export function parseHighlightIndices(
-  str: string,
+  str: string | undefined,
   indices: readonly [number, number][],
   minLength = 2,
 ) {
+  if (!str) {
+    return [];
+  }
+
   const includeLastChar = 1;
 
   const parts: HighlightZone[] = [];

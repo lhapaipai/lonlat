@@ -8,10 +8,12 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-export const Basic: Story = {
+
+export const Playbook: Story = {
   args: {
     href: "#",
     children: "Lonlat",
+    ghost: false,
   },
 };
 

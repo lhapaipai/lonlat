@@ -1,5 +1,6 @@
 import { Input, Button } from "@lonlat/shared";
 import { Meta, StoryObj } from "@storybook/react";
+import { ChangeEvent, useState } from "react";
 
 const meta = {
   title: "Components/Input",
@@ -17,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {
+export const Playbook: Story = {
   args: {
     disabled: false,
     prefix: "",
@@ -25,16 +26,27 @@ export const Basic: Story = {
   },
 };
 
-export const Context = () => (
-  <div className="flex gap-2 flex-column">
-    <Input />
-    <Input placeholder="Your first name" />
-    <Input prefix={<i className="fe-search"></i>} />
-    <Input prefix={<span>prefix</span>} />
-    <Input suffix={<span>suffix</span>} />
-    <div className="flex gap-2 ">
+export const Context = () => {
+  const [counter, setCounter] = useState(0);
+
+  return (
+    <div className="flex gap-2 flex-column">
       <Input />
-      <Button>Valider</Button>
+      <Input placeholder="Your first name" />
+      <Input prefix={<i className="fe-search"></i>} />
+      <Input prefix={<span>prefix</span>} />
+      <Input suffix={<span>suffix</span>} />
+      <Input
+        type="number"
+        value={counter}
+        onChange={(e) => {
+          e.target.validity.valid && setCounter(e.target.valueAsNumber);
+        }}
+      />
+      <div className="flex gap-2 ">
+        <Input />
+        <Button>Valider</Button>
+      </div>
     </div>
-  </div>
-);
+  );
+};

@@ -1,11 +1,11 @@
 import { HighlightZone } from "../..";
 
 interface Props {
-  fallback: string;
+  fallback?: string;
   zones?: HighlightZone[];
 }
 
-export default function Hightlight({ zones, fallback }: Props) {
+export default function Hightlight({ zones, fallback = "" }: Props) {
   if (!zones) {
     return fallback;
   }

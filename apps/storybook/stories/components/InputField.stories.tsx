@@ -8,8 +8,67 @@ const meta = {
 } satisfies Meta<typeof InputField>;
 export default meta;
 
-export const Basic = () => {
-  return <InputField label="Your website" hint="blog, portfolio" />;
+export const Playbook = () => {
+  const [value, setValue] = useState("");
+  const [label, setLabel] = useState("Your label");
+  const [hint, setHint] = useState("Any hint related to input field");
+  const [placeholder, setPlaceholder] = useState("Ex: Fernando");
+  const [help, setHelp] = useState("Help message into the bottom");
+  const [warning, setWarning] = useState("");
+  const [error, setError] = useState("");
+
+  return (
+    <>
+      <div className="storybook-preview">
+        <InputField
+          label={label}
+          hint={hint}
+          placeholder={placeholder}
+          help={help}
+          value={value}
+          warning={warning}
+          error={error}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+        />
+      </div>
+      <div className="two-cols">
+        <InputField
+          label="Label"
+          placeholder="What is your name ?"
+          value={label}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value)}
+        />
+        <InputField
+          label="Hint"
+          placeholder="One hint ?"
+          value={hint}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setHint(e.target.value)}
+        />
+        <InputField
+          label="Placeholder"
+          value={placeholder}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPlaceholder(e.target.value)}
+        />
+        <InputField
+          label="Help"
+          value={help}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setHelp(e.target.value)}
+        />
+        <InputField
+          label="Warning"
+          placeholder="warning message"
+          value={warning}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setWarning(e.target.value)}
+        />
+        <InputField
+          label="Error"
+          placeholder="Error message"
+          value={error}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setError(e.target.value)}
+        />
+      </div>
+    </>
+  );
 };
 
 export const Context = () => {
@@ -164,12 +223,4 @@ export const Context = () => {
       </pre>
     </div>
   );
-};
-
-export const References = () => {
-  const ref = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    console.log("reference", ref.current);
-  }, []);
-  return <InputField ref={ref} label="Your website" hint="blog, portfolio" />;
 };

@@ -24,3 +24,10 @@
         }
     }
 }
+
+.storybook-preview {
+    box-shadow: var(--shadow-light-md);
+    border-radius: var(--border-radius-md);
+    padding: 3rem;
+    margin-bottom: 3rem;
+}

@@ -12,4 +12,5 @@
 
 - [X] composant InputField
 - [X] composant Checkbox/Radio/Switch
-- [ ] storybook calibrer fuse.js
+- [X] storybook calibrer fuse.js
+
