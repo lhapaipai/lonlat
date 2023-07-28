@@ -28,6 +28,8 @@ export const Basic: Story = {
     loading: false,
     disabled: false,
     fullWidth: false,
+    selected: false,
+    withRipple: false,
   },
 };
 

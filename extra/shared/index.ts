@@ -1,4 +1,3 @@
-export { default as Button } from "./components/button/Button";
 export * from "./components/table";
 export { default as Code } from "./components/code/Code";
 export { default as Tabs } from "./components/tabs/Tabs";
@@ -11,6 +10,7 @@ export { default as Highlight } from "./components/highlight/Highlight";
 export { default as InputField } from "./components/input-field/InputField";
 
 export { default as Href } from "./components/href/Href";
+export * from "./components/button";
 export * from "./components/input";
 export * from "./components/tooltip";
 export * from "./components/popover";

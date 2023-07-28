@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import type { DropdownMenuOptions } from "./interface.d.ts";
 import {
-  arrow,
   autoUpdate,
   flip,
   offset,
@@ -37,7 +36,6 @@ export default function useDropdownMenu({
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
 
-  const arrowRef = useRef<HTMLDivElement>(null);
   const offsetVal = 2 + arrowWidth / 2;
 
   const data = useFloating({
@@ -52,10 +50,6 @@ export default function useDropdownMenu({
         // fallbackAxisSideDirection: "end",
       }),
       shift({ padding: 5 }),
-      arrow({
-        element: arrowRef,
-        padding: 8,
-      }),
     ],
     transform: false,
   });
@@ -108,7 +102,6 @@ export default function useDropdownMenu({
       elementsRef,
       labelsRef,
       transitionStatus,
-      arrowRef,
       type,
       modal,
       activeIndex,

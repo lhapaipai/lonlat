@@ -40,8 +40,9 @@ a {
         text-decoration-thickness: 2px;
     }
 
-    &:focus-within {
+    &:focus-visible {
         outline: 2px solid var(--color-primary-1000);
+        border-radius: var(--border-radius-sm);
     }
 
     &:active {
@@ -60,7 +61,7 @@ a.ghost {
 }
 
 mark {
-    background-color: var(--color-primary-200);
+    background-color: var(--color-primary-100);
     color: var(--text-strong);
 }
 

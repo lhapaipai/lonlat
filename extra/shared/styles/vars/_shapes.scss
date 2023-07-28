@@ -10,6 +10,7 @@
         --button-hover-text-color: var(#{$solid-text-color});
         --button-active-text-color: var(#{$solid-text-color});
         --button-focus-border-color: transparent;
+        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
     .shape-outline-#{$colorType} {
@@ -23,6 +24,7 @@
         --button-hover-text-color: #{$outline-text-color};
         --button-active-text-color: #{$outline-text-color};
         --button-focus-border-color: var(--color-#{$colorType}-900);
+        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
     .shape-ghost-#{$colorType} {
@@ -35,6 +37,7 @@
         --button-hover-text-color: #{$ghost-text-color};
         --button-active-text-color: #{$ghost-text-color};
         --button-focus-border-color: transparent;
+        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
     .shape-underline-#{$colorType} {
@@ -47,5 +50,6 @@
         --button-hover-text-color: #{$underline-text-color};
         --button-active-text-color: #{$underline-text-color};
         --button-focus-border-color: var(--color-#{$colorType}-500);
+        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 }

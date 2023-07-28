@@ -42,6 +42,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       className,
       disabled,
       children,
+      selected = false,
       icon = false,
       ...props
     },
@@ -62,6 +63,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       icon && "icon",
       fullWidth && "w100",
       size !== "medium" && `size-${size}`,
+      selected && "selected",
       `shape-${shape}-${type}`,
       `button-${type}`,
       `shape-${shape}`,

@@ -161,6 +161,8 @@
         text-align: left;
         outline: 0;
         transition: all .3s ease;
+        position: relative;
+        z-index: 1;
 
         &:hover {
             background-color: var(--background-light);

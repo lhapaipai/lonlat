@@ -7,7 +7,6 @@ import {
   useMergeRefs,
 } from "@floating-ui/react";
 import cn from "classnames";
-import { computeArrowStyle } from "../dialog/util";
 
 const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, children, ...props }, propRef) => {
@@ -38,12 +37,6 @@ const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
                 {children}
               </FloatingList>
             </div>
-            <div
-              ref={context.arrowRef}
-              style={computeArrowStyle(context)}
-              className="arrow arrow-bg"
-            ></div>
-            <div style={computeArrowStyle(context)} className="arrow arrow-shadow"></div>
           </div>
         </FloatingFocusManager>
       </FloatingPortal>

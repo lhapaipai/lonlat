@@ -1,5 +1,5 @@
-import { HighlightZone } from "../..";
-
+import { type HighlightZone } from "../..";
+import "./Highlight.scss";
 interface Props {
   fallback?: string;
   zones?: HighlightZone[];
@@ -9,7 +9,11 @@ export default function Hightlight({ zones, fallback = "" }: Props) {
   if (!zones) {
     return fallback;
   }
-  return zones.map(({ extract, highlighted }, idx) => {
-    return highlighted ? <mark key={idx}>{extract}</mark> : <span key={idx}>{extract}</span>;
-  });
+  return (
+    <span className="ll-highlight">
+      {zones.map(({ extract, highlighted }, idx) => {
+        return highlighted ? <mark key={idx}>{extract}</mark> : <span key={idx}>{extract}</span>;
+      })}
+    </span>
+  );
 }
