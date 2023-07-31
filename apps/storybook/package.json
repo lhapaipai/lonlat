@@ -13,8 +13,11 @@
     "dependencies": {
         "@floating-ui/react": "^0.24.7",
         "@lonlat/fonts": "link:../../extra/fonts/dist",
+        "@lonlat/maplibre-ext": "link:../../extra/maplibre-ext",
+        "@lonlat/maplibre-react": "link:../../extra/maplibre-react",
         "@lonlat/shared": "link:../../extra/shared",
         "fuse.js": "^6.6.2",
+        "maplibre-gl": "^3.2.0",
         "react": "^18.2.0"
     },
     "devDependencies": {

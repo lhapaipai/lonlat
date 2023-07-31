@@ -31,3 +31,7 @@
     padding: 3rem;
     margin-bottom: 3rem;
 }
+
+:root {
+    --storybook-preview-viewport-height: calc(100vh - 28px);
+}

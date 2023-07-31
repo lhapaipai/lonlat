@@ -1,12 +1,12 @@
 {
-    "name": "@lonlat/react-maplibre",
+    "name": "@lonlat/maplibre-react",
     "version": "1.0.0",
     "private": true,
     "description": "",
     "keywords": [],
     "author": "Hugues Tavernier",
     "license": "ISC",
-    "main": "index.ts",
+    "main": "src/index.ts",
     "scripts": {
         "test": "vitest",
         "test:ui": "vitest --ui"
@@ -27,7 +27,9 @@
     "dependencies": {
         "@floating-ui/react": "^0.24.7",
         "@lonlat/fonts": "link:../fonts/dist",
+        "@lonlat/maplibre-ext": "link:../maplibre-ext",
         "classnames": "^2.3.2",
+        "maplibre-gl": "^3.2.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "sass": "^1.63.6",

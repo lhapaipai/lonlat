@@ -12,7 +12,8 @@
     "dependencies": {
         "@floating-ui/react": "^0.24.7",
         "@lonlat/fonts": "link:../../extra/fonts/dist",
-        "@lonlat/react-maplibre": "link:../../extra/react-maplibre",
+        "@lonlat/maplibre-ext": "link:../../extra/maplibre-ext",
+        "@lonlat/maplibre-react": "link:../../extra/maplibre-react",
         "@lonlat/shared": "link:../../extra/shared",
         "maplibre-gl": "^3.2.0",
         "react": "^18.2.0",

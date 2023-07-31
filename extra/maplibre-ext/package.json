@@ -1,0 +1,14 @@
+{
+    "name": "@lonlat/maplibre-ext",
+    "version": "1.0.0",
+    "private": true,
+    "description": "",
+    "keywords": [],
+    "author": "Hugues Tavernier",
+    "license": "ISC",
+    "main": "src/index.ts",
+    "dependencies": {
+        "@mapbox/point-geometry": "^0.1.0",
+        "maplibre-gl": "^3.2.0"
+    }
+}
