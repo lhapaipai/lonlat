@@ -2,15 +2,24 @@
     --marker-size: 50px;
     --marker-height: var(--marker-size);
     --marker-width: calc(var(--marker-size) * 0.7);
+
+    --marker-color: var(--color-primary-500);
+    --marker-color-selected: color-mix(in srgb, var(--marker-color), black 10%);
+    --marker-color-hover: color-mix(in srgb, var(--marker-color), black 10%);
+    --ovale-color-hover: color-mix(in srgb, var(--marker-color), white 50%);
+
     cursor: pointer;
 
     will-change: transform;
     position: relative;
-    width: var(--marker-width);
-    height: var(--marker-height);
     display: block;
 
+    &,
+    &>* {
+        width: var(--marker-width);
+        height: var(--marker-height);
 
+    }
 
     // &.marker-cluster .text {
     //     position: absolute;
@@ -26,11 +35,11 @@
         transition: transform 0.1s ease;
     }
 
-    &:active>* {
-        transform: translateY(-5px);
+    &:active>*,
+    &.active>* {
+        animation: marker-active .3s linear 1;
         transition: transform 0.3s ease;
     }
-
 
 
 
@@ -69,9 +78,9 @@
     &>*::after {
         /* fe-marker */
         left: 0;
-        content: '\e81d';
+        content: '\e81c';
         z-index: 1;
-        color: var(--color-primary-500);
+        color: var(--marker-color);
         width: var(--marker-width);
         height: var(--marker-height);
     }
@@ -117,6 +126,7 @@
         z-index: 2;
         border-radius: 50%;
         background-color: white;
+        transition: background-color .3s ease;
     }
 
     /* icon */
@@ -129,7 +139,6 @@
             font-size: calc(var(--marker-size) / 3) !important;
             z-index: 3;
             color: var(--text-default);
-
         }
     }
 
@@ -151,12 +160,12 @@
 
         /* marker */
         &::after {
-            color: var(--color-primary-600);
+            color: var(--marker-color-hover);
         }
 
         /* ovale */
         .ovale {
-            background-color: var(--color-primary-100);
+            background-color: var(--ovale-color-hover);
         }
     }
 
@@ -164,7 +173,7 @@
 
         /* marker */
         &::after {
-            color: var(--color-primary-700);
+            color: var(--marker-color-selected);
         }
 
     }
@@ -177,7 +186,7 @@
         /* marker */
         &>*::after {
             /* fe-marker */
-            content: '\e81d';
+            content: '\e81c';
             color: var(--color-weak-200);
         }
     }

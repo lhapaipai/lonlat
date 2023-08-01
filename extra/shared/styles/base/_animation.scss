@@ -4,3 +4,13 @@
         opacity: 0;
     }
 }
+
+@keyframes marker-active {
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

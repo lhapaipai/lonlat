@@ -1,34 +1,70 @@
 import { useEffect, useRef } from "react";
 import useMapContext from "./useMapContext";
-import * as maplibre from "maplibre-gl";
+import { MarkerOptions, LngLatLike } from "maplibre-gl";
+
 import { LLMarker } from "@lonlat/maplibre-ext";
 
-interface Props {
-  lnglat: maplibre.LngLatLike;
+interface Props extends MarkerOptions {
+  lnglat: LngLatLike;
+  icon?: string;
+  onChangeLngLat?: (e?: LngLatLike) => void;
 }
 
-export default function RMarker({ lnglat }: Props) {
+export default function RMarker({
+  lnglat,
+  color,
+  draggable,
+  scale,
+  onChangeLngLat = () => {},
+  ...nonReactiveMarkerOptions
+}: Props) {
   const map = useMapContext();
-  const marker = useRef<maplibre.Marker | null>(null);
+  const marker = useRef<LLMarker | null>(null);
 
+  /* Must be first useEffect */
   useEffect(() => {
     if (marker.current === null) {
-      marker.current = new LLMarker().setLngLat(lnglat).addTo(map);
-      console.log("addMarker");
+      marker.current = new LLMarker({
+        color,
+        draggable,
+        scale,
+        ...nonReactiveMarkerOptions,
+      })
+        .setLngLat(lnglat)
+        .addTo(map);
     }
 
-    console.log("update marker lnglat", lnglat);
-    marker.current.setLngLat(lnglat);
-  }, [map, lnglat]);
-
-  useEffect(() => {
     return () => {
-      console.log("removeMarker");
-
       marker.current?.remove();
       marker.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    marker.current?.setLngLat(lnglat);
+  }, [lnglat]);
+
+  useEffect(() => {
+    marker.current?.setColor(color);
+  }, [color]);
+
+  useEffect(() => {
+    function handleDragEnd() {
+      onChangeLngLat(marker.current?.getLngLat());
+    }
+
+    marker.current?.setDraggable(draggable);
+    console.log("useEffect draggable");
+    draggable && marker.current?.on("dragend", handleDragEnd);
+
+    return () => {
+      draggable && marker.current?.off("dragend", handleDragEnd);
+    };
+  }, [draggable]);
+
+  useEffect(() => {
+    marker.current?.setScale(scale);
+  }, [scale]);
 
   return <></>;
 }

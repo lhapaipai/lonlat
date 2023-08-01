@@ -42,6 +42,57 @@ export const Graphics = () => (
       </div>
     </div>
 
+    <div className="storybook-icon-grid">
+      <div>
+        <div className="ll-marker">
+          <div>
+            <div className="ovale"></div>
+            <i className="fe-heart"></i>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="ll-marker" style={{ "--marker-color": "#9ed24d" }}>
+          <div>
+            <div className="ovale"></div>
+            <i className="fe-heart"></i>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="ll-marker" style={{ "--marker-color": "#5fbcff" }}>
+          <div>
+            <div className="ovale"></div>
+            <i className="fe-heart"></i>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="ll-marker" style={{ "--marker-color": "#ffa33d" }}>
+          <div>
+            <div className="ovale"></div>
+            <i className="fe-heart"></i>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="ll-marker" style={{ "--marker-color": "#ff4d4d" }}>
+          <div>
+            <div className="ovale"></div>
+            <i className="fe-heart"></i>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="ll-marker" style={{ "--marker-color": "#c0c0c0" }}>
+          <div>
+            <div className="ovale"></div>
+            <i className="fe-heart"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
     {/* <div className="storybook-icon-grid">
       <div className="ll-marker marker-cluster">
         <div>
@@ -169,11 +220,15 @@ export const Basic = () => {
       zoom: 4,
     });
 
-    new LLMarker({
-      draggable: true,
-    })
-      .setLngLat([-1.1344, 44.698])
+    new LLMarker().setLngLat([-1.1344, 44.698]).addTo(map);
+
+    new LLMarker({ color: "green" }).setLngLat([-4, 44.698]).addTo(map);
+    new LLMarker({ color: "green", rotation: 180, anchor: "top" })
+      .setLngLat([-4, 44.698])
       .addTo(map);
+    new LLMarker({ scale: 0.5 }).setLngLat([-6.293, 49.92]).addTo(map);
+    new LLMarker({ draggable: true }).setLngLat([-8, 44.698]).addTo(map);
+
     // new maplibre.Marker().setLngLat([-1.1344, 44.698]).addTo(map);
   }, []);
   return (
