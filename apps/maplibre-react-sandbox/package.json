@@ -1,0 +1,30 @@
+{
+    "name": "@lonlat/maplibre-react-sandbox",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@floating-ui/react": "^0.24.7",
+        "@lonlat/fonts": "link:../../extra/fonts/dist",
+        "@lonlat/maplibre-ext": "link:../../extra/maplibre-ext",
+        "@lonlat/maplibre-react": "link:../../extra/maplibre-react",
+        "@lonlat/shared": "link:../../extra/shared",
+        "maplibre-gl": "^3.2.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "sass": "^1.63.6"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.14",
+        "@types/react-dom": "^18.2.6",
+        "@vitejs/plugin-react-swc": "^3.3.2",
+        "typescript": "^5.1.6",
+        "vite": "^4.4.0"
+    }
+}

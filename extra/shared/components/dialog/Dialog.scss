@@ -4,6 +4,7 @@
 
     .box {
         background-color: white;
+        pointer-events: auto;
 
         border-radius: var(--border-radius-sm);
         box-shadow: var(--shadow);
@@ -17,6 +18,7 @@
         padding: $padding $padding 0;
 
         .actions {
+            padding-left: $padding;
             margin-left: auto;
         }
 
@@ -45,13 +47,12 @@
         }
     }
 
-
     .arrow {
-        position: absolute;
         display: block;
         width: 12px;
         height: 12px;
         transform: rotate(45deg);
+        position: absolute;
     }
 
     .arrow-bg {
@@ -93,7 +94,7 @@
         transition: opacity 250ms ease, transform 250ms ease;
     }
 
-    &[class*="top"] {
+    &[class*="placement\-top"] {
         .box {
             border-top-width: 4px;
         }
@@ -102,13 +103,18 @@
             border-bottom-right-radius: 3px;
         }
 
+        // &.maplibregl-popup .arrow {
+        //     margin-top: -6px;
+        // }
+
         &[data-status='open'],
         &[data-status='close'] {
             transform-origin: bottom center;
         }
     }
 
-    &[class*="bottom"] {
+
+    &[class*="placement\-bottom"] {
         .box {
             border-bottom-width: 4px;
         }
@@ -117,13 +123,17 @@
             border-top-left-radius: 3px;
         }
 
+        // &.maplibregl-popup .arrow {
+        //     margin-bottom: -6px;
+        // }
+
         &[data-status='open'],
         &[data-status='close'] {
             transform-origin: top center;
         }
     }
 
-    &[class*="left"] {
+    &[class*="placement\-left"] {
         .box {
             border-left-width: 4px;
         }
@@ -132,13 +142,17 @@
             border-top-right-radius: 3px;
         }
 
+        // &.maplibregl-popup .arrow {
+        //     margin-top: -6px;
+        // }
+
         &[data-status='open'],
         &[data-status='close'] {
             transform-origin: center right;
         }
     }
 
-    &[class*="right"] {
+    &[class*="placement\-right"] {
         .box {
             border-right-width: 4px;
         }
@@ -146,6 +160,10 @@
         .arrow {
             border-bottom-left-radius: 3px;
         }
+
+        // &.maplibregl-popup .arrow {
+        //     margin-right: -6px;
+        // }
 
         &[data-status='open'],
         &[data-status='close'] {
@@ -184,6 +202,8 @@
         }
 
     }
+
+
 }
 
 .ll-portail-dialog {

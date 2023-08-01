@@ -18,7 +18,7 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
           className={cn(
             "ll-tooltip",
             "ll-dialog",
-            context.placement,
+            `placement-${context.placement}`,
             `type-${context.type}`,
             context.middlewareData.hide?.referenceHidden && "hidden",
           )}

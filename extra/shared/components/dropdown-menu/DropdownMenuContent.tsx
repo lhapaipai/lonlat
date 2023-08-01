@@ -4,6 +4,7 @@ import {
   FloatingFocusManager,
   FloatingList,
   FloatingPortal,
+  Placement,
   useMergeRefs,
 } from "@floating-ui/react";
 import cn from "classnames";
@@ -24,7 +25,7 @@ const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
             className={cn(
               "ll-dropdown-menu",
               "ll-dialog",
-              context.placement,
+              `placement-${context.placement}`,
               `type-${context.type}`,
             )}
             ref={ref}

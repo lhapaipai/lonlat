@@ -17,7 +17,12 @@ const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
-            className={cn("ll-popover", "ll-dialog", context.placement, `type-${context.type}`)}
+            className={cn(
+              "ll-popover",
+              "ll-dialog",
+              `placement-${context.placement}`,
+              `type-${context.type}`,
+            )}
             ref={ref}
             style={{ ...context.floatingStyles, ...style }}
             data-status={context.transitionStatus.status}
