@@ -16,7 +16,7 @@ const map = new maplibre.Map({
   // style: "https://demotiles.maplibre.org/style.json", // style URL
   style: "/styles/ign/PLAN.IGN/standard.json",
   center: house,
-  zoom: 17,
+  zoom: 16,
 });
 
 // map.on("load", () => {
@@ -49,9 +49,15 @@ const map = new maplibre.Map({
 // new maplibre.Marker().setLngLat(house).addTo(map);
 // new maplibre.Marker().setLngLat(marignier).addTo(map);
 
-new LLMarker().setLngLat(marignier).addTo(map);
 new LLMarker().setLngLat(house).addTo(map);
+new LLMarker().setLngLat(marignier).addTo(map);
 new LLMarker().setLngLat(mole).addTo(map);
+
+for (let a = 0; a < 1000; a++) {
+  new LLMarker()
+    .setLngLat([house[0] + (Math.random() - 0.5) * 0.05, house[1] + (Math.random() - 0.5) * 0.05])
+    .addTo(map);
+}
 
 // const popupWithMarker = new LLPopup({
 //   closeButton: true,

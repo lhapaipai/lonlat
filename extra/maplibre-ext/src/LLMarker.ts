@@ -1,6 +1,8 @@
 import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions } from "maplibre-gl";
 import { applyAnchorClass, anchorTranslate } from "maplibre-gl/src/ui/anchor";
 import { extend } from "maplibre-gl/src/util/util";
+import { smartWrap } from "maplibre-gl/src/util/smart_wrap";
+
 import { DOM } from "maplibre-gl/src/util/dom";
 import Point from "@mapbox/point-geometry";
 import "./LLMarker.scss";
@@ -18,28 +20,22 @@ export default class LLMarker extends Marker {
   _height = defaultHeight;
 
   constructor(options?: Options) {
+    const useDefaultMarker = !options || !options.element;
+
+    if (useDefaultMarker) {
+      options ??= {};
+      options.element = DOM.create("div", "ll-marker");
+    }
+
     super(options);
 
     this._anchor = (options && options.anchor) || "bottom";
     this._color = (options && options.color) || defaultColor;
-    this._scale = (options && options.scale) || 1;
-    this._draggable = (options && options.draggable) || false;
-    this._clickTolerance = (options && options.clickTolerance) || 0;
-    this._isDragging = false;
-    this._state = "inactive";
-    this._rotation = (options && options.rotation) || 0;
-    this._rotationAlignment = (options && options.rotationAlignment) || "auto";
-    this._pitchAlignment =
-      options && options.pitchAlignment && options.pitchAlignment !== "auto"
-        ? options.pitchAlignment
-        : this._rotationAlignment;
-
     this._icon = (options && options.icon) || "fe-star";
 
-    if (!options || !options.element) {
+    if (useDefaultMarker) {
       this._defaultMarker = true;
 
-      this._element = DOM.create("div", "ll-marker");
       this._element.setAttribute("aria-label", "Map marker");
       this._element.setAttribute("tabindex", "0");
 
@@ -51,29 +47,7 @@ export default class LLMarker extends Marker {
       DOM.create("i", this._icon, container);
 
       this._element.appendChild(container);
-    } else {
-      this._element = options.element;
     }
-
-    this._offset = Point.convert((options && options.offset) || [0, 0]);
-
-    this._element.classList.add("maplibregl-marker");
-    this._element.addEventListener("dragstart", (e: DragEvent) => {
-      e.preventDefault();
-    });
-    this._element.addEventListener("mousedown", (e: MouseEvent) => {
-      // prevent focusing on click
-      e.preventDefault();
-    });
-    applyAnchorClass(this._element, this._anchor, "marker");
-
-    if (options && options.className) {
-      for (const name of options.className.split(" ")) {
-        this._element.classList.add(name);
-      }
-    }
-
-    this._popup = null;
   }
 
   _onActive = (e: MapMouseEvent | MapTouchEvent) => {

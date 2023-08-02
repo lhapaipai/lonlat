@@ -1,5 +1,4 @@
 .ll-marker {
-    background-color: pink;
     --marker-size: 50px;
     --marker-height: var(--marker-size);
     --marker-width: calc(var(--marker-size) * 0.7);
@@ -12,8 +11,11 @@
     cursor: pointer;
 
     will-change: transform;
-    position: relative;
+    position: absolute;
     display: block;
+
+    top: 0;
+    left: 0;
 
     &,
     &>* {
