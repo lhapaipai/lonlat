@@ -211,6 +211,10 @@ export const Graphics = () => (
 );
 
 export const Basic = () => {
+  useEffect(() => {
+    document.body.classList.remove("sb-main-padded");
+  }, []);
+
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const map = new maplibre.Map({
@@ -231,7 +235,5 @@ export const Basic = () => {
 
     // new maplibre.Marker().setLngLat([-1.1344, 44.698]).addTo(map);
   }, []);
-  return (
-    <div ref={containerRef} style={{ height: "var(--storybook-preview-viewport-height)" }}></div>
-  );
+  return <div ref={containerRef} style={{ height: "100vh" }}></div>;
 };

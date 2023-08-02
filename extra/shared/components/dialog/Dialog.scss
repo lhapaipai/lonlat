@@ -12,15 +12,16 @@
         z-index: 2;
     }
 
+    .bar-buttons {
+        padding: .75rem;
+        float: right;
+    }
+
     .header {
         display: flex;
         align-items: center;
         padding: $padding $padding 0;
 
-        .actions {
-            padding-left: $padding;
-            margin-left: auto;
-        }
 
     }
 
@@ -57,7 +58,9 @@
 
     .arrow-bg {
         background-color: white;
+        // background-color: pink;
         z-index: 3;
+        // clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
     }
 
     .arrow-shadow {
@@ -70,7 +73,6 @@
             .box {
                 border-color: var(--color-#{$colorType}-300);
                 border-style: solid;
-                color: var(--color-#{$colorType}-text);
             }
         }
     }

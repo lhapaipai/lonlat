@@ -1,6 +1,6 @@
 import { RMarker, RMap } from "@lonlat/maplibre-react";
 import { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LngLatLike } from "maplibre-gl";
 import { action } from "@storybook/addon-actions";
 
@@ -10,11 +10,16 @@ const meta = {
   title: "Maplibre-React/RMarker",
   component: RMarker,
   decorators: [
-    (Story) => (
-      <RMap style={{ height: "var(--storybook-preview-viewport-height)" }}>
-        <Story />
-      </RMap>
-    ),
+    (Story) => {
+      useEffect(() => {
+        document.body.classList.remove("sb-main-padded");
+      }, []);
+      return (
+        <RMap style={{ height: "100vh" }}>
+          <Story />
+        </RMap>
+      );
+    },
   ],
 } satisfies Meta<typeof RMarker>;
 export default meta;

@@ -24,7 +24,7 @@
 -    Check if MapLibre GL JS is supported
 - OK Display HTML clusters with custom properties
 - OK Create and style clusters
--    Change a layer's color with buttons
+- OK Change a layer's color with buttons
 -    Add Contour Lines
 -    Enable cooperative gestures with a specific language
 -    Add custom icons with Markers

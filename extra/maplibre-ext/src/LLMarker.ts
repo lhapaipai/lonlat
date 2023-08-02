@@ -1,9 +1,10 @@
 import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions } from "maplibre-gl";
-import { applyAnchorClass } from "maplibre-gl/src/ui/anchor";
+import { applyAnchorClass, anchorTranslate } from "maplibre-gl/src/ui/anchor";
 import { extend } from "maplibre-gl/src/util/util";
 import { DOM } from "maplibre-gl/src/util/dom";
 import Point from "@mapbox/point-geometry";
 import "./LLMarker.scss";
+import { arrowHeight } from "./LLPopup";
 
 interface Options extends MarkerOptions {
   icon?: string;
@@ -14,18 +15,12 @@ const defaultHeight = 50;
 
 export default class LLMarker extends Marker {
   _icon: string;
-  _height?: number;
+  _height = defaultHeight;
 
-  constructor(options?: Options, legacyOptions?: MarkerOptions) {
-    super();
-    // For backward compatibility -- the constructor used to accept the element as a
-    // required first argument, before it was made optional.
-    if (options instanceof HTMLElement || legacyOptions) {
-      options = extend({ element: options }, legacyOptions);
-    }
+  constructor(options?: Options) {
+    super(options);
 
     this._anchor = (options && options.anchor) || "bottom";
-    this._icon = (options && options.icon) || "fe-star";
     this._color = (options && options.color) || defaultColor;
     this._scale = (options && options.scale) || 1;
     this._draggable = (options && options.draggable) || false;
@@ -38,6 +33,8 @@ export default class LLMarker extends Marker {
       options && options.pitchAlignment && options.pitchAlignment !== "auto"
         ? options.pitchAlignment
         : this._rotationAlignment;
+
+    this._icon = (options && options.icon) || "fe-star";
 
     if (!options || !options.element) {
       this._defaultMarker = true;
@@ -81,7 +78,6 @@ export default class LLMarker extends Marker {
 
   _onActive = (e: MapMouseEvent | MapTouchEvent) => {
     if (this._element.contains(e.originalEvent.target as any)) {
-      console.log("_onActive", this._element, this._map);
       this._map.once("mouseup", this._onInactive);
       this._map.once("touchend", this._onInactive);
 
@@ -122,6 +118,37 @@ export default class LLMarker extends Marker {
     this._scale = scale;
     this._height = markerHeight * this._scale;
     this._element.style.setProperty("--marker-size", `${this._height}px`);
+
+    return this;
+  }
+
+  setPopup(popup?: Popup | null): this {
+    if (this._popup) {
+      this._popup.remove();
+      this._popup = null;
+      this._element.removeEventListener("keypress", this._onKeyPress);
+
+      if (!this._originalTabIndex) {
+        this._element.removeAttribute("tabindex");
+      }
+    }
+
+    if (popup) {
+      if (!("offset" in popup.options)) {
+        popup.options.offset = {
+          mainAxis: this._height + arrowHeight + 5,
+        };
+      }
+
+      this._popup = popup;
+      if (this._lngLat) this._popup.setLngLat(this._lngLat);
+
+      this._originalTabIndex = this._element.getAttribute("tabindex");
+      if (!this._originalTabIndex) {
+        this._element.setAttribute("tabindex", "0");
+      }
+      this._element.addEventListener("keypress", this._onKeyPress);
+    }
 
     return this;
   }

@@ -6,23 +6,27 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
-
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
-
 </head>
 
 <body>
     <div id="root">
         <div class="map-overlay">
             <div class="map-overlay-inner">
-                <p>Draw a polygon using the draw tools.</p>
-                <div id="calculated-area"></div>
+                <fieldset>
+                    <label>Current Style</label>
+                    <div id="current-style">Maplibre Demo tile</div>
+                </fieldset>
+
+                <fieldset>
+                    <label>Select Style</label>
+                    <div id="styles"></div>
+                </fieldset>
             </div>
         </div>
 
         <div id="map"></div>
     </div>
-    <script type="module" src="/examples/05-draw.ts"></script>
+    <script type="module" src="/examples/09-toggle-style.ts"></script>
 </body>
 
 </html>

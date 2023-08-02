@@ -38,4 +38,5 @@
 
 :root {
     --storybook-preview-viewport-height: calc(100vh - 28px);
+    box-sizing: content-box;
 }

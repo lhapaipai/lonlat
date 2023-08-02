@@ -15,16 +15,18 @@ export function ModalHeader({
   const { setOpen } = useModalContext();
 
   return (
-    <header className={cn("header", className)} {...props}>
-      <h4>{children}</h4>
-      <div className="actions">
-        {closeButton && (
+    <>
+      {closeButton && (
+        <div className="bar-buttons">
           <Button icon shape="ghost" onClick={() => setOpen(false)}>
             <i className="fe-cancel"></i>
           </Button>
-        )}
-      </div>
-    </header>
+        </div>
+      )}
+      <header className={cn("header", className)} {...props}>
+        <h4>{children}</h4>
+      </header>
+    </>
   );
 }
 
