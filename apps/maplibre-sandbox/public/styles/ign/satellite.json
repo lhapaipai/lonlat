@@ -1,0 +1,21 @@
+{
+    "version": 8,
+    "sources": {
+        "orthophoto": {
+            "type": "raster",
+            "tiles": [
+                "https://wxs.ign.fr/essentiels/geoportail/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIXSET=PM&TILEMATRIX={z}&TILECOL={x}&TILEROW={y}&STYLE=normal&FORMAT=image/jpeg"
+            ],
+            "tileSize": 256
+        }
+    },
+    "layers": [
+        {
+            "id": "orthophoto",
+            "type": "raster",
+            "source": "orthophoto",
+            "minzoom": 0,
+            "maxzoom": 20
+        }
+    ]
+}

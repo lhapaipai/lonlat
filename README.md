@@ -14,3 +14,6 @@
 - [X] composant Checkbox/Radio/Switch
 - [X] storybook calibrer fuse.js
 
+- [ ] documentation `<canvas />`
+- [ ] documentation webGL
+- [ ] documentation d3js avec `<canvas />`.

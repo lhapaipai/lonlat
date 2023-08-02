@@ -1,9 +1,9 @@
 import "@lonlat/shared/styles/_vite-sandbox.scss";
-import "./main.scss";
+import "../shared/main.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import * as maplibre from "maplibre-gl";
-import { createDonutChart, colors } from "./util";
+import { createDonutChart, colors } from "../shared/util";
 
 const $map = document.getElementById("map");
 
@@ -28,7 +28,7 @@ interface MarkerDict {
 map.on("load", () => {
   map.addSource("earthquakes", {
     type: "geojson",
-    data: "/earthquakes.geojson",
+    data: "https://maplibre.org/maplibre-gl-js/docs/assets/earthquakes.geojson",
     cluster: true,
     clusterMaxZoom: 14,
     clusterRadius: 80,
