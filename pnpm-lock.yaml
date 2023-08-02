@@ -210,7 +210,7 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3(sass@1.63.6)
 
-  apps/vite-rsandbox:
+  apps/vite-sandbox:
     dependencies:
       '@floating-ui/react':
         specifier: ^0.24.7
