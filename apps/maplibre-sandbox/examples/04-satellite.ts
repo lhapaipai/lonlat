@@ -28,7 +28,17 @@ map.on("load", () => {
     encoding: "terrarium",
     tileSize: 256,
   });
-
+  // map.addLayer({
+  //   id: "hills",
+  //   type: "hillshade",
+  //   source: "terrarium",
+  //   layout: {
+  //     visibility: "visible",
+  //   },
+  //   paint: {
+  //     "hillshade-exaggeration": 0.25,
+  //   },
+  // });
   map.addLayer(
     {
       id: "orthophoto",

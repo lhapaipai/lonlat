@@ -117,7 +117,8 @@
 
     .ovale,
     .inactive,
-    i {
+    i,
+    .text {
         position: absolute;
         left: calc(var(--marker-size) / 10);
         top: calc(var(--marker-size) / 10);
@@ -144,6 +145,21 @@
             color: var(--text-default);
         }
     }
+
+    .text {
+        z-index: 3;
+        font-size: calc(var(--marker-size) / 4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &.small-text {
+        .text {
+            font-size: 10px;
+        }
+    }
+
 
     .inactive {
         display: flex;

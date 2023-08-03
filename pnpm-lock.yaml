@@ -108,12 +108,21 @@ importers:
       '@turf/turf':
         specifier: ^6.5.0
         version: 6.5.0
+      '@types/proj4':
+        specifier: ^2.5.2
+        version: 2.5.2
       mapbox-gl-controls:
         specifier: ^2.3.5
         version: 2.3.5(mapbox-gl@2.15.0)
+      mapbox-gl-fps:
+        specifier: ^1.0.1
+        version: 1.0.1
       maplibre-gl:
         specifier: ^3.2.0
         version: 3.2.0
+      proj4:
+        specifier: ^2.9.0
+        version: 2.9.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -130,6 +139,9 @@ importers:
       '@types/mapbox__point-geometry':
         specifier: ^0.1.2
         version: 0.1.2
+      '@types/node':
+        specifier: ^20.4.6
+        version: 20.4.6
       '@types/react':
         specifier: ^18.2.14
         version: 18.2.14
@@ -144,7 +156,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.0
-        version: 4.4.3(sass@1.63.6)
+        version: 4.4.3(@types/node@20.4.6)(sass@1.63.6)
 
   apps/storybook:
     dependencies:
@@ -226,7 +238,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.3
-        version: 4.4.3(sass@1.63.6)
+        version: 4.4.3(@types/node@20.4.6)(sass@1.63.6)
 
   apps/vite-sandbox:
     dependencies:
@@ -2242,7 +2254,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@5.1.6)
       typescript: 5.1.6
-      vite: 4.4.3(sass@1.63.6)
+      vite: 4.4.3(@types/node@20.4.6)(sass@1.63.6)
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -2879,7 +2891,7 @@ packages:
       remark-slug: 6.1.0
       rollup: 3.26.2
       typescript: 5.1.6
-      vite: 4.4.3(sass@1.63.6)
+      vite: 4.4.3(@types/node@20.4.6)(sass@1.63.6)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -3237,7 +3249,7 @@ packages:
       react: 18.2.0
       react-docgen: 6.0.0-alpha.3
       react-dom: 18.2.0(react@18.2.0)
-      vite: 4.4.3(sass@1.63.6)
+      vite: 4.4.3(@types/node@20.4.6)(sass@1.63.6)
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -5116,6 +5128,10 @@ packages:
     resolution: {integrity: sha512-JIzsAvJeA/5iY6Y/OxZbv1lUcc8dNSE77lb2gnBH+/PJ3lFR1Ccvgwl5JWnHAkNHcRsT0TbpVOsiMKZ1F/yyJg==}
     dev: true
 
+  /@types/node@20.4.6:
+    resolution: {integrity: sha512-q0RkvNgMweWWIvSMDiXhflGUKMdIxBo2M2tYM/0kEGDueQByFzK4KZAgu5YHGFNxziTlppNpTIBcqHQAxlfHdA==}
+    dev: true
+
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
@@ -5127,6 +5143,10 @@ packages:
   /@types/pretty-hrtime@1.0.1:
     resolution: {integrity: sha512-VjID5MJb1eGKthz2qUerWT8+R4b9N+CHvGCzg9fn4kWZgaF9AhdYikQio3R7wV8YY1NsQKPaCwKz1Yff+aHNUQ==}
     dev: true
+
+  /@types/proj4@2.5.2:
+    resolution: {integrity: sha512-/Nmfn9p08yaYw6xo5f2b0L+2oHk2kZeOkp5v+4VCeNfq+ETlLQbmHmC97/pjDIEZy8jxwz7pdPpwNzDHM5cuJw==}
+    dev: false
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
@@ -5342,7 +5362,7 @@ packages:
       vite: ^4
     dependencies:
       '@swc/core': 1.3.68
-      vite: 4.4.3(sass@1.63.6)
+      vite: 4.4.3(@types/node@20.4.6)(sass@1.63.6)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -5369,7 +5389,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.9)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.4.3(sass@1.63.6)
+      vite: 4.4.3(@types/node@20.4.6)(sass@1.63.6)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9005,6 +9025,10 @@ packages:
       mapbox-gl: 2.15.0
     dev: false
 
+  /mapbox-gl-fps@1.0.1:
+    resolution: {integrity: sha512-g/BQaXrBFR++CwwqK6LA9Lqbhyta/9wrZnuzc0jeEIoQDzCAX4YvL3Qj77R1q3xDKmubAlVhu6CCYaqjDov8QA==}
+    dev: false
+
   /mapbox-gl@2.15.0:
     resolution: {integrity: sha512-fjv+aYrd5TIHiL7wRa+W7KjtUqKWziJMZUkK5hm8TvJ3OLeNPx4NmW/DgfYhd/jHej8wWL+QJBDbdMMAKvNC0A==}
     dependencies:
@@ -9231,6 +9255,10 @@ packages:
   /methods@1.1.2:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
     engines: {node: '>= 0.6'}
+
+  /mgrs@1.0.0:
+    resolution: {integrity: sha512-awNbTOqCxK1DBGjalK3xqWIstBZgN6fxsMSiXLs9/spqWkF2pAhb2rrYCFSsr1/tT7PhcDGjZndG8SWYn0byYA==}
+    dev: false
 
   /micromark-core-commonmark@1.1.0:
     resolution: {integrity: sha512-BgHO1aRbolh2hcrzL2d1La37V0Aoz73ymF8rAcKnohLy93titmv62E0gP8Hrx9PKcKrqCZ1BbLGbP3bEhoXYlw==}
@@ -10296,6 +10324,13 @@ packages:
     resolution: {integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==}
     engines: {node: '>=0.4.0'}
     dev: true
+
+  /proj4@2.9.0:
+    resolution: {integrity: sha512-BoDXEzCVnRJVZoOKA0QHTFtYoE8lUxtX1jST38DJ8U+v1ixY70Kpwi0Llu6YqSWEH2xqu4XMEBNGcgeRIEywoA==}
+    dependencies:
+      mgrs: 1.0.0
+      wkt-parser: 1.3.3
+    dev: false
 
   /prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
@@ -12331,7 +12366,7 @@ packages:
       - terser
     dev: true
 
-  /vite@4.4.3(sass@1.63.6):
+  /vite@4.4.3(@types/node@20.4.6)(sass@1.63.6):
     resolution: {integrity: sha512-IMnXQXXWgLi5brBQx/4WzDxdzW0X3pjO4nqFJAuNvwKtxzAmPzFE1wszW3VDpAGQJm3RZkm/brzRdyGsnwgJIA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -12359,6 +12394,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.4.6
       esbuild: 0.18.11
       postcss: 8.4.25
       rollup: 3.26.2
@@ -12615,6 +12651,10 @@ packages:
       siginfo: 2.0.0
       stackback: 0.0.2
     dev: true
+
+  /wkt-parser@1.3.3:
+    resolution: {integrity: sha512-ZnV3yH8/k58ZPACOXeiHaMuXIiaTk1t0hSUVisbO0t4RjA5wPpUytcxeyiN2h+LZRrmuHIh/1UlrR9e7DHDvTw==}
+    dev: false
 
   /wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}

@@ -10,6 +10,7 @@ import { arrowHeight } from "./LLPopup";
 
 interface Options extends MarkerOptions {
   icon?: string;
+  text?: string;
 }
 
 const defaultColor = "#ffe64b";
@@ -18,6 +19,7 @@ const defaultHeight = 50;
 export default class LLMarker extends Marker {
   _icon: string;
   _height = defaultHeight;
+  _text?: string;
 
   constructor(options?: Options) {
     const useDefaultMarker = !options || !options.element;
@@ -32,6 +34,7 @@ export default class LLMarker extends Marker {
     this._anchor = (options && options.anchor) || "bottom";
     this._color = (options && options.color) || defaultColor;
     this._icon = (options && options.icon) || "fe-star";
+    this._text = options && options.text;
 
     if (useDefaultMarker) {
       this._defaultMarker = true;
@@ -44,7 +47,12 @@ export default class LLMarker extends Marker {
 
       const container = DOM.create("div");
       DOM.create("div", "ovale", container);
-      DOM.create("i", this._icon, container);
+      if (this._text) {
+        const $text = DOM.create("div", "text", container);
+        $text.innerText = this._text;
+      } else {
+        DOM.create("i", this._icon, container);
+      }
 
       this._element.appendChild(container);
     }

@@ -3,6 +3,7 @@ import "../shared/main.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import * as maplibre from "maplibre-gl";
+import { FPSControl } from "./lib/FPSControl";
 import { LLMarker, LLPopup } from "@lonlat/maplibre-ext";
 
 const $map = document.getElementById("map");
@@ -19,6 +20,8 @@ const map = new maplibre.Map({
   zoom: 16,
 });
 
+const fpsControl = new FPSControl();
+map.addControl(fpsControl, "top-right");
 // map.on("load", () => {
 //   map.addSource("terrarium", {
 //     type: "raster-dem",
@@ -53,7 +56,7 @@ new LLMarker().setLngLat(house).addTo(map);
 new LLMarker().setLngLat(marignier).addTo(map);
 new LLMarker().setLngLat(mole).addTo(map);
 
-for (let a = 0; a < 1000; a++) {
+for (let a = 0; a < 100; a++) {
   new LLMarker()
     .setLngLat([house[0] + (Math.random() - 0.5) * 0.05, house[1] + (Math.random() - 0.5) * 0.05])
     .addTo(map);

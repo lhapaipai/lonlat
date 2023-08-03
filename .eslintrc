@@ -25,7 +25,8 @@
     "overrides": [
         {
             "files": [
-                "*.cjs"
+                "*.cjs",
+                "*.mjs"
             ],
             "env": {
                 "node": true

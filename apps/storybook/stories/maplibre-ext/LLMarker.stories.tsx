@@ -93,38 +93,32 @@ export const Graphics = () => (
       </div>
     </div>
 
-    {/* <div className="storybook-icon-grid">
-      <div className="ll-marker marker-cluster">
-        <div>
-          <i className="fe-cluster-station-hyd"></i>
-          <div className="text">5</div>
+    <div className="storybook-icon-grid">
+      <div>
+        <div className="ll-marker">
+          <div>
+            <div className="ovale"></div>
+            <div className="text">5</div>
+          </div>
         </div>
       </div>
-      <div className="ll-marker marker-cluster">
-        <div>
-          <i className="fe-cluster-station-cam"></i>
-          <div className="text">15</div>
+      <div>
+        <div className="ll-marker">
+          <div>
+            <div className="ovale"></div>
+            <div className="text">15</div>
+          </div>
         </div>
       </div>
-      <div className="ll-marker marker-cluster">
-        <div>
-          <i className="fe-cluster-station-met"></i>
-          <div className="text">25</div>
+      <div>
+        <div className="ll-marker">
+          <div>
+            <div className="ovale"></div>
+            <div className="text">105</div>
+          </div>
         </div>
       </div>
-      <div className="ll-marker marker-cluster">
-        <div>
-          <i className="fe-cluster-station-nph"></i>
-          <div className="text">105</div>
-        </div>
-      </div>
-      <div className="ll-marker marker-cluster">
-        <div>
-          <i className="fe-cluster-station-mf"></i>
-          <div className="text">225</div>
-        </div>
-      </div>
-    </div> */}
+    </div>
 
     <div className="storybook-icon-grid">
       <div>
@@ -187,6 +181,45 @@ export const Graphics = () => (
       </div>
     </div>
 
+    <div className="storybook-icon-grid">
+      <div>
+        <div className="ll-marker small-text" style={{ "--marker-size": "30px" }}>
+          <div>
+            <div className="ovale"></div>
+            <div className="text">5</div>
+          </div>
+        </div>
+        <pre>--marker-size: 30px</pre>
+      </div>
+      <div>
+        <div className="ll-marker" style={{ "--marker-size": "50px" }}>
+          <div>
+            <div className="ovale"></div>
+            <div className="text">12</div>
+          </div>
+        </div>
+        <pre>--marker-size: 50px</pre>
+      </div>
+      <div>
+        <div className="ll-marker" style={{ "--marker-size": "70px" }}>
+          <div>
+            <div className="ovale"></div>
+            <div className="text">105</div>
+          </div>
+        </div>
+        <pre>--marker-size: 70px</pre>
+      </div>
+      <div>
+        <div className="ll-marker" style={{ "--marker-size": "90px" }}>
+          <div>
+            <div className="ovale"></div>
+            <div className="text">130</div>
+          </div>
+        </div>
+        <pre>--marker-size: 90px</pre>
+      </div>
+    </div>
+
     {/* <div className="storybook-icon-grid">
       <div className="ll-marker marker-cluster" style={{ "--marker-size": "44px" }}>
         <div>
@@ -227,6 +260,10 @@ export const Basic = () => {
     new LLMarker().setLngLat([-1.1344, 44.698]).addTo(map);
 
     new LLMarker({ color: "green" }).setLngLat([-4, 44.698]).addTo(map);
+    new LLMarker({ text: "5" }).setLngLat([4, 44.698]).addTo(map);
+    new LLMarker({ text: "5", scale: 0.5, className: "small-text" })
+      .setLngLat([8, 44.698])
+      .addTo(map);
     new LLMarker({ color: "green", rotation: 180, anchor: "top" })
       .setLngLat([-4, 44.698])
       .addTo(map);
