@@ -10,7 +10,8 @@ const startPoint: maplibre.LngLat = [6.500239938608518, 46.09073992765464];
 const mole: maplibre.LngLat = [6.4576, 46.1057];
 const map = new maplibre.Map({
   container: $map!,
-  style: "/styles/ign/PLAN.IGN/standard.json",
+  // style: "/styles/ign/PLAN.IGN/standard.json",
+  style: "/styles/ign/custom/top-25-dem.json",
   center: marignier,
   zoom: 13,
   pitch: 43,
@@ -19,30 +20,6 @@ const map = new maplibre.Map({
 map.on("moveend", () => {
   console.log(map.getCenter(), map.getZoom(), map.getPitch());
 });
-
-function initElevation() {
-  map.addSource("terrarium", {
-    type: "raster-dem",
-    tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
-    encoding: "terrarium",
-    tileSize: 256,
-  });
-  map.setTerrain({
-    source: "terrarium",
-    exaggeration: 1,
-  });
-  map.addLayer({
-    id: "hills",
-    type: "hillshade",
-    source: "terrarium",
-    layout: {
-      visibility: "visible",
-    },
-    paint: {
-      "hillshade-exaggeration": 0.25,
-    },
-  });
-}
 
 async function initTrace() {
   const [trace, checkpoints] = await Promise.all([
@@ -85,9 +62,9 @@ async function initTrace() {
       "line-cap": "round",
     },
     paint: {
-      "line-color": "#888",
+      "line-color": "yellow",
       "line-width": 4,
-      "line-opacity": 0.4,
+      "line-opacity": 0.3,
     },
   });
 
@@ -125,7 +102,7 @@ async function initTrace() {
     type: "line",
     source: "traceCompleted",
     paint: {
-      "line-color": "#444",
+      "line-color": "#000",
       "line-opacity": 0.75,
       "line-width": 4,
     },
@@ -136,7 +113,7 @@ async function initTrace() {
     source: "traceHead",
     paint: {
       "line-color": "yellow",
-      "line-opacity": 0.75,
+      "line-opacity": 1,
       "line-width": 4,
     },
   });
@@ -147,9 +124,9 @@ async function initTrace() {
   setInterval(() => {
     if (i < fullCoordinates.length) {
       head.geometry.coordinates.push(fullCoordinates[i]);
-      completed.geometry.coordinates.push(fullCoordinates[i]);
       if (head.geometry.coordinates.length > 5) {
         head.geometry.coordinates.shift();
+        completed.geometry.coordinates.push(fullCoordinates[i - 5]);
       }
       if (fullCoordinates[i][2] > nextCheckpoint) {
         const feature = checkpointsByDistance[nextCheckpoint];
@@ -182,10 +159,6 @@ async function initTrace() {
   }, 30);
 }
 
-async function initCheckpoints() {}
-
 map.on("load", async () => {
-  initElevation();
   initTrace();
-  initCheckpoints();
 });
