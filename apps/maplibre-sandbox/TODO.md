@@ -7,21 +7,21 @@
 -    Add an animated icon to the map
 -    Add a generated icon to the map
 -    Generate and add a missing icon to the map
--    Add a stretchable image to the map
+- -- Add a stretchable image to the map
 - OK Add an icon to the map
--    Animate a line
+- OK Animate a line
 -    Animate map camera around a point
 -    Animate a series of images
--    Animate a marker
--    Animate a point
--    Animate a point along a route
+- OK Animate a marker
+- OK Animate a point
+- OK Animate a point along a route
 -    Change the default position for attribution
 -    Customize camera animations
 -    Add a canvas source
 -    Center the map on a clicked symbol
 -    Change building color based on zoom level
 -    Change the case of labels
--    Check if MapLibre GL JS is supported
+- -- Check if MapLibre GL JS is supported
 - OK Display HTML clusters with custom properties
 - OK Create and style clusters
 - OK Change a layer's color with buttons
@@ -71,9 +71,9 @@
 -    Display map navigation controls
 -    Offset the vanishing point using padding
 -    Show polygon information on click
--    Display a popup on click
+- OK Display a popup on click
 -    Display a popup on hover
--    Display a popup
+- OK Display a popup
 -    Get features under the mouse pointer
 -    Render world copies
 -    Restrict map panning to an area

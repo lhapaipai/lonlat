@@ -16,4 +16,5 @@
 
 - [ ] documentation `<canvas />`
 - [ ] documentation webGL
-- [ ] documentation d3js avec `<canvas />`.
+- [ ] documentation d3js avec `<canvas />`. https://2019.wattenberger.com/blog/react-and-d3
+- [ ] rlisting
