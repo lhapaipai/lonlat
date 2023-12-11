@@ -1,6 +1,6 @@
 import { Input, Button } from "@lonlat/shared";
 import { Meta, StoryObj } from "@storybook/react";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 const meta = {
   title: "Components/Input",

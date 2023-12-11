@@ -1,10 +1,16 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { mergeConfig } from 'vite';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const projectDir = "../../.."
-const sharedDir = `${projectDir}/extra/shared`
+const storybookDir = resolve(fileURLToPath(new URL('..', import.meta.url)));
+const projectDir = resolve(storybookDir, '../..');
 
 const config: StorybookConfig = {
-  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: [
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+    `${projectDir}/extra/shared/components/**/*.stories.@(js|jsx|ts|tsx)`
+  ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: {
     name: "@storybook/react-vite",
@@ -16,6 +22,18 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag"
   },
-  staticDirs: ['../public']
+  staticDirs: ['../public'],
+  viteFinal(config) {
+    const finalConfig = mergeConfig(config, {
+      resolve: {
+        alias: {
+          "@lonlat/shared": resolve(projectDir, 'extra/shared'),
+          "@storybook/react": resolve(storybookDir, 'node_modules/@storybook/react'),
+          "@storybook/addon-actions": resolve(storybookDir, 'node_modules/@storybook/addon-actions'),
+        }
+      }
+    })
+    return finalConfig
+  }
 };
 export default config;

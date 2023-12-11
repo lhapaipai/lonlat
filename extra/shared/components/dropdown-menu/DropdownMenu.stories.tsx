@@ -3,7 +3,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@lonlat/shared/index";
+} from "@lonlat/shared";
 import { Meta } from "@storybook/react";
 
 const meta = {

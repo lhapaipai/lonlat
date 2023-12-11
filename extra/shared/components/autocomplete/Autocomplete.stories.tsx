@@ -7,10 +7,11 @@ import {
   AutocompleteGeocodageOption,
   prepareTownsResult,
   NotificationsProvider,
-} from "@lonlat/shared/index";
+} from "@lonlat/shared";
+
 import { Meta } from "@storybook/react";
 
-import type { Option } from "@lonlat/shared/components/autocomplete/interface.d.ts";
+import type { Option } from "@lonlat/shared/components/autocomplete/interface";
 import { useCallback } from "react";
 
 const meta = {

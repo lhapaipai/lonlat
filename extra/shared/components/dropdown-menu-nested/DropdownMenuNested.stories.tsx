@@ -1,4 +1,4 @@
-import { DropdownMenuNested, MenuItem, MenuItemWithChildren, Button } from "@lonlat/shared/index";
+import { DropdownMenuNested, MenuItem, MenuItemWithChildren, Button } from "@lonlat/shared";
 import { Meta } from "@storybook/react";
 
 const meta = {

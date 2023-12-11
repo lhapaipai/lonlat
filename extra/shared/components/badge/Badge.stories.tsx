@@ -1,4 +1,4 @@
-import { Badge } from "@lonlat/shared";
+import Badge from "./Badge";
 import { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 

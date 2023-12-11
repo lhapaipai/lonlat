@@ -1,6 +1,6 @@
-import { Checkbox, InputField, RadioGroup, Toggle } from "@lonlat/shared/index";
+import { Checkbox, InputField, RadioGroup, Toggle } from "@lonlat/shared";
 import { Meta } from "@storybook/react";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const meta = {
   title: "Components/InputField",

@@ -1,5 +1,5 @@
 import { Highlight, InputField, Toggle, parseHighlightIndices } from "@lonlat/shared";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import Fuse from "fuse.js";
 import { ChangeEvent, ReactNode, useState } from "react";
 
@@ -8,8 +8,6 @@ const meta = {
   component: Highlight,
 } satisfies Meta<typeof Highlight>;
 export default meta;
-
-type Story = StoryObj<typeof meta>;
 
 export const Basic = () => {
   const zones = [
