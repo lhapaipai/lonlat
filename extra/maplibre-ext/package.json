@@ -8,12 +8,12 @@
     "license": "ISC",
     "main": "src/index.ts",
     "dependencies": {
-        "@floating-ui/dom": "^1.5.1",
+        "@floating-ui/dom": "^1.5.3",
         "@lonlat/shared": "link:../shared",
         "@mapbox/point-geometry": "^0.1.0",
-        "maplibre-gl": "^3.2.0"
+        "maplibre-gl": "^3.6.2"
     },
     "devDependencies": {
-        "@types/mapbox__point-geometry": "^0.1.2"
+        "@types/mapbox__point-geometry": "^0.1.4"
     }
 }

@@ -1,8 +1,10 @@
 import "@lonlat/shared/styles/_vite-sandbox.scss";
 import "../shared/main.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { InspectControl } from "mapbox-gl-controls";
-import "mapbox-gl-controls/lib/controls.css";
+
+// mapbox-gl-controls is depracated
+// import { InspectControl } from "mapbox-gl-controls";
+// import "mapbox-gl-controls/lib/controls.css";
 
 import * as maplibre from "maplibre-gl";
 
@@ -17,5 +19,5 @@ const map = new maplibre.Map({
   center: marignier,
   zoom: 15,
 });
-
-map.addControl(new InspectControl(), "bottom-right");
+console.log(map);
+// map.addControl(new InspectControl(), "bottom-right");

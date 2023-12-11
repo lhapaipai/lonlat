@@ -16,5 +16,14 @@
 
 - [ ] documentation `<canvas />`
 - [ ] documentation webGL
-- [ ] documentation d3js avec `<canvas />`. https://2019.wattenberger.com/blog/react-and-d3
+- [X] documentation d3js et react avec `<canvas />`. https://2019.wattenberger.com/blog/react-and-d3
 - [ ] rlisting
+
+
+
+d3js custom hooks : https://2019.wattenberger.com/blog/react-hooks
+
+p::selection {
+  color: red;
+  background-color: yellow;
+}

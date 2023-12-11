@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_DIR="$( dirname "$SCRIPT_DIR")"
+
+cd $PROJECT_DIR
+# pnpm update
+
+for APPS_DIR in apps/*
+do
+    echo "$APPS_DIR:"
+    cd "$PROJECT_DIR/$APPS_DIR"
+    # pnpm update
+    pnpm outdated
+done
+
+for EXTRA_DIR in extra/{maplibre-ext,maplibre-react,shared,swagger}
+do
+    echo "$EXTRA_DIR:"
+    cd "$PROJECT_DIR/$EXTRA_DIR"
+    # pnpm update
+    pnpm outdated
+done

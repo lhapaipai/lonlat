@@ -10,22 +10,22 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@floating-ui/react": "^0.24.7",
+        "@floating-ui/react": "^0.26.4",
         "@lonlat/fonts": "link:../../extra/fonts/dist",
         "@lonlat/maplibre-react": "link:../../extra/maplibre-react",
         "@lonlat/shared": "link:../../extra/shared",
-        "fuse.js": "^6.6.2",
-        "maplibre-gl": "^3.2.0",
+        "fuse.js": "^7.0.0",
+        "maplibre-gl": "^3.6.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "sass": "^1.63.6",
+        "sass": "^1.69.5",
         "usehooks-ts": "^2.9.1"
     },
     "devDependencies": {
-        "@types/react": "^18.2.14",
-        "@types/react-dom": "^18.2.6",
-        "@vitejs/plugin-react-swc": "^3.3.2",
-        "typescript": "^5.1.6",
-        "vite": "^4.4.0"
+        "@types/react": "^18.2.43",
+        "@types/react-dom": "^18.2.17",
+        "@vitejs/plugin-react-swc": "^3.5.0",
+        "typescript": "^5.3.3",
+        "vite": "^5.0.7"
     }
 }

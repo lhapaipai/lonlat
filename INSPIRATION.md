@@ -7,10 +7,6 @@ https://stackoverflow.com/questions/64867112/difference-between-react-htmlpropsh
 tuto django react
 https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
 
-react avec d3 tuto
-https://medium.com/@jeffbutsch/using-d3-in-react-with-hooks-4a6c61f1d102
-https://ncoughlin.com/posts/d3-react/
-
 react avec mapbox
 https://docs.mapbox.com/help/tutorials/use-mapbox-gl-js-with-react/
 
@@ -36,9 +32,6 @@ https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e
 
 brevo partenaires déroulant
 https://www.brevo.com/fr/
-
-Annuler une requête fetch avec AbortController
-https://developer.mozilla.org/en-US/docs/Web/API/AbortController
 
 
 Frameworks basés sur React (Next, Remix, ...)
