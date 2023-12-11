@@ -1,11 +1,9 @@
+import { Modal, ModalTrigger, ModalContent } from "@lonlat/shared";
 import {
-  Modal,
-  ModalTrigger,
-  ModalContent,
   ModalDescription,
   ModalHeader,
   ModalFooter,
-} from "@lonlat/shared";
+} from "@lonlat/shared/components/modal/Components";
 import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@lonlat/shared";
 import { useState } from "react";

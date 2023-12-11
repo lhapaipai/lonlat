@@ -22,8 +22,8 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
         const height = elem.clientHeight;
         const width = elem.clientWidth;
         const diameter = Math.max(width, height);
-        setRipples([
-          ...ripples,
+        setRipples((r) => [
+          ...r,
           {
             top: top - diameter / 2,
             left: left - diameter / 2,
@@ -46,9 +46,9 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
         elem.removeEventListener("pointerdown", handlePointerDown);
       };
     }
-  }, [ref, ripples]);
+  }, [ref]);
 
-  //add a debounce so that if the user doesn't click after 1s, we remove the ripples
+  //add a debounce so that if the user doesn't click after 1s, we remove all the ripples
   const _debounced = useDebounce(ripples, 1000);
   useEffect(() => {
     if (_debounced.length) {

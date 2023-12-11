@@ -3,6 +3,14 @@
     "compilerOptions": {
         "types": [
             "@testing-library/jest-dom"
-        ]
+        ],
+        "paths": {
+            // "@storybook/react": [
+            //     "../../apps/storybook/node_modules/@storybook/react"
+            // ],
+            // "@storybook/addon-actions": [
+            //     "../../apps/storybook/node_modules/@storybook/addon-actions"
+            // ]
+        }
     }
 }

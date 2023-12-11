@@ -9,4 +9,14 @@
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
+
+    .ll-button {
+        &.shape-solid {
+            box-shadow: none;
+
+            &:hover {
+                box-shadow: var(--shadow-light);
+            }
+        }
+    }
 }

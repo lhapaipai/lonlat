@@ -1,11 +1,5 @@
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  PopoverHeader,
-  PopoverDescription,
-} from "@lonlat/shared";
-
+import { Popover, PopoverContent, PopoverTrigger } from "@lonlat/shared";
+import { PopoverHeader, PopoverDescription } from "@lonlat/shared/components/popover/Components";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

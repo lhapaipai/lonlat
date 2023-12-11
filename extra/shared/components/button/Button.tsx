@@ -74,6 +74,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 
     return (
       <button
+        role="button"
         ref={inputRef}
         className={classNames}
         disabled={disabled}

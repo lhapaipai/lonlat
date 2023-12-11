@@ -25,7 +25,6 @@
         "@storybook/addon-docs": "^7.6.4",
         "@storybook/addon-essentials": "^7.6.4",
         "@storybook/addon-links": "^7.6.4",
-        "@storybook/addon-mdx-gfm": "^7.6.4",
         "@storybook/blocks": "^7.6.4",
         "@storybook/manager-api": "^7.6.4",
         "@storybook/react": "^7.6.4",
