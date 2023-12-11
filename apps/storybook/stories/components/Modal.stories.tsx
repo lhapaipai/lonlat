@@ -32,7 +32,6 @@ export const Basic: Story = {
   args: {
     initialOpen: false,
     type: "default",
-    children: "",
   },
 };
 

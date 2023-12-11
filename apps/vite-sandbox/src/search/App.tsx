@@ -9,9 +9,7 @@ import {
   prepareTownsResult,
   useNotifications,
 } from "@lonlat/shared/index";
-import "./App.scss";
 import { useEffect, useState } from "react";
-import debounce from "lodash/debounce";
 import { useDebounce } from "usehooks-ts";
 interface Town {
   insee: number;

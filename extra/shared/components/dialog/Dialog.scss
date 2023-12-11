@@ -54,6 +54,7 @@
         height: 12px;
         transform: rotate(45deg);
         position: absolute;
+        pointer-events: none;
     }
 
     .arrow-bg {

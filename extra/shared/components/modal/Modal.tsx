@@ -6,7 +6,7 @@ import "../dialog/Dialog.scss";
 import "./Modal.scss";
 
 interface Props extends ModalOptions {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export default function Modal({ children, ...options }: Props) {

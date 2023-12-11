@@ -1,0 +1,37 @@
+// #tooltip {
+//     background: #222;
+//     color: white;
+//     font-weight: bold;
+//     padding: 5px;
+//     border-radius: 4px;
+//     font-size: 90%;
+
+//     width: max-content;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     pointer-events: none;
+// }
+
+#arrow {
+    position: absolute;
+    background: pink;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+}
+
+#button {
+    background-color: grey;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
