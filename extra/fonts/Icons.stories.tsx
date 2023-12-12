@@ -1,11 +1,11 @@
 export default {
-  title: "Base",
+  title: "Fonts/Icons",
 };
 
 import { useState } from "react";
 
-import jsonFile from "./icons.json";
-import { Input } from "@lonlat/shared/index";
+import jsonFile from "./config.json";
+import { Input } from "@lonlat/shared";
 const fontelloConfig: FontelloConfig = jsonFile;
 
 interface FontelloConfig {

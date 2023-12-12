@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@lonlat/shared": [
+                "."
+            ],
+            "@lonlat/shared/*": [
+                "./*"
+            ],
+            "@storybook/react": [
+                "../../apps/storybook/node_modules/@storybook/react"
+            ],
+            "@storybook/addon-actions": [
+                "../../apps/storybook/node_modules/@storybook/addon-actions"
+            ]
+        }
+    }
+}

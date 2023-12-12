@@ -7,7 +7,7 @@ export default meta;
 
 export const Basic = () => {
   return (
-    <div className="flex gap-4 flex-column">
+    <div className="flex gap-8 flex-column">
       <div>
         <div className="ll-dialog">
           <div className="box">
@@ -29,6 +29,49 @@ export const Basic = () => {
           <div style={{ left: "18px", bottom: "-6px" }} className="arrow arrow-shadow"></div>
         </div>
       </div>
+      <div>
+        <div
+          className="ll-dialog placement-bottom type-info"
+          data-status="open"
+          role="tooltip"
+          style={{ width: 300 }}
+        >
+          <div className="box">
+            <div className="description">infos</div>
+          </div>
+          <div style={{ left: "18px", top: "-6px" }} className="arrow arrow-bg"></div>
+          <div style={{ left: "18px", top: "-6px" }} className="arrow arrow-shadow"></div>
+        </div>
+      </div>
+      <div>
+        <div
+          className="ll-dialog placement-left type-info"
+          data-status="open"
+          role="tooltip"
+          style={{ width: 300 }}
+        >
+          <div className="box">
+            <div className="description">infos</div>
+          </div>
+          <div style={{ top: "18px", right: "-6px" }} className="arrow arrow-bg"></div>
+          <div style={{ top: "18px", right: "-6px" }} className="arrow arrow-shadow"></div>
+        </div>
+      </div>
+      <div>
+        <div
+          className="ll-dialog placement-right type-info"
+          data-status="open"
+          role="tooltip"
+          style={{ width: 300 }}
+        >
+          <div className="box">
+            <div className="description">infos</div>
+          </div>
+          <div style={{ top: "18px", left: "-6px" }} className="arrow arrow-bg"></div>
+          <div style={{ top: "18px", left: "-6px" }} className="arrow arrow-shadow"></div>
+        </div>
+      </div>
+
       <div>
         <div
           className="ll-dialog placement-top type-info"

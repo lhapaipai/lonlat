@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import { TooltipOptions } from "./interface";
+import { TooltipOptions } from "./types";
 import {
   arrow,
   autoUpdate,
@@ -23,10 +23,10 @@ export default function useTooltip({
   placement = "top",
   open: controlledOpen,
   onOpen: setControlledOpen,
-  openDelay = 100,
+  openDelay = 500,
   closeDelay = 500,
   type = "default",
-}: TooltipOptions = {}) {
+}: TooltipOptions) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 
   const isUncontrolled = controlledOpen === null || controlledOpen === undefined;
@@ -55,13 +55,10 @@ export default function useTooltip({
         padding: 20,
       }),
     ],
-    /**
-     * we already use transform with transition status
-     * see : components/dialog/Dialog.scss (data-status)
-     */
     transform: false,
   });
-  const { context } = data;
+
+  const context = data.context;
 
   const transitionStatus = useTransitionStatus(context, {
     duration: 250,
@@ -75,13 +72,17 @@ export default function useTooltip({
       close: closeDelay,
     },
   });
+
   const focus = useFocus(context, {
     enabled: isUncontrolled,
   });
+
   const dismiss = useDismiss(context);
   const role = useRole(context, { role: "tooltip" });
 
   const interactions = useInteractions([hover, focus, dismiss, role]);
+
+  console.log("useTooltip");
 
   return useMemo(
     () => ({

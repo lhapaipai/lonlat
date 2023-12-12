@@ -75,13 +75,13 @@
        same style as <a> tag
     */
     &.shape-underline {
-        text-decoration: underline;
-        text-decoration-color: var(--button-default-text-color);
-        text-decoration-thickness: 1px;
+        border: 0;
+        box-shadow: inset 0 -2px 0 var(--button-default-border-color);
+        border-radius: 0;
+        transition: box-shadow .05s ease, color .05s ease;
 
         &:hover {
-            text-decoration-color: var(--button-hover-text-color);
-            text-decoration-thickness: 2px;
+            box-shadow: inset 0 -2px 0 var(--button-hover-border-color);
         }
     }
 

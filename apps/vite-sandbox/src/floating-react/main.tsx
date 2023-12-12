@@ -5,3 +5,7 @@ import "@lonlat/shared/styles/_storybook.scss";
 import "@lonlat/shared/components/dialog/Dialog.scss";
 
 createRoot(document.getElementById("app")!).render(<App />);
+
+// import * as floatingUIutils from "@floating-ui/utils/dom";
+
+// console.log(floatingUIutils);

@@ -5,3 +5,21 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.card {
+    padding: 2rem;
+    background-color: pink;
+}
+
+.box {
+    background-color: greenyellow;
+    padding: 2rem;
+
+    height: 150px;
+    overflow: auto;
+    position: relative;
+}
+
+.child {
+    background-color: yellow;
+}

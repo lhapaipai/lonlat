@@ -46,10 +46,11 @@
         --button-default-background-color: var(--background-default);
         --button-hover-background-color: var(--color-#{$colorType}-100);
         --button-active-background-color: var(--color-#{$colorType}-200);
-        --button-default-text-color: #{$underline-text-color};
-        --button-hover-text-color: #{$underline-text-color};
-        --button-active-text-color: #{$underline-text-color};
-        --button-focus-border-color: var(--color-#{$colorType}-500);
+        --button-default-text-color: var(--text-strong);
+        --button-default-border-color: var(--color-#{$colorType}-300);
+        --button-hover-text-color: var(--color-#{$colorType}-1000);
+        --button-active-text-color: var(--color-#{$colorType}-1000);
+        --button-hover-border-color: var(--color-#{$colorType}-500);
         --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 }

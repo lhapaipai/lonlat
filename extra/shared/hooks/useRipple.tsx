@@ -17,8 +17,8 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
         //calculate the position and dimensions of the ripple.
         //based on click position and button dimensions
         const rect = elem.getBoundingClientRect();
-        const left = e.clientX - rect.left;
-        const top = e.clientY - rect.top;
+        const left = (e.clientX ?? 0) - rect.left;
+        const top = (e.clientY ?? 0) - rect.top;
         const height = elem.clientHeight;
         const width = elem.clientWidth;
         const diameter = Math.max(width, height);
@@ -62,6 +62,7 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
     return (
       <span
         key={i}
+        data-testid="ripple"
         style={{
           ...style,
           //should be absolutely positioned

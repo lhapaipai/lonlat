@@ -8,8 +8,10 @@ const projectDir = resolve(storybookDir, '../..');
 
 const config: StorybookConfig = {
   stories: [
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-    `${projectDir}/extra/shared/components/**/*.stories.@(js|jsx|ts|tsx)`
+    "../stories/**/*.stories.@(ts|tsx)",
+    `${projectDir}/extra/shared/styles/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/extra/fonts/Icons.stories.tsx`,
+    `${projectDir}/extra/shared/components/**/*.stories.@(ts|tsx)`,
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: {
@@ -25,6 +27,9 @@ const config: StorybookConfig = {
   staticDirs: ['../public'],
   viteFinal(config) {
     const finalConfig = mergeConfig(config, {
+      build: {
+        chunkSizeWarningLimit: 2000
+      },
       resolve: {
         alias: {
           "@lonlat/shared": resolve(projectDir, 'extra/shared'),

@@ -9,60 +9,8 @@ import {
 } from "@lonlat/shared";
 
 export default {
-  title: "Base/Typography",
+  title: "Styles/Themes",
 };
-
-export const Headers = () => (
-  <Table>
-    <TableHeader>
-      <TableRow>
-        <TableHeaderCell>Usage</TableHeaderCell>
-        <TableHeaderCell>Example</TableHeaderCell>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      {[1, 2, 3, 4, 5, 6].map((level) => {
-        const HeaderTag = `h${level}`;
-        return (
-          <TableRow key={level}>
-            <TableCell label="Usage">
-              <Code>{`h${level}`}</Code>
-              <Code>{`.h${level}`}</Code>
-            </TableCell>
-            <TableCell label="Example">
-              <HeaderTag>Lorem ipsum</HeaderTag>
-            </TableCell>
-          </TableRow>
-        );
-      })}
-    </TableBody>
-  </Table>
-);
-
-export const Text = () => (
-  <Table>
-    <TableHeader>
-      <TableRow>
-        <TableHeaderCell>Usage</TableHeaderCell>
-        <TableHeaderCell>Example</TableHeaderCell>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      {["2xl", "xl", "lg", "rg", "sm", "xs", "2xs"].map((size) => {
-        return (
-          <TableRow key={size}>
-            <TableCell label="Usage">
-              <Code>{`.text-${size}`}</Code>
-            </TableCell>
-            <TableCell label="Example">
-              <span className={`text-${size}`}>Lorem ipsum</span>
-            </TableCell>
-          </TableRow>
-        );
-      })}
-    </TableBody>
-  </Table>
-);
 
 const TextColorsTable = () => (
   <Table>

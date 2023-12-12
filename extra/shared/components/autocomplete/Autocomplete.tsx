@@ -81,6 +81,7 @@ export default function Autocomplete<O extends Option = Option>({
         padding: 10,
       }),
     ],
+    transform: false,
   });
 
   const role = useRole(context, { role: "listbox" });
@@ -187,7 +188,7 @@ export default function Autocomplete<O extends Option = Option>({
           <Button
             withRipple={false}
             icon
-            shape="underline"
+            shape="ghost"
             onClick={() => {
               setIsOpen(false);
               onChangeSelection(null);
@@ -211,7 +212,12 @@ export default function Autocomplete<O extends Option = Option>({
           {transitionStatus.isMounted && (
             <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss>
               <div
-                className={cn("ll-dialog", "ll-portail-dialog", "ll-autocomplete-dialog")}
+                className={cn(
+                  "ll-dialog",
+                  "ll-portail-dialog",
+                  "ll-autocomplete-dialog",
+                  `placement-${context.placement}`,
+                )}
                 data-status={transitionStatus.status}
                 ref={refs.setFloating}
                 style={floatingStyles}

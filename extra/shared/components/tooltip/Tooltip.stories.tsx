@@ -1,4 +1,4 @@
-import { Tooltip, SimpleTooltip } from "@lonlat/shared";
+import { Tooltip, SimpleTooltip, TooltipContent, TooltipTrigger } from "@lonlat/shared";
 import { HTMLProps, forwardRef } from "react";
 
 export default {
@@ -26,9 +26,6 @@ export const Basic = () => {
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio neque dolorum soluta
         suscipit,&nbsp;
-        <SimpleTooltip openDelay={1} content="details">
-          tooltip
-        </SimpleTooltip>
         <SimpleTooltip content="infos" placement="bottom">
           dessous
         </SimpleTooltip>

@@ -53,7 +53,7 @@ const options: Option[] = [
   { value: "avray", label: "Avray" },
 ];
 
-export const Basic = () => {
+export const Simple = () => {
   return (
     <>
       <SimpleAutocomplete options={options} />
@@ -73,8 +73,8 @@ async function mockServerRequest() {
 
 export const Lazy = () => {
   const handleChangeSearchValue = useCallback(async (searchValue: string) => {
-    // const towns = (await mockServerRequest()) as Town[];
-    const towns = (await customFetch(`http://localhost:6005/towns?q=${searchValue}`)) as Town[];
+    const towns = (await mockServerRequest()) as Town[];
+    // const towns = (await customFetch(`http://localhost:6005/towns?q=${searchValue}`)) as Town[];
     return prepareTownsResult(towns, searchValue).map((town) => {
       return {
         ...town,

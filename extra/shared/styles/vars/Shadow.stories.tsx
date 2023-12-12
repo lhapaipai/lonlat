@@ -1,7 +1,7 @@
 import { Code } from "@lonlat/shared";
 
 export default {
-  title: "Base",
+  title: "Styles",
 };
 
 export const Shadow = () => {

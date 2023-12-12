@@ -6,9 +6,18 @@ body {
     font-size: pixel-to-rem($base-font-size);
     line-height: 1.5;
     font-family: 'sans-serif';
+    color: var(--text-default);
 }
 
 
+$title-sizes: (
+    h1: 36,
+    h2: 28,
+    h3: 20,
+    h4: 18,
+    h5: 17,
+    h6: 16,
+);
 
 @each $tag,
 $size in $title-sizes {
@@ -21,23 +30,35 @@ $size in $title-sizes {
     }
 }
 
+$text-sizes: (
+    2xl: 20,
+    xl: 18,
+    lg: 16,
+    rg: 14,
+    sm: 13,
+    xs: 12,
+    2xs: 10
+);
 
+@each $label,
+$size in $text-sizes {
+    .text-#{$label} {
+        font-size: pixel-to-rem($size);
+    }
+}
 
 a {
-    color: var(--color-primary-800);
-    text-decoration: underline;
-    text-decoration-color: var(--color-primary-500);
-    text-decoration-thickness: 1px;
-    transition: text-decoration-color .3s ease;
+    color: var(--text-strong);
+    box-shadow: inset 0 -2px 0 var(--color-primary-300);
+    transition: box-shadow .05s ease, color .05s ease;
 
     &:visited {
-        color: var(--color-primary-1000);
-
+        color: var(--text-strong);
     }
 
     &:hover {
-        text-decoration-color: var(--color-primary-600);
-        text-decoration-thickness: 2px;
+        color: var(--color-primary-1000);
+        box-shadow: inset 0 -2px 0 var(--color-primary-500);
     }
 
     &:focus-visible {
@@ -53,10 +74,13 @@ a {
 
 a.ghost {
     color: var(--text-default);
+    box-shadow: none;
 
     &,
     &:hover {
         text-decoration: none;
+        box-shadow: none;
+
     }
 }
 

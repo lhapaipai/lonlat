@@ -81,7 +81,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
         aria-busy={loading}
         {...props}
       >
-        {!notClickable && withRipple && ripples}
+        {!notClickable && withRipple && shape !== "underline" && ripples}
         {children}
         {loading && <Loader type={type} size="small" className="ml-2" />}
       </button>

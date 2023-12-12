@@ -1,23 +1,18 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, beforeEach, describe, it, vi } from "vitest";
+import { cleanup, fireEvent, render } from "@testing-library/react";
+import { afterEach, describe, it } from "vitest";
 import { SimpleTooltip } from ".";
 
-describe("<Tooltip />", () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
-  afterEach(() => {
-    cleanup();
-    vi.restoreAllMocks();
-  });
+afterEach(cleanup);
 
+describe("<Tooltip />", () => {
   it("show the popup", async () => {
-    const { getByRole, getByText } = render(
-      <SimpleTooltip content="details">tooltip</SimpleTooltip>,
+    const { getByRole, findByText } = render(
+      <SimpleTooltip openDelay={1} content="details">
+        tooltip
+      </SimpleTooltip>,
     );
 
-    fireEvent.focus(getByRole("button"));
-    vi.advanceTimersByTime(500);
-    getByText("details");
+    fireEvent.mouseEnter(getByRole("button"));
+    findByText("details");
   });
 });
