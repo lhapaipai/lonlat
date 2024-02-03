@@ -26,7 +26,7 @@
     width: 1.25rem;
     color: var(--color-primary);
     background-color: #fff;
-    border: 1px solid var(--color-weak-100);
+    outline: 1px solid var(--color-weak-100);
 
     margin-top: 0;
     margin-bottom: 0;
@@ -36,8 +36,10 @@
 
     transition: border .3s ease, box-shadow .3s ease;
 
+    border: 0;
+
     &:hover {
-        border-color: var(--color-weak-400);
+        outline-color: var(--color-weak-400);
     }
 
     &:checked,
@@ -46,25 +48,24 @@
         background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat;
-        border-color: var(--color-weak-400);
+        outline-color: var(--color-weak-400);
         background-color: currentColor;
     }
 
-    &.warning {
-        border-color: var(--color-warning-600);
-    }
 
-    &.error {
-        border-color: var(--color-danger-600);
-    }
 
     &:focus {
         box-shadow: var(--ring-shadow-light);
-        border-color: var(--color-primary-700);
+        outline-color: var(--color-primary-700);
+        outline-width: 2px;
     }
 
-    &:focus-visible {
-        box-shadow: var(--ring-shadow-a11y);
+    &.warning {
+        outline-color: var(--color-warning-600);
+    }
+
+    &.error {
+        outline-color: var(--color-danger-600);
     }
 
     &.indeterminate,
@@ -110,6 +111,5 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 0 var(--space-2);
-
     }
 }

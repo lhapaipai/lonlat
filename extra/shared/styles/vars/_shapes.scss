@@ -28,7 +28,7 @@
     }
 
     .shape-ghost-#{$colorType} {
-        $ghost-text-color: var(--color-#{$colorType}-700);
+        $ghost-text-color: var(--color-#{$colorType}-text);
 
         --button-default-background-color: var(--background-default);
         --button-hover-background-color: var(--color-#{$colorType}-100);

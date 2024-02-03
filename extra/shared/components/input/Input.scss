@@ -2,28 +2,27 @@
 .ll-select .selection {
     border-radius: var(--border-radius-md);
     transition: all .3s ease;
-    border: solid 1px var(--color-weak-100);
+    transition: outline-width 0s ease;
+    outline: solid 1px var(--color-weak-100);
     display: flex;
-    outline: none;
 
 
     &:hover {
-        border-color: var(--color-weak-400);
-        box-shadow: var(--shadow-light-sm);
+        outline-color: var(--color-weak-400);
     }
-
-    &.warning {
-        border-color: var(--color-warning-600);
-    }
-
-    &.error {
-        border-color: var(--color-danger-600);
-    }
-
 
     &:focus-within {
         box-shadow: var(--ring-shadow-light);
-        border-color: var(--color-primary-600);
+        outline-color: var(--color-primary-600);
+        outline-width: 2px;
+    }
+
+    &.warning {
+        outline-color: var(--color-warning-600);
+    }
+
+    &.error {
+        outline-color: var(--color-danger-600);
     }
 
     &.disabled {

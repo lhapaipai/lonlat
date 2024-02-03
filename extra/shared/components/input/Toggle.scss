@@ -9,12 +9,11 @@
 }
 
 .ll-toggle {
-    $form-border-width: 1px;
+    $form-outline-width: 1px;
 
     box-sizing: border-box;
 
     appearance: none;
-    outline: none;
 
     height: 18px;
     width: 30px;
@@ -22,7 +21,7 @@
     display: inline-block;
     position: relative;
     margin: 0 0.25rem 0 0;
-    border: $form-border-width solid var(--color-weak-100);
+    outline: $form-outline-width solid var(--color-weak-100);
     background-color: var(--background-light);
     cursor: pointer;
     line-height: 18px;
@@ -31,35 +30,33 @@
     transition: border .3s ease, box-shadow .3s ease;
 
     &:hover {
-        border-color: var(--color-weak-400);
+        outline-color: var(--color-weak-400);
 
         &::after {
-            border: $form-border-width solid var(--color-weak-400);
+            outline: $form-outline-width solid var(--color-weak-400);
         }
     }
 
 
     &.warning {
-        border-color: var(--color-warning-600);
+        outline-color: var(--color-warning-600);
 
         &::after {
-            border-color: var(--color-warning-600);
+            outline-color: var(--color-warning-600);
         }
     }
 
     &.error {
-        border-color: var(--color-danger-600);
+        outline-color: var(--color-danger-600);
 
         &::after {
-            border-color: var(--color-danger-600);
+            outline-color: var(--color-danger-600);
         }
     }
 
     &:focus {
-        box-shadow: var(--ring-shadow-light);
+        outline-width: 2px;
     }
-
-
 
     &::after {
         box-sizing: border-box;
@@ -68,27 +65,22 @@
         position: absolute;
         top: 3px;
         left: 3px;
-        width: calc(18px - 2 * $form-border-width - 6px);
-        height: calc(18px - 2 * $form-border-width - 6px);
+        width: calc(18px - 6px);
+        height: calc(18px - 6px);
         border-radius: 50%;
         background-color: var(--color-weak-200);
         transition: all 0.15s cubic-bezier(0.5, 0.1, 0.75, 1.35);
-        border: 1px solid var(--color-weak-200);
+        outline: 1px solid var(--color-weak-200);
     }
 
     &:checked {
         background-color: var(--color-primary-100);
-        border-color: var(--color-primary-500);
+        outline-color: var(--color-primary-500);
 
         &::after {
             background-color: var(--color-primary-700);
             transform: translateX(12px);
-            border: 1px solid var(--color-primary-700);
+            outline: 1px solid var(--color-primary-700);
         }
     }
-
-    &:focus-visible {
-        box-shadow: var(--ring-shadow-a11y);
-    }
-
 }
