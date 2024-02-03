@@ -42,16 +42,16 @@ importers:
         specifier: ^0.26.4
         version: 0.26.4(react-dom@18.2.0)(react@18.2.0)
       '@lonlat/fonts':
-        specifier: link:../../extra/fonts/dist
+        specifier: workspace:*
         version: link:../../extra/fonts/dist
       '@lonlat/maplibre-ext':
-        specifier: link:../../extra/maplibre-ext
+        specifier: workspace:*
         version: link:../../extra/maplibre-ext
       '@lonlat/maplibre-react':
-        specifier: link:../../extra/maplibre-react
+        specifier: workspace:*
         version: link:../../extra/maplibre-react
       '@lonlat/shared':
-        specifier: link:../../extra/shared
+        specifier: workspace:*
         version: link:../../extra/shared
       maplibre-gl:
         specifier: ^3.6.2
@@ -91,16 +91,16 @@ importers:
         specifier: ^0.26.4
         version: 0.26.4(react-dom@18.2.0)(react@18.2.0)
       '@lonlat/fonts':
-        specifier: link:../../extra/fonts/dist
+        specifier: workspace:*
         version: link:../../extra/fonts/dist
       '@lonlat/maplibre-ext':
-        specifier: link:../../extra/maplibre-ext
+        specifier: workspace:*
         version: link:../../extra/maplibre-ext
       '@lonlat/maplibre-react':
-        specifier: link:../../extra/maplibre-react
+        specifier: workspace:*
         version: link:../../extra/maplibre-react
       '@lonlat/shared':
-        specifier: link:../../extra/shared
+        specifier: workspace:*
         version: link:../../extra/shared
       '@mapbox/mapbox-gl-draw':
         specifier: ^1.4.3
@@ -161,16 +161,16 @@ importers:
         specifier: ^0.26.4
         version: 0.26.4(react-dom@18.2.0)(react@18.2.0)
       '@lonlat/fonts':
-        specifier: link:../../extra/fonts/dist
+        specifier: workspace:*
         version: link:../../extra/fonts/dist
       '@lonlat/maplibre-ext':
-        specifier: link:../../extra/maplibre-ext
+        specifier: workspace:*
         version: link:../../extra/maplibre-ext
       '@lonlat/maplibre-react':
-        specifier: link:../../extra/maplibre-react
+        specifier: workspace:*
         version: link:../../extra/maplibre-react
       '@lonlat/shared':
-        specifier: link:../../extra/shared
+        specifier: workspace:*
         version: link:../../extra/shared
       fuse.js:
         specifier: ^7.0.0
@@ -243,13 +243,13 @@ importers:
         specifier: ^0.1.6
         version: 0.1.6
       '@lonlat/fonts':
-        specifier: link:../../extra/fonts/dist
+        specifier: workspace:*
         version: link:../../extra/fonts/dist
       '@lonlat/maplibre-react':
-        specifier: link:../../extra/maplibre-react
+        specifier: workspace:*
         version: link:../../extra/maplibre-react
       '@lonlat/shared':
-        specifier: link:../../extra/shared
+        specifier: workspace:*
         version: link:../../extra/shared
       '@use-gesture/react':
         specifier: ^10.3.0
@@ -297,7 +297,7 @@ importers:
         specifier: ^1.5.3
         version: 1.5.3
       '@lonlat/shared':
-        specifier: link:../shared
+        specifier: workspace:*
         version: link:../shared
       '@mapbox/point-geometry':
         specifier: ^0.1.0
@@ -316,13 +316,13 @@ importers:
         specifier: ^0.26.4
         version: 0.26.4(react-dom@18.2.0)(react@18.2.0)
       '@lonlat/fonts':
-        specifier: link:../fonts/dist
+        specifier: workspace:*
         version: link:../fonts/dist
       '@lonlat/maplibre-ext':
-        specifier: link:../maplibre-ext
+        specifier: workspace:*
         version: link:../maplibre-ext
       '@lonlat/shared':
-        specifier: link:../shared
+        specifier: workspace:*
         version: link:../shared
       classnames:
         specifier: ^2.3.2
@@ -386,7 +386,7 @@ importers:
         specifier: ^0.26.4
         version: 0.26.4(react-dom@18.2.0)(react@18.2.0)
       '@lonlat/fonts':
-        specifier: link:../fonts/dist
+        specifier: workspace:*
         version: link:../fonts/dist
       classnames:
         specifier: ^2.3.2
@@ -440,8 +440,6 @@ importers:
       vitest:
         specifier: ^1.0.4
         version: 1.0.4(@vitest/ui@1.0.4)(jsdom@23.0.1)(sass@1.69.5)
-
-  extra/shared/styles: {}
 
   extra/swagger:
     dependencies:

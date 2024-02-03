@@ -12,10 +12,10 @@
     "license": "ISC",
     "dependencies": {
         "@floating-ui/react": "^0.26.4",
-        "@lonlat/fonts": "link:../../extra/fonts/dist",
-        "@lonlat/maplibre-ext": "link:../../extra/maplibre-ext",
-        "@lonlat/maplibre-react": "link:../../extra/maplibre-react",
-        "@lonlat/shared": "link:../../extra/shared",
+        "@lonlat/fonts": "workspace:*",
+        "@lonlat/maplibre-ext": "workspace:*",
+        "@lonlat/maplibre-react": "workspace:*",
+        "@lonlat/shared": "workspace:*",
         "fuse.js": "^7.0.0",
         "maplibre-gl": "^3.6.2",
         "react": "^18.2.0"
