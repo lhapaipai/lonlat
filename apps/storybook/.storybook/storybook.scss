@@ -44,3 +44,9 @@
     --storybook-preview-viewport-height: calc(100vh - 28px);
     box-sizing: content-box;
 }
+
+.storybook-box {
+    box-shadow: var(--shadow-xl);
+    width: 300px;
+    height: 300px;
+}
