@@ -1,6 +1,213 @@
 .ll-dialog {
     $padding: 1rem;
     position: relative;
+    background-color: white;
+    pointer-events: auto;
+
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow);
+
+    .bar-buttons {
+        padding: .75rem;
+        float: right;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        padding: $padding $padding 0;
+
+
+    }
+
+    .description {
+        padding: $padding;
+
+        &.scrollable {
+            padding: $padding 0;
+
+            .scroll-inner {
+                padding: 0 $padding;
+            }
+        }
+    }
+
+    .footer {
+        position: relative;
+        z-index: 4;
+        padding: 0 $padding $padding;
+
+        .actions {
+            display: flex;
+            justify-content: space-between
+        }
+    }
+
+    .arrow {
+        width: 0;
+        height: 0;
+        position: absolute;
+        filter: drop-shadow(0 1px 3px #c9c9c9);
+    }
+
+    @each $colorType in (success, info, warning, danger, primary, weak) {
+        &.type-#{$colorType} {
+
+            border-color: var(--color-#{$colorType}-300);
+            border-style: solid;
+        }
+    }
+
+    // &[data-status='initial'],
+    // &[data-status='close'] {
+    //     opacity: 0;
+    //     transform: scale(.9);
+
+    //     &.ll-select-dialog {
+    //         transform: none;
+    //     }
+
+    //     &.ll-autocomplete-dialog {
+    //         transform: none;
+    //     }
+    // }
+
+    // &[data-status='open'],
+    // &[data-status='close'] {
+    //     transition: opacity 250ms ease, transform 250ms ease;
+    // }
+
+    &[class*="placement-top"] {
+        border-top-width: 4px;
+
+        .arrow {
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid white;
+            clip: rect(0px, 16px, 12px, 0px);
+            top: 100%;
+        }
+
+        transform-origin: bottom center;
+    }
+
+    &[class*="placement-top-start"] {
+        transform-origin: bottom left;
+    }
+
+    &[class*="placement-top-end"] {
+        transform-origin: bottom right;
+    }
+
+
+    &[class*="placement-bottom"] {
+        border-bottom-width: 4px;
+
+        .arrow {
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid white;
+            clip: rect(-4px, 16px, 8px, 0px);
+            bottom: 100%;
+        }
+
+        transform-origin: top center;
+    }
+
+    &[class*="placement-bottom-start"] {
+        transform-origin: top left;
+    }
+
+    &[class*="placement-bottom-end"] {
+        transform-origin: top right;
+    }
+
+
+    &[class*="placement\-left"] {
+        border-left-width: 4px;
+
+        .arrow {
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid white;
+            clip: rect(0px, 12px, 16px, 0px);
+            left: 100%;
+        }
+
+        &[data-status='open'],
+        &[data-status='close'] {
+            transform-origin: center right;
+        }
+    }
+
+    &[class*="placement\-right"] {
+        border-right-width: 4px;
+
+        .arrow {
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 8px solid white;
+            clip: rect(0px, 8px, 16px, -4px);
+            right: 100%;
+        }
+
+        &[data-status='open'],
+        &[data-status='close'] {
+            transform-origin: center left;
+        }
+    }
+
+    .option {
+        padding: .5rem .5rem;
+        text-align: left;
+        outline: 0;
+        position: relative;
+        z-index: 1;
+
+        &:hover {
+            background-color: var(--background-light);
+        }
+
+        &.active {
+            background-color: var(--background-weak);
+        }
+
+        &.selected,
+        &:focus {
+            background-color: var(--background-strong);
+            color: var(--text-strong);
+        }
+
+        &[disabled] {
+            color: var(--text-disabled);
+            pointer-events: none;
+        }
+
+    }
+
+
+}
+
+.ll-portail-dialog {
+    outline: none;
+    height: 100%;
+    pointer-events: none;
+
+    .box {
+        pointer-events: all;
+        border-radius: var(--border-radius-md);
+        outline: 0;
+        position: relative;
+        max-height: 100%;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.ll-dialog-legacy {
+    $padding: 1rem;
+    position: relative;
 
     .box {
         background-color: white;
@@ -57,6 +264,32 @@
         pointer-events: none;
     }
 
+    .arrow-double {
+        // background-color: white;
+        z-index: 3;
+
+        width: 0;
+        left: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid white;
+        position: absolute;
+        filter: drop-shadow(0 1px 3px #c9c9c9);
+        clip: rect(0px, 16px, 15px, 0px);
+    }
+
+    .arrow-triple {
+        background-color: white;
+        z-index: 3;
+
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+        position: absolute;
+        clip: rect(-4px, 16px, 16px, 0px);
+        box-shadow: var(--shadow);
+    }
+
     .arrow-bg {
         background-color: white;
         z-index: 3;
@@ -100,10 +333,6 @@
             border-top-width: 4px;
         }
 
-        .arrow {
-            border-bottom-right-radius: 3px;
-        }
-
         // &.maplibregl-popup .arrow {
         //     margin-top: -6px;
         // }
@@ -118,10 +347,6 @@
     &[class*="placement\-bottom"] {
         .box {
             border-bottom-width: 4px;
-        }
-
-        .arrow {
-            border-top-left-radius: 3px;
         }
 
         // &.maplibregl-popup .arrow {
@@ -139,10 +364,6 @@
             border-left-width: 4px;
         }
 
-        .arrow {
-            border-top-right-radius: 3px;
-        }
-
         // &.maplibregl-popup .arrow {
         //     margin-top: -6px;
         // }
@@ -156,10 +377,6 @@
     &[class*="placement\-right"] {
         .box {
             border-right-width: 4px;
-        }
-
-        .arrow {
-            border-bottom-left-radius: 3px;
         }
 
         // &.maplibregl-popup .arrow {
@@ -203,7 +420,7 @@
 
 }
 
-.ll-portail-dialog {
+.ll-portail-dialog-legacy {
     outline: none;
     height: 100%;
     pointer-events: none;

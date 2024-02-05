@@ -10,7 +10,7 @@ const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
     const floatingContext = context.context;
 
     const ref = useMergeRefs([context.refs.setFloating, propRef]);
-    if (!context.transitionStatus.isMounted) {
+    if (!context.open) {
       return null;
     }
     return (
@@ -22,21 +22,17 @@ const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
               "ll-dialog",
               `placement-${context.placement}`,
               `type-${context.type}`,
+              "ll-animate",
+              "fade-in",
             )}
             ref={ref}
             style={{ ...context.floatingStyles, ...style }}
-            data-status={context.transitionStatus.status}
             aria-labelledby={context.labelId}
             aria-describedby={context.descriptionId}
             {...context.getFloatingProps(props)}
           >
-            <div className="box">{children}</div>
-            <div
-              ref={context.arrowRef}
-              style={computeArrowStyle(context)}
-              className="arrow arrow-bg"
-            ></div>
-            <div style={computeArrowStyle(context)} className="arrow arrow-shadow"></div>
+            {children}
+            <div ref={context.arrowRef} style={computeArrowStyle(context)} className="arrow"></div>
           </div>
         </FloatingFocusManager>
       </FloatingPortal>

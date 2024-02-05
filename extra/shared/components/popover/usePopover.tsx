@@ -11,7 +11,6 @@ import {
   useFloating,
   useInteractions,
   useRole,
-  useTransitionStatus,
 } from "@floating-ui/react";
 
 const arrowWidth = 12;
@@ -33,7 +32,7 @@ export default function usePopover({
   const setOpen = isUncontrolled ? setUncontrolledOpen : setControlledOpen!;
 
   const arrowRef = useRef<HTMLDivElement>(null);
-  const offsetVal = 2 + arrowWidth / 2;
+  const offsetVal = arrowWidth / 2;
 
   const data = useFloating({
     placement,
@@ -66,17 +65,12 @@ export default function usePopover({
 
   const interactions = useInteractions([click, dismiss, role]);
 
-  const transitionStatus = useTransitionStatus(context, {
-    duration: 250,
-  });
-
   return useMemo(
     () => ({
       open,
       setOpen,
       ...interactions,
       ...data,
-      transitionStatus,
       arrowRef,
       type,
       modal,
@@ -85,6 +79,6 @@ export default function usePopover({
       setLabelId,
       setDescriptionId,
     }),
-    [open, setOpen, interactions, data, transitionStatus, type, modal, labelId, descriptionId],
+    [open, setOpen, interactions, data, type, modal, labelId, descriptionId],
   );
 }

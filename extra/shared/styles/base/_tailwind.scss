@@ -101,3 +101,11 @@ $sizes: 1, 2, 3, 4, 8;
 .hidden {
     visibility: hidden;
 }
+
+.origin-top-right {
+    transform-origin: top right;
+}
+
+.origin-top-left {
+    transform-origin: top left;
+}

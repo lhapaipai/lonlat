@@ -8,7 +8,7 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, children, ...props }, propRef) => {
     const context = useTooltipContext();
     const ref = useMergeRefs([context.refs.setFloating, propRef]);
-    if (!context.transitionStatus.isMounted) {
+    if (!context.open) {
       return null;
     }
     return (
@@ -18,21 +18,17 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
           className={cn(
             "ll-tooltip",
             "ll-dialog",
+            "ll-animate",
+            "fade-in",
             `placement-${context.placement}`,
             `type-${context.type}`,
             context.middlewareData.hide?.referenceHidden && "hidden",
           )}
           style={{ ...context.floatingStyles, ...style }}
-          data-status={context.transitionStatus.status}
           {...context.getFloatingProps(props)}
         >
-          <div className="box">{children}</div>
-          <div
-            ref={context.arrowRef}
-            style={computeArrowStyle(context)}
-            className="arrow arrow-bg"
-          ></div>
-          <div style={computeArrowStyle(context)} className="arrow arrow-shadow"></div>
+          {children}
+          <div ref={context.arrowRef} style={computeArrowStyle(context)} className="arrow"></div>
         </div>
       </FloatingPortal>
     );
