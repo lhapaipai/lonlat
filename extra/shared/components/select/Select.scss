@@ -1,7 +1,7 @@
 .ll-select {
     .selection {
         width: fit-content;
-        cursor: default;
+        cursor: pointer;
         user-select: none;
         display: flex;
         align-items: center;
@@ -14,7 +14,15 @@
 }
 
 .ll-select-dialog {
+    outline: none;
+    overflow: auto;
+
     .search-container {
-        padding: var(--space-4);
+        padding: 8px;
+    }
+
+    .option {
+        display: block;
+        width: 100%;
     }
 }

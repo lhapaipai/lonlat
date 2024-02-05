@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import "../dialog/Dialog.scss";
 import "./Select.scss";
 import {
@@ -16,6 +16,7 @@ import {
   useInteractions,
   useListNavigation,
   useRole,
+  useTransitionStatus,
   useTypeahead,
 } from "@floating-ui/react";
 import { SelectContext } from "./useSelectContext.ts";
@@ -27,9 +28,19 @@ import type { Option } from "./interface";
 
 import cn from "classnames";
 
-type Value = number | string;
+type SimpleProps<O extends Option> = {
+  multiple?: false;
+  value: string | null;
+  onChangeValue: (option: O | null) => void;
+};
 
-type Props<O extends Option> = {
+type MultipleProps<O extends Option> = {
+  multiple: true;
+  value: string[];
+  onChangeValue: (options: O[]) => void;
+};
+
+type BaseProps<O extends Option> = {
   showArrow?: boolean;
   selectionClassName?: string;
   width?: string;
@@ -41,71 +52,61 @@ type Props<O extends Option> = {
   required?: boolean;
   SelectOptionCustom?: typeof SelectOption<O>;
   SelectSelectionCustom?: typeof SelectSelection<O>;
-
-  value: Value | null;
-  onChange: ((value: Value | null) => void) | null;
 };
+
+type Props<O extends Option> = BaseProps<O> & (SimpleProps<O> | MultipleProps<O>);
 
 function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
   return matchReg.test(option.label.toLowerCase().trim());
 }
 
-export default function Select<O extends Option = Option>({
+function cbForMultiple<O extends Option>(
+  multiple: boolean,
+  _cb: SimpleProps<O>["onChangeValue"] | MultipleProps<O>["onChangeValue"],
+): _cb is MultipleProps<O>["onChangeValue"] {
+  return multiple;
+}
+
+export default function SelectLegacy<O extends Option = Option>({
+  multiple = false,
   showArrow = true,
   selectionClassName,
   width = "100%",
-  placement = "bottom",
+  placement = "bottom-start",
   searchable = false,
   required = true,
-  value = null,
-  onChange = null,
+  value: valueOrValues = null,
+  onChangeValue = () => {},
   placeholder = "Select ...",
   getSearchableValue,
   SelectSelectionCustom,
   SelectOptionCustom,
   options = [],
 }: Props<O>) {
-  const isControlled = onChange !== null;
-
-  const [uncontrolledSelectedIndex, setUncontrolledSelectedIndex] = useState<number | null>(null);
   const [search, setSearch] = useState("");
-
-  const filteredOptions = useMemo(
-    () =>
-      options.filter((option) => {
-        if (!searchable || search.trim() === "") {
-          return true;
-        }
-        const fn = getSearchableValue ?? defaultGetSearchableValue;
-        const matchReg = new RegExp(search.toLowerCase().trim());
-        return fn(matchReg, option);
-      }),
-    [searchable, search, getSearchableValue, options],
-  );
-
-  let selectedIndex: number | null = null;
-  if (isControlled) {
-    if (value !== null) {
-      const pos = filteredOptions.findIndex((o) => o.value === value);
-      if (pos !== -1) {
-        selectedIndex = pos;
-      }
+  const filteredOptions = options.filter((option) => {
+    if (!searchable || search.trim() === "") {
+      return true;
     }
-  } else {
-    selectedIndex = uncontrolledSelectedIndex;
-  }
+    const fn = getSearchableValue ?? defaultGetSearchableValue;
+    const matchReg = new RegExp(search.toLowerCase().trim());
+    return fn(matchReg, option);
+  });
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [searchHasFocus, setSearchHasFocus] = useState(false);
 
+  const values = (
+    multiple ? valueOrValues : valueOrValues === null ? [] : [valueOrValues]
+  ) as string[];
+
+  const selectedIndexes = filteredOptions
+    .map((o, i) => (values.indexOf(o.value) !== -1 ? i : null))
+    .filter((idx) => idx !== null) as number[];
+
   const SelectSelectionComponent = SelectSelectionCustom ?? SelectSelection;
   const SelectOptionComponent = SelectOptionCustom ?? SelectOption;
-
-  function handleSearchChange(e: ChangeEvent<HTMLInputElement>) {
-    setActiveIndex(null);
-    setSearch(e.target.value);
-  }
 
   const { refs, floatingStyles, context } = useFloating({
     placement,
@@ -117,6 +118,7 @@ export default function Select<O extends Option = Option>({
       flip({ padding: 10 }),
       size({
         apply({ rects, elements, availableHeight }) {
+          console.log(rects.floating.height);
           Object.assign(elements.floating.style, {
             maxHeight: `${Math.min(availableHeight, 300)}px`,
             width: `${Math.max(130, rects.reference.width)}px`,
@@ -125,21 +127,55 @@ export default function Select<O extends Option = Option>({
         padding: 10,
       }),
     ],
-    transform: false,
   });
 
-  const listRef = useRef<Array<HTMLElement | null>>([]);
+  const elementsRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
-  const isTypingRef = useRef(false);
+
+  const handleSelect = useCallback(
+    (index: number | null) => {
+      if (cbForMultiple(multiple, onChangeValue)) {
+        let newIndexes: number[];
+        if (index === null) {
+          newIndexes = selectedIndexes;
+        } else if (selectedIndexes.indexOf(index) !== -1) {
+          newIndexes = selectedIndexes.filter((i) => i !== index);
+        } else {
+          newIndexes = [...selectedIndexes, index];
+        }
+        const newValues = newIndexes.map((idx) => filteredOptions[idx]);
+        onChangeValue(newValues);
+      } else {
+        if (index === null || !filteredOptions[index]) {
+          onChangeValue(null);
+        } else {
+          onChangeValue(filteredOptions[index]);
+        }
+        setIsOpen(false);
+      }
+      setSearch("");
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [filteredOptions],
+  );
+
+  function handleTypeaheadMatch(index: number | null) {
+    if (isOpen) {
+      setActiveIndex(index);
+    } else {
+      handleSelect(index);
+    }
+  }
 
   const click = useClick(context, { event: "mousedown" });
   const dismiss = useDismiss(context);
   const role = useRole(context, { role: "listbox" });
   const listNav = useListNavigation(context, {
-    listRef,
+    listRef: elementsRef,
     activeIndex,
     focusItemOnHover: searchable ? false : true,
-    selectedIndex,
+    // when we open the dropdown menu we want to have the focus on selectedItem
+    selectedIndex: selectedIndexes[0] ?? null,
     onNavigate: setActiveIndex,
     loop: true,
   });
@@ -148,13 +184,9 @@ export default function Select<O extends Option = Option>({
     enabled: !searchHasFocus,
     listRef: labelsRef,
     activeIndex,
-    selectedIndex,
-    onMatch: isOpen ? setActiveIndex : undefined,
-    onTypingChange(isTyping) {
-      isTypingRef.current = isTyping;
-    },
+    selectedIndex: selectedIndexes[0] ?? null,
+    onMatch: handleTypeaheadMatch,
   });
-
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
     listNav,
     typeahead,
@@ -163,32 +195,24 @@ export default function Select<O extends Option = Option>({
     role,
   ]);
 
-  const handleSelect = useCallback(
-    (index: number | null) => {
-      setIsOpen(false);
-      if (isControlled) {
-        index === null ? onChange(null) : onChange(filteredOptions[index].value);
-      } else {
-        setUncontrolledSelectedIndex(index);
-      }
-    },
-    [isControlled, onChange, filteredOptions],
-  );
+  const transitionStatus = useTransitionStatus(context, {
+    duration: 250,
+  });
 
   const selectContext = useMemo(
     () => ({
       activeIndex,
-      selectedIndex,
+      selectedIndexes,
       getItemProps,
       handleSelect,
     }),
-    [activeIndex, selectedIndex, getItemProps, handleSelect],
+    [activeIndex, values, getItemProps, handleSelect],
   );
 
   return (
-    <div className={cn("ll-select")}>
+    <div className="ll-select">
       <div
-        className={cn("selection", selectionClassName, isOpen && "focus")}
+        className={cn("selection", selectionClassName)}
         ref={refs.setReference}
         tabIndex={0}
         style={{
@@ -197,27 +221,27 @@ export default function Select<O extends Option = Option>({
         {...getReferenceProps()}
       >
         <span className="input-element">
-          {selectedIndex !== null ? (
-            <SelectSelectionComponent
-              multiple={false}
-              option={filteredOptions[selectedIndex]}
-              key={selectedIndex}
-            />
-          ) : (
-            placeholder
-          )}
+          {selectedIndexes.length > 0
+            ? selectedIndexes.map((idx) => (
+                <SelectSelectionComponent multiple={multiple} option={options[idx]} key={idx} />
+              ))
+            : placeholder}
         </span>
-        {!required && selectedIndex !== null && (
+        {!required && !multiple && selectedIndexes.length > 0 && (
           <Button
             withRipple={false}
             icon
-            shape="ghost"
+            shape="underline"
             onMouseDown={(e) => {
               // we don't want dropdown to open
               e.stopPropagation();
             }}
             onClick={() => {
-              handleSelect(null);
+              if (cbForMultiple(multiple, onChangeValue)) {
+                onChangeValue([]);
+              } else {
+                onChangeValue(null);
+              }
             }}
           >
             <i className="fe-cancel"></i>
@@ -226,7 +250,7 @@ export default function Select<O extends Option = Option>({
         {showArrow && (
           <div className="arrow">
             <div className="ll-indicator"></div>
-            <Button withRipple={false} icon shape="ghost">
+            <Button withRipple={false} icon shape="underline">
               <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
             </Button>
           </div>
@@ -234,17 +258,11 @@ export default function Select<O extends Option = Option>({
       </div>
       <FloatingPortal>
         <SelectContext.Provider value={selectContext}>
-          {isOpen && (
+          {transitionStatus.isMounted && (
             <FloatingFocusManager context={context} modal={false}>
               <div
-                className={cn(
-                  "ll-dialog",
-                  "ll-portail-dialog",
-                  `placement-${context.placement}`,
-                  "ll-select-dialog",
-                  "ll-animate",
-                  "fade-in",
-                )}
+                className={cn("ll-dialog", "ll-portail-dialog", "ll-select-dialog")}
+                data-status={transitionStatus.status}
                 ref={refs.setFloating}
                 style={floatingStyles}
                 {...getFloatingProps()}
@@ -253,15 +271,15 @@ export default function Select<O extends Option = Option>({
                   <div className="search-container">
                     <Input
                       placeholder="Search"
-                      tabIndex={selectedIndex === null ? 0 : -1}
+                      tabIndex={selectedIndexes.length === 0 ? 0 : -1}
                       value={search}
-                      onChange={handleSearchChange}
+                      onChange={(e) => setSearch(e.target.value)}
                       onFocus={() => setSearchHasFocus(true)}
                       onBlur={() => setSearchHasFocus(false)}
                     ></Input>
                   </div>
                 )}
-                <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
+                <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
                   {filteredOptions.map((option) => (
                     <SelectOptionComponent option={option} key={option.value} />
                   ))}

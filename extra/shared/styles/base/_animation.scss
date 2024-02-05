@@ -27,6 +27,18 @@
     }
 }
 
+@keyframes fade-in-list {
+    0% {
+        transform: scaleY(.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 @keyframes fade-in-opacity {
     0% {
         opacity: 0;
@@ -53,6 +65,10 @@
 
     &.fade-in {
         animation: fade-in 250ms ease both;
+    }
+
+    &.fade-in-list {
+        animation: fade-in-list 250ms ease both;
     }
 
     &.fade-out {

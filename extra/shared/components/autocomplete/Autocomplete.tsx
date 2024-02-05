@@ -15,7 +15,6 @@ import {
   useInteractions,
   useListNavigation,
   useRole,
-  useTransitionStatus,
 } from "@floating-ui/react";
 import { AutocompleteContext } from "./useAutocompleteContext.ts";
 import "./Autocomplete.scss";
@@ -44,8 +43,6 @@ interface Props<O extends Option> {
   AutocompleteOptionCustom?: typeof AutocompleteOption;
 }
 
-const TRANSITION_DURATION = 250;
-
 export default function Autocomplete<O extends Option = Option>({
   placeholder = "Search...",
   searchValue,
@@ -53,7 +50,7 @@ export default function Autocomplete<O extends Option = Option>({
   selection = null,
   onChangeSelection,
   options,
-  placement = "bottom-start",
+  placement = "bottom",
   AutocompleteOptionCustom,
 }: Props<O>) {
   const [isOpen, setIsOpen] = useState(false);
@@ -136,10 +133,6 @@ export default function Autocomplete<O extends Option = Option>({
     [options, onChangeSelection, onChangeSearchValue],
   );
 
-  const transitionStatus = useTransitionStatus(context, {
-    duration: TRANSITION_DURATION,
-  });
-
   const autocompleteContext = useMemo(
     () => ({
       activeIndex,
@@ -193,14 +186,14 @@ export default function Autocomplete<O extends Option = Option>({
               setIsOpen(false);
               onChangeSelection(null);
               setActiveIndex(null);
-
+              onChangeSearchValue("");
               /**
                * if we don't put a delay all unfiltered options
                * will reappear for the duration of fade out.
                */
-              setTimeout(() => {
-                onChangeSearchValue("");
-              }, TRANSITION_DURATION);
+              // setTimeout(() => {
+              //   onChangeSearchValue("");
+              // }, TRANSITION_DURATION);
             }}
           >
             <i className="fe-cancel"></i>
@@ -209,7 +202,7 @@ export default function Autocomplete<O extends Option = Option>({
       </div>
       <FloatingPortal>
         <AutocompleteContext.Provider value={autocompleteContext}>
-          {transitionStatus.isMounted && (
+          {isOpen && (
             <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss>
               <div
                 className={cn(
@@ -217,22 +210,18 @@ export default function Autocomplete<O extends Option = Option>({
                   "ll-portail-dialog",
                   "ll-autocomplete-dialog",
                   `placement-${context.placement}`,
+                  "ll-animate",
+                  "fade-in-list",
                 )}
-                data-status={transitionStatus.status}
                 ref={refs.setFloating}
                 style={floatingStyles}
+                {...getFloatingProps()}
               >
-                <div className="box" {...getFloatingProps()}>
-                  <FloatingList elementsRef={listRef}>
-                    {options.map((option) => (
-                      <OptionComponent
-                        option={option}
-                        searchValue={searchValue}
-                        key={option.value}
-                      />
-                    ))}
-                  </FloatingList>
-                </div>
+                <FloatingList elementsRef={listRef}>
+                  {options.map((option) => (
+                    <OptionComponent option={option} searchValue={searchValue} key={option.value} />
+                  ))}
+                </FloatingList>
               </div>
             </FloatingFocusManager>
           )}

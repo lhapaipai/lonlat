@@ -1,6 +1,12 @@
-import { Highlight, InputField, Toggle, parseHighlightIndices } from "@lonlat/shared";
+import {
+  Highlight,
+  HighlightLegacy,
+  InputField,
+  Toggle,
+  parseHighlightIndices,
+} from "@lonlat/shared";
 import { Meta } from "@storybook/react";
-import Fuse from "fuse.js";
+import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
 
 const meta = {
@@ -10,21 +16,7 @@ const meta = {
 export default meta;
 
 export const Basic = () => {
-  const zones = [
-    {
-      extract: "route de ",
-      highlighted: false,
-    },
-    {
-      extract: "Bonnev",
-      highlighted: true,
-    },
-    {
-      extract: "ille",
-      highlighted: false,
-    },
-  ];
-  return <Highlight fallback="route de Bonneville" zones={zones} />;
+  return <Highlight value="route de Bonneville" indices={[[10, 14]]} />;
 };
 
 const list = ["Châtillon-sur-Cluses, Haute-Savoie, Auvergne-Rhône-Alpes"];
@@ -55,22 +47,16 @@ export const Playbook = () => {
   if (result.length === 0 || !result[0].matches) {
     PreviewElement = <p>[Empty]</p>;
   } else {
-    const { item, matches, score } = result[0];
+    const { matches, score } = result[0];
     PreviewElement = (
       <>
         {matches.map(({ indices, value }, idx) => (
-          <Highlight
-            key={idx}
-            fallback={item}
-            zones={parseHighlightIndices(value, indices, minLength)}
-          />
+          <Highlight key={idx} value={value} indices={indices} minLength={minLength} />
         ))}
         <div className="text-hint">score: {score}</div>
       </>
     );
   }
-
-  console.log(result);
 
   return (
     <>

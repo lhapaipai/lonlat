@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 
 interface SelectContext {
   activeIndex: number | null;
-  selectedIndexes: number[];
+  selectedIndex: number | null;
   getItemProps: ReturnType<typeof useInteractions>["getItemProps"];
   handleSelect: (index: number | null) => void;
 }

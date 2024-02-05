@@ -1,19 +1,31 @@
-import { type HighlightZone } from "../..";
+import { ReactNode } from "react";
 import "./Highlight.scss";
+import { RangeTuple } from "fuse.js";
 interface Props {
-  fallback?: string;
-  zones?: HighlightZone[];
+  value: string | undefined;
+  indices: readonly RangeTuple[];
+  minLength?: number;
 }
 
-export default function Hightlight({ zones, fallback = "" }: Props) {
-  if (!zones) {
-    return fallback;
+export default function Hightlight({ value, indices, minLength = 2 }: Props) {
+  // !indices -> empty array or undefined
+  if (!indices || !value) {
+    return value;
   }
-  return (
-    <span className="ll-highlight">
-      {zones.map(({ extract, highlighted }, idx) => {
-        return highlighted ? <mark key={idx}>{extract}</mark> : <span key={idx}>{extract}</span>;
-      })}
-    </span>
-  );
+  const content: ReactNode[] = [];
+  let lastIndex = 0;
+  indices.forEach((indice) => {
+    if (indice[1] - indice[0] < minLength) {
+      return;
+    }
+    if (indice[0] - lastIndex > 0) {
+      content.push(value.substring(lastIndex, indice[0]));
+    }
+    content.push(<mark key={content.length}>{value.substring(indice[0], indice[1] + 1)}</mark>);
+    lastIndex = indice[1] + 1;
+  });
+  if (lastIndex <= value.length) {
+    content.push(value.substring(lastIndex));
+  }
+  return <span className="ll-highlight">{content}</span>;
 }

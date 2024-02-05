@@ -79,7 +79,7 @@ export function highlightFuseResult<T>(result: Fuse.FuseResult<T>[]): T[] {
         return;
       }
 
-      (copy as any)._formatted[key] = parseHighlightIndices(value, indices);
+      (copy as any)._formatted[key] = indices;
     });
     return copy;
   });

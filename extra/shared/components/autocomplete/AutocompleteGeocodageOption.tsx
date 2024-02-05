@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Option } from "./interface";
+import { Option, TownOption } from "./interface";
 import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";
@@ -7,10 +7,9 @@ import { Highlight } from "../..";
 
 interface Props<O extends Option> {
   option: O;
-  searchValue: string;
 }
 
-export default function AutocompleteGeocodageOption<O extends Option>({ option }: Props<O>) {
+export default function AutocompleteGeocodageOption({ option }: Props<TownOption>) {
   const id = useId();
   const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
   const { ref, index } = useListItem({ label: option.label });
@@ -33,11 +32,9 @@ export default function AutocompleteGeocodageOption<O extends Option>({ option }
       </div>
       <div className="content">
         <div>
-          <Highlight fallback={option.nom_commune} zones={option?._formatted?.nom_commune} />
+          <Highlight value={option.nom_commune} indices={option?._formatted?.nom_commune} />
         </div>
-        <div className="hint">
-          <Highlight fallback={option.context} zones={option?._formatted?.context} />
-        </div>
+        <div className="hint">{option.context}</div>
       </div>
     </div>
   );
