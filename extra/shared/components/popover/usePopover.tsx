@@ -41,10 +41,7 @@ export default function usePopover({
     whileElementsMounted: autoUpdate,
     middleware: [
       offset(offsetVal),
-      flip({
-        // crossAxis: placement.includes('-'),
-        // fallbackAxisSideDirection: "end",
-      }),
+      flip(),
       shift({ padding: 5 }),
       arrow({
         element: arrowRef,

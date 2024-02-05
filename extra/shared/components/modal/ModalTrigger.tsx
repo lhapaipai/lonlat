@@ -14,7 +14,6 @@ const ModalTrigger = forwardRef<HTMLElement, Props>(
 
     const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
 
-    console.log("reference props", context.getReferenceProps(props));
     if (asChild && isValidElement(children)) {
       return cloneElement(
         children,

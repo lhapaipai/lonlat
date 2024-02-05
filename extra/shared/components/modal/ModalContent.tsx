@@ -14,28 +14,32 @@ const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
     const floatingContext = context.context;
 
     const ref = useMergeRefs([context.refs.setFloating, propRef]);
-    if (!context.transitionStatus.isMounted) {
+    if (!context.open) {
       return null;
     }
 
     return (
       <FloatingPortal>
         <FloatingOverlay
-          className="ll-modal-overlay"
+          className={cn(["ll-modal-overlay", "ll-animate", "fade-in-opacity"])}
           lockScroll
-          data-status={context.transitionStatus.status}
         >
           <FloatingFocusManager context={floatingContext}>
             <div
-              className={cn("ll-modal", "ll-dialog", `type-${context.type}`)}
+              className={cn(
+                "ll-modal",
+                "ll-dialog",
+                `type-${context.type}`,
+                "ll-animate",
+                "fade-in",
+              )}
               ref={ref}
               aria-labelledby={context.labelId}
               aria-describedby={context.descriptionId}
               style={style}
-              data-status={context.transitionStatus.status}
               {...context.getFloatingProps(props)}
             >
-              <div className="box">{children}</div>
+              {children}
             </div>
           </FloatingFocusManager>
         </FloatingOverlay>

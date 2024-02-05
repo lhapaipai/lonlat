@@ -1,13 +1,6 @@
-import { useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import { ModalOptions } from "./interface";
-import {
-  useClick,
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useRole,
-  useTransitionStatus,
-} from "@floating-ui/react";
+import { useClick, useDismiss, useFloating, useInteractions, useRole } from "@floating-ui/react";
 
 export default function useModal({
   initialOpen = false,
@@ -21,7 +14,9 @@ export default function useModal({
 
   const isUncontrolled = controlledOpen === null || controlledOpen === undefined;
   const open = isUncontrolled ? uncontrolledOpen : controlledOpen;
-  const setOpen = isUncontrolled ? setUncontrolledOpen : setControlledOpen;
+  const setOpen = isUncontrolled
+    ? setUncontrolledOpen
+    : (setControlledOpen as Dispatch<SetStateAction<boolean>>);
 
   const data = useFloating({
     open,
@@ -30,17 +25,10 @@ export default function useModal({
 
   const { context } = data;
 
-  const click = useClick(context, {
-    // TODO verify if use case to disable it
-    // enabled: isUncontrolled,
-  });
-  const dismiss = useDismiss(context, {
-    outsidePressEvent: "mousedown",
-  });
+  const click = useClick(context);
+  const dismiss = useDismiss(context);
   const role = useRole(context);
-  const transitionStatus = useTransitionStatus(context, {
-    duration: 250,
-  });
+
   const interactions = useInteractions([click, dismiss, role]);
 
   return useMemo(
@@ -49,13 +37,12 @@ export default function useModal({
       setOpen,
       ...interactions,
       ...data,
-      transitionStatus,
       type,
       labelId,
       descriptionId,
       setLabelId,
       setDescriptionId,
     }),
-    [open, setOpen, interactions, data, transitionStatus, type, labelId, descriptionId],
+    [open, setOpen, interactions, data, type, labelId, descriptionId],
   );
 }
