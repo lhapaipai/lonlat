@@ -1,0 +1,12 @@
+{
+	order mercure after encode
+}
+
+api.lonlat.localhost {
+	root * public/
+
+	encode zstd gzip
+
+	file_server
+	php_fastcgi unix//run/php/php8.3-fpm.sock
+}
