@@ -6,13 +6,8 @@ import {
   TableHeaderCell,
   TableRow,
 } from "@lonlat/shared";
-import { LoaderFunction, useLoaderData } from "react-router-dom";
-import { fetchAPI } from "~/lib/fetch/fetchAPI";
+import { Link, useLoaderData } from "react-router-dom";
 import { UserPublic } from "~/types/api";
-
-export const usersLoader: LoaderFunction = async () => {
-  return fetchAPI("/admin/users").then(({ json }) => json["hydra:member"]);
-};
 
 export default function Index() {
   const users = useLoaderData() as UserPublic[];
@@ -25,6 +20,7 @@ export default function Index() {
           <TableHeaderCell>Username</TableHeaderCell>
           <TableHeaderCell>Firstname</TableHeaderCell>
           <TableHeaderCell>Lastname</TableHeaderCell>
+          <TableHeaderCell>Actions</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -34,6 +30,9 @@ export default function Index() {
             <TableCell label="Username">{user.username}</TableCell>
             <TableCell label="Firstname">{user.firstname}</TableCell>
             <TableCell label="Lastname">{user.lastname}</TableCell>
+            <TableCell label="Actions">
+              <Link to={`/admin/users/${user.id}/edit`}>Éditer</Link>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

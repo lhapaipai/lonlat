@@ -101,6 +101,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ApiProperty(types: ['https://schema.org/givenName'])]
     #[Groups(['User:read', 'User:create', 'User:update'])]
     #[ORM\Column]
+    #[Assert\Length(max: 10)]
     public ?string $firstname = null;
 
     /**

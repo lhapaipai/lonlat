@@ -22,6 +22,8 @@ export interface Props extends Omit<ComponentPropsWithRef<"button">, "type"> {
 
   fullWidth?: boolean;
 
+  focusable?: boolean;
+
   /**
    * For a selected item inside a group.
    */
@@ -38,6 +40,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       loading = false,
       type = "weak",
       size = "medium",
+      focusable = true,
       fullWidth,
       className,
       disabled,
@@ -74,6 +77,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 
     return (
       <button
+        tabIndex={focusable ? 0 : -1}
         role="button"
         ref={inputRef}
         className={classNames}
