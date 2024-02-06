@@ -123,7 +123,7 @@ paths:
                   features:
                     type: array
                     items:
-                      $ref: '#/components/schemas/SearchFeature'
+                      $ref: "#/components/schemas/SearchFeature"
 
   /reverse:
     get:
@@ -166,10 +166,10 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/SearchProperties'
+          $ref: "#/components/schemas/SearchProperties"
         geometry:
           oneOf:
-            - $ref: '#/components/schemas/Point'
+            - $ref: "#/components/schemas/Point"
 
     SearchProperties:
       type: object
@@ -213,14 +213,12 @@ components:
           type: string
           example: "14053"
         extent:
-          $ref: '#/components/schemas/BBox'
-
-
+          $ref: "#/components/schemas/BBox"
 
     Point:
       description: GeoJSon geometry
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.2'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.2"
       type: object
       required:
         - type
@@ -231,7 +229,7 @@ components:
           enum:
             - Point
         coordinates:
-          $ref: '#/components/schemas/Position'
+          $ref: "#/components/schemas/Position"
 
     Position:
       description: >-
@@ -248,7 +246,7 @@ components:
         interpretation and meaning of additional elements is beyond the scope of
         this specification, and additional elements MAY be ignored by parsers.
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.1'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.1"
       type: array
       minItems: 2
       maxItems: 3

@@ -1,15 +1,15 @@
 lexik_jwt_authentication:
-    secret_key: '%env(resolve:JWT_SECRET_KEY)%'
-    public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
-    pass_phrase: '%env(JWT_PASSPHRASE)%'
+  secret_key: "%env(resolve:JWT_SECRET_KEY)%"
+  public_key: "%env(resolve:JWT_PUBLIC_KEY)%"
+  pass_phrase: "%env(JWT_PASSPHRASE)%"
 
-    api_platform:
-        check_path: /login
-        username_path: username
-        password_path: password
+  api_platform:
+    check_path: /login
+    username_path: username
+    password_path: password
 
 when@dev: &dev
-    lexik_jwt_authentication:
-        token_ttl: 31536000 # 1 year
+  lexik_jwt_authentication:
+    token_ttl: 31536000 # 1 year
 
 when@test: *dev

@@ -4,7 +4,7 @@ info:
   title: Autocompletion
   description: Description de l'API du service d'autocompletion de l'IGN
 servers:
-  - url: 'https://wxs.ign.fr/essentiels/geoportail/geocodage/rest/0.1/completion'
+  - url: "https://wxs.ign.fr/essentiels/geoportail/geocodage/rest/0.1/completion"
 paths:
   /getCapabilities:
     get:
@@ -16,13 +16,13 @@ paths:
         disponibles et les options proposées.
       operationId: getCapabilities
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Getcapabilities'
-        '404':
+                $ref: "#/components/schemas/Getcapabilities"
+        "404":
           description: Not found
   /:
     get:
@@ -37,7 +37,7 @@ paths:
           required: true
           schema:
             type: string
-          example: '2, avenue pasteur saint m'
+          example: "2, avenue pasteur saint m"
         - name: terr
           in: query
           description: Une limitation de la zone de recherche de localisants
@@ -47,9 +47,9 @@ paths:
             enum:
               - METROPOLE
               - DOMTOM
-              - '75'
-              - '75013'
-              - '93160,97,77300'
+              - "75"
+              - "75013"
+              - "93160,97,77300"
           example: DOMTOM
         - name: poiType
           in: query
@@ -80,9 +80,9 @@ paths:
             enum:
               - PositionOfInterest
               - StreetAddress
-              - 'PositionOfInterest,StreetAddress'
-            default: 'PositionOfInterest,StreetAddress'
-          example: ''
+              - "PositionOfInterest,StreetAddress"
+            default: "PositionOfInterest,StreetAddress"
+          example: ""
         - name: maximumResponses
           in: query
           description: >-
@@ -94,36 +94,36 @@ paths:
             default: 10
         - name: bbox
           in: query
-          description: 'Filtre avec une bbox suivant l''ordre xmin,ymin,xmax,ymax'
+          description: "Filtre avec une bbox suivant l'ordre xmin,ymin,xmax,ymax"
           required: false
           schema:
             type: string
             pattern: '^\d+\.?\d*\,\d+\.?\d*\,\d+\.?\d*\,\d+\.?\d*$'
       responses:
-        '200':
+        "200":
           description: Une liste de suggestions de completions possibles
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: "#/components/schemas/Response"
               example:
                 status: OK
                 results:
                   - country: StreetAddress
                     city: Saint-Malo
                     x: -2.004141
-                    'y': 48.655722
-                    zipcode: '35400'
+                    "y": 48.655722
+                    zipcode: "35400"
                     street: 2 av pasteur
                     classification: 7
-                    kind: ''
-                    fulltext: '2 av pasteur,35400 Saint-Malo'
+                    kind: ""
+                    fulltext: "2 av pasteur,35400 Saint-Malo"
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
               example:
                 value:
                   status: OK
@@ -230,14 +230,14 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Address'
+            $ref: "#/components/schemas/Address"
     Address:
       type: object
       required:
         - country
         - city
         - x
-        - 'y'
+        - "y"
         - zipcode
         - street
         - classification
@@ -251,7 +251,7 @@ components:
         x:
           type: number
           format: float
-        'y':
+        "y":
           type: number
           format: float
         zipcode:

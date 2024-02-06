@@ -8,7 +8,7 @@ info:
     email: contact.geoservices@ign.fr
   version: 2.0.0
 servers:
-  - url: 'https://wxs.ign.fr/essentiels/geoportail/geocodage/rest/0.1'
+  - url: "https://wxs.ign.fr/essentiels/geoportail/geocodage/rest/0.1"
 tags:
   - name: getCapabilities
     description: Découverte du service
@@ -27,13 +27,13 @@ paths:
         disponibles et les options proposées.
       operationId: getCapabilities
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Getcapabilities'
-        '404':
+                $ref: "#/components/schemas/Getcapabilities"
+        "404":
           description: Not found
   /search:
     get:
@@ -72,7 +72,7 @@ paths:
             Exemples: - /search?index=parcel - /search?index=poi,address
           required: false
           schema:
-            $ref: '#/components/schemas/Index'
+            $ref: "#/components/schemas/Index"
         - name: limit
           in: query
           description: nombre maximum de candidats retournés (entre 1 et 20)
@@ -105,14 +105,14 @@ paths:
             Filtre pour les index address et poi. Il permet de filtrer les
             résultats par code postal.
           schema:
-            $ref: '#/components/schemas/PostalCode'
+            $ref: "#/components/schemas/PostalCode"
         - name: citycode
           in: query
           description: >-
             Filtre pour les index address et poi. Il permet de filtrer les
             résultats par code INSEE.
           schema:
-            $ref: '#/components/schemas/InseeCode'
+            $ref: "#/components/schemas/InseeCode"
         - name: type
           in: query
           description: >-
@@ -184,7 +184,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
@@ -197,8 +197,8 @@ paths:
                   features:
                     type: array
                     items:
-                      $ref: '#/components/schemas/GeocodeResponse'
-        '400':
+                      $ref: "#/components/schemas/GeocodeResponse"
+        "400":
           description: Parse query failed
           content:
             application/json: {}
@@ -239,7 +239,7 @@ paths:
             sont autorisées.<br> Le plus grand côté du rectangle d’emprise de la
             géométrie ne doit pas excéder 1000 mètres.
           schema:
-            $ref: '#/components/schemas/SearchGeom'
+            $ref: "#/components/schemas/SearchGeom"
         - name: lon
           in: query
           description: >-
@@ -280,7 +280,7 @@ paths:
             Exemples: - /search?index=parcel - /search?index=poi,address
           required: false
           schema:
-            $ref: '#/components/schemas/Index'
+            $ref: "#/components/schemas/Index"
         - name: limit
           in: query
           description: nombre maximum de candidats retournés (entre 1 et 20)
@@ -299,14 +299,14 @@ paths:
             Filtre pour les index address et poi. Il permet de filtrer les
             résultats par code postal.
           schema:
-            $ref: '#/components/schemas/PostalCode'
+            $ref: "#/components/schemas/PostalCode"
         - name: citycode
           in: query
           description: >-
             Filtre pour les index address et poi. Il permet de filtrer les
             résultats par code INSEE.
           schema:
-            $ref: '#/components/schemas/InseeCode'
+            $ref: "#/components/schemas/InseeCode"
         - name: type
           in: query
           description: >-
@@ -378,7 +378,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
@@ -391,8 +391,8 @@ paths:
                   features:
                     type: array
                     items:
-                      $ref: '#/components/schemas/GeocodeReverseResponse'
-        '400':
+                      $ref: "#/components/schemas/GeocodeReverseResponse"
+        "400":
           description: Parse query failed
           content:
             application/json: {}
@@ -490,22 +490,22 @@ components:
     SearchGeom:
       type: object
       oneOf:
-        - $ref: '#/components/schemas/GeometryPoint'
-        - $ref: '#/components/schemas/GeometryLineString'
-        - $ref: '#/components/schemas/GeometryPolygon'
-        - $ref: '#/components/schemas/GeometryCircle'
+        - $ref: "#/components/schemas/GeometryPoint"
+        - $ref: "#/components/schemas/GeometryLineString"
+        - $ref: "#/components/schemas/GeometryPolygon"
+        - $ref: "#/components/schemas/GeometryCircle"
     GeocodeResponse:
       type: object
       oneOf:
-        - $ref: '#/components/schemas/Address'
-        - $ref: '#/components/schemas/Poi'
-        - $ref: '#/components/schemas/Parcel'
+        - $ref: "#/components/schemas/Address"
+        - $ref: "#/components/schemas/Poi"
+        - $ref: "#/components/schemas/Parcel"
     GeocodeReverseResponse:
       type: object
       oneOf:
-        - $ref: '#/components/schemas/AddressReverse'
-        - $ref: '#/components/schemas/PoiReverse'
-        - $ref: '#/components/schemas/ParcelReverse'
+        - $ref: "#/components/schemas/AddressReverse"
+        - $ref: "#/components/schemas/PoiReverse"
+        - $ref: "#/components/schemas/ParcelReverse"
     Parcel:
       type: object
       properties:
@@ -513,9 +513,9 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/ParcelProperties'
+          $ref: "#/components/schemas/ParcelProperties"
         geometry:
-          $ref: '#/components/schemas/GeometryPoint'
+          $ref: "#/components/schemas/GeometryPoint"
     ParcelProperties:
       type: object
       properties:
@@ -547,7 +547,7 @@ components:
           type: string
           description: Feuille cadastrale
         truegeometry:
-          $ref: '#/components/schemas/GeometryPolygon'
+          $ref: "#/components/schemas/GeometryPolygon"
         _score:
           type: number
         _type:
@@ -556,13 +556,13 @@ components:
             - parcel
       example:
         id: 75056104AV0133
-        departmentcode: '75'
-        municipalitycode: '056'
+        departmentcode: "75"
+        municipalitycode: "056"
         city: Paris
-        oldmunicipalitycode: '000'
-        districtcode: '104'
+        oldmunicipalitycode: "000"
+        districtcode: "104"
         section: AV
-        number: '133'
+        number: "133"
         sheet: 1
         truegeometry:
           type: Polygon
@@ -586,9 +586,9 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/ParcelReverseProperties'
+          $ref: "#/components/schemas/ParcelReverseProperties"
         geometry:
-          $ref: '#/components/schemas/GeometryPoint'
+          $ref: "#/components/schemas/GeometryPoint"
     ParcelReverseProperties:
       type: object
       properties:
@@ -620,7 +620,7 @@ components:
           type: string
           description: Feuille cadastrale
         truegeometry:
-          $ref: '#/components/schemas/GeometryPolygon'
+          $ref: "#/components/schemas/GeometryPolygon"
         _score:
           type: number
         _type:
@@ -631,13 +631,13 @@ components:
           type: number
       example:
         id: 75056104AV0133
-        departmentcode: '75'
-        municipalitycode: '056'
+        departmentcode: "75"
+        municipalitycode: "056"
         city: Paris
-        oldmunicipalitycode: '000'
-        districtcode: '104'
+        oldmunicipalitycode: "000"
+        districtcode: "104"
         section: AV
-        number: '133'
+        number: "133"
         sheet: 1
         truegeometry:
           type: Polygon
@@ -662,9 +662,9 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/AddressProperties'
+          $ref: "#/components/schemas/AddressProperties"
         geometry:
-          $ref: '#/components/schemas/GeometryPoint'
+          $ref: "#/components/schemas/GeometryPoint"
     AddressProperties:
       type: object
       properties:
@@ -674,7 +674,7 @@ components:
         id:
           type: string
         postcode:
-          $ref: '#/components/schemas/PostalCode'
+          $ref: "#/components/schemas/PostalCode"
         city:
           type: string
           description: Commune de l'adresse
@@ -687,11 +687,11 @@ components:
         housenumber:
           type: string
         citycode:
-          $ref: '#/components/schemas/InseeCode'
+          $ref: "#/components/schemas/InseeCode"
         x:
           type: number
           description: Longitude de l'adresse
-        'y':
+        "y":
           type: number
           description: Latitude de l'adresse
         score:
@@ -719,16 +719,16 @@ components:
       example:
         label: 10 Rue Nationale 75013 Paris 13e Arrondissement
         id: test-id
-        postcode: '75013'
+        postcode: "75013"
         city: Paris
         district: Paris 13e Arrondissement
         street: Rue Nationale
-        housenumber: '10'
-        citycode: '75113'
+        housenumber: "10"
+        citycode: "75113"
         x: 2.369063
-        'y': 48.822409
+        "y": 48.822409
         housenumberinfos:
-          date: '2019-11-29'
+          date: "2019-11-29"
           source: dgfip
           kind: parcel
         score: 0.6515151515151515
@@ -736,8 +736,8 @@ components:
         name: 10 Rue Nationale
         type: housenumber
         _type: address
-        contexte: '75, Paris'
-        importance: '0.6'
+        contexte: "75, Paris"
+        importance: "0.6"
     AddressReverse:
       type: object
       properties:
@@ -745,9 +745,9 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/AddressReverseProperties'
+          $ref: "#/components/schemas/AddressReverseProperties"
         geometry:
-          $ref: '#/components/schemas/GeometryPoint'
+          $ref: "#/components/schemas/GeometryPoint"
     AddressReverseProperties:
       type: object
       properties:
@@ -757,7 +757,7 @@ components:
         id:
           type: string
         postcode:
-          $ref: '#/components/schemas/PostalCode'
+          $ref: "#/components/schemas/PostalCode"
         city:
           type: string
           description: Commune de l'adresse
@@ -770,11 +770,11 @@ components:
         housenumber:
           type: string
         citycode:
-          $ref: '#/components/schemas/InseeCode'
+          $ref: "#/components/schemas/InseeCode"
         x:
           type: number
           description: Longitude de l'adresse
-        'y':
+        "y":
           type: number
           description: Latitude de l'adresse
         score:
@@ -804,16 +804,16 @@ components:
       example:
         label: 10 Rue Nationale 75013 Paris 13e Arrondissement
         id: test-id
-        postcode: '75013'
+        postcode: "75013"
         city: Paris
         district: Paris 13e Arrondissement
         street: Rue Nationale
-        housenumber: '10'
-        citycode: '75113'
+        housenumber: "10"
+        citycode: "75113"
         x: 2.369063
-        'y': 48.822409
+        "y": 48.822409
         housenumberinfos:
-          date: '2019-11-29'
+          date: "2019-11-29"
           source: dgfip
           kind: parcel
         score: 0.6515151515151515
@@ -821,8 +821,8 @@ components:
         name: 10 Rue Nationale
         type: housenumber
         _type: address
-        contexte: '75, Paris'
-        importance: '0.6'
+        contexte: "75, Paris"
+        importance: "0.6"
         distance: 100
     Poi:
       type: object
@@ -831,9 +831,9 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/PoiProperties'
+          $ref: "#/components/schemas/PoiProperties"
         geometry:
-          $ref: '#/components/schemas/GeometryPoint'
+          $ref: "#/components/schemas/GeometryPoint"
     PoiProperties:
       type: object
       properties:
@@ -843,21 +843,21 @@ components:
         postcode:
           type: array
           items:
-            $ref: '#/components/schemas/PostalCode'
+            $ref: "#/components/schemas/PostalCode"
         citycode:
           type: array
           items:
-            $ref: '#/components/schemas/InseeCode'
+            $ref: "#/components/schemas/InseeCode"
         city:
           type: array
           items:
             type: string
         category:
-          $ref: '#/components/schemas/PoiType'
+          $ref: "#/components/schemas/PoiType"
         extrafields:
           type: object
         truegeometry:
-          $ref: '#/components/schemas/Geometry'
+          $ref: "#/components/schemas/Geometry"
         _score:
           type: number
         _type:
@@ -908,9 +908,9 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/PoiReverseProperties'
+          $ref: "#/components/schemas/PoiReverseProperties"
         geometry:
-          $ref: '#/components/schemas/GeometryPoint'
+          $ref: "#/components/schemas/GeometryPoint"
     PoiReverseProperties:
       type: object
       properties:
@@ -920,21 +920,21 @@ components:
         postcode:
           type: array
           items:
-            $ref: '#/components/schemas/PostalCode'
+            $ref: "#/components/schemas/PostalCode"
         citycode:
           type: array
           items:
-            $ref: '#/components/schemas/InseeCode'
+            $ref: "#/components/schemas/InseeCode"
         city:
           type: array
           items:
             type: string
         category:
-          $ref: '#/components/schemas/PoiType'
+          $ref: "#/components/schemas/PoiType"
         extrafields:
           type: object
         truegeometry:
-          $ref: '#/components/schemas/Geometry'
+          $ref: "#/components/schemas/Geometry"
         _score:
           type: number
         _type:
@@ -999,7 +999,7 @@ components:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/GeometryType'
+          $ref: "#/components/schemas/GeometryType"
         coordinates:
           type: array
           items:
@@ -1129,7 +1129,7 @@ components:
         date:
           type: string
         kind:
-          $ref: '#/components/schemas/AddressPositionKing'
+          $ref: "#/components/schemas/AddressPositionKing"
         source:
           type: string
     AddressPositionKing:

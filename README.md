@@ -3,14 +3,54 @@
 </p>
 
 
-## Démarage
+## Installation
 
+Nécessite PHP, Docker, Node et Caddy (avec module Mercure). Voir prérequis
+
+```bash
+echo "127.0.0.1  api.lonlat.localhost" >> /etc/hosts
+```
+
+dans le dossier `apps/api`
+```bash
+cd apps/api
+
+composer install
+
+docker compose build
+
+# génère une paire de clé asymétrique pour pouvoir réaliser la signature des JWT.
+symfony console lexik:jwt:generate-keypair
+
+# si nécessaire ajouter des variables d'environnement spécifiques.
+touch .env.local
+
+# vérifier les autorisations des dossiers partagés par l'utilisateur courant et le serveur web
+sudo setfacl -dR -m u:$USER:rwX -m u:www-data:rwX var/{cache,log}
+sudo setfacl -R -m u:$USER:rwX -m u:www-data:rwX var/{cache,log}
+```
+
+dans le dossier `apps/front`
+```bash
+pnpm install
+```
+
+## Démarrage
+
+Vérifier que vous avez bien les port 80,443 et 5432 de libre.
+
+Backend
 ```bash
 cd apps/api
 # démarre les services docker (base de données) et un serveur Caddy pour l'API.
 make dev
 ```
 
+Front
+```bash
+cd apps/front
+pnpm dev
+```
 
 ## Prérequis
 
@@ -42,8 +82,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 
 # ajouter le dépôt Docker officiel
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # mettre à jour
 sudo apt-get update
@@ -55,7 +94,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose
 sudo systemctl enable docker
 
 # ajouter votre utilisateur au groupe docker
-sudo usermod -aG docker <bertrand>
+sudo usermod -aG docker $USER
 
 # redémarrer votre ordinateur et tester docker
 docker run hello-world

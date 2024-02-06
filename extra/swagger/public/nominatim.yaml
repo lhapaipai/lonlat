@@ -3,7 +3,7 @@ info:
   title: Service de géocodage
   description: Description de l'API de Nominatim
 servers:
-  - url: 'https://nominatim.openstreetmap.org'
+  - url: "https://nominatim.openstreetmap.org"
 paths:
   /search:
     get:
@@ -57,7 +57,7 @@ paths:
         - name: format
           in: query
           schema:
-            $ref: '#/components/schemas/Format'
+            $ref: "#/components/schemas/Format"
         - name: json_callback
           in: query
           description: >-
@@ -115,7 +115,7 @@ paths:
             place in Nominatim is assigned to one country code based on OSM
             country boundaries. In rare cases a place may not be in any country
             at all, for example, in international waters.
-          example: '<countrycode>[,<countrycode>][,<countrycode>]...'
+          example: "<countrycode>[,<countrycode>][,<countrycode>]..."
           schema:
             type: string
         - name: exclude_place_ids
@@ -127,7 +127,7 @@ paths:
             example, if a previous query only returned a few results, then
             including those here would cause the search to return other, less
             accurate, matches (if possible).
-          example: '<place_id,[place_id],[place_id]'
+          example: "<place_id,[place_id],[place_id]"
           schema:
             type: string
         - name: limit
@@ -143,7 +143,7 @@ paths:
             The preferred area to find search results. Any two corner points of
             the box are accepted as long as they span a real box. x is
             longitude, y is latitude.
-          example: '<x1>,<y1>,<x2>,<y2>'
+          example: "<x1>,<y1>,<x2>,<y2>"
           schema:
             type: string
         - name: bounded
@@ -242,7 +242,7 @@ paths:
               - 1
             default: 0
       responses:
-        '200':
+        "200":
           content:
             application/geojson:
               schema:
@@ -259,7 +259,7 @@ paths:
                   features:
                     type: array
                     items:
-                      $ref: '#/components/schemas/SearchFeature'
+                      $ref: "#/components/schemas/SearchFeature"
   /reverse:
     get:
       summary: search OSM object by their location
@@ -279,7 +279,7 @@ paths:
         - name: format
           in: query
           schema:
-            $ref: '#/components/schemas/Format'
+            $ref: "#/components/schemas/Format"
         - name: json_callback
           in: query
           description: >-
@@ -337,7 +337,7 @@ paths:
             address details the zoom levels are as follows (3 country, 5 state,
             8 county, 10 city, 14 suburb, 16 major streets, 17 major and minor
             streets, 18 building)
-          example: '[0-18]'
+          example: "[0-18]"
           schema:
             type: number
             minimum: 0
@@ -409,7 +409,7 @@ paths:
               - 1
             default: 0
       responses:
-        '200':
+        "200":
           content:
             application/geojson:
               schema:
@@ -426,7 +426,7 @@ paths:
                   features:
                     type: array
                     items:
-                      $ref: '#/components/schemas/ReverseFeature'
+                      $ref: "#/components/schemas/ReverseFeature"
   /lookup:
     get:
       summary: look up address details for OSM objects by their ID
@@ -442,13 +442,13 @@ paths:
             ids each prefixed with its type, one of node(N), way(W) or
             relation(R). Up to 50 ids can be queried at the same time.
           required: true
-          example: '[N|W|R]<value>,...,...,'
+          example: "[N|W|R]<value>,...,...,"
           schema:
             type: number
         - name: format
           in: query
           schema:
-            $ref: '#/components/schemas/Format'
+            $ref: "#/components/schemas/Format"
         - name: json_callback
           in: query
           description: >-
@@ -564,7 +564,7 @@ paths:
               - 1
             default: 0
       responses:
-        '200':
+        "200":
           content:
             application/geojson:
               schema:
@@ -581,7 +581,7 @@ paths:
                   features:
                     type: array
                     items:
-                      $ref: '#/components/schemas/LookupFeature'
+                      $ref: "#/components/schemas/LookupFeature"
   /status:
     get:
       summary: query the status of the server
@@ -599,11 +599,11 @@ paths:
               - json
             default: text
       responses:
-        '200':
+        "200":
           content:
             application/geojson:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: "#/components/schemas/Status"
   /deletable:
     get:
       summary: >-
@@ -630,7 +630,7 @@ paths:
           schema:
             type: string
             enum:
-              - 'N'
+              - "N"
               - W
               - R
         - name: osmid
@@ -749,11 +749,11 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/geojson:
               schema:
-                $ref: '#/components/schemas/Details'
+                $ref: "#/components/schemas/Details"
 components:
   schemas:
     Format:
@@ -772,14 +772,14 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/SearchProperties'
+          $ref: "#/components/schemas/SearchProperties"
         bbox:
-          $ref: '#/components/schemas/BBox'
+          $ref: "#/components/schemas/BBox"
         geometry:
           oneOf:
-            - $ref: '#/components/schemas/Point'
-            - $ref: '#/components/schemas/LineString'
-            - $ref: '#/components/schemas/Polygon'
+            - $ref: "#/components/schemas/Point"
+            - $ref: "#/components/schemas/LineString"
+            - $ref: "#/components/schemas/Polygon"
     SearchProperties:
       type: object
       properties:
@@ -813,7 +813,7 @@ components:
           type: string
           example: https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
 
     ReverseFeature:
       type: object
@@ -822,14 +822,14 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/ReverseProperties'
+          $ref: "#/components/schemas/ReverseProperties"
         bbox:
-          $ref: '#/components/schemas/BBox'
+          $ref: "#/components/schemas/BBox"
         geometry:
           oneOf:
-            - $ref: '#/components/schemas/Point'
-            - $ref: '#/components/schemas/LineString'
-            - $ref: '#/components/schemas/Polygon'
+            - $ref: "#/components/schemas/Point"
+            - $ref: "#/components/schemas/LineString"
+            - $ref: "#/components/schemas/Polygon"
     ReverseProperties:
       type: object
       properties:
@@ -842,21 +842,20 @@ components:
           type: string
           example: Feature
         properties:
-          $ref: '#/components/schemas/LookupProperties'
+          $ref: "#/components/schemas/LookupProperties"
         bbox:
-          $ref: '#/components/schemas/BBox'
+          $ref: "#/components/schemas/BBox"
         geometry:
           oneOf:
-            - $ref: '#/components/schemas/Point'
-            - $ref: '#/components/schemas/LineString'
-            - $ref: '#/components/schemas/Polygon'
+            - $ref: "#/components/schemas/Point"
+            - $ref: "#/components/schemas/LineString"
+            - $ref: "#/components/schemas/Polygon"
 
     LookupProperties:
       type: object
       properties:
         place_id:
           type: number
-
 
     Status:
       type: object
@@ -919,7 +918,7 @@ components:
         interpretation and meaning of additional elements is beyond the scope of
         this specification, and additional elements MAY be ignored by parsers.
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.1'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.1"
       type: array
       minItems: 2
       maxItems: 3
@@ -929,10 +928,10 @@ components:
       description: |
         GeoJSon fundamental geometry construct, array of two or more positions.
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.4'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.4"
       type: array
       items:
-        $ref: '#/components/schemas/Position'
+        $ref: "#/components/schemas/Position"
       minItems: 2
     LinearRing:
       description: >-
@@ -944,16 +943,16 @@ components:
         bounds, i.e., exterior rings are counterclockwise, and holes are
         clockwise.
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.6'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.6"
       type: array
       items:
-        $ref: '#/components/schemas/Position'
+        $ref: "#/components/schemas/Position"
       minItems: 4
 
     Point:
       description: GeoJSon geometry
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.2'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.2"
       type: object
       required:
         - type
@@ -964,12 +963,12 @@ components:
           enum:
             - Point
         coordinates:
-          $ref: '#/components/schemas/Position'
+          $ref: "#/components/schemas/Position"
 
     MultiPoint:
       description: GeoJSon geometry
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.3'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.3"
       type: object
       required:
         - coordinates
@@ -977,23 +976,23 @@ components:
         coordinates:
           type: array
           items:
-            $ref: '#/components/schemas/Position'
+            $ref: "#/components/schemas/Position"
 
     LineString:
       description: GeoJSon geometry
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.4'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.4"
       type: object
       required:
         - coordinates
       properties:
         coordinates:
-          $ref: '#/components/schemas/LineStringCoordinates'
+          $ref: "#/components/schemas/LineStringCoordinates"
 
     MultiLineString:
       description: GeoJSon geometry
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.5'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.5"
       type: object
       required:
         - coordinates
@@ -1001,11 +1000,11 @@ components:
         coordinates:
           type: array
           items:
-            $ref: '#/components/schemas/LineStringCoordinates'
+            $ref: "#/components/schemas/LineStringCoordinates"
     Polygon:
       description: GeoJSon geometry
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.6'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.6"
       type: object
       required:
         - coordinates
@@ -1013,11 +1012,11 @@ components:
         coordinates:
           type: array
           items:
-            $ref: '#/components/schemas/LinearRing'
+            $ref: "#/components/schemas/LinearRing"
     MultiPolygon:
       description: GeoJSon geometry
       externalDocs:
-        url: 'https://tools.ietf.org/html/rfc7946#section-3.1.7'
+        url: "https://tools.ietf.org/html/rfc7946#section-3.1.7"
       type: object
       required:
         - coordinates
@@ -1027,4 +1026,4 @@ components:
           items:
             type: array
             items:
-              $ref: '#/components/schemas/LinearRing'
+              $ref: "#/components/schemas/LinearRing"
