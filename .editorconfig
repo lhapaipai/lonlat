@@ -24,9 +24,14 @@ indent_style = tab
 [docs/makefiles/*]
 indent_style = tab
 
-[*.yml]
+[*.{yml,yaml}]
 indent_size = 2
 
 [.github/workflows/*.yml]
 indent_size = 2
 
+[{composer.json,composer.lock}]
+indent_size = 4
+
+[*.php]
+indent_size = 4

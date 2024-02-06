@@ -1,21 +1,47 @@
 {
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Extra/shared Vitest Debug Current Test File",
-            "autoAttachChildProcesses": true,
-            "skipFiles": [
-                "<node_internals>/**",
-                "**/node_modules/**"
-            ],
-            "program": "${workspaceRoot}/extra/shared/node_modules/vitest/vitest.mjs",
-            "cwd": "${workspaceFolder}/extra/shared",
-            "args": [
-                "../../${relativeFile}"
-            ],
-            "smartStep": true,
-            "console": "integratedTerminal"
-        }
-    ]
+  "configurations": [
+    {
+      "name": "Listen for Xdebug API",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "cwd": "${workspaceFolder}/apps/api"
+    },
+    {
+      "name": "Launch Xdebug API Phpunit filter testAuthenticatedUserCanUpdateHisProfile",
+      "type": "php",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/api/bin/phpunit",
+      "cwd": "${workspaceFolder}/apps/api",
+      "args": [
+        "--filter",
+        "testAuthenticatedUserCanUpdateHisProfile"
+      ],
+      "port": 0,
+      "runtimeArgs": [
+        "-dxdebug.start_with_request=yes"
+      ],
+      "env": {
+        "XDEBUG_MODE": "debug,develop",
+        "XDEBUG_CONFIG": "client_port=${port}"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Extra/shared Vitest Debug Current Test File",
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+      ],
+      "program": "${workspaceRoot}/extra/shared/node_modules/vitest/vitest.mjs",
+      "cwd": "${workspaceFolder}/extra/shared",
+      "args": [
+        "../../${relativeFile}"
+      ],
+      "smartStep": true,
+      "console": "integratedTerminal"
+    }
+  ]
 }

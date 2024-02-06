@@ -1,0 +1,120 @@
+html {
+  box-sizing: border-box;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background: #f0f0f0;
+}
+
+
+.information-container .info {
+  margin: 15px 0;
+}
+
+#swagger-ui .topbar {
+  display: none;
+}
+
+
+/** REMOVE COPY TO CLIPBOARD */
+.swagger-ui .opblock .opblock-summary .view-line-link {
+  display: none;
+}
+
+
+/** REMOVE HIGHLIGHTS FOCUS INPUTS **/
+
+#swagger-ui.api-platform input:focus,
+#swagger-ui.api-platform select:focus,
+#swagger-ui.api-platform textarea:focus,
+#swagger-ui.api-platform button:focus {
+  outline: none;
+}
+
+/** USE OPEN SANS FONT **/
+
+.swagger-ui .opblock-tag,
+.swagger-ui .opblock .opblock-section-header label,
+.swagger-ui .opblock .opblock-section-header h4,
+.swagger-ui .opblock .opblock-summary-method,
+.swagger-ui .tab li,
+.swagger-ui .scheme-container .schemes>label,
+.swagger-ui .loading-container .loading:after,
+.swagger-ui .btn,
+.swagger-ui .btn.cancel,
+.swagger-ui select,
+.swagger-ui label,
+.swagger-ui .dialog-ux .modal-ux-content h4,
+.swagger-ui .dialog-ux .modal-ux-header h3,
+.swagger-ui section.models h4,
+.swagger-ui section.models h5,
+.swagger-ui .model-title,
+.swagger-ui .parameter__name,
+.swagger-ui .topbar a,
+.swagger-ui .topbar .download-url-wrapper .download-url-button,
+.swagger-ui .info .title small pre,
+.swagger-ui .scopes h2,
+.swagger-ui .errors-wrapper hgroup h4 {
+  font-family: Open Sans, sans-serif !important;
+}
+
+/** WEBBY AND WEB **/
+
+.web,
+.webby {
+  right: 0;
+  z-index: 101;
+  position: fixed;
+}
+
+.web {
+  top: 0;
+}
+
+.web:after {
+  content: "";
+  opacity: 0;
+  width: 2px;
+  height: 70px;
+  position: fixed;
+  right: 35px;
+  background-color: black;
+}
+
+.web.calm:after {
+  opacity: .2;
+  height: calc(100% - 120px);
+  transition: height 2s ease-in-out 2s, opacity 0s linear 2s;
+}
+
+.web.frighten:after {
+  opacity: .2;
+  transition: height 1s ease-in-out;
+}
+
+.webby {
+  opacity: 0;
+  top: 170px;
+  transform: translateY(-100%);
+}
+
+.webby.calm {
+  opacity: 1;
+  top: calc(100% - 30px);
+  transition: top 2s ease-in-out 2s, opacity 0s linear 2s;
+}
+
+.webby.frighten {
+  opacity: 1;
+  transition: top 1s ease-in-out;
+  animation: shake .5s ease-in-out;
+}
