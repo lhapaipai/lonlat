@@ -41,11 +41,6 @@ export default function AdminUsersCreate() {
     <div>
       <h1>Create</h1>
       <UserForm onSubmit={handleSubmit} />
-      <ul>
-        <li>
-          <Link to={`/users`}>Retour</Link>
-        </li>
-      </ul>
     </div>
   );
 }

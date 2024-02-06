@@ -1,28 +1,19 @@
-import { Button, InputField, Select } from "@lonlat/shared";
-import { Controller, SubmitHandler, UseFormSetError, useForm } from "react-hook-form";
-import { User } from "~/types/api";
+import { Button, InputField } from "@lonlat/shared";
+import { SubmitHandler, UseFormSetError, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { User, emailValidation, requiredValidation, usernameValidation } from "~/types/User";
 
-export type Inputs = Pick<User, "username" | "email" | "firstname">;
+export type Inputs = Pick<User, "username" | "email" | "firstname" | "lastname">;
 
 interface Props {
   user?: User;
   onSubmit?: (data: Inputs, setError: UseFormSetError<Inputs>) => void;
 }
 
-const firstnameOptions = [
-  {
-    label: "Hugues",
-    value: "hugues",
-  },
-  {
-    label: "Jean-Jacques",
-    value: "jean-jacques",
-  },
-];
-
 export default function UserForm({ user, onSubmit }: Props) {
+  const navigate = useNavigate();
+
   const {
-    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -41,45 +32,44 @@ export default function UserForm({ user, onSubmit }: Props) {
     <div>
       <form onSubmit={handleSubmit(onValid)} className="blocks-container">
         {errors.root?.serverError && (
-          <div className="ll-flash p-2 alert-danger">{errors.root?.serverError.message}</div>
+          <div className="ll-flash p-2 alert--danger">{errors.root?.serverError.message}</div>
         )}
         <div className="two-cols">
           <InputField
             label="Nom d'utilisateur"
             error={errors.username?.message}
-            {...register("username", {
-              required: "champ obligatoire",
-              minLength: {
-                value: 2,
-                message: "Minimum 2 caractères",
-              },
-              maxLength: {
-                value: 10,
-                message: "Maximum 10 caractères",
-              },
-            })}
+            {...register("username", usernameValidation)}
           />
 
           <InputField
             label="Email"
             error={errors.email?.message}
-            {...register("email", { required: "champ obligatoire" })}
+            {...register("email", emailValidation)}
           />
-          <Controller
-            name="firstname"
-            control={control}
-            render={({ field }) => (
-              <InputField
-                label="firstname"
-                as={Select}
-                options={firstnameOptions}
-                error={errors.firstname?.message}
-                {...field}
-              />
-            )}
+        </div>
+        <div className="two-cols">
+          <InputField
+            label="Nom de famille"
+            error={errors.lastname?.message}
+            {...register("lastname", requiredValidation)}
+          />
+
+          <InputField
+            label="Prénom"
+            error={errors.firstname?.message}
+            {...register("firstname", requiredValidation)}
           />
         </div>
         <p>
+          <Button
+            type="weak"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
+          >
+            Revenir
+          </Button>
           <Button>Valider</Button>
         </p>
       </form>

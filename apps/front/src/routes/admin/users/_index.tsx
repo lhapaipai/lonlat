@@ -6,11 +6,12 @@ import {
   TableHeaderCell,
   TableRow,
 } from "@lonlat/shared";
-import { Link, useLoaderData } from "react-router-dom";
-import { UserPublic } from "~/types/api";
+import { Link } from "react-router-dom";
+import { useLoaderUpdatableCollection } from "~/hooks";
+import { UserPublic } from "~/types/User";
 
 export default function Index() {
-  const users = useLoaderData() as UserPublic[];
+  const users = useLoaderUpdatableCollection<UserPublic>();
 
   return (
     <Table>
@@ -24,7 +25,7 @@ export default function Index() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {users.map((user) => (
+        {users["hydra:member"].map((user) => (
           <TableRow key={user.id}>
             <TableCell label="Email">{user.email}</TableCell>
             <TableCell label="Username">{user.username}</TableCell>

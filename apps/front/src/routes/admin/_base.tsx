@@ -1,8 +1,10 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigation } from "react-router-dom";
 import "./_base.scss";
 import logoUrl from "@lonlat/shared/images/logo.svg";
 
 export default function Base() {
+  const navigation = useNavigation();
+
   return (
     <>
       <div id="sidebar">
@@ -22,7 +24,7 @@ export default function Base() {
           </li>
         </nav>
       </div>
-      <div id="content">
+      <div id="content" className={navigation.state === "loading" ? "loading" : ""}>
         <Outlet />
       </div>
     </>

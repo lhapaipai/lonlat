@@ -1,8 +1,8 @@
-import { useLoaderData } from "react-router-dom";
-import { User } from "~/types/api";
+import { useLoaderUpdatableResource } from "~/hooks";
+import { User } from "~/types/User";
 
 export default function AdminUsersShow() {
-  const user = useLoaderData() as User;
+  const user = useLoaderUpdatableResource<User>();
 
   return (
     <div>

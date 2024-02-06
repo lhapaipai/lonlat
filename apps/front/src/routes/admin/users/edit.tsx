@@ -43,11 +43,6 @@ export default function AdminUsersEdit() {
     <div>
       <h1>Édition</h1>
       <UserForm user={user} onSubmit={handleSubmit} />
-      <ul>
-        <li>
-          <Link to={`/admin/users`}>Retour</Link>
-        </li>
-      </ul>
     </div>
   );
 }

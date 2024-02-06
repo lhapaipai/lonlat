@@ -43,7 +43,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new GetCollection(
             uriTemplate: '/admin/users',
-            itemUriTemplate: '/admin/users/{id}',
+            // itemUriTemplate: '/admin/users/{id}',
             // security: 'is_granted("ROLE_ADMIN")',
         ),
         new Get(
@@ -58,7 +58,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     denormalizationContext: [
         'groups' => ['User:create', 'User:update'],
         'openapi_definition_name' => 'write',
-    ]
+    ],
+    mercure: true
 )]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
