@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     types: ['https://schema.org/Person'],
     operations: [
         new Get(
-            security: 'is_granted("ROLE_USER") and object.getUserIdentifier() === user.getUserIdentifier()'
+            // security: 'is_granted("ROLE_USER") and object.getUserIdentifier() === user.getUserIdentifier()'
         ),
         new Post(
             processor: UserPasswordHasherProcessor::class,
@@ -39,16 +39,16 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Patch(
             processor: UserPasswordHasherProcessor::class,
-            security: 'is_granted("ROLE_USER") and object.getUserIdentifier() === user.getUserIdentifier()'
+            // security: 'is_granted("ROLE_USER") and object.getUserIdentifier() === user.getUserIdentifier()'
         ),
         new GetCollection(
-            uriTemplate: '/admin/users{._format}',
-            itemUriTemplate: '/admin/users/{id}{._format}',
-            security: 'is_granted("ROLE_ADMIN")',
+            uriTemplate: '/admin/users',
+            itemUriTemplate: '/admin/users/{id}',
+            // security: 'is_granted("ROLE_ADMIN")',
         ),
         new Get(
-            uriTemplate: '/admin/users/{id}{._format}',
-            security: 'is_granted("ROLE_ADMIN")'
+            uriTemplate: '/admin/users/{id}',
+            // security: 'is_granted("ROLE_ADMIN")'
         ),
     ],
     normalizationContext: [
@@ -73,6 +73,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: UuidType::NAME, unique: true)]
     #[ORM\CustomIdGenerator(class: UuidGenerator::class)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[Groups(['User:read'])]
     #[ORM\Id]
     private ?Uuid $id = null;
 

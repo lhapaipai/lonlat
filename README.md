@@ -3,7 +3,16 @@
 </p>
 
 
-## Installation
+## Démarage
+
+```bash
+cd apps/api
+# démarre les services docker (base de données) et un serveur Caddy pour l'API.
+make dev
+```
+
+
+## Prérequis
 
 ### PHP
 
@@ -61,8 +70,7 @@ On passera par volta pour installer node (ce qui nous permet d'utiliser différe
 curl https://get.volta.sh | bash
 
 # install Node
-volta install node@16
-volta install yarn
+volta install node@20
 
 # start using Node
 node --version
@@ -74,11 +82,12 @@ Télécharger le binaire de `xcaddy` sur : [Github xcaddy](https://github.com/ca
 
 Puis générer votre binaire caddy avec au moins ces 2 modules.
 ```shell
-
+# génère un unique fichier binaire caddy dans votre répertoire courant
 xcaddy build \
   --with github.com/dunglas/mercure/caddy \
-  --with github.com/dunglas/vulcain/caddy \
+  --with github.com/dunglas/vulcain/caddy
 
+# on autorise caddy à utiliser les ports privilégiés
 sudo setcap cap_net_bind_service=+ep ./caddy
 
 sudo mv caddy /usr/local/bin
