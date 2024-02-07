@@ -34,14 +34,14 @@ export const Basic: Story = {
   args: {
     initialOpen: false,
     placement: "bottom",
-    type: "default",
+    color: "default",
     modal: false,
     children: "",
   },
 };
 
 export const Context = () => (
-  <Popover type="primary">
+  <Popover color="primary">
     <PopoverTrigger>My trigger</PopoverTrigger>
     <PopoverContent style={{ width: "400px" }}>
       <PopoverHeader>Heading</PopoverHeader>

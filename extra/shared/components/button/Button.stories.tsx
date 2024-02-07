@@ -22,7 +22,7 @@ export const Basic: Story = {
   args: {
     shape: "solid",
     size: "medium",
-    type: "primary",
+    color: "primary",
     children: "My button",
     loading: false,
     disabled: false,
@@ -74,7 +74,7 @@ export const Icons = () => (
 );
 
 const shapes = ["solid", "outline", "ghost", "underline"] as const;
-const types = ["primary", "weak", "danger", "warning", "success", "info"] as const;
+const colors = ["primary", "weak", "danger", "warning", "success", "info"] as const;
 
 export const Variants = () => {
   return (
@@ -85,8 +85,8 @@ export const Variants = () => {
             <TableHeaderCell>
               <></>
             </TableHeaderCell>
-            {types.map((type) => (
-              <TableHeaderCell key={type}>{type}</TableHeaderCell>
+            {colors.map((color) => (
+              <TableHeaderCell key={color}>{color}</TableHeaderCell>
             ))}
           </TableRow>
         </TableHeader>
@@ -94,10 +94,10 @@ export const Variants = () => {
           {shapes.map((shape) => (
             <TableRow key={shape}>
               <TableCell>{shape}</TableCell>
-              {types.map((type) => (
-                <TableCell key={type} label={type}>
+              {colors.map((color) => (
+                <TableCell key={color} label={color}>
                   <div className="flex gap-2">
-                    <Button shape={shape} type={type}>
+                    <Button shape={shape} color={color}>
                       Lorem
                     </Button>
                   </div>

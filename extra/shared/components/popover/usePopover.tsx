@@ -20,7 +20,7 @@ export default function usePopover({
   placement = "bottom",
   open: controlledOpen,
   onOpen: setControlledOpen,
-  type = "default",
+  color = "default",
   modal = false,
 }: PopoverOptions) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
@@ -69,13 +69,13 @@ export default function usePopover({
       ...interactions,
       ...data,
       arrowRef,
-      type,
+      color,
       modal,
       labelId,
       descriptionId,
       setLabelId,
       setDescriptionId,
     }),
-    [open, setOpen, interactions, data, type, modal, labelId, descriptionId],
+    [open, setOpen, interactions, data, color, modal, labelId, descriptionId],
   );
 }

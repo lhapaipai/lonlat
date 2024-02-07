@@ -29,7 +29,7 @@ const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
               className={cn(
                 "ll-modal",
                 "ll-dialog",
-                `type-${context.type}`,
+                `border-color-${context.color}`,
                 "ll-animate",
                 "fade-in",
               )}

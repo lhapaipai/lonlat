@@ -3,7 +3,7 @@
 
     @each $color in (primary, info, weak, warning, danger, success, info) {
 
-        &.alert--#{$color} {
+        &.alert-#{$color} {
             border-left: 4px solid var(--color-#{$color}-500);
         }
     }

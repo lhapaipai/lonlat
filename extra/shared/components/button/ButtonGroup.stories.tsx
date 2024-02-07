@@ -24,13 +24,13 @@ export const Context = () => {
         </Button>
       </ButtonGroup>
       <ButtonGroup>
-        <Button type="primary" selected={val === "one"} onClick={() => setVal("one")}>
+        <Button color="primary" selected={val === "one"} onClick={() => setVal("one")}>
           One
         </Button>
-        <Button type="primary" selected={val === "two"} onClick={() => setVal("two")}>
+        <Button color="primary" selected={val === "two"} onClick={() => setVal("two")}>
           Two
         </Button>
-        <Button type="primary" selected={val === "three"} onClick={() => setVal("three")}>
+        <Button color="primary" selected={val === "three"} onClick={() => setVal("three")}>
           Three
         </Button>
       </ButtonGroup>
@@ -49,7 +49,7 @@ export const Context = () => {
       <ButtonGroup>
         <Button
           shape="outline"
-          type="primary"
+          color="primary"
           selected={val === "one"}
           onClick={() => setVal("one")}
         >
@@ -57,7 +57,7 @@ export const Context = () => {
         </Button>
         <Button
           shape="outline"
-          type="primary"
+          color="primary"
           selected={val === "two"}
           onClick={() => setVal("two")}
         >
@@ -65,7 +65,7 @@ export const Context = () => {
         </Button>
         <Button
           shape="outline"
-          type="primary"
+          color="primary"
           selected={val === "three"}
           onClick={() => setVal("three")}
         >
@@ -85,15 +85,25 @@ export const Context = () => {
       </ButtonGroup>
 
       <ButtonGroup>
-        <Button shape="ghost" type="primary" selected={val === "one"} onClick={() => setVal("one")}>
+        <Button
+          shape="ghost"
+          color="primary"
+          selected={val === "one"}
+          onClick={() => setVal("one")}
+        >
           One
         </Button>
-        <Button shape="ghost" type="primary" selected={val === "two"} onClick={() => setVal("two")}>
+        <Button
+          shape="ghost"
+          color="primary"
+          selected={val === "two"}
+          onClick={() => setVal("two")}
+        >
           Two
         </Button>
         <Button
           shape="ghost"
-          type="primary"
+          color="primary"
           selected={val === "three"}
           onClick={() => setVal("three")}
         >

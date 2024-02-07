@@ -21,7 +21,7 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
             "ll-animate",
             "fade-in",
             `placement-${context.placement}`,
-            `type-${context.type}`,
+            `border-color-${context.color}`,
             context.middlewareData.hide?.referenceHidden && "hidden",
           )}
           style={{ ...context.floatingStyles, ...style }}

@@ -1,8 +1,8 @@
-import { ColorType } from "@lonlat/shared/types";
+import { ThemeColor } from "@lonlat/shared/types";
 
 export interface ModalOptions {
   initialOpen?: boolean;
   open?: boolean;
   onOpen?: (open: boolean) => void;
-  type?: ColorType | "default";
+  color?: ThemeColor | "default";
 }

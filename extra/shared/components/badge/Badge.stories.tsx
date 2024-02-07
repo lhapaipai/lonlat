@@ -17,7 +17,7 @@ export const Playbook: Story = {
   args: {
     tooltip: "More infos...",
     url: "https://lonlat.org",
-    type: "primary",
+    color: "primary",
     children: "Lonlat",
   },
 };
@@ -25,38 +25,38 @@ export const Playbook: Story = {
 export const Context = () => {
   return (
     <div className="flex flex-column gap-2">
-      <Badge type="primary">Primary</Badge>
-      <Badge type="warning">Warning</Badge>
-      <Badge type="success">Success</Badge>
-      <Badge type="danger">Danger</Badge>
-      <Badge type="info">Info</Badge>
-      <Badge type="weak">Weak</Badge>
-      <Badge type="primary" onClick={onClickAction}>
+      <Badge color="primary">Primary</Badge>
+      <Badge color="warning">Warning</Badge>
+      <Badge color="success">Success</Badge>
+      <Badge color="danger">Danger</Badge>
+      <Badge color="info">Info</Badge>
+      <Badge color="weak">Weak</Badge>
+      <Badge color="primary" onClick={onClickAction}>
         Primary clickable
       </Badge>
-      <Badge type="warning" onClick={onClickAction}>
+      <Badge color="warning" onClick={onClickAction}>
         Warning clickable
       </Badge>
-      <Badge type="success" onClick={onClickAction}>
+      <Badge color="success" onClick={onClickAction}>
         Success clickable
       </Badge>
-      <Badge type="danger" onClick={onClickAction}>
+      <Badge color="danger" onClick={onClickAction}>
         Danger clickable
       </Badge>
-      <Badge type="info" onClick={onClickAction}>
+      <Badge color="info" onClick={onClickAction}>
         Info clickable
       </Badge>
-      <Badge type="weak" onClick={onClickAction}>
+      <Badge color="weak" onClick={onClickAction}>
         Weak clickable
       </Badge>
-      <Badge type="primary" onRemove={onRemoveAction}>
+      <Badge color="primary" onRemove={onRemoveAction}>
         Primary removable
       </Badge>
-      <Badge type="primary" onClick={onClickAction} onRemove={onRemoveAction}>
+      <Badge color="primary" onClick={onClickAction} onRemove={onRemoveAction}>
         Primary clickable removable
       </Badge>
 
-      <Badge type="primary" tooltip="More infos...">
+      <Badge color="primary" tooltip="More infos...">
         With tooltip !
       </Badge>
     </div>

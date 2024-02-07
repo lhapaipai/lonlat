@@ -7,6 +7,13 @@ api.lonlat.localhost {
 
 	encode zstd gzip
 
+	log {
+		output file var/log/caddy.log {
+			roll_size 10MiB
+			roll_keep 2
+		}
+	}
+
 	mercure {
 		transport_url bolt://mercure.db
 		publisher_jwt "!ChangeThisMercureHubJWTSecretKey!" HS256

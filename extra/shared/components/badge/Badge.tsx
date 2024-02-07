@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import "./Badge.scss";
-import { ColorType } from "../../types";
+import { ThemeColor } from "../../types";
 import cn from "classnames";
 import { Href, Tooltip, TooltipContent, TooltipTrigger } from "../..";
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   className?: string;
   tooltip?: string;
   url?: string;
-  type?: ColorType;
+  color?: ThemeColor;
   onClick?: () => void;
   onRemove?: () => void;
 }
@@ -20,10 +20,12 @@ export default function Badge({
   onClick,
   tooltip,
   url,
-  type = "primary",
+  color = "primary",
 }: Props) {
   const badge = (
-    <span className={cn("ll-badge", "text-xs", `shape-solid-${type}`, `type-${type}`, className)}>
+    <span
+      className={cn("ll-badge", "text-xs", `shape-solid-${color}`, `color-${color}`, className)}
+    >
       {onClick ? (
         <button className="inner" onClick={onClick}>
           {children}

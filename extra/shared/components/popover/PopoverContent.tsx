@@ -21,7 +21,7 @@ const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
               "ll-popover",
               "ll-dialog",
               `placement-${context.placement}`,
-              `type-${context.type}`,
+              `border-color-${context.color}`,
               "ll-animate",
               "fade-in",
             )}

@@ -7,16 +7,16 @@ import { Button, Loader } from "../..";
 
 export default function Notification({
   message,
-  type = "primary",
+  color = "primary",
   withLoader = false,
   canClose = false,
   onRemove = () => {},
 }: NotificationProps) {
   return (
-    <div className={cn("ll-dialog", "top", "ll-notification", `type-${type}`)}>
+    <div className={cn("ll-dialog", "top", "ll-notification", `border-color-${color}`)}>
       <div className="box">
         <span className="message">{message}</span>
-        {withLoader && <Loader size="small" type="weak" />}
+        {withLoader && <Loader size="small" color="weak" />}
 
         {canClose && (
           <Button icon shape="ghost" onClick={onRemove}>

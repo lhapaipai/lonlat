@@ -6,7 +6,7 @@ export default function useModal({
   initialOpen = false,
   open: controlledOpen,
   onOpen: setControlledOpen,
-  type = "default",
+  color = "default",
 }: ModalOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
   const [labelId, setLabelId] = useState<string | undefined>();
@@ -37,12 +37,12 @@ export default function useModal({
       setOpen,
       ...interactions,
       ...data,
-      type,
+      color,
       labelId,
       descriptionId,
       setLabelId,
       setDescriptionId,
     }),
-    [open, setOpen, interactions, data, type, labelId, descriptionId],
+    [open, setOpen, interactions, data, color, labelId, descriptionId],
   );
 }

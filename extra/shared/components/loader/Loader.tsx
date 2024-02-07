@@ -1,20 +1,20 @@
 import { ComponentPropsWithoutRef, useId } from "react";
-import { ColorType } from "../../types";
+import { ThemeColor } from "../../types";
 import cn from "classnames";
 import "./Loader.scss";
 
 interface Props extends ComponentPropsWithoutRef<"svg"> {
   size?: "small" | "medium" | "large";
-  type?: ColorType;
+  color?: ThemeColor;
 }
-export default function Loader({ size = "medium", type = "info", className, ...rest }: Props) {
+export default function Loader({ size = "medium", color = "info", className, ...rest }: Props) {
   const id = useId();
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("ll-loader", `size-${size}`, `size-${type}`, className)}
+      className={cn("ll-loader", `size-${size}`, `color-${color}`, className)}
       style={{
-        color: `var(--color-${type}-700)`,
+        color: `var(--color-${color}-700)`,
       }}
       viewBox="0 0 16 16"
       {...rest}

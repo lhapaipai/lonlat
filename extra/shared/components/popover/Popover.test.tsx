@@ -7,7 +7,7 @@ afterEach(cleanup);
 describe("<Popover />", () => {
   it("open popup on click", async () => {
     const { getByText, getByRole } = render(
-      <Popover type="primary">
+      <Popover color="primary">
         <PopoverTrigger>My trigger</PopoverTrigger>
         <PopoverContent>
           <PopoverDescription>Content</PopoverDescription>

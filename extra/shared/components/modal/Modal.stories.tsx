@@ -31,7 +31,7 @@ export const Basic: Story = {
   },
   args: {
     initialOpen: false,
-    type: "default",
+    color: "default",
   },
 };
 
@@ -54,7 +54,7 @@ export const Context = () => {
             <Button shape="ghost" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button type="primary" onClick={() => setIsOpen(false)}>
+            <Button color="primary" onClick={() => setIsOpen(false)}>
               Accept
             </Button>
           </div>
@@ -106,7 +106,7 @@ export const ScrollableModal = () => {
             <Button shape="ghost" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button type="primary" onClick={() => setIsOpen(false)}>
+            <Button color="primary" onClick={() => setIsOpen(false)}>
               Accept
             </Button>
           </div>

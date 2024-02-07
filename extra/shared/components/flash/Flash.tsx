@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
-import { ColorType } from "../../types";
+import { ThemeColor } from "../../types";
 import "./Flash.scss";
 import cn from "classnames";
 
 interface Props {
-  type?: ColorType;
+  color?: ThemeColor;
   children?: ReactNode;
   className?: string;
 }
-export default function Alert({ type = "primary", children, className }: Props) {
-  return <div className={cn("ll-flash", "p-2", `alert--${type}`, className)}>{children}</div>;
+export default function Alert({ color = "primary", children, className }: Props) {
+  return <div className={cn("ll-flash", "p-2", `alert-${color}`, className)}>{children}</div>;
 }

@@ -36,5 +36,5 @@ indent_size = 4
 [*.php]
 indent_size = 4
 
-[*.css]
+[*.{css,scss}]
 indent_size = 4

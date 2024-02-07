@@ -6,6 +6,7 @@
 
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow);
+    border-style: solid;
 
     .bar-buttons {
         padding: .75rem;
@@ -48,14 +49,6 @@
         height: 0;
         position: absolute;
         filter: drop-shadow(0 1px 3px #c9c9c9);
-    }
-
-    @each $colorType in (success, info, warning, danger, primary, weak) {
-        &.type-#{$colorType} {
-
-            border-color: var(--color-#{$colorType}-300);
-            border-style: solid;
-        }
     }
 
     &[class*="placement-top"] {

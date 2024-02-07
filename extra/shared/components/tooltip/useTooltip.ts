@@ -24,7 +24,7 @@ export default function useTooltip({
   onOpen: setControlledOpen,
   openDelay = 100,
   closeDelay = 500,
-  type = "default",
+  color = "default",
 }: TooltipOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 
@@ -85,8 +85,8 @@ export default function useTooltip({
       ...interactions,
       ...data,
       arrowRef,
-      type,
+      color,
     }),
-    [open, setOpen, type, interactions, data],
+    [open, setOpen, color, interactions, data],
   );
 }

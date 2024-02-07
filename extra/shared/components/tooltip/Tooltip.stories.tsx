@@ -62,7 +62,7 @@ export const Basic = () => {
       </p>
 
       <div className="storybook-grid-cols">
-        <SimpleTooltip type="primary" open={true} placement="right-start" content="infos">
+        <SimpleTooltip color="primary" open={true} placement="right-start" content="infos">
           <Box />
         </SimpleTooltip>
         <SimpleTooltip open={true} placement="right" content="infos">
@@ -71,25 +71,25 @@ export const Basic = () => {
         <SimpleTooltip open={true} placement="right-end" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip type="primary" open={true} placement="left-start" content="infos">
+        <SimpleTooltip color="primary" open={true} placement="left-start" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip type="weak" open={true} placement="left" content="infos">
+        <SimpleTooltip color="weak" open={true} placement="left" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip type="warning" open={true} placement="left-end" content="infos">
+        <SimpleTooltip color="warning" open={true} placement="left-end" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip type="danger" open={true} placement="top-start" content="infos">
+        <SimpleTooltip color="danger" open={true} placement="top-start" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip type="info" open={true} placement="top" content="infos">
+        <SimpleTooltip color="info" open={true} placement="top" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip type="success" open={true} placement="top-end" content="infos">
+        <SimpleTooltip color="success" open={true} placement="top-end" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip type="danger" open={true} placement="bottom-start" content="infos">
+        <SimpleTooltip color="danger" open={true} placement="bottom-start" content="infos">
           <Box />
         </SimpleTooltip>
         <SimpleTooltip open={true} placement="bottom" content="infos">

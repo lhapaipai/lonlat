@@ -25,7 +25,7 @@ export function createNotificationsManager(
     {
       id = idx++,
       expiration = 5000,
-      type = "primary",
+      color = "primary",
       canClose = true,
       ...rest
     }: NotificationOptions = {},
@@ -39,7 +39,7 @@ export function createNotificationsManager(
         id,
         expiration,
         message,
-        type,
+        color,
         canClose,
         ...rest,
       };

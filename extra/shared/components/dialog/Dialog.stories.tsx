@@ -15,7 +15,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-top type-info"
+          className="ll-dialog placement-top border-color-info"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -26,7 +26,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-bottom type-info"
+          className="ll-dialog placement-bottom border-color-info"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -37,7 +37,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-left type-info"
+          className="ll-dialog placement-left border-color-info"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -48,7 +48,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-right type-info"
+          className="ll-dialog placement-right border-color-info"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -60,7 +60,7 @@ export const Basic = () => {
 
       <div>
         <div
-          className="ll-dialog placement-top type-info"
+          className="ll-dialog placement-top border-color-info"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -82,7 +82,7 @@ export const Basic = () => {
 
       <div>
         <div
-          className="ll-dialog placement-top type-primary"
+          className="ll-dialog placement-top border-color-primary"
           style={{ width: 300 }}
           data-status="open"
           role="dialog"
@@ -105,7 +105,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-top type-primary"
+          className="ll-dialog placement-top border-color-primary"
           style={{ width: 300 }}
           data-status="open"
           role="dialog"

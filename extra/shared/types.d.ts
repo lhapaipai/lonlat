@@ -1,4 +1,4 @@
-export type ColorType = "primary" | "weak" | "danger" | "warning" | "success" | "info";
+export type ThemeColor = "primary" | "weak" | "danger" | "warning" | "success" | "info";
 
 export interface Town {
   insee: number;

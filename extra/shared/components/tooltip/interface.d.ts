@@ -1,5 +1,5 @@
 import { Placement } from "@floating-ui/react";
-import { ColorType } from "@lonlat/shared/types";
+import { ThemeColor } from "@lonlat/shared/types";
 
 export interface TooltipOptions {
   initialOpen?: boolean;
@@ -8,5 +8,5 @@ export interface TooltipOptions {
   onOpen?: (open: boolean) => void;
   openDelay?: number;
   closeDelay?: number;
-  type?: ColorType | "default";
+  color?: ThemeColor | "default";
 }

@@ -6,11 +6,15 @@ $color-names: "default", "weak", "hint", "disabled";
     }
 }
 
-$color-types: "primary", "success", "info", "warning", "danger";
+$colors: "primary", "success", "info", "warning", "danger", "weak";
 
-@each $color-type in $color-types {
-    .color-#{$color-type} {
-        color: var(--color-#{$color-type}-600);
+@each $color in $colors {
+    .color-#{$color} {
+        color: var(--color-#{$color}-600);
+    }
+
+    .border-color-#{$color} {
+        border-color: var(--color-#{$color}-300);
     }
 
 }

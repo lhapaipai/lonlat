@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 export const Playbook: Story = {
   args: {
     size: "medium",
-    type: "primary",
+    color: "primary",
   },
 };
 
@@ -20,8 +20,8 @@ export const Context = () => (
   <div className="flex gap-2 flex-column">
     <Loader size="small" />
     <br />
-    <Loader size="medium" type="primary" />
+    <Loader size="medium" color="primary" />
     <br />
-    <Loader size="large" type="danger" />
+    <Loader size="large" color="danger" />
   </div>
 );

@@ -22,7 +22,7 @@ export default function useDropdownMenu({
   placement = "bottom",
   open: controlledOpen,
   onOpen: setControlledOpen,
-  type = "default",
+  color = "default",
   modal = false,
 }: DropdownMenuOptions) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
@@ -102,7 +102,7 @@ export default function useDropdownMenu({
       elementsRef,
       labelsRef,
       transitionStatus,
-      type,
+      color,
       modal,
       activeIndex,
       handleSelect,
@@ -113,7 +113,7 @@ export default function useDropdownMenu({
       interactions,
       data,
       transitionStatus,
-      type,
+      color,
       modal,
       activeIndex,
       // getItemProps,
