@@ -15,20 +15,22 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <div
           ref={ref}
-          className={cn(
-            "ll-tooltip",
-            "ll-dialog",
-            "ll-animate",
-            "fade-in",
-            `placement-${context.placement}`,
-            `border-color-${context.color}`,
-            context.middlewareData.hide?.referenceHidden && "hidden",
-          )}
+          className={cn("ll-tooltip", context.middlewareData.hide?.referenceHidden && "hidden")}
           style={{ ...context.floatingStyles, ...style }}
           {...context.getFloatingProps(props)}
         >
-          {children}
-          <div ref={context.arrowRef} style={computeArrowStyle(context)} className="arrow"></div>
+          <div
+            className={cn(
+              "ll-animate",
+              "fade-in",
+              "ll-dialog",
+              `placement-${context.placement}`,
+              `border-color-${context.color}`,
+            )}
+          >
+            {children}
+            <div ref={context.arrowRef} style={computeArrowStyle(context)} className="arrow"></div>
+          </div>
         </div>
       </FloatingPortal>
     );

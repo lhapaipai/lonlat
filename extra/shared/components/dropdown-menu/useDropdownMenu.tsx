@@ -51,7 +51,6 @@ export default function useDropdownMenu({
       }),
       shift({ padding: 5 }),
     ],
-    transform: false,
   });
 
   const { context } = data;

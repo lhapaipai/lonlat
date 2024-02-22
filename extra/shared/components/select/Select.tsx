@@ -135,7 +135,6 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
           padding: 10,
         }),
       ],
-      transform: false,
     });
 
     const ref = useMergeRefs([refs.setReference, propRef]);
@@ -254,35 +253,39 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
             {isOpen && (
               <FloatingFocusManager context={context} modal={false}>
                 <div
-                  className={cn(
-                    "ll-dialog",
-                    "ll-portail-dialog",
-                    `placement-${context.placement}`,
-                    "ll-select-dialog",
-                    "ll-animate",
-                    "fade-in-list",
-                  )}
+                  className={cn()}
                   ref={refs.setFloating}
                   style={floatingStyles}
                   {...getFloatingProps()}
                 >
-                  {searchable && (
-                    <div className="search-container">
-                      <Input
-                        placeholder="Search"
-                        tabIndex={selectedIndex === null ? 0 : -1}
-                        value={search}
-                        onChange={handleSearchChange}
-                        onFocus={() => setSearchHasFocus(true)}
-                        onBlur={() => setSearchHasFocus(false)}
-                      ></Input>
-                    </div>
-                  )}
-                  <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
-                    {filteredOptions.map((option) => (
-                      <SelectOptionComponent option={option} key={option.value} />
-                    ))}
-                  </FloatingList>
+                  <div
+                    className={cn(
+                      "ll-dialog",
+                      "ll-portail-dialog",
+                      `placement-${context.placement}`,
+                      "ll-select-dialog",
+                      "ll-animate",
+                      "fade-in-list",
+                    )}
+                  >
+                    {searchable && (
+                      <div className="search-container">
+                        <Input
+                          placeholder="Search"
+                          tabIndex={selectedIndex === null ? 0 : -1}
+                          value={search}
+                          onChange={handleSearchChange}
+                          onFocus={() => setSearchHasFocus(true)}
+                          onBlur={() => setSearchHasFocus(false)}
+                        ></Input>
+                      </div>
+                    )}
+                    <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
+                      {filteredOptions.map((option) => (
+                        <SelectOptionComponent option={option} key={option.value} />
+                      ))}
+                    </FloatingList>
+                  </div>
                 </div>
               </FloatingFocusManager>
             )}

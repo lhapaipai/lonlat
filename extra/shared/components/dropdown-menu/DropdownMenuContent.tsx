@@ -21,21 +21,24 @@ const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
-            className={cn(
-              "ll-dropdown-menu",
-              "ll-dialog",
-              `placement-${context.placement}`,
-              `border-color-${context.color}`,
-            )}
+            className={cn("ll-dropdown-menu")}
             ref={ref}
             style={{ ...context.floatingStyles, ...style }}
             data-status={context.transitionStatus.status}
             {...context.getFloatingProps(props)}
           >
-            <div className="box">
-              <FloatingList elementsRef={context.elementsRef} labelsRef={context.labelsRef}>
-                {children}
-              </FloatingList>
+            <div
+              className={cn(
+                "ll-dialog",
+                `placement-${context.placement}`,
+                `border-color-${context.color}`,
+              )}
+            >
+              <div className="box">
+                <FloatingList elementsRef={context.elementsRef} labelsRef={context.labelsRef}>
+                  {children}
+                </FloatingList>
+              </div>
             </div>
           </div>
         </FloatingFocusManager>

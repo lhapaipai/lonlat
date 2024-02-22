@@ -48,7 +48,6 @@ export default function usePopover({
         padding: 8,
       }),
     ],
-    transform: false,
   });
 
   const { context } = data;

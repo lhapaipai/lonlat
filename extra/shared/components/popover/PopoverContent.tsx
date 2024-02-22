@@ -17,22 +17,29 @@ const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
-            className={cn(
-              "ll-popover",
-              "ll-dialog",
-              `placement-${context.placement}`,
-              `border-color-${context.color}`,
-              "ll-animate",
-              "fade-in",
-            )}
+            className="ll-popover"
             ref={ref}
             style={{ ...context.floatingStyles, ...style }}
             aria-labelledby={context.labelId}
             aria-describedby={context.descriptionId}
             {...context.getFloatingProps(props)}
           >
-            {children}
-            <div ref={context.arrowRef} style={computeArrowStyle(context)} className="arrow"></div>
+            <div
+              className={cn(
+                "ll-dialog",
+                `placement-${context.placement}`,
+                `border-color-${context.color}`,
+                "ll-animate",
+                "fade-in",
+              )}
+            >
+              {children}
+              <div
+                ref={context.arrowRef}
+                style={computeArrowStyle(context)}
+                className="arrow"
+              ></div>
+            </div>
           </div>
         </FloatingFocusManager>
       </FloatingPortal>

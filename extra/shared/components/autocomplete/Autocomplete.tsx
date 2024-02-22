@@ -78,7 +78,6 @@ export default function Autocomplete<O extends Option = Option>({
         padding: 10,
       }),
     ],
-    transform: false,
   });
 
   const role = useRole(context, { role: "listbox" });
@@ -205,23 +204,31 @@ export default function Autocomplete<O extends Option = Option>({
           {isOpen && (
             <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss>
               <div
-                className={cn(
-                  "ll-dialog",
-                  "ll-portail-dialog",
-                  "ll-autocomplete-dialog",
-                  `placement-${context.placement}`,
-                  "ll-animate",
-                  "fade-in-list",
-                )}
+                className={cn()}
                 ref={refs.setFloating}
                 style={floatingStyles}
                 {...getFloatingProps()}
               >
-                <FloatingList elementsRef={listRef}>
-                  {options.map((option) => (
-                    <OptionComponent option={option} searchValue={searchValue} key={option.value} />
-                  ))}
-                </FloatingList>
+                <div
+                  className={cn(
+                    "ll-dialog",
+                    "ll-portail-dialog",
+                    "ll-autocomplete-dialog",
+                    `placement-${context.placement}`,
+                    "ll-animate",
+                    "fade-in-list",
+                  )}
+                >
+                  <FloatingList elementsRef={listRef}>
+                    {options.map((option) => (
+                      <OptionComponent
+                        option={option}
+                        searchValue={searchValue}
+                        key={option.value}
+                      />
+                    ))}
+                  </FloatingList>
+                </div>
               </div>
             </FloatingFocusManager>
           )}

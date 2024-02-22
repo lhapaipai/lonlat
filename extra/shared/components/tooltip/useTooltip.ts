@@ -54,11 +54,6 @@ export default function useTooltip({
         padding: 20,
       }),
     ],
-    /**
-     * we already use transform with transition status
-     * see : components/dialog/Dialog.scss (data-status)
-     */
-    transform: false,
   });
   const { context } = data;
 
