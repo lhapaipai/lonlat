@@ -1,0 +1,31 @@
+.ll-layer-switcher {
+    display: flex;
+    overflow-x: auto;
+
+    .layer {
+        flex: 1 0 54px;
+        max-width: 100px;
+        border-radius: var(--border-radius-sm);
+        display: flex;
+        flex-direction: column;
+        box-shadow: var(--shadow);
+        padding: 5px 5px 0;
+        margin: .25rem;
+
+        &:hover,
+        &.active {
+            cursor: pointer;
+            background-color: var(--color-primary);
+        }
+    }
+
+    .preview {
+        height: 54px;
+        object-fit: none;
+    }
+
+    .legend {
+        overflow: hidden;
+        text-align: center;
+    }
+}

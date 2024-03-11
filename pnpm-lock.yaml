@@ -220,9 +220,15 @@ importers:
       '@turf/turf':
         specifier: 6.5.0
         version: 6.5.0
+      '@types/geojson':
+        specifier: ^7946.0.14
+        version: 7946.0.14
       '@types/proj4':
         specifier: ^2.5.5
         version: 2.5.5
+      geojson:
+        specifier: ^0.5.0
+        version: 0.5.0
       mapbox-gl-fps:
         specifier: ^1.0.1
         version: 1.0.1

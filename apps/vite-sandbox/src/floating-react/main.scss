@@ -1,0 +1,37 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    padding: 2rem;
+    background-color: pink;
+}
+
+.box {
+    background-color: greenyellow;
+    padding: 2rem;
+
+    height: 150px;
+    overflow: auto;
+    position: relative;
+}
+
+.child {
+    background-color: yellow;
+}
+
+.point {
+    width: 4px;
+    height: 4px;
+    background-color: red;
+    display: inline-block;
+}
+
+.container {
+    width: 400px;
+    margin: 200px auto;
+}

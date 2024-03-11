@@ -1,0 +1,40 @@
+html,
+body,
+#root,
+#map {
+    margin: 0;
+    padding: 0;
+}
+
+
+#map.half {
+    position: fixed;
+    width: 50%;
+    top: 0;
+    bottom: 0;
+}
+
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+
+section {
+    padding: 25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+}
+
+section.active {
+    opacity: 1;
+}
+
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 200px;
+}

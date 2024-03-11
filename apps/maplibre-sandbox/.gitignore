@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+
+public/

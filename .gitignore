@@ -6,5 +6,5 @@ dist/
 # Local Netlify folder
 .netlify
 
-apps/*-sandbox
+apps/maplibre-react-sandbox
 

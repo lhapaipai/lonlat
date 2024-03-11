@@ -1,0 +1,92 @@
+-    Display buildings in 3D
+-    Extrude polygons for 3D indoor mapping
+- OK 3D Terrain
+-    Add a 3D model with babylon.js
+-    Add a 3D model with three.js
+- OK Add a default marker
+- OK   Add an animated icon to the map
+-    Add a generated icon to the map
+-    Generate and add a missing icon to the map
+- -- Add a stretchable image to the map
+- OK Add an icon to the map
+- OK Animate a line
+-    Animate map camera around a point
+- OK Animate a series of images
+- OK Animate a marker
+- OK Animate a point
+- OK Animate a point along a route
+-    Change the default position for attribution
+- OK Customize camera animations
+- OK Add a canvas source
+-    Center the map on a clicked symbol
+-    Change building color based on zoom level
+-    Change the case of labels
+- -- Check if MapLibre GL JS is supported
+- OK Display HTML clusters with custom properties
+- OK Create and style clusters
+- OK Change a layer's color with buttons
+-    Add Contour Lines
+-    Enable cooperative gestures
+- OK Add custom icons with Markers
+- !! Add a custom style layer
+- OK Style lines with a data-driven property
+- ko Disable map rotation
+- ko Disable scroll zoom
+-    Display and style rich text labels
+-    Create a draggable Marker
+-    Create a draggable point
+-    Use a fallback image
+-    Add a pattern to a polygon
+-    Filter symbols by text input
+-    Filter symbols by toggling a list
+- OK Fit a map to a bounding box
+- OK Slowly fly to a location
+- OK Fly to a location
+-    View a fullscreen map
+-    Navigate the map with game-like controls
+-    Geocode with Nominatim
+-    Add a new layer below labels
+-    Add a GeoJSON line
+-    Draw GeoJSON points
+-    Add a GeoJSON polygon
+-    Create a heatmap layer
+-    Create a hover effect
+-    Display a non-interactive map
+-    Jump to a series of locations
+-    Change a map's language
+-    Display line that crosses 180th meridian
+-    Create a gradient line using an expression
+-    Add live realtime data
+-    Update a feature in realtime
+-    View local GeoJSON (experimental)
+-    View local GeoJSON
+-    Use locally generated ideographs
+-    Locate the user
+- OK Add a raster tile source
+- OK Show drawn polygon area
+-    Add support for right-to-left scripts
+- OK Measure distances
+- OK Get coordinates of the mouse pointer
+-    Add multiple geometries from one GeoJSON source
+-    Display map navigation controls
+- OK Offset the vanishing point using padding
+-    Show polygon information on click
+- OK Display a popup on click
+- OK Display a popup on hover
+- OK Display a popup
+-    Get features under the mouse pointer
+-    Render world copies
+-    Restrict map panning to an area
+-    Display a satellite map
+- OK Fly to a location based on scroll position
+- OK Set pitch and bearing
+-    Attach a popup to a marker instance
+- OK Display a map
+-    Create a time slider
+-    Toggle interactions
+-    Variable label placement
+-    Add a vector tile source
+-    Add a video
+-    Visualize population density
+-    Add a WMS source
+-    Fit to the bounds of a LineString
