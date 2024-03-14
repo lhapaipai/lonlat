@@ -68,13 +68,13 @@
 - OK Measure distances
 - OK Get coordinates of the mouse pointer
 -    Add multiple geometries from one GeoJSON source
--    Display map navigation controls
+- OK Display map navigation controls
 - OK Offset the vanishing point using padding
--    Show polygon information on click
+- OK Show polygon information on click
 - OK Display a popup on click
 - OK Display a popup on hover
 - OK Display a popup
--    Get features under the mouse pointer
+- OK Get features under the mouse pointer
 -    Render world copies
 -    Restrict map panning to an area
 -    Display a satellite map
@@ -90,3 +90,9 @@
 -    Visualize population density
 -    Add a WMS source
 -    Fit to the bounds of a LineString
+
+
+mapbox
+
+https://docs.mapbox.com/mapbox-gl-js/example/using-box-queryrenderedfeatures/
+- OK Highlight features within a bounding box

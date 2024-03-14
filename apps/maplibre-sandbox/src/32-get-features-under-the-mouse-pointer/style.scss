@@ -1,0 +1,33 @@
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#map {
+    margin-left: 50%;
+    width: 50%;
+    height: 100%;
+}
+
+.map-overlay {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    position: fixed;
+    min-width: 200px;
+    top: 0;
+    left: 0;
+    width: 50%;
+    bottom: 0;
+    padding: 10px;
+    z-index: 1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow: auto;
+
+    pre {
+        white-space: pre;
+    }
+}
