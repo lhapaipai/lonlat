@@ -35,27 +35,3 @@ body {
     width: 400px;
     margin: 200px auto;
 }
-
-[aria-haspopup="listbox"] {
-    display: inline-block;
-    background: #ddd;
-    font-size: 1rem;
-    padding: 0.75rem;
-    cursor: default;
-    user-select: none;
-}
-
-[role="listbox"] {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ddd;
-    outline: 0;
-}
-
-[role="option"] {
-    padding: 0.75rem;
-    font-size: inherit;
-    border: none;
-    text-align: left;
-    outline: 0;
-}

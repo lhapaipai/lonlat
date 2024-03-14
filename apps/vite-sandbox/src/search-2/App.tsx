@@ -1,17 +1,11 @@
 import {
-  Autocomplete,
   AutocompleteGeocodageOption,
-  Button,
-  Input,
   LazyAutocomplete,
   NotificationsProvider,
-  Select,
   Town,
   prepareTownsResult,
 } from "@lonlat/shared/index";
-import { useCallback, useState } from "react";
-import SelectLegacy from "@lonlat/shared/components/select/SelectLegacy";
-import { Option } from "@lonlat/shared/components/select/interface";
+import { useCallback } from "react";
 
 const options = [
   { value: "alencon", label: "Alençon" },

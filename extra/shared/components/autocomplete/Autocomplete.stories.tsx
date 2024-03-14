@@ -12,7 +12,7 @@ import {
 import { Meta } from "@storybook/react";
 
 import type { Option } from "@lonlat/shared/components/autocomplete/interface";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 const meta = {
   title: "Components/Autocomplete",
@@ -53,11 +53,15 @@ const options: Option[] = [
   { value: "avray", label: "Avray" },
 ];
 
-export const Simple = () => {
+export const SimpleUncontrolled = () => {
+  return <SimpleAutocomplete options={options} />;
+};
+
+export const SimpleControlled = () => {
+  const [selection, setSelection] = useState<Option | null>(null);
+
   return (
-    <>
-      <SimpleAutocomplete options={options} />
-    </>
+    <SimpleAutocomplete options={options} selection={selection} onChangeSelection={setSelection} />
   );
 };
 

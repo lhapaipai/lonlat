@@ -20,7 +20,8 @@ import { AutocompleteContext } from "./useAutocompleteContext.ts";
 import "./Autocomplete.scss";
 import "../button/Button.scss";
 import cn from "classnames";
-import { Button } from "../..";
+import { Button, useEventCallback } from "../..";
+
 interface Props<O extends Option> {
   placement?: Placement;
   placeholder?: string;
@@ -29,13 +30,16 @@ interface Props<O extends Option> {
    */
   searchValue: string;
   /**
-   * change handler when typing
+   * change handler when typing in the input
+   * or when clicking on an option (the label value is passed)
    */
   onChangeSearchValue: (value: string) => void;
 
   selection?: O | null;
   /**
    * select handler for a selection from the autocomplete's dropdown
+   * the option object is passed when clicking on an option
+   * null value is passed when typing a new character in the input search.
    */
   onChangeSelection: (option: O | null) => void;
   options: O[];
@@ -56,6 +60,9 @@ export default function Autocomplete<O extends Option = Option>({
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  const onChangeSearchValueStable = useEventCallback(onChangeSearchValue);
+  const onChangeSelectionStable = useEventCallback(onChangeSelection);
+
   const OptionComponent = AutocompleteOptionCustom ?? AutocompleteOption;
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
@@ -71,9 +78,12 @@ export default function Autocomplete<O extends Option = Option>({
       size({
         apply({ rects, elements, availableHeight }) {
           Object.assign(elements.floating.style, {
-            maxHeight: `${Math.min(availableHeight, 300)}px`,
             width: `${Math.max(130, rects.reference.width)}px`,
           });
+          const firstChild = elements.floating.firstElementChild as HTMLElement;
+          if (firstChild) {
+            firstChild.style.maxHeight = `${Math.min(availableHeight, 300)}px`;
+          }
         },
         padding: 10,
       }),
@@ -101,10 +111,10 @@ export default function Autocomplete<O extends Option = Option>({
     const value = e.target.value;
 
     if (value !== searchValue && selection !== null) {
-      onChangeSelection(null);
+      onChangeSelectionStable(null);
     }
 
-    onChangeSearchValue(value);
+    onChangeSearchValueStable(value);
 
     if (value) {
       setIsOpen(true);
@@ -117,19 +127,17 @@ export default function Autocomplete<O extends Option = Option>({
   const handleSelect = useCallback(
     (index: number | null) => {
       if (index === null) {
-        onChangeSelection(null);
+        onChangeSelectionStable(null);
       } else if (options[index]) {
         const newSelection = options[index];
-        onChangeSelection(newSelection);
-        onChangeSearchValue(newSelection.label);
+        onChangeSelectionStable(newSelection);
+        onChangeSearchValueStable(newSelection.label);
       }
       setActiveIndex(null);
-
       setIsOpen(false);
     },
-    // TODO with SimpleAutocomplete onChangeSelection and onChangeSearchValue
-    // are hooks instead useCallback ?
-    [options, onChangeSelection, onChangeSearchValue],
+
+    [options, onChangeSelectionStable, onChangeSearchValueStable],
   );
 
   const autocompleteContext = useMemo(
@@ -161,7 +169,8 @@ export default function Autocomplete<O extends Option = Option>({
                 return;
               }
               /**
-               * the only element available is already the selection,
+               * There is a already selection
+               * and the only element available is the selection,
                * no need to display the dropdown.
                */
               if (options.length === 1 && options[0].value === selection?.value) {
@@ -183,16 +192,9 @@ export default function Autocomplete<O extends Option = Option>({
             shape="ghost"
             onClick={() => {
               setIsOpen(false);
-              onChangeSelection(null);
+              onChangeSelectionStable(null);
               setActiveIndex(null);
-              onChangeSearchValue("");
-              /**
-               * if we don't put a delay all unfiltered options
-               * will reappear for the duration of fade out.
-               */
-              // setTimeout(() => {
-              //   onChangeSearchValue("");
-              // }, TRANSITION_DURATION);
+              onChangeSearchValueStable("");
             }}
           >
             <i className="fe-cancel"></i>
@@ -204,7 +206,7 @@ export default function Autocomplete<O extends Option = Option>({
           {isOpen && (
             <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss>
               <div
-                className={cn()}
+                className={cn("ll-portail-dialog")}
                 ref={refs.setFloating}
                 style={floatingStyles}
                 {...getFloatingProps()}
@@ -212,7 +214,6 @@ export default function Autocomplete<O extends Option = Option>({
                 <div
                   className={cn(
                     "ll-dialog",
-                    "ll-portail-dialog",
                     "ll-autocomplete-dialog",
                     `placement-${context.placement}`,
                     "ll-animate",

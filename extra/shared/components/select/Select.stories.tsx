@@ -6,6 +6,8 @@ import { SelectSelectionProps } from "@lonlat/shared/components/select/SelectSel
 import { SelectOptionProps } from "@lonlat/shared/components/select/SelectOption";
 import cn from "classnames";
 import { action } from "@storybook/addon-actions";
+import { SelectValue } from "./Select";
+import { Option } from "./interface";
 
 const onChangeAction = action("onChange");
 
@@ -64,83 +66,77 @@ const options = [
   // { value: "avray", label: "Avray" },
 ];
 
-const stars = [
-  { value: "empty", label: "Empty", icon: "fe-star-empty" },
-  { value: "half", label: "Half", icon: "fe-star-half" },
-  { value: "fill", label: "Fill", icon: "fe-star" },
-];
-
 export const Basic = () => {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<SelectValue>(null);
   return (
     <Select
       searchable={false}
       placeholder="Select your town..."
       options={options}
       value={value}
-      onChangeValue={(o) => {
+      onChange={(o) => {
         onChangeAction(o);
-        setValue(o?.value ?? null);
+        setValue(o.target.value);
       }}
     ></Select>
   );
 };
 
 export const NotRequired = () => {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<SelectValue>(null);
   return (
     <Select
       required={false}
       placeholder="Select your town..."
       options={options}
       value={value}
-      onChangeValue={(o) => {
+      onChange={(o) => {
         onChangeAction(o);
-        setValue(o?.value ?? null);
+        setValue(o.target.value);
       }}
     ></Select>
   );
 };
 
 export const Searchable = () => {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<SelectValue>(null);
   return (
     <Select
       searchable={true}
       placeholder="Select your town..."
       options={options}
       value={value}
-      onChangeValue={(o) => {
+      onChange={(o) => {
         onChangeAction(o);
-        setValue(o?.value ?? null);
+        setValue(o.target.value);
       }}
     ></Select>
   );
 };
 
-export const Multiple = () => {
-  const [values, setValues] = useState<string[]>([]);
-  return (
-    <Select
-      multiple={true}
-      placeholder="Select your towns..."
-      options={options}
-      value={values}
-      onChangeValue={(options) => {
-        onChangeAction(options);
-        setValues(options.map((o) => o.value));
-      }}
-    ></Select>
-  );
-};
+// export const Multiple = () => {
+//   const [values, setValues] = useState<string[]>([]);
+//   return (
+//     <Select
+//       multiple={true}
+//       placeholder="Select your towns..."
+//       options={options}
+//       value={values}
+//       onChange={(options) => {
+//         onChangeAction(options);
+//         setValues(options.map((o) => o.value));
+//       }}
+//     ></Select>
+//   );
+// };
 
 function isDepartment(department: string | null): department is "38" | "73" | "74" {
   return department !== null && ["38", "73", "74"].indexOf(department) !== -1;
 }
 
 export const Dynamic = () => {
-  const [town, setTown] = useState<string | null>(null);
-  const [department, setDepartment] = useState<string | null>(null);
+  const [town, setTown] = useState<SelectValue>(null);
+  const [department, setDepartment] = useState<SelectValue>(null);
   return (
     <>
       <div className="flex flex-column gap-2">
@@ -149,9 +145,9 @@ export const Dynamic = () => {
           placeholder="Select your department..."
           options={departments}
           value={department}
-          onChangeValue={(o) => {
+          onChange={(o) => {
             onChangeAction(o);
-            setDepartment(o?.value ?? null);
+            setDepartment(o.target.value);
             setTown(null);
           }}
         ></Select>
@@ -161,9 +157,9 @@ export const Dynamic = () => {
             placeholder="Select your town..."
             options={townsByDepartment[department] ?? []}
             value={town}
-            onChangeValue={(o) => {
+            onChange={(o) => {
               onChangeAction(o);
-              setTown(o?.value ?? null);
+              setTown(o.target.value);
             }}
           ></Select>
         )}
@@ -172,14 +168,22 @@ export const Dynamic = () => {
   );
 };
 
-type StarOption = (typeof stars)[number];
+type StarOption = Option & {
+  icon: string;
+};
+
+const stars: StarOption[] = [
+  { value: "empty", label: "Empty", icon: "fe-star-empty" },
+  { value: "half", label: "Half", icon: "fe-star-half" },
+  { value: "fill", label: "Fill", icon: "fe-star" },
+];
 
 function SelectOptionCustom({ option }: SelectOptionProps<StarOption>) {
-  const { activeIndex, selectedIndexes, getItemProps, handleSelect } = useSelect();
+  const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
 
   const { ref, index } = useListItem({ label: option.label });
   const isActive = activeIndex === index;
-  const isSelected = selectedIndexes.indexOf(index) !== -1;
+  const isSelected = selectedIndex === index;
 
   return (
     <button
@@ -208,7 +212,7 @@ function SelectSelectionCustom({ option }: SelectSelectionProps<StarOption>) {
 }
 
 export const CustomRenderer = () => {
-  const [value, setValue] = useState<string | null>("fill");
+  const [value, setValue] = useState<SelectValue>("fill");
   return (
     <>
       <Select
@@ -219,9 +223,9 @@ export const CustomRenderer = () => {
         searchable={false}
         options={stars}
         value={value}
-        onChangeValue={(o) => {
+        onChange={(o) => {
           onChangeAction(o);
-          setValue(o?.value ?? null);
+          setValue(o.target.value);
         }}
         SelectSelectionCustom={SelectSelectionCustom}
         SelectOptionCustom={SelectOptionCustom}

@@ -131,6 +131,13 @@
         }
     }
 
+    &.ll-select-dialog,
+    &.ll-autocomplete-dialog {
+        border-width: 0;
+        overflow: auto;
+        max-height: 300px;
+    }
+
     .option {
         padding: .5rem .5rem;
         text-align: left;
@@ -158,4 +165,8 @@
         }
 
     }
+}
+
+.ll-portail-dialog {
+    outline: none;
 }

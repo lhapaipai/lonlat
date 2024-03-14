@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, useCallback, useMemo, useRef, useState } from "react";
+import { ChangeEvent, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "../dialog/Dialog.scss";
 import "./Select.scss";
 import {
@@ -23,19 +23,19 @@ import { SelectContext } from "./useSelectContext.ts";
 import SelectOption from "./SelectOption.tsx";
 import SelectSelection from "./SelectSelection.tsx";
 
-import { Input, Button } from "../../index.ts";
+import { Input, Button, useEventCallback } from "../../index.ts";
 import type { Option } from "./interface";
 
 import cn from "classnames";
 
-type Value = number | string;
+export type SelectValue = number | string | null;
 type ChangeEventLike = {
   target: {
-    value: Value | null;
+    value: SelectValue;
   };
 };
 
-type Props<O extends Option> = {
+type Props<O extends Option = Option> = {
   showArrow?: boolean;
   selectionClassName?: string;
   width?: string;
@@ -48,7 +48,7 @@ type Props<O extends Option> = {
   SelectOptionCustom?: typeof SelectOption<O>;
   SelectSelectionCustom?: typeof SelectSelection<O>;
 
-  value?: Value | null;
+  value?: SelectValue;
   onChange?: ((e: ChangeEventLike) => void) | null;
 };
 
@@ -56,7 +56,7 @@ function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
   return matchReg.test(option.label.toLowerCase().trim());
 }
 
-const Select = forwardRef<HTMLDivElement, Props<Option>>(
+const Select = forwardRef<HTMLDivElement, Props>(
   (
     {
       showArrow = true,
@@ -76,6 +76,8 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
     propRef,
   ) => {
     const isControlled = onChange !== null;
+
+    const onChangeStable = useEventCallback(onChange);
 
     const [uncontrolledSelectedIndex, setUncontrolledSelectedIndex] = useState<number | null>(null);
     const [search, setSearch] = useState("");
@@ -110,7 +112,6 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
     const [searchHasFocus, setSearchHasFocus] = useState(false);
 
     const SelectSelectionComponent = SelectSelectionCustom ?? SelectSelection;
-    const SelectOptionComponent = SelectOptionCustom ?? SelectOption;
 
     function handleSearchChange(e: ChangeEvent<HTMLInputElement>) {
       setActiveIndex(null);
@@ -128,9 +129,12 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
         size({
           apply({ rects, elements, availableHeight }) {
             Object.assign(elements.floating.style, {
-              maxHeight: `${Math.min(availableHeight, 300)}px`,
               width: `${Math.max(130, rects.reference.width)}px`,
             });
+            const firstChild = elements.floating.firstElementChild as HTMLElement;
+            if (firstChild) {
+              firstChild.style.maxHeight = `${Math.min(availableHeight, 300)}px`;
+            }
           },
           padding: 10,
         }),
@@ -174,21 +178,32 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
       role,
     ]);
 
+    useEffect(() => {
+      if (SelectOptionCustom) {
+        return;
+      }
+      filteredOptions.map((option, i) => {
+        labelsRef.current[i] = option.label;
+      });
+      console.log("regenerate labelsRef", labelsRef.current);
+    }, [search, filteredOptions, SelectOptionCustom]);
+
     const handleSelect = useCallback(
       (index: number | null) => {
         setIsOpen(false);
+        setSearch("");
         if (isControlled) {
           const event: ChangeEventLike = {
             target: {
               value: index === null ? null : filteredOptions[index].value,
             },
           };
-          onChange(event);
+          onChangeStable(event);
         } else {
           setUncontrolledSelectedIndex(index);
         }
       },
-      [isControlled, onChange, filteredOptions],
+      [isControlled, onChangeStable, filteredOptions],
     );
 
     const selectContext = useMemo(
@@ -215,7 +230,6 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
           <span className="input-element">
             {selectedIndex !== null ? (
               <SelectSelectionComponent
-                multiple={false}
                 option={filteredOptions[selectedIndex]}
                 key={selectedIndex}
               />
@@ -253,7 +267,7 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
             {isOpen && (
               <FloatingFocusManager context={context} modal={false}>
                 <div
-                  className={cn()}
+                  className={cn("ll-portail-dialog")}
                   ref={refs.setFloating}
                   style={floatingStyles}
                   {...getFloatingProps()}
@@ -261,7 +275,6 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
                   <div
                     className={cn(
                       "ll-dialog",
-                      "ll-portail-dialog",
                       `placement-${context.placement}`,
                       "ll-select-dialog",
                       "ll-animate",
@@ -280,11 +293,36 @@ const Select = forwardRef<HTMLDivElement, Props<Option>>(
                         ></Input>
                       </div>
                     )}
-                    <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
-                      {filteredOptions.map((option) => (
-                        <SelectOptionComponent option={option} key={option.value} />
-                      ))}
-                    </FloatingList>
+                    {SelectOptionCustom ? (
+                      <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
+                        {filteredOptions.map((option) => (
+                          <SelectOptionCustom option={option} key={option.value} />
+                        ))}
+                      </FloatingList>
+                    ) : (
+                      filteredOptions.map((option, index) => {
+                        const isActive = activeIndex === index;
+                        const isSelected = selectedIndex === index;
+
+                        return (
+                          <button
+                            key={option.value}
+                            className={cn("option", isSelected && "selected", isActive && "active")}
+                            role="option"
+                            aria-selected={isActive && isSelected}
+                            tabIndex={isActive ? 0 : -1}
+                            ref={(node) => {
+                              listRef.current[index] = node;
+                            }}
+                            {...getItemProps({
+                              onClick: () => handleSelect(index),
+                            })}
+                          >
+                            {option.label}
+                          </button>
+                        );
+                      })
+                    )}
                   </div>
                 </div>
               </FloatingFocusManager>
