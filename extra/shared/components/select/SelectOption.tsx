@@ -3,14 +3,12 @@ import { useSelect } from ".";
 import cn from "classnames";
 import { Option } from "./interface";
 
-export interface SelectOptionProps<O extends Option> {
-  option: O;
-}
+export type SelectOptionProps<O extends Option> = O;
 
-export default function SelectOption<O extends Option>({ option }: SelectOptionProps<O>) {
+export default function SelectOption<O extends Option>({ label }: SelectOptionProps<O>) {
   const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
 
-  const { ref, index } = useListItem({ label: option.label });
+  const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;
   const isSelected = selectedIndex === index;
 
@@ -25,7 +23,7 @@ export default function SelectOption<O extends Option>({ option }: SelectOptionP
         onClick: () => handleSelect(index),
       })}
     >
-      {option.label}
+      {label}
     </button>
   );
 }

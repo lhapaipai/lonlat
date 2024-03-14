@@ -3,6 +3,7 @@ import {
   LazyAutocomplete,
   NotificationsProvider,
   Town,
+  TownOption,
   prepareTownsResult,
 } from "@lonlat/shared/index";
 import { useCallback } from "react";
@@ -47,7 +48,8 @@ export default function App() {
         label: town.context,
         value: town.insee.toString(),
       };
-    });
+      // TODO remove TownOption[] type assertion
+    }) as TownOption[];
   }, []);
 
   return (

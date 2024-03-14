@@ -5,16 +5,23 @@ import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";
 import { Highlight } from "../..";
 
-interface Props<O extends Option> {
-  option: O;
-}
+type Props<O extends Option> = O & {
+  searchValue: string;
+};
 
-export default function AutocompleteGeocodageOption({ option }: Props<TownOption>) {
+export default function AutocompleteGeocodageOption({
+  label,
+  value,
+  icon,
+  nom_commune,
+  context,
+  _formatted,
+}: Props<TownOption>) {
   const id = useId();
   const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
-  const { ref, index } = useListItem({ label: option.label });
+  const { ref, index } = useListItem({ label: label });
   const isActive = activeIndex === index;
-  const isSelected = selection?.value === option.value;
+  const isSelected = selection?.value === value;
 
   return (
     <div
@@ -28,13 +35,13 @@ export default function AutocompleteGeocodageOption({ option }: Props<TownOption
       })}
     >
       <div className="icon flex-center">
-        <i className={option.icon}></i>
+        <i className={icon}></i>
       </div>
       <div className="content">
         <div>
-          <Highlight value={option.nom_commune} indices={option?._formatted?.nom_commune} />
+          <Highlight value={nom_commune} indices={_formatted?.nom_commune} />
         </div>
-        <div className="hint">{option.context}</div>
+        <div className="hint">{context}</div>
       </div>
     </div>
   );

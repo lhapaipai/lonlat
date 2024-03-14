@@ -4,17 +4,16 @@ import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";
 
-interface Props<O extends Option> {
-  option: O;
+type Props<O extends Option> = O & {
   searchValue: string;
-}
+};
 
-export default function AutocompleteOption<O extends Option>({ option }: Props<O>) {
+export default function AutocompleteOption<O extends Option>({ label, value }: Props<O>) {
   const id = useId();
   const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
-  const { ref, index } = useListItem({ label: option.label });
+  const { ref, index } = useListItem({ label: label });
   const isActive = activeIndex === index;
-  const isSelected = selection?.value === option.value;
+  const isSelected = selection?.value === value;
 
   return (
     <div
@@ -27,7 +26,7 @@ export default function AutocompleteOption<O extends Option>({ option }: Props<O
         onClick: () => handleSelect(index),
       })}
     >
-      {option.label}
+      {label}
     </div>
   );
 }

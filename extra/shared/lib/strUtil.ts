@@ -1,4 +1,4 @@
-import Fuse from "fuse.js";
+import Fuse, { FuseResult } from "fuse.js";
 import { Town } from "../types";
 
 export function highlight(str: string | undefined, indices: readonly [number, number][]) {
@@ -71,7 +71,7 @@ export type FormattedItem<T> = T & {
   };
 };
 
-export function highlightFuseResult<T>(result: Fuse.FuseResult<T>[]): T[] {
+export function highlightFuseResult<T>(result: FuseResult<T>[]): FormattedItem<T>[] {
   return result.map(({ item, matches }) => {
     const copy: FormattedItem<T> = { ...item, _formatted: {} };
     matches?.forEach(({ key, value, indices }) => {
@@ -93,5 +93,6 @@ export function prepareTownsResult(towns: Town[], search: string) {
     keys: ["nom_commune", "code_postal", "nom_departement", "context"],
   });
 
-  return highlightFuseResult(fuse.search(search));
+  const result = fuse.search(search);
+  return highlightFuseResult(result);
 }

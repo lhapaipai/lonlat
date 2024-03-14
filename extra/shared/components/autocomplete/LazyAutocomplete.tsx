@@ -4,16 +4,20 @@ import { Option } from "./interface";
 import { useDebounce } from "usehooks-ts";
 import { FetchError, useNotifications } from "../..";
 
-interface Props {
-  onChangeSearchValue: (searchValue: string) => Promise<Option[]>;
-  AutocompleteOptionCustom?: typeof AutocompleteOption;
+interface Props<O extends Option = Option> {
+  onChangeSearchValue: (searchValue: string) => Promise<O[]>;
+  AutocompleteOptionCustom?: typeof AutocompleteOption<O>;
   debounce?: number;
 }
-export default function LazyAutocomplete({ onChangeSearchValue, debounce = 200, ...rest }: Props) {
+export default function LazyAutocomplete<O extends Option = Option>({
+  onChangeSearchValue,
+  debounce = 200,
+  ...rest
+}: Props<O>) {
   const [searchValue, setSearchValue] = useState("");
   const searchValueDebounced = useDebounce(searchValue, debounce);
-  const [selection, setSelection] = useState<Option | null>(null);
-  const [options, setOptions] = useState<Option[]>([]);
+  const [selection, setSelection] = useState<O | null>(null);
+  const [options, setOptions] = useState<O[]>([]);
   const notificationManager = useNotifications();
 
   useEffect(() => {

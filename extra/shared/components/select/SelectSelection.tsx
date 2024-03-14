@@ -1,12 +1,13 @@
 import Badge from "../badge/Badge.tsx";
 import type { Option } from "./interface.d.ts";
-export interface SelectSelectionProps<O extends Option> {
-  option: O;
+
+export type SelectSelectionProps<O extends Option> = O & {
   multiple?: boolean;
-}
+};
+
 export default function SelectSelection<O extends Option>({
-  option,
+  label,
   multiple = false,
 }: SelectSelectionProps<O>) {
-  return multiple ? <Badge className="ml-1">{option.label}</Badge> : <span>{option.label}</span>;
+  return multiple ? <Badge className="ml-1">{label}</Badge> : <span>{label}</span>;
 }

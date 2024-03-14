@@ -44,7 +44,7 @@ interface Props<O extends Option> {
   onChangeSelection: (option: O | null) => void;
   options: O[];
 
-  AutocompleteOptionCustom?: typeof AutocompleteOption;
+  AutocompleteOptionCustom?: typeof AutocompleteOption<O>;
 }
 
 export default function Autocomplete<O extends Option = Option>({
@@ -222,11 +222,7 @@ export default function Autocomplete<O extends Option = Option>({
                 >
                   <FloatingList elementsRef={listRef}>
                     {options.map((option) => (
-                      <OptionComponent
-                        option={option}
-                        searchValue={searchValue}
-                        key={option.value}
-                      />
+                      <OptionComponent {...option} searchValue={searchValue} key={option.value} />
                     ))}
                   </FloatingList>
                 </div>

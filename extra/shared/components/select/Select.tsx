@@ -1,4 +1,14 @@
-import { ChangeEvent, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  ReactElement,
+  Ref,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import "../dialog/Dialog.scss";
 import "./Select.scss";
 import {
@@ -229,10 +239,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
         >
           <span className="input-element">
             {selectedIndex !== null ? (
-              <SelectSelectionComponent
-                option={filteredOptions[selectedIndex]}
-                key={selectedIndex}
-              />
+              <SelectSelectionComponent {...filteredOptions[selectedIndex]} key={selectedIndex} />
             ) : (
               placeholder
             )}
@@ -296,7 +303,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
                     {SelectOptionCustom ? (
                       <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
                         {filteredOptions.map((option) => (
-                          <SelectOptionCustom option={option} key={option.value} />
+                          <SelectOptionCustom {...option} key={option.value} />
                         ))}
                       </FloatingList>
                     ) : (
@@ -332,6 +339,6 @@ const Select = forwardRef<HTMLDivElement, Props>(
       </div>
     );
   },
-);
+) as <O extends Option>(p: Props<O> & { ref?: Ref<HTMLDivElement> }) => ReactElement;
 
 export default Select;

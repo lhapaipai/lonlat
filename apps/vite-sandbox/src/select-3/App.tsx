@@ -43,10 +43,10 @@ const stars: StarOption[] = [
   { value: "fill", label: "Fill", icon: "fe-star" },
 ];
 
-function SelectOptionCustom({ option }: SelectOptionProps<StarOption>) {
+function SelectOptionCustom({ label, icon }: SelectOptionProps<StarOption>) {
   const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
 
-  const { ref, index } = useListItem({ label: option.label });
+  const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;
   const isSelected = selectedIndex === index;
 
@@ -61,15 +61,15 @@ function SelectOptionCustom({ option }: SelectOptionProps<StarOption>) {
         onClick: () => handleSelect(index),
       })}
     >
-      <i className={option.icon}></i> {option.label}
+      <i className={icon}></i> {label}
     </button>
   );
 }
 
-function SelectSelectionCustom({ option }: SelectSelectionProps<StarOption>) {
-  return option?.label ? (
+function SelectSelectionCustom({ label, icon }: SelectSelectionProps<StarOption>) {
+  return label ? (
     <span>
-      <i className={option.icon}></i>
+      <i className={icon}></i>
     </span>
   ) : (
     <span>?</span>
