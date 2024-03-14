@@ -1,7 +1,6 @@
 {
-    "name": "@lonlat/maplibre-react",
-    "version": "1.0.0",
-    "private": true,
+    "name": "react-maplibre-components",
+    "version": "0.0.1",
     "description": "",
     "keywords": [],
     "author": "Hugues Tavernier",

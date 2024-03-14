@@ -16,7 +16,7 @@ tmp_dir = fonts_dir / "tmp"
 fontello_host = "https://fontello.com"
 
 id_file = fonts_dir / ".fontello"
-scss_path = fonts_dir / "dist/fontello.scss"
+scss_path = fonts_dir / "fontello.scss"
 font_dir = fonts_dir / "dist/fontello"
 
 
@@ -79,7 +79,7 @@ def save_font():
     with open(tmp_fonts_dir / "css/fontello.css", "r") as file:
         css_file_content = file.read()
 
-    css_file_content = css_file_content.replace("../font", "./fontello")
+    css_file_content = css_file_content.replace("../font", "./dist/fontello")
 
     with open(scss_path, "w") as file:
         file.write(css_file_content)

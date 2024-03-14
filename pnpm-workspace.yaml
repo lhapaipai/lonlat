@@ -1,4 +1,4 @@
 packages:
   - "apps/*"
   - "extra/*"
-  - "extra/fonts/dist"
+  - "packages/*"
