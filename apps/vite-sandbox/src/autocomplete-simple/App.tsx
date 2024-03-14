@@ -32,12 +32,12 @@ export default function App() {
   return (
     <>
       <div className="container">
-        {/* <SimpleAutocomplete options={options} /> */}
         <SimpleAutocomplete
           options={options}
           selection={selection}
           onChangeSelection={setSelection}
         />
+        <div>sélection : {selection && selection.label}</div>
       </div>
     </>
   );

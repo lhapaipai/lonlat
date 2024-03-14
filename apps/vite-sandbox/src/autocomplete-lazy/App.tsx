@@ -37,18 +37,12 @@ export default function App() {
       <div className="container">
         <NotificationsProvider>
           <LazyAutocomplete
-            onChangeSearchValue={handleChangeSearchValue}
-            AutocompleteOptionCustom={AutocompleteGeocodageOption}
-          />
-
-          <p>&nbsp;</p>
-
-          <LazyAutocomplete
             selection={selection}
             onChangeSelection={setSelection}
             onChangeSearchValue={handleChangeSearchValue}
             AutocompleteOptionCustom={AutocompleteGeocodageOption}
           />
+          <div>sélection : {selection && selection.label}</div>
         </NotificationsProvider>
       </div>
     </>

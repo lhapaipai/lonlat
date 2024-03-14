@@ -1,5 +1,7 @@
 import { Tooltip, SimpleTooltip, TooltipContent, TooltipTrigger } from "@lonlat/shared";
 import { HTMLProps, forwardRef } from "react";
+import { useDrag } from "@use-gesture/react";
+import { useSpring, animated } from "react-spring";
 
 export default {
   title: "Components/Tooltip",
@@ -9,12 +11,9 @@ export default {
 const Box = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, ref) => (
   <div
     ref={ref}
+    className="storybook-box-xs"
     style={{
       margin: "100px",
-      width: "100px",
-      height: "100px",
-      boxShadow: "var(--shadow-lg)",
-      backgroundColor: "var(--background-strong)",
     }}
     {...props}
   ></div>
@@ -99,6 +98,31 @@ export const Basic = () => {
           <Box />
         </SimpleTooltip>
       </div>
+    </div>
+  );
+};
+
+export const Draggable = () => {
+  const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }));
+  const bind = useDrag(({ event, offset: [x, y] }) => {
+    event.preventDefault();
+    api.start({ x, y, immediate: true });
+  });
+  return (
+    <div className="container">
+      <SimpleTooltip content="infos" placement="top" open={true} color="primary">
+        <animated.div
+          {...bind()}
+          className="storybook-box-xs"
+          style={{
+            x,
+            y,
+            cursor: "pointer",
+          }}
+        >
+          <span>Box</span>
+        </animated.div>
+      </SimpleTooltip>
     </div>
   );
 };

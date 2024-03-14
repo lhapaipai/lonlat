@@ -50,3 +50,13 @@
     width: 300px;
     height: 300px;
 }
+
+.storybook-box-xs {
+    box-shadow: var(--shadow-lg);
+    width: 100px;
+    height: 100px;
+    background-color: var(--background-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
