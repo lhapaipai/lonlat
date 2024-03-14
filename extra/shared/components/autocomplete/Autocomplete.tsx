@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useCallback, useMemo, useRef, useState } from "react";
-import type { Option } from "./interface.d.ts";
+import type { Option } from "../..";
 import AutocompleteOption from "./AutocompleteOption.tsx";
 import {
   FloatingFocusManager,
@@ -20,7 +20,7 @@ import { AutocompleteContext } from "./useAutocompleteContext.ts";
 import "./Autocomplete.scss";
 import "../button/Button.scss";
 import cn from "classnames";
-import { Button, useEventCallback } from "../..";
+import { Button, Loader, useEventCallback } from "../..";
 
 interface Props<O extends Option> {
   placement?: Placement;
@@ -45,6 +45,8 @@ interface Props<O extends Option> {
   options: O[];
 
   AutocompleteOptionCustom?: typeof AutocompleteOption<O>;
+
+  loading?: boolean;
 }
 
 export default function Autocomplete<O extends Option = Option>({
@@ -56,6 +58,7 @@ export default function Autocomplete<O extends Option = Option>({
   options,
   placement = "bottom",
   AutocompleteOptionCustom,
+  loading = false,
 }: Props<O>) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -155,6 +158,7 @@ export default function Autocomplete<O extends Option = Option>({
       <div className={cn("ll-input")} ref={refs.setReference}>
         <div className="ml-2 flex-center adornment">
           <i className="fe-search"></i>
+          {loading && <Loader size="medium" color="weak" />}
         </div>
         <input
           className={cn("input-element")}
@@ -189,7 +193,7 @@ export default function Autocomplete<O extends Option = Option>({
           <Button
             withRipple={false}
             icon
-            shape="ghost"
+            shape="underline"
             onClick={() => {
               setIsOpen(false);
               onChangeSelectionStable(null);

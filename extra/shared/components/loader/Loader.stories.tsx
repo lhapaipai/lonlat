@@ -23,5 +23,7 @@ export const Context = () => (
     <Loader size="medium" color="primary" />
     <br />
     <Loader size="large" color="danger" />
+    <br />
+    <Loader size="medium" color="weak" />
   </div>
 );

@@ -6,3 +6,4 @@ export { default as useCombinedRefs } from "./useCombinedRefs";
 export { default as useIsClosing } from "./useIsClosing";
 export { default as usePrevious } from "./usePrevious";
 export * from "./useEventCallback/useEventCallback";
+export * from "./useDebounce/useDebounce";

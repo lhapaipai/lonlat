@@ -33,7 +33,7 @@ import { SelectContext } from "./useSelectContext.ts";
 import SelectOption from "./SelectOption.tsx";
 import SelectSelection from "./SelectSelection.tsx";
 
-import { Input, Button, useEventCallback } from "../../index.ts";
+import { Input, Button, useEventCallback } from "../..";
 import type { Option } from "./interface";
 
 import cn from "classnames";
@@ -263,7 +263,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
           {showArrow && (
             <div className="arrow">
               <div className="ll-indicator"></div>
-              <Button withRipple={false} icon shape="ghost" focusable={false}>
+              <Button withRipple={false} icon shape="underline" focusable={false}>
                 <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
               </Button>
             </div>
@@ -339,6 +339,9 @@ const Select = forwardRef<HTMLDivElement, Props>(
       </div>
     );
   },
+
+  // see : React with Typescript -- Generics while using React.forwardRef
+  // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
 ) as <O extends Option>(p: Props<O> & { ref?: Ref<HTMLDivElement> }) => ReactElement;
 
 export default Select;

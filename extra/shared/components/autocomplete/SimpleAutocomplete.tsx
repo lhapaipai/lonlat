@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { Autocomplete } from ".";
-import { Option } from "./interface";
-import { useEventCallback } from "../..";
+import { useEventCallback, Option } from "../..";
 
 interface Props {
   options: Option[];
@@ -49,7 +48,6 @@ export default function SimpleAutocomplete({
           options={filteredOptions}
         />
       </div>
-      <div>selection : {selection && selection.label}</div>
     </>
   );
 }

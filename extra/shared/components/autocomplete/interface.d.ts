@@ -1,7 +1,4 @@
-export type Option = {
-  value: string;
-  label: string;
-};
+import { Option } from "../select/interface";
 
 export type TownOption = Option & {
   insee: number;

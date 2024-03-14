@@ -1,9 +1,9 @@
 import { useId } from "react";
-import { Option, TownOption } from "./interface";
+import { TownOption } from "./interface";
 import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";
-import { Highlight } from "../..";
+import { Highlight, Option } from "../..";
 
 type Props<O extends Option> = O & {
   searchValue: string;

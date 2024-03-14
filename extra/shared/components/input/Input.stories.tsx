@@ -1,4 +1,4 @@
-import { Input, Button } from "@lonlat/shared";
+import { Input, Button, Loader } from "@lonlat/shared";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
@@ -34,6 +34,14 @@ export const Context = () => {
       <Input />
       <Input placeholder="Your first name" />
       <Input prefix={<i className="fe-search"></i>} />
+      <Input
+        prefix={
+          <>
+            <i className="fe-search"></i>
+            <Loader size="medium" color="weak" />
+          </>
+        }
+      />
       <Input prefix={<span>prefix</span>} />
       <Input suffix={<span>suffix</span>} />
       <Input

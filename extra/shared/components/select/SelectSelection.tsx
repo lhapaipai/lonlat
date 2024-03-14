@@ -1,5 +1,5 @@
-import Badge from "../badge/Badge.tsx";
-import type { Option } from "./interface.d.ts";
+import Badge from "../badge/Badge";
+import type { Option } from "./interface";
 
 export type SelectSelectionProps<O extends Option> = O & {
   multiple?: boolean;

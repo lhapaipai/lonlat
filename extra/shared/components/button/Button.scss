@@ -118,12 +118,17 @@
 
         &.shape-underline {
             color: var(--text-hint);
+            box-shadow: none;
+            transition: color 0.3s ease;
 
             &:hover,
             &:focus,
-            &:focus-within,
-            &:active {
+            &:focus-within {
                 color: var(--text-default);
+            }
+
+            &:active {
+                color: var(--text-strong);
             }
         }
     }

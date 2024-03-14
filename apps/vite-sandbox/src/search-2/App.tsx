@@ -6,29 +6,8 @@ import {
   TownOption,
   prepareTownsResult,
 } from "@lonlat/shared/index";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
-const options = [
-  { value: "alencon", label: "Alençon" },
-  { value: "amiens", label: "Amiens" },
-  { value: "angers", label: "Angers" },
-  { value: "angouleme", label: "Angoulême" },
-  { value: "annonay", label: "Annonay" },
-  { value: "antibes", label: "Antibes" },
-  { value: "arcachon", label: "Arcachon" },
-  { value: "arles", label: "Arles" },
-  { value: "arras", label: "Arras" },
-  { value: "asnieres-sur-seine", label: "Asnières-sur-Seine" },
-  { value: "aubagne", label: "Aubagne" },
-  { value: "aubervilliers", label: "Aubervilliers" },
-  { value: "aulnay-sous-bois", label: "Aulnay-sous-Bois" },
-  { value: "avignon", label: "Avignon" },
-  { value: "avranches", label: "Avranches" },
-  { value: "avoriaz", label: "Avoriaz" },
-  { value: "avray", label: "Avray" },
-];
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function mockServerRequest() {
   await new Promise((resolve) => {
     setTimeout(resolve, Math.random() * 1000);
@@ -48,15 +27,25 @@ export default function App() {
         label: town.context,
         value: town.insee.toString(),
       };
-      // TODO remove TownOption[] type assertion
     }) as TownOption[];
   }, []);
+
+  const [selection, setSelection] = useState<TownOption | null>(null);
 
   return (
     <>
       <div className="container">
         <NotificationsProvider>
           <LazyAutocomplete
+            onChangeSearchValue={handleChangeSearchValue}
+            AutocompleteOptionCustom={AutocompleteGeocodageOption}
+          />
+
+          <p>&nbsp;</p>
+
+          <LazyAutocomplete
+            selection={selection}
+            onChangeSelection={setSelection}
             onChangeSearchValue={handleChangeSearchValue}
             AutocompleteOptionCustom={AutocompleteGeocodageOption}
           />

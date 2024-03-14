@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Option } from "./interface";
+import { Option } from "../..";
 import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";

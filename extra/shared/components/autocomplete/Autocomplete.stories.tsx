@@ -2,16 +2,16 @@ import {
   SimpleAutocomplete,
   Autocomplete,
   LazyAutocomplete,
-  customFetch,
   Town,
   AutocompleteGeocodageOption,
   prepareTownsResult,
   NotificationsProvider,
+  TownOption,
+  Option,
 } from "@lonlat/shared";
 
 import { Meta } from "@storybook/react";
 
-import type { Option } from "@lonlat/shared/components/autocomplete/interface";
 import { useCallback, useState } from "react";
 
 const meta = {
@@ -61,11 +61,17 @@ export const SimpleControlled = () => {
   const [selection, setSelection] = useState<Option | null>(null);
 
   return (
-    <SimpleAutocomplete options={options} selection={selection} onChangeSelection={setSelection} />
+    <>
+      <SimpleAutocomplete
+        options={options}
+        selection={selection}
+        onChangeSelection={setSelection}
+      />
+      <div>sélection : {selection && selection.label}</div>
+    </>
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function mockServerRequest() {
   await new Promise((resolve) => {
     setTimeout(resolve, Math.random() * 1000);
@@ -75,7 +81,7 @@ async function mockServerRequest() {
   return towns;
 }
 
-export const Lazy = () => {
+export const LazyUncontrolled = () => {
   const handleChangeSearchValue = useCallback(async (searchValue: string) => {
     const towns = (await mockServerRequest()) as Town[];
     // const towns = (await customFetch(`http://localhost:6005/towns?q=${searchValue}`)) as Town[];
@@ -85,7 +91,7 @@ export const Lazy = () => {
         label: town.context,
         value: town.insee.toString(),
       };
-    });
+    }) as TownOption[];
   }, []);
 
   return (
@@ -94,6 +100,34 @@ export const Lazy = () => {
         onChangeSearchValue={handleChangeSearchValue}
         AutocompleteOptionCustom={AutocompleteGeocodageOption}
       />
+    </>
+  );
+};
+
+export const LazyControlled = () => {
+  const handleChangeSearchValue = useCallback(async (searchValue: string) => {
+    const towns = (await mockServerRequest()) as Town[];
+    // const towns = (await customFetch(`http://localhost:6005/towns?q=${searchValue}`)) as Town[];
+    return prepareTownsResult(towns, searchValue).map((town) => {
+      return {
+        ...town,
+        label: town.context,
+        value: town.insee.toString(),
+      };
+    }) as TownOption[];
+  }, []);
+
+  const [selection, setSelection] = useState<TownOption | null>(null);
+
+  return (
+    <>
+      <LazyAutocomplete
+        selection={selection}
+        onChangeSelection={setSelection}
+        onChangeSearchValue={handleChangeSearchValue}
+        AutocompleteOptionCustom={AutocompleteGeocodageOption}
+      />
+      <div>sélection : {selection && selection.label}</div>
     </>
   );
 };
