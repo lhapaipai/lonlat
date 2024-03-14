@@ -11,24 +11,24 @@
   },
   "dependencies": {
     "maplibre-components": "workspace:*",
-    "react-maplibre-components": "workspace:*",
     "pentatrion-design": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.50.1",
-    "react-router-dom": "^6.22.0",
-    "sass": "^1.70.0"
+    "react-hook-form": "^7.51.0",
+    "react-maplibre-components": "workspace:*",
+    "react-router-dom": "^6.22.3",
+    "sass": "^1.72.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
-    "@types/node": "^20.11.16",
-    "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.18",
+    "@types/node": "^20.11.27",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "jsdom": "^23.2.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vitest": "^1.2.2"
+    "jsdom": "^24.0.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "vitest": "^1.3.1"
   }
 }

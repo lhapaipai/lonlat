@@ -7,10 +7,10 @@
     "license": "ISC",
     "main": "src/index.ts",
     "dependencies": {
-        "@floating-ui/dom": "^1.5.3",
-        "pentatrion-design": "workspace:*",
+        "@floating-ui/dom": "^1.6.3",
         "@mapbox/point-geometry": "^0.1.0",
-        "maplibre-gl": "^3.6.2"
+        "maplibre-gl": "^4.1.0",
+        "pentatrion-design": "workspace:*"
     },
     "devDependencies": {
         "@types/mapbox__point-geometry": "^0.1.4"
