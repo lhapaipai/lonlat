@@ -15,34 +15,25 @@ const config: StorybookConfig = {
     `${projectDir}/packages/maplibre-components/src/**/*.stories.@(ts|tsx)`,
     `${projectDir}/packages/react-maplibre-components/src/**/*.stories.@(ts|tsx)`,
   ],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+
+    // is it necessary ?
+    "@storybook/addon-actions"
+  ],
   framework: {
     name: "@storybook/react-vite",
     options: {}
   },
   core: {
-    disableTelemetry: true
+    disableTelemetry: true,
+    disableWhatsNewNotifications: true
   },
   docs: {
     autodocs: "tag"
   },
-  staticDirs: ['../public'],
-  viteFinal(config) {
-    const finalConfig = mergeConfig(config, {
-      build: {
-        chunkSizeWarningLimit: 2000
-      },
-      resolve: {
-        alias: {
-          "pentatrion-design": resolve(projectDir, 'packages/pentatrion-design'),
-          "react-maplibre-components": resolve(projectDir, 'packages/react-maplibre-components'),
-          "maplibre-components": resolve(projectDir, 'packages/maplibre-components'),
-          "@storybook/react": resolve(storybookDir, 'node_modules/@storybook/react'),
-          "@storybook/addon-actions": resolve(storybookDir, 'node_modules/@storybook/addon-actions'),
-        }
-      }
-    })
-    return finalConfig
-  }
+  staticDirs: ['../public']
 };
 export default config;

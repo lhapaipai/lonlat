@@ -1,43 +1,46 @@
 {
-    "name": "@lonlat/storybook",
-    "version": "1.0.0",
-    "description": "",
-    "scripts": {
-        "dev-docs-only": "storybook dev -p 6006 --docs",
-        "dev": "storybook dev -p 6006",
-        "build": "storybook build"
-    },
-    "keywords": [],
-    "author": "Hugues Tavernier",
-    "license": "ISC",
-    "dependencies": {
-        "@floating-ui/react": "^0.26.4",
-        "maplibre-components": "workspace:*",
-        "react-maplibre-components": "workspace:*",
-        "pentatrion-design": "workspace:*",
-        "@use-gesture/react": "^10.3.0",
-        "fuse.js": "^7.0.0",
-        "maplibre-gl": "^3.6.2",
-        "react": "^18.2.0",
-        "react-spring": "^9.7.3"
-    },
-    "devDependencies": {
-        "@storybook/addon-actions": "^7.6.4",
-        "@storybook/addon-docs": "^7.6.4",
-        "@storybook/addon-essentials": "^7.6.4",
-        "@storybook/addon-links": "^7.6.4",
-        "@storybook/blocks": "^7.6.4",
-        "@storybook/manager-api": "^7.6.4",
-        "@storybook/react": "^7.6.4",
-        "@storybook/react-vite": "^7.6.4",
-        "@storybook/testing-library": "0.2.2",
-        "@storybook/theming": "^7.6.4",
-        "@types/react": "^18.2.43",
-        "prop-types": "^15.8.1",
-        "react-dom": "^18.2.0",
-        "sass": "^1.69.5",
-        "storybook": "^7.6.4",
-        "typescript": "^5.3.3",
-        "vite": "^4.5.1"
-    }
+  "name": "@lonlat/storybook",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev-docs-only": "storybook dev -p 6006 --docs",
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Hugues Tavernier",
+  "license": "ISC",
+  "dependencies": {
+    "@floating-ui/react": "^0.26.9",
+    "@storybook/addon-actions": "^8.0.0",
+    "@storybook/addon-interactions": "^8.0.0",
+    "@storybook/test": "^8.0.0",
+    "@use-gesture/react": "^10.3.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "fuse.js": "^7.0.0",
+    "maplibre-components": "workspace:*",
+    "maplibre-gl": "^4.1.0",
+    "pentatrion-design": "workspace:*",
+    "react": "^18.2.0",
+    "react-maplibre-components": "workspace:*",
+    "react-spring": "^9.7.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^8.0.0",
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-links": "^8.0.0",
+    "@storybook/blocks": "^8.0.0",
+    "@storybook/manager-api": "^8.0.0",
+    "@storybook/react": "^8.0.0",
+    "@storybook/react-vite": "^8.0.0",
+    "@storybook/theming": "^8.0.0",
+    "@types/react": "^18.2.66",
+    "prop-types": "^15.8.1",
+    "react-dom": "^18.2.0",
+    "sass": "^1.72.0",
+    "storybook": "^8.0.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6"
+  }
 }
