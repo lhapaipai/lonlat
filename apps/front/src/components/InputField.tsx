@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, forwardRef } from "react";
 
-// voir comment on va pouvoir utiliser le InputField de @lonlat/shared
+// voir comment on va pouvoir utiliser le InputField de pentatrion-design
 
 interface Props extends ComponentPropsWithRef<"input"> {
   label: string;

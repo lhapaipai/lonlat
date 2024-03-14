@@ -1,9 +1,9 @@
 import { Meta } from "@storybook/react";
-import { Select, useSelect } from "@lonlat/shared";
+import { Select, useSelect } from "pentatrion-design";
 import { useListItem } from "@floating-ui/react";
 import { useState } from "react";
-import { SelectSelectionProps } from "@lonlat/shared/components/select/SelectSelection";
-import { SelectOptionProps } from "@lonlat/shared/components/select/SelectOption";
+import { SelectSelectionProps } from "pentatrion-design/components/select/SelectSelection";
+import { SelectOptionProps } from "pentatrion-design/components/select/SelectOption";
 import cn from "classnames";
 import { action } from "@storybook/addon-actions";
 import { SelectValue } from "./Select";

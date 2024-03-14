@@ -1,4 +1,4 @@
-import { Href, Button } from "@lonlat/shared";
+import { Href, Button } from "pentatrion-design";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

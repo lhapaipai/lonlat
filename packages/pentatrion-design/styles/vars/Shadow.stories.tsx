@@ -1,4 +1,4 @@
-import { Code } from "@lonlat/shared";
+import { Code } from "pentatrion-design";
 
 export default {
   title: "Styles",

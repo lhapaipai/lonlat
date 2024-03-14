@@ -5,7 +5,7 @@ import {
   Town,
   TownOption,
   prepareTownsResult,
-} from "@lonlat/shared/index";
+} from "pentatrion-design/index";
 import { useCallback, useState } from "react";
 
 async function mockServerRequest() {

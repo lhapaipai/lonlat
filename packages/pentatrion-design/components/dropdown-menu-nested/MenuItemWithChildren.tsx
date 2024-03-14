@@ -26,7 +26,7 @@ import { FocusEvent, forwardRef, useContext, useEffect, useRef, useState } from 
 import { MenuContext } from "./MenuContext";
 import { Button } from "../..";
 import cn from "classnames";
-import { type Props as ButtonProps } from "@lonlat/shared/components/button/Button";
+import { type Props as ButtonProps } from "pentatrion-design/components/button/Button";
 
 export interface Props extends ButtonProps {
   label?: string;

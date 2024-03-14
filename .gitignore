@@ -1,10 +1,5 @@
 node_modules/
-.local/
-
 dist/
-
-# Local Netlify folder
-.netlify
 
 apps/maplibre-react-sandbox
 

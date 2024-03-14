@@ -1,9 +1,9 @@
-import "@lonlat/shared/styles/_vite-sandbox.scss";
+import "pentatrion-design/styles/_vite-sandbox.scss";
 import "~/shared/main.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import * as maplibre from "maplibre-gl";
-// import { LLPopup } from "@lonlat/maplibre-ext";
+// import { LLPopup } from "maplibre-components";
 
 const $map = document.getElementById("map");
 

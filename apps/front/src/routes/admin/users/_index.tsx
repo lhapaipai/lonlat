@@ -5,7 +5,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-} from "@lonlat/shared";
+} from "pentatrion-design";
 import { Link } from "react-router-dom";
 import { useLoaderUpdatableCollection } from "~/hooks";
 import { UserPublic } from "~/types/User";

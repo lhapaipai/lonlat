@@ -1,4 +1,4 @@
-import { Tabs } from "@lonlat/shared";
+import { Tabs } from "pentatrion-design";
 import { useState } from "react";
 
 export default {

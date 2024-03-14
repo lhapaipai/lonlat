@@ -1,6 +1,6 @@
 import { Link, Outlet, useNavigation } from "react-router-dom";
 import "./_base.scss";
-import logoUrl from "@lonlat/shared/images/logo.svg";
+import logoUrl from "pentatrion-design/images/logo.svg";
 
 export default function Base() {
   const navigation = useNavigation();

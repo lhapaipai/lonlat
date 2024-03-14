@@ -1,4 +1,4 @@
-import { Flash } from "@lonlat/shared";
+import { Flash } from "pentatrion-design";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

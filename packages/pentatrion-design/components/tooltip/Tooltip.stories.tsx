@@ -1,4 +1,4 @@
-import { Tooltip, SimpleTooltip, TooltipContent, TooltipTrigger } from "@lonlat/shared";
+import { Tooltip, SimpleTooltip, TooltipContent, TooltipTrigger } from "pentatrion-design";
 import { HTMLProps, forwardRef } from "react";
 import { useDrag } from "@use-gesture/react";
 import { useSpring, animated } from "react-spring";

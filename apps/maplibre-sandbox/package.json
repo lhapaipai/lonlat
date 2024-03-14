@@ -13,10 +13,9 @@
     "dependencies": {
         "@floating-ui/dom": "^1.6.1",
         "@floating-ui/react": "^0.26.9",
-        "@lonlat/fonts": "workspace:*",
-        "@lonlat/maplibre-ext": "workspace:*",
-        "@lonlat/maplibre-react": "workspace:*",
-        "@lonlat/shared": "workspace:*",
+        "maplibre-components": "workspace:*",
+        "react-maplibre-components": "workspace:*",
+        "pentatrion-design": "workspace:*",
         "@mapbox/mapbox-gl-draw": "^1.4.3",
         "@mapbox/polyline": "^1.2.1",
         "@turf/turf": "6.5.0",

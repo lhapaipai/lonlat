@@ -1,4 +1,4 @@
-import "@lonlat/shared/styles/_vite-sandbox.scss";
+import "pentatrion-design/styles/_vite-sandbox.scss";
 import "~/shared/main.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {

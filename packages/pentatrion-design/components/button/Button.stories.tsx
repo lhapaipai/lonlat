@@ -7,7 +7,7 @@ import {
   TableHeaderCell,
   TableRow,
   Button,
-} from "@lonlat/shared";
+} from "pentatrion-design";
 
 const meta = {
   title: "Components/Button",

@@ -1,4 +1,4 @@
-import { RadioGroup } from "@lonlat/shared";
+import { RadioGroup } from "pentatrion-design";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 

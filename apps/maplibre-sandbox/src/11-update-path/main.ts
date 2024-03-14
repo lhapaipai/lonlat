@@ -1,8 +1,8 @@
-import "@lonlat/shared/styles/_vite-sandbox.scss";
+import "pentatrion-design/styles/_vite-sandbox.scss";
 import "~/shared/main.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import * as maplibre from "maplibre-gl";
-import { LLMarker, LLPopup } from "@lonlat/maplibre-ext";
+import { LLMarker, LLPopup } from "maplibre-components";
 const $map = document.getElementById("map");
 
 const marignier: maplibre.LngLatLike = [6.47249, 46.1023399];

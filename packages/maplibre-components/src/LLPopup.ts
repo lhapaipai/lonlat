@@ -18,8 +18,8 @@ import {
   offset,
   shift,
 } from "@floating-ui/dom";
-import "@lonlat/shared/components/dialog/Dialog.scss";
-import "@lonlat/shared/components/button/Button.scss";
+import "pentatrion-design/components/dialog/Dialog.scss";
+import "pentatrion-design/components/button/Button.scss";
 
 export interface LLPopupOptions {
   closeButton?: boolean;

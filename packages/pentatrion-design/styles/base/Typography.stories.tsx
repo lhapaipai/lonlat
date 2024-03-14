@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-} from "@lonlat/shared";
+} from "pentatrion-design";
 
 export default {
   title: "Styles/Typography",

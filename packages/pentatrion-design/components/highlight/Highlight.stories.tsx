@@ -4,7 +4,7 @@ import {
   InputField,
   Toggle,
   parseHighlightIndices,
-} from "@lonlat/shared";
+} from "pentatrion-design";
 import { Meta } from "@storybook/react";
 import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";

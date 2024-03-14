@@ -1,11 +1,11 @@
 import { useListItem } from "@floating-ui/react";
-import { SelectValue } from "@lonlat/shared/components/select/Select";
-import { SelectOptionProps } from "@lonlat/shared/components/select/SelectOption";
-import { Select, useSelect } from "@lonlat/shared/index";
+import { SelectValue } from "pentatrion-design/components/select/Select";
+import { SelectOptionProps } from "pentatrion-design/components/select/SelectOption";
+import { Select, useSelect } from "pentatrion-design/index";
 import { useState } from "react";
 import cn from "classnames";
 import { Option } from "./interface";
-import { SelectSelectionProps } from "@lonlat/shared/components/select/SelectSelection";
+import { SelectSelectionProps } from "pentatrion-design/components/select/SelectSelection";
 
 const options = [
   { value: "abbeville", label: "Abbeville" },

@@ -1,8 +1,10 @@
 import { createRoot } from "react-dom/client";
 import "./main.scss";
 import App from "./App";
-import "@lonlat/shared/styles/_storybook.scss";
-import "@lonlat/shared/components/dialog/Dialog.scss";
+import "pentatrion-design/styles/_storybook.scss";
+// import "pentatrion-design/fonts/fontello.scss";
+
+import "pentatrion-design/components/dialog/Dialog.scss";
 
 createRoot(document.getElementById("app")!).render(<App />);
 

@@ -1,4 +1,4 @@
-import { Checkbox, InputField, RadioGroup, Toggle } from "@lonlat/shared";
+import { Checkbox, InputField, RadioGroup, Toggle } from "pentatrion-design";
 import { Meta } from "@storybook/react";
 import { ChangeEvent, useState } from "react";
 

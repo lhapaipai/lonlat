@@ -24,9 +24,8 @@
     },
     "dependencies": {
         "@floating-ui/react": "^0.26.4",
-        "@lonlat/fonts": "workspace:*",
-        "@lonlat/maplibre-ext": "workspace:*",
-        "@lonlat/shared": "workspace:*",
+        "maplibre-components": "workspace:*",
+        "pentatrion-design": "workspace:*",
         "classnames": "^2.3.2",
         "maplibre-gl": "^3.6.2",
         "react": "^18.2.0",

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import useMapContext from "./useMapContext";
 import { MarkerOptions, LngLatLike } from "maplibre-gl";
 
-import { LLMarker } from "@lonlat/maplibre-ext";
+import { LLMarker } from "maplibre-components";
 
 interface Props extends MarkerOptions {
   lnglat: LngLatLike;

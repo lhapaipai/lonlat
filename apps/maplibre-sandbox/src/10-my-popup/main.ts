@@ -1,10 +1,10 @@
-import "@lonlat/shared/styles/_vite-sandbox.scss";
+import "pentatrion-design/styles/_vite-sandbox.scss";
 import "~/shared/main.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import * as maplibre from "maplibre-gl";
 import { FPSControl } from "./lib/FPSControl";
-import { LLMarker, LLPopup } from "@lonlat/maplibre-ext";
+import { LLMarker, LLPopup } from "maplibre-components";
 
 const $map = document.getElementById("map");
 

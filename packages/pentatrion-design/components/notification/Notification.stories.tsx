@@ -1,4 +1,4 @@
-import { Notification, NotificationsProvider, useNotifications, Button } from "@lonlat/shared";
+import { Notification, NotificationsProvider, useNotifications, Button } from "pentatrion-design";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 const meta = {

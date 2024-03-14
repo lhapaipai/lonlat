@@ -8,7 +8,7 @@ import {
   NotificationsProvider,
   TownOption,
   Option,
-} from "@lonlat/shared";
+} from "pentatrion-design";
 
 import { Meta } from "@storybook/react";
 

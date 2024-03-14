@@ -1,4 +1,4 @@
-import { Option, SimpleAutocomplete } from "@lonlat/shared/index";
+import { Option, SimpleAutocomplete } from "pentatrion-design/index";
 import { useState } from "react";
 
 const options: Option[] = [

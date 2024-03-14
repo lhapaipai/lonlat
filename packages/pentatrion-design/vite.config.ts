@@ -1,8 +1,17 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const projectDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      "~pentatrion-fonts": resolve(projectDir, "fonts"),
+    },
+  },
   test: {
     // globals: true
     environment: "jsdom",

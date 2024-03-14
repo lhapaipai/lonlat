@@ -2,8 +2,8 @@ import { LngLatLike } from "maplibre-gl";
 import useMapContext from "./useMapContext";
 import { useEffect, useRef } from "react";
 
-import { LLPopup } from "@lonlat/maplibre-ext";
-import { LLPopupOptions } from "@lonlat/maplibre-ext/src/LLPopup";
+import { LLPopup } from "maplibre-components";
+import { LLPopupOptions } from "maplibre-components/src/LLPopup";
 
 interface Props extends LLPopupOptions {
   lnglat: LngLatLike;

@@ -1,4 +1,4 @@
-import { ButtonGroup, Button } from "@lonlat/shared";
+import { ButtonGroup, Button } from "pentatrion-design";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 

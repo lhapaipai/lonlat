@@ -5,10 +5,10 @@
             "@testing-library/jest-dom"
         ],
         "paths": {
-            "@lonlat/maplibre-react": [
+            "react-maplibre-components": [
                 "."
             ],
-            "@lonlat/maplibre-react/*": [
+            "react-maplibre-components/*": [
                 "./*"
             ],
             "@storybook/react": [

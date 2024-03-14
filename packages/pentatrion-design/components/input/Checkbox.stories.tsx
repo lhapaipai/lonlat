@@ -1,4 +1,4 @@
-import { Checkbox } from "@lonlat/shared";
+import { Checkbox } from "pentatrion-design";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 

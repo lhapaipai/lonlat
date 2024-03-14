@@ -5,7 +5,7 @@ export default {
 import { useState } from "react";
 
 import jsonFile from "./config.json";
-import { Input } from "@lonlat/shared";
+import { Input } from "pentatrion-design";
 const fontelloConfig: FontelloConfig = jsonFile;
 
 interface FontelloConfig {

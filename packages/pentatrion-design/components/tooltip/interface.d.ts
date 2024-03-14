@@ -1,5 +1,5 @@
 import { Placement } from "@floating-ui/react";
-import { ThemeColor } from "@lonlat/shared/types";
+import { ThemeColor } from "pentatrion-design/types";
 
 export interface TooltipOptions {
   initialOpen?: boolean;

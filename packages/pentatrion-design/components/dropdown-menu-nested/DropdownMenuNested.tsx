@@ -2,8 +2,8 @@ import { forwardRef } from "react";
 import MenuItemWithChildren from "./MenuItemWithChildren";
 import { FloatingTree } from "@floating-ui/react";
 import "./DropdownMenu.scss";
-import { Button } from "@lonlat/shared";
-import { type Props as ButtonProps } from "@lonlat/shared/components/button/Button";
+import { Button } from "pentatrion-design";
+import { type Props as ButtonProps } from "pentatrion-design/components/button/Button";
 export interface Props extends ButtonProps {
   label: string;
   triggerComponent: typeof Button;

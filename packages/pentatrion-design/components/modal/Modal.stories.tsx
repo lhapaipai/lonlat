@@ -1,11 +1,11 @@
-import { Modal, ModalTrigger, ModalContent } from "@lonlat/shared";
+import { Modal, ModalTrigger, ModalContent } from "pentatrion-design";
 import {
   ModalDescription,
   ModalHeader,
   ModalFooter,
-} from "@lonlat/shared/components/modal/Components";
+} from "pentatrion-design/components/modal/Components";
 import { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@lonlat/shared";
+import { Button } from "pentatrion-design";
 import { useState } from "react";
 
 const meta = {

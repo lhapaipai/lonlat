@@ -9,11 +9,11 @@ const projectDir = resolve(storybookDir, '../..');
 const config: StorybookConfig = {
   stories: [
     "../stories/**/*.stories.@(ts|tsx)",
-    `${projectDir}/extra/shared/styles/**/*.stories.@(ts|tsx)`,
-    `${projectDir}/extra/fonts/Icons.stories.tsx`,
-    `${projectDir}/extra/shared/components/**/*.stories.@(ts|tsx)`,
-    `${projectDir}/extra/maplibre-ext/src/**/*.stories.@(ts|tsx)`,
-    `${projectDir}/extra/maplibre-react/src/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/packages/pentatrion-design/styles/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/packages/pentatrion-design/components/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/packages/pentatrion-fonts/Icons.stories.tsx`,
+    `${projectDir}/packages/maplibre-components/src/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/packages/react-maplibre-components/src/**/*.stories.@(ts|tsx)`,
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: {
@@ -34,9 +34,9 @@ const config: StorybookConfig = {
       },
       resolve: {
         alias: {
-          "@lonlat/shared": resolve(projectDir, 'extra/shared'),
-          "@lonlat/maplibre-react": resolve(projectDir, 'extra/maplibre-react'),
-          "@lonlat/maplibre-ext": resolve(projectDir, 'extra/maplibre-ext'),
+          "pentatrion-design": resolve(projectDir, 'packages/pentatrion-design'),
+          "react-maplibre-components": resolve(projectDir, 'packages/react-maplibre-components'),
+          "maplibre-components": resolve(projectDir, 'packages/maplibre-components'),
           "@storybook/react": resolve(storybookDir, 'node_modules/@storybook/react'),
           "@storybook/addon-actions": resolve(storybookDir, 'node_modules/@storybook/addon-actions'),
         }

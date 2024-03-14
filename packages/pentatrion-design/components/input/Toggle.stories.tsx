@@ -1,4 +1,4 @@
-import { Toggle } from "@lonlat/shared";
+import { Toggle } from "pentatrion-design";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 

@@ -1,4 +1,4 @@
-import { Input, Button, Loader } from "@lonlat/shared";
+import { Input, Button, Loader } from "pentatrion-design";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 

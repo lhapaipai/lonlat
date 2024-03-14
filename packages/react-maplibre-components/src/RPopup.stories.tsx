@@ -1,4 +1,4 @@
-import { RMap, RPopup } from "@lonlat/maplibre-react";
+import { RMap, RPopup } from "react-maplibre-components";
 import { Meta, StoryObj } from "@storybook/react";
 import { useEffect } from "react";
 

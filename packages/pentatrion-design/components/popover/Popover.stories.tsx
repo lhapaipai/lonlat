@@ -1,5 +1,5 @@
-import { Popover, PopoverContent, PopoverTrigger } from "@lonlat/shared";
-import { PopoverHeader, PopoverDescription } from "@lonlat/shared/components/popover/Components";
+import { Popover, PopoverContent, PopoverTrigger } from "pentatrion-design";
+import { PopoverHeader, PopoverDescription } from "pentatrion-design/components/popover/Components";
 import { Meta, StoryObj } from "@storybook/react";
 
 /**

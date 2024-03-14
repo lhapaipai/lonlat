@@ -6,8 +6,8 @@ import { applyAnchorClass, normalizeOffset } from "./lib/anchor";
 import Point from "@mapbox/point-geometry";
 import "./LLPopup.scss";
 
-import "@lonlat/shared/components/dialog/Dialog.scss";
-import "@lonlat/shared/components/button/Button.scss";
+import "pentatrion-design/components/dialog/Dialog.scss";
+import "pentatrion-design/components/button/Button.scss";
 
 export default class LLPopup extends Popup {
   setText(text: string, title?: string): this {

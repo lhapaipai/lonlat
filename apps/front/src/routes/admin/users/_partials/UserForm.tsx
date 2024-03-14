@@ -1,4 +1,4 @@
-import { Button, InputField } from "@lonlat/shared";
+import { Button, InputField } from "pentatrion-design";
 import { SubmitHandler, UseFormSetError, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { User, emailValidation, requiredValidation, usernameValidation } from "~/types/User";

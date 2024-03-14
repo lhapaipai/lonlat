@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { ContextMenuEventDispatcher, MaplibreContextmenuEventDetail } from ".";
 import { Meta } from "@storybook/react";
 import { MapRef, Map, Marker } from "react-map-gl/maplibre";
-import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "@lonlat/shared";
+import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "pentatrion-design";
 
 const meta = {
   title: "Maplibre-React/ContextMenu",

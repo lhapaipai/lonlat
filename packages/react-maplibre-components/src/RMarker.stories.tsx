@@ -1,4 +1,4 @@
-import { RMarker, RMap } from "@lonlat/maplibre-react";
+import { RMarker, RMap } from "react-maplibre-components";
 import { Meta, StoryObj } from "@storybook/react";
 import { useEffect, useState } from "react";
 import { LngLatLike } from "maplibre-gl";

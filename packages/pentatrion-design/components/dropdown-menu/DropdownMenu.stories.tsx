@@ -3,7 +3,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@lonlat/shared";
+} from "pentatrion-design";
 import { Meta } from "@storybook/react";
 
 const meta = {

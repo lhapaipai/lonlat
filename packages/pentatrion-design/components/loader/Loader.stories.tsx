@@ -1,4 +1,4 @@
-import { Loader } from "@lonlat/shared";
+import { Loader } from "pentatrion-design";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

@@ -1,4 +1,4 @@
-import { Scroll } from "@lonlat/shared";
+import { Scroll } from "pentatrion-design";
 
 export default {
   component: Scroll,

@@ -1,4 +1,4 @@
-import { DropdownMenuNested, MenuItem, MenuItemWithChildren, Button } from "@lonlat/shared";
+import { DropdownMenuNested, MenuItem, MenuItemWithChildren, Button } from "pentatrion-design";
 import { Meta } from "@storybook/react";
 
 const meta = {
