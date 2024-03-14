@@ -11,16 +11,17 @@ export { default as HighlightLegacy } from "./components/highlight/HighlightLega
 export { default as InputField } from "./components/input-field/InputField";
 
 export { default as Href } from "./components/href/Href";
-export * from "./components/button";
-export * from "./components/input";
-export * from "./components/tooltip";
-export * from "./components/popover";
-export * from "./components/modal";
-export * from "./components/select";
-export * from "./components/dropdown-menu-nested";
-export * from "./components/dropdown-menu";
 export * from "./components/autocomplete";
+export * from "./components/button";
+export * from "./components/context-menu";
+export * from "./components/dropdown-menu";
+export * from "./components/dropdown-menu-nested";
+export * from "./components/input";
+export * from "./components/modal";
 export * from "./components/notification";
+export * from "./components/popover";
+export * from "./components/select";
+export * from "./components/tooltip";
 
 export * from "./lib";
 export * from "./hooks";

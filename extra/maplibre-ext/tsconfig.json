@@ -5,10 +5,10 @@
             "@testing-library/jest-dom"
         ],
         "paths": {
-            "@lonlat/shared": [
-                "."
+          "@lonlat/maplibre-ext": [
+            "."
             ],
-            "@lonlat/shared/*": [
+            "@lonlat/maplibre-ext/*": [
                 "./*"
             ],
             "@storybook/react": [

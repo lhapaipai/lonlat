@@ -12,6 +12,8 @@ const config: StorybookConfig = {
     `${projectDir}/extra/shared/styles/**/*.stories.@(ts|tsx)`,
     `${projectDir}/extra/fonts/Icons.stories.tsx`,
     `${projectDir}/extra/shared/components/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/extra/maplibre-ext/src/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/extra/maplibre-react/src/**/*.stories.@(ts|tsx)`,
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: {
@@ -33,6 +35,8 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           "@lonlat/shared": resolve(projectDir, 'extra/shared'),
+          "@lonlat/maplibre-react": resolve(projectDir, 'extra/maplibre-react'),
+          "@lonlat/maplibre-ext": resolve(projectDir, 'extra/maplibre-ext'),
           "@storybook/react": resolve(storybookDir, 'node_modules/@storybook/react'),
           "@storybook/addon-actions": resolve(storybookDir, 'node_modules/@storybook/addon-actions'),
         }

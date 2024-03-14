@@ -23,3 +23,9 @@ export type PolymorphicPropsWithRef<P, T extends React.ElementType> = Merge<
     : React.ComponentPropsWithRef<T>,
   PropsWithAs<P, T>
 >;
+
+declare global {
+  interface GlobalEventHandlersEventMap {
+    "maplibre-contextmenu": CustomEvent;
+  }
+}

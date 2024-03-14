@@ -493,6 +493,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-map-gl:
+        specifier: ^7.1.7
+        version: 7.1.7(maplibre-gl@3.6.2)(react-dom@18.2.0)(react@18.2.0)
       sass:
         specifier: ^1.69.5
         version: 1.69.5
@@ -13547,6 +13550,26 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-reconciler: 0.29.0(react@18.2.0)
       scheduler: 0.23.0
+    dev: false
+
+  /react-map-gl@7.1.7(maplibre-gl@3.6.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-mwjc0obkBJOXCcoXQr3VoLqmqwo9vS4bXfbGsdxXzEgVCv/PM0v+1QggL7W0d/ccIy+VCjbXNlGij+PENz6VNg==}
+    peerDependencies:
+      mapbox-gl: '>=1.13.0'
+      maplibre-gl: '>=1.13.0'
+      react: '>=16.3.0'
+      react-dom: '>=16.3.0'
+    peerDependenciesMeta:
+      mapbox-gl:
+        optional: true
+      maplibre-gl:
+        optional: true
+    dependencies:
+      '@maplibre/maplibre-gl-style-spec': 19.3.3
+      '@types/mapbox-gl': 2.7.12
+      maplibre-gl: 3.6.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-map-gl@7.1.7(maplibre-gl@4.0.0)(react-dom@18.2.0)(react@18.2.0):
