@@ -1,4 +1,4 @@
-import "pentatrion-design/styles/_vite-sandbox.scss";
+import "pentatrion-design/styles/default.scss";
 import "./style.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { LngLatLike, Map } from "maplibre-gl";

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import routes from "./config/routes";
-import "pentatrion-design/styles/_front.scss";
+import "pentatrion-design/styles/default.scss";
 
 const router = createBrowserRouter(routes);
 

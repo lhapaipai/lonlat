@@ -4,7 +4,7 @@
  * «options» n'inclue essential:true.
  */
 
-import "pentatrion-design/styles/_vite-sandbox.scss";
+import "pentatrion-design/styles/default.scss";
 import "~/shared/main.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import {

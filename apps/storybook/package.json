@@ -24,6 +24,7 @@
     "pentatrion-design": "workspace:*",
     "react": "^18.2.0",
     "react-maplibre-components": "workspace:*",
+    "react-sortablejs": "^6.1.4",
     "react-spring": "^9.7.3"
   },
   "devDependencies": {

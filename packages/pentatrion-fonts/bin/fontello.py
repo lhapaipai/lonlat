@@ -3,11 +3,11 @@
 import os
 from pathlib import Path
 from argparse import ArgumentParser
-import requests
 import webbrowser
 import shutil
 import sys
 import zipfile
+import requests
 
 fonts_dir = Path(os.path.dirname(os.path.realpath(__file__))).parent
 tmp_dir = fonts_dir / "tmp"
@@ -18,19 +18,20 @@ fontello_host = "https://fontello.com"
 id_file = fonts_dir / ".fontello"
 scss_path = fonts_dir / "fontello.scss"
 font_dir = fonts_dir / "dist/fontello"
+fontello_id = None
 
 
 def open_browser():
     files = {"config": open(fonts_dir / "config.json", "rb")}
-    response = requests.post(fontello_host, files=files)
+    response = requests.post(fontello_host, files=files, timeout=60)
 
-    with open(id_file, "w") as f:
+    with open(id_file, "w", encoding="utf8") as f:
         f.write(response.text)
 
-    with open(id_file, "r") as f:
-        id = f.read()
+    with open(id_file, "r", encoding="utf8") as f:
+        fontello_id = f.read()
 
-    webbrowser.open(f"{fontello_host}/{id}")
+    webbrowser.open(f"{fontello_host}/{fontello_id}")
 
 
 def save_font():
@@ -51,10 +52,12 @@ def save_font():
         shutil.rmtree(font_dir)
 
     # Download File
-    with open(id_file, "r") as f:
-        id = f.read()
+    with open(id_file, "r", encoding="utf8") as f:
+        fontello_id = f.read()
 
-    response = requests.get(f"{fontello_host}/{id}/get", stream=True)
+    response = requests.get(
+        f"{fontello_host}/{fontello_id}/get", stream=True, timeout=60
+    )
 
     with open(zip_file, "wb") as f:
         for chunk in response.iter_content(chunk_size=128):
@@ -76,12 +79,12 @@ def save_font():
     shutil.copyfile(tmp_fonts_dir / "config.json", fonts_dir / "config.json")
     shutil.copytree(tmp_fonts_dir / "font", font_dir, dirs_exist_ok=True)
 
-    with open(tmp_fonts_dir / "css/fontello.css", "r") as file:
+    with open(tmp_fonts_dir / "css/fontello.css", "r", encoding="utf8") as file:
         css_file_content = file.read()
 
     css_file_content = css_file_content.replace("../font", "./dist/fontello")
 
-    with open(scss_path, "w") as file:
+    with open(scss_path, "w", encoding="utf8") as file:
         file.write(css_file_content)
 
     # cleanup

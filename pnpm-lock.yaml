@@ -326,6 +326,9 @@ importers:
       react-maplibre-components:
         specifier: workspace:*
         version: link:../../packages/react-maplibre-components
+      react-sortablejs:
+        specifier: ^6.1.4
+        version: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.2.0)(react@18.2.0)(sortablejs@1.15.2)
       react-spring:
         specifier: ^9.7.3
         version: 9.7.3(@react-three/fiber@8.15.19)(konva@9.3.6)(react-dom@18.2.0)(react-konva@18.2.10)(react-native@0.73.6)(react-zdog@1.2.2)(react@18.2.0)(three@0.162.0)(zdog@1.1.3)
@@ -498,6 +501,9 @@ importers:
       react-polymorphic-types:
         specifier: ^2.0.0
         version: 2.0.0(@types/react@18.2.66)
+      react-sortablejs:
+        specifier: ^6.1.4
+        version: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.2.0)(react@18.2.0)(sortablejs@1.15.2)
       react-spring:
         specifier: ^9.7.3
         version: 9.7.3(@react-three/fiber@8.15.19)(konva@9.3.6)(react-dom@18.2.0)(react-konva@18.2.10)(react-native@0.73.6)(react-zdog@1.2.2)(react@18.2.0)(three@0.162.0)(zdog@1.1.3)
@@ -4303,7 +4309,7 @@ packages:
     resolution: {integrity: sha512-vSqQMxNHO++1XIyOF4HkQ/9UNADYCVCzoWG/JwOmWJ1NdfaPffN+QxLn+MYq+ex9R174nBdbjVqb2+e4MdYzPw==}
     dependencies:
       '@storybook/global': 5.0.0
-      tiny-invariant: 1.3.1
+      tiny-invariant: 1.3.3
     dev: true
 
   /@storybook/addon-outline@8.0.0:
@@ -4434,7 +4440,7 @@ packages:
       '@storybook/core-events': 8.0.0
       '@storybook/global': 5.0.0
       telejson: 7.2.0
-      tiny-invariant: 1.3.1
+      tiny-invariant: 1.3.3
 
   /@storybook/cli@8.0.0(@babel/preset-env@7.24.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-4W99ldBUJjrEbZlxI4rvqW8lRY+AP2+wLGRMp4nyI/XW5cp7R+OryZf4imHgecunBQyKGXVek+poDlgKPQsxsg==}
@@ -4474,7 +4480,7 @@ packages:
       semver: 7.6.0
       strip-json-comments: 3.1.1
       tempy: 1.0.1
-      tiny-invariant: 1.3.1
+      tiny-invariant: 1.3.3
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@babel/preset-env'
@@ -4508,7 +4514,7 @@ packages:
       lodash: 4.17.21
       prettier: 3.2.5
       recast: 0.23.6
-      tiny-invariant: 1.3.1
+      tiny-invariant: 1.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4562,7 +4568,7 @@ packages:
       resolve-from: 5.0.0
       semver: 7.5.4
       tempy: 1.0.1
-      tiny-invariant: 1.3.1
+      tiny-invariant: 1.3.3
       ts-dedent: 2.2.0
       util: 0.12.5
     transitivePeerDependencies:
@@ -4615,7 +4621,7 @@ packages:
       read-pkg-up: 7.0.1
       semver: 7.6.0
       telejson: 7.2.0
-      tiny-invariant: 1.3.1
+      tiny-invariant: 1.3.3
       ts-dedent: 2.2.0
       util: 0.12.5
       util-deprecate: 1.0.2
@@ -6818,6 +6824,10 @@ packages:
       '@types/mime': 3.0.4
       '@types/node': 20.11.27
 
+  /@types/sortablejs@1.15.8:
+    resolution: {integrity: sha512-b79830lW+RZfwaztgs1aVPgbasJ8e7AXtZYHTELNXZPsERt4ymJdjV4OccDbHQAvHrCcFpbF78jkm0R6h/pZVg==}
+    dev: false
+
   /@types/stack-utils@2.0.3:
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
     dev: false
@@ -7866,6 +7876,10 @@ packages:
   /ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
     engines: {node: '>=8'}
+    dev: false
+
+  /classnames@2.3.1:
+    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
     dev: false
 
   /classnames@2.5.1:
@@ -9403,7 +9417,6 @@ packages:
   /flow-parser@0.223.3:
     resolution: {integrity: sha512-9KxxDKSB22ovMpSULbOL/QAQGPN6M0YMS3PubQvB0jVc4W7QP6VhasIVic7MzKcJSh0BAVs4J6SZjoH0lDDNlg==}
     engines: {node: '>=0.4.0'}
-    dev: true
 
   /follow-redirects@1.15.3:
     resolution: {integrity: sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==}
@@ -10518,7 +10531,7 @@ packages:
       '@babel/register': 7.23.7(@babel/core@7.24.0)
       babel-core: 7.0.0-bridge.0(@babel/core@7.24.0)
       chalk: 4.1.2
-      flow-parser: 0.206.0
+      flow-parser: 0.223.3
       graceful-fs: 4.2.11
       micromatch: 4.0.5
       neo-async: 2.6.2
@@ -12735,6 +12748,22 @@ packages:
       react-is: 18.2.0
     dev: false
 
+  /react-sortablejs@6.1.4(@types/sortablejs@1.15.8)(react-dom@18.2.0)(react@18.2.0)(sortablejs@1.15.2):
+    resolution: {integrity: sha512-fc7cBosfhnbh53Mbm6a45W+F735jwZ1UFIYSrIqcO/gRIFoDyZeMtgKlpV4DdyQfbCzdh5LoALLTDRxhMpTyXQ==}
+    peerDependencies:
+      '@types/sortablejs': '1'
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+      sortablejs: '1'
+    dependencies:
+      '@types/sortablejs': 1.15.8
+      classnames: 2.3.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      sortablejs: 1.15.2
+      tiny-invariant: 1.2.0
+    dev: false
+
   /react-spring@9.7.3(@react-three/fiber@8.15.19)(konva@9.3.6)(react-dom@18.2.0)(react-konva@18.2.10)(react-native@0.73.6)(react-zdog@1.2.2)(react@18.2.0)(three@0.162.0)(zdog@1.1.3):
     resolution: {integrity: sha512-oTxDpFV5gzq7jQX6+bU0SVq+vX8VnuuT5c8Zwn6CpDErOPvCmV+DRkPiEBtaL3Ozgzwiy5yFx83N0h303j/r3A==}
     peerDependencies:
@@ -13491,6 +13520,10 @@ packages:
       union-value: 1.0.1
     dev: false
 
+  /sortablejs@1.15.2:
+    resolution: {integrity: sha512-FJF5jgdfvoKn1MAKSdGs33bIqLi3LmsgVTliuX6iITj834F+JRQZN90Z93yql8h0K2t0RwDPBmxwlbZfDcxNZA==}
+    dev: false
+
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -14006,8 +14039,9 @@ packages:
       readable-stream: 2.3.8
       xtend: 4.0.2
 
-  /tiny-invariant@1.3.1:
-    resolution: {integrity: sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==}
+  /tiny-invariant@1.2.0:
+    resolution: {integrity: sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==}
+    dev: false
 
   /tiny-invariant@1.3.3:
     resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}

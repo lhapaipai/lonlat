@@ -1,5 +1,5 @@
 import { ContextMenu, ContextMenuItem } from "pentatrion-design/index";
-import "pentatrion-design/styles/_vite-sandbox.scss";
+import "pentatrion-design/styles/default.scss";
 import { useEffect } from "react";
 
 function App() {

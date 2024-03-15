@@ -2,14 +2,14 @@ https://geoservices.ign.fr/documentation
 .
 ├── Services
 │   ├── **Services Géoplateforme** Nouveaux services tout neufs !!
-│   │   ├── Service Géoplateforme de calcul altimétrique
-│   │   ├── Service Géoplateforme de calcul d'itinéraire et d'isochrone/isodistance
-│   │   ├── Service Géoplateforme de découverte des métadonnées
-│   │   ├── Service Géoplateforme de recherche
+│   │   ├── Services Géoplateforme de diffusion **pour les images Tuilées WMTS !!**
 │   │   ├── Service Géoplateforme de téléchargement
-│   │   ├── Services Géoplateforme de diffusion pour les images Tuilées WMTS !!
+│   │   ├── Service Géoplateforme de découverte des métadonnées
 │   │   ├── Service Géoplateforme de géocodage
-│   │   └── Service Géoplateforme d’autocomplétion
+│   │   ├── Service Géoplateforme d’autocomplétion
+│   │   ├── Service Géoplateforme de calcul altimétrique
+│   │   ├── Service Géoplateforme de recherche
+│   │   └── Service Géoplateforme de calcul d'itinéraire et d'isochrone/isodistance
 │   ├── Disponibilité
 │   ├── **API et services OGC** La majorité des services qu'on pourra exploiter
 │   │   ├── API Carto (REST)
