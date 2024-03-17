@@ -22,7 +22,9 @@ import "../button/Button.scss";
 import cn from "classnames";
 import { Button, Loader, useEventCallback } from "../..";
 
-interface Props<O extends Option> {
+export interface AutocompleteProps<O extends Option> {
+  icon?: boolean | string;
+
   placement?: Placement;
   placeholder?: string;
   /**
@@ -50,6 +52,7 @@ interface Props<O extends Option> {
 }
 
 export default function Autocomplete<O extends Option = Option>({
+  icon = true,
   placeholder = "Search...",
   searchValue,
   onChangeSearchValue,
@@ -59,7 +62,7 @@ export default function Autocomplete<O extends Option = Option>({
   placement = "bottom",
   AutocompleteOptionCustom,
   loading = false,
-}: Props<O>) {
+}: AutocompleteProps<O>) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -157,8 +160,8 @@ export default function Autocomplete<O extends Option = Option>({
     <div className="ll-autocomplete">
       <div className={cn("ll-input")} ref={refs.setReference}>
         <div className="ml-2 flex-center adornment">
-          <i className="fe-search"></i>
-          {loading && <Loader size="medium" color="weak" />}
+          {icon && (icon === true ? <i className="fe-search"></i> : <i className={icon}></i>)}
+          {icon !== false && loading && <Loader size="medium" color="weak" />}
         </div>
         <input
           className={cn("input-element")}
@@ -189,21 +192,24 @@ export default function Autocomplete<O extends Option = Option>({
             },
           })}
         />
-        {(searchValue.trim() !== "" || selection !== null) && (
-          <Button
-            withRipple={false}
-            icon
-            shape="underline"
-            onClick={() => {
-              setIsOpen(false);
-              onChangeSelectionStable(null);
-              setActiveIndex(null);
-              onChangeSearchValueStable("");
-            }}
-          >
-            <i className="fe-cancel"></i>
-          </Button>
-        )}
+        <div className="flex-center adornment">
+          {(searchValue.trim() !== "" || selection !== null) && (
+            <Button
+              withRipple={false}
+              icon
+              shape="underline"
+              onClick={() => {
+                setIsOpen(false);
+                onChangeSelectionStable(null);
+                setActiveIndex(null);
+                onChangeSearchValueStable("");
+              }}
+            >
+              <i className="fe-cancel"></i>
+            </Button>
+          )}
+          {icon === false && loading && <Loader size="medium" color="weak" />}
+        </div>
       </div>
       <FloatingPortal>
         <AutocompleteContext.Provider value={autocompleteContext}>

@@ -373,6 +373,12 @@
       "search": [
         "marker"
       ]
+    },
+    {
+      "uid": "39a3467af0c8c49807ec54899774319c",
+      "css": "braille",
+      "code": 59421,
+      "src": "elusive"
     }
   ]
 }

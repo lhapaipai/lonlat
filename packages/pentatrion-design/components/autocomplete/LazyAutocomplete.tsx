@@ -1,14 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
-import { Autocomplete, AutocompleteOption } from ".";
+import { Autocomplete, AutocompleteProps } from ".";
 import { Option } from "../..";
 import { FetchError, useDebounce, useEventCallback, useNotifications } from "../..";
 
-interface Props<O extends Option = Option> {
+interface Props<O extends Option = Option>
+  extends Omit<
+    AutocompleteProps<O>,
+    "onChangeSearchValue" | "options" | "onChangeSelection" | "searchValue"
+  > {
   onChangeSearchValue: (searchValue: string) => Promise<O[]>;
-  AutocompleteOptionCustom?: typeof AutocompleteOption<O>;
   debounce?: number;
 
-  selection?: O | null;
   onChangeSelection?: ((o: O | null) => void) | null;
 }
 
@@ -87,18 +89,14 @@ export default function LazyAutocomplete<O extends Option = Option>({
   }, [selection?.value, searchValueDebounced, onChangeSearchValue, notificationManager]);
 
   return (
-    <>
-      <div>
-        <Autocomplete
-          searchValue={searchValue}
-          onChangeSearchValue={(newValue) => setSearchValue(newValue)}
-          selection={selection}
-          onChangeSelection={handleChangeSelection}
-          options={options}
-          loading={loading}
-          {...rest}
-        />
-      </div>
-    </>
+    <Autocomplete
+      searchValue={searchValue}
+      onChangeSearchValue={(newValue) => setSearchValue(newValue)}
+      selection={selection}
+      onChangeSelection={handleChangeSelection}
+      options={options}
+      loading={loading}
+      {...rest}
+    />
   );
 }

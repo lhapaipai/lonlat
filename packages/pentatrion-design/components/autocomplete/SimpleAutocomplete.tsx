@@ -38,16 +38,12 @@ export default function SimpleAutocomplete({
   const selection = isControlled ? controlledSelection : uncontrolledSelection;
 
   return (
-    <>
-      <div>
-        <Autocomplete
-          searchValue={searchValue}
-          onChangeSearchValue={setSearchValue}
-          selection={selection}
-          onChangeSelection={handleChangeSelection}
-          options={filteredOptions}
-        />
-      </div>
-    </>
+    <Autocomplete
+      searchValue={searchValue}
+      onChangeSearchValue={setSearchValue}
+      selection={selection}
+      onChangeSelection={handleChangeSelection}
+      options={filteredOptions}
+    />
   );
 }

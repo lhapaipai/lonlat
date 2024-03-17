@@ -1,0 +1,23 @@
+.ll-sortable {
+    .row-item {
+        border-radius: var(--border-radius-md);
+        padding: .5rem;
+        display: flex;
+        align-items: center;
+
+        .ll-input,
+        .ll-autocomplete {
+            flex: 1;
+        }
+
+        &.sortable-chosen {
+            box-shadow: var(--shadow-light);
+        }
+    }
+
+
+
+    .handle {
+        cursor: grab;
+    }
+}

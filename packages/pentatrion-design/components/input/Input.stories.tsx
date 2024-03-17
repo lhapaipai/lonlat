@@ -42,6 +42,23 @@ export const Context = () => {
           </>
         }
       />
+      <Input
+        suffix={
+          <Button withRipple={false} icon shape="underline">
+            <i className="fe-cancel"></i>
+          </Button>
+        }
+      />
+      <Input
+        suffix={
+          <>
+            <Button withRipple={false} icon shape="underline">
+              <i className="fe-cancel"></i>
+            </Button>
+            <Loader size="medium" color="weak" />
+          </>
+        }
+      />
       <Input prefix={<span>prefix</span>} />
       <Input suffix={<span>suffix</span>} />
       <Input

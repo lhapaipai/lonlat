@@ -1,5 +1,4 @@
 import { Meta } from "@storybook/react";
-import "./Card.scss";
 
 const meta = {
   title: "Components/Card",

@@ -84,6 +84,10 @@ $sizes: 1, 2, 3, 4, 8;
     justify-content: center;
 }
 
+.flex-align-center {
+    align-items: center;
+}
+
 .sticky-top {
     position: sticky;
     z-index: 1;

@@ -44,6 +44,7 @@
 
     .adornment {
         color: var(--color-weak-600);
+        position: relative;
     }
 
     .ll-button {
@@ -52,5 +53,13 @@
 
     .ll-loader {
         position: absolute;
+    }
+
+    .prefix .ll-loader {
+        left: 2px;
+    }
+
+    .suffix .ll-loader {
+        right: 2px;
     }
 }

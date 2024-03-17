@@ -1,0 +1,176 @@
+.ll-steps {
+    --circle-radius: 18px;
+    --line-space: 4px;
+
+    &.marker-circle {
+        .marker {
+            width: calc(var(--circle-radius) * 2);
+            height: calc(var(--circle-radius) * 2);
+            border-radius: 50%;
+            background-color: var(--background-weak);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-light);
+
+            &.active {
+                background-color: var(--background-invert);
+                color: var(--text-invert);
+            }
+        }
+    }
+
+    &.marker-bullet {
+        .marker {
+            margin: calc(var(--circle-radius) / 2);
+            margin-right: 0;
+            width: calc(var(--circle-radius));
+            height: calc(var(--circle-radius));
+            border-radius: 50%;
+            outline: 2px solid var(--background-weak);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-size-sm);
+
+            &.active {
+                outline-color: var(--background-invert);
+            }
+        }
+    }
+
+
+    &.direction-horizontal {
+        &.marker-circle {
+            --line-width: calc(100% - var(--circle-radius) * 2 - var(--line-space) * 2);
+            --line-left: calc(50% + var(--circle-radius) + var(--line-space));
+        }
+
+        &.marker-bullet {
+            --line-width: calc(100% - var(--circle-radius) - var(--line-space) * 2);
+            --line-left: calc(50% + var(--circle-radius) / 2 + var(--line-space));
+        }
+
+        display: flex;
+        flex-wrap: wrap;
+
+        .ll-step {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            text-align: center;
+
+            &:not(:last-child)::after {
+                content: "";
+                border-bottom-style: var(--border-style);
+                width: var(--line-width);
+                margin-top: -2px;
+                order: -1;
+                position: relative;
+                top: calc(var(--circle-radius) + 1px);
+                left: var(--line-left);
+            }
+
+            .content {
+                margin-top: .5rem;
+            }
+        }
+
+        .marker-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &.direction-vertical {
+        &.marker-circle {
+            --line-top: calc(var(--circle-radius) * 2 + var(--line-space));
+            --line-bottom: var(--line-space)
+        }
+
+        &.marker-bullet {
+            --line-top: calc(var(--circle-radius) * 1.5 + var(--line-space));
+            --line-bottom: calc(-0.5 * var(--circle-radius) + var(--line-space))
+        }
+
+        .ll-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+
+            &.align-center {
+                align-items: center;
+            }
+
+            &:not(:last-child)::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: var(--line-top);
+                bottom: var(--line-bottom);
+                transform: translateX(calc(var(--circle-radius) - 1px));
+                width: 0px;
+                border-left-style: var(--border-style);
+            }
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .title {
+            line-height: 1rem;
+        }
+    }
+}
+
+.ll-step {
+
+    &.sortable-chosen:not(.sortable-ghost)::after {
+        content: none !important;
+
+    }
+
+    &:not(:last-child) {
+        &::after {
+            border-width: 2px;
+            border-color: var(--background-weak);
+        }
+
+        &.status-done::after {
+            border-color: var(--background-invert);
+        }
+    }
+
+    .marker {
+        position: relative;
+        z-index: 1;
+    }
+
+    .handle {
+        color: var(--text-hint);
+
+        &.active {
+            &:hover {
+                color: transparent;
+                background-image: radial-gradient(circle at center,
+                        var(--text-hint) .125rem,
+                        transparent 0);
+                background-size: .4rem .4rem;
+                background-repeat: round;
+            }
+
+        }
+    }
+
+    .title {
+        font-size: var(--text-size-rg);
+    }
+
+    .desc {
+        font-size: var(--text-size-xs);
+    }
+}

@@ -104,7 +104,7 @@
         width: 2rem;
         height: 2rem;
         padding: 0;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
 
@@ -120,12 +120,18 @@
             color: var(--text-hint);
             box-shadow: none;
             transition: color 0.3s ease;
+            border-radius: var(--border-radius-md);
+            background-color: transparent;
 
-            &:hover,
             &:focus,
             &:focus-within {
+                color: var(--text-hint);
+            }
+
+            &:hover {
                 color: var(--text-default);
             }
+
 
             &:active {
                 color: var(--text-strong);

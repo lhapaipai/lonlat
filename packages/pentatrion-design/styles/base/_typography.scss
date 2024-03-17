@@ -1,94 +1,100 @@
 html {
-  font-size: #{$root-default-font-size}px;
+    font-size: #{$root-default-font-size}px;
 }
 
 body {
-  font-size: pixel-to-rem($base-font-size);
-  line-height: 1.5;
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  color: var(--text-default);
+    font-size: pixel-to-rem($base-font-size);
+    line-height: 1.5;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    color: var(--text-default);
 }
 
 
 $title-sizes: (
-  h1: 26,
-  h2: 23,
-  h3: 20,
-  h4: 18,
-  h5: 17,
-  h6: 16,
+    h1: 26,
+    h2: 23,
+    h3: 20,
+    h4: 18,
+    h5: 17,
+    h6: 16,
 );
 
 @each $tag,
 $size in $title-sizes {
 
-  #{$tag},
-  .#{$tag} {
-    display: block;
-    margin: 0;
-    font-size: pixel-to-rem($size);
-  }
+    #{$tag},
+    .#{$tag} {
+        display: block;
+        margin: 0;
+        font-size: pixel-to-rem($size);
+    }
 }
 
 $text-sizes: (
-  2xl: 20,
-  xl: 18,
-  lg: 16,
-  rg: 14,
-  sm: 13,
-  xs: 12,
-  2xs: 10
+    2xl: 20,
+    xl: 18,
+    lg: 16,
+    rg: 14,
+    sm: 13,
+    xs: 12,
+    2xs: 10
 );
 
 @each $label,
 $size in $text-sizes {
-  .text-#{$label} {
-    font-size: pixel-to-rem($size);
-  }
+    :root {
+        --text-size-#{$label}: #{pixel-to-rem($size)};
+    }
+}
+
+@each $label, $size in $text-sizes {
+    .text-#{$label} {
+        font-size: var(--text-size-#{$label});
+    }
 }
 
 a {
-  color: var(--text-strong);
-  transition: box-shadow .05s ease, color .05s ease;
-
-  box-shadow: 0 1px 0 var(--text-strong);
-
-  &:visited {
     color: var(--text-strong);
-  }
+    transition: box-shadow .05s ease, color .05s ease;
 
-  &:hover {
-    box-shadow: 0 2px 0 var(--color-primary-500);
-  }
+    box-shadow: 0 1px 0 var(--text-strong);
 
-  &:focus-visible {
-    outline: 2px solid var(--color-primary-1000);
-    border-radius: var(--border-radius-sm);
-  }
+    &:visited {
+        color: var(--text-strong);
+    }
 
-  &:active {
-    color: var(--color-primary-1000);
-  }
+    &:hover {
+        box-shadow: 0 2px 0 var(--color-primary-500);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-primary-1000);
+        border-radius: var(--border-radius-sm);
+    }
+
+    &:active {
+        color: var(--color-primary-1000);
+    }
 }
 
 
 a.ghost {
-  color: var(--text-default);
-  box-shadow: none;
-
-  &,
-  &:hover {
-    text-decoration: none;
+    color: var(--text-default);
     box-shadow: none;
-  }
+
+    &,
+    &:hover {
+        text-decoration: none;
+        box-shadow: none;
+    }
 }
 
 mark {
-  background-color: var(--color-primary-100);
-  color: var(--text-strong);
+    background-color: var(--color-primary-100);
+    color: var(--text-strong);
 }
 
 .text-hint {
-  color: var(--text-hint);
-  font-size: .9rem;
+    color: var(--text-hint);
+    font-size: .9rem;
 }
