@@ -2,10 +2,10 @@ import {
   SimpleAutocomplete,
   Autocomplete,
   LazyAutocomplete,
-  AutocompleteGeocodageOption,
+  AutocompleteGeoFeatureOption,
   NotificationsProvider,
-  TownOption,
   Option,
+  GeoFeatureOption,
 } from "pentatrion-design";
 
 import { Meta } from "@storybook/react";
@@ -75,15 +75,15 @@ export const LazyUncontrolled = () => {
   return (
     <>
       <LazyAutocomplete
-        onChangeSearchValue={handleChangeSearchValue}
-        AutocompleteOptionCustom={AutocompleteGeocodageOption}
+        onChangeSearchValueCallback={handleChangeSearchValue}
+        AutocompleteOptionCustom={AutocompleteGeoFeatureOption}
       />
     </>
   );
 };
 
 export const LazyControlled = () => {
-  const [selection, setSelection] = useState<TownOption | null>(null);
+  const [selection, setSelection] = useState<GeoFeatureOption | null>(null);
 
   return (
     <>
@@ -91,10 +91,10 @@ export const LazyControlled = () => {
         icon={false}
         selection={selection}
         onChangeSelection={setSelection}
-        onChangeSearchValue={handleChangeSearchValue}
-        AutocompleteOptionCustom={AutocompleteGeocodageOption}
+        onChangeSearchValueCallback={handleChangeSearchValue}
+        AutocompleteOptionCustom={AutocompleteGeoFeatureOption}
       />
-      <div>sélection : {selection && selection.label}</div>
+      <div>sélection : {selection && selection.feature.properties.label}</div>
     </>
   );
 };
@@ -116,50 +116,49 @@ export const Search = () => {
         <div className="box">
           <div className="option search">
             <div className="icon flex-center">
-              <i className="fe-town"></i>
+              <i className="fe-housenumber"></i>
             </div>
             <div className="content">
               <div>
-                <em>Bonnevil</em>le
+                <mark>65 Impasse des perrières</mark>
               </div>
-              <div className="hint">Haute-Savoie, Auvergne Rhône-Alpes</div>
+              <div className="context">Marignier, Haute-Savoie</div>
             </div>
+            <div className="type">Numéro de rue</div>
           </div>
           <div className="option search">
             <div className="icon flex-center">
               <i className="fe-street"></i>
             </div>
             <div className="content">
-              <div>Annemasse</div>
-              <div className="hint">
-                route de <em>Bonnevil</em>le, Haute-Savoie, Auvergne Rhône-Alpes
+              <div>
+                Rue <mark>Joseph Vallot</mark>
               </div>
+              <div className="context">Chamonix-Mont-Blanc, Haute-Savoie</div>
             </div>
+            <div className="type">Rue</div>
           </div>
           <div className="option search">
             <div className="icon flex-center">
-              <i className="fe-street"></i>
+              <i className="fe-locality"></i>
             </div>
             <div className="content">
-              <div>Chamblac</div>
-              <div className="hint">
-                route de <em>Bonnevil</em>le, Eure, Normandie
+              <div>
+                <mark>Chamonix Sud</mark>
               </div>
+              <div className="context">Chamonix-Mont-Blanc, Haute-Savoie</div>
             </div>
+            <div className="type">Lieu-dit</div>
           </div>
           <div className="option search">
             <div className="icon flex-center">
               <i className="fe-municipality"></i>
             </div>
             <div className="content">
-              <div>
-                Cheptainville{" "}
-                <span className="color-hint">
-                  lieux-dit : <em>Bonnevil</em>le
-                </span>
-              </div>
-              <div className="hint">Essonne, Île-de-France</div>
+              <div>Chamonix-Mont-Blanc</div>
+              <div className="context">Haute-Savoie</div>
             </div>
+            <div className="type">Ville</div>
           </div>
         </div>
       </div>

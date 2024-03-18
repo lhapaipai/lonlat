@@ -8,15 +8,15 @@ interface Props<O extends Option = Option>
     AutocompleteProps<O>,
     "onChangeSearchValue" | "options" | "onChangeSelection" | "searchValue"
   > {
-  onChangeSearchValue: (searchValue: string) => Promise<O[]>;
+  onChangeSearchValueCallback: (searchValue: string) => Promise<O[]>;
   debounce?: number;
 
   onChangeSelection?: ((o: O | null) => void) | null;
 }
 
 export default function LazyAutocomplete<O extends Option = Option>({
-  onChangeSearchValue,
-  debounce = 200,
+  onChangeSearchValueCallback,
+  debounce = 500,
   selection: controlledSelection = null,
   onChangeSelection = null,
   ...rest
@@ -25,7 +25,10 @@ export default function LazyAutocomplete<O extends Option = Option>({
   const onChangeSelectionStable = useEventCallback(onChangeSelection);
 
   const [searchValue, setSearchValue] = useState("");
-  const searchValueDebounced = useDebounce(searchValue, debounce, true);
+  const [searchValueDebounced, setSearchValueDebouncedImmediately] = useDebounce(
+    searchValue,
+    debounce,
+  );
   const [loading, setLoading] = useState(false);
 
   const [uncontrolledSelection, setUncontrolledSelection] = useState<O | null>(null);
@@ -65,7 +68,7 @@ export default function LazyAutocomplete<O extends Option = Option>({
 
     setLoading(true);
 
-    onChangeSearchValue(searchValueDebounced)
+    onChangeSearchValueCallback(searchValueDebounced)
       .then((newOptions) => {
         setLoading(false);
 
@@ -86,12 +89,15 @@ export default function LazyAutocomplete<O extends Option = Option>({
     return () => {
       abort = true;
     };
-  }, [selection?.value, searchValueDebounced, onChangeSearchValue, notificationManager]);
+  }, [selection, searchValueDebounced, onChangeSearchValueCallback, notificationManager]);
 
   return (
     <Autocomplete
       searchValue={searchValue}
-      onChangeSearchValue={(newValue) => setSearchValue(newValue)}
+      onChangeSearchValue={(newValue, selectionLabel) => {
+        setSearchValue(newValue);
+        (selectionLabel || newValue === "") && setSearchValueDebouncedImmediately(newValue);
+      }}
       selection={selection}
       onChangeSelection={handleChangeSelection}
       options={options}

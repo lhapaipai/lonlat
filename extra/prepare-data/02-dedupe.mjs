@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
-const content = JSON.parse(readFileSync("town-74.json"));
+const content = JSON.parse(readFileSync("town-74-01.json"));
 console.log(content);
 let arr = [];
 let insees = new Set();
@@ -14,4 +14,4 @@ content.forEach((town) => {
 });
 
 console.log(content.length, arr.length);
-writeFileSync("town-74-dedupe.json", JSON.stringify(arr));
+writeFileSync("town-74-02.json", JSON.stringify(arr, undefined, 2));

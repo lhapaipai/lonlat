@@ -43,13 +43,13 @@ $text-sizes: (
 @each $label,
 $size in $text-sizes {
     :root {
-        --text-size-#{$label}: #{pixel-to-rem($size)};
+        --font-size-#{$label}: #{pixel-to-rem($size)};
     }
 }
 
 @each $label, $size in $text-sizes {
     .text-#{$label} {
-        font-size: var(--text-size-#{$label});
+        font-size: var(--font-size-#{$label});
     }
 }
 

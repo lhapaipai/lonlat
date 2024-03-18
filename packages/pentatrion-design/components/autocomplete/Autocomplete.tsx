@@ -35,7 +35,7 @@ export interface AutocompleteProps<O extends Option> {
    * change handler when typing in the input
    * or when clicking on an option (the label value is passed)
    */
-  onChangeSearchValue: (value: string) => void;
+  onChangeSearchValue: (value: string, selectionLabel: boolean) => void;
 
   selection?: O | null;
   /**
@@ -120,7 +120,7 @@ export default function Autocomplete<O extends Option = Option>({
       onChangeSelectionStable(null);
     }
 
-    onChangeSearchValueStable(value);
+    onChangeSearchValueStable(value, false);
 
     if (value) {
       setIsOpen(true);
@@ -137,7 +137,7 @@ export default function Autocomplete<O extends Option = Option>({
       } else if (options[index]) {
         const newSelection = options[index];
         onChangeSelectionStable(newSelection);
-        onChangeSearchValueStable(newSelection.label);
+        onChangeSearchValueStable(newSelection.label, true);
       }
       setActiveIndex(null);
       setIsOpen(false);
@@ -159,10 +159,12 @@ export default function Autocomplete<O extends Option = Option>({
   return (
     <div className="ll-autocomplete">
       <div className={cn("ll-input")} ref={refs.setReference}>
-        <div className="ml-2 flex-center adornment">
-          {icon && (icon === true ? <i className="fe-search"></i> : <i className={icon}></i>)}
-          {icon !== false && loading && <Loader size="medium" color="weak" />}
-        </div>
+        {icon !== false && (
+          <div className="ml-2 flex-center adornment">
+            {icon === true ? <i className="fe-search"></i> : <i className={icon}></i>}
+            {loading && <Loader size="medium" color="weak" />}
+          </div>
+        )}
         <input
           className={cn("input-element")}
           type="search"
@@ -202,7 +204,7 @@ export default function Autocomplete<O extends Option = Option>({
                 setIsOpen(false);
                 onChangeSelectionStable(null);
                 setActiveIndex(null);
-                onChangeSearchValueStable("");
+                onChangeSearchValueStable("", true);
               }}
             >
               <i className="fe-cancel"></i>

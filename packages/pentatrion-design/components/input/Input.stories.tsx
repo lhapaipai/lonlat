@@ -59,8 +59,15 @@ export const Context = () => {
           </>
         }
       />
-      <Input prefix={<span>prefix</span>} />
-      <Input suffix={<span>suffix</span>} />
+      <Input
+        suffix={
+          <>
+            <Loader size="medium" color="weak" />
+          </>
+        }
+      />
+      <Input prefix="prefix" />
+      <Input suffix="suffix" />
       <Input
         type="number"
         value={counter}

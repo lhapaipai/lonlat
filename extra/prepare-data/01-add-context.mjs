@@ -11,4 +11,4 @@ content.forEach((town) => {
 });
 
 console.log(content.length, arr.length);
-writeFileSync("town-74.json", JSON.stringify(arr));
+writeFileSync("town-74-01.json", JSON.stringify(arr));

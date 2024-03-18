@@ -49,7 +49,7 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
   }, [ref]);
 
   //add a debounce so that if the user doesn't click after 1s, we remove all the ripples
-  const _debounced = useDebounce(ripples, 1000);
+  const [_debounced] = useDebounce(ripples, 1000);
   useEffect(() => {
     if (_debounced.length) {
       setRipples([]);

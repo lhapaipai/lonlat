@@ -1,11 +1,14 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
-import { ReactSortable } from "react-sortablejs";
+import { ItemInterface, ReactSortable } from "react-sortablejs";
 import { Button } from "../button";
 import { Input } from "../input";
-import { AutocompleteGeocodageOption, LazyAutocomplete, TownOption } from "../autocomplete";
+import { AutocompleteGeoFeatureOption, LazyAutocomplete } from "../autocomplete";
 import { handleChangeSearchValue } from "../_mocks/town-api";
 import { NotificationsProvider } from "../notification";
+import { GeoFeature } from "pentatrion-geo";
+import { GeoFeatureOption } from "../select";
+import { SortableItem } from ".";
 
 const meta = {
   title: "Components/Sortable",
@@ -20,7 +23,7 @@ const meta = {
 } satisfies Meta;
 export default meta;
 
-export interface Item {
+export interface Item extends ItemInterface {
   id: number;
   name: string;
 }
@@ -92,58 +95,60 @@ export const WithInputs = () => {
   );
 };
 
-type Place = TownOption;
-
-interface DirectionItem {
-  id: string;
-  place: Place | null;
-}
-
-function createDirectionItem(place: Place | null = null) {
+function createSortableItem(
+  feature: GeoFeature | null = null,
+): SortableItem<GeoFeatureOption | null> {
   return {
     id: Math.floor(Math.random() * 100000).toString(),
-    place,
+    data:
+      feature === null
+        ? null
+        : {
+            value: feature.properties.id,
+            label: feature.properties.label,
+            feature,
+          },
   };
 }
 
 export const WithAutocomplete = () => {
-  const [direction, setDirection] = useState<Array<DirectionItem>>([
-    createDirectionItem(),
-    createDirectionItem(),
+  const [items, setItems] = useState<Array<SortableItem<GeoFeatureOption | null>>>([
+    createSortableItem(),
+    createSortableItem(),
   ]);
 
-  function handleChangeSelection(index: number, selection: TownOption | null) {
-    const directionCopy = [...direction];
-    directionCopy[index].place = selection;
-    setDirection(directionCopy);
+  function handleChangeSelection(index: number, selection: GeoFeatureOption | null) {
+    const itemsCopy = [...items];
+    itemsCopy[index].data = selection;
+    setItems(itemsCopy);
   }
 
   return (
     <>
       <ReactSortable
-        list={direction}
-        setList={setDirection}
+        list={items}
+        setList={setItems}
         animation={200}
         className="ll-sortable"
         handle=".handle"
       >
-        {direction.map((directionItem, index) => (
-          <div key={directionItem.id} className="row-item">
+        {items.map((item, index) => (
+          <div key={item.id} className="row-item">
             <Button icon shape="underline" className="handle">
               <i className="fe-braille"></i>
             </Button>
             <LazyAutocomplete
-              selection={directionItem.place}
+              selection={item.data}
               onChangeSelection={(selection) => handleChangeSelection(index, selection)}
-              onChangeSearchValue={handleChangeSearchValue}
-              AutocompleteOptionCustom={AutocompleteGeocodageOption}
+              onChangeSearchValueCallback={handleChangeSearchValue}
+              AutocompleteOptionCustom={AutocompleteGeoFeatureOption}
             />
           </div>
         ))}
       </ReactSortable>
       <ul>
-        {direction.map((i) => (
-          <li key={i.id}>{i.place ? i.place.label : "non défini"}</li>
+        {items.map((i) => (
+          <li key={i.id}>{i.data ? i.data.feature.properties.label : "non défini"}</li>
         ))}
       </ul>
     </>

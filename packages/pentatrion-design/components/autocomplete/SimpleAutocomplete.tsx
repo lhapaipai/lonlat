@@ -20,9 +20,14 @@ export default function SimpleAutocomplete({
   const [searchValue, setSearchValue] = useState("");
   const [uncontrolledSelection, setUncontrolledSelection] = useState<Option | null>(null);
 
-  const filteredOptions = options.filter((option) => {
-    return option.label.toLowerCase().startsWith(searchValue.toLowerCase());
-  });
+  const selection = isControlled ? controlledSelection : uncontrolledSelection;
+
+  const filteredOptions =
+    selection !== null
+      ? []
+      : options.filter((option) => {
+          return option.label.toLowerCase().startsWith(searchValue.toLowerCase());
+        });
 
   const handleChangeSelection = useCallback(
     (selection: Option | null) => {
@@ -34,8 +39,6 @@ export default function SimpleAutocomplete({
     },
     [onChangeSelectionStable, setUncontrolledSelection, isControlled],
   );
-
-  const selection = isControlled ? controlledSelection : uncontrolledSelection;
 
   return (
     <Autocomplete

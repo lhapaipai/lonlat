@@ -26,10 +26,12 @@
     },
     "dependencies": {
         "@floating-ui/react": "^0.26.9",
+        "@types/geojson": "^7946.0.14",
         "@use-gesture/react": "^10.3.0",
         "classnames": "^2.5.1",
         "fuse.js": "^7.0.0",
         "pentatrion-fonts": "workspace:*",
+        "pentatrion-geo": "workspace:*",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-polymorphic-types": "^2.0.0",

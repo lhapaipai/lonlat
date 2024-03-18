@@ -1,22 +1,19 @@
 import { useId } from "react";
-import { TownOption } from "./interface";
 import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";
-import { Highlight, Option } from "../..";
+import { GeoFeatureOption, Option } from "../..";
+import { getTypeLabel } from "pentatrion-geo";
 
 type Props<O extends Option> = O & {
   searchValue: string;
 };
 
-export default function AutocompleteGeocodageOption({
+export default function AutocompleteGeoFeatureOption({
   label,
   value,
-  icon,
-  nom_commune,
-  context,
-  _formatted,
-}: Props<TownOption>) {
+  feature,
+}: Props<GeoFeatureOption>) {
   const id = useId();
   const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
   const { ref, index } = useListItem({ label: label });
@@ -35,14 +32,13 @@ export default function AutocompleteGeocodageOption({
       })}
     >
       <div className="icon flex-center">
-        <i className={icon}></i>
+        <i className={`fe-${feature.properties.type}`}></i>
       </div>
       <div className="content">
-        <div>
-          <Highlight value={nom_commune} indices={_formatted?.nom_commune} />
-        </div>
-        <div className="hint">{context}</div>
+        <div>{feature.properties.name}</div>
+        <div className="context">{feature.properties.context}</div>
       </div>
+      <div className="type">{getTypeLabel(feature.properties.type)}</div>
     </div>
   );
 }

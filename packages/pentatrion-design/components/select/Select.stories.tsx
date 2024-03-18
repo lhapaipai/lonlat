@@ -3,7 +3,6 @@ import { Select, useSelect } from "pentatrion-design";
 import { useListItem } from "@floating-ui/react";
 import { useState } from "react";
 import { SelectSelectionProps } from "pentatrion-design/components/select/SelectSelection";
-import { SelectOptionProps } from "pentatrion-design/components/select/SelectOption";
 import cn from "classnames";
 import { action } from "@storybook/addon-actions";
 import { SelectValue } from "./Select";
@@ -178,10 +177,10 @@ const stars: StarOption[] = [
   { value: "fill", label: "Fill", icon: "fe-star" },
 ];
 
-function SelectOptionCustom({ option }: SelectOptionProps<StarOption>) {
+function SelectOptionCustom({ icon, label }: StarOption) {
   const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
 
-  const { ref, index } = useListItem({ label: option.label });
+  const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;
   const isSelected = selectedIndex === index;
 
@@ -196,15 +195,15 @@ function SelectOptionCustom({ option }: SelectOptionProps<StarOption>) {
         onClick: () => handleSelect(index),
       })}
     >
-      <i className={option.icon}></i> {option.label}
+      <i className={icon}></i> {label}
     </button>
   );
 }
 
-function SelectSelectionCustom({ option }: SelectSelectionProps<StarOption>) {
-  return option?.label ? (
+function SelectSelectionCustom({ label, icon }: SelectSelectionProps<StarOption>) {
+  return label ? (
     <span>
-      <i className={option.icon}></i>
+      <i className={icon}></i>
     </span>
   ) : (
     <span>?</span>

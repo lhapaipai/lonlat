@@ -3,9 +3,9 @@ import { useSelect } from ".";
 import cn from "classnames";
 import { Option } from "./interface";
 
-export type SelectOptionProps<O extends Option> = O;
+type Props<O extends Option> = O;
 
-export default function SelectOption<O extends Option>({ label }: SelectOptionProps<O>) {
+export default function SelectOption<O extends Option>({ label }: Props<O>) {
   const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
 
   const { ref, index } = useListItem({ label });

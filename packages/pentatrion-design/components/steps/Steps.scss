@@ -31,7 +31,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: var(--text-size-sm);
+            font-size: var(--font-size-sm);
 
             &.active {
                 outline-color: var(--background-invert);
@@ -158,19 +158,21 @@
                 color: transparent;
                 background-image: radial-gradient(circle at center,
                         var(--text-hint) .125rem,
+                        transparent 0), radial-gradient(circle at center,
+                        var(--text-hint) .125rem,
                         transparent 0);
-                background-size: .4rem .4rem;
-                background-repeat: round;
+                background-size: .5rem .5rem;
+                background-position: 0 0, 0.25rem 0.25rem;
             }
 
         }
     }
 
     .title {
-        font-size: var(--text-size-rg);
+        font-size: var(--font-size-rg);
     }
 
     .desc {
-        font-size: var(--text-size-xs);
+        font-size: var(--font-size-xs);
     }
 }

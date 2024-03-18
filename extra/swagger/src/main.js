@@ -22,6 +22,10 @@ SwaggerUI({
       name: "Photon",
       url: "/photon.yaml",
     },
+    {
+      name: "Open Route Service",
+      url: "/openrouteservice.json",
+    },
   ],
   dom_id: "#root",
   deepLinking: true,

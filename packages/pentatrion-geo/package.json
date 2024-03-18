@@ -1,0 +1,10 @@
+{
+  "name": "pentatrion-geo",
+  "version": "0.0.1",
+  "author": "Hugues Tavernier",
+  "license": "ISC",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@types/geojson": "^7946.0.14"
+  }
+}

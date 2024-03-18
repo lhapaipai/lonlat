@@ -4,9 +4,12 @@ import Step from "./Step";
 import { Input } from "../input";
 import { useState } from "react";
 import { ReactSortable } from "react-sortablejs";
-import { AutocompleteGeocodageOption, LazyAutocomplete, TownOption } from "../autocomplete";
+import { AutocompleteGeoFeatureOption, LazyAutocomplete } from "../autocomplete";
 import { handleChangeSearchValue } from "../_mocks/town-api";
 import { NotificationsProvider } from "../notification";
+import { GeoFeatureOption } from "../select";
+import { GeoFeature } from "pentatrion-geo";
+import { SortableItem } from "../sortable";
 
 const meta = {
   title: "Components/Steps",
@@ -150,29 +153,31 @@ export const WithSortable = () => {
   );
 };
 
-type Place = TownOption;
-
-interface DirectionItem {
-  id: string;
-  place: Place | null;
-}
-
-function createDirectionItem(place: Place | null = null) {
+function createItem(feature: GeoFeature | null = null): SortableItem<GeoFeatureOption | null> {
   return {
     id: Math.floor(Math.random() * 100000).toString(),
-    place,
+    data:
+      feature === null
+        ? null
+        : {
+            value: feature.properties.id,
+            label: feature.properties.label,
+            feature,
+          },
   };
 }
+
 export const WithAutocompleteSortable = () => {
-  const [direction, setDirection] = useState<Array<DirectionItem>>([
-    createDirectionItem(),
-    createDirectionItem(),
-    createDirectionItem(),
+  const [direction, setDirection] = useState<Array<SortableItem<GeoFeatureOption | null>>>([
+    createItem(),
+    createItem(),
+    createItem(),
   ]);
 
-  function handleChangeSelection(index: number, selection: TownOption | null) {
-    const directionCopy = [...direction];
-    directionCopy[index].place = selection;
+  function handleChangeSelection(index: number, selection: GeoFeatureOption | null) {
+    const itemsCopy = [...direction];
+    itemsCopy[index].data = selection;
+    setDirection(itemsCopy);
   }
 
   return (
@@ -195,10 +200,10 @@ export const WithAutocompleteSortable = () => {
               <LazyAutocomplete
                 placeholder="Search a location..."
                 icon={false}
-                selection={directionItem.place}
+                selection={directionItem.data}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
-                onChangeSearchValue={handleChangeSearchValue}
-                AutocompleteOptionCustom={AutocompleteGeocodageOption}
+                onChangeSearchValueCallback={handleChangeSearchValue}
+                AutocompleteOptionCustom={AutocompleteGeoFeatureOption}
               />
             </Step>
           ))}
@@ -206,7 +211,7 @@ export const WithAutocompleteSortable = () => {
       </Steps>
       <ul>
         {direction.map((i) => (
-          <li key={i.id}>{i.place ? i.place.label : "non défini"}</li>
+          <li key={i.id}>{i.data ? i.data.feature.properties.label : "non défini"}</li>
         ))}
       </ul>
     </>

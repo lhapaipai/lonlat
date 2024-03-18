@@ -3,15 +3,16 @@
     overflow: auto;
 
     .option {
+        cursor: pointer;
 
         &.search {
             display: flex;
-            height: 64px;
+            height: 48px;
             padding: 0;
 
             .icon {
-                width: 64px;
-                font-size: 2rem;
+                width: 48px;
+                font-size: 1.25rem;
             }
 
             .content {
@@ -19,11 +20,24 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                font-size: var(--font-size-rg);
+                flex: 1;
             }
 
-            .hint {
+            .context {
                 color: var(--text-hint);
-                font-size: .9rem;
+                font-size: var(--font-size-sm);
+            }
+
+            .type {
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-hint);
+                font-size: var(--font-size-sm);
+                padding: .5rem;
+                font-style: italic;
             }
         }
     }

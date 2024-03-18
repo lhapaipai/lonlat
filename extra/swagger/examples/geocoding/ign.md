@@ -1,4 +1,16 @@
-géo codage 2.0
+
+## géocodage de la géoplateforme
+
+url : openapi.yaml https://data.geopf.fr/geocodage/openapi.yaml
+[documentation](https://geoservices.ign.fr/documentation/services/services-geoplateforme/geocodage)
+
+
+## complétion
+
+url : openapi.yaml https://data.geopf.fr/geocodage/completion/openapi.yaml
+[documentation](https://geoservices.ign.fr/documentation/services/services-geoplateforme/autocompletion)
+
+## géocodage 2.0 (déprécié)
 
 [documentation](https://geoservices.ign.fr/documentation/services/api-et-services-ogc/geocodage-20/doc-technique-api-geocodage)
 

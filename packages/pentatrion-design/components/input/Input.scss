@@ -45,6 +45,14 @@
     .adornment {
         color: var(--color-weak-600);
         position: relative;
+
+        &>[class^="fe-"] {
+            margin: 0 .5rem;
+        }
+
+        svg {
+            pointer-events: none;
+        }
     }
 
     .ll-button {
