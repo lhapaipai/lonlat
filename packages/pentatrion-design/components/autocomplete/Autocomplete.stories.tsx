@@ -103,62 +103,69 @@ export const Search = () => {
   return (
     <div className="flex flex-column gap-2">
       <div className="ll-dialog ll-autocomplete-dialog">
-        <div className="box">
-          <div className="option">Default state 1</div>
-          <div className="option active">Active state 2 (keyboard navigation)</div>
-          <div className="option">Default state 3</div>
-          <div className="option selected">Selected state 4</div>
-          <div className="option">Default state 5</div>
-          <div className="option">Default state 6</div>
-        </div>
+        <div className="option">Default state 1</div>
+        <div className="option active">Active state 2 (keyboard navigation)</div>
+        <div className="option">Default state 3</div>
+        <div className="option selected">Selected state 4</div>
+        <div className="option">Default state 5</div>
+        <div className="option">Default state 6</div>
       </div>
-      <div className="ll-dialog ll-autocomplete-dialog">
-        <div className="box">
-          <div className="option search">
+      <div className="ll-dialog ll-autocomplete-dialog" style={{ maxWidth: 375 }}>
+        <div className="option search">
+          <div className="prefix">
             <div className="icon flex-center">
               <i className="fe-housenumber"></i>
             </div>
-            <div className="content">
-              <div>
-                <mark>65 Impasse des perrières</mark>
-              </div>
-              <div className="context">Marignier, Haute-Savoie</div>
-            </div>
-            <div className="type">Numéro de rue</div>
+            <div className="type">point</div>
           </div>
-          <div className="option search">
+          <div className="content">
+            <div>
+              <mark>65 Impasse des perrières</mark>
+            </div>
+            <div className="context">Marignier, Haute-Savoie</div>
+          </div>
+        </div>
+        <div className="option search">
+          <div className="prefix">
             <div className="icon flex-center">
               <i className="fe-street"></i>
             </div>
-            <div className="content">
-              <div>
-                Rue <mark>Joseph Vallot</mark>
-              </div>
-              <div className="context">Chamonix-Mont-Blanc, Haute-Savoie</div>
-            </div>
             <div className="type">Rue</div>
           </div>
-          <div className="option search">
+
+          <div className="content">
+            <div>
+              Rue <mark>Joseph Vallot</mark>
+            </div>
+            <div className="context">Chamonix-Mont-Blanc, Haute-Savoie</div>
+          </div>
+        </div>
+        <div className="option search">
+          <div className="prefix">
             <div className="icon flex-center">
               <i className="fe-locality"></i>
             </div>
-            <div className="content">
-              <div>
-                <mark>Chamonix Sud</mark>
-              </div>
-              <div className="context">Chamonix-Mont-Blanc, Haute-Savoie</div>
-            </div>
             <div className="type">Lieu-dit</div>
           </div>
-          <div className="option search">
+
+          <div className="content">
+            <div>
+              <mark>Chamonix Sud</mark>
+            </div>
+            <div className="context">Chamonix-Mont-Blanc, Haute-Savoie</div>
+          </div>
+        </div>
+        <div className="option search">
+          <div className="prefix">
             <div className="icon flex-center">
               <i className="fe-municipality"></i>
             </div>
-            <div className="content">
-              <div>Chamonix-Mont-Blanc</div>
-              <div className="context">Haute-Savoie</div>
-            </div>
             <div className="type">Ville</div>
+          </div>
+
+          <div className="content">
+            <div>Chamonix-Mont-Blanc</div>
+            <div className="context">Haute-Savoie</div>
           </div>
         </div>
       </div>

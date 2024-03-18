@@ -2,7 +2,7 @@ export function getTypeLabel(type?: string) {
   if (!type) return null;
 
   const types: { [k: string]: string } = {
-    housenumber: "Numéro de rue",
+    housenumber: "Point",
     street: "Rue",
     locality: "Lieu-dit",
     municipality: "Ville",

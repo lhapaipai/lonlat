@@ -130,7 +130,7 @@ const data: Item[] = [
 export const WithSortable = () => {
   const [items, setItems] = useState(data);
   return (
-    <Steps markerType="bullet" lineStyle="dotted">
+    <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
       <ReactSortable
         list={items}
         setList={setItems}
@@ -182,7 +182,7 @@ export const WithAutocompleteSortable = () => {
 
   return (
     <>
-      <Steps markerType="bullet" lineStyle="dotted">
+      <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
         <ReactSortable
           list={direction}
           setList={setDirection}

@@ -6,12 +6,23 @@ interface Props extends ComponentPropsWithoutRef<"ul"> {
   direction?: "horizontal" | "vertical";
   lineStyle?: "solid" | "dashed" | "dotted";
   markerType?: "circle" | "bullet";
+
+  /**
+   * if your Step is multiline keep it false
+   * better render and add line-space
+   *
+   * if your Steps are Sortable and eash Step si only one line
+   * and steps are vertical
+   * set it to true, line will not be animated when sorting
+   */
+  associateLineWithStep?: boolean;
 }
 
-export default function VerticalSteps({
+export default function Steps({
   direction = "vertical",
   lineStyle = "solid",
   markerType = "circle",
+  associateLineWithStep = true,
   className,
   ...rest
 }: Props) {
@@ -23,6 +34,7 @@ export default function VerticalSteps({
         `direction-${direction}`,
         `border-${lineStyle}`,
         `marker-${markerType}`,
+        associateLineWithStep ? `step-line` : `steps-line`,
         className,
       ])}
       style={{

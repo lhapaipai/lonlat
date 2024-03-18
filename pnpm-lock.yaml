@@ -153,6 +153,9 @@ importers:
       react-redux:
         specifier: ^9.1.0
         version: 9.1.0(@types/react@18.2.66)(react@18.2.0)(redux@5.0.1)
+      react-sortablejs:
+        specifier: ^6.1.4
+        version: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.2.0)(react@18.2.0)(sortablejs@1.15.2)
       sass:
         specifier: ^1.72.0
         version: 1.72.0

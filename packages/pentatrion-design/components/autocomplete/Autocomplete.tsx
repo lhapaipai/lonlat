@@ -1,4 +1,12 @@
-import { ChangeEvent, KeyboardEvent, useCallback, useMemo, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import type { Option } from "../..";
 import AutocompleteOption from "./AutocompleteOption.tsx";
 import {
@@ -73,6 +81,10 @@ export default function Autocomplete<O extends Option = Option>({
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
 
+  useEffect(() => {
+    console.log("activeIndex", activeIndex);
+  }, [activeIndex]);
+
   const { refs, floatingStyles, context } = useFloating({
     placement,
     open: isOpen,
@@ -124,9 +136,14 @@ export default function Autocomplete<O extends Option = Option>({
 
     if (value) {
       setIsOpen(true);
-      setActiveIndex(0);
+      /**
+       * bug whith LazyAutocomplete activeIndex is set to 0 but the options array has immediately 0 elements
+       * so focus can't be set to the first Dom element.
+       */
+      setActiveIndex(listRef.current[0] ? 0 : null);
     } else {
       setIsOpen(false);
+      setActiveIndex(null);
     }
   }
 

@@ -31,14 +31,17 @@ export default function AutocompleteGeoFeatureOption({
         onClick: () => handleSelect(index),
       })}
     >
-      <div className="icon flex-center">
-        <i className={`fe-${feature.properties.type}`}></i>
+      <div className="prefix">
+        <div className="icon flex-center">
+          <i className={`fe-${feature.properties.type}`}></i>
+        </div>
+        <div className="type">{getTypeLabel(feature.properties.type)}</div>
       </div>
+
       <div className="content">
         <div>{feature.properties.name}</div>
         <div className="context">{feature.properties.context}</div>
       </div>
-      <div className="type">{getTypeLabel(feature.properties.type)}</div>
     </div>
   );
 }

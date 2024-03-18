@@ -4,7 +4,7 @@ import { getDepartmentName } from "./util";
 import { GeoFeature, GeoFeatureOption, GeocodeType } from "..";
 
 type IGNAddressProperties = APISchemas["AddressProperties"];
-type IGNAddressResponse = FeatureCollection<Point, APISchemas["AddressProperties"]>;
+export type IGNAddressResponse = FeatureCollection<Point, APISchemas["AddressProperties"]>;
 
 function getContext(properties: IGNAddressProperties) {
   switch (properties.type) {
@@ -58,8 +58,8 @@ export function prepareResult(collection: IGNAddressResponse): GeoFeatureOption[
   return collection.features.map((feature) => {
     const geoFeature = prepareGeoFeature(feature);
     return {
-      value: geoFeature.properties.label,
-      label: geoFeature.properties.id,
+      value: geoFeature.properties.id,
+      label: geoFeature.properties.label,
       feature: geoFeature,
     };
   });

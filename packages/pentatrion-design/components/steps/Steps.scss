@@ -1,6 +1,14 @@
 .ll-steps {
+    position: relative;
     --circle-radius: 18px;
-    --line-space: 4px;
+
+    &.step-line {
+        --line-space: 4px;
+    }
+
+    &.steps-line {
+        --line-space: 0px;
+    }
 
     &.marker-circle {
         .marker {
@@ -26,6 +34,7 @@
             margin-right: 0;
             width: calc(var(--circle-radius));
             height: calc(var(--circle-radius));
+            background-color: var(--background-default);
             border-radius: 50%;
             outline: 2px solid var(--background-weak);
             display: inline-flex;
@@ -60,20 +69,20 @@
             flex: 1;
             text-align: center;
 
-            &:not(:last-child)::after {
-                content: "";
-                border-bottom-style: var(--border-style);
-                width: var(--line-width);
-                margin-top: -2px;
-                order: -1;
-                position: relative;
-                top: calc(var(--circle-radius) + 1px);
-                left: var(--line-left);
-            }
-
             .content {
                 margin-top: .5rem;
             }
+        }
+
+        &.step-line .ll-step:not(:last-child)::after {
+            content: "";
+            border-bottom-style: var(--border-style);
+            width: var(--line-width);
+            margin-top: -2px;
+            order: -1;
+            position: relative;
+            top: calc(var(--circle-radius) + 1px);
+            left: var(--line-left);
         }
 
         .marker-container {
@@ -99,22 +108,37 @@
             align-items: flex-start;
             gap: 1rem;
             position: relative;
-            padding-bottom: 1rem;
+
+            &:not(:last-child) {
+                padding-bottom: 1rem;
+            }
 
             &.align-center {
                 align-items: center;
             }
+        }
 
-            &:not(:last-child)::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: var(--line-top);
-                bottom: var(--line-bottom);
-                transform: translateX(calc(var(--circle-radius) - 1px));
-                width: 0px;
-                border-left-style: var(--border-style);
-            }
+        &.step-line .ll-step:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: var(--line-top);
+            bottom: var(--line-bottom);
+            transform: translateX(calc(var(--circle-radius) - 1px));
+            width: 0px;
+            border-left-style: var(--border-style);
+        }
+
+        &.steps-line::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: var(--line-top);
+            bottom: var(--line-top);
+            transform: translateX(calc(var(--circle-radius) - 1px));
+            width: 0px;
+            border-left-style: var(--border-style);
+            z-index: -1;
         }
 
         .content {
@@ -125,16 +149,22 @@
             line-height: 1rem;
         }
     }
+
+    &.steps-line {
+        &::after {
+            border-width: 2px;
+            border-color: var(--background-weak);
+        }
+
+        &.status-done::after {
+            border-color: var(--background-invert);
+        }
+    }
 }
 
 .ll-step {
 
-    &.sortable-chosen:not(.sortable-ghost)::after {
-        content: none !important;
-
-    }
-
-    &:not(:last-child) {
+    .step-line &:not(:last-child) {
         &::after {
             border-width: 2px;
             border-color: var(--background-weak);
@@ -152,17 +182,12 @@
 
     .handle {
         color: var(--text-hint);
+        transition: all ease .3s;
 
         &.active {
             &:hover {
                 color: transparent;
-                background-image: radial-gradient(circle at center,
-                        var(--text-hint) .125rem,
-                        transparent 0), radial-gradient(circle at center,
-                        var(--text-hint) .125rem,
-                        transparent 0);
-                background-size: .5rem .5rem;
-                background-position: 0 0, 0.25rem 0.25rem;
+                background-color: var(--background-weak);
             }
 
         }

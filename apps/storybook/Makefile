@@ -7,7 +7,6 @@ help:
 
 .PHONY: deploy
 deploy: ## Build and deploy examples
-	pnpm build
 	rsync -av \
 		$(local_path)/storybook-static/ \
 		berlin:prod/$(remote_host)

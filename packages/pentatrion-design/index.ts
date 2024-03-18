@@ -21,6 +21,7 @@ export * from "./components/modal";
 export * from "./components/notification";
 export * from "./components/popover";
 export * from "./components/select";
+export * from "./components/steps";
 export * from "./components/tooltip";
 export type * from "./components/sortable";
 

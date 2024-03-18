@@ -29,3 +29,9 @@ declare global {
     "maplibre-contextmenu": CustomEvent;
   }
 }
+
+declare module "react" {
+  interface CSSProperties {
+    [key: `--${string}`]: string | number;
+  }
+}

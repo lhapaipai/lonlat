@@ -48,6 +48,14 @@ $sizes: 1, 2, 3, 4, 8;
         margin-right: var(--space-#{$size});
     }
 
+    .mt-#{$size} {
+        margin-top: var(--space-#{$size});
+    }
+
+    .mb-#{$size} {
+        margin-bottom: var(--space-#{$size});
+    }
+
     .gap-#{$size} {
         gap: var(--space-#{$size});
     }
