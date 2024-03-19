@@ -6,12 +6,13 @@ import {
   NotificationsProvider,
   Option,
   GeoFeatureOption,
+  Button,
 } from "pentatrion-design";
 
 import { Meta } from "@storybook/react";
 
 import { useState } from "react";
-import { handleChangeSearchValue } from "../_mocks/town-api";
+import { handleChangeSearchValue, unknownFeatureOption } from "../_mocks/town-api";
 
 const meta = {
   title: "Components/Autocomplete",
@@ -52,12 +53,26 @@ const options: Option[] = [
   { value: "avray", label: "Avray" },
 ];
 
-export const SimpleUncontrolled = () => {
-  return <SimpleAutocomplete options={options} />;
-};
-
-export const SimpleControlled = () => {
+export const Simple = () => {
   const [selection, setSelection] = useState<Option | null>(null);
+
+  function handleClick(action: "random" | "unknown" | "unselect") {
+    switch (action) {
+      case "random":
+        setSelection(options[Math.floor(Math.random() * options.length)]);
+        break;
+      case "unknown":
+        setSelection({
+          value: "unknown",
+          label: "Unknown",
+        });
+
+        break;
+      case "unselect":
+        setSelection(null);
+        break;
+    }
+  }
 
   return (
     <>
@@ -67,23 +82,36 @@ export const SimpleControlled = () => {
         onChangeSelection={setSelection}
       />
       <div>sélection : {selection && selection.label}</div>
+      <div>
+        <Button onClick={() => handleClick("random")} className="mr-2">
+          select random
+        </Button>
+        <Button onClick={() => handleClick("unknown")} className="mr-2">
+          select Unknown
+        </Button>
+        <Button onClick={() => handleClick("unselect")}>unselect</Button>
+      </div>
     </>
   );
 };
 
-export const LazyUncontrolled = () => {
-  return (
-    <>
-      <LazyAutocomplete
-        onChangeSearchValueCallback={handleChangeSearchValue}
-        AutocompleteOptionCustom={AutocompleteGeoFeatureOption}
-      />
-    </>
-  );
-};
-
-export const LazyControlled = () => {
+export const Lazy = () => {
   const [selection, setSelection] = useState<GeoFeatureOption | null>(null);
+
+  function handleClick(action: "random" | "unknown" | "unselect") {
+    switch (action) {
+      // case "random":
+      //   setSelection(options[Math.floor(Math.random() * options.length)]);
+      //   break;
+      case "unknown":
+        setSelection(unknownFeatureOption);
+
+        break;
+      case "unselect":
+        setSelection(null);
+        break;
+    }
+  }
 
   return (
     <>
@@ -95,6 +123,16 @@ export const LazyControlled = () => {
         AutocompleteOptionCustom={AutocompleteGeoFeatureOption}
       />
       <div>sélection : {selection && selection.feature.properties.label}</div>
+
+      <div>
+        <Button onClick={() => handleClick("random")} className="mr-2">
+          select random
+        </Button>
+        <Button onClick={() => handleClick("unknown")} className="mr-2">
+          select Unknown
+        </Button>
+        <Button onClick={() => handleClick("unselect")}>unselect</Button>
+      </div>
     </>
   );
 };

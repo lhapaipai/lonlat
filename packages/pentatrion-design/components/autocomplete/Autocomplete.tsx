@@ -1,12 +1,4 @@
-import {
-  ChangeEvent,
-  KeyboardEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, KeyboardEvent, useCallback, useMemo, useRef, useState } from "react";
 import type { Option } from "../..";
 import AutocompleteOption from "./AutocompleteOption.tsx";
 import {
@@ -80,10 +72,6 @@ export default function Autocomplete<O extends Option = Option>({
   const OptionComponent = AutocompleteOptionCustom ?? AutocompleteOption;
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
-
-  useEffect(() => {
-    console.log("activeIndex", activeIndex);
-  }, [activeIndex]);
 
   const { refs, floatingStyles, context } = useFloating({
     placement,
@@ -177,7 +165,7 @@ export default function Autocomplete<O extends Option = Option>({
     <div className="ll-autocomplete">
       <div className={cn("ll-input")} ref={refs.setReference}>
         {icon !== false && (
-          <div className="ml-2 flex-center adornment">
+          <div className="flex-center adornment">
             {icon === true ? <i className="fe-search"></i> : <i className={icon}></i>}
             {loading && <Loader size="medium" color="weak" />}
           </div>

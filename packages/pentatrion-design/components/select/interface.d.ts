@@ -3,6 +3,7 @@ import { GeoFeature } from "pentatrion-geo";
 export type Option = {
   value: string;
   label: string;
+  sourceId?: string | number;
 };
 
 export type TownOption = Option & {

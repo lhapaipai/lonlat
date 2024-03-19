@@ -1,57 +1,74 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from ".";
-import { Option } from "../..";
-import { FetchError, useDebounce, useEventCallback, useNotifications } from "../..";
+import { Option, useStateDebounce } from "../..";
+import { FetchError, useEventCallback, useNotifications } from "../..";
 
 interface Props<O extends Option = Option>
-  extends Omit<
+  // Omit "searchValue" | "onChangeSearchValue" | "options"
+  extends Pick<
     AutocompleteProps<O>,
-    "onChangeSearchValue" | "options" | "onChangeSelection" | "searchValue"
+    | "icon"
+    | "placement"
+    | "placeholder"
+    | "selection"
+    | "onChangeSelection"
+    | "AutocompleteOptionCustom"
+    | "loading"
   > {
   onChangeSearchValueCallback: (searchValue: string) => Promise<O[]>;
   debounce?: number;
-
-  onChangeSelection?: ((o: O | null) => void) | null;
 }
 
 export default function LazyAutocomplete<O extends Option = Option>({
   onChangeSearchValueCallback,
   debounce = 500,
-  selection: controlledSelection = null,
-  onChangeSelection = null,
+  selection = null,
+  onChangeSelection,
   ...rest
 }: Props<O>) {
-  const isControlled = onChangeSelection !== null;
   const onChangeSelectionStable = useEventCallback(onChangeSelection);
 
-  const [searchValue, setSearchValue] = useState("");
-  const [searchValueDebounced, setSearchValueDebouncedImmediately] = useDebounce(
-    searchValue,
+  const [searchValue, searchValueDebounced, setSearchValue] = useStateDebounce(
+    selection?.value ?? "",
     debounce,
   );
-  const [loading, setLoading] = useState(false);
 
-  const [uncontrolledSelection, setUncontrolledSelection] = useState<O | null>(null);
+  const searchValueRef = useRef(searchValue);
+  searchValueRef.current = searchValue;
+
+  const [loading, setLoading] = useState(false);
 
   const [options, setOptions] = useState<O[]>([]);
   const notificationManager = useNotifications();
 
-  const selection = isControlled ? controlledSelection : uncontrolledSelection;
-
   const handleChangeSelection = useCallback(
     (selection: O | null) => {
-      if (isControlled) {
-        onChangeSelectionStable(selection);
-      } else {
-        setUncontrolledSelection(selection);
-      }
+      onChangeSelectionStable(selection);
       if (selection) {
-        setOptions((options) => options.filter((o) => o.value === selection.value));
+        setOptions([]);
       }
     },
-    [onChangeSelectionStable, setUncontrolledSelection, isControlled],
+    [onChangeSelectionStable],
   );
 
+  // side effect, update the searchValue <input /> value when
+  // selection come from outside
+  useLayoutEffect(() => {
+    if (selection === null) {
+      setSearchValue("", true);
+      return;
+    }
+
+    // we need the fresh value of searchValue but we don't
+    // want searchValue as useEffect dependency
+    if (searchValueRef.current !== selection.label) {
+      setSearchValue(selection.label, true);
+    }
+  }, [selection, setSearchValue]);
+
+  /**
+   * set new options when searchValueDebounced change
+   */
   useEffect(() => {
     let abort = false;
 
@@ -95,8 +112,7 @@ export default function LazyAutocomplete<O extends Option = Option>({
     <Autocomplete
       searchValue={searchValue}
       onChangeSearchValue={(newValue, selectionLabel) => {
-        setSearchValue(newValue);
-        (selectionLabel || newValue === "") && setSearchValueDebouncedImmediately(newValue);
+        setSearchValue(newValue, selectionLabel || newValue === "" ? true : false);
       }}
       selection={selection}
       onChangeSelection={handleChangeSelection}

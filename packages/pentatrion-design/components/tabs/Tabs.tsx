@@ -6,13 +6,14 @@ import "./Tabs.scss";
 /* TODO: fix stickyTabs with overflow: hidden */
 
 export interface Tab {
-  title: string;
+  id: string | number;
+  title: ReactNode;
   content?: ReactNode;
 }
 
 interface Props {
   tabs?: Tab[];
-  value: number;
+  value: number | string;
   /**
    * Will make tabs stick to the top of the container when overflowing
    */
@@ -21,7 +22,7 @@ interface Props {
    * Tabs will take the maximum width and divide equally
    */
   fullWidth?: boolean;
-  onChange: (index: number) => void;
+  onChange: (id: number | string) => void;
 }
 
 export default function Tabs({
@@ -31,7 +32,7 @@ export default function Tabs({
   fullWidth = false,
   stickyTabs = false,
 }: Props) {
-  const content = tabs[value]?.content;
+  const content = tabs.find((t) => t.id === value)?.content;
 
   return (
     <div className="ll-tabs rounded-sm">
@@ -39,14 +40,14 @@ export default function Tabs({
         role="tablist"
         className={cn("tabs-list", fullWidth && "full-width", stickyTabs && "sticky-top")}
       >
-        {tabs.map(({ title }, index) => {
+        {tabs.map(({ title, id }) => {
           return (
-            <li key={title} className={cn("tabs-list-item", value === index && "selected")}>
+            <li key={id} className={cn("tabs-list-item", value === id && "selected")}>
               <button
                 onClick={(event) => {
                   event.stopPropagation();
                   event.preventDefault();
-                  onChange(index);
+                  onChange(id);
                 }}
               >
                 {title}

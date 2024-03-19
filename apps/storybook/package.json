@@ -22,6 +22,7 @@
     "fuse.js": "^7.0.0",
     "maplibre-components": "workspace:*",
     "maplibre-gl": "^4.1.0",
+    "nanoid": "^5.0.6",
     "pentatrion-design": "workspace:*",
     "pentatrion-geo": "workspace:*",
     "react": "^18.2.0",

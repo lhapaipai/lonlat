@@ -1,4 +1,5 @@
 import { Feature, FeatureCollection, Point } from "geojson";
+import { nanoid } from "nanoid";
 import { APISchemas } from "./ign-geocodage-api";
 import { getDepartmentName } from "./util";
 import { GeoFeature, GeoFeatureOption, GeocodeType } from "..";
@@ -40,6 +41,8 @@ export function prepareGeoFeature({
   properties,
 }: Feature<Point, APISchemas["AddressProperties"]>): GeoFeature {
   return {
+    // uniq id
+    id: nanoid(),
     type,
     geometry,
     properties: {
@@ -54,13 +57,18 @@ export function prepareGeoFeature({
   };
 }
 
-export function prepareResult(collection: IGNAddressResponse): GeoFeatureOption[] {
+export function prepareResult(
+  collection: IGNAddressResponse,
+  sourceId?: string | number,
+): GeoFeatureOption[] {
   return collection.features.map((feature) => {
     const geoFeature = prepareGeoFeature(feature);
     return {
-      value: geoFeature.properties.id,
+      // better to use uniqId.
+      value: geoFeature.id?.toString() || nanoid(),
       label: geoFeature.properties.label,
       feature: geoFeature,
+      sourceId,
     };
   });
 }
