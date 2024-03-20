@@ -1,21 +1,30 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { Autocomplete } from ".";
-import { useEventCallback, Option } from "../..";
+import { Autocomplete, AutocompleteProps } from ".";
+import { useEventCallback, Option, OptionLike } from "../..";
+import { getLabel } from "./util";
 
-interface Props {
-  options: Option[];
-  selection?: Option | null;
-  onChangeSelection: (o: Option | null) => void;
-}
+interface Props<O extends OptionLike = Option>
+  extends Pick<
+    AutocompleteProps<O>,
+    | "icon"
+    | "placement"
+    | "placeholder"
+    | "selection"
+    | "onChangeSelection"
+    | "AutocompleteOptionCustom"
+    | "options"
+    | "selection"
+  > {}
 
-export default function SimpleAutocomplete({
+export default function SimpleAutocomplete<O extends OptionLike = Option>({
   options,
   selection = null,
   onChangeSelection,
-}: Props) {
+  ...rest
+}: Props<O>) {
   const onChangeSelectionStable = useEventCallback(onChangeSelection);
 
-  const [searchValue, setSearchValue] = useState(selection?.value ?? "");
+  const [searchValue, setSearchValue] = useState(selection ? getLabel(selection) : "");
 
   const searchValueRef = useRef(searchValue);
   searchValueRef.current = searchValue;
@@ -30,8 +39,9 @@ export default function SimpleAutocomplete({
 
     // we need the fresh value of searchValue but we don't
     // want searchValue as useEffect dependency
-    if (searchValueRef.current !== selection.label) {
-      setSearchValue(selection.label);
+    const selectionLabel = getLabel(selection);
+    if (searchValueRef.current !== getLabel(selection)) {
+      setSearchValue(selectionLabel);
     }
   }, [selection, setSearchValue]);
 
@@ -39,7 +49,8 @@ export default function SimpleAutocomplete({
     selection !== null
       ? []
       : options.filter((option) => {
-          return option.label.toLowerCase().startsWith(searchValue.toLowerCase());
+          const optionLabel = getLabel(option);
+          return optionLabel.toLowerCase().startsWith(searchValue.toLowerCase());
         });
 
   return (
@@ -49,6 +60,7 @@ export default function SimpleAutocomplete({
       selection={selection}
       onChangeSelection={onChangeSelectionStable}
       options={filteredOptions}
+      {...rest}
     />
   );
 }

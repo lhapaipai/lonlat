@@ -2,17 +2,17 @@ import {
   SimpleAutocomplete,
   Autocomplete,
   LazyAutocomplete,
-  AutocompleteGeoFeatureOption,
+  AutocompleteFeatureOption,
   NotificationsProvider,
   Option,
-  GeoFeatureOption,
   Button,
+  FeatureOption,
 } from "pentatrion-design";
 
 import { Meta } from "@storybook/react";
 
 import { useState } from "react";
-import { handleChangeSearchValue, unknownFeatureOption } from "../_mocks/town-api";
+import { handleChangeSearchValue, unknownFeature } from "../_mocks/town-api";
 
 const meta = {
   title: "Components/Autocomplete",
@@ -51,6 +51,77 @@ const options: Option[] = [
   { value: "avranches", label: "Avranches" },
   { value: "avoriaz", label: "Avoriaz" },
   { value: "avray", label: "Avray" },
+];
+
+const featureOptions: FeatureOption[] = [
+  {
+    id: "74001",
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [6.7321620538, 46.2661080816],
+    },
+    properties: {
+      id: "74001",
+      name: "Abondance",
+      context: "Haute-Savoie",
+      label: "Abondance, Haute-Savoie",
+      score: 1,
+      type: "municipality",
+      originalProperties: null,
+    },
+  },
+  {
+    id: "74002",
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [6.01581486858, 45.8156435779],
+    },
+    properties: {
+      id: "74002",
+      name: "Alby-sur-Chéran",
+      context: "Haute-Savoie",
+      label: "Alby-sur-Chéran, Haute-Savoie",
+      score: 1,
+      type: "municipality",
+      originalProperties: null,
+    },
+  },
+  {
+    id: "74003",
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [6.23633769093, 45.8806920223],
+    },
+    properties: {
+      id: "74003",
+      name: "Alex",
+      context: "Haute-Savoie",
+      label: "Alex, Haute-Savoie",
+      score: 1,
+      type: "municipality",
+      originalProperties: null,
+    },
+  },
+  {
+    id: "74004",
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [6.08634740225, 45.7588655872],
+    },
+    properties: {
+      id: "74004",
+      name: "Allèves",
+      context: "Haute-Savoie",
+      label: "Allèves, Haute-Savoie",
+      score: 1,
+      type: "municipality",
+      originalProperties: null,
+    },
+  },
 ];
 
 export const Simple = () => {
@@ -95,16 +166,52 @@ export const Simple = () => {
   );
 };
 
-export const Lazy = () => {
-  const [selection, setSelection] = useState<GeoFeatureOption | null>(null);
+export const SimpleFeature = () => {
+  const [selection, setSelection] = useState<FeatureOption | null>(null);
 
   function handleClick(action: "random" | "unknown" | "unselect") {
     switch (action) {
-      // case "random":
-      //   setSelection(options[Math.floor(Math.random() * options.length)]);
-      //   break;
+      case "random":
+        setSelection(featureOptions[Math.floor(Math.random() * featureOptions.length)]);
+        break;
       case "unknown":
-        setSelection(unknownFeatureOption);
+        setSelection(unknownFeature);
+        break;
+      case "unselect":
+        setSelection(null);
+        break;
+    }
+  }
+
+  return (
+    <>
+      <SimpleAutocomplete
+        options={featureOptions}
+        selection={selection}
+        onChangeSelection={setSelection}
+        AutocompleteOptionCustom={AutocompleteFeatureOption}
+      />
+      <div>sélection : {selection && selection.properties.label}</div>
+      <div>
+        <Button onClick={() => handleClick("random")} className="mr-2">
+          select random
+        </Button>
+        <Button onClick={() => handleClick("unknown")} className="mr-2">
+          select Unknown
+        </Button>
+        <Button onClick={() => handleClick("unselect")}>unselect</Button>
+      </div>
+    </>
+  );
+};
+
+export const Lazy = () => {
+  const [selection, setSelection] = useState<FeatureOption | null>(null);
+
+  function handleClick(action: "random" | "unknown" | "unselect") {
+    switch (action) {
+      case "unknown":
+        setSelection(unknownFeature);
 
         break;
       case "unselect":
@@ -120,14 +227,11 @@ export const Lazy = () => {
         selection={selection}
         onChangeSelection={setSelection}
         onChangeSearchValueCallback={handleChangeSearchValue}
-        AutocompleteOptionCustom={AutocompleteGeoFeatureOption}
+        AutocompleteOptionCustom={AutocompleteFeatureOption}
       />
-      <div>sélection : {selection && selection.feature.properties.label}</div>
+      <div>sélection : {selection && selection.properties.label}</div>
 
       <div>
-        <Button onClick={() => handleClick("random")} className="mr-2">
-          select random
-        </Button>
         <Button onClick={() => handleClick("unknown")} className="mr-2">
           select Unknown
         </Button>

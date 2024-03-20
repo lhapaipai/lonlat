@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from ".";
-import { Option, useStateDebounce } from "../..";
+import { OptionLike, Option, useStateDebounce } from "../..";
 import { FetchError, useEventCallback, useNotifications } from "../..";
+import { getLabel } from "./util";
 
-interface Props<O extends Option = Option>
+interface Props<O extends OptionLike = Option>
   // Omit "searchValue" | "onChangeSearchValue" | "options"
   extends Pick<
     AutocompleteProps<O>,
@@ -19,7 +20,7 @@ interface Props<O extends Option = Option>
   debounce?: number;
 }
 
-export default function LazyAutocomplete<O extends Option = Option>({
+export default function LazyAutocomplete<O extends OptionLike = Option>({
   onChangeSearchValueCallback,
   debounce = 500,
   selection = null,
@@ -29,7 +30,7 @@ export default function LazyAutocomplete<O extends Option = Option>({
   const onChangeSelectionStable = useEventCallback(onChangeSelection);
 
   const [searchValue, searchValueDebounced, setSearchValue] = useStateDebounce(
-    selection?.value ?? "",
+    selection ? getLabel(selection) : "",
     debounce,
   );
 
@@ -61,8 +62,9 @@ export default function LazyAutocomplete<O extends Option = Option>({
 
     // we need the fresh value of searchValue but we don't
     // want searchValue as useEffect dependency
-    if (searchValueRef.current !== selection.label) {
-      setSearchValue(selection.label, true);
+    const selectionLabel = getLabel(selection);
+    if (searchValueRef.current !== selectionLabel) {
+      setSearchValue(selectionLabel, true);
     }
   }, [selection, setSearchValue]);
 
@@ -111,8 +113,8 @@ export default function LazyAutocomplete<O extends Option = Option>({
   return (
     <Autocomplete
       searchValue={searchValue}
-      onChangeSearchValue={(newValue, selectionLabel) => {
-        setSearchValue(newValue, selectionLabel || newValue === "" ? true : false);
+      onChangeSearchValue={(newValue, immediate) => {
+        setSearchValue(newValue, immediate || newValue === "" ? true : false);
       }}
       selection={selection}
       onChangeSelection={handleChangeSelection}

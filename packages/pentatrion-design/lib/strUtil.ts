@@ -1,6 +1,6 @@
 import Fuse, { FuseResult } from "fuse.js";
 import { Town } from "../types";
-import { GeoFeature } from "pentatrion-geo";
+import { FeatureOption } from "..";
 
 export function highlight(str: string | undefined, indices: readonly [number, number][]) {
   if (!str) {
@@ -98,7 +98,7 @@ export function prepareTownsResult(towns: Town[], search: string) {
   return highlightFuseResult(result);
 }
 
-export function filterFeature(towns: GeoFeature[], search: string) {
+export function filterFeature(towns: FeatureOption[], search: string) {
   const fuse = new Fuse(towns, {
     includeScore: true,
     includeMatches: true,

@@ -1,11 +1,13 @@
-import { Feature, FeatureCollection, Point } from "geojson";
+import { Feature, Point } from "geojson";
 import { nanoid } from "nanoid";
-import { APISchemas } from "./ign-geocodage-api";
 import { getDepartmentName } from "./util";
-import { GeoFeature, GeoFeatureOption, GeocodeType } from "..";
-
-type IGNAddressProperties = APISchemas["AddressProperties"];
-export type IGNAddressResponse = FeatureCollection<Point, APISchemas["AddressProperties"]>;
+import {
+  GeoFeature,
+  GeoFeatureOption,
+  GeocodeType,
+  IGNAddressProperties,
+  IGNAddressResponse,
+} from "../types";
 
 function getContext(properties: IGNAddressProperties) {
   switch (properties.type) {
@@ -35,18 +37,18 @@ function getLabel(properties: IGNAddressProperties) {
   return `${properties.name}, ${getDepartmentName(properties.citycode)}`;
 }
 
-export function prepareGeoFeature({
+export function createIgnAddressFeaturePoint({
   type,
   geometry,
   properties,
-}: Feature<Point, APISchemas["AddressProperties"]>): GeoFeature {
+}: Feature<Point, IGNAddressProperties>): GeoFeature {
+  const uniqId = nanoid();
   return {
-    // uniq id
-    id: nanoid(),
+    id: uniqId,
     type,
     geometry,
     properties: {
-      id: properties.id || Math.floor(Math.random() * 1000000).toString(),
+      id: properties.id || uniqId,
       name: properties.name || "",
       context: getContext(properties),
       label: getLabel(properties),
@@ -62,7 +64,7 @@ export function prepareResult(
   sourceId?: string | number,
 ): GeoFeatureOption[] {
   return collection.features.map((feature) => {
-    const geoFeature = prepareGeoFeature(feature);
+    const geoFeature = createIgnAddressFeaturePoint(feature);
     return {
       // better to use uniqId.
       value: geoFeature.id?.toString() || nanoid(),

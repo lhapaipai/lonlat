@@ -1,29 +1,36 @@
-import { GeoFeature } from "pentatrion-geo";
+export type OptionLike = Option | FeatureOption;
 
 export type Option = {
+  type?: "Option";
   value: string;
   label: string;
   sourceId?: string | number;
 };
 
-export type TownOption = Option & {
-  insee: number;
-  code_postal: number;
-  latitude: number;
-  longitude: number;
-  nom_commune: string;
-  code_departement: number;
-  nom_departement: string;
-  code_region: number;
-  nom_region: string;
-  context: string;
-  population: number;
-  icon: string;
-  _formatted: {
-    [key in string]: readonly RangeTuple[];
-  };
+export type FeatureOption<G extends Geometry | null = Geometry, OriginalProperties = null> = {
+  id: string;
+  type: "Feature";
+  properties: FeatureProperties<OriginalProperties>;
+  sourceId?: string | number;
+
+  geometry: G;
+  bbox?: BBox | undefined;
+
+  // required ??
+  sourceId?: string | number;
 };
 
-export type GeoFeatureOption = Option & {
-  feature: GeoFeature;
+export type FeatureProperties<OriginalProperties = null> = {
+  /** id and label are required for <select /> like components */
+
+  id: string;
+  /** compute name + short context for input string */
+  label: string;
+
+  name: string;
+  context: string | null;
+
+  score: number;
+  type: GeocodeType;
+  originalProperties: OriginalProperties;
 };

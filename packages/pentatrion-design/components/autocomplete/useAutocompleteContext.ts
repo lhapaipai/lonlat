@@ -1,10 +1,10 @@
 import { useInteractions } from "@floating-ui/react";
 import { createContext, useContext } from "react";
-import { Option } from "./interface";
+import { OptionLike } from "../select";
 
 interface AutocompleteContext {
   activeIndex: number | null;
-  selection: Option | null;
+  selection: OptionLike | null;
   getItemProps: ReturnType<typeof useInteractions>["getItemProps"];
   handleSelect: (index: number | null) => void;
 }

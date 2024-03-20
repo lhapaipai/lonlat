@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ItemInterface, ReactSortable } from "react-sortablejs";
 import { Button } from "../button";
 import { Input } from "../input";
-import { AutocompleteGeoFeatureOption, LazyAutocomplete } from "../autocomplete";
+import { AutocompleteFeatureOption, LazyAutocomplete } from "../autocomplete";
 import { handleChangeSearchValue } from "../_mocks/town-api";
 import { NotificationsProvider } from "../notification";
 import { GeoFeature } from "pentatrion-geo";
@@ -141,7 +141,7 @@ export const WithAutocomplete = () => {
               selection={item.data}
               onChangeSelection={(selection) => handleChangeSelection(index, selection)}
               onChangeSearchValueCallback={handleChangeSearchValue}
-              AutocompleteOptionCustom={AutocompleteGeoFeatureOption}
+              AutocompleteOptionCustom={AutocompleteFeatureOption}
             />
           </div>
         ))}

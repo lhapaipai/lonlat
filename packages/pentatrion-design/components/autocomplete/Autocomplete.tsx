@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useCallback, useMemo, useRef, useState } from "react";
-import type { Option } from "../..";
+import type { OptionLike, Option } from "../..";
 import AutocompleteOption from "./AutocompleteOption.tsx";
 import {
   FloatingFocusManager,
@@ -21,8 +21,9 @@ import "./Autocomplete.scss";
 import "../button/Button.scss";
 import cn from "classnames";
 import { Button, Loader, useEventCallback } from "../..";
+import { getLabel, getValue } from "./util.ts";
 
-export interface AutocompleteProps<O extends Option> {
+export interface AutocompleteProps<O extends OptionLike> {
   icon?: boolean | string;
 
   placement?: Placement;
@@ -51,7 +52,7 @@ export interface AutocompleteProps<O extends Option> {
   loading?: boolean;
 }
 
-export default function Autocomplete<O extends Option = Option>({
+export default function Autocomplete<O extends OptionLike = Option>({
   icon = true,
   placeholder = "Search...",
   searchValue,
@@ -116,11 +117,13 @@ export default function Autocomplete<O extends Option = Option>({
   function handleChangeSearchValue(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
 
+    onChangeSearchValueStable(value, false);
+
     if (value !== searchValue && selection !== null) {
       onChangeSelectionStable(null);
+      setActiveIndex(null);
+      return;
     }
-
-    onChangeSearchValueStable(value, false);
 
     if (value) {
       setIsOpen(true);
@@ -142,7 +145,8 @@ export default function Autocomplete<O extends Option = Option>({
       } else if (options[index]) {
         const newSelection = options[index];
         onChangeSelectionStable(newSelection);
-        onChangeSearchValueStable(newSelection.label, true);
+
+        onChangeSearchValueStable(getLabel(newSelection), true);
       }
       setActiveIndex(null);
       setIsOpen(false);
@@ -187,9 +191,9 @@ export default function Autocomplete<O extends Option = Option>({
                * and the only element available is the selection,
                * no need to display the dropdown.
                */
-              if (options.length === 1 && options[0].value === selection?.value) {
-                return;
-              }
+              // if (options.length === 1 && options[0].value === selection?.value) {
+              //   return;
+              // }
               setIsOpen((isOpen) => !isOpen);
             },
             onKeyDown(e: KeyboardEvent<HTMLInputElement>) {
@@ -238,9 +242,9 @@ export default function Autocomplete<O extends Option = Option>({
                   )}
                 >
                   <FloatingList elementsRef={listRef}>
-                    {options.map((option) => (
-                      <OptionComponent {...option} searchValue={searchValue} key={option.value} />
-                    ))}
+                    {options.map((option) => {
+                      return <OptionComponent {...option} key={getValue(option)} />;
+                    })}
                   </FloatingList>
                 </div>
               </div>

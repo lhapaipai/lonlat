@@ -1,6 +1,6 @@
 import { LngLat } from "maplibre-gl";
 import { nanoid } from "nanoid";
-import { GeoFeature } from "..";
+import { GeoFeature } from "../types";
 
 export function createLonLatFeaturePoint(lngLat: LngLat, id?: string): GeoFeature {
   const { lng, lat } = lngLat;
