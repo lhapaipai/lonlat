@@ -15,8 +15,8 @@ export const handleChangeSearchValue = async (searchValue: string): Promise<Feat
   return results;
 };
 
-export const unknownFeature: FeatureOption<Point> = {
-  id: "74001",
+export const createUnknownFeature = (id?: string): FeatureOption<Point> => ({
+  id: id ?? "74001",
   type: "Feature",
   geometry: {
     type: "Point",
@@ -31,4 +31,4 @@ export const unknownFeature: FeatureOption<Point> = {
     type: "municipality",
     originalProperties: null,
   },
-};
+});

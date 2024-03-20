@@ -1,3 +1,10 @@
+export function updateId<T extends { id: string }>(obj: T, id: string): T {
+  return {
+    ...obj,
+    id,
+  };
+}
+
 export function getTypeLabel(type?: string) {
   if (!type) return null;
 

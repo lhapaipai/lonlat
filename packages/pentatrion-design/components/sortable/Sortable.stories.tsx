@@ -4,11 +4,11 @@ import { ItemInterface, ReactSortable } from "react-sortablejs";
 import { Button } from "../button";
 import { Input } from "../input";
 import { AutocompleteFeatureOption, LazyAutocomplete } from "../autocomplete";
-import { handleChangeSearchValue } from "../_mocks/town-api";
+import { createUnknownFeature, handleChangeSearchValue } from "../_mocks/town-api";
 import { NotificationsProvider } from "../notification";
-import { GeoFeature } from "pentatrion-geo";
-import { GeoFeatureOption } from "../select";
-import { SortableItem } from ".";
+import { FeatureOption, NoDataFeature } from "../select";
+import { arrayEquals } from "pentatrion-design/lib";
+import { createNodataFeature, isNoData, updateId } from "pentatrion-geo";
 
 const meta = {
   title: "Components/Sortable",
@@ -53,6 +53,7 @@ const data: Item[] = [
 
 export const Basic = () => {
   const [items, setItems] = useState(data);
+
   return (
     <ReactSortable
       list={items}
@@ -95,39 +96,88 @@ export const WithInputs = () => {
   );
 };
 
-function createSortableItem(
-  feature: GeoFeature | null = null,
-): SortableItem<GeoFeatureOption | null> {
-  return {
-    id: Math.floor(Math.random() * 100000).toString(),
-    data:
-      feature === null
-        ? null
-        : {
-            value: feature.properties.id,
-            label: feature.properties.label,
-            feature,
-          },
-  };
-}
+export const BasicOptimizedRedux = () => {
+  const [items, setItems] = useState(data);
+
+  function onChange(newList: Item[]) {
+    if (
+      !arrayEquals(
+        items.map((i) => i.id),
+        newList.map((i) => i.id),
+      )
+    ) {
+      console.log("setItems");
+      setItems(newList);
+    }
+  }
+
+  return (
+    <ReactSortable
+      list={items}
+      setList={onChange}
+      animation={200}
+      className="ll-card-group ll-sortable"
+      handle=".handle"
+    >
+      {items.map((item) => (
+        <div key={item.id} className="row-item">
+          <Button icon shape="underline" className="handle">
+            <i className="fe-braille"></i>
+          </Button>
+          {item.name}
+        </div>
+      ))}
+    </ReactSortable>
+  );
+};
 
 export const WithAutocomplete = () => {
-  const [items, setItems] = useState<Array<SortableItem<GeoFeatureOption | null>>>([
-    createSortableItem(),
-    createSortableItem(),
+  const [items, setItems] = useState<(FeatureOption | NoDataFeature)[]>([
+    createNodataFeature(),
+    createNodataFeature(),
   ]);
 
-  function handleChangeSelection(index: number, selection: GeoFeatureOption | null) {
+  function handleChangeSelection(index: number, selection: FeatureOption | null) {
+    const itemId = items[index].id;
+
     const itemsCopy = [...items];
-    itemsCopy[index].data = selection;
+    itemsCopy[index] = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
     setItems(itemsCopy);
+  }
+
+  function onChange(newList: (FeatureOption | NoDataFeature)[]) {
+    if (
+      !arrayEquals(
+        items.map((i) => i.id),
+        newList.map((i) => i.id),
+      )
+    ) {
+      console.log("setItems");
+      setItems(newList);
+    }
+  }
+
+  function handleClick(action: "random" | "unknown" | "unselect") {
+    const itemId = items[0].id;
+    const itemsCopy = [...items];
+
+    switch (action) {
+      case "unknown":
+        itemsCopy[0] = createUnknownFeature(itemId);
+        setItems(itemsCopy);
+        break;
+      case "unselect":
+        itemsCopy[0] = createNodataFeature(itemId);
+        setItems(itemsCopy);
+        break;
+    }
   }
 
   return (
     <>
       <ReactSortable
         list={items}
-        setList={setItems}
+        setList={onChange}
         animation={200}
         className="ll-sortable"
         handle=".handle"
@@ -138,7 +188,7 @@ export const WithAutocomplete = () => {
               <i className="fe-braille"></i>
             </Button>
             <LazyAutocomplete
-              selection={item.data}
+              selection={isNoData(item) ? null : item}
               onChangeSelection={(selection) => handleChangeSelection(index, selection)}
               onChangeSearchValueCallback={handleChangeSearchValue}
               AutocompleteOptionCustom={AutocompleteFeatureOption}
@@ -148,9 +198,15 @@ export const WithAutocomplete = () => {
       </ReactSortable>
       <ul>
         {items.map((i) => (
-          <li key={i.id}>{i.data ? i.data.feature.properties.label : "non défini"}</li>
+          <li key={i.id}>{isNoData(i) ? "non défini" : i.properties.label}</li>
         ))}
       </ul>
+      <div>
+        <Button onClick={() => handleClick("unknown")} className="mr-2">
+          select Unknown at index 0
+        </Button>
+        <Button onClick={() => handleClick("unselect")}>unselect at index 0</Button>
+      </div>
     </>
   );
 };

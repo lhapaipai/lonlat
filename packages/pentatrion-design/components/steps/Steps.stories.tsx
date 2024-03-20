@@ -7,9 +7,8 @@ import { ReactSortable } from "react-sortablejs";
 import { AutocompleteFeatureOption, LazyAutocomplete } from "../autocomplete";
 import { handleChangeSearchValue } from "../_mocks/town-api";
 import { NotificationsProvider } from "../notification";
-import { GeoFeatureOption } from "../select";
-import { GeoFeature } from "pentatrion-geo";
-import { SortableItem } from "../sortable";
+import { createNodataFeature, isNoData, updateId } from "pentatrion-geo";
+import { FeatureOption, NoDataFeature } from "../select";
 
 const meta = {
   title: "Components/Steps",
@@ -153,30 +152,19 @@ export const WithSortable = () => {
   );
 };
 
-function createItem(feature: GeoFeature | null = null): SortableItem<GeoFeatureOption | null> {
-  return {
-    id: Math.floor(Math.random() * 100000).toString(),
-    data:
-      feature === null
-        ? null
-        : {
-            value: feature.properties.id,
-            label: feature.properties.label,
-            feature,
-          },
-  };
-}
-
 export const WithAutocompleteSortable = () => {
-  const [direction, setDirection] = useState<Array<SortableItem<GeoFeatureOption | null>>>([
-    createItem(),
-    createItem(),
-    createItem(),
+  const [direction, setDirection] = useState<(FeatureOption | NoDataFeature)[]>([
+    createNodataFeature(),
+    createNodataFeature(),
+    createNodataFeature(),
   ]);
 
-  function handleChangeSelection(index: number, selection: GeoFeatureOption | null) {
+  function handleChangeSelection(index: number, selection: FeatureOption | null) {
+    const itemId = direction[index].id;
+
     const itemsCopy = [...direction];
-    itemsCopy[index].data = selection;
+    itemsCopy[index] = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
+
     setDirection(itemsCopy);
   }
 
@@ -200,7 +188,7 @@ export const WithAutocompleteSortable = () => {
               <LazyAutocomplete
                 placeholder="Search a location..."
                 icon={false}
-                selection={directionItem.data}
+                selection={isNoData(directionItem) ? null : directionItem}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={handleChangeSearchValue}
                 AutocompleteOptionCustom={AutocompleteFeatureOption}
@@ -211,7 +199,7 @@ export const WithAutocompleteSortable = () => {
       </Steps>
       <ul>
         {direction.map((i) => (
-          <li key={i.id}>{i.data ? i.data.feature.properties.label : "non défini"}</li>
+          <li key={i.id}>{isNoData(i) ? "non défini" : i.properties.label}</li>
         ))}
       </ul>
     </>

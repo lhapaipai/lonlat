@@ -34,3 +34,8 @@ export type FeatureProperties<OriginalProperties = null> = {
   type: GeocodeType;
   originalProperties: OriginalProperties;
 };
+
+export type NoDataFeature = {
+  id: string;
+  type: "nodata";
+};

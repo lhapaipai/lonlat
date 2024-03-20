@@ -20,13 +20,4 @@ export type GeoFeature =
   | FeatureOption<Point, IGNAddressProperties>
 
   /** longitude - latitude only */
-  | FeatureOption<Point, null>
-  | NoDataFeature;
-
-type NoDataFeature = {
-  id: string;
-  type: "Feature";
-  properties: {
-    type: "nodata";
-  };
-};
+  | FeatureOption<Point, null>;

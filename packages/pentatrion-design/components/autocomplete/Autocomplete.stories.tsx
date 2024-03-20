@@ -12,7 +12,7 @@ import {
 import { Meta } from "@storybook/react";
 
 import { useState } from "react";
-import { handleChangeSearchValue, unknownFeature } from "../_mocks/town-api";
+import { handleChangeSearchValue, createUnknownFeature } from "../_mocks/town-api";
 
 const meta = {
   title: "Components/Autocomplete",
@@ -175,7 +175,7 @@ export const SimpleFeature = () => {
         setSelection(featureOptions[Math.floor(Math.random() * featureOptions.length)]);
         break;
       case "unknown":
-        setSelection(unknownFeature);
+        setSelection(createUnknownFeature());
         break;
       case "unselect":
         setSelection(null);
@@ -211,7 +211,7 @@ export const Lazy = () => {
   function handleClick(action: "random" | "unknown" | "unselect") {
     switch (action) {
       case "unknown":
-        setSelection(unknownFeature);
+        setSelection(createUnknownFeature());
 
         break;
       case "unselect":
