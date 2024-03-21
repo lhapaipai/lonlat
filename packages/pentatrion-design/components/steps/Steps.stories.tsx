@@ -9,6 +9,7 @@ import { handleChangeSearchValue } from "../_mocks/town-api";
 import { NotificationsProvider } from "../notification";
 import { createNodataFeature, isNoData, updateId } from "pentatrion-geo";
 import { FeatureOption, NoDataFeature } from "../select";
+import { arrayEquals } from "pentatrion-design/lib";
 
 const meta = {
   title: "Components/Steps",
@@ -168,12 +169,24 @@ export const WithAutocompleteSortable = () => {
     setDirection(itemsCopy);
   }
 
+  function onChange(newList: (FeatureOption | NoDataFeature)[]) {
+    if (
+      !arrayEquals(
+        direction.map((i) => i.id),
+        newList.map((i) => i.id),
+      )
+    ) {
+      console.log("setItems");
+      setDirection(newList);
+    }
+  }
+
   return (
     <>
       <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
         <ReactSortable
           list={direction}
-          setList={setDirection}
+          setList={onChange}
           animation={200}
           className="ll-sortable"
           handle=".handle"

@@ -31,6 +31,7 @@
         "classnames": "^2.5.1",
         "fuse.js": "^7.0.0",
         "pentatrion-fonts": "workspace:*",
+        "pentatrion-design": "workspace:*",
         "pentatrion-geo": "workspace:*",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

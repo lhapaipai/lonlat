@@ -8,6 +8,7 @@ import {
   IGNAddressProperties,
   IGNAddressResponse,
 } from "../types";
+import { FeatureOption } from "pentatrion-design";
 
 function getContext(properties: IGNAddressProperties) {
   switch (properties.type) {
@@ -41,7 +42,7 @@ export function createIgnAddressFeaturePoint({
   type,
   geometry,
   properties,
-}: Feature<Point, IGNAddressProperties>): GeoFeature {
+}: Feature<Point, IGNAddressProperties>): FeatureOption {
   const uniqId = nanoid();
   return {
     id: uniqId,

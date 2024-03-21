@@ -23,7 +23,7 @@ export * from "./components/popover";
 export * from "./components/select";
 export * from "./components/steps";
 export * from "./components/tooltip";
-export type * from "./components/sortable";
+export * from "./components/sortable";
 
 export * from "./lib";
 export * from "./hooks";

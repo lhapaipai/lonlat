@@ -106,6 +106,7 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
       });
 
     return () => {
+      setLoading(false);
       abort = true;
     };
   }, [selection, searchValueDebounced, onChangeSearchValueCallback, notificationManager]);

@@ -1,4 +1,5 @@
 export type OptionLike = Option | FeatureOption;
+// export type OptionLike = Option | GeoFeature;
 
 export type Option = {
   type?: "Option";
@@ -7,7 +8,7 @@ export type Option = {
   sourceId?: string | number;
 };
 
-export type FeatureOption<G extends Geometry | null = Geometry, OriginalProperties = null> = {
+export type FeatureOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
   id: string;
   type: "Feature";
   properties: FeatureProperties<OriginalProperties>;

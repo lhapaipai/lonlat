@@ -7,12 +7,12 @@ import { AutocompleteFeatureOption, LazyAutocomplete } from "../autocomplete";
 import { createUnknownFeature, handleChangeSearchValue } from "../_mocks/town-api";
 import { NotificationsProvider } from "../notification";
 import { FeatureOption, NoDataFeature } from "../select";
-import { arrayEquals } from "pentatrion-design/lib";
 import { createNodataFeature, isNoData, updateId } from "pentatrion-geo";
+import { Sortable } from ".";
 
 const meta = {
   title: "Components/Sortable",
-  component: ReactSortable,
+  component: Sortable,
   decorators: [
     (Story) => (
       <NotificationsProvider>
@@ -51,7 +51,11 @@ const data: Item[] = [
   },
 ];
 
-export const Basic = () => {
+/**
+ * ReactSortable mutate state, it can't be used with redux.
+ * see: https://github.com/SortableJS/react-sortablejs/issues/237
+ */
+export const BasicOriginal = () => {
   const [items, setItems] = useState(data);
 
   return (
@@ -74,10 +78,33 @@ export const Basic = () => {
   );
 };
 
+export const Basic = () => {
+  const [items, setItems] = useState(data);
+
+  return (
+    <Sortable
+      list={items}
+      setList={setItems}
+      animation={200}
+      className="ll-card-group ll-sortable"
+      handle=".handle"
+    >
+      {items.map((item) => (
+        <div key={item.id} className="row-item">
+          <Button icon shape="underline" className="handle">
+            <i className="fe-braille"></i>
+          </Button>
+          {item.name}
+        </div>
+      ))}
+    </Sortable>
+  );
+};
+
 export const WithInputs = () => {
   const [items, setItems] = useState(data);
   return (
-    <ReactSortable
+    <Sortable
       list={items}
       setList={setItems}
       animation={200}
@@ -92,42 +119,7 @@ export const WithInputs = () => {
           <Input className="ll-input" defaultValue={item.name} />
         </div>
       ))}
-    </ReactSortable>
-  );
-};
-
-export const BasicOptimizedRedux = () => {
-  const [items, setItems] = useState(data);
-
-  function onChange(newList: Item[]) {
-    if (
-      !arrayEquals(
-        items.map((i) => i.id),
-        newList.map((i) => i.id),
-      )
-    ) {
-      console.log("setItems");
-      setItems(newList);
-    }
-  }
-
-  return (
-    <ReactSortable
-      list={items}
-      setList={onChange}
-      animation={200}
-      className="ll-card-group ll-sortable"
-      handle=".handle"
-    >
-      {items.map((item) => (
-        <div key={item.id} className="row-item">
-          <Button icon shape="underline" className="handle">
-            <i className="fe-braille"></i>
-          </Button>
-          {item.name}
-        </div>
-      ))}
-    </ReactSortable>
+    </Sortable>
   );
 };
 
@@ -143,18 +135,6 @@ export const WithAutocomplete = () => {
     const itemsCopy = [...items];
     itemsCopy[index] = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
     setItems(itemsCopy);
-  }
-
-  function onChange(newList: (FeatureOption | NoDataFeature)[]) {
-    if (
-      !arrayEquals(
-        items.map((i) => i.id),
-        newList.map((i) => i.id),
-      )
-    ) {
-      console.log("setItems");
-      setItems(newList);
-    }
   }
 
   function handleClick(action: "random" | "unknown" | "unselect") {
@@ -175,9 +155,9 @@ export const WithAutocomplete = () => {
 
   return (
     <>
-      <ReactSortable
+      <Sortable
         list={items}
-        setList={onChange}
+        setList={setItems}
         animation={200}
         className="ll-sortable"
         handle=".handle"
@@ -195,7 +175,7 @@ export const WithAutocomplete = () => {
             />
           </div>
         ))}
-      </ReactSortable>
+      </Sortable>
       <ul>
         {items.map((i) => (
           <li key={i.id}>{isNoData(i) ? "non défini" : i.properties.label}</li>
