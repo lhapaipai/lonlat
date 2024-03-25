@@ -1,10 +1,11 @@
 import "./App.scss";
-import { Map } from "react-map-gl/maplibre";
+import { Map, MapRef } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import BaseLayerControl from "./components/BaseLayerControl";
 import { useAppSelector } from "./store";
 import { selectBaseLayer } from "./store/layerSlice";
 import { layersById } from "./layers";
+import { useEffect, useRef } from "react";
 
 //"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
@@ -20,6 +21,12 @@ const marignierViewState = {
 
 function App() {
   const baseLayer = useAppSelector(selectBaseLayer);
+
+  useEffect(() => {
+    fetch(layersById[baseLayer].style)
+      .then((res) => res.json())
+      .then((data) => console.log(data.layers));
+  }, [baseLayer]);
 
   return (
     <>

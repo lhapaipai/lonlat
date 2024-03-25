@@ -4,18 +4,16 @@
   "metadata": {
     "maputnik:renderer": "ol",
     "geoportail:tooltip": "ISOHYPSE/tooltip_ISOHYPSE"
-},
+  },
   "sources": {
     "isohypse": {
       "type": "vector",
-      "tiles": [
-        "https://data.geopf.fr/tms/1.0.0/ISOHYPSE/{z}/{x}/{y}.pbf"
-    ],
-      "url":"https://data.geopf.fr/tms/1.0.0/ISOHYPSE/metadata.json"
+      "tiles": ["https://data.geopf.fr/tms/1.0.0/ISOHYPSE/{z}/{x}/{y}.pbf"],
+      "url": "https://data.geopf.fr/tms/1.0.0/ISOHYPSE/metadata.json"
     }
   },
   "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
-  "transition": {"duration": 300, "delay": 0},
+  "transition": { "duration": 300, "delay": 0 },
   "layers": [
     {
       "source": "isohypse",
@@ -46,14 +44,7 @@
         "line-cap": "square",
         "line-join": "bevel"
       },
-      "filter": [
-        "all",
-        [
-          "==",
-          ["%", ["get", "altitude"], 100],
-          0
-        ]
-      ]
+      "filter": ["all", ["==", ["%", ["get", "altitude"], 100], 0]]
     },
     {
       "source": "isohypse",
@@ -69,29 +60,10 @@
         "line-cap": "square",
         "line-join": "bevel"
       },
-      "filter": [
-        "all",
-        [
-          "in",
-          "altitude",
-          50, 250, 750
-        ]
-      ]
+      "filter": ["all", ["in", "altitude", 50, 250, 750]]
     },
     {
-      "filter": [
-        "all",
-        [
-          ">=",
-          "altitude",
-          0
-        ],
-        [
-          "<=",
-          "altitude",
-          1
-        ]
-      ],
+      "filter": ["all", [">=", "altitude", 0], ["<=", "altitude", 1]],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "0 - 1",
@@ -107,19 +79,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          ">",
-          "altitude",
-          1
-        ],
-        [
-          "<=",
-          "altitude",
-          50
-        ]
-      ],
+      "filter": ["all", [">", "altitude", 1], ["<=", "altitude", 50]],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "1 - 50",
@@ -135,19 +95,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          ">",
-          "altitude",
-          50
-        ],
-        [
-          "<=",
-          "altitude",
-          300
-        ]
-      ],
+      "filter": ["all", [">", "altitude", 50], ["<=", "altitude", 300]],
       "source": "isohypse",
       "source-layer": "courbe",
       "minzoom": 14,
@@ -166,11 +114,7 @@
     {
       "filter": [
         "all",
-        [
-          "==",
-          ["%", ["get", "altitude"], 10],
-          0
-        ],
+        ["==", ["%", ["get", "altitude"], 10], 0],
         ["<=", ["get", "altitude"], 300],
         [">", ["get", "altitude"], 50]
       ],
@@ -203,19 +147,7 @@
         "line-cap": "square",
         "line-join": "bevel"
       },
-      "filter": [
-        "all",
-        [
-          ">",
-          "altitude",
-          300
-        ],
-        [
-          "<=",
-          "altitude",
-          600
-        ]
-      ]
+      "filter": ["all", [">", "altitude", 300], ["<=", "altitude", 600]]
     },
     {
       "source": "isohypse",
@@ -233,11 +165,7 @@
       },
       "filter": [
         "all",
-        [
-          "==",
-          ["%", ["get", "altitude"], 10],
-          0
-        ],
+        ["==", ["%", ["get", "altitude"], 10], 0],
         ["<=", ["get", "altitude"], 600],
         [">", ["get", "altitude"], 300]
       ]
@@ -257,19 +185,7 @@
         "line-cap": "square",
         "line-join": "bevel"
       },
-      "filter": [
-        "all",
-        [
-          ">",
-          "altitude",
-          600
-        ],
-        [
-          "<=",
-          "altitude",
-          1200
-        ]
-      ]
+      "filter": ["all", [">", "altitude", 600], ["<=", "altitude", 1200]]
     },
     {
       "source": "isohypse",
@@ -287,11 +203,7 @@
       },
       "filter": [
         "all",
-        [
-          "==",
-          ["%", ["get", "altitude"], 10],
-          0
-        ],
+        ["==", ["%", ["get", "altitude"], 10], 0],
         ["<=", ["get", "altitude"], 1200],
         [">", ["get", "altitude"], 600]
       ]
@@ -311,19 +223,7 @@
         "line-cap": "square",
         "line-join": "bevel"
       },
-      "filter": [
-        "all",
-        [
-          ">",
-          "altitude",
-          1200
-        ],
-        [
-          "<=",
-          "altitude",
-          1800
-        ]
-      ]
+      "filter": ["all", [">", "altitude", 1200], ["<=", "altitude", 1800]]
     },
     {
       "source": "isohypse",
@@ -341,11 +241,7 @@
       },
       "filter": [
         "all",
-        [
-          "==",
-          ["%", ["get", "altitude"], 10],
-          0
-        ],
+        ["==", ["%", ["get", "altitude"], 10], 0],
         ["<=", ["get", "altitude"], 1800],
         [">", ["get", "altitude"], 1200]
       ]
@@ -365,19 +261,7 @@
         "line-cap": "square",
         "line-join": "bevel"
       },
-      "filter": [
-        "all",
-        [
-          ">",
-          "altitude",
-          1800
-        ],
-        [
-          "<=",
-          "altitude",
-          2400
-        ]
-      ]
+      "filter": ["all", [">", "altitude", 1800], ["<=", "altitude", 2400]]
     },
     {
       "source": "isohypse",
@@ -395,11 +279,7 @@
       },
       "filter": [
         "all",
-        [
-          "==",
-          ["%", ["get", "altitude"], 10],
-          0
-        ],
+        ["==", ["%", ["get", "altitude"], 10], 0],
         ["<=", ["get", "altitude"], 2400],
         [">", ["get", "altitude"], 1800]
       ]
@@ -419,11 +299,7 @@
         "line-cap": "square",
         "line-join": "bevel"
       },
-      "filter": [
-        "all",
-        ["<=", ["get", "altitude"], 3000],
-        [">", ["get", "altitude"], 2400]
-      ]
+      "filter": ["all", ["<=", ["get", "altitude"], 3000], [">", ["get", "altitude"], 2400]]
     },
     {
       "source": "isohypse",
@@ -441,11 +317,7 @@
       },
       "filter": [
         "all",
-        [
-          "==",
-          ["%", ["get", "altitude"], 10],
-          0
-        ],
+        ["==", ["%", ["get", "altitude"], 10], 0],
         ["<=", ["get", "altitude"], 3000],
         [">", ["get", "altitude"], 2400]
       ]
@@ -465,19 +337,7 @@
         "line-cap": "square",
         "line-join": "bevel"
       },
-      "filter": [
-        "all",
-        [
-          ">",
-          "altitude",
-          3000
-        ],
-        [
-          "<=",
-          "altitude",
-          5000
-        ]
-      ]
+      "filter": ["all", [">", "altitude", 3000], ["<=", "altitude", 5000]]
     },
     {
       "source": "isohypse",
@@ -495,21 +355,13 @@
       },
       "filter": [
         "all",
-        [
-          "==",
-          ["%", ["get", "altitude"], 10],
-          0
-        ],
+        ["==", ["%", ["get", "altitude"], 10], 0],
         ["<=", ["get", "altitude"], 5000],
         [">", ["get", "altitude"], 3000]
       ]
     },
     {
-      "filter": [
-        "==",
-        "importance",
-        1
-      ],
+      "filter": ["==", "importance", 1],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "courbe_label_importance_1",
@@ -521,9 +373,7 @@
         "text-halo-width": 2
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 11,
         "text-field": "{altitude}",
         "symbol-placement": "line",
@@ -531,14 +381,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          50
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 50]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -554,14 +397,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          100
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 100]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -577,14 +413,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          250
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 250]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -600,14 +429,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          500
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 500]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -623,14 +445,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          750
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 750]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -646,14 +461,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          1000
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 1000]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -669,14 +477,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          1500
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 1500]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -692,14 +493,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          2000
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 2000]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -715,14 +509,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          2500
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 2500]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -738,14 +525,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          3000
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 3000]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -761,14 +541,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          4000
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 4000]],
       "source": "isohypse",
       "source-layer": "courbe",
       "maxzoom": 16,
@@ -784,14 +557,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          50
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 50]],
       "source": "isohypse",
       "source-layer": "courbe",
       "minzoom": 10,
@@ -804,9 +570,7 @@
         "text-halo-width": 1.5
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 10,
         "text-field": "{altitude}",
         "symbol-placement": "line",
@@ -814,14 +578,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          100
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 100]],
       "source": "isohypse",
       "source-layer": "courbe",
       "minzoom": 10,
@@ -834,9 +591,7 @@
         "text-halo-width": 1.5
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 10,
         "text-field": "{altitude}",
         "symbol-placement": "line",
@@ -844,14 +599,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          500
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 500]],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "courbe_label_500",
@@ -864,9 +612,7 @@
         "text-halo-width": 1.5
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 10,
         "text-field": "{altitude}",
         "symbol-placement": "line",
@@ -874,14 +620,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          1000
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 1000]],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "courbe_label_1000",
@@ -894,9 +633,7 @@
         "text-halo-width": 1.5
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 10,
         "text-field": "{altitude}",
         "symbol-placement": "line",
@@ -904,14 +641,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          1500
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 1500]],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "courbe_label_1500",
@@ -924,9 +654,7 @@
         "text-halo-width": 1.5
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 10,
         "text-field": "{altitude}",
         "symbol-placement": "line",
@@ -934,14 +662,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          2000
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 2000]],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "courbe_label_2000",
@@ -954,9 +675,7 @@
         "text-halo-width": 1.5
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 10,
         "text-field": "{altitude}",
         "symbol-placement": "line",
@@ -964,14 +683,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          3000
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 3000]],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "courbe_label_3000",
@@ -984,9 +696,7 @@
         "text-halo-width": 1.5
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 10,
         "text-field": "{altitude}",
         "symbol-placement": "line",
@@ -994,14 +704,7 @@
       }
     },
     {
-      "filter": [
-        "all",
-        [
-          "==",
-          "altitude",
-          4000
-        ]
-      ],
+      "filter": ["all", ["==", "altitude", 4000]],
       "source": "isohypse",
       "source-layer": "courbe",
       "id": "courbe_label_4000",
@@ -1014,46 +717,11 @@
         "text-halo-width": 1.5
       },
       "layout": {
-        "text-font": [
-          "Ubuntu"
-        ],
+        "text-font": ["Source Sans Pro"],
         "text-size": 10,
         "text-field": "{altitude}",
         "symbol-placement": "line",
         "text-letter-spacing": 0.3
-      }
-    },
-    {
-      "source": "isohypse",
-      "source-layer": "frontiere_france",
-      "id": "Frontiere etat",
-      "type": "line",
-      "paint": {
-				"line-color": "rgba(178, 175, 219, 0.6)",
-		        "line-width": {
-				"stops": [[2, 2], [3, 3.5], [9, 5], [14, 13], [15, 20], [16, 24], [17, 42]]
-                }
-			},
-      "layout": {
-        "line-cap": "square",
-        "line-join": "bevel"
-      }
-    },
-    {
-      "source": "isohypse",
-      "source-layer": "frontiere_france",
-      "id": "Frontiere etat 2",
-      "type": "line",
-      "paint": {
-				"line-color": "#9F9CB8",
-		        "line-width": {
-				"stops": [[9, 1.5], [14, 3.5], [15, 5.5], [16, 6.5], [17, 11]]
-                },
-                "line-dasharray": [4, 2]
-			},
-      "layout": {
-        "line-cap": "square",
-        "line-join": "bevel"
       }
     }
   ]
