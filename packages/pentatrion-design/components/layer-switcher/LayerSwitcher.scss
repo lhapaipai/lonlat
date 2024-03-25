@@ -3,6 +3,7 @@
     overflow-x: auto;
 
     .layer {
+        width: 0;
         flex: 1 0 54px;
         max-width: 100px;
         border-radius: var(--border-radius-sm);
@@ -11,6 +12,7 @@
         box-shadow: var(--shadow);
         padding: 5px 5px 0;
         margin: .25rem;
+        background-color: var(--background-default);
 
         &:hover,
         &.active {
@@ -27,5 +29,7 @@
     .legend {
         overflow: hidden;
         text-align: center;
+        max-height: 2.5rem;
+        text-overflow: ellipsis;
     }
 }
