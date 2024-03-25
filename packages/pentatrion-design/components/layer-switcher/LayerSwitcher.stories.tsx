@@ -11,31 +11,26 @@ export const Basic = () => {
   return (
     <div className="ll-layer-switcher">
       <div className="layer">
-        <img
-          style={{ objectPosition: "0px -57px" }}
-          className="preview"
-          src="/layer-preview-1x.jpg"
-          srcSet="/layer-preview-1x.jpg 1x, /layer-preview-2x.jpg 2x"
-        />
+        <div className="type">
+          <i className="fe-vector"></i>
+        </div>
+        <img className="preview" src="/thumbnail/ign-bd_topo-bati.png" />
         <div className="legend text-sm">IGN 1/25</div>
       </div>
 
       <div className="layer active">
-        <img
-          style={{ objectPosition: "0px -561px" }}
-          className="preview"
-          src="/layer-preview-1x.jpg"
-          srcSet="/layer-preview-1x.jpg 1x, /layer-preview-2x.jpg 2x"
-        />
+        <div className="type">
+          <i className="fe-vector"></i>
+        </div>
+        <img className="preview" src="/thumbnail/ign-isohypse-isohypse_monochrome_orange.png" />
         <div className="legend text-sm">Cadastre</div>
       </div>
 
       <div className="layer">
-        <img
-          className="preview"
-          src="/layer-preview-1x.jpg"
-          srcSet="/layer-preview-1x.jpg 1x, /layer-preview-2x.jpg 2x"
-        />
+        <div className="type">
+          <i className="fe-picture"></i>
+        </div>
+        <img className="preview" src="/thumbnail/ign-plan_ign-standard.png" />
         <div className="legend text-sm">IGN</div>
       </div>
     </div>

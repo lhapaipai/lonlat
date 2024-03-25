@@ -1,0 +1,44 @@
+{
+    "version": 8,
+    "sources": {
+        "orthophoto": {
+            "type": "raster",
+            "tiles": [
+                "https://wxs.ign.fr/qrl6tau63cxrevja7t4uval5/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN25TOUR&TILEMATRIXSET=PM&TILEMATRIX={z}&TILECOL={x}&TILEROW={y}&STYLE=normal&FORMAT=image/jpeg"
+            ],
+            "tileSize": 256
+        },
+        "terrarium": {
+            "type": "raster-dem",
+            "tiles": [
+                "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
+            ],
+            "encoding": "terrarium",
+            "tileSize": 256
+        }
+    },
+    "layers": [
+        {
+            "id": "orthophoto",
+            "type": "raster",
+            "source": "orthophoto",
+            "minzoom": 0,
+            "maxzoom": 20
+        },
+        {
+            "id": "hills",
+            "type": "hillshade",
+            "source": "terrarium",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "hillshade-exaggeration": 0.25
+            }
+        }
+    ],
+    "terrain": {
+        "source": "terrarium",
+        "exaggeration": 1
+    }
+}

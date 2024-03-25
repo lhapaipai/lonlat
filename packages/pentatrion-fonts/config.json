@@ -393,6 +393,18 @@
       "search": [
         "street"
       ]
+    },
+    {
+      "uid": "33afa0f624ce5dae73f62a3f21a67f83",
+      "css": "vector",
+      "code": 61509,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "381da2c2f7fd51f8de877c044d7f439d",
+      "css": "raster",
+      "code": 59407,
+      "src": "fontawesome"
     }
   ]
 }

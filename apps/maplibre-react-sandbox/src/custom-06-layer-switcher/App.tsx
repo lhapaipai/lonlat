@@ -1,11 +1,13 @@
 import "./App.scss";
-import { Map, MapRef } from "react-map-gl/maplibre";
+import { Map, NavigationControl, Source } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import BaseLayerControl from "./components/BaseLayerControl";
 import { useAppSelector } from "./store";
-import { selectBaseLayer } from "./store/layerSlice";
-import { layersById } from "./layers";
-import { useEffect, useRef } from "react";
+import { selectBaseLayer, selectElevation } from "./store/layerSlice";
+import { LayerInfos, layersById } from "./layers";
+import { useEffect, useMemo } from "react";
+import { createRasterStyle } from "pentatrion-design";
+import { useSelector } from "react-redux";
 
 //"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
@@ -19,26 +21,53 @@ const marignierViewState = {
   zoom: 16,
 };
 
+const terrariumTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
+
 function App() {
-  const baseLayer = useAppSelector(selectBaseLayer);
+  const baseLayerId = useAppSelector(selectBaseLayer);
+  const baseLayer: LayerInfos = layersById[baseLayerId];
 
   useEffect(() => {
-    fetch(layersById[baseLayer].style)
-      .then((res) => res.json())
-      .then((data) => console.log(data.layers));
+    console.log(baseLayerId);
+    // fetch(baseLayer.style)
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data.layers));
+  }, [baseLayerId]);
+
+  const mapStyle = useMemo(() => {
+    switch (baseLayer.type) {
+      case "vector":
+        return baseLayer.style;
+      case "raster":
+        return createRasterStyle(baseLayer.style);
+    }
+    return "";
   }, [baseLayer]);
+
+  const elevation = useSelector(selectElevation);
 
   return (
     <>
       <Map
         initialViewState={marignierViewState}
         style={{ width: "100%", height: "100%" }}
-        mapStyle={layersById[baseLayer].style}
+        mapStyle={mapStyle}
         attributionControl={false}
-      ></Map>
-      <aside className="sidebar">
+        terrain={elevation ? { source: "elevation" } : undefined}
+      >
+        <NavigationControl />
         <BaseLayerControl />
-      </aside>
+        <Source
+          id="elevation"
+          type="raster-dem"
+          tiles={terrariumTiles}
+          tileSize={256}
+          encoding="terrarium"
+        />
+      </Map>
+      {/* <aside className="sidebar">
+
+      </aside> */}
     </>
   );
 }

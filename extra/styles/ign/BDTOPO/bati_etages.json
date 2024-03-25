@@ -1,0 +1,473 @@
+{
+  "version": 8,
+  "name": "BDTOPO",
+  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
+  "sprite": "https://data.geopf.fr/annexes/ressources/vectorTiles/styles/BDTOPO/sprite/sprite_bdtopo",
+  "metadata": { "maputnik:renderer": "ol" },
+  "sources": {
+    "bdtopo": {
+      "type": "vector",
+      "tiles": ["https://data.geopf.fr/tms/1.0.0/BDTOPO/{z}/{x}/{y}.pbf"],
+      "url": "https://data.geopf.fr/tms/1.0.0/BDTOPO/metadata.json"
+    }
+  },
+  "transition": {
+    "duration": 300,
+    "delay": 0
+  },
+  "layers": [
+    {
+      "id": "parc_ou_reserve",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "parc_ou_reserve",
+      "minzoom": 7,
+      "maxzoom": 12,
+      "layout": { "visibility": "visible" },
+      "paint": { "fill-color": "#1e5c28", "fill-opacity": 0.7 }
+    },
+    {
+      "id": "parc_ou_reserve_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "parc_ou_reserve",
+      "minzoom": 7,
+      "maxzoom": 12,
+      "paint": { "line-color": "#143e1b" }
+    },
+    {
+      "id": "foret_publique",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "foret_publique",
+      "minzoom": 14,
+      "paint": { "fill-color": "#EDF7BB" }
+    },
+    {
+      "id": "foret_publique_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "foret_publique",
+      "minzoom": 14,
+      "paint": { "line-color": "#246B32" }
+    },
+    {
+      "id": "surface_hydrographique_surf",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "surface_hydrographique",
+      "paint": { "fill-color": "#BCDAE7" }
+    },
+    {
+      "id": "zone_de_vegetation_surf",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "zone_de_vegetation",
+      "minzoom": 14,
+      "layout": { "visibility": "visible" },
+      "paint": { "fill-color": "#EDF7BB" }
+    },
+    {
+      "id": "zone_d_estran_surf",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "zone_d_estran",
+      "minzoom": 7,
+      "layout": { "visibility": "visible" },
+      "paint": { "fill-color": "#BCDAE7" }
+    },
+    {
+      "id": "zone_d_estran_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "zone_d_estran",
+      "minzoom": 7,
+      "layout": { "visibility": "visible" },
+      "paint": { "line-color": "#000000" }
+    },
+    {
+      "id": "haie",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "haie",
+      "minzoom": 16,
+      "layout": { "visibility": "visible" },
+      "paint": { "line-color": "#000000" }
+    },
+
+    {
+      "id": "type_autoroutier",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "troncon_de_route",
+      "minzoom": 13,
+      "filter": ["all", ["==", "nature", "Type autoroutier"]],
+      "paint": { "line-color": "rgba(255, 255, 255, 1)", "line-width": 5 }
+    },
+    {
+      "id": "route_a_deux_chaussees",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "troncon_de_route",
+      "minzoom": 13,
+      "filter": ["all", ["==", "nature", "Route à 2 chaussées"]],
+      "paint": { "line-color": "rgba(255, 255, 255, 1)", "line-width": 2.5 }
+    },
+    {
+      "id": "route_a_une_chaussee_outline",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "troncon_de_route",
+      "minzoom": 13,
+      "filter": ["all", ["==", "nature", "Route à 1 chaussée"]],
+      "paint": { "line-color": "#FFFFFF", "line-width": 3 }
+    },
+    {
+      "id": "route",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "troncon_de_route",
+      "minzoom": 13,
+      "filter": ["all", ["!=", "nature", "Escalier"]],
+      "paint": { "line-color": "#FFFFFF", "line-width": 2.5 }
+    },
+    {
+      "id": "escalier-outline",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "troncon_de_route",
+      "minzoom": 13,
+      "filter": ["all", ["==", "nature", "Escalier"]],
+      "paint": { "line-color": "#2d3427", "line-width": 2 }
+    },
+    {
+      "id": "escalier-inline",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "troncon_de_route",
+      "minzoom": 13,
+      "filter": ["all", ["==", "nature", "Escalier"]],
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-width": 1.8,
+        "line-dasharray": [3, 0.2]
+      }
+    },
+    {
+      "id": "troncon_de_voie_ferree_line",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "troncon_de_voie_ferree",
+      "minzoom": 13,
+      "paint": {
+        "line-color": "#131315",
+        "line-width": 1.5
+      }
+    },
+    {
+      "id": "piste_d_aerodrome_surf",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "piste_d_aerodrome",
+      "minzoom": 14,
+      "paint": { "fill-color": "#cbcbcb" }
+    },
+    {
+      "id": "piste_d_aerodrome_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "piste_d_aerodrome",
+      "minzoom": 14,
+      "paint": { "line-color": "#000000", "line-width": 1 }
+    },
+    {
+      "id": "reservoir_surf",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "reservoir",
+      "minzoom": 14,
+      "paint": { "fill-color": "#A9CFE0" }
+    },
+    {
+      "id": "reservoir_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "reservoir",
+      "minzoom": 14,
+      "paint": { "line-color": "#666666" }
+    },
+    {
+      "id": "batiment_general",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "filter": ["all"],
+      "paint": { "fill-color": "rgba(223, 223, 223, 1)" }
+    },
+    {
+      "id": "batiment_0_etages",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "filter": ["all", ["==", "nombre_d_etages", 0]],
+      "paint": { "fill-color": "#8AC8E2" }
+    },
+    {
+      "id": "batiment_1_etages",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "filter": ["all", ["==", "nombre_d_etages", 1]],
+      "paint": { "fill-color": "#92dd96" }
+    },
+    {
+      "id": "batiment_2_etages",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "filter": ["all", ["==", "nombre_d_etages", 2]],
+      "paint": { "fill-color": "#9ed256" }
+    },
+    {
+      "id": "batiment_3_etages",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "filter": ["all", ["==", "nombre_d_etages", 3]],
+      "paint": { "fill-color": "#b8d600" }
+    },
+    {
+      "id": "batiment_4_a_7_etages",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "filter": ["all", [">=", "nombre_d_etages", 4], ["<=", "nombre_d_etages", 7]],
+      "paint": { "fill-color": "#FFD557" }
+    },
+    {
+      "id": "batiment_8_a_19_etages",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "filter": ["all", [">=", "nombre_d_etages", 8], ["<=", "nombre_d_etages", 19]],
+      "paint": { "fill-color": "#DA8157" }
+    },
+    {
+      "id": "batiment_plus_de_20_etages",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "filter": ["all", [">=", "nombre_d_etages", 20]],
+      "paint": { "fill-color": "#E73654" }
+    },
+    {
+      "id": "batiment_surf",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "batiment",
+      "minzoom": 14,
+      "paint": { "line-color": "#e4dfda" }
+    },
+    {
+      "id": "cimetiere_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "cimetiere",
+      "minzoom": 14,
+      "paint": { "line-color": "#505050" }
+    },
+    {
+      "id": "cimetiere_surf",
+      "type": "fill",
+      "source": "bdtopo",
+      "source-layer": "cimetiere",
+      "minzoom": 14,
+      "paint": { "fill-pattern": "cimetiere" }
+    },
+    {
+      "id": "region_limites",
+      "type": "line",
+      "paint": {
+        "line-color": "rgba(0, 0, 0, 1)",
+        "line-width": 2
+      },
+      "source": "bdtopo",
+      "source-layer": "region",
+      "layout": { "line-join": "bevel" }
+    },
+    {
+      "id": "departement_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "departement",
+      "minzoom": 2,
+      "maxzoom": 12,
+      "paint": {
+        "line-width": 0.75,
+        "line-color": "#000000"
+      }
+    },
+    {
+      "id": "epci_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "epci",
+      "paint": {
+        "line-width": 1.8,
+        "line-color": "#1f78b4"
+      },
+      "minzoom": 10,
+      "maxzoom": 13
+    },
+    {
+      "id": "arrondissement_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "arrondissement",
+      "paint": {
+        "line-color": "#666666",
+        "line-dasharray": [18, 6],
+        "line-width": 0.75
+      },
+      "minzoom": 11,
+      "layout": { "line-join": "bevel" }
+    },
+    {
+      "id": "commune_limites",
+      "type": "line",
+      "source": "bdtopo",
+      "source-layer": "commune",
+      "paint": {
+        "line-color": "#999999",
+        "line-dasharray": [2, 4, 6, 4],
+        "line-width": 0.75
+      },
+      "minzoom": 11,
+      "layout": { "line-join": "bevel" }
+    },
+    {
+      "id": "adresse",
+      "type": "symbol",
+      "source": "bdtopo",
+      "source-layer": "adresse",
+      "minzoom": 17,
+      "layout": {
+        "text-field": "{numero}",
+        "text-font": ["Source Sans Pro Regular"],
+        "text-size": 10
+      },
+      "paint": { "text-color": "#050401" }
+    },
+    {
+      "id": "foret_publique_labels",
+      "type": "symbol",
+      "source": "bdtopo",
+      "source-layer": "foret_publique",
+      "minzoom": 14,
+      "layout": {
+        "text-field": "{toponyme}",
+        "text-size": 14,
+        "text-font": ["Source Sans Pro Regular"]
+      },
+      "paint": {
+        "text-color": "#098a2e",
+        "text-halo-color": "rgba(255, 253, 253, 1)",
+        "text-halo-width": 2
+      }
+    },
+
+    {
+      "id": "region_labels",
+      "type": "symbol",
+      "source": "bdtopo",
+      "source-layer": "region",
+      "layout": {
+        "text-field": "{nom_officiel}",
+        "text-size": 20,
+        "text-font": ["Source Sans Pro Regular"]
+      },
+      "minzoom": 1,
+      "maxzoom": 7
+    },
+    {
+      "id": "departement_labels",
+      "type": "symbol",
+      "source": "bdtopo",
+      "source-layer": "departement",
+      "layout": {
+        "text-field": "{nom_officiel}",
+        "text-font": ["Source Sans Pro Regular"],
+        "text-size": 20
+      },
+      "maxzoom": 10,
+      "minzoom": 7
+    },
+    {
+      "id": "epci_labels",
+      "type": "symbol",
+      "source": "bdtopo",
+      "source-layer": "epci",
+      "layout": {
+        "text-field": "{nom_officiel}",
+        "text-font": ["Source Sans Pro Bold Italic"],
+        "text-size": 16,
+        "text-allow-overlap": false,
+        "text-ignore-placement": false,
+        "icon-text-fit": "none"
+      },
+      "paint": {
+        "text-color": "#1f78b4",
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 5
+      },
+      "minzoom": 10,
+      "maxzoom": 13
+    },
+    {
+      "id": "arrondissement_labels",
+      "type": "symbol",
+      "source": "bdtopo",
+      "source-layer": "arrondissement",
+      "minzoom": 15,
+      "layout": {
+        "text-field": "{nom_officiel}",
+        "text-font": ["Source Sans Pro Italic"]
+      },
+      "paint": {
+        "text-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 1)"
+      }
+    },
+    {
+      "id": "commune_labels",
+      "type": "symbol",
+      "source": "bdtopo",
+      "source-layer": "commune",
+      "minzoom": 12,
+      "layout": {
+        "text-field": "{nom_officiel}",
+        "text-font": ["Source Sans Pro Regular"]
+      },
+      "paint": {
+        "text-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 5,
+        "text-halo-color": "rgba(255, 255, 255, 1)"
+      }
+    },
+    {
+      "id": "zone_d_interet",
+      "type": "symbol",
+      "source": "bdtopo",
+      "source-layer": "zone_d_activite_ou_d_interet",
+      "minzoom": 15,
+      "layout": {
+        "text-field": "{toponyme}",
+        "text-font": ["Source Sans Pro Italic"],
+        "text-size": 11
+      },
+      "filter": ["all", [">=", "importance", "5"]]
+    }
+  ],
+  "id": "fel33dkrb"
+}

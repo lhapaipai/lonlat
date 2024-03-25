@@ -4,6 +4,7 @@ Service de tuiles vectorielles
 https://geoservices.ign.fr/documentation/services/api-et-services-ogc/tuiles-vectorielles-tmswmts/styles
 
 
+
 # Section isohypse
 
 ## style isohypse_monochrome_marron
@@ -183,6 +184,17 @@ pci.json
 
 puis remplacer le terme "SansSerif Bold Italic" par "Source Sans Pro Bold Italic"
 
+## noir et blanc
+
+noir_et_blanc.json
+
+```
+-    "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}",
++    "glyphs":"https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
+```
+
+puis remplacer le terme "Vollkorn Black" par "Source Sans Pro Black"
+
 # Section Plan IGN
 
 ## Les styles « orthophotos »
@@ -241,6 +253,7 @@ https://wxs.ign.fr/static/vectorTiles/styles/PLAN.IGN/essentiels/toponymes.json
 https://wxs.ign.fr/static/vectorTiles/styles/BDTOPO/bati_etages.json
 
 Remplacer le terme "Ubuntu" par "Source Sans Pro"
+Remplacer le terme "Oswald" par "Source Sans Pro"
 
 Référence à des calques qui n'existent pas.
 
@@ -327,6 +340,7 @@ Référence à des calques qui n'existent pas.
 url: https://data.geopf.fr/annexes/ressources/vectorTiles/styles/BDTOPO/bati_date.json
 
 Remplacer le terme "Ubuntu" par "Source Sans Pro"
+Remplacer le terme "Oswald" par "Source Sans Pro"
 
 
 ## Routier
