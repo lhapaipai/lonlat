@@ -1,0 +1,6 @@
+postgres:
+  connection_string: "postgresql://lhapaipai@localhost:5432/lonlat"
+
+auto_publish:
+  from_schemas:
+    - public
