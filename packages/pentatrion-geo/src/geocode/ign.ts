@@ -2,9 +2,8 @@ import { Feature, Point } from "geojson";
 import { nanoid } from "nanoid";
 import { getDepartmentName } from "./util";
 import {
-  GeoFeature,
-  GeoFeatureOption,
   GeocodeType,
+  IGNAddressFeatureOption,
   IGNAddressProperties,
   IGNAddressResponse,
 } from "../types";
@@ -42,7 +41,7 @@ export function createIgnAddressFeaturePoint({
   type,
   geometry,
   properties,
-}: Feature<Point, IGNAddressProperties>): FeatureOption {
+}: Feature<Point, IGNAddressProperties>): IGNAddressFeatureOption {
   const uniqId = nanoid();
   return {
     id: uniqId,
@@ -60,18 +59,10 @@ export function createIgnAddressFeaturePoint({
   };
 }
 
-export function prepareResult(
+export function parseIgnAddressCollection(
   collection: IGNAddressResponse,
-  sourceId?: string | number,
-): GeoFeatureOption[] {
+): IGNAddressFeatureOption[] {
   return collection.features.map((feature) => {
-    const geoFeature = createIgnAddressFeaturePoint(feature);
-    return {
-      // better to use uniqId.
-      value: geoFeature.id?.toString() || nanoid(),
-      label: geoFeature.properties.label,
-      feature: geoFeature,
-      sourceId,
-    };
+    return createIgnAddressFeaturePoint(feature);
   });
 }

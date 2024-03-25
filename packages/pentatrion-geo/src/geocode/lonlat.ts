@@ -4,6 +4,9 @@ import { GeoFeature } from "../types";
 
 export function createLonLatFeaturePoint(lngLat: LngLat, id?: string): GeoFeature {
   const { lng, lat } = lngLat;
+  const lngRounded = Math.round(lng * 10000) / 10000;
+  const latRounded = Math.round(lat * 10000) / 10000;
+
   return {
     id: id ?? nanoid(),
     type: "Feature",
@@ -13,22 +16,12 @@ export function createLonLatFeaturePoint(lngLat: LngLat, id?: string): GeoFeatur
     },
     properties: {
       id: `${lng}-${lat}`,
-      name: `longitude: ${lng}, latitude: ${lat}`,
+      name: `longitude: ${lngRounded}, latitude: ${latRounded}`,
       context: null,
-      label: `longitude: ${lng}, latitude: ${lat}`,
+      label: `longitude: ${lngRounded}, latitude: ${latRounded}`,
       score: 1,
       type: "lonlat",
       originalProperties: null,
     },
-  };
-}
-
-export function createLonLatOption(lngLat: LngLat, id?: string, sourceId?: string | number) {
-  const geoFeature = createLonLatFeaturePoint(lngLat, id);
-  return {
-    value: geoFeature.id?.toString() || nanoid(),
-    label: geoFeature.properties.label,
-    feature: geoFeature,
-    sourceId,
   };
 }

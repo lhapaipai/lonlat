@@ -12,12 +12,13 @@ type GeocodeType =
   | "unknown"
   | "nodata";
 
+// Raw data
 export type IGNAddressProperties = APISchemas["AddressProperties"];
 export type IGNAddressResponse = FeatureCollection<Point, APISchemas["AddressProperties"]>;
 
-// IGNAddressProperties | null
-export type GeoFeature =
-  | FeatureOption<Point, IGNAddressProperties>
+// Prepared data
+export type IGNAddressFeatureOption = FeatureOption<Point, IGNAddressProperties>;
+export type LonLatFeatureOption = FeatureOption<Point, null>;
 
-  /** longitude - latitude only */
-  | FeatureOption<Point, null>;
+// IGNAddressProperties | null
+export type GeoFeature = IGNAddressFeatureOption | LonLatFeatureOption;
