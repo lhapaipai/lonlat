@@ -11,9 +11,10 @@ const meta = {
   component: RMarker,
   decorators: [
     (Story) => {
-      useEffect(() => {
+      if (document.body.classList.contains("sb-main-padded")) {
         document.body.classList.remove("sb-main-padded");
-      }, []);
+      }
+
       return (
         <RMap style={{ height: "100vh" }}>
           <Story />

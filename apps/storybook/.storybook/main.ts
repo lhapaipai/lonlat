@@ -8,7 +8,6 @@ const projectDir = resolve(storybookDir, '../..');
 
 const config: StorybookConfig = {
   stories: [
-    "../stories/**/*.stories.@(ts|tsx)",
     `${projectDir}/packages/pentatrion-design/styles/**/*.stories.@(ts|tsx)`,
     `${projectDir}/packages/pentatrion-design/components/**/*.stories.@(ts|tsx)`,
     `${projectDir}/packages/pentatrion-fonts/Icons.stories.tsx`,
@@ -18,10 +17,7 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-
-    // is it necessary ?
-    "@storybook/addon-actions"
+    "@storybook/addon-interactions"
   ],
   framework: {
     name: "@storybook/react-vite",
