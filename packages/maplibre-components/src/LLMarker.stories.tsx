@@ -18,6 +18,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-star"></i>
           </div>
+          <div className="target"></div>
         </div>
       </div>
     </div>
@@ -29,6 +30,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-road"></i>
           </div>
+          <div className="target"></div>
         </div>
       </div>
       <div>
@@ -37,6 +39,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
+          <div className="target"></div>
         </div>
         <pre>.selected</pre>
       </div>
@@ -49,6 +52,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
+          <div className="target"></div>
         </div>
       </div>
       <div>
@@ -57,6 +61,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
+          <div className="target"></div>
         </div>
       </div>
       <div>
@@ -65,6 +70,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
+          <div className="target"></div>
         </div>
       </div>
       <div>
@@ -73,6 +79,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
+          <div className="target"></div>
         </div>
       </div>
       <div>
@@ -81,6 +88,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
+          <div className="target"></div>
         </div>
       </div>
       <div>
@@ -89,6 +97,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
+          <div className="target"></div>
         </div>
       </div>
     </div>
@@ -100,6 +109,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <div className="text">5</div>
           </div>
+          <div className="target"></div>
         </div>
       </div>
       <div>
@@ -108,6 +118,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <div className="text">15</div>
           </div>
+          <div className="target"></div>
         </div>
       </div>
       <div>
@@ -116,6 +127,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <div className="text">105</div>
           </div>
+          <div className="target"></div>
         </div>
       </div>
     </div>
@@ -127,6 +139,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-housenumber"></i>
           </div>
+          <div className="target"></div>
         </div>
         <pre>.disabled</pre>
       </div>
@@ -137,6 +150,7 @@ export const Graphics = () => (
             <i className="fe-town"></i>
             <div className="inactive"></div>
           </div>
+          <div className="target"></div>
         </div>
         <pre>.inactive</pre>
       </div>
@@ -149,6 +163,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-route"></i>
           </div>
+          <div className="target"></div>
         </div>
         <pre>--marker-size: 30px</pre>
       </div>
@@ -158,6 +173,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-municipality"></i>
           </div>
+          <div className="target"></div>
         </div>
         <pre>--marker-size: 50px</pre>
       </div>
@@ -167,6 +183,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-home"></i>
           </div>
+          <div className="target"></div>
         </div>
         <pre>--marker-size: 70px</pre>
       </div>
@@ -176,6 +193,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <i className="fe-climbing-outdoor"></i>
           </div>
+          <div className="target"></div>
         </div>
         <pre>--marker-size: 90px</pre>
       </div>
@@ -188,6 +206,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <div className="text">5</div>
           </div>
+          <div className="target"></div>
         </div>
         <pre>--marker-size: 30px</pre>
       </div>
@@ -197,6 +216,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <div className="text">12</div>
           </div>
+          <div className="target"></div>
         </div>
         <pre>--marker-size: 50px</pre>
       </div>
@@ -206,6 +226,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <div className="text">105</div>
           </div>
+          <div className="target"></div>
         </div>
         <pre>--marker-size: 70px</pre>
       </div>
@@ -215,6 +236,7 @@ export const Graphics = () => (
             <div className="ovale"></div>
             <div className="text">130</div>
           </div>
+          <div className="target"></div>
         </div>
         <pre>--marker-size: 90px</pre>
       </div>

@@ -54,7 +54,10 @@ export default class LLMarker extends Marker {
         DOM.create("i", this._icon, container);
       }
 
+      const target = DOM.create("div", "target");
+
       this._element.appendChild(container);
+      this._element.appendChild(target);
     }
   }
 
