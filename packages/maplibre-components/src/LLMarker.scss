@@ -2,12 +2,12 @@
     --marker-size: 50px;
     --marker-height: var(--marker-size);
     --marker-width: calc(var(--marker-size) * 0.7);
-
+    --marker-background-position-hovered: calc(var(--marker-size)* -.3);
     --marker-color: var(--color-primary-500);
-
-    --marker-color-selected: color-mix(in srgb, var(--marker-color), black 10%);
-    --marker-color-hover: color-mix(in srgb, var(--marker-color), black 10%);
+    --marker-color-dark: color-mix(in srgb, var(--marker-color), black 40%);
     --ovale-color-hover: color-mix(in srgb, var(--marker-color), white 50%);
+
+    --marker-color-gradient: linear-gradient(120deg, var(--marker-color-dark), var(--marker-color));
 
     cursor: pointer;
 
@@ -52,8 +52,6 @@
 
         opacity: 0;
         transform: scale(.5);
-
-
 
         transition: transform 0.2s ease, opacity .2s ease;
 
@@ -109,10 +107,16 @@
         left: 0;
         content: '\e81c';
         z-index: 1;
-        color: var(--marker-color);
+
+        color: transparent;
+        background-image: var(--marker-color-gradient);
+        background-clip: text;
+        background-size: var(--marker-height) var(--marker-height);
+        background-position: var(--marker-background-position-hovered);
         width: var(--marker-width);
         height: var(--marker-height);
     }
+
 
 
     /* fontello default */
@@ -139,6 +143,10 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         transition: color .3s ease;
+    }
+
+    &>:first-child::after {
+        transition: background-position .3s ease;
     }
 
     .ovale,
@@ -205,7 +213,7 @@
 
         /* marker */
         &::after {
-            color: var(--marker-color-hover);
+            background-position: 0px;
         }
 
         /* ovale */
@@ -218,7 +226,7 @@
 
         /* marker */
         &::after {
-            color: var(--marker-color-selected);
+            background-position: 0px;
         }
 
     }

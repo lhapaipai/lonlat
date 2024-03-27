@@ -12,6 +12,71 @@ export const Graphics = () => (
   <div>
     <div className="storybook-icon-grid">
       <div>
+        <div
+          className="ll-marker"
+          style={{
+            background: "var(--marker-color)",
+          }}
+        ></div>
+        <div>--marker-color</div>
+      </div>
+      <div>
+        <div
+          className="ll-marker"
+          style={{
+            background: "var(--marker-color-dark)",
+          }}
+        ></div>
+        <div>--marker-color-dark</div>
+      </div>
+      <div>
+        <div
+          className="ll-marker"
+          style={{
+            background: "var(--ovale-color-hover)",
+          }}
+        ></div>
+        <div>--ovale-color-hover</div>
+      </div>
+    </div>
+    <div className="storybook-icon-grid">
+      <div>
+        <div
+          className="ll-marker"
+          style={{
+            backgroundImage: "var(--marker-color-gradient)",
+            backgroundSize: "var(--marker-height)",
+            backgroundPosition: -15,
+          }}
+        ></div>
+        <div>--marker-color-gradient</div>
+      </div>
+      <div>
+        <div
+          className="ll-marker"
+          style={{
+            backgroundImage: "var(--marker-color-gradient)",
+            backgroundSize: "var(--marker-height)",
+            backgroundPosition: 0,
+          }}
+        ></div>
+        <div>--marker-color-gradient hover</div>
+      </div>
+      <div>
+        <div
+          className="ll-marker"
+          style={{
+            backgroundImage: "var(--marker-color-gradient)",
+            backgroundSize: "var(--marker-height)",
+            backgroundPosition: 0,
+          }}
+        ></div>
+        <div>--marker-color-gradient selected</div>
+      </div>
+    </div>
+
+    <div className="storybook-icon-grid">
+      <div>
         <div className="ll-marker">
           {/* i is wrapped so we can apply transform when active */}
           <div>
@@ -286,11 +351,8 @@ export const Basic = () => {
     new LLMarker({ text: "5", scale: 0.5, className: "small-text" })
       .setLngLat([8, 44.698])
       .addTo(map);
-    new LLMarker({ color: "green", rotation: 180, anchor: "top" })
-      .setLngLat([-4, 44.698])
-      .addTo(map);
     new LLMarker({ scale: 0.5 }).setLngLat([-6.293, 49.92]).addTo(map);
-    new LLMarker({ draggable: true }).setLngLat([-8, 44.698]).addTo(map);
+    new LLMarker({ draggable: true, icon: "fe-braille" }).setLngLat([-8, 44.698]).addTo(map);
 
     // new maplibre.Marker().setLngLat([-1.1344, 44.698]).addTo(map);
   }, []);
