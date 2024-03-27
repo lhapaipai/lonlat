@@ -1,12 +1,8 @@
-import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions } from "maplibre-gl";
-import { applyAnchorClass, anchorTranslate } from "maplibre-gl/src/ui/anchor";
-import { extend } from "maplibre-gl/src/util/util";
-import { smartWrap } from "maplibre-gl/src/util/smart_wrap";
-
+import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions, Popup } from "maplibre-gl";
 import { DOM } from "maplibre-gl/src/util/dom";
-import Point from "@mapbox/point-geometry";
+
 import "./LLMarker.scss";
-import { arrowHeight } from "./LLPopup";
+import LLPopup, { arrowHeight } from "./LLPopup";
 
 interface Options extends MarkerOptions {
   icon?: string;
@@ -20,6 +16,8 @@ export default class LLMarker extends Marker {
   _icon: string;
   _height = defaultHeight;
   _text?: string;
+  // @ts-ignore
+  _popup?: LLPopup | Popup;
 
   constructor(options?: Options) {
     const useDefaultMarker = !options || !options.element;
@@ -107,10 +105,10 @@ export default class LLMarker extends Marker {
     return this;
   }
 
-  setPopup(popup?: Popup | null): this {
+  setPopup(popup?: LLPopup | Popup | null): this {
     if (this._popup) {
       this._popup.remove();
-      this._popup = null;
+      delete this._popup;
       this._element.removeEventListener("keypress", this._onKeyPress);
 
       if (!this._originalTabIndex) {
@@ -120,15 +118,17 @@ export default class LLMarker extends Marker {
 
     if (popup) {
       if (!("offset" in popup.options)) {
+        // offset of LLPopup is typed as OffsetOptions
+        // not Offset like Popup
         popup.options.offset = {
-          mainAxis: this._height + arrowHeight + 5,
+          mainAxis: this._height + arrowHeight,
         };
       }
 
       this._popup = popup;
       if (this._lngLat) this._popup.setLngLat(this._lngLat);
 
-      this._originalTabIndex = this._element.getAttribute("tabindex");
+      this._originalTabIndex = this._element.getAttribute("tabindex") || "";
       if (!this._originalTabIndex) {
         this._element.setAttribute("tabindex", "0");
       }

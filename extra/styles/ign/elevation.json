@@ -1,37 +1,33 @@
 {
-    "version": 8,
-    "name": "PLAN IGN",
-    "glyphs": "https://wxs.ign.fr/static/vectorTiles/fonts/{fontstack}/{range}.pbf",
-    "sprite": "https://wxs.ign.fr/static/vectorTiles/styles/PLAN.IGN/sprite/PlanIgn",
-    "sources": {
-        "elevation": {
-            "type": "raster-dem",
-            "tiles": [
-                "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
-            ],
-            "encoding": "terrarium",
-            "tileSize": 256
-        }
-    },
-    "transition": {
-        "duration": 300,
-        "delay": 0
-    },
-    "layers": [
-        {
-            "id": "hills",
-            "type": "hillshade",
-            "source": "elevation",
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "hillshade-exaggeration": 0.25
-            }
-        }
-    ],
-    "terrain": {
-        "source": "elevation",
-        "exaggeration": 1
+  "version": 8,
+  "name": "PLAN IGN",
+  "sources": {
+    "elevation": {
+      "type": "raster-dem",
+      "tiles": ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+      "encoding": "terrarium",
+      "tileSize": 256
     }
+  },
+  "transition": {
+    "duration": 300,
+    "delay": 0
+  },
+  "layers": [
+    {
+      "id": "hills",
+      "type": "hillshade",
+      "source": "elevation",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "hillshade-exaggeration": 0.25
+      }
+    }
+  ],
+  "terrain": {
+    "source": "elevation",
+    "exaggeration": 1
+  }
 }

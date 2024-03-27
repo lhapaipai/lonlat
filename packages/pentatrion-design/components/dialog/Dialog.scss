@@ -1,5 +1,5 @@
 .ll-dialog {
-    $padding: 1rem;
+    $padding: .5rem;
     position: relative;
     background-color: white;
     pointer-events: auto;
@@ -9,7 +9,7 @@
     border-style: solid;
 
     .bar-buttons {
-        padding: .75rem;
+        padding: .25rem;
         float: right;
     }
 

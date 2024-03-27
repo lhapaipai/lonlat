@@ -1,18 +1,22 @@
-.ll-popup.ll-dialog {
+.ll-popup {
     position: absolute;
     left: 0;
     top: 0;
     width: max-content;
     min-width: 150px;
-    will-change: transform;
 
-    &.unselectable {
-        pointer-events: none;
-        user-select: none;
+    &.maplibregl-track-pointer {
 
-        .box {
+        &,
+        .ll-dialog {
+
             pointer-events: none;
             user-select: none;
         }
+    }
+
+    .ll-button.icon {
+        width: 1.75rem;
+        height: 1.75rem;
     }
 }

@@ -1,0 +1,23 @@
+.maplibregl-popup {
+    background-color: green;
+}
+
+/* #map#map {
+    margin-left: 50%;
+    width: 50%;
+} */
+
+/* .maplibregl-marker {
+    opacity: .5;
+    background-color: rgba(0, 0, 0, .1);
+} */
+
+/* .maplibregl-marker svg {
+    opacity: .8;
+} */
+
+#point {
+    width: 3px;
+    height: 3px;
+    background-color: red;
+}

@@ -306,27 +306,6 @@ export const Graphics = () => (
         <pre>--marker-size: 90px</pre>
       </div>
     </div>
-
-    {/* <div className="storybook-icon-grid">
-      <div className="ll-marker marker-cluster" style={{ "--marker-size": "44px" }}>
-        <div>
-          <i className="fe-cluster-station-met"></i>
-          <div className="text">25</div>
-        </div>
-      </div>
-      <div className="ll-marker marker-cluster" style={{ "--marker-size": "60px" }}>
-        <div>
-          <i className="fe-cluster-station-nph"></i>
-          <div className="text">105</div>
-        </div>
-      </div>
-      <div className="ll-marker marker-cluster" style={{ "--marker-size": "80px" }}>
-        <div>
-          <i className="fe-cluster-station-mf"></i>
-          <div className="text">225</div>
-        </div>
-      </div>
-    </div> */}
   </div>
 );
 
@@ -343,16 +322,24 @@ export const Basic = () => {
       center: [5, 45],
       zoom: 4,
     });
+    map.on("click", (e) => console.log(e.lngLat));
+    new LLMarker().setLngLat({ lng: -4.492187500001222, lat: 48.43306399776475 }).addTo(map);
 
-    new LLMarker().setLngLat([-1.1344, 44.698]).addTo(map);
-
-    new LLMarker({ color: "green" }).setLngLat([-4, 44.698]).addTo(map);
-    new LLMarker({ text: "5" }).setLngLat([4, 44.698]).addTo(map);
-    new LLMarker({ text: "5", scale: 0.5, className: "small-text" })
-      .setLngLat([8, 44.698])
+    new LLMarker({ color: "green" })
+      .setLngLat({ lng: 3.154296874998977, lat: 42.65440425112374 })
       .addTo(map);
-    new LLMarker({ scale: 0.5 }).setLngLat([-6.293, 49.92]).addTo(map);
-    new LLMarker({ draggable: true, icon: "fe-braille" }).setLngLat([-8, 44.698]).addTo(map);
+    new LLMarker({ text: "5" })
+      .setLngLat({ lng: -1.679687500000881, lat: 43.4890366431398 })
+      .addTo(map);
+    new LLMarker({ scale: 0.5 })
+      .setLngLat({ lng: 6.274414062498977, lat: 43.10523413827215 })
+      .addTo(map);
+    new LLMarker({ draggable: true, icon: "fe-braille" })
+      .setLngLat({ lng: 8.295898437499488, lat: 49.099264690742416 })
+      .addTo(map);
+    new LLMarker({ text: "125", scale: 2 })
+      .setLngLat({ lng: 6.325788442409362, lat: 46.242459297071804 })
+      .addTo(map);
 
     // new maplibre.Marker().setLngLat([-1.1344, 44.698]).addTo(map);
   }, []);
