@@ -1,9 +1,7 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "types": [
-            "@testing-library/jest-dom"
-        ],
+        "types": [],
         "paths": {
             "maplibre-components": [
                 "."

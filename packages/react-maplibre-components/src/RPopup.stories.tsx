@@ -1,16 +1,14 @@
 import { RMap, RPopup } from "react-maplibre-components";
 import { Meta, StoryObj } from "@storybook/react";
-import { useEffect } from "react";
 
 const meta = {
   title: "Maplibre-React/RPopup",
   component: RPopup,
+  parameters: {
+    layout: "fullscreen",
+  },
   decorators: [
     (Story) => {
-      if (document.body.classList.contains("sb-main-padded")) {
-        document.body.classList.remove("sb-main-padded");
-      }
-
       return (
         <RMap style={{ height: "100vh" }}>
           <Story />

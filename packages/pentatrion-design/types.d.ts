@@ -1,3 +1,5 @@
+import "react";
+
 export type ThemeColor = "primary" | "weak" | "danger" | "warning" | "success" | "info";
 
 export interface Town {

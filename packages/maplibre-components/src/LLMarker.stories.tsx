@@ -310,10 +310,6 @@ export const Graphics = () => (
 );
 
 export const Basic = () => {
-  useEffect(() => {
-    document.body.classList.remove("sb-main-padded");
-  }, []);
-
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const map = new maplibre.Map({
@@ -322,9 +318,8 @@ export const Basic = () => {
       center: [5, 45],
       zoom: 4,
     });
-    map.on("click", (e) => console.log(e.lngLat));
-    new LLMarker().setLngLat({ lng: -4.492187500001222, lat: 48.43306399776475 }).addTo(map);
 
+    new LLMarker().setLngLat({ lng: -4.492187500001222, lat: 48.43306399776475 }).addTo(map);
     new LLMarker({ color: "green" })
       .setLngLat({ lng: 3.154296874998977, lat: 42.65440425112374 })
       .addTo(map);
@@ -340,8 +335,10 @@ export const Basic = () => {
     new LLMarker({ text: "125", scale: 2 })
       .setLngLat({ lng: 6.325788442409362, lat: 46.242459297071804 })
       .addTo(map);
-
-    // new maplibre.Marker().setLngLat([-1.1344, 44.698]).addTo(map);
   }, []);
   return <div ref={containerRef} style={{ height: "100vh" }}></div>;
+};
+
+Basic.parameters = {
+  layout: "fullscreen",
 };

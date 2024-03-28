@@ -5,14 +5,13 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 const meta = {
   title: "Maplibre-ext/LLPopup",
+  parameters: {
+    layout: "fullscreen",
+  },
 };
 export default meta;
 
 export const Basic = () => {
-  useEffect(() => {
-    document.body.classList.remove("sb-main-padded");
-  }, []);
-
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const map = new maplibre.Map({

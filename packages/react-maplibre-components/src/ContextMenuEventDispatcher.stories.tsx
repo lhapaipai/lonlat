@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ContextMenuEventDispatcher, MaplibreContextmenuEventDetail } from ".";
 import { Meta } from "@storybook/react";
 import { MapRef, Map, Marker } from "react-map-gl/maplibre";
@@ -7,11 +7,11 @@ import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "pentatr
 const meta = {
   title: "Maplibre-React/ContextMenu",
   component: ContextMenuEventDispatcher,
+  parameters: {
+    layout: "fullscreen",
+  },
   decorators: [
     (Story) => {
-      useLayoutEffect(() => {
-        document.body.classList.remove("sb-main-padded");
-      }, []);
       return <Story />;
     },
   ],
