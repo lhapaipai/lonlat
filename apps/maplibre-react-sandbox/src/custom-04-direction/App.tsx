@@ -62,7 +62,7 @@ function App() {
         onMoveEnd={handleMoveEnd}
         initialViewState={initialViewState}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="/styles/ign/PLAN.IGN/standard-geopf.json"
+        mapStyle="/styles/ign/PLAN.IGN/standard.json"
       >
         <MapFlyer />
         {searchFeature && (

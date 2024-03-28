@@ -17,5 +17,5 @@ const map = new Map({
   // center: [0, 20],
   center: marignier,
   zoom: 14,
-  style: "/styles/ign/PLAN.IGN/standard-geopf.json",
+  style: "/styles/ign/PLAN.IGN/standard.json",
 });

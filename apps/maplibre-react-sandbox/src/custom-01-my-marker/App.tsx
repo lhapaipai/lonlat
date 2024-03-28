@@ -20,7 +20,7 @@ function App() {
       <Map
         initialViewState={marignierViewState}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="/styles/ign/PLAN.IGN/standard-geopf.json"
+        mapStyle="/styles/ign/PLAN.IGN/standard.json"
       >
         <OriginalMarker
           longitude={marignier[0]}

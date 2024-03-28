@@ -65,7 +65,7 @@ function App() {
         padding={leftMapPadding}
         onMoveStart={onLeftMoveStart}
         onMove={(e) => onMove(e, "left")}
-        mapStyle="/styles/ign/PLAN.IGN/standard-geopf.json"
+        mapStyle="/styles/ign/PLAN.IGN/standard.json"
         style={LeftMapStyle}
       ></Map>
       <Map
