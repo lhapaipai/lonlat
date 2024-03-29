@@ -31,7 +31,6 @@ const styles = [
   "ign.plan.ign.gris",
   "ign.plan.ign.sans_toponymes",
   "ign.plan.ign.toponymes",
-  "ign.plan.ign.transparent",
   "ign.plan.ign.accentue",
   "ign.plan.ign.classique",
   "ign.plan.ign.epure",
@@ -118,10 +117,6 @@ const entities = {
     title: "IGN > Plan IGN > Toponymes",
     url: "/styles/ign/PLAN.IGN/toponymes.json",
   },
-  "ign.plan.ign.transparent": {
-    title: "IGN > Plan IGN > Transparent",
-    url: "/styles/ign/PLAN.IGN/transparent.json",
-  },
   "ign.plan.ign.accentue": {
     title: "IGN > Plan IGN > Accentué",
     url: "/styles/ign/PLAN.IGN/accentue.json",
@@ -150,8 +145,10 @@ styles.forEach((styleId) => {
   $button.innerText = style.title;
   $button.addEventListener("click", () => {
     map.setStyle(style.url, {
-      diff: false,
-      // transformStyle: (previousStyle, nextStyle) => nextStyle,
+      diff: true,
+      // transformStyle: (previousStyle, nextStyle) => {
+      //   return nextStyle;
+      // },
     });
     $currentStyle.innerText = style.title;
   });
