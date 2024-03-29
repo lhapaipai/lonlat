@@ -55,15 +55,15 @@ export type MapReactiveOptionName =
   | "pixelRatio";
 
 export type MapInitialOptions = {
-  [key in MapNonReactiveOptionName as `initial${Capitalize<key>}`]: MapOptions[key];
+  [key in MapNonReactiveOptionName as `initial${Capitalize<key>}`]?: MapOptions[key];
 };
 
 export type MapReactiveOptions = {
-  [key in MapReactiveOptionName]: MapOptions[key];
+  [key in MapReactiveOptionName]?: MapOptions[key];
 };
 
 export type MapHandlerOptions = {
-  [key in MapHandlerOptionName]: MapOptions[key];
+  [key in MapHandlerOptionName]?: MapOptions[key];
 };
 
 export const reactiveOptionNames = [

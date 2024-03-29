@@ -10,7 +10,7 @@ import {
   handlerNames,
   reactiveOptionNames,
 } from "../types/map";
-import { MaplibreProps } from "./MapManager";
+import { MapProps } from "./MapManager";
 
 type OtherOption = Omit<
   MapOptions,
@@ -22,7 +22,7 @@ type OtherOption = Omit<
   | "style"
 >;
 
-export function filterMaplibreProps(options: MaplibreProps) {
+export function filterMapProps(options: MapProps) {
   const callbacks = {};
   const mapHandlerOptions = {};
   const mapReactiveOptions = {};

@@ -14,7 +14,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "pentatrion-design": resolve(projectDir, "packages/pentatrion-design"),
-      "react-maplibre-components": resolve(projectDir, "packages/react-maplibre-components"),
+      "maplibre-react-components": resolve(projectDir, "packages/maplibre-react-components"),
       "maplibre-components": resolve(projectDir, "packages/maplibre-components"),
       "@storybook/react": resolve(storybookDir, "node_modules/@storybook/react"),
       "@storybook/addon-actions": resolve(storybookDir, "node_modules/@storybook/addon-actions"),

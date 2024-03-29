@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.scss";
 
-import { RMap, RMarker } from "react-maplibre-components";
+import { RMap, RMarker } from "maplibre-react-components";
 import * as maplibre from "maplibre-gl";
 
 function App() {

@@ -14,7 +14,7 @@ import {
 } from "maplibre-gl";
 import { MapCallbacks, eventHandlers, mapEvents } from "../types/events";
 import { MapLayerMouseEvent, MapLayerTouchEvent } from "react-map-gl";
-import { filterMaplibreProps, prepareInitialOptions } from "./util";
+import { filterMapProps, prepareInitialOptions } from "./util";
 import {
   MapHandlerOptions,
   MapInitialOptions,
@@ -24,8 +24,8 @@ import {
 } from "../types/map";
 import { deepEqual } from "maplibre-gl/src/util/util";
 
-export type ManagerProps = {
-  mapStyle: StyleSpecification | string;
+export type ManagerOptions = {
+  mapStyle?: StyleSpecification | string;
   styleDiffing?: boolean;
   padding?: PaddingOptions;
 
@@ -33,12 +33,9 @@ export type ManagerProps = {
   // interactiveLayerIds?: string[];
 };
 
-export type MaplibreProps = MapInitialOptions &
-  MapReactiveOptions &
-  MapHandlerOptions &
-  MapCallbacks;
+export type MapProps = MapInitialOptions & MapReactiveOptions & MapHandlerOptions & MapCallbacks;
 
-export type MapManagerOptions = MaplibreProps & ManagerProps;
+const DEFAULT_STYLE = "https://demotiles.maplibre.org/style.json";
 
 export default class MapManager {
   reactiveOptions: Partial<MapReactiveOptions> = {};
@@ -51,13 +48,14 @@ export default class MapManager {
   mapStyle: string | StyleSpecification;
 
   constructor(
-    { mapStyle, styleDiffing, padding, ...rest }: MapManagerOptions,
+    { mapStyle = DEFAULT_STYLE, padding }: ManagerOptions,
+    mapProps: MapProps,
     container: HTMLDivElement,
   ) {
     this.mapStyle = mapStyle;
     this.padding = padding;
 
-    const [mapBaseOptions, callbacks] = prepareInitialOptions(rest);
+    const [mapBaseOptions, callbacks] = prepareInitialOptions(mapProps);
 
     this.callbacks = callbacks;
 
@@ -84,8 +82,11 @@ export default class MapManager {
     this._map = map;
   }
 
-  setProps({ mapStyle, styleDiffing = true, padding, ...rest }: MapManagerOptions) {
-    const [reactiveOptions, callbacks, handlerOptions, _] = filterMaplibreProps(rest);
+  setProps(
+    { mapStyle = DEFAULT_STYLE, styleDiffing = true, padding }: ManagerOptions,
+    mapProps: MapProps,
+  ) {
+    const [reactiveOptions, callbacks, handlerOptions, _] = filterMapProps(mapProps);
 
     this._updateCallbacks(callbacks);
     this._updateStyle(mapStyle, styleDiffing);
