@@ -1,16 +1,16 @@
-import { MapOptions } from "maplibre-gl";
+import { MapOptions, PointLike } from "maplibre-gl";
 import {
-  MapCallbacks,
-  MapHandlerOptionName,
-  MapHandlerOptions,
-  MapInitialOptionName,
-  MapInitialOptions,
-  MapReactiveOptionName,
-  MapReactiveOptions,
-  mapHandlerNames,
+  type MapCallbacks,
+  type MapHandlerOptionName,
+  type MapHandlerOptions,
+  type MapInitialOptionName,
+  type MapInitialOptions,
+  type MapReactiveOptionName,
+  type MapReactiveOptions,
+  type MapProps,
   mapReactiveOptionNames,
-} from "../lib/MapManager";
-import { MapProps } from "./MapManager";
+  mapHandlerNames,
+} from "./MapManager";
 
 type OtherOptions = Omit<
   MapOptions,
@@ -47,9 +47,7 @@ export function filterMapProps(options: MapProps) {
   ] as const;
 }
 
-export function prepareInitialOptions(
-  options: MapInitialOptions & MapReactiveOptions & MapHandlerOptions & MapCallbacks,
-) {
+export function transformPropsToOptions(options: { [k: string]: unknown }) {
   const callbacks = {};
   const mapOptions = {};
   for (const key in options) {
@@ -61,10 +59,18 @@ export function prepareInitialOptions(
       mapOptions[key] = options[key];
     }
   }
-  return [
-    mapOptions as Omit<MapOptions, "style" | "container">,
-    callbacks as MapCallbacks,
-  ] as const;
+  return [mapOptions, callbacks] as const;
+}
+
+export function prepareEventDepStr(
+  eventNameToCallback: { [k: string]: string },
+  callbacks: { [eventName: string]: unknown },
+) {
+  const activeEvents = Object.keys(eventNameToCallback).filter(
+    (eventName) => eventNameToCallback[eventName] in callbacks,
+  );
+
+  return activeEvents.sort().join("-");
 }
 
 /* eslint-disable complexity */
@@ -112,4 +118,30 @@ export function deepEqual(a: any, b: any): boolean {
     return true;
   }
   return false;
+}
+
+export function arePointsEqual(a?: PointLike, b?: PointLike): boolean {
+  const ax = Array.isArray(a) ? a[0] : a ? a.x : 0;
+  const ay = Array.isArray(a) ? a[1] : a ? a.y : 0;
+  const bx = Array.isArray(b) ? b[0] : b ? b.x : 0;
+  const by = Array.isArray(b) ? b[1] : b ? b.y : 0;
+  return ax === bx && ay === by;
+}
+
+export function updateClassNames(
+  elt: HTMLElement,
+  prevClassNames: string[],
+  nextClassNames: string[],
+) {
+  prevClassNames.forEach((name) => {
+    if (nextClassNames.indexOf(name) === -1) {
+      elt.classList.remove(name);
+    }
+  });
+
+  nextClassNames.forEach((name) => {
+    if (prevClassNames.indexOf(name) === -1) {
+      elt.classList.add(name);
+    }
+  });
 }

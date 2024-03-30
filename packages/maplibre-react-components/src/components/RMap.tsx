@@ -2,7 +2,6 @@ import { Map } from "maplibre-gl";
 import {
   CSSProperties,
   ReactNode,
-  createContext,
   forwardRef,
   useImperativeHandle,
   useLayoutEffect,
@@ -12,12 +11,11 @@ import {
 } from "react";
 
 import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
+import { MapContext } from "./useMap";
 
 const childrenContainerStyle: CSSProperties = {
   height: "100%",
 };
-
-export const MapContext = createContext<MapManager | null>(null);
 
 type RMapProps = MapProps &
   ManagerOptions & {
@@ -79,7 +77,7 @@ const RMap = forwardRef<Map, RMapProps>(
     return (
       <div ref={containerRef} id={id} className={className} style={completeStyle}>
         {mapManager && (
-          <MapContext.Provider value={mapManager}>
+          <MapContext.Provider value={mapManager.map}>
             <div data-rmap-children style={childrenContainerStyle}>
               {children}
             </div>

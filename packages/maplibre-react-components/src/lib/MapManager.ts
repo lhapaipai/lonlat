@@ -15,11 +15,11 @@ import {
   type MapTerrainEvent,
   type MapWheelEvent,
 } from "maplibre-gl";
-import { filterMapProps, prepareInitialOptions } from "./util";
+import { filterMapProps, transformPropsToOptions } from "./util";
 
 import { deepEqual } from "maplibre-gl/src/util/util";
 
-export const eventNameToCallback = {
+const eventNameToCallback = {
   mousedown: "onMouseDown",
   mouseup: "onMouseUp",
   mouseover: "onMouseOver",
@@ -76,7 +76,7 @@ export const eventNameToCallback = {
   terrain: "onTerrain",
 } as const;
 
-export type MapEvent =
+type MapEvent =
   | MapLayerMouseEvent
   | MapLayerTouchEvent
   | MapWheelEvent
@@ -236,9 +236,9 @@ export type MapProps = MapInitialOptions & MapReactiveOptions & MapHandlerOption
 const DEFAULT_STYLE = "https://demotiles.maplibre.org/style.json";
 
 export default class MapManager {
-  reactiveOptions: Partial<MapReactiveOptions> = {};
-  handlerOptions: Partial<MapHandlerOptions> = {};
-  callbacks: Partial<MapCallbacks>;
+  reactiveOptions: MapReactiveOptions = {};
+  handlerOptions: MapHandlerOptions = {};
+  callbacks: MapCallbacks;
 
   private _map: Map;
 
@@ -253,7 +253,10 @@ export default class MapManager {
     this.mapStyle = mapStyle;
     this.padding = padding;
 
-    const [mapBaseOptions, callbacks] = prepareInitialOptions(mapProps);
+    const [mapBaseOptions, callbacks] = transformPropsToOptions(mapProps) as [
+      Omit<MapOptions, "style" | "container">,
+      MapCallbacks,
+    ];
 
     this.callbacks = callbacks;
 
@@ -360,7 +363,7 @@ export default class MapManager {
     } else if (e.type === "error") {
       console.error(e);
     } else {
-      console.info("not managed event", e);
+      console.info("not managed RMap event", eventType, e);
     }
   };
 

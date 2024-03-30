@@ -1,7 +1,7 @@
 import { Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { RMap } from "maplibre-react-components";
+import { RMap, RMarker } from "maplibre-react-components";
 import { useLayoutEffect, useRef } from "react";
 
 //"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
@@ -19,7 +19,16 @@ function App() {
 
   return (
     <>
-      <RMap ref={mapRef} initialCenter={marignier} initialZoom={4}></RMap>
+      <RMap ref={mapRef} initialCenter={marignier} initialZoom={4}>
+        <RMarker
+          longitude={marignier[0]}
+          latitude={marignier[1]}
+          draggable={true}
+          onDragEnd={(e) => {
+            console.log("dragEnd", e);
+          }}
+        ></RMarker>
+      </RMap>
       <button onClick={() => console.log(mapRef)}>info</button>
     </>
   );
