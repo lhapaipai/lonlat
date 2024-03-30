@@ -4,7 +4,6 @@ import {
   ReactNode,
   createContext,
   forwardRef,
-  useEffect,
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
@@ -37,7 +36,11 @@ const RMap = forwardRef<Map, RMapProps>(
     const containerRef = useRef<HTMLDivElement>(null!);
     const mapRef = useRef<Map>(null!);
 
-    useEffect(() => {
+    // we need to instanciate mapRef before useImperativeHandle call
+    // so necessary inside useLayoutEffect
+    // (useLayoutEffect and useImperativeHandle are called in same priority)
+    // parent component will have access to reference in useLayoutEffect / useEffect hooks
+    useLayoutEffect(() => {
       const mapManagerInstance = new MapManager(
         { mapStyle, styleDiffing, padding },
         mapProps,
@@ -50,8 +53,8 @@ const RMap = forwardRef<Map, RMapProps>(
       return () => {
         mapManagerInstance.destroy();
       };
-      // mapManagerOptions sync is managed inside useLayoutEffect
-      // we don't want to destroy/recreate a MapManager instance
+      // map reactivity is managed inside useLayoutEffect setProps (below)
+      // we don't want to destroy/re-instanciate a MapManager instance in each render
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -61,7 +64,7 @@ const RMap = forwardRef<Map, RMapProps>(
       }
     });
 
-    useImperativeHandle(ref, () => mapRef.current, [mapManager]);
+    useImperativeHandle(ref, () => mapRef.current, []);
 
     const completeStyle: CSSProperties = useMemo(
       () => ({

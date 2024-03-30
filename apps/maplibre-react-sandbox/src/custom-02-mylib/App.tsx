@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.scss";
 
-import { RMap, RMarker } from "maplibre-react-components";
+import { RMap } from "maplibre-react-components";
 import * as maplibre from "maplibre-gl";
 
 function App() {
@@ -22,11 +22,7 @@ function App() {
         <button onClick={() => setShow((show) => !show)}>toggle map</button>
         <button onClick={handleChangeMarkerCoords}>change marker cords</button>
       </div>
-      {show && (
-        <RMap onReady={handleReady}>
-          <RMarker lnglat={coords}></RMarker>
-        </RMap>
-      )}
+      {show && <RMap onReady={handleReady}>{/* <RMarker lnglat={coords}></RMarker> */}</RMap>}
     </>
   );
 }
