@@ -1,18 +1,18 @@
 import { MapOptions } from "maplibre-gl";
-import { MapCallbacks } from "../types/events";
 import {
+  MapCallbacks,
   MapHandlerOptionName,
   MapHandlerOptions,
   MapInitialOptionName,
   MapInitialOptions,
   MapReactiveOptionName,
   MapReactiveOptions,
-  handlerNames,
-  reactiveOptionNames,
-} from "../types/map";
+  mapHandlerNames,
+  mapReactiveOptionNames,
+} from "../lib/MapManager";
 import { MapProps } from "./MapManager";
 
-type OtherOption = Omit<
+type OtherOptions = Omit<
   MapOptions,
   | MapReactiveOptionName
   | keyof MapCallbacks
@@ -30,9 +30,9 @@ export function filterMapProps(options: MapProps) {
   for (const key in options) {
     if (key.startsWith("on")) {
       callbacks[key] = options[key];
-    } else if (key in handlerNames) {
+    } else if (key in mapHandlerNames) {
       mapHandlerOptions[key] = options[key];
-    } else if (key in reactiveOptionNames) {
+    } else if (key in mapReactiveOptionNames) {
       mapReactiveOptions[key] = options[key];
     } else if (!key.startsWith("initial") && key !== "container" && key !== "style") {
       otherOptions[key] = options[key];
@@ -43,7 +43,7 @@ export function filterMapProps(options: MapProps) {
     mapReactiveOptions as MapReactiveOptions,
     callbacks as MapCallbacks,
     mapHandlerOptions as MapHandlerOptions,
-    otherOptions as OtherOption, // vérifier
+    otherOptions as OtherOptions, // vérifier
   ] as const;
 }
 

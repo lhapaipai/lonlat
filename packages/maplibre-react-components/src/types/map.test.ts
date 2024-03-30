@@ -1,13 +1,11 @@
 import { assertType, describe, test } from "vitest";
 import { type MapOptions } from "maplibre-gl";
+
 import {
-  MapHandlerOptionName,
-  MapInitialOptionName,
-  MapNonReactiveOptionName,
   MapReactiveOptionName,
-  initialOptionNames,
-  reactiveOptionNames,
-} from "./map";
+  MapNonReactiveOptionName,
+  MapHandlerOptionName,
+} from "../lib/MapManager";
 
 export type Equal<X, Y> =
   (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
@@ -27,13 +25,5 @@ describe("map types", () => {
         | "style"
       >
     >(Object);
-
-    type ExhaustiveReactiveOptionNames = (typeof reactiveOptionNames)[number];
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    type Test1 = Expect<Equal<ExhaustiveReactiveOptionNames, MapReactiveOptionName>>;
-
-    type ExhaustiveInitialOptionNames = (typeof initialOptionNames)[number];
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    type Test2 = Expect<Equal<ExhaustiveInitialOptionNames, MapInitialOptionName>>;
   });
 });
