@@ -105,7 +105,7 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
 
   const eventDepStr = prepareEventDep(eventNameToCallback, callbacks).join("-");
   useEffect(() => {
-    function onMapEvent(e: MarkerEvent) {
+    function onMarkerEvent(e: MarkerEvent) {
       const eventType = e.type as MarkerEventName;
       const callbackName = eventNameToCallback[eventType];
       if (currCallbacksRef.current?.[callbackName]) {
@@ -118,12 +118,12 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
     const eventNames = eventDepStr.split("-") as MarkerEventName[];
 
     eventNames.forEach((eventName) => {
-      marker.on(eventName, onMapEvent);
+      marker.on(eventName, onMarkerEvent);
     });
 
     return () => {
       eventNames.forEach((eventName) => {
-        marker.off(eventName, onMapEvent);
+        marker.off(eventName, onMarkerEvent);
       });
     };
   }, [eventDepStr, marker]);
