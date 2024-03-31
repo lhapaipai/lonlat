@@ -13,6 +13,12 @@ const map = new Map({
   center: marignier,
   zoom: 14,
   style: styleBase,
+  // style: {
+  //   version: 8,
+  //   name: "PLAN IGN",
+  //   sources: {},
+  //   layers: [],
+  // },
 });
 
 document.getElementById("infos")!.innerHTML = "hello";
@@ -39,6 +45,7 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
       break;
     }
     case "styledata": {
+      debugger;
       console.log(e.type, e);
 
       const event = e as MapStyleDataEvent;

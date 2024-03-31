@@ -80,7 +80,7 @@ type RMarkerProps = MarkerProps & {
 function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
   const { longitude, latitude, markerClass = Marker, children, ...markerProps } = props;
   const map = useMap();
-  console.log("render RMarker", map);
+
   const [options, callbacks] = transformPropsToOptions(markerProps) as [
     Omit<MarkerOptions, "element">,
     MarkerCallbacks,
@@ -129,7 +129,6 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
   }, [eventDepStr, marker]);
 
   useEffect(() => {
-    console.log("marker add to map", marker, map);
     marker.addTo(map);
 
     return () => void marker.remove();
