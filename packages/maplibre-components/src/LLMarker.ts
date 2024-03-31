@@ -4,7 +4,7 @@ import { DOM } from "maplibre-gl/src/util/dom";
 import "./LLMarker.scss";
 import LLPopup, { arrowHeight } from "./LLPopup";
 
-interface Options extends MarkerOptions {
+export interface LLMarkerOptions extends MarkerOptions {
   icon?: string;
   text?: string;
 }
@@ -17,9 +17,9 @@ export default class LLMarker extends Marker {
   _height = defaultHeight;
   _text?: string;
   // @ts-ignore
-  _popup?: LLPopup | Popup;
+  _popup?: Popup | LLPopup;
 
-  constructor(options?: Options) {
+  constructor(options?: LLMarkerOptions) {
     const useDefaultMarker = !options || !options.element;
 
     if (useDefaultMarker) {
@@ -105,7 +105,7 @@ export default class LLMarker extends Marker {
     return this;
   }
 
-  setPopup(popup?: LLPopup | Popup | null): this {
+  setPopup(popup?: Popup | LLPopup | null): this {
     if (this._popup) {
       this._popup.remove();
       delete this._popup;
@@ -120,9 +120,13 @@ export default class LLMarker extends Marker {
       if (!("offset" in popup.options)) {
         // offset of LLPopup is typed as OffsetOptions
         // not Offset like Popup
-        popup.options.offset = {
-          mainAxis: this._height + arrowHeight,
-        };
+        if (popup instanceof LLPopup) {
+          popup.options.offset = {
+            mainAxis: this._height + arrowHeight,
+          };
+        } else {
+          popup.options.offset = this._height + arrowHeight;
+        }
       }
 
       this._popup = popup;

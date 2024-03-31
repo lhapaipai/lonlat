@@ -11,12 +11,13 @@
 - [X] composant Checkbox/Radio/Switch
 - [X] storybook calibrer fuse.js
 
-- [ ] documentation `<canvas />`
+- [x] documentation `<canvas />`
 - [ ] documentation webGL
 - [X] documentation d3js et react avec `<canvas />`. https://2019.wattenberger.com/blog/react-and-d3
 - [ ] rlisting
 
-
+en profondeur avec React
+https://github.com/lizuncong/mini-react
 
 d3js custom hooks : https://2019.wattenberger.com/blog/react-hooks
 

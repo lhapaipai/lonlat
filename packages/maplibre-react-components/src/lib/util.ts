@@ -73,6 +73,17 @@ export function prepareEventDepStr(
   return activeEvents.sort().join("-");
 }
 
+export function prepareEventDep(
+  eventNameToCallback: { [k: string]: string },
+  callbacks: { [eventName: string]: unknown },
+) {
+  const activeEvents = Object.keys(eventNameToCallback).filter(
+    (eventName) => eventNameToCallback[eventName] in callbacks,
+  );
+
+  return activeEvents.sort();
+}
+
 /* eslint-disable complexity */
 /**
  * from : react-map-gl/src/utils/deep-equal.ts
@@ -134,14 +145,35 @@ export function updateClassNames(
   nextClassNames: string[],
 ) {
   prevClassNames.forEach((name) => {
-    if (nextClassNames.indexOf(name) === -1) {
+    if (name !== "" && nextClassNames.indexOf(name) === -1) {
       elt.classList.remove(name);
     }
   });
 
   nextClassNames.forEach((name) => {
-    if (prevClassNames.indexOf(name) === -1) {
+    if (name !== "" && prevClassNames.indexOf(name) === -1) {
       elt.classList.add(name);
+    }
+  });
+}
+
+export function updateListeners(
+  prevEventTypes: string[],
+  nextEventTypes: string[],
+  onSubscribe: (eventName: string) => void,
+  onUnsubscribe: (eventName: string) => void,
+) {
+  prevEventTypes.forEach((eventName) => {
+    if (eventName !== "" && nextEventTypes.indexOf(eventName) === -1) {
+      console.log("unregister event listener on", eventName);
+      onUnsubscribe(eventName);
+    }
+  });
+
+  nextEventTypes.forEach((eventName) => {
+    if (eventName !== "" && prevEventTypes.indexOf(eventName) === -1) {
+      console.log("register event listener on", eventName);
+      onSubscribe(eventName);
     }
   });
 }

@@ -15,7 +15,7 @@ import {
   type MapTerrainEvent,
   type MapWheelEvent,
 } from "maplibre-gl";
-import { filterMapProps, transformPropsToOptions } from "./util";
+import { filterMapProps, prepareEventDep, transformPropsToOptions, updateListeners } from "./util";
 
 import { deepEqual } from "maplibre-gl/src/util/util";
 
@@ -196,7 +196,7 @@ export const mapNonReactiveOptionNames = [
   "fitBoundsOptions", // only if bounds set and only for initial state
 
   "localIdeographFontFamily",
-  "pitchWithRotate", // see non reactive handler
+  "pitchWithRotate", // option for dragRotate handler (activate or not MousePitchHandler)
 ] as const;
 export type MapNonReactiveOptionName = (typeof mapNonReactiveOptionNames)[number];
 export type MapInitialOptionName = `initial${Capitalize<MapNonReactiveOptionName>}`;
@@ -207,15 +207,32 @@ export type MapInitialOptions = {
 export const mapHandlerNames = [
   "scrollZoom",
   "boxZoom",
-  "dragRotate",
-  "dragPan",
+
+  /**
+   * DragRotateHandler is a composition of multiple handlers
+   * MouseRotateHandler
+   * MousePitchHandler (can be disabled with "pitchWithRotate" option)
+   */
+  "dragRotate", // right click rotate the map (right click can optionnaly pitch the map)
+  "dragPan", // left click pan the map
+
   "keyboard",
-  "doubleClickZoom",
+  "doubleClickZoom", // shift + dbl-click dezoom
+
+  /**
+   * TwoFingersTouchZoomRotateHandler is a composition of multiple handlers
+   * touchZoom   : TwoFingersTouchZoomHandler
+   * touchRotate : TwoFingersTouchRotateHandler (can be disabled)
+   * tapDragZoom : TapDragZoomHandler
+   */
   "touchZoomRotate",
   "touchPitch",
+
+  /**
+   * desktop: ctrl + click to zoom
+   * touch screen: two fingers to move the map
+   */
   "cooperativeGestures",
-  // "pitchWithRotate", // available as option but not as reactive... add has initial ?
-  // test in sandbox
 ] as const;
 export type MapHandlerOptionName = (typeof mapHandlerNames)[number];
 export type MapHandlerOptions = {
@@ -231,13 +248,15 @@ export type ManagerOptions = {
   // interactiveLayerIds?: string[];
 };
 
-export type MapProps = MapInitialOptions & MapReactiveOptions & MapHandlerOptions & MapCallbacks;
+export type MapProps = MapReactiveOptions & MapHandlerOptions & MapInitialOptions & MapCallbacks;
 
 const DEFAULT_STYLE = "https://demotiles.maplibre.org/style.json";
 
 export default class MapManager {
   reactiveOptions: MapReactiveOptions = {};
   handlerOptions: MapHandlerOptions = {};
+
+  eventDeps: string[] = [];
   callbacks: MapCallbacks;
 
   private _map: Map;
@@ -272,16 +291,9 @@ export default class MapManager {
       map.setPadding(padding);
     }
 
-    for (const key of Object.keys(callbacks)) {
-      const eventName = (key[2].toLowerCase() +
-        key.substring(3)) as keyof typeof eventNameToCallback;
-      if (eventName in eventNameToCallback) {
-        console.log("register event listener on", eventName);
-        map.on(eventName, this._onMapEvent);
-      }
-    }
-
     this._map = map;
+
+    this._updateCallbacks(callbacks);
   }
 
   setProps(
@@ -292,7 +304,7 @@ export default class MapManager {
 
     this._updateCallbacks(callbacks);
     this._updateStyle(mapStyle, styleDiffing);
-    this._updateSettings(reactiveOptions, { padding });
+    this._updateReactiveOptions(reactiveOptions, { padding });
     this._updateHandlers(handlerOptions);
   }
 
@@ -307,7 +319,7 @@ export default class MapManager {
     }
   }
 
-  _updateSettings(
+  _updateReactiveOptions(
     nextReactiveOptions: MapReactiveOptions,
     { padding }: { padding?: PaddingOptions },
   ) {
@@ -331,8 +343,22 @@ export default class MapManager {
     this.padding = padding;
   }
 
-  _updateCallbacks(callbacks: MapCallbacks) {
+  _updateCallbacks(callbacks: MapCallbacks = {}) {
     this.callbacks = callbacks;
+
+    const nextEventDeps = prepareEventDep(eventNameToCallback, callbacks);
+    if (this.eventDeps.join("-") === nextEventDeps.join("-")) {
+      return;
+    }
+
+    updateListeners(
+      this.eventDeps,
+      nextEventDeps,
+      (eventName) => this._map.on(eventName, this._onMapEvent),
+      (eventName) => this._map.off(eventName, this._onMapEvent),
+    );
+
+    this.eventDeps = nextEventDeps;
   }
 
   _updateHandlers(nextHandlers: MapHandlerOptions) {
@@ -372,6 +398,7 @@ export default class MapManager {
   }
 
   destroy() {
+    this._updateCallbacks();
     this._map.remove();
   }
 }

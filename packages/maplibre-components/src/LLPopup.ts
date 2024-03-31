@@ -1,8 +1,10 @@
 import { Evented, LngLat, LngLatLike, Map, MapMouseEvent } from "maplibre-gl";
 import { DOM } from "maplibre-gl/src/util/dom";
 import { extend } from "maplibre-gl/src/util/util";
-import Point from "@mapbox/point-geometry";
 import { Event } from "maplibre-gl/src/util/evented";
+import { smartWrap } from "maplibre-gl/src/util/smart_wrap";
+
+import Point from "@mapbox/point-geometry";
 import VirtualElement from "./lib/VirtualElement";
 
 import "./LLPopup.scss";
@@ -21,14 +23,17 @@ import {
 import { type ThemeColor } from "pentatrion-design";
 import "pentatrion-design/components/dialog/Dialog.scss";
 import "pentatrion-design/components/button/Button.scss";
-import { smartWrap } from "maplibre-gl/src/util/smart_wrap";
 
 export interface LLPopupOptions {
   closeButton?: boolean;
   closeOnClick?: boolean;
   closeOnMove?: boolean;
   placement?: Placement;
+
+  // be careful OffsetOptions type come from Floating UI
+  // and is different to Options from maplibre-gl
   offset?: OffsetOptions;
+
   className?: string;
   maxWidth?: string;
   borderColor?: ThemeColor;

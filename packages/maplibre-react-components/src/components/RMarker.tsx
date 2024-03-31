@@ -1,6 +1,7 @@
 import { Marker, MarkerOptions } from "maplibre-gl";
 import {
   ReactNode,
+  Ref,
   forwardRef,
   memo,
   useEffect,
@@ -13,10 +14,12 @@ import { Event } from "../types/env";
 import useMap from "./useMap";
 import {
   arePointsEqual,
-  prepareEventDepStr,
+  prepareEventDep,
   transformPropsToOptions,
   updateClassNames,
 } from "../lib/util";
+import { LLMarker } from "maplibre-components";
+import { LLMarkerOptions } from "maplibre-components/src/LLMarker";
 
 const eventNameToCallback = {
   dragstart: "onDragStart",
@@ -43,13 +46,15 @@ export const markerReactiveOptionNames = [
   "pitchAlignment",
   "opacity",
   "opacityWhenCovered",
+  "color",
+  "scale",
 ] as const;
 export type MarkerReactiveOptionName = (typeof markerReactiveOptionNames)[number];
 export type MarkerReactiveOptions = {
   [key in MarkerReactiveOptionName]?: MarkerOptions[key];
 };
 
-export const markerNonReactiveOptionNames = ["anchor", "color", "scale"] as const;
+export const markerNonReactiveOptionNames = ["anchor"] as const;
 export type MarkerNonReactiveOptionName = (typeof markerNonReactiveOptionNames)[number];
 export type MarkerInitialOptionName = `initial${Capitalize<MarkerNonReactiveOptionName>}`;
 export type MarkerInitialOptions = {
@@ -63,15 +68,19 @@ export type MarkerProps = MarkerInitialOptions & MarkerReactiveOptions & MarkerC
 type RMarkerProps = MarkerProps & {
   longitude: number;
   latitude: number;
+  markerClass?: {
+    new (options?: LLMarkerOptions): Marker;
+  };
+
   // popup?: Popup;
 
   children?: ReactNode;
 };
 
-const RMarker = forwardRef<Marker, RMarkerProps>((props, ref) => {
-  const { longitude, latitude, children, ...markerProps } = props;
+function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
+  const { longitude, latitude, markerClass = Marker, children, ...markerProps } = props;
   const map = useMap();
-
+  console.log("render RMarker", map);
   const [options, callbacks] = transformPropsToOptions(markerProps) as [
     Omit<MarkerOptions, "element">,
     MarkerCallbacks,
@@ -88,13 +97,13 @@ const RMarker = forwardRef<Marker, RMarkerProps>((props, ref) => {
       element: undefined,
     };
 
-    const mk = new Marker(completeOptions);
+    const mk = new markerClass(completeOptions);
     mk.setLngLat([longitude, latitude]);
 
     return mk;
   }, []);
 
-  const eventDepStr = prepareEventDepStr(eventNameToCallback, callbacks);
+  const eventDepStr = prepareEventDep(eventNameToCallback, callbacks).join("-");
   useEffect(() => {
     function onMapEvent(e: MarkerEvent) {
       const eventType = e.type as MarkerEventName;
@@ -120,12 +129,15 @@ const RMarker = forwardRef<Marker, RMarkerProps>((props, ref) => {
   }, [eventDepStr, marker]);
 
   useEffect(() => {
+    console.log("marker add to map", marker, map);
     marker.addTo(map);
 
     return () => void marker.remove();
-  });
+  }, []);
 
   const {
+    color,
+    scale,
     className,
     offset,
     draggable,
@@ -137,7 +149,7 @@ const RMarker = forwardRef<Marker, RMarkerProps>((props, ref) => {
     opacityWhenCovered,
   } = options;
 
-  useImperativeHandle(ref, () => marker, [marker]);
+  useImperativeHandle(ref, () => marker as Marker, [marker]);
 
   if (prevOptionsRef.current.className !== className) {
     updateClassNames(
@@ -170,6 +182,13 @@ const RMarker = forwardRef<Marker, RMarkerProps>((props, ref) => {
   if (marker._opacity !== opacity || marker._opacityWhenCovered !== opacityWhenCovered) {
     marker.setOpacity(opacity, opacityWhenCovered);
   }
+  if (marker._color !== color && marker instanceof LLMarker) {
+    marker.setColor(color);
+  }
+  if (marker._scale !== scale && marker instanceof LLMarker) {
+    marker.setScale(scale);
+  }
+
   // if (marker.getPopup() !== popup) {
   //   marker.setPopup(popup);
   // }
@@ -177,6 +196,6 @@ const RMarker = forwardRef<Marker, RMarkerProps>((props, ref) => {
   prevOptionsRef.current = options;
 
   return createPortal(children, marker.getElement());
-});
+}
 
-export default memo(RMarker);
+export default memo(forwardRef(RMarker));
