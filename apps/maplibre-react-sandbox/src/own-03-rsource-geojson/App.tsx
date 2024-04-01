@@ -15,6 +15,14 @@ const townPaintStyle = {
   "fill-color": "rgba(255,0,0,0.3)",
 };
 
+const baseStyles = {
+  standard: "/styles/ign/PLAN.IGN/standard.json",
+  classique: "/styles/ign/PLAN.IGN/classique.json",
+  accentue: "/styles/ign/PLAN.IGN/accentue.json",
+};
+
+type BaseStyle = keyof typeof baseStyles;
+
 function App() {
   const mapRef = useRef<Map>(null);
   const [counter, setCounter] = useState(0);
@@ -22,12 +30,18 @@ function App() {
   const [showAnotherSource, setShowAnotherSource] = useState(false);
   const [sourceData, setSourceData] = useState("marignier");
 
+  const [baseStyle, setBaseStyle] = useState<BaseStyle>("standard");
+
   useLayoutEffect(() => {
-    console.log(mapRef);
-  });
+    console.log("map", mapRef.current);
+  }, []);
 
   function handleStyleData(e: MapStyleDataEvent) {
     console.log("styledata", e);
+  }
+
+  function handleLoad() {
+    console.log("loaded");
   }
 
   return (
@@ -38,8 +52,9 @@ function App() {
           ref={mapRef}
           initialCenter={marignier}
           initialZoom={12}
+          onLoad={handleLoad}
           onStyleData={handleStyleData}
-          mapStyle={"/styles/ign/PLAN.IGN/standard.json"}
+          mapStyle={baseStyles[baseStyle]}
         >
           <RMarker
             longitude={marignier.lng}
@@ -82,6 +97,13 @@ function App() {
           <button onClick={() => setShowAnotherSource((s) => !s)}>
             {showAnotherSource ? "masquer Thyez" : "afficher Thyez"}
           </button>
+        </div>
+        <div>
+          <select onChange={(e) => setBaseStyle(e.target.value as BaseStyle)}>
+            <option value="standard">IGN standard</option>
+            <option value="classique">IGN classique</option>
+            <option value="accentue">IGN accentue</option>
+          </select>
         </div>
       </div>
     </>

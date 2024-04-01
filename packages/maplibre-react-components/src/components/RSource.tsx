@@ -22,7 +22,6 @@ import {
   useState,
   Ref,
   useImperativeHandle,
-  memo,
 } from "react";
 import { useMap } from "..";
 
@@ -174,6 +173,7 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   let source = map.style && map.getSource(sourceId);
 
   if (source) {
+    console.log("updateSource", sourceId);
     updateSource(source, sourceOptions, prevOptionsRef.current);
   } else {
     source = createSource(map, sourceId, sourceOptions);

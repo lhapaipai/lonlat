@@ -14,15 +14,17 @@ import {
 import { useMap } from "..";
 import { Ref, forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 
+type OptionalSource<T> = Omit<T, "source"> & { source?: string };
+
 export type LayerOptions =
-  | FillLayerSpecification
-  | LineLayerSpecification
-  | SymbolLayerSpecification
-  | CircleLayerSpecification
-  | HeatmapLayerSpecification
-  | FillExtrusionLayerSpecification
-  | RasterLayerSpecification
-  | HillshadeLayerSpecification
+  | OptionalSource<FillLayerSpecification>
+  | OptionalSource<LineLayerSpecification>
+  | OptionalSource<SymbolLayerSpecification>
+  | OptionalSource<CircleLayerSpecification>
+  | OptionalSource<HeatmapLayerSpecification>
+  | OptionalSource<FillExtrusionLayerSpecification>
+  | OptionalSource<RasterLayerSpecification>
+  | OptionalSource<HillshadeLayerSpecification>
   | BackgroundLayerSpecification // BackgroundLayerSpecification has no source
   | CustomLayerInterface;
 
@@ -40,6 +42,8 @@ function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
       // source exists for LayerSpecification who need one
       (layerOptions.source && map.getSource(layerOptions.source))
     ) {
+      console.log("createLayer", layerOptions.id);
+      // @ts-ignore optional source checked above
       map.addLayer(layerOptions, beforeId);
       return map.getLayer(layerOptions.id);
     }
@@ -50,7 +54,6 @@ function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
 
 function updateLayer(
   map: Map,
-  layerId: string,
   { beforeId: nextBeforeId, ...nextOptions }: RLayerProps,
   { beforeId: prevBeforeId, ...prevOptions }: RLayerProps,
 ) {
@@ -58,9 +61,10 @@ function updateLayer(
   if (prevOptions.type === "custom" || nextOptions.type === "custom") {
     return;
   }
+  console.log("updateLayer", nextOptions.id);
 
   if (prevBeforeId !== nextBeforeId) {
-    map.moveLayer(layerId, nextBeforeId);
+    map.moveLayer(nextOptions.id, nextBeforeId);
   }
 
   // type is not "background" nor "custom", he has a filter property
@@ -69,7 +73,7 @@ function updateLayer(
     (prevOptions as FillLayerSpecification).filter !==
       (nextOptions as FillLayerSpecification).filter
   ) {
-    map.setFilter(layerId, (nextOptions as FillLayerSpecification).filter);
+    map.setFilter(nextOptions.id, (nextOptions as FillLayerSpecification).filter);
   }
 
   // we take random LayerSpecification to simulate same specification.
@@ -83,14 +87,14 @@ function updateLayer(
         undefined
       >)[]) {
         if (nextO.layout[key] !== prevO.layout?.[key]) {
-          map.setLayoutProperty(layerId, key, nextO.layout[key]);
+          map.setLayoutProperty(nextOptions.id, key, nextO.layout[key]);
         }
       }
     }
 
     for (const key in prevO.layout) {
       if (!Object.prototype.hasOwnProperty.call(nextO.layout, key)) {
-        map.setLayoutProperty(layerId, key, undefined);
+        map.setLayoutProperty(nextOptions.id, key, undefined);
       }
     }
   }
@@ -102,20 +106,20 @@ function updateLayer(
         undefined
       >)[]) {
         if (nextO.paint[key] !== prevO.paint?.[key]) {
-          map.setPaintProperty(layerId, key, nextO.paint[key]);
+          map.setPaintProperty(nextOptions.id, key, nextO.paint[key]);
         }
       }
     }
     for (const key in prevO.paint) {
       if (!Object.prototype.hasOwnProperty.call(nextO.paint, key)) {
-        map.setPaintProperty(layerId, key, undefined);
+        map.setPaintProperty(nextOptions.id, key, undefined);
       }
     }
   }
 
   if (prevO.minzoom !== nextO.minzoom || prevO.maxzoom !== nextO.maxzoom) {
     if (nextO.minzoom && nextO.maxzoom) {
-      map.setLayerZoomRange(layerId, nextO.minzoom, nextO.maxzoom);
+      map.setLayerZoomRange(nextOptions.id, nextO.minzoom, nextO.maxzoom);
     }
   }
 }
@@ -162,7 +166,7 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
   let layer = map.style && map.getLayer(layerId);
 
   if (layer) {
-    updateLayer(map, layerId, props, prevPropsRef.current);
+    updateLayer(map, props, prevPropsRef.current);
   } else {
     layer = createLayer(map, layerOptions, beforeId);
   }

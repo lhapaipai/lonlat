@@ -1,7 +1,13 @@
 import { Feature } from "geojson";
 import { StyleSpecification } from "maplibre-gl";
 
-//
+export const emptyStyle: StyleSpecification = {
+  version: 8,
+  name: "PLAN IGN",
+  sources: {},
+  layers: [],
+};
+
 export const styleBase: StyleSpecification = {
   version: 8,
   name: "PLAN IGN",

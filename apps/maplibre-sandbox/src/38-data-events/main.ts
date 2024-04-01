@@ -2,7 +2,7 @@ import "pentatrion-design/styles/default.scss";
 import "./style.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { LngLatLike, Map, MapDataEvent, MapSourceDataEvent, MapStyleDataEvent } from "maplibre-gl";
-import { styleBase, utm } from "./style";
+import { styleBase, emptyStyle, utm } from "./style";
 
 const $map = document.getElementById("map")!;
 
@@ -67,9 +67,9 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
 }
 
 // map.on("terrain", handleEvent);
-setTimeout(() => {
-  map.on("load", handleEvent);
-}, 3000);
+// setTimeout(() => {
+//   map.on("load", handleEvent);
+// }, 3000);
 // map.on("render", handleEvent);
 map.on("styledata", handleEvent);
 // map.on("styledataloading", handleEvent);
@@ -77,6 +77,8 @@ map.on("sourcedata", handleEvent);
 // map.on("sourcedataloading", handleEvent);
 // map.on("tiledataloading", handleEvent);
 // map.on("data", handleEvent);
+
+console.log("map", map);
 
 document.getElementById("action-1")?.addEventListener("click", () => {
   map.addSource("utm-trace-1", {
@@ -86,10 +88,20 @@ document.getElementById("action-1")?.addEventListener("click", () => {
 });
 
 document.getElementById("action-2")?.addEventListener("click", () => {
-  map.addSource("utm-trace-2", {
-    type: "geojson",
-    data: "/data/utm-light.json",
-  });
+  map._lazyInitEmptyStyle();
+  debugger;
+  map.style.addSource(
+    "utm-trace-2",
+    {
+      type: "geojson",
+      data: "/data/utm-light.json",
+      foo: "bar",
+    },
+    {
+      validate: false,
+    },
+  );
+  map._update(true);
 });
 
 document.getElementById("action-3")?.addEventListener("click", () => {
@@ -142,7 +154,7 @@ document.getElementById("action-7")?.addEventListener("click", () => {
     diff: false,
     transformStyle(previous, next) {
       console.log("transformStyle");
-      // debugger;
+      debugger;
       return next;
     },
   });
