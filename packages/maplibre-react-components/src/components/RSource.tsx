@@ -125,14 +125,16 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const sourceId = useMemo(() => id || `inline-source-${uniqueId()}`, []);
 
-  const prevSourceOptionsRef = useRef(sourceOptions);
+  const prevOptionsRef = useRef(sourceOptions);
   const initialSourceId = useRef(sourceId);
 
   if (sourceId !== initialSourceId.current) {
     throw new Error(`RSource id should not change. "${sourceId}" "${initialSourceId.current}"`);
   }
-  if (sourceOptions.type !== prevSourceOptionsRef.current.type) {
-    throw new Error(`RSource type should not change. "${sourceId}" "${initialSourceId.current}"`);
+  if (sourceOptions.type !== prevOptionsRef.current.type) {
+    throw new Error(
+      `RSource type should not change. "${sourceOptions.type}" "${prevOptionsRef.current.type}"`,
+    );
   }
 
   const [, setVersion] = useState(0);
@@ -172,14 +174,14 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   let source = map.style && map.getSource(sourceId);
 
   if (source) {
-    updateSource(source, sourceOptions, prevSourceOptionsRef.current);
+    updateSource(source, sourceOptions, prevOptionsRef.current);
   } else {
     source = createSource(map, sourceId, sourceOptions);
   }
 
   useImperativeHandle(ref, () => source, [source]);
 
-  prevSourceOptionsRef.current = sourceOptions;
+  prevOptionsRef.current = sourceOptions;
 
   return (
     (source &&

@@ -1,119 +1,155 @@
-import { LayerSpecification, Map } from "maplibre-gl";
-import { CustomLayerInterface } from "react-map-gl";
+import {
+  BackgroundLayerSpecification,
+  CircleLayerSpecification,
+  FillExtrusionLayerSpecification,
+  FillLayerSpecification,
+  HeatmapLayerSpecification,
+  HillshadeLayerSpecification,
+  CustomLayerInterface,
+  LineLayerSpecification,
+  Map,
+  RasterLayerSpecification,
+  SymbolLayerSpecification,
+} from "maplibre-gl";
 import { useMap } from "..";
-import { Ref, forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
+import { Ref, forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 
-// BackgroundLayerSpecification has no source
-type RLayerProps = (
-  | Omit<LayerSpecification, "source" | "id">
-  | Omit<CustomLayerInterface, "id">
-) & {
-  id?: string;
-  source?: string;
+export type LayerOptions =
+  | FillLayerSpecification
+  | LineLayerSpecification
+  | SymbolLayerSpecification
+  | CircleLayerSpecification
+  | HeatmapLayerSpecification
+  | FillExtrusionLayerSpecification
+  | RasterLayerSpecification
+  | HillshadeLayerSpecification
+  | BackgroundLayerSpecification // BackgroundLayerSpecification has no source
+  | CustomLayerInterface;
+
+type RLayerProps = LayerOptions & {
   beforeId?: string;
 };
 
 type StyleLayer = Exclude<ReturnType<Map["getLayer"]>, undefined>;
 
-let id = 1;
-
-function uniqueId(): number {
-  return id++;
-}
-
-function createLayer(map: Map, layerId: string, props: RLayerProps) {
+function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
   if (map.style && map.style._loaded) {
     if (
-      props.type === "custom" ||
-      props.type === "background" ||
-      // source is defined for LayerSpecification who need
-      (props.source && map.getSource(props.source))
+      layerOptions.type === "background" ||
+      layerOptions.type === "custom" ||
+      // source exists for LayerSpecification who need one
+      (layerOptions.source && map.getSource(layerOptions.source))
     ) {
-      const options = { ...props, id: layerId };
-      delete options.beforeId;
-
-      // @ts-ignore The types of the 'source' property are incompatible.
-      // Unable to assign type 'string | undefined' to type 'SourceSpecification'.
-      // checked above
-      map.addLayer(options, props.beforeId);
-      return map.getLayer(layerId);
+      map.addLayer(layerOptions, beforeId);
+      return map.getLayer(layerOptions.id);
     }
   }
 
   return undefined;
 }
 
-function updateLayer(map: Map, layerId: string, nextProps: RLayerProps, prevProps: RLayerProps) {
-  if (nextProps.id !== prevProps.id || nextProps.type !== prevProps.type) {
-    console.error(
-      "<RLayer /> id should not change. If add/remove multiple JSX sources dynamically, make sure you use React's key prop to give each element a stable identity",
-      prevProps,
-      nextProps,
-    );
-  }
-
+function updateLayer(
+  map: Map,
+  layerId: string,
+  { beforeId: nextBeforeId, ...nextOptions }: RLayerProps,
+  { beforeId: prevBeforeId, ...prevOptions }: RLayerProps,
+) {
   // double check only for TypeScript narrowing
-  if (prevProps.type === "custom" || nextProps.type === "custom") {
+  if (prevOptions.type === "custom" || nextOptions.type === "custom") {
     return;
   }
 
-  if (prevProps.beforeId !== nextProps.beforeId) {
-    map.moveLayer(layerId, nextProps.beforeId);
+  if (prevBeforeId !== nextBeforeId) {
+    map.moveLayer(layerId, nextBeforeId);
   }
 
-  if (prevProps.layout !== nextProps.layout) {
-    for (const key in nextProps.layout) {
-      if (nextProps.layout?.[key] !== prevProps.layout?.[key]) {
-        map.setLayoutProperty(layerId, key, nextProps.layout?.[key]);
+  // type is not "background" nor "custom", he has a filter property
+  if (
+    nextOptions.type !== "background" &&
+    (prevOptions as FillLayerSpecification).filter !==
+      (nextOptions as FillLayerSpecification).filter
+  ) {
+    map.setFilter(layerId, (nextOptions as FillLayerSpecification).filter);
+  }
+
+  // we take random LayerSpecification to simulate same specification.
+  const prevO = prevOptions as FillLayerSpecification;
+  const nextO = nextOptions as FillLayerSpecification;
+
+  if (prevO.layout !== nextO.layout) {
+    if (nextO.layout) {
+      for (const key of Object.keys(nextO.layout) as (keyof Exclude<
+        FillLayerSpecification["layout"],
+        undefined
+      >)[]) {
+        if (nextO.layout[key] !== prevO.layout?.[key]) {
+          map.setLayoutProperty(layerId, key, nextO.layout[key]);
+        }
       }
     }
-    for (const key in prevProps.layout) {
-      if (!Object.prototype.hasOwnProperty.call(nextProps.layout, key)) {
+
+    for (const key in prevO.layout) {
+      if (!Object.prototype.hasOwnProperty.call(nextO.layout, key)) {
         map.setLayoutProperty(layerId, key, undefined);
       }
     }
   }
 
-  if (prevProps.paint !== nextProps.paint) {
-    for (const key in nextProps.paint) {
-      if (nextProps.paint?.[key] !== prevProps.paint?.[key]) {
-        map.setPaintProperty(layerId, key, nextProps.paint[key]);
+  if (prevO.paint !== nextO.paint) {
+    if (nextO.paint) {
+      for (const key of Object.keys(nextO.paint) as (keyof Exclude<
+        FillLayerSpecification["paint"],
+        undefined
+      >)[]) {
+        if (nextO.paint[key] !== prevO.paint?.[key]) {
+          map.setPaintProperty(layerId, key, nextO.paint[key]);
+        }
       }
     }
-    for (const key in prevProps.paint) {
-      if (!Object.prototype.hasOwnProperty.call(nextProps.paint, key)) {
+    for (const key in prevO.paint) {
+      if (!Object.prototype.hasOwnProperty.call(nextO.paint, key)) {
         map.setPaintProperty(layerId, key, undefined);
       }
     }
   }
 
-  // type is not "background" nor "custom", he has a filter property
-  if (nextProps.type !== "background" && prevProps.filter && nextProps.filter) {
-    map.setFilter(layerId, nextProps.filter);
-  }
-  if (prevProps.minzoom !== nextProps.minzoom || prevProps.maxzoom !== nextProps.maxzoom) {
-    if (nextProps.minzoom && nextProps.maxzoom) {
-      map.setLayerZoomRange(layerId, nextProps.minzoom, nextProps.maxzoom);
+  if (prevO.minzoom !== nextO.minzoom || prevO.maxzoom !== nextO.maxzoom) {
+    if (nextO.minzoom && nextO.maxzoom) {
+      map.setLayerZoomRange(layerId, nextO.minzoom, nextO.maxzoom);
     }
   }
 }
 
 function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
+  const { beforeId, ...layerOptions } = props;
+  console.log("Render RLayer");
+
   const map = useMap();
   const prevPropsRef = useRef(props);
 
   const [, setVersion] = useState(0);
 
-  // we don't want sourceId to change during the RSource lifecycle
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const layerId = useMemo(() => props.id || `inline-layer-${uniqueId()}`, []);
+  const layerId = layerOptions.id;
+  const initialLayerId = useRef(layerId);
+
+  if (layerId !== initialLayerId.current) {
+    throw new Error(`RLayer id should not change. "${layerId}" "${initialLayerId.current}"`);
+  }
+  if (props.type !== prevPropsRef.current.type) {
+    throw new Error(
+      `RLayer type should not change. "${props.type}" "${prevPropsRef.current.type}"`,
+    );
+  }
 
   useEffect(() => {
     const reRender = () => setVersion((v) => v + 1);
     map.on("styledata", reRender);
 
-    // in case layer is loaded between first render and useEffect call
-    reRender();
+    if (map.style._loaded) {
+      // in case layer is loaded between first render and useEffect call
+      // like RSource
+      reRender();
+    }
 
     return () => {
       map.off("styledata", reRender);
@@ -123,12 +159,12 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
     };
   }, [map, layerId]);
 
-  let layer = map && map.style && map.getLayer(layerId);
+  let layer = map.style && map.getLayer(layerId);
 
   if (layer) {
     updateLayer(map, layerId, props, prevPropsRef.current);
   } else {
-    layer = createLayer(map, layerId, props);
+    layer = createLayer(map, layerOptions, beforeId);
   }
 
   useImperativeHandle(ref, () => layer, [layer]);
