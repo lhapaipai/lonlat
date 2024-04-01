@@ -24,8 +24,7 @@ import {
   useImperativeHandle,
   useContext,
 } from "react";
-import { useMap } from "..";
-import { mapLibreContext } from "./context";
+import { mapLibreContext } from "../context";
 
 export type RSourceProps = SourceSpecification & {
   id?: string;
@@ -120,9 +119,9 @@ function updateSource(
 function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   const { id, children, ...sourceOptions } = props;
   console.log("Render RSource");
-  const map = useMap();
 
   const context = useContext(mapLibreContext);
+  const map = context.map;
 
   // we don't want sourceId to change during the RSource lifecycle
   // eslint-disable-next-line react-hooks/exhaustive-deps

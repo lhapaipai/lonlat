@@ -12,7 +12,7 @@ import {
 } from "react";
 
 import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
-import { MapLibreContext, mapLibreContext } from "./context";
+import { MapLibreContext, mapLibreContext } from "../context";
 
 const childrenContainerStyle: CSSProperties = {
   height: "100%",
@@ -24,10 +24,21 @@ type RMapProps = MapProps &
     style?: CSSProperties;
     id?: string;
     className?: string;
+    afterInstanciation?: (map: Map) => void;
   };
 
 function RMap(
-  { children, style, id, className, mapStyle, styleDiffing, padding, ...mapProps }: RMapProps,
+  {
+    children,
+    style,
+    id,
+    className,
+    afterInstanciation,
+    mapStyle,
+    styleDiffing,
+    padding,
+    ...mapProps
+  }: RMapProps,
   ref: Ref<Map>,
 ) {
   const [mapManager, setMapManager] = useState<MapManager | null>(null);
@@ -50,6 +61,8 @@ function RMap(
     );
 
     maplibreRef.current.map = mapManagerInstance.map;
+
+    afterInstanciation && afterInstanciation(mapManagerInstance.map);
 
     setMapManager(mapManagerInstance);
 

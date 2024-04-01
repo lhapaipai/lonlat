@@ -11,7 +11,6 @@ import {
   RasterLayerSpecification,
   SymbolLayerSpecification,
 } from "maplibre-gl";
-import { useMap } from "..";
 import {
   Ref,
   forwardRef,
@@ -21,7 +20,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { mapLibreContext } from "./context";
+import { mapLibreContext } from "../context";
 
 type OptionalSource<T> = Omit<T, "source"> & { source?: string };
 
@@ -137,9 +136,8 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
   const { beforeId, ...layerOptions } = props;
   console.log("Render RLayer");
 
-  const map = useMap();
-
   const context = useContext(mapLibreContext);
+  const map = context.map;
 
   const prevPropsRef = useRef(props);
 
