@@ -1,4 +1,4 @@
-import { Map, MapStyleDataEvent } from "maplibre-gl";
+import { Map, MapStyleDataEvent, StyleSpecification } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
@@ -8,21 +8,38 @@ import { useLayoutEffect, useRef, useState } from "react";
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
 //"/styles/ign/PLAN.IGN/standard.json"
 
-const usa = { lng: -100.7512266680283, lat: 39.757729910221286 };
+const marignier = { lng: 6.498, lat: 46.089 };
 
-const usaProvincesPaintStyle = {
-  "fill-outline-color": "rgba(0,0,0,0.1)",
-  "fill-color": "rgba(255,0,0,0.3)",
+const emptyStyle: StyleSpecification = {
+  version: 8,
+  sources: {},
+  layers: [],
 };
+
+const rasterTiles = {
+  default: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+  cycle: [
+    "https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png",
+    "https://b.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png",
+    "https://c.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png",
+  ],
+  humanitarian: [
+    "https://tile-c.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+    "https://tile-b.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+    "https://tile-c.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+  ],
+};
+
+type TileName = keyof typeof rasterTiles;
 
 function App() {
   const mapRef = useRef<Map>(null);
   const [counter, setCounter] = useState(0);
   const [show, setShow] = useState(true);
+  const [tileName, setTileName] = useState<TileName>("default");
   useLayoutEffect(() => {
     console.log(mapRef);
   });
-  //             <RLayer key="usa-provinces-fill" type="fill" paint={useProvincesPaintStyle} />
 
   function handleStyleData(e: MapStyleDataEvent) {
     console.log("styledata", e);
@@ -34,20 +51,21 @@ function App() {
         <RMap
           onClick={(e) => console.log(e.lngLat)}
           ref={mapRef}
-          initialCenter={usa}
-          initialZoom={4}
+          initialCenter={marignier}
+          initialZoom={14}
           onStyleData={handleStyleData}
+          mapStyle={emptyStyle}
         >
           <RMarker
-            longitude={usa.lng}
-            latitude={usa.lat}
+            longitude={marignier.lng}
+            latitude={marignier.lat}
             draggable={true}
             onDragEnd={(e) => {
               console.log("dragEnd", e);
             }}
           ></RMarker>
-          <RSource key="usa-provinces" type="geojson" data="/data/usa-provinces.geojson">
-            <RLayer key="usa-provinces-fill" type="fill" paint={usaProvincesPaintStyle} />
+          <RSource key="raster-tile" type="raster" tiles={rasterTiles[tileName]} tileSize={256}>
+            <RLayer key="raster-fill" type="raster" />
           </RSource>
         </RMap>
       )}
@@ -60,6 +78,13 @@ function App() {
         </div>
         <div>
           <button onClick={() => setShow((s) => !s)}> {show ? "masquer" : "afficher"}</button>
+        </div>
+        <div>
+          <select onChange={(e) => setTileName(e.target.value as TileName)}>
+            <option value="default">OSM default</option>
+            <option value="cycle">OSM cycle</option>
+            <option value="humanitarian">OSM humanitarian</option>
+          </select>
         </div>
       </div>
     </>

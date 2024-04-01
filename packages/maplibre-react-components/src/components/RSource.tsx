@@ -22,8 +22,9 @@ import {
   useState,
   Ref,
   useImperativeHandle,
+  memo,
 } from "react";
-import { RLayer, useMap } from "..";
+import { useMap } from "..";
 
 export type RSourceProps = SourceSpecification & {
   id?: string;
@@ -51,7 +52,6 @@ function updateSource(
   prevOptions: SourceSpecification,
 ) {
   // verbose but exhaustive
-
   switch (nextOptions.type) {
     case "image": {
       // ImageSource -> setCoordinates / updateImage({url, coordinates})
@@ -156,8 +156,9 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
         const layers = map.getStyle()?.layers;
         if (layers) {
           for (const layer of layers) {
-            // BackgroundLayerSpecification has not "source"
-            // TODO throw error if insert Background type inside <RSource />
+            // BackgroundLayerSpecification / CustomLayerInterface has not "source"
+            // see below: <RSource /> throw error if <RLayer type="background/custom" />
+            // inserted as child. so the case cannot happen
             if (layer.type !== "background" && layer.source === sourceId) {
               map.removeLayer(layer.id);
             }
@@ -183,10 +184,6 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   return (
     (source &&
       Children.map(children, (child) => {
-        if (child?.type !== RLayer) {
-          console.log("RSource accept only <RLayer /> as Children");
-          return child;
-        }
         if (child?.props.type === "background" || child?.props.type === "custom") {
           throw new Error(
             "<RLayer /> type background/custom has no source and should not be wrapped into <RSource /> (issue when unmount <RSource />)",
