@@ -12,7 +12,7 @@ import {
 } from "react";
 
 import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
-import { MapContext } from "./useMap";
+import { MapLibreContext, mapLibreContext } from "./context";
 
 const childrenContainerStyle: CSSProperties = {
   height: "100%",
@@ -32,9 +32,13 @@ function RMap(
 ) {
   const [mapManager, setMapManager] = useState<MapManager | null>(null);
   const containerRef = useRef<HTMLDivElement>(null!);
-  const mapRef = useRef<Map>(null!);
 
-  // we need to instanciate mapRef before useImperativeHandle call
+  const maplibreRef = useRef<MapLibreContext>({
+    map: null!,
+    controlledSources: [],
+    controlledLayers: [],
+  });
+  // we need to init maplibreRef.current.map before useImperativeHandle call
   // so necessary inside useLayoutEffect
   // (useLayoutEffect and useImperativeHandle are called in same priority)
   // parent component will have access to reference in useLayoutEffect / useEffect hooks
@@ -45,7 +49,8 @@ function RMap(
       containerRef.current,
     );
 
-    mapRef.current = mapManagerInstance.map;
+    maplibreRef.current.map = mapManagerInstance.map;
+
     setMapManager(mapManagerInstance);
 
     return () => {
@@ -58,11 +63,11 @@ function RMap(
 
   useLayoutEffect(() => {
     if (mapManager) {
-      mapManager.setProps({ mapStyle, styleDiffing, padding }, mapProps);
+      mapManager.setProps({ mapStyle, styleDiffing, padding }, mapProps, maplibreRef.current);
     }
   });
 
-  useImperativeHandle(ref, () => mapRef.current, []);
+  useImperativeHandle(ref, () => maplibreRef.current.map, []);
 
   const completeStyle: CSSProperties = useMemo(
     () => ({
@@ -77,11 +82,11 @@ function RMap(
   return (
     <div ref={containerRef} id={id} className={className} style={completeStyle}>
       {mapManager && (
-        <MapContext.Provider value={mapManager.map}>
+        <mapLibreContext.Provider value={maplibreRef.current}>
           <div data-rmap-children style={childrenContainerStyle}>
             {children}
           </div>
-        </MapContext.Provider>
+        </mapLibreContext.Provider>
       )}
     </div>
   );

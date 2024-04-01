@@ -1,14 +1,12 @@
-import { Map } from "maplibre-gl";
-import { createContext, useContext } from "react";
-
-export const MapContext = createContext<Map | null>(null);
+import { useContext } from "react";
+import { mapLibreContext } from "./context";
 
 export default function useMap() {
-  const context = useContext(MapContext);
+  const context = useContext(mapLibreContext);
 
-  if (context === null) {
+  if (context.map === null) {
     throw new Error("use useMap in components inside <RMap />");
   }
 
-  return context;
+  return context.map;
 }

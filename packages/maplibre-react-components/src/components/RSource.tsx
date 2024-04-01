@@ -22,8 +22,10 @@ import {
   useState,
   Ref,
   useImperativeHandle,
+  useContext,
 } from "react";
 import { useMap } from "..";
+import { mapLibreContext } from "./context";
 
 export type RSourceProps = SourceSpecification & {
   id?: string;
@@ -120,6 +122,8 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   console.log("Render RSource");
   const map = useMap();
 
+  const context = useContext(mapLibreContext);
+
   // we don't want sourceId to change during the RSource lifecycle
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const sourceId = useMemo(() => id || `inline-source-${uniqueId()}`, []);
@@ -162,13 +166,15 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
             // inserted as child. so the case cannot happen
             if (layer.type !== "background" && layer.source === sourceId) {
               map.removeLayer(layer.id);
+              context.controlledLayers = context.controlledLayers.filter((id) => id !== layer.id);
             }
           }
         }
         map.removeSource(sourceId);
+        context.controlledSources = context.controlledSources.filter((id) => id !== sourceId);
       }
     };
-  }, [map, sourceId]);
+  }, [map, sourceId, context]);
 
   let source = map.style && map.getSource(sourceId);
 
@@ -177,6 +183,9 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
     updateSource(source, sourceOptions, prevOptionsRef.current);
   } else {
     source = createSource(map, sourceId, sourceOptions);
+    if (source && !context.controlledSources.includes(sourceId)) {
+      context.controlledSources.push(sourceId);
+    }
   }
 
   useImperativeHandle(ref, () => source, [source]);

@@ -18,6 +18,7 @@ import {
 import { filterMapProps, prepareEventDep, transformPropsToOptions, updateListeners } from "./util";
 
 import { deepEqual } from "maplibre-gl/src/util/util";
+import { MapLibreContext } from "../components/context";
 
 const eventNameToCallback = {
   mousedown: "onMouseDown",
@@ -299,22 +300,51 @@ export default class MapManager {
   setProps(
     { mapStyle = DEFAULT_STYLE, styleDiffing = true, padding }: ManagerOptions,
     mapProps: MapProps,
+    context: MapLibreContext,
   ) {
     const [reactiveOptions, callbacks, handlerOptions] = filterMapProps(mapProps);
 
     this._updateCallbacks(callbacks);
-    this._updateStyle(mapStyle, styleDiffing);
+    this._updateStyle(mapStyle, styleDiffing, context);
     this._updateReactiveOptions(reactiveOptions, { padding });
     this._updateHandlers(handlerOptions);
   }
 
-  _updateStyle(nextStyle: StyleSpecification | string, styleDiffing: boolean) {
+  _updateStyle(
+    nextStyle: StyleSpecification | string,
+    styleDiffing: boolean,
+    context: MapLibreContext,
+  ) {
     const curStyle = this.mapStyle;
 
     if (nextStyle !== curStyle) {
       this.mapStyle = nextStyle;
       this._map.setStyle(nextStyle, {
         diff: styleDiffing,
+        transformStyle(prevStyle, nextStyle) {
+          console.log("transformstyle", context.controlledSources);
+
+          const prevControlledSources = prevStyle
+            ? Object.fromEntries(
+                Object.entries(prevStyle?.sources).filter(([sourceId]) =>
+                  context.controlledSources.includes(sourceId),
+                ),
+              )
+            : {};
+
+          const prevControlledLayers = prevStyle
+            ? prevStyle.layers.filter((layer) => context.controlledLayers.includes(layer.id))
+            : [];
+
+          return {
+            ...nextStyle,
+            sources: {
+              ...nextStyle.sources,
+              ...prevControlledSources,
+            },
+            layers: [...nextStyle.layers, ...prevControlledLayers],
+          };
+        },
       });
     }
   }

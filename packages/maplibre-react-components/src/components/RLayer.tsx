@@ -12,7 +12,16 @@ import {
   SymbolLayerSpecification,
 } from "maplibre-gl";
 import { useMap } from "..";
-import { Ref, forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
+import {
+  Ref,
+  forwardRef,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
+import { mapLibreContext } from "./context";
 
 type OptionalSource<T> = Omit<T, "source"> & { source?: string };
 
@@ -129,6 +138,9 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
   console.log("Render RLayer");
 
   const map = useMap();
+
+  const context = useContext(mapLibreContext);
+
   const prevPropsRef = useRef(props);
 
   const [, setVersion] = useState(0);
@@ -159,9 +171,10 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
       map.off("styledata", reRender);
       if (map.style && map.style._loaded && map.getLayer(layerId)) {
         map.removeLayer(layerId);
+        context.controlledLayers = context.controlledLayers.filter((id) => id !== layerId);
       }
     };
-  }, [map, layerId]);
+  }, [map, layerId, context]);
 
   let layer = map.style && map.getLayer(layerId);
 
@@ -169,6 +182,9 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
     updateLayer(map, props, prevPropsRef.current);
   } else {
     layer = createLayer(map, layerOptions, beforeId);
+    if (layer && !context.controlledLayers.includes(layerId)) {
+      context.controlledLayers.push(layerId);
+    }
   }
 
   useImperativeHandle(ref, () => layer, [layer]);
