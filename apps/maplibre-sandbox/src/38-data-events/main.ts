@@ -45,7 +45,6 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
       break;
     }
     case "styledata": {
-      debugger;
       console.log(e.type, e);
 
       const event = e as MapStyleDataEvent;
@@ -68,7 +67,9 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
 }
 
 // map.on("terrain", handleEvent);
-map.on("load", handleEvent);
+setTimeout(() => {
+  map.on("load", handleEvent);
+}, 3000);
 // map.on("render", handleEvent);
 map.on("styledata", handleEvent);
 // map.on("styledataloading", handleEvent);
