@@ -8,24 +8,31 @@ export default function useRControl(
 ) {
   const map = useMap();
   const controlElementRef = useRef<HTMLDivElement>();
+
   if (!controlElementRef.current) {
     const ctrl = document.createElement("div");
     classNames.split(" ").forEach((name) => {
       name !== "" && ctrl.classList.add(name);
     });
 
-    const positionContainer = map._controlPositions[position];
-    if (position.indexOf("bottom") !== -1) {
-      positionContainer.insertBefore(ctrl, positionContainer.firstChild);
-    } else {
-      positionContainer.appendChild(ctrl);
-    }
     controlElementRef.current = ctrl;
   }
-
   useEffect(() => {
-    return () => controlElementRef.current && controlElementRef.current.remove();
-  }, []);
+    const ctrl = controlElementRef.current;
+
+    if (ctrl && !ctrl.parentElement) {
+      const positionContainer = map._controlPositions[position];
+      if (position.indexOf("bottom") !== -1) {
+        positionContainer.insertBefore(ctrl, positionContainer.firstChild);
+      } else {
+        positionContainer.appendChild(ctrl);
+      }
+    }
+
+    return () => {
+      controlElementRef.current && controlElementRef.current.remove();
+    };
+  }, [map, position]);
 
   return controlElementRef.current;
 }
