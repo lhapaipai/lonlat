@@ -40,7 +40,9 @@ type RLayerProps = LayerOptions & {
   beforeId?: string;
 };
 
-type StyleLayer = Exclude<ReturnType<Map["getLayer"]>, undefined>;
+// -> failed to build
+// type StyleLayer = Exclude<ReturnType<Map["getLayer"]>, undefined>;
+type StyleLayer = unknown;
 
 function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
   if (map.style && map.style._loaded) {

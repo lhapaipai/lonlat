@@ -9,7 +9,7 @@ export { default as useMap } from "./hooks/useMap";
 export { default as useRControl } from "./hooks/useRControl";
 export { default as useControl } from "./hooks/useControl";
 
-export * from "./lib/util";
+// export * from "./lib/util";
 
 export { type Event } from "./types/env";
 

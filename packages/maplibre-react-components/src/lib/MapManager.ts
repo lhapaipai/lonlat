@@ -15,9 +15,14 @@ import {
   type MapTerrainEvent,
   type MapWheelEvent,
 } from "maplibre-gl";
-import { filterMapProps, prepareEventDep, transformPropsToOptions, updateListeners } from "./util";
+import {
+  deepEqual,
+  filterMapProps,
+  prepareEventDep,
+  transformPropsToOptions,
+  updateListeners,
+} from "./util";
 
-import { deepEqual } from "maplibre-gl/src/util/util";
 import { MapLibreContext } from "../context";
 
 const eventNameToCallback = {
