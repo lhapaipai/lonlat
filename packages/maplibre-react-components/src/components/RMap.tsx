@@ -13,10 +13,7 @@ import {
 
 import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
 import { MapLibreContext, mapLibreContext } from "../context";
-
-const childrenContainerStyle: CSSProperties = {
-  height: "100%",
-};
+import { createPortal } from "react-dom";
 
 type RMapProps = MapProps &
   ManagerOptions & {
@@ -43,6 +40,13 @@ function RMap(
 ) {
   const [mapManager, setMapManager] = useState<MapManager | null>(null);
   const containerRef = useRef<HTMLDivElement>(null!);
+  const childrenContainerRef = useRef<HTMLDivElement>();
+
+  if (!childrenContainerRef.current) {
+    const elt = document.createElement("div");
+    elt.style.height = "100%";
+    childrenContainerRef.current = elt;
+  }
 
   const maplibreRef = useRef<MapLibreContext>({
     map: null!,
@@ -55,11 +59,17 @@ function RMap(
   // (useLayoutEffect and useImperativeHandle are called in same priority)
   // parent component will have access to reference in useLayoutEffect / useEffect hooks
   useLayoutEffect(() => {
+    const childrenContainer = childrenContainerRef.current;
+
     const mapManagerInstance = new MapManager(
       { mapStyle, styleDiffing, padding },
       mapProps,
       containerRef.current,
     );
+
+    if (childrenContainer && !childrenContainer.parentElement) {
+      containerRef.current.append(childrenContainer);
+    }
 
     maplibreRef.current.map = mapManagerInstance.map;
 
@@ -69,6 +79,7 @@ function RMap(
 
     return () => {
       mapManagerInstance.destroy();
+      childrenContainer && childrenContainer.remove();
     };
     // map reactivity is managed inside useLayoutEffect setProps (below)
     // we don't want to destroy/re-instanciate a MapManager instance in each render
@@ -95,13 +106,13 @@ function RMap(
 
   return (
     <div ref={containerRef} id={id} className={className} style={completeStyle}>
-      {mapManager && (
-        <mapLibreContext.Provider value={maplibreRef.current}>
-          <div data-rmap-children style={childrenContainerStyle}>
+      {mapManager &&
+        createPortal(
+          <mapLibreContext.Provider value={maplibreRef.current}>
             {children}
-          </div>
-        </mapLibreContext.Provider>
-      )}
+          </mapLibreContext.Provider>,
+          childrenContainerRef.current,
+        )}
     </div>
   );
 }
