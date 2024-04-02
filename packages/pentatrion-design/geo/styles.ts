@@ -1,4 +1,6 @@
-export function createRasterStyle(wmtsUrl: string) {
+import { StyleSpecification } from "maplibre-gl";
+
+export function createRasterStyle(wmtsUrl: string): StyleSpecification {
   return {
     version: 8,
     sources: {

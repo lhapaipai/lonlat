@@ -2,8 +2,8 @@ import { ControlPosition } from "maplibre-gl";
 import { useEffect, useRef } from "react";
 import { useMap } from "..";
 
-export default function useRControl(
-  position: ControlPosition,
+export default function useRControl<T extends string = ControlPosition>(
+  position: T,
   classNames = "maplibregl-ctrl maplibregl-ctrl-group",
 ) {
   const map = useMap();
@@ -22,6 +22,9 @@ export default function useRControl(
 
     if (ctrl && !ctrl.parentElement) {
       const positionContainer = map._controlPositions[position];
+      if (!positionContainer) {
+        throw new Error(`Unable to add control, position ${position} doesn't exists`);
+      }
       if (position.indexOf("bottom") !== -1) {
         positionContainer.insertBefore(ctrl, positionContainer.firstChild);
       } else {

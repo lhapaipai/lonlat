@@ -12,7 +12,7 @@ import { createPortal } from "react-dom";
 import { useRControl } from "maplibre-react-components";
 
 export default function BaseLayerControl() {
-  const container = useRControl("bottom-left", "ll-layer-switcher");
+  const container = useRControl("bottom", "ll-layer-switcher");
 
   const dispatch = useAppDispatch();
 

@@ -25,3 +25,22 @@ body,
 .ll-layer-switcher {
     flex-wrap: wrap;
 }
+
+
+.maplibregl-ctrl-bottom-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 10px 10px 10px;
+
+    .maplibregl-ctrl-bottom-left {
+        bottom: 100%;
+        left: 0;
+    }
+
+    .maplibregl-ctrl-bottom-right {
+        right: 0;
+        bottom: 100%;
+    }
+}

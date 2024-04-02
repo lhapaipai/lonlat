@@ -7,12 +7,27 @@ import { LayerInfos, layersById } from "./layers";
 import { useEffect, useMemo } from "react";
 import { createRasterStyle } from "pentatrion-design";
 import { useSelector } from "react-redux";
-import { StyleSpecification } from "maplibre-gl";
+import { Map, StyleSpecification } from "maplibre-gl";
 import { RMap, RNavigationControl, RSource, RTerrain } from "maplibre-react-components";
+import { DOM } from "maplibre-gl/src/util/dom";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
 const terrariumTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
+
+function handleAfterInstanciation(map: Map) {
+  const positions = map._controlPositions;
+  if (!positions["bottom"]) {
+    const bottomContainer = DOM.create(
+      "div",
+      "maplibregl-ctrl-bottom-container",
+      map._controlContainer,
+    );
+    positions["bottom-left"] && bottomContainer.append(positions["bottom-left"]);
+    positions["bottom-right"] && bottomContainer.append(positions["bottom-right"]);
+    positions["bottom"] = DOM.create("div", "maplibregl-ctrl-bottom", bottomContainer);
+  }
+}
 
 function App() {
   const baseLayerId = useAppSelector(selectBaseLayer);
@@ -48,7 +63,7 @@ function App() {
         initialCenter={marignier}
         initialZoom={14}
         mapStyle={mapStyle}
-        initialAttributionControl={false}
+        afterInstanciation={handleAfterInstanciation}
       >
         <RNavigationControl />
         <BaseLayerControl />
