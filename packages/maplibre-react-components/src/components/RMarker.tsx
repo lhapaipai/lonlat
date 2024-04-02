@@ -19,8 +19,6 @@ import {
   transformPropsToOptions,
   updateClassNames,
 } from "../lib/util";
-import { LLMarker } from "maplibre-components";
-import { LLMarkerOptions } from "maplibre-components/src/LLMarker";
 
 const eventNameToCallback = {
   dragstart: "onDragStart",
@@ -51,15 +49,13 @@ export const markerReactiveOptionNames = [
   "pitchAlignment",
   "opacity",
   "opacityWhenCovered",
-  "color",
-  "scale",
 ] as const;
 export type MarkerReactiveOptionName = (typeof markerReactiveOptionNames)[number];
 export type MarkerReactiveOptions = {
   [key in MarkerReactiveOptionName]?: MarkerOptions[key];
 };
 
-export const markerNonReactiveOptionNames = ["anchor"] as const;
+export const markerNonReactiveOptionNames = ["anchor", "color", "scale"] as const;
 export type MarkerNonReactiveOptionName = (typeof markerNonReactiveOptionNames)[number];
 export type MarkerInitialOptionName = `initial${Capitalize<MarkerNonReactiveOptionName>}`;
 export type MarkerInitialOptions = {
@@ -71,14 +67,11 @@ export type MarkerProps = MarkerInitialOptions & MarkerReactiveOptions & MarkerC
 type RMarkerProps = MarkerProps & {
   longitude: number;
   latitude: number;
-  markerClass?: {
-    new (options?: LLMarkerOptions): Marker;
-  };
   children?: ReactNode;
 };
 
 function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
-  const { longitude, latitude, markerClass = Marker, children, ...markerProps } = props;
+  const { longitude, latitude, children, ...markerProps } = props;
   const map = useMap();
 
   const [options, markerCallbacks] = transformPropsToOptions(markerProps) as [
@@ -104,7 +97,7 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
       element: hasChildren ? document.createElement("div") : undefined,
     };
 
-    const mk = new markerClass(completeOptions);
+    const mk = new Marker(completeOptions);
     mk.setLngLat([longitude, latitude]);
 
     return mk;
@@ -158,8 +151,6 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
   }, []);
 
   const {
-    color,
-    scale,
     className,
     offset,
     draggable,
@@ -203,12 +194,6 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
   }
   if (marker._opacity !== opacity || marker._opacityWhenCovered !== opacityWhenCovered) {
     marker.setOpacity(opacity, opacityWhenCovered);
-  }
-  if (marker._color !== color && marker instanceof LLMarker) {
-    marker.setColor(color);
-  }
-  if (marker._scale !== scale && marker instanceof LLMarker) {
-    marker.setScale(scale);
   }
 
   prevOptionsRef.current = options;
