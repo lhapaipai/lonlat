@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { RMap } from "..";
+import { RMap, RMarker, markerPopupOffset } from "..";
 import RPopup from "./RPopup";
+import { useState } from "react";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 const meta = {
   title: "maplibre-react-components/RPopup",
@@ -31,11 +33,8 @@ export const Basic: Story = {
     className: "",
     offset: 10,
     maxWidth: "240px",
-    initialCloseButton: false,
-    initialCloseOnClick: false,
-    initialCloseOnMove: false,
     initialFocusAfterOpen: false,
-    initialAnchor: "center",
+    initialAnchor: "bottom",
     initialSubpixelPositioning: false,
   },
   argTypes: {
@@ -56,4 +55,34 @@ export const Basic: Story = {
       ],
     },
   },
+};
+
+const marignier = { lng: 6.498, lat: 46.089 };
+
+export const PopupWithMarker = () => {
+  const [showPopup, setShowPopup] = useState(true);
+
+  return (
+    <>
+      <RMarker
+        longitude={marignier.lng}
+        latitude={marignier.lat}
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowPopup((s) => !s);
+        }}
+      ></RMarker>
+      {showPopup && (
+        <RPopup
+          longitude={marignier.lng}
+          latitude={marignier.lat}
+          onMapClick={() => setShowPopup(false)}
+          onMapMove={() => setShowPopup(false)}
+          offset={markerPopupOffset}
+        >
+          <p>Hello world</p>
+        </RPopup>
+      )}
+    </>
+  );
 };

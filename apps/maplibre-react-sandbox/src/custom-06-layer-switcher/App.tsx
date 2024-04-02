@@ -8,6 +8,7 @@ import { LayerInfos, layersById } from "./layers";
 import { useEffect, useMemo } from "react";
 import { createRasterStyle } from "pentatrion-design";
 import { useSelector } from "react-redux";
+import { StyleSpecification } from "maplibre-gl";
 
 //"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
@@ -34,14 +35,18 @@ function App() {
     //   .then((data) => console.log(data.layers));
   }, [baseLayerId]);
 
-  const mapStyle = useMemo(() => {
+  const mapStyle = useMemo((): StyleSpecification | string => {
     switch (baseLayer.type) {
       case "vector":
         return baseLayer.style;
       case "raster":
         return createRasterStyle(baseLayer.style);
     }
-    return "";
+    return {
+      version: 8,
+      sources: {},
+      layers: [],
+    };
   }, [baseLayer]);
 
   const elevation = useSelector(selectElevation);

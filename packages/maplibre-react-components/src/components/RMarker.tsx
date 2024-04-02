@@ -1,5 +1,6 @@
 import { Marker, MarkerOptions } from "maplibre-gl";
 import {
+  Children,
   ReactNode,
   Ref,
   forwardRef,
@@ -25,15 +26,19 @@ const eventNameToCallback = {
   dragstart: "onDragStart",
   drag: "onDrag",
   dragend: "onDragEnd",
+  click: "onClick",
 } as const;
 export type MarkerEventName = keyof typeof eventNameToCallback;
 
-type MarkerEvent = Event<Marker>;
+type MarkerEvent = Event<Marker> | MouseEvent;
 
 export type MarkerCallbacks = {
   onDragStart?: (e: Event<Marker>) => void;
   onDrag?: (e: Event<Marker>) => void;
   onDragEnd?: (e: Event<Marker>) => void;
+
+  // native DOM event
+  onClick?: (e: MouseEvent) => void;
 };
 
 export const markerReactiveOptionNames = [
@@ -63,17 +68,12 @@ export type MarkerInitialOptions = {
 
 export type MarkerProps = MarkerInitialOptions & MarkerReactiveOptions & MarkerCallbacks;
 
-// il faudra couvrir l'option element
-
 type RMarkerProps = MarkerProps & {
   longitude: number;
   latitude: number;
   markerClass?: {
     new (options?: LLMarkerOptions): Marker;
   };
-
-  // popup?: Popup;
-
   children?: ReactNode;
 };
 
@@ -81,7 +81,7 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
   const { longitude, latitude, markerClass = Marker, children, ...markerProps } = props;
   const map = useMap();
 
-  const [options, callbacks] = transformPropsToOptions(markerProps) as [
+  const [options, markerCallbacks] = transformPropsToOptions(markerProps) as [
     Omit<MarkerOptions, "element">,
     MarkerCallbacks,
   ];
@@ -89,26 +89,39 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
   const prevOptionsRef = useRef<Omit<MarkerOptions, "element">>(options);
 
   const currCallbacksRef = useRef<MarkerCallbacks>();
-  currCallbacksRef.current = callbacks;
+  currCallbacksRef.current = markerCallbacks;
 
   const marker = useMemo(() => {
+    let hasChildren = false;
+    Children.forEach(children, (child) => {
+      if (child) {
+        hasChildren = true;
+      }
+    });
+
     const completeOptions = {
       ...options,
-      element: undefined,
+      element: hasChildren ? document.createElement("div") : undefined,
     };
 
     const mk = new markerClass(completeOptions);
     mk.setLngLat([longitude, latitude]);
 
     return mk;
+    // marker reactivity is managed below
+    // we don't want to destroy/re-instanciate a Marker instance in each render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const eventDepStr = prepareEventDep(eventNameToCallback, callbacks).join("-");
+  const eventDepStr = prepareEventDep(eventNameToCallback, markerCallbacks).join("-");
   useEffect(() => {
     function onMarkerEvent(e: MarkerEvent) {
       const eventType = e.type as MarkerEventName;
       const callbackName = eventNameToCallback[eventType];
       if (currCallbacksRef.current?.[callbackName]) {
+        // @ts-ignore
+        // the type of event depends on its nature and
+        // event subscribers expect specific and not generic events
         currCallbacksRef.current[callbackName]?.(e);
       } else {
         console.info("not managed RMarker event", eventType, e);
@@ -118,12 +131,20 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
     const eventNames = eventDepStr.split("-") as MarkerEventName[];
 
     eventNames.forEach((eventName) => {
-      marker.on(eventName, onMarkerEvent);
+      if (eventName === "click") {
+        marker.getElement().addEventListener("click", onMarkerEvent);
+      } else {
+        marker.on(eventName, onMarkerEvent);
+      }
     });
 
     return () => {
       eventNames.forEach((eventName) => {
-        marker.off(eventName, onMarkerEvent);
+        if (eventName === "click") {
+          marker.getElement().removeEventListener("click", onMarkerEvent);
+        } else {
+          marker.off(eventName, onMarkerEvent);
+        }
       });
     };
   }, [eventDepStr, marker]);
@@ -132,6 +153,8 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
     marker.addTo(map);
 
     return () => void marker.remove();
+    // we can add [map, marker] but we know they will not change during the lifecycle
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
@@ -187,10 +210,6 @@ function RMarker(props: RMarkerProps, ref: Ref<Marker>) {
   if (marker._scale !== scale && marker instanceof LLMarker) {
     marker.setScale(scale);
   }
-
-  // if (marker.getPopup() !== popup) {
-  //   marker.setPopup(popup);
-  // }
 
   prevOptionsRef.current = options;
 

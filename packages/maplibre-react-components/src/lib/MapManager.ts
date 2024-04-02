@@ -18,7 +18,7 @@ import {
 import { filterMapProps, prepareEventDep, transformPropsToOptions, updateListeners } from "./util";
 
 import { deepEqual } from "maplibre-gl/src/util/util";
-import { MapLibreContext } from "../components/context";
+import { MapLibreContext } from "../context";
 
 const eventNameToCallback = {
   mousedown: "onMouseDown",

@@ -1,7 +1,7 @@
 import { ControlPosition, IControl, Map } from "maplibre-gl";
 import { useMap } from "..";
 import { useEffect, useMemo } from "react";
-import { useEventCallback } from "pentatrion-design";
+import { useEventCallback } from "./useEventCallback";
 
 export default function useControl(
   position: ControlPosition,

@@ -12,13 +12,8 @@ const map = new Map({
   container: $map,
   center: marignier,
   zoom: 14,
-  style: styleBase,
-  // style: {
-  //   version: 8,
-  //   name: "PLAN IGN",
-  //   sources: {},
-  //   layers: [],
-  // },
+  style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+  // style: styleBase,
 });
 
 document.getElementById("infos")!.innerHTML = "hello";
@@ -77,6 +72,7 @@ map.on("sourcedata", handleEvent);
 // map.on("sourcedataloading", handleEvent);
 // map.on("tiledataloading", handleEvent);
 // map.on("data", handleEvent);
+map.on("terrain", handleEvent);
 
 console.log("map", map);
 
@@ -157,5 +153,30 @@ document.getElementById("action-7")?.addEventListener("click", () => {
       debugger;
       return next;
     },
+  });
+});
+
+document.getElementById("action-8")?.addEventListener("click", () => {
+  map.addSource("terrarium", {
+    type: "raster-dem",
+    tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+    encoding: "terrarium",
+    tileSize: 256,
+  });
+});
+
+document.getElementById("action-9")?.addEventListener("click", () => {
+  map.setTerrain({
+    source: "terrarium",
+    exaggeration: 1,
+  });
+});
+
+document.getElementById("action-10")?.addEventListener("click", () => {
+  console.log("add light");
+  map.setLight({
+    anchor: "map",
+    color: "red",
+    intensity: 1,
   });
 });

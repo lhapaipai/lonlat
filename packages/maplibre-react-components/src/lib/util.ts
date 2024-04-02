@@ -1,10 +1,9 @@
-import { MapOptions, PointLike } from "maplibre-gl";
+import { MapOptions, Offset, PointLike } from "maplibre-gl";
 import {
   type MapCallbacks,
   type MapHandlerOptionName,
   type MapHandlerOptions,
   type MapInitialOptionName,
-  type MapInitialOptions,
   type MapReactiveOptionName,
   type MapReactiveOptions,
   type MapProps,
@@ -62,17 +61,6 @@ export function transformPropsToOptions(options: { [k: string]: unknown }) {
   return [mapOptions, callbacks] as const;
 }
 
-export function prepareEventDepStr(
-  eventNameToCallback: { [k: string]: string },
-  callbacks: { [eventName: string]: unknown },
-) {
-  const activeEvents = Object.keys(eventNameToCallback).filter(
-    (eventName) => eventNameToCallback[eventName] in callbacks,
-  );
-
-  return activeEvents.sort().join("-");
-}
-
 export function prepareEventDep(
   eventNameToCallback: { [k: string]: string },
   callbacks: { [eventName: string]: unknown },
@@ -119,7 +107,7 @@ export function deepEqual(a: any, b: any): boolean {
       return false;
     }
     for (const key of aKeys) {
-      if (!b.hasOwnProperty(key)) {
+      if (!Object.prototype.hasOwnProperty.call(b, key)) {
         return false;
       }
       if (!deepEqual(a[key], b[key])) {
@@ -177,3 +165,18 @@ export function updateListeners(
     }
   });
 }
+
+const markerHeight = 41 - 5.8 / 2;
+const markerRadius = 13.5;
+const linearOffset = Math.abs(markerRadius) / Math.SQRT2;
+
+export const markerPopupOffset = {
+  top: [0, 0],
+  "top-left": [0, 0],
+  "top-right": [0, 0],
+  bottom: [0, -markerHeight],
+  "bottom-left": [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+  "bottom-right": [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+  left: [markerRadius, (markerHeight - markerRadius) * -1],
+  right: [-markerRadius, (markerHeight - markerRadius) * -1],
+} as Offset;

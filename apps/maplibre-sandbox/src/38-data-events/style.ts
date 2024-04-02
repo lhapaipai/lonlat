@@ -32,15 +32,7 @@ export const styleBase: StyleSpecification = {
       layout: {
         visibility: "visible",
       },
-      filter: [
-        "in",
-        "symbo",
-        "ZONE_BOISEE",
-        "ZONE_FORET_FERMEE_FEUIL",
-        "ZONE_FORET_FERMEE_CONI",
-        "ZONE_FORET_FERMEE_MIXTE",
-        "ZONE_PEUPLERAIE",
-      ],
+      filter: ["in", "symbo", "ZONE_FORET_FERMEE_MIXTE"],
       paint: {
         "fill-color": "#DFE8D5",
         "fill-outline-color": "#DFE8D5",

@@ -154,3 +154,22 @@ styles.forEach((styleId) => {
   });
   $styles.appendChild($button);
 });
+
+document.getElementById("action-1")?.addEventListener("click", () => {
+  map.addSource("terrarium", {
+    type: "raster-dem",
+    tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+    encoding: "terrarium",
+    tileSize: 256,
+  });
+});
+
+document.getElementById("action-2")?.addEventListener("click", () => {
+  map.setTerrain({
+    source: "terrarium",
+    exaggeration: 1,
+  });
+});
+
+map.on("styledata", () => console.log("styledata"));
+map.on("terrain", () => console.log("terrain"));

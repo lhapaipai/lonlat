@@ -64,8 +64,14 @@ function App() {
               console.log("dragEnd", e);
             }}
           ></RMarker>
-          <RSource key="raster-tile" type="raster" tiles={rasterTiles[tileName]} tileSize={256}>
-            <RLayer key="raster-fill" type="raster" />
+          <RSource
+            key="raster-tile"
+            id="raster-tile"
+            type="raster"
+            tiles={rasterTiles[tileName]}
+            tileSize={256}
+          >
+            <RLayer key="raster-fill" id="raster-fill" type="raster" />
           </RSource>
         </RMap>
       )}

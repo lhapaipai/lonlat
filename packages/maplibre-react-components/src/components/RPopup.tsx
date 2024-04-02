@@ -1,5 +1,4 @@
-import { Popup, PopupOptions } from "maplibre-gl";
-import { Event } from "../types/env";
+import { MapLayerMouseEvent, MapLibreEvent, Popup, PopupOptions } from "maplibre-gl";
 import {
   ReactNode,
   Ref,
@@ -14,17 +13,19 @@ import { createPortal } from "react-dom";
 import { useMap } from "..";
 import { deepEqual, prepareEventDep, transformPropsToOptions, updateClassNames } from "../lib/util";
 
-const eventNameToCallback = {
-  open: "onOpen",
-  close: "onClose",
+const mapEventNameToCallback = {
+  click: "onMapClick",
+  move: "onMapMove",
 } as const;
-export type PopupEventName = keyof typeof eventNameToCallback;
+export type MapEventName = keyof typeof mapEventNameToCallback;
 
-type PopupEvent = Event<Popup>;
+type MapEvent =
+  | MapLayerMouseEvent
+  | MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>;
 
 export type PopupCallbacks = {
-  onOpen?: (e: Event<Popup>) => void;
-  onClose?: (e: Event<Popup>) => void;
+  onMapClick?: (e: MapLayerMouseEvent) => void;
+  onMapMove?: (e: MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>) => void;
 };
 
 export const popupReactiveOptionNames = ["className", "offset", "maxWidth"] as const;
@@ -34,9 +35,6 @@ export type PopupReactiveOptions = {
 };
 
 export const popupNonReactiveOptionNames = [
-  "closeButton",
-  "closeOnClick",
-  "closeOnMove",
   "focusAfterOpen",
   "anchor",
   "subpixelPositioning",
@@ -76,36 +74,46 @@ function RPopup(props: RPopupProps, ref: Ref<Popup>) {
   }, []);
 
   const popup = useMemo(() => {
-    const pp = new Popup(options);
+    const pp = new Popup({
+      ...options,
+      closeButton: false,
+      closeOnClick: false,
+      closeOnMove: false,
+    });
     pp.setLngLat([longitude, latitude]);
 
     return pp;
   }, []);
 
-  const eventDepStr = prepareEventDep(eventNameToCallback, callbacks).join("-");
+  const mapEventDepStr = prepareEventDep(mapEventNameToCallback, callbacks).join("-");
   useEffect(() => {
-    function onPopupEvent(e: PopupEvent) {
-      const eventType = e.type as PopupEventName;
-      const callbackName = eventNameToCallback[eventType];
+    function onMapEvent(e: MapEvent) {
+      const eventType = e.type as MapEventName;
+      const callbackName = mapEventNameToCallback[eventType];
       if (currCallbacksRef.current?.[callbackName]) {
+        // @ts-ignore
         currCallbacksRef.current[callbackName]?.(e);
       } else {
-        console.info("not managed RPopup event", eventType, e);
+        console.info("not managed RPopup map event", eventType, e);
       }
     }
 
-    const eventNames = eventDepStr.split("-") as PopupEventName[];
+    if (mapEventDepStr === "") {
+      return;
+    }
+
+    const eventNames = mapEventDepStr.split("-") as MapEventName[];
 
     eventNames.forEach((eventName) => {
-      popup.on(eventName, onPopupEvent);
+      map.on(eventName, onMapEvent);
     });
 
     return () => {
       eventNames.forEach((eventName) => {
-        popup.off(eventName, onPopupEvent);
+        map.off(eventName, onMapEvent);
       });
     };
-  }, [eventDepStr, popup]);
+  }, [mapEventDepStr, map]);
 
   useEffect(() => {
     popup.setDOMContent(container).addTo(map);

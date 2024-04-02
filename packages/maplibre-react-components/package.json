@@ -18,19 +18,28 @@
     "@vitejs/plugin-react-swc": "^3.6.0",
     "@vitest/ui": "^1.3.1",
     "jsdom": "^24.0.0",
+    "maplibre-gl": "^4.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "^5.4.2",
     "vite": "^5.1.6",
     "vitest": "^1.3.1"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.9",
-    "classnames": "^2.5.1",
     "maplibre-components": "workspace:*",
-    "maplibre-gl": "^4.1.0",
-    "pentatrion-design": "workspace:*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-map-gl": "^7.1.7",
-    "sass": "^1.72.0"
+    "pentatrion-design": "workspace:*"
+  },
+  "peerDependencies": {
+    "maplibre-gl": ">=2.0.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "mapbox-gl": {
+      "optional": true
+    },
+    "maplibre-gl": {
+      "optional": true
+    }
   }
 }
