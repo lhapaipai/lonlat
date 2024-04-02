@@ -3,6 +3,7 @@ export { default as RMarker } from "./components/RMarker";
 export { default as RPopup } from "./components/RPopup";
 export { default as RLayer } from "./components/RLayer";
 export { default as RSource } from "./components/RSource";
+export { default as RTerrain } from "./components/RTerrain";
 export { default as RNavigationControl } from "./components/RNavigationControl";
 
 export { default as useMap } from "./hooks/useMap";

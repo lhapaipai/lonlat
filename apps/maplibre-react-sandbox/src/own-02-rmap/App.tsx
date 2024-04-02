@@ -15,7 +15,7 @@ const geneva = { lng: 6.037, lat: 46.175 };
 function App() {
   const mapRef = useRef<Map>(null);
   const [counter, setCounter] = useState(0);
-  const [show, setShow] = useState(true);
+  const [showMap, setShowMap] = useState(true);
   const [showPopup, setShowPopup] = useState(true);
   const [listeners, setListeners] = useState(true);
   useLayoutEffect(() => {
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <>
-      {show && (
+      {showMap && (
         <RMap
           ref={mapRef}
           initialCenter={marignier}
@@ -82,14 +82,16 @@ function App() {
           <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
         </div>
         <div>
-          <button onClick={() => setShow((s) => !s)}>{show ? "masquer" : "afficher"}</button>
+          <button onClick={() => setShowMap((s) => !s)}>
+            {showMap ? "masquer carte" : "afficher carte"}
+          </button>
         </div>
         <div>
           <button onClick={() => setListeners((l) => !l)}>change listeners</button>
         </div>
         <div>
           <button onClick={() => setShowPopup((l) => !l)}>
-            {show ? "masquer popup" : "afficher popup"}
+            {showPopup ? "masquer popup" : "afficher popup"}
           </button>
         </div>
       </div>

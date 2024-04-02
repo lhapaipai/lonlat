@@ -348,6 +348,7 @@ export default class MapManager {
               ...prevControlledSources,
             },
             layers: [...nextStyle.layers, ...prevControlledLayers],
+            terrain: context.controlledTerrain ? prevStyle?.terrain : nextStyle.terrain,
           };
         },
       });

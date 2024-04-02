@@ -12,9 +12,23 @@ const map = new Map({
   container: $map,
   center: marignier,
   zoom: 14,
-  style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-  // style: styleBase,
+  // style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+  style: styleBase,
 });
+
+// map.addSource("terrarium", {
+//   type: "raster-dem",
+//   tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+//   encoding: "terrarium",
+//   tileSize: 256,
+// });
+
+// map.setTerrain({
+//   source: "terrarium",
+//   exaggeration: 1,
+// });
+
+console.log(map.style._loaded, map.getTerrain());
 
 document.getElementById("infos")!.innerHTML = "hello";
 

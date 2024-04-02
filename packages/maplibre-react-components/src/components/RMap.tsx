@@ -48,6 +48,7 @@ function RMap(
     map: null!,
     controlledSources: [],
     controlledLayers: [],
+    controlledTerrain: false,
   });
   // we need to init maplibreRef.current.map before useImperativeHandle call
   // so necessary inside useLayoutEffect
