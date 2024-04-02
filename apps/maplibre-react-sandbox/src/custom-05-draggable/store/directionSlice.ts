@@ -1,4 +1,4 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from ".";
 import { Feature, LineString } from "geojson";
 import { FeatureOption, NoDataFeature } from "pentatrion-design";

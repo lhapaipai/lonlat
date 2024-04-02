@@ -44,7 +44,7 @@ function App() {
         <button onClick={() => setShow((show) => !show)}>toggle map</button>
       </div>
       {show && (
-        <Map
+        <RMap
           onMoveEnd={handleMoveEnd}
           initialViewState={initialViewState}
           style={{ width: "100%", height: "100%" }}
@@ -53,7 +53,7 @@ function App() {
           <Source id="my-data" type="geojson" data={geojson}>
             <Layer {...layerStyle} />
           </Source>
-        </Map>
+        </RMap>
       )}
     </>
   );

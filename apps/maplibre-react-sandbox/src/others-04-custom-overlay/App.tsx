@@ -20,7 +20,7 @@ const usViewState = {
 function App() {
   return (
     <>
-      <Map
+      <RMap
         initialViewState={usViewState}
         style={{ width: "100%", height: "100%" }}
         mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
@@ -29,7 +29,7 @@ function App() {
         <CustomOverlay>
           <PieCharts data={electionData} />
         </CustomOverlay>
-      </Map>
+      </RMap>
       <ControlPanel />
     </>
   );

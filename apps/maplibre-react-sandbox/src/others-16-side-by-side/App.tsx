@@ -7,11 +7,11 @@ import { CSSProperties, useCallback, useMemo, useState } from "react";
 //"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
 //"/styles/ign/PLAN.IGN/standard.json"
-const marignier = [6.498, 46.089] as [number, number];
+const marignier = { lng: 6.498, lat: 46.089 };
 
 const marignierViewState = {
-  longitude: marignier[0],
-  latitude: marignier[1],
+  longitude: marignier.lng,
+  latitude: marignier.lat,
   zoom: 16,
 };
 
@@ -59,7 +59,7 @@ function App() {
   }, [width, mode]);
   return (
     <>
-      <Map
+      <RMap
         id="left-map"
         {...viewState}
         padding={leftMapPadding}
@@ -67,8 +67,8 @@ function App() {
         onMove={(e) => onMove(e, "left")}
         mapStyle="/styles/ign/PLAN.IGN/standard.json"
         style={LeftMapStyle}
-      ></Map>
-      <Map
+      ></RMap>
+      <RMap
         id="right-map"
         {...viewState}
         padding={rightMapPadding}
@@ -76,7 +76,7 @@ function App() {
         onMove={(e) => onMove(e, "right")}
         mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
         style={RightMapStyle}
-      ></Map>
+      ></RMap>
 
       <ControlPanel mode={mode} onModeChange={setMode} />
     </>

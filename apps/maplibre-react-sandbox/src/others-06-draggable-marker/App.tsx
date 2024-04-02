@@ -27,18 +27,18 @@ function App() {
 
   return (
     <>
-      <Map
-        initialViewState={marignierViewState}
+      <RMap
+        initialCenter={marignier}
         style={{ width: "100%", height: "100%" }}
         mapStyle="/styles/ign/PLAN.IGN/standard.json"
       >
-        <Marker
+        <RMarker
           longitude={marker.longitude}
           latitude={marker.latitude}
           draggable={true}
           onDragEnd={handleMarkerDrag}
         />
-      </Map>
+      </RMap>
     </>
   );
 }

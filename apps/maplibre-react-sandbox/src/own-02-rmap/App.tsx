@@ -9,11 +9,11 @@ import Pin from "./Pin";
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
 //"/styles/ign/PLAN.IGN/standard.json"
 
-const marignier = [6.498, 46.089] as [number, number];
+const marignier = { lng: 6.498, lat: 46.089 };
 const geneva = { lng: 6.037, lat: 46.175 };
 
 function App() {
-  const mapRef = useRef<Map>(null);
+  const mapRef = useRef<RMap>(null);
   const [counter, setCounter] = useState(0);
   const [showMap, setShowMap] = useState(true);
   const [showPopup, setShowPopup] = useState(true);
@@ -22,7 +22,7 @@ function App() {
     console.log(mapRef);
   });
 
-  const handleDragEnd = useCallback((e: Event<Marker>) => {
+  const handleDragEnd = useCallback((e: Event<RMarker>) => {
     console.log("dragEnd", e);
   }, []);
 
@@ -46,8 +46,8 @@ function App() {
               })}
         >
           <RMarker
-            longitude={marignier[0]}
-            latitude={marignier[1]}
+            longitude={marignier.lng}
+            latitude={marignier.lat}
             draggable={true}
             onDragEnd={handleDragEnd}
             onClick={(e) => {

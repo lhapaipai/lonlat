@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { useMap } from "react-map-gl/maplibre";
 import { useAppSelector } from "./store";
 import { selectSearchFeature } from "./store/searchSlice";
 import { selectTab } from "./store/mapSlice";
 import { selectValidDirectionLocations } from "./store/directionSlice";
 import { boundsContained, getBounds } from "pentatrion-geo";
+import { useMap } from "maplibre-react-components";
 
 export default function MapFlyer() {
-  const map = useMap().current?.getMap();
+  const map = useMap();
 
   const searchFeature = useAppSelector(selectSearchFeature);
   const tab = useAppSelector(selectTab);

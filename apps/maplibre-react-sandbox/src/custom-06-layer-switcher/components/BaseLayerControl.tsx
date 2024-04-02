@@ -8,18 +8,11 @@ import {
   selectElevation,
 } from "../store/layerSlice";
 import cn from "classnames";
-import { useControl } from "react-map-gl/maplibre";
-import ControlContainer from "./ControlContainer";
 import { createPortal } from "react-dom";
-import { useState } from "react";
+import { useRControl } from "maplibre-react-components";
 
 export default function BaseLayerControl() {
-  const [_, setVersion] = useState(0);
-  const ctrl = useControl<ControlContainer>(() => {
-    const forceUpdate = () => setVersion((v) => v + 1);
-    return new ControlContainer(forceUpdate, "ll-layer-switcher");
-  });
-  const map = ctrl.getMap();
+  const container = useRControl("bottom-left", "ll-layer-switcher");
 
   const dispatch = useAppDispatch();
 
@@ -34,36 +27,33 @@ export default function BaseLayerControl() {
       objectPosition: `${layer.thumbnailPosition[0]}px ${layer.thumbnailPosition[1]}`,
     }}
   */
-  return (
-    map &&
-    createPortal(
-      <>
-        <div
-          className={cn("layer", elevation && "active")}
-          key="elevation"
-          onClick={() => dispatch(elevationToggled())}
-        >
-          {/* <img className="preview" src={layer.thumbnail} /> */}
-          <div className="legend text-sm">3D</div>
-        </div>
-        {layers.map((layerId) => {
-          const layer = layersById[layerId];
-          return (
-            <div
-              className={cn("layer", layerId === currentBaseLayerId && "active")}
-              key={layerId}
-              onClick={() => handleChangeLayer(layerId)}
-            >
-              <div className="type">
-                <i className={`fe-${layer.type}`}></i>
-              </div>
-              <img className="preview" src={layer.thumbnail} />
-              <div className="legend text-sm">{layer.label}</div>
+  return createPortal(
+    <>
+      <div
+        className={cn("layer", elevation && "active")}
+        key="elevation"
+        onClick={() => dispatch(elevationToggled())}
+      >
+        {/* <img className="preview" src={layer.thumbnail} /> */}
+        <div className="legend text-sm">3D</div>
+      </div>
+      {layers.map((layerId) => {
+        const layer = layersById[layerId];
+        return (
+          <div
+            className={cn("layer", layerId === currentBaseLayerId && "active")}
+            key={layerId}
+            onClick={() => handleChangeLayer(layerId)}
+          >
+            <div className="type">
+              <i className={`fe-${layer.type}`}></i>
             </div>
-          );
-        })}
-      </>,
-      ctrl.getElement(),
-    )
+            <img className="preview" src={layer.thumbnail} />
+            <div className="legend text-sm">{layer.label}</div>
+          </div>
+        );
+      })}
+    </>,
+    container,
   );
 }

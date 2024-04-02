@@ -1,13 +1,4 @@
 import "./App.scss";
-import {
-  Layer,
-  LngLat,
-  Map,
-  Marker,
-  MarkerDragEvent,
-  Source,
-  ViewStateChangeEvent,
-} from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Tabs } from "pentatrion-design";
 import SearchTab from "./tabs/SearchTab";
@@ -23,9 +14,12 @@ import {
 } from "./store/directionSlice";
 import { routeLayer } from "./mapStyle";
 import { createLonLatFeaturePoint } from "pentatrion-geo";
+import { Event, RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
+import { MapLibreEvent, Marker } from "maplibre-gl";
+import { useState } from "react";
 
-function App() {
-  const initialViewState = useAppSelector(selectViewState);
+function App1() {
+  const viewState = useAppSelector(selectViewState);
   const dispatch = useAppDispatch();
 
   const searchFeature = useAppSelector(selectSearchFeature);
@@ -47,26 +41,32 @@ function App() {
     },
   ];
 
-  function handleMoveEnd(e: ViewStateChangeEvent) {
-    dispatch(viewStateChanged(e.viewState));
+  function handleMoveEnd(e: MapLibreEvent) {
+    const map = e.target;
+    dispatch(
+      viewStateChanged({
+        center: map.getCenter().toArray(),
+        zoom: map.getZoom(),
+      }),
+    );
   }
 
-  function handleDirectionLocationDragEnd(e: MarkerDragEvent, index: number) {
+  function handleDirectionLocationDragEnd(e: Event<Marker>, index: number) {
     console.log("dragEnd", e);
-    const lonlatFeature = createLonLatFeaturePoint(e.lngLat as LngLat);
+    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat());
     dispatch(directionLocationChanged({ index, feature: lonlatFeature }));
   }
   return (
     <>
-      <Map
+      <RMap
         onMoveEnd={handleMoveEnd}
-        initialViewState={initialViewState}
-        style={{ width: "100%", height: "100%" }}
+        initialCenter={viewState.center}
+        initialZoom={viewState.zoom}
         mapStyle="/styles/ign/PLAN.IGN/standard.json"
       >
         <MapFlyer />
         {searchFeature && (
-          <Marker
+          <RMarker
             key={searchFeature.properties.id}
             longitude={searchFeature.geometry.coordinates[0]}
             latitude={searchFeature.geometry.coordinates[1]}
@@ -75,7 +75,7 @@ function App() {
         {validDirectionLocations.map(
           (feature, index) =>
             feature && (
-              <Marker
+              <RMarker
                 key={feature.id}
                 draggable={true}
                 longitude={feature.geometry.coordinates[0]}
@@ -85,16 +85,22 @@ function App() {
             ),
         )}
         {directionRoute && (
-          <Source type="geojson" data={directionRoute}>
-            <Layer {...routeLayer} />
-          </Source>
+          <RSource id="direction-route" key="direction-route" type="geojson" data={directionRoute}>
+            <RLayer {...routeLayer} />
+          </RSource>
         )}
-      </Map>
+      </RMap>
       <aside className="sidebar">
         <Tabs fullWidth={true} tabs={tabs} value={tab} onChange={(e) => dispatch(tabChanged(e))} />
       </aside>
     </>
   );
+}
+
+function App() {
+  const [showMap, setShow] = useState(true);
+
+  return showMap ? <App1 /> : <button onClick={() => setShow(true)}>Afficher app</button>;
 }
 
 export default App;

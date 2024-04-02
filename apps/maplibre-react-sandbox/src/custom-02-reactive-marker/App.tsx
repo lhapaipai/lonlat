@@ -1,19 +1,18 @@
 import { useState } from "react";
 import "./App.scss";
 
-import { RMap } from "maplibre-react-components";
-import * as maplibre from "maplibre-gl";
+import { RMap, RMarker } from "maplibre-react-components";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 function App() {
   const [show, setShow] = useState(true);
-  const [coords, setCoords] = useState<maplibre.LngLatLike>([5, 45]);
+  const [coords, setCoords] = useState({
+    lng: 5,
+    lat: 45,
+  });
 
   function handleChangeMarkerCoords() {
-    setCoords([Math.random() * 300 - 150, Math.random() * 150 - 75]);
-  }
-
-  function handleReady(map: maplibre.Map) {
-    console.log("map ready", map);
+    setCoords({ lng: Math.random() * 300 - 150, lat: Math.random() * 150 - 75 });
   }
 
   return (
@@ -22,7 +21,11 @@ function App() {
         <button onClick={() => setShow((show) => !show)}>toggle map</button>
         <button onClick={handleChangeMarkerCoords}>change marker cords</button>
       </div>
-      {show && <RMap onReady={handleReady}>{/* <RMarker lnglat={coords}></RMarker> */}</RMap>}
+      {show && (
+        <RMap>
+          <RMarker longitude={coords.lng} latitude={coords.lat}></RMarker>
+        </RMap>
+      )}
     </>
   );
 }

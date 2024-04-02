@@ -9,7 +9,7 @@ import { createPortal } from "react-dom";
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
 //"/styles/ign/PLAN.IGN/standard.json"
 
-const marignier = [6.498, 46.089] as [number, number];
+const marignier = { lng: 6.498, lat: 46.089 };
 
 function LayoutControl() {
   const container = useRControl("bottom-left");
@@ -46,8 +46,8 @@ function App() {
         >
           {showCtrl && <RNavigationControl />}
           <RMarker
-            longitude={marignier[0]}
-            latitude={marignier[1]}
+            longitude={marignier.lng}
+            latitude={marignier.lat}
             draggable={true}
             onDragEnd={(e) => {
               console.log("dragEnd", e);

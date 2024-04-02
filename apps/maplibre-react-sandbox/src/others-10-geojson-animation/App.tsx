@@ -5,11 +5,11 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import ControlPanel from "./ControlPanel";
 import { Point } from "geojson";
 
-const marignier = [6.498, 46.089] as [number, number];
+const marignier = { lng: 6.498, lat: 46.089 };
 
 const marignierViewState = {
-  longitude: marignier[0],
-  latitude: marignier[1],
+  longitude: marignier.lng,
+  latitude: marignier.lat,
   zoom: 16,
 };
 
@@ -54,8 +54,8 @@ function App() {
   });
   return (
     <>
-      <Map
-        initialViewState={marignierViewState}
+      <RMap
+        initialCenter={marignier}
         style={{ width: "100%", height: "100%" }}
         mapStyle="/styles/ign/PLAN.IGN/standard.json"
       >
@@ -64,7 +64,7 @@ function App() {
             <Layer {...pointLayer} />
           </Source>
         )}
-      </Map>
+      </RMap>
       <ControlPanel />
     </>
   );

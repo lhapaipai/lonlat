@@ -11,7 +11,7 @@ import { useRef, useState } from "react";
 const marignier = { lng: 6.498, lat: 46.089 };
 
 function App() {
-  const mapRef = useRef<Map>(null);
+  const mapRef = useRef<RMap>(null);
   const [counter, setCounter] = useState(0);
   const [showMap, setShowMap] = useState(true);
 

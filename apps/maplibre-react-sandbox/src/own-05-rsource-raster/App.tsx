@@ -33,7 +33,7 @@ const rasterTiles = {
 type TileName = keyof typeof rasterTiles;
 
 function App() {
-  const mapRef = useRef<Map>(null);
+  const mapRef = useRef<RMap>(null);
   const [counter, setCounter] = useState(0);
   const [show, setShow] = useState(true);
   const [tileName, setTileName] = useState<TileName>("default");

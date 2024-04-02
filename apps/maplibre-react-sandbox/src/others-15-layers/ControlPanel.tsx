@@ -7,7 +7,7 @@ import { MapStyle } from "react-map-gl/maplibre";
 const categories = ["labels", "roads", "buildings", "parks", "water", "background"] as const;
 type Categories = (typeof categories)[number];
 
-const defaultMapStyle = fromJS<MapStyle>(ignStyle as MapStyle);
+const defaultMapStyle = fromJS<RMapStyle>(ignStyle as MapStyle);
 const defaultLayers = defaultMapStyle.get("layers");
 
 const layerSelector = {

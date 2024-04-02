@@ -1,6 +1,8 @@
-import { LineLayer } from "react-map-gl/maplibre";
+import { LineLayerSpecification } from "maplibre-gl";
 
-export const routeLayer: LineLayer = {
+type OptionalSource<T> = Omit<T, "source"> & { source?: string };
+
+export const routeLayer: OptionalSource<LineLayerSpecification> = {
   id: "direction-route",
   type: "line",
   paint: {

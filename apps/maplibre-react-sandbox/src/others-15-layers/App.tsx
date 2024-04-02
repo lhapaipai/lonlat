@@ -10,11 +10,11 @@ import { FeatureCollection, Point } from "geojson";
 //"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
 //"/styles/ign/PLAN.IGN/standard.json"
-const marignier = [6.498, 46.089] as [number, number];
+const marignier = { lng: 6.498, lat: 46.089 };
 
 const marignierViewState = {
-  longitude: marignier[0],
-  latitude: marignier[1],
+  longitude: marignier.lng,
+  latitude: marignier.lat,
   zoom: 16,
 };
 
@@ -40,23 +40,23 @@ const layer = {
 
 function App() {
   const [mapStyle, setMapStyle] = useState<IMap<keyof MapStyle, any> | null>(null);
-  const map = useRef<MapRef>(null);
+  const map = useRef<RMapRef>(null);
   function handleToggle() {
     console.log(map.current);
   }
 
   return (
     <>
-      <Map
+      <RMap
         ref={map}
-        initialViewState={marignierViewState}
+        initialCenter={marignier}
         style={{ width: "100%", height: "100%" }}
         mapStyle={mapStyle && mapStyle.toJS()}
       >
         <Source type="geojson" data={geojson}>
           <Layer type="circle" paint={{ "circle-radius": 5 }} id="marignier" />
         </Source>
-      </Map>
+      </RMap>
       <ControlPanel
         onChange={(e) => {
           console.log("onChange");

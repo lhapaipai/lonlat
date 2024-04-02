@@ -5,7 +5,7 @@ import { ControlPosition, Marker, MarkerProps, useControl } from "react-map-gl/m
 
 interface GeocoderControlProps extends Omit<GeocoderOptions, "marker" | "accessToken"> {
   position: ControlPosition;
-  marker?: boolean | Omit<MarkerProps, "longitude" | "latitude">;
+  marker?: boolean | Omit<RMarkerProps, "longitude" | "latitude">;
   onLoading?: (e: object) => void;
   onResults?: (e: object) => void;
   onResult?: (e: object) => void;
@@ -18,7 +18,7 @@ export default function GeocoderControl({
 }: GeocoderControlProps) {
   const [marker, setMarker] = useState<ReactElement | null>(null);
 
-  const geocoder = useControl<MapboxGeocoder>(
+  const geocoder = useControl<RMapboxGeocoder>(
     () => {
       const ctrl = new MapboxGeocoder({
         ...rest,
@@ -36,7 +36,7 @@ export default function GeocoderControl({
           (result.center || (result.geometry?.type === "Point" && result.geometry.coordinates));
         if (location && markerOptions) {
           const markerProps = typeof markerOptions === "object" ? markerOptions : {};
-          setMarker(<Marker {...markerProps} longitude={location[0]} latitude={location[1]} />);
+          setMarker(<RMarker {...markerProps} longitude={location[0]} latitude={location[1]} />);
         } else {
           setMarker(null);
         }

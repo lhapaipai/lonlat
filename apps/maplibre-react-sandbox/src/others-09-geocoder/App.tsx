@@ -6,23 +6,23 @@ import GeocoderControl from "./GeocoderControl";
 //"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
 //"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
 //"/styles/ign/PLAN.IGN/standard.json"
-const marignier = [6.498, 46.089] as [number, number];
+const marignier = { lng: 6.498, lat: 46.089 };
 
 const marignierViewState = {
-  longitude: marignier[0],
-  latitude: marignier[1],
+  longitude: marignier.lng,
+  latitude: marignier.lat,
   zoom: 16,
 };
 function App() {
   return (
     <>
-      <Map
-        initialViewState={marignierViewState}
+      <RMap
+        initialCenter={marignier}
         style={{ width: "100%", height: "100%" }}
         mapStyle="/styles/ign/PLAN.IGN/standard.json"
       >
         <GeocoderControl position="top-left"></GeocoderControl>
-      </Map>
+      </RMap>
     </>
   );
 }

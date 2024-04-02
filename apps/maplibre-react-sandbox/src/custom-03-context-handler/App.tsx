@@ -1,30 +1,22 @@
-import "./App.scss";
-import { Map, MapRef } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
-import ContextMenuEventDispatcher, {
-  MaplibreContextmenuEventDetail,
-} from "./components/ContextMenuEventDispatcher";
+import "./App.scss";
 import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "pentatrion-design/index";
 import { useRef } from "react";
-import { Marker } from "maplibre-gl";
+import { Map, Marker } from "maplibre-gl";
+import {
+  ContextMenuEventDispatcher,
+  MaplibreContextmenuEventDetail,
+  RMap,
+} from "maplibre-react-components";
 
-//"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
-//"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-//"/styles/ign/PLAN.IGN/standard.json"
-// "https://demotiles.maplibre.org/style.json"
-const marignier = [6.498, 46.089] as [number, number];
+const marignier = { lng: 6.498, lat: 46.089 };
 
-const marignierViewState = {
-  longitude: marignier[0],
-  latitude: marignier[1],
-  zoom: 16,
-};
+// const mapStyle = "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL";
 
-const mapStyle =
-  "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL";
+const mapStyle = "/styles/ign/PLAN.IGN/standard.json";
 
 function App() {
-  const mapRef = useRef<MapRef>(null!);
+  const mapRef = useRef<Map>(null!);
 
   function handleClickBack(e: ContextMenuItemMouseEvent) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
@@ -32,27 +24,20 @@ function App() {
 
     const marker = new Marker();
     marker.setLngLat(mapEvent.detail.lngLat);
-    marker.addTo(mapRef.current.getMap());
+    marker.addTo(mapRef.current);
   }
 
   return (
     <>
-      <Map
-        ref={mapRef}
-        initialViewState={marignierViewState}
-        style={{ width: "100%", height: "100%" }}
-        mapStyle={mapStyle}
-      >
+      <RMap ref={mapRef} initialCenter={marignier} initialZoom={16} mapStyle={mapStyle}>
         <ContextMenuEventDispatcher>
           <ContextMenu eventName="maplibre-contextmenu">
-            <ContextMenuItem label="Back" onClick={handleClickBack} />
-            <ContextMenuItem label="Forward" />
-            <ContextMenuItem label="Reload" disabled />
-            <ContextMenuItem label="Save As..." />
-            <ContextMenuItem label="Print" />
+            <ContextMenuItem label="Add marker" onClick={handleClickBack} />
+            <ContextMenuItem label="Do nothing" />
+            <ContextMenuItem label="Disabled" disabled />
           </ContextMenu>
         </ContextMenuEventDispatcher>
-      </Map>
+      </RMap>
     </>
   );
 }

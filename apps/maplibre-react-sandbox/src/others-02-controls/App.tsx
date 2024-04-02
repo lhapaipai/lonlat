@@ -27,7 +27,7 @@ function App() {
   const pins = useMemo(
     () =>
       citiesInfo.map((info, index) => (
-        <Marker
+        <RMarker
           key={`marker-${index}`}
           longitude={info.longitude}
           latitude={info.latitude}
@@ -37,14 +37,14 @@ function App() {
             e.originalEvent.stopPropagation();
             setPopupInfo(info);
           }}
-        ></Marker>
+        ></RMarker>
       )),
     [],
   );
 
   return (
     <>
-      <Map
+      <RMap
         initialViewState={usaViewState}
         style={{ width: "100%", height: "100%" }}
         mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
@@ -74,7 +74,7 @@ function App() {
             <img width="100%" src={popupInfo.image} />
           </Popup>
         )}
-      </Map>
+      </RMap>
       <ControlPanel />
     </>
   );

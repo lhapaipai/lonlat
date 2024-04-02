@@ -1,20 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ViewState } from "react-map-gl";
 import { RootState } from ".";
 
 const marignier = {
-  longitude: 6.498,
-  latitude: 46.089,
+  lng: 6.498,
+  lat: 46.089,
+};
+
+type ViewState = {
+  center: [number, number];
+  zoom: number;
 };
 
 type MapState = {
-  viewState: Partial<ViewState>;
+  viewState: ViewState;
   tab: string | number;
 };
 
 const initialState: MapState = {
   viewState: {
-    ...marignier,
+    center: [marignier.lng, marignier.lat],
     zoom: 14,
   },
   tab: "search",
@@ -24,7 +28,7 @@ const mapSlice = createSlice({
   name: "map",
   initialState,
   reducers: {
-    viewStateChanged(state, action: PayloadAction<Partial<ViewState>>) {
+    viewStateChanged(state, action: PayloadAction<ViewState>) {
       state.viewState = action.payload;
     },
     tabChanged(state, action: PayloadAction<string | number>) {

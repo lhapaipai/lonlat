@@ -13,7 +13,7 @@ const marignier = { lng: 6.498, lat: 46.089 };
 const rasterDemTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
 
 function App() {
-  const mapRef = useRef<Map>(null);
+  const mapRef = useRef<RMap>(null);
   const [counter, setCounter] = useState(0);
   const [showMap, setShowMap] = useState(true);
   const [showTerrain, setShowTerrain] = useState(false);

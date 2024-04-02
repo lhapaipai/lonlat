@@ -24,7 +24,7 @@ type MarkerProps = MarkerOptions & {
   children?: ReactNode;
 };
 
-function Marker(props: MarkerProps, ref: Ref<MaplibreMarker>) {
+function Marker(props: MarkerProps, ref: Ref<RMaplibreMarker>) {
   const { map, mapLib } = useContext(MapContext);
   const thisRef = useRef({ props });
 

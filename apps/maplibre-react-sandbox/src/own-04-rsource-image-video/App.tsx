@@ -18,7 +18,7 @@ const orthoCoordinates: Coordinates = [
 ];
 
 function App() {
-  const mapRef = useRef<Map>(null);
+  const mapRef = useRef<RMap>(null);
   const [counter, setCounter] = useState(0);
   const [show, setShow] = useState(true);
   const [opacity, setOpacity] = useState(100);

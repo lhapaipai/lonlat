@@ -69,7 +69,7 @@ function App() {
 
   return (
     <>
-      <Map
+      <RMap
         initialViewState={initialViewState}
         style={{ width: "100%", height: "100%" }}
         onMouseMove={onMouseMove}
@@ -86,7 +86,7 @@ function App() {
             <div>Percentile: {(hoverInfo.feature.properties.percentile / 8) * 100}</div>
           </div>
         )}
-      </Map>
+      </RMap>
       <ControlPanel year={year} onChange={setYear} />
     </>
   );

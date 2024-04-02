@@ -23,7 +23,7 @@ const usaViewState = {
   zoom: 3,
 };
 function App() {
-  const mapRef = useRef<MapRef>(null!);
+  const mapRef = useRef<RMapRef>(null!);
   const handleClick = async (event: MapLayerMouseEvent) => {
     if (!event.features) {
       console.log("no features");
@@ -43,7 +43,7 @@ function App() {
   };
   return (
     <>
-      <Map
+      <RMap
         initialViewState={usaViewState}
         style={{ width: "100%", height: "100%" }}
         mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
@@ -63,7 +63,7 @@ function App() {
           <Layer {...clusterLabelLayer} />
           <Layer {...unclusteredPointLayer} />
         </Source>
-      </Map>
+      </RMap>
     </>
   );
 }

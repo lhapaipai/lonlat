@@ -53,7 +53,7 @@ function App() {
 
   return (
     <>
-      <Map
+      <RMap
         initialViewState={franceViewState}
         style={{ width: "100%", height: "100%" }}
         mapStyle={style}
@@ -75,7 +75,7 @@ function App() {
             {selectedCounty}
           </Popup>
         )}
-      </Map>
+      </RMap>
     </>
   );
 }

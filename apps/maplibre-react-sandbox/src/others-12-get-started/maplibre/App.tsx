@@ -9,7 +9,7 @@ const initialViewState: Partial<ViewState> = {
   zoom: 14,
 };
 function App() {
-  const mapRef = useRef<MapRef>(null);
+  const mapRef = useRef<RMapRef>(null);
 
   const [viewState, setViewState] = useState<Partial<ViewState>>(initialViewState);
 
@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <Map
+    <RMap
       ref={mapRef}
       initialViewState={viewState}
       onMoveEnd={handleMove}
