@@ -1,0 +1,40 @@
+html {
+    --sidebar-extra-height: 200px;
+    --sidebar-menu-width: 200px;
+}
+
+html,
+body,
+#storybook-root,
+#app {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+#principal {
+    flex: 1;
+    display: flex;
+}
+
+#content {
+    flex: 1;
+}
+
+#menu-col {
+    border-right: 1px solid var(--background-strong);
+    flex: 0 0 var(--sidebar-menu-width);
+    position: relative;
+}
+
+#extra-row {
+    border-top: 1px solid var(--background-strong);
+    flex: 0 0 var(--sidebar-extra-height);
+    position: relative;
+}

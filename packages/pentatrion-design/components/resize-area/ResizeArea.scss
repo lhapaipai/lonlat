@@ -1,0 +1,94 @@
+.ll-resize-area-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    overflow: visible;
+
+    --grip-size: 10px;
+    --indicator-size: 2px;
+
+    .area-button {
+        position: absolute;
+
+        &::before {
+            content: "";
+            position: absolute;
+            transition-delay: .25s;
+            transition: background-color .25s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        &:hover::before {
+            background-color: var(--background-invert);
+        }
+    }
+
+    &.top,
+    &.bottom {
+        height: 0;
+        width: 100%;
+
+        .area-button {
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: var(--grip-size);
+            cursor: row-resize;
+
+            &::before {
+                left: 0;
+                right: 0;
+                height: var(--indicator-size);
+
+            }
+        }
+    }
+
+    &.left,
+    &.right {
+        width: 0;
+        height: 100%;
+
+        .area-button {
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: var(--grip-size);
+            cursor: col-resize;
+
+            &::before {
+                top: 0;
+                bottom: 0;
+                width: var(--indicator-size);
+            }
+        }
+    }
+
+    &.top {
+        bottom: auto;
+
+        .area-button {
+            top: calc(-1 * var(--grip-size) / 2);
+
+            &::before {
+                top: calc(50% - var(--indicator-size) / 2);
+            }
+
+        }
+    }
+
+    &.right {
+        left: auto;
+
+        .area-button {
+            right: calc(-1 * var(--grip-size) / 2);
+
+            &::before {
+                right: calc(50% - var(--indicator-size) / 2);
+            }
+
+        }
+    }
+}
