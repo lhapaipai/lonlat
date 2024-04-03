@@ -49,8 +49,11 @@ export type MarkerInitialOptions = {
   [key in MarkerNonReactiveOptionName as `initial${Capitalize<key>}`]?: MarkerOptions[key];
 };
 
-export type PegmanOptions = Omit<MarkerOptions, "element" | "rotation" | "rotationAlignment">;
-export type PegmanProps = MarkerInitialOptions & MarkerReactiveOptions & MarkerCallbacks;
+export type PegmanOptions = Omit<
+  MarkerOptions,
+  "element" | "rotation" | "rotationAlignment" | "offset"
+>;
+export type PegmanProps = MarkerInitialOptions & MarkerReactiveOptions & PegmanCallbacks;
 
 type RPegmanProps = PegmanProps & {
   longitude: number;
@@ -132,7 +135,6 @@ function RPegman(props: RPegmanProps, ref: Ref<LLPegman>) {
 
   const {
     className,
-    offset,
     draggable,
     clickTolerance = 0,
     pitchAlignment,
