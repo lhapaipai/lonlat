@@ -43,7 +43,7 @@ export default class LLMarker extends Marker {
       this.setScale(this._scale);
       this.setColor(this._color);
 
-      const container = DOM.create("div");
+      const container = DOM.create("div", "marker");
       DOM.create("div", "ovale", container);
       if (this._text) {
         const $text = DOM.create("div", "text", container);

@@ -14,7 +14,7 @@ import {
   googleStreetViewURL,
   osmURL,
 } from "pentatrion-design";
-import { ignToken } from "../shared/constants";
+import { ignToken, mapTilerStreetsStyleUrl } from "../shared/constants";
 
 export interface LayerInfos {
   id: string;
@@ -173,7 +173,7 @@ export const layersById = {
     type: "vector",
     label: "Maptiler Streets",
     thumbnail: "/styles/maptiler/maptiler-streets.png",
-    style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+    style: mapTilerStreetsStyleUrl,
   } satisfies LayerInfos,
   /* tuiles vectorielles */
   "etalab-osm_bright": {

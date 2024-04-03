@@ -4,9 +4,9 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useCallback, useMemo, useState } from "react";
 import { countiesLayer, highlightLayer } from "./mapStyles";
 
-//"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
-//"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-//"/styles/ign/PLAN.IGN/standard.json"
+
+
+
 const france = [3, 46.7] as [number, number];
 
 const franceViewState = {

@@ -3,17 +3,9 @@ import { Map, ViewStateChangeEvent } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import ControlPanel, { Mode } from "./ControlPanel";
 import { CSSProperties, useCallback, useMemo, useState } from "react";
+import { mapTilerStreetsStyleUrl } from "../shared/constants";
 
-//"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
-//"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-//"/styles/ign/PLAN.IGN/standard.json"
 const marignier = { lng: 6.498, lat: 46.089 };
-
-const marignierViewState = {
-  longitude: marignier.lng,
-  latitude: marignier.lat,
-  zoom: 16,
-};
 
 const LeftMapStyle: CSSProperties = {
   position: "absolute",
@@ -74,7 +66,7 @@ function App() {
         padding={rightMapPadding}
         onMoveStart={onRightMoveStart}
         onMove={(e) => onMove(e, "right")}
-        mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
+        mapStyle={mapTilerStreetsStyleUrl}
         style={RightMapStyle}
       ></RMap>
 

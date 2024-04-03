@@ -20,7 +20,6 @@
     "@use-gesture/react": "^10.3.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "fuse.js": "^7.0.0",
-    "maplibre-components": "workspace:*",
     "maplibre-gl": "^4.1.0",
     "nanoid": "^5.0.6",
     "pentatrion-design": "workspace:*",

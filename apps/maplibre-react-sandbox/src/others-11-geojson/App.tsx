@@ -14,6 +14,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { ProcessedFeatures, RawFeature, RawFeatures } from "./types";
 import { addPercentiles, dataLayerProps } from "./utils";
 import ControlPanel from "./ControlPanel";
+import { mapTilerStreetsStyleUrl } from "../shared/constants";
 
 const initialViewState: Partial<ViewState> = {
   latitude: 40,
@@ -73,7 +74,7 @@ function App() {
         initialViewState={initialViewState}
         style={{ width: "100%", height: "100%" }}
         onMouseMove={onMouseMove}
-        mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
+        mapStyle={mapTilerStreetsStyleUrl}
         interactiveLayerIds={["data"]}
       >
         <Source type="geojson" data={data}>

@@ -1,13 +1,30 @@
 {
   "name": "pentatrion-geo",
   "version": "0.0.1",
+  "description": "Extra tools and MapLibre components for geo",
   "author": "Hugues Tavernier",
   "license": "ISC",
   "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./react": "./src/maplibre/react/index.ts"
+  },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.3",
+    "@mapbox/point-geometry": "^0.1.0",
     "pentatrion-design": "workspace:*",
     "@types/geojson": "^7946.0.14",
     "maplibre-gl": "^4.1.0",
-    "nanoid": "^5.0.6"
+    "nanoid": "^5.0.6",
+    "maplibre-react-components": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/mapbox__point-geometry": "^0.1.4",
+    "@types/react": "^18.2.72",
+    "@types/react-dom": "^18.2.22"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   }
 }

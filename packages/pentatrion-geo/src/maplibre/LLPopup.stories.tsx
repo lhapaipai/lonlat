@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as maplibre from "maplibre-gl";
-import { LLPopup } from "maplibre-components";
+import { LLPopup } from "pentatrion-geo";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 const meta = {
-  title: "Maplibre-ext/LLPopup",
+  title: "pentatrion-geo/LLPopup",
   parameters: {
     layout: "fullscreen",
   },

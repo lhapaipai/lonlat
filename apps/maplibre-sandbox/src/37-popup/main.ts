@@ -5,7 +5,7 @@ import "./maplibre-gl.css";
 import { LngLatLike, Map, Marker, Popup, TerrainControl } from "maplibre-gl";
 import "./style.css";
 import { terrainStyle } from "./data";
-import { LLMarker, LLPopup } from "maplibre-components";
+import { LLMarker, LLPopup } from "pentatrion-geo";
 
 const $map = document.getElementById("map")!;
 

@@ -24,7 +24,6 @@
     "lodash.isequal": "^4.5.0",
     "lodash.template": "^4.5.0",
     "mapbox-gl-fps": "^1.0.1",
-    "maplibre-components": "workspace:*",
     "maplibre-gl": "^4.1.0",
     "merge-options": "^3.0.4",
     "pentatrion-design": "workspace:*",

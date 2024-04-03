@@ -5,6 +5,7 @@ import ControlPanel from "./ControlPanel";
 import citiesData from "./cities.json";
 import NavigationControl from "./lib/NavigationControl";
 import { useMemo, useState } from "react";
+import { mapTilerStreetsStyleUrl } from "../shared/constants";
 
 const citiesInfo = citiesData as CityInfo[];
 
@@ -47,7 +48,7 @@ function App() {
       <RMap
         initialViewState={usaViewState}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
+        mapStyle={mapTilerStreetsStyleUrl}
       >
         <FullscreenControl position="top-left" />
         <NavigationControl position="top-left" />

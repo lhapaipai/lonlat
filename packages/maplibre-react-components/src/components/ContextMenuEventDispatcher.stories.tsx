@@ -1,25 +1,33 @@
 import { useRef, useState } from "react";
-import { ContextMenuEventDispatcher, MaplibreContextmenuEventDetail } from ".";
+import {
+  ContextMenuEventDispatcher,
+  MaplibreContextmenuEventDetail,
+} from "./ContextMenuEventDispatcher";
 import { Meta } from "@storybook/react";
-import { MapRef, Map, Marker } from "react-map-gl/maplibre";
 import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "pentatrion-design";
+import { Map } from "maplibre-gl";
+import { RMap, RMarker } from "..";
 
 const meta = {
-  title: "Maplibre-React/ContextMenu",
+  title: "maplibre-react-components/ContextMenu",
   component: ContextMenuEventDispatcher,
   parameters: {
     layout: "fullscreen",
   },
   decorators: [
     (Story) => {
-      return <Story />;
+      return (
+        <div style={{ height: "100vh" }}>
+          <Story />
+        </div>
+      );
     },
   ],
 } satisfies Meta<typeof ContextMenuEventDispatcher>;
 export default meta;
 
 export const Basic = () => {
-  const mapRef = useRef<MapRef>(null!);
+  const mapRef = useRef<Map>(null!);
 
   const [markerCoords, setMarkerCoords] = useState<[number, number] | null>(null);
 
@@ -29,17 +37,13 @@ export const Basic = () => {
   }
 
   return (
-    <Map
-      ref={mapRef}
-      style={{ width: "100%", height: "100vh" }}
-      mapStyle="https://demotiles.maplibre.org/style.json"
-    >
-      {markerCoords && <Marker longitude={markerCoords[0]} latitude={markerCoords[1]} />}
+    <RMap ref={mapRef}>
+      {markerCoords && <RMarker longitude={markerCoords[0]} latitude={markerCoords[1]} />}
       <ContextMenuEventDispatcher>
         <ContextMenu eventName="maplibre-contextmenu">
           <ContextMenuItem label="Add marker" onClick={handleClickBack} />
         </ContextMenu>
       </ContextMenuEventDispatcher>
-    </Map>
+    </RMap>
   );
 };

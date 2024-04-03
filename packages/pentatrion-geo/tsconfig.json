@@ -3,10 +3,10 @@
     "compilerOptions": {
         "types": [],
         "paths": {
-            "maplibre-geo": [
+            "pentatrion-geo": [
                 "."
             ],
-            "maplibre-geo/*": [
+            "pentatrion-geo/*": [
                 "./*"
             ],
             "@storybook/react": [

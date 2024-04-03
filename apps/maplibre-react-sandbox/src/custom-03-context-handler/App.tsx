@@ -8,12 +8,7 @@ import {
   MaplibreContextmenuEventDetail,
   RMap,
 } from "maplibre-react-components";
-
-const marignier = { lng: 6.498, lat: 46.089 };
-
-// const mapStyle = "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL";
-
-const mapStyle = "/styles/ign/PLAN.IGN/standard.json";
+import { ignPlanStyleUrl, marignier } from "../shared/constants";
 
 function App() {
   const mapRef = useRef<Map>(null!);
@@ -29,7 +24,7 @@ function App() {
 
   return (
     <>
-      <RMap ref={mapRef} initialCenter={marignier} initialZoom={16} mapStyle={mapStyle}>
+      <RMap ref={mapRef} initialCenter={marignier} initialZoom={16} mapStyle={ignPlanStyleUrl}>
         <ContextMenuEventDispatcher>
           <ContextMenu eventName="maplibre-contextmenu">
             <ContextMenuItem label="Add marker" onClick={handleClickBack} />

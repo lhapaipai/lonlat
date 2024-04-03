@@ -7,11 +7,7 @@ import { Point } from "geojson";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
-const marignierViewState = {
-  longitude: marignier.lng,
-  latitude: marignier.lat,
-  zoom: 16,
-};
+
 
 const pointLayer: LayerProps = {
   id: "point",

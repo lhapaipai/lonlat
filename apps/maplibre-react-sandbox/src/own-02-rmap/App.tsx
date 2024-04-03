@@ -1,19 +1,15 @@
-import { Map, Marker } from "maplibre-gl";
+import { Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Event, RMap, RMarker, RPopup } from "maplibre-react-components";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import Pin from "./Pin";
 
-//"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
-//"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-//"/styles/ign/PLAN.IGN/standard.json"
-
 const marignier = { lng: 6.498, lat: 46.089 };
 const geneva = { lng: 6.037, lat: 46.175 };
 
 function App() {
-  const mapRef = useRef<RMap>(null);
+  const mapRef = useRef<Map>(null);
   const [counter, setCounter] = useState(0);
   const [showMap, setShowMap] = useState(true);
   const [showPopup, setShowPopup] = useState(true);

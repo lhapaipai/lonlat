@@ -10,11 +10,8 @@ import {
 import "maplibre-gl/dist/maplibre-gl.css";
 import { clusterLabelLayer, clusterLayer, unclusteredPointLayer } from "./layers";
 import { useRef } from "react";
-import { Feature, GeometryCollection, Point } from "geojson";
+import { mapTilerStreetsStyleUrl } from "../shared/constants";
 
-//"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
-//"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-//"/styles/ign/PLAN.IGN/standard.json"
 const usa = [-103.6, 40.67] as [number, number];
 
 const usaViewState = {
@@ -46,7 +43,7 @@ function App() {
       <RMap
         initialViewState={usaViewState}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
+        mapStyle={mapTilerStreetsStyleUrl}
         interactiveLayerIds={[clusterLayer.id]}
         onClick={handleClick}
         ref={mapRef}

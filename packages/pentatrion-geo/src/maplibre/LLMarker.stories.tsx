@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as maplibre from "maplibre-gl";
-import { LLMarker } from "maplibre-components";
+import { LLMarker } from "pentatrion-geo";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 const meta = {
-  title: "Maplibre-ext/LLMarker",
+  title: "pentatrion-geo/LLMarker",
 };
 export default meta;
 
@@ -18,7 +18,7 @@ export const Graphics = () => (
             background: "var(--marker-color)",
           }}
         ></div>
-        <div>--marker-color</div>
+        <pre>--marker-color</pre>
       </div>
       <div>
         <div
@@ -27,7 +27,7 @@ export const Graphics = () => (
             background: "var(--marker-color-dark)",
           }}
         ></div>
-        <div>--marker-color-dark</div>
+        <pre>--marker-color-dark</pre>
       </div>
       <div>
         <div
@@ -36,7 +36,7 @@ export const Graphics = () => (
             background: "var(--ovale-color-hover)",
           }}
         ></div>
-        <div>--ovale-color-hover</div>
+        <pre>--ovale-color-hover</pre>
       </div>
     </div>
     <div className="storybook-icon-grid">
@@ -49,7 +49,7 @@ export const Graphics = () => (
             backgroundPosition: -15,
           }}
         ></div>
-        <div>--marker-color-gradient</div>
+        <pre>--marker-color-gradient</pre>
       </div>
       <div>
         <div
@@ -60,7 +60,7 @@ export const Graphics = () => (
             backgroundPosition: 0,
           }}
         ></div>
-        <div>--marker-color-gradient hover</div>
+        <pre>--marker-color-gradient hover</pre>
       </div>
       <div>
         <div
@@ -71,7 +71,7 @@ export const Graphics = () => (
             backgroundPosition: 0,
           }}
         ></div>
-        <div>--marker-color-gradient selected</div>
+        <pre>--marker-color-gradient selected</pre>
       </div>
     </div>
 
@@ -79,7 +79,7 @@ export const Graphics = () => (
       <div>
         <div className="ll-marker">
           {/* i is wrapped so we can apply transform when active */}
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-star"></i>
           </div>
@@ -91,7 +91,7 @@ export const Graphics = () => (
     <div className="storybook-icon-grid">
       <div>
         <div className="ll-marker">
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-road"></i>
           </div>
@@ -100,7 +100,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker selected">
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
@@ -113,7 +113,7 @@ export const Graphics = () => (
     <div className="storybook-icon-grid">
       <div>
         <div className="ll-marker">
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
@@ -122,7 +122,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-color": "#9ed24d" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
@@ -131,7 +131,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-color": "#5fbcff" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
@@ -140,7 +140,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-color": "#ffa33d" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
@@ -149,7 +149,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-color": "#ff4d4d" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
@@ -158,7 +158,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-color": "#c0c0c0" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-heart"></i>
           </div>
@@ -170,7 +170,7 @@ export const Graphics = () => (
     <div className="storybook-icon-grid">
       <div>
         <div className="ll-marker">
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <div className="text">5</div>
           </div>
@@ -179,7 +179,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker">
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <div className="text">15</div>
           </div>
@@ -188,7 +188,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker">
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <div className="text">105</div>
           </div>
@@ -200,7 +200,7 @@ export const Graphics = () => (
     <div className="storybook-icon-grid">
       <div>
         <div className="ll-marker disabled">
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-housenumber"></i>
           </div>
@@ -210,7 +210,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker">
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-town"></i>
             <div className="inactive"></div>
@@ -224,7 +224,7 @@ export const Graphics = () => (
     <div className="storybook-icon-grid">
       <div>
         <div className="ll-marker" style={{ "--marker-size": "30px" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-route"></i>
           </div>
@@ -234,7 +234,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-size": "50px" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-municipality"></i>
           </div>
@@ -244,7 +244,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-size": "70px" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-home"></i>
           </div>
@@ -254,7 +254,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-size": "90px" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <i className="fe-climbing-outdoor"></i>
           </div>
@@ -267,7 +267,7 @@ export const Graphics = () => (
     <div className="storybook-icon-grid">
       <div>
         <div className="ll-marker small-text" style={{ "--marker-size": "30px" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <div className="text">5</div>
           </div>
@@ -277,7 +277,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-size": "50px" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <div className="text">12</div>
           </div>
@@ -287,7 +287,7 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-size": "70px" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <div className="text">105</div>
           </div>
@@ -297,13 +297,128 @@ export const Graphics = () => (
       </div>
       <div>
         <div className="ll-marker" style={{ "--marker-size": "90px" }}>
-          <div>
+          <div className="marker">
             <div className="ovale"></div>
             <div className="text">130</div>
           </div>
           <div className="target"></div>
         </div>
         <pre>--marker-size: 90px</pre>
+      </div>
+    </div>
+
+    <div className="storybook-icon-grid">
+      <div>
+        <div className="ll-marker pegman zone-0">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>0 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-1">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>22.5 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-2">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>45 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-3">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>67.5 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-4">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>90 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-5">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>112.5 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-6">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>135 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-7">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>157.5 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-8">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>180 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-9">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>202.5 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-10">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>225 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-11">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>247.5 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-12">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>270 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-13">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>292.5 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-14">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>315 deg.</pre>
+      </div>
+      <div>
+        <div className="ll-marker pegman zone-15">
+          <div className="image"></div>
+          <div className="target"></div>
+        </div>
+        <pre>337.5 deg.</pre>
       </div>
     </div>
   </div>

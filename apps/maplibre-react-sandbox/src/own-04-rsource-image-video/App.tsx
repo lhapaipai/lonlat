@@ -4,10 +4,6 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
-//"https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
-//"https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-//"/styles/ign/PLAN.IGN/standard.json"
-
 const marignier = { lng: 6.498, lat: 46.089 };
 
 const orthoCoordinates: Coordinates = [
@@ -18,7 +14,7 @@ const orthoCoordinates: Coordinates = [
 ];
 
 function App() {
-  const mapRef = useRef<RMap>(null);
+  const mapRef = useRef<Map>(null);
   const [counter, setCounter] = useState(0);
   const [show, setShow] = useState(true);
   const [opacity, setOpacity] = useState(100);
@@ -58,11 +54,17 @@ function App() {
           ></RMarker>
           <RSource
             key="marignier-ortho"
+            id="marignier-ortho"
             type="image"
             url="/data/marignier-ortho.jpg"
             coordinates={orthoCoordinates}
           >
-            <RLayer key="marignier-ortho" type="raster" paint={rasterPaintStyle} />
+            <RLayer
+              id="marignier-ortho"
+              key="marignier-ortho"
+              type="raster"
+              paint={rasterPaintStyle}
+            />
           </RSource>
         </RMap>
       )}

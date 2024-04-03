@@ -4,7 +4,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 import * as maplibre from "maplibre-gl";
 import { FPSControl } from "./lib/FPSControl";
-import { LLMarker, LLPopup } from "maplibre-components";
+import { LLMarker, LLPopup } from "pentatrion-geo";
 
 const $map = document.getElementById("map");
 

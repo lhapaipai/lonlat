@@ -6,6 +6,7 @@ import CustomOverlay from "./CustomOverlay";
 import jsonElectionData from "./us-election-2016.json";
 import PieCharts from "./PieCharts";
 import { CountyElectionData } from "./types";
+import { mapTilerStreetsStyleUrl } from "../shared/constants";
 
 const electionData = jsonElectionData as CountyElectionData[];
 
@@ -23,7 +24,7 @@ function App() {
       <RMap
         initialViewState={usViewState}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
+        mapStyle={mapTilerStreetsStyleUrl}
         minZoom={2}
       >
         <CustomOverlay>

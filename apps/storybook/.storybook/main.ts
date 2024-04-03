@@ -11,7 +11,7 @@ const config: StorybookConfig = {
     `${projectDir}/packages/pentatrion-design/styles/**/*.stories.@(ts|tsx)`,
     `${projectDir}/packages/pentatrion-design/components/**/*.stories.@(ts|tsx)`,
     `${projectDir}/packages/pentatrion-fonts/Icons.stories.tsx`,
-    `${projectDir}/packages/maplibre-components/src/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/packages/pentatrion-geo/src/**/*.stories.@(ts|tsx)`,
     `${projectDir}/packages/maplibre-react-components/src/**/*.stories.@(ts|tsx)`,
   ],
   addons: [
