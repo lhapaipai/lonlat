@@ -22,11 +22,7 @@ export default function BaseLayerControl() {
 
   const currentBaseLayerId = useSelector(selectBaseLayer);
   const elevation = useSelector(selectElevation);
-  /*
-    style={{
-      objectPosition: `${layer.thumbnailPosition[0]}px ${layer.thumbnailPosition[1]}`,
-    }}
-  */
+
   return createPortal(
     <>
       <div
@@ -34,7 +30,7 @@ export default function BaseLayerControl() {
         key="elevation"
         onClick={() => dispatch(elevationToggled())}
       >
-        {/* <img className="preview" src={layer.thumbnail} /> */}
+        <img className="preview" src="/styles/terrarium/terrarium.jpg" />
         <div className="legend text-sm">3D</div>
       </div>
       {layers.map((layerId) => {

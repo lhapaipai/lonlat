@@ -8,7 +8,7 @@ import { useEffect, useMemo } from "react";
 import { createRasterStyle } from "pentatrion-design";
 import { useSelector } from "react-redux";
 import { Map, StyleSpecification } from "maplibre-gl";
-import { RMap, RNavigationControl, RSource, RTerrain } from "maplibre-react-components";
+import { RLayer, RMap, RNavigationControl, RSource, RTerrain } from "maplibre-react-components";
 import { DOM } from "maplibre-gl/src/util/dom";
 
 const marignier = { lng: 6.498, lat: 46.089 };
@@ -68,16 +68,18 @@ function App() {
         <RNavigationControl />
         <BaseLayerControl />
         {elevation && (
-          <RSource
-            key="terrarium"
-            id="terrarium"
-            type="raster-dem"
-            tiles={terrariumTiles}
-            tileSize={256}
-            encoding="terrarium"
-          >
+          <>
+            <RSource
+              key="terrarium"
+              id="terrarium"
+              type="raster-dem"
+              tiles={terrariumTiles}
+              tileSize={256}
+              encoding="terrarium"
+            />
+            <RLayer type="hillshade" key="hillshade" id="hishade" source="terrarium" />
             <RTerrain source="terrarium" exaggeration={1.3} />
-          </RSource>
+          </>
         )}
       </RMap>
     </>
