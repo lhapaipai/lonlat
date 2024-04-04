@@ -9,7 +9,7 @@
     "@floating-ui/dom": "^1.6.3",
     "@mapbox/point-geometry": "^0.1.0",
     "@types/geojson": "^7946.0.14",
-    "maplibre-gl": "^4.1.0",
+    "maplibre-gl": "^4.1.2",
     "maplibre-react-components": "workspace:*",
     "nanoid": "^5.0.6",
     "pentatrion-design": "workspace:*"
@@ -18,14 +18,14 @@
     "@googlemaps/js-api-loader": "^1.16.6",
     "@types/google.maps": "^3.55.5",
     "@types/mapbox__point-geometry": "^0.1.4",
-    "@types/react": "^18.2.72",
-    "@types/react-dom": "^18.2.22",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "peerDependencies": {
+    "@googlemaps/js-api-loader": "^1.16.6",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "@googlemaps/js-api-loader": "^1.16.6"
+    "react-dom": ">=16.8.0"
   }
 }

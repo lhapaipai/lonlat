@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.3",
-    "@floating-ui/react": "^0.26.9",
+    "@floating-ui/react": "^0.26.10",
     "@mapbox/mapbox-gl-draw": "^1.4.3",
     "@mapbox/polyline": "^1.2.1",
     "@turf/turf": "6.5.0",
@@ -24,28 +24,28 @@
     "lodash.isequal": "^4.5.0",
     "lodash.template": "^4.5.0",
     "mapbox-gl-fps": "^1.0.1",
-    "maplibre-gl": "^4.1.0",
+    "maplibre-gl": "^4.1.2",
+    "maplibre-react-components": "workspace:*",
     "merge-options": "^3.0.4",
     "pentatrion-design": "workspace:*",
     "pentatrion-geo": "workspace:*",
-    "proj4": "^2.10.0",
+    "proj4": "^2.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "maplibre-react-components": "workspace:*",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "suggestions": "^1.7.1",
     "turf-extent": "^1.0.4"
   },
   "devDependencies": {
     "@types/mapbox__mapbox-gl-draw": "^1.4.6",
     "@types/mapbox__point-geometry": "^0.1.4",
-    "@types/node": "^20.11.27",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
+    "@types/node": "^20.12.4",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.6"
+    "typescript": "^5.4.3",
+    "vite": "^5.2.8"
   }
 }

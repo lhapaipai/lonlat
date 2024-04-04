@@ -10,15 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.9",
+    "@floating-ui/react": "^0.26.10",
     "@googlemaps/js-api-loader": "^1.16.6",
-    "@reduxjs/toolkit": "^2.2.1",
+    "@reduxjs/toolkit": "^2.2.3",
     "@turf/turf": "6.5.0",
     "d3-array": "^3.2.4",
     "d3-scale": "^4.0.2",
     "d3-shape": "^3.2.0",
     "immutable": "5.0.0-beta.5",
-    "maplibre-gl": "^4.1.0",
+    "maplibre-gl": "^4.1.2",
     "maplibre-react-components": "workspace:*",
     "nanoid": "^5.0.6",
     "pentatrion-design": "workspace:*",
@@ -27,7 +27,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
     "react-sortablejs": "^6.1.4",
-    "sass": "^1.72.0"
+    "sass": "^1.74.1"
   },
   "devDependencies": {
     "@types/d3-array": "^3.2.1",
@@ -35,10 +35,10 @@
     "@types/d3-shape": "^3.1.6",
     "@types/geojson": "^7946.0.14",
     "@types/google.maps": "^3.55.5",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.6"
+    "typescript": "^5.4.3",
+    "vite": "^5.2.8"
   }
 }

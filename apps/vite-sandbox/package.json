@@ -10,24 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.9",
+    "@floating-ui/react": "^0.26.10",
     "@floating-ui/utils": "^0.2.1",
-    "@use-gesture/react": "^10.3.0",
+    "@use-gesture/react": "^10.3.1",
     "fuse.js": "^7.0.0",
-    "maplibre-gl": "^4.1.0",
+    "maplibre-gl": "^4.1.2",
+    "maplibre-react-components": "workspace:*",
     "pentatrion-design": "workspace:*",
     "pentatrion-geo": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "maplibre-react-components": "workspace:*",
     "react-spring": "^9.7.3",
-    "sass": "^1.72.0"
+    "sass": "^1.74.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.6"
+    "typescript": "^5.4.3",
+    "vite": "^5.2.8"
   }
 }

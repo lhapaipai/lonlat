@@ -10,25 +10,25 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "pentatrion-geo": "workspace:*",
+    "maplibre-react-components": "workspace:*",
     "pentatrion-design": "workspace:*",
+    "pentatrion-geo": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.51.0",
-    "maplibre-react-components": "workspace:*",
+    "react-hook-form": "^7.51.2",
     "react-router-dom": "^6.22.3",
-    "sass": "^1.72.0"
+    "sass": "^1.74.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.1",
-    "@types/node": "^20.11.27",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
+    "@testing-library/react": "^14.2.2",
+    "@types/node": "^20.12.4",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "jsdom": "^24.0.0",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.6",
-    "vitest": "^1.3.1"
+    "typescript": "^5.4.3",
+    "vite": "^5.2.8",
+    "vitest": "^1.4.0"
   }
 }
