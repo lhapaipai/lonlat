@@ -1,4 +1,4 @@
-import { MapOptions, Offset, PointLike } from "maplibre-gl";
+import { LngLat, MapOptions, Offset, PointLike } from "maplibre-gl";
 import {
   type MapCallbacks,
   type MapHandlerOptionName,
@@ -117,6 +117,53 @@ export function deepEqual(a: any, b: any): boolean {
     return true;
   }
   return false;
+}
+
+interface GoogleLatLng {
+  lat(): number;
+  lng(): number;
+}
+
+export interface LngLatObj {
+  lng: number;
+  lat: number;
+}
+
+export function getLngLatObj(position?: GoogleLatLng | null) {
+  if (!position) {
+    return null;
+  }
+  return { lng: position.lng(), lat: position.lat() };
+}
+
+export function areLngLatClose(
+  lngLat1?: { lng: number; lat: number },
+  lngLat2?: { lng: number; lat: number },
+): boolean {
+  if (!lngLat1 && !lngLat2) {
+    return true;
+  }
+  if (!lngLat1 || !lngLat2) {
+    return false;
+  }
+  return (
+    Math.round(lngLat1.lng * 100000) === Math.round(lngLat2.lng * 100000) &&
+    Math.round(lngLat1.lat * 100000) === Math.round(lngLat2.lat * 100000)
+  );
+}
+
+export function arePositionLngLatEqual(
+  position: GoogleLatLng,
+  lngLat: { lng: number; lat: number },
+): boolean {
+  return position.lat() === lngLat.lat && position.lng() === lngLat.lng;
+}
+
+export function lngLatClassToObj(lngLat: LngLat) {
+  return {
+    lng: lngLat.lng,
+    lat: lngLat.lat,
+  };
 }
 
 export function arePointsEqual(a?: PointLike, b?: PointLike): boolean {

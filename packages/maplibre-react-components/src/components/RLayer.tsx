@@ -14,6 +14,7 @@ import {
 import {
   Ref,
   forwardRef,
+  memo,
   useContext,
   useEffect,
   useImperativeHandle,
@@ -40,7 +41,7 @@ type RLayerProps = LayerOptions & {
   beforeId?: string;
 };
 
-// -> failed to build
+// -> TODO failed to build
 // type StyleLayer = Exclude<ReturnType<Map["getLayer"]>, undefined>;
 type StyleLayer = unknown;
 
@@ -194,4 +195,4 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
   return null;
 }
 
-export default forwardRef(RLayer);
+export default memo(forwardRef(RLayer));

@@ -1,0 +1,63 @@
+html,
+body,
+#root,
+#app {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.red-box {
+    width: 2px;
+    height: 2px;
+    background-color: red;
+}
+
+html {
+    --sidebar-lonlat-height: 50%;
+    --sidebar-maps-width: 50%;
+    --sidebar-maplibre-width: 50%;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+#maps,
+#pano,
+#maplibre {
+    width: 100%;
+    height: 100%;
+}
+
+#google {
+    display: flex;
+    flex: 1;
+}
+
+
+
+#lonlat {
+    display: flex;
+    position: relative;
+    flex: 0 0 var(--sidebar-lonlat-height);
+    border-top: 1px solid var(--background-strong);
+}
+
+#maps-container {
+    position: relative;
+    flex: 0 0 var(--sidebar-maps-width);
+    border-right: 1px solid var(--background-strong);
+}
+
+#maplibre-container {
+    position: relative;
+    flex: 0 0 var(--sidebar-maplibre-width);
+    border-right: 1px solid var(--background-strong);
+}

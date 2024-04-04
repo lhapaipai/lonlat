@@ -1,4 +1,4 @@
-import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions } from "maplibre-gl";
+import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions, Point } from "maplibre-gl";
 import { DOM } from "maplibre-gl/src/util/dom";
 
 import "./LLMarker.scss";
@@ -12,7 +12,7 @@ const defaultHeight = 60;
 export default class LLPegman extends Marker {
   _height = defaultHeight;
   _bearing: number;
-  _zone: number;
+  declare _zone: number;
 
   constructor(options?: LLPegmanOptions) {
     const useDefaultMarker = !options || !options.element;
@@ -24,6 +24,7 @@ export default class LLPegman extends Marker {
 
     super(options);
 
+    this._offset = Point.convert([0, 16]);
     this._anchor = (options && options.anchor) || "bottom";
     this._bearing = (options && options.bearing) || 0;
 
@@ -75,7 +76,6 @@ export default class LLPegman extends Marker {
   }
 
   setBearing(bearing: number): this {
-    console.log("setBearing", this._bearing, bearing);
     this._bearing = bearing;
     this.updateZone();
 
@@ -87,7 +87,7 @@ export default class LLPegman extends Marker {
       this._element.classList.remove(`zone-${this._zone}`);
     }
 
-    this._zone = Math.floor(this._bearing / 22.5);
+    this._zone = (16 - Math.round(this._bearing / 22.5)) % 16;
     this._element.classList.add(`zone-${this._zone}`);
   }
 

@@ -11,6 +11,7 @@ function App() {
   const mapRef = useRef<Map>(null);
   const [counter, setCounter] = useState(0);
   const [showMap, setShowMap] = useState(true);
+  const [showExtra, setShowExtra] = useState(true);
 
   return (
     <>
@@ -27,17 +28,36 @@ function App() {
               </div>
               <div>
                 <button onClick={() => setShowMap((s) => !s)}>
-                  {showMap ? "masquer" : "afficher"}
+                  {showMap ? "masquer carte" : "afficher carte"}
+                </button>
+              </div>
+              <div>
+                <button onClick={() => setShowExtra((s) => !s)}>
+                  {showExtra ? "masquer extra" : "afficher extra"}
                 </button>
               </div>
             </div>
           </RMap>
         )}
       </div>
-      <div className="context-row">
-        <ResizeArea name="extra" position="top" />
-        <p>Hello world</p>
-      </div>
+      {showExtra && (
+        <div className="context-row">
+          <ResizeArea name="extra" position="top" />
+          <div id="extra-content"></div>
+          <div className="sidebar">
+            <div>
+              <button onClick={() => setShowMap((s) => !s)}>
+                {showMap ? "masquer carte" : "afficher carte"}
+              </button>
+            </div>
+            <div>
+              <button onClick={() => setShowExtra((s) => !s)}>
+                {showExtra ? "masquer extra" : "afficher extra"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

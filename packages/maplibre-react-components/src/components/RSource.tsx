@@ -23,6 +23,7 @@ import {
   Ref,
   useImperativeHandle,
   useContext,
+  memo,
 } from "react";
 import { mapLibreContext } from "../context";
 
@@ -205,4 +206,4 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   );
 }
 
-export default forwardRef(RSource);
+export default memo(forwardRef(RSource));
