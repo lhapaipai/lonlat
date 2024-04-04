@@ -630,6 +630,12 @@ importers:
         specifier: workspace:*
         version: link:../pentatrion-design
     devDependencies:
+      '@googlemaps/js-api-loader':
+        specifier: ^1.16.6
+        version: 1.16.6
+      '@types/google.maps':
+        specifier: ^3.55.5
+        version: 3.55.5
       '@types/mapbox__point-geometry':
         specifier: ^0.1.4
         version: 0.1.4
@@ -2526,7 +2532,6 @@ packages:
     resolution: {integrity: sha512-V8p5W9DbPQx74jWUmyYJOerhiB4C+MHekaO0ZRmc6lrOYrvY7+syLhzOWpp55kqSPeNb+qbC2h8i69aLIX6krQ==}
     dependencies:
       fast-deep-equal: 3.1.3
-    dev: false
 
   /@grafikart/o2ts@0.1.14(openapi-types@12.1.3):
     resolution: {integrity: sha512-sRzV3bJarWHdb2pnhoVdlnS52qT3m2N/B772JOL9ES0SRTQ3SA6sn9YHBBSvAYvA9civGzy4GcP/FY5x0UPufg==}

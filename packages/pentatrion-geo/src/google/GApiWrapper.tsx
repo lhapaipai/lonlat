@@ -46,7 +46,7 @@ export interface WrapperProps extends LoaderOptions {
  *
  * @param props
  */
-export default function GoogleApiWrapper({ children, render, callback, ...options }: WrapperProps) {
+export default function GApiWrapper({ children, render, callback, ...options }: WrapperProps) {
   const [status, setStatus] = useState(Status.LOADING);
 
   useEffect(() => {

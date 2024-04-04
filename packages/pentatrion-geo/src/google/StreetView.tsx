@@ -1,16 +1,17 @@
 import { useEventCallback } from "pentatrion-design";
-import { GManager } from "./GManager";
-import { CSSProperties, Dispatch, SetStateAction, useEffect, useRef } from "react";
-import { LngLatObj, areLngLatClose, getLngLatObj } from "maplibre-react-components";
+import GManager from "./GManager";
+import { CSSProperties, useEffect, useRef } from "react";
+import { LngLatObj, areLngLatClose } from "maplibre-react-components";
+import { getLngLatObj } from ".";
 
 interface Props {
   heading: number;
   pitch: number;
   coords: { lng: number; lat: number };
-  setVisible: Dispatch<SetStateAction<boolean>>;
-  setHeading: Dispatch<SetStateAction<number>>;
-  setPitch: Dispatch<SetStateAction<number>>;
-  setCoords: Dispatch<SetStateAction<{ lng: number; lat: number }>>;
+  onChangeVisible: (visible: boolean) => void;
+  onChangeHeading: (heading: number) => void;
+  onChangePitch: (pitch: number) => void;
+  onChangeCoords: (lngLat: LngLatObj) => void;
 }
 
 function latLngStr(lngLat: { lng: number; lat: number }) {
@@ -27,10 +28,10 @@ export default function StreetView({
   heading,
   pitch,
   coords,
-  setHeading,
-  setPitch,
-  setCoords,
-  setVisible,
+  onChangeHeading,
+  onChangePitch,
+  onChangeCoords,
+  onChangeVisible,
 }: Props) {
   const eltRef = useRef<HTMLDivElement>(null!);
   const panoramaRef = useRef<google.maps.StreetViewPanorama | null>(null);
@@ -58,7 +59,7 @@ export default function StreetView({
 
     if (!areLngLatClose(gLngLat, coords)) {
       console.log("pano_changed gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(coords));
-      setCoords(gLngLat);
+      onChangeCoords(gLngLat);
     }
   });
 
@@ -70,15 +71,15 @@ export default function StreetView({
     // actually no change for the pitch
     if (Math.round(pov.heading * 0.2) !== Math.round(heading * 0.2)) {
       console.log("pov_changed gPov:", pov, "current:", heading, pitch);
-      setHeading(pov.heading);
-      setPitch(pov.pitch);
+      onChangeHeading(pov.heading);
+      onChangePitch(pov.pitch);
     }
   });
 
   const handleVisibleChangedStable = useEventCallback((isVisible) => {
     console.log("visible_changed", isVisible);
     if (isVisible === false) {
-      setVisible(false);
+      onChangeVisible(false);
     }
   });
 
@@ -91,8 +92,10 @@ export default function StreetView({
 
     const street = GManager.createOrGetPanorama(
       streetViewContainer,
-      coords,
-      { pitch, heading },
+      {
+        position: coords,
+        pov: { pitch, heading },
+      },
       {
         handlePosChanged: handlePosChangedStable,
         handlePovChanged: handlePovChangedStable,

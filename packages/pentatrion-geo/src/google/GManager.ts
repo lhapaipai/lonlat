@@ -1,20 +1,14 @@
-import { LngLatObj, getLngLatObj } from "maplibre-react-components";
+import { LngLatObj } from "maplibre-react-components";
+import { getLngLatObj } from ".";
 
-function getStreetViewOptions(
-  position: { lat: number; lng: number },
-  pov: google.maps.StreetViewPov,
-) {
-  return {
-    addressControlOptions: {
-      position: google.maps.ControlPosition.BOTTOM_CENTER,
-    },
-    linksControl: false,
-    panControl: false,
-    enableCloseButton: true,
-    pov,
-    position,
-  };
-}
+const streetViewPanoramaDefaultOptions: google.maps.StreetViewPanoramaOptions = {
+  addressControlOptions: {
+    position: 6, // google.maps.ControlPosition.BOTTOM_CENTER,
+  },
+  linksControl: false,
+  panControl: false,
+  enableCloseButton: true,
+};
 
 /**
  * GManager instantiates only one streetview object within which it renders on demand.
@@ -22,14 +16,14 @@ function getStreetViewOptions(
  * streetview instance. the same goes for event listeners.
  * GManager survives React StreetView component lifecycle.
  */
-export class GManager {
+export default class GManager {
   private static panorama: google.maps.StreetViewPanorama;
   private static panoramaContainer: HTMLElement;
-  private static handlers?: {
-    handlePosChanged: (lngLat: LngLatObj) => void;
-    handlePovChanged: (pov: google.maps.StreetViewPov) => void;
-    handleVisibleChanged: (isVisible: boolean) => void;
-  };
+  private static handlers: {
+    handlePosChanged?: (lngLat: LngLatObj) => void;
+    handlePovChanged?: (pov: google.maps.StreetViewPov) => void;
+    handleVisibleChanged?: (isVisible: boolean) => void;
+  } = {};
 
   private static onPosChanged() {
     // we need timeout because google corrects the position of pegman to be located
@@ -64,13 +58,12 @@ export class GManager {
 
   public static createOrGetPanorama(
     parent: HTMLElement,
-    position: { lat: number; lng: number },
-    pov: google.maps.StreetViewPov,
+    options: google.maps.StreetViewPanoramaOptions,
     handlers: {
-      handlePosChanged: (lngLat: LngLatObj) => void;
-      handlePovChanged: (pov: google.maps.StreetViewPov) => void;
-      handleVisibleChanged: (isVisible: boolean) => void;
-    },
+      handlePosChanged?: (lngLat: LngLatObj) => void;
+      handlePovChanged?: (pov: google.maps.StreetViewPov) => void;
+      handleVisibleChanged?: (isVisible: boolean) => void;
+    } = {},
   ) {
     const isCreation = !GManager.panorama;
 
@@ -79,10 +72,10 @@ export class GManager {
       const div = document.createElement("div");
       div.style.width = "100%";
       div.style.height = "100%";
-      GManager.panorama = new google.maps.StreetViewPanorama(
-        div,
-        getStreetViewOptions(position, pov),
-      );
+      GManager.panorama = new google.maps.StreetViewPanorama(div, {
+        ...streetViewPanoramaDefaultOptions,
+        ...options,
+      });
 
       GManager.panoramaContainer = div;
 
@@ -90,9 +83,10 @@ export class GManager {
       GManager.panorama.addListener("pov_changed", GManager.onPovChanged);
       GManager.panorama.addListener("visible_changed", GManager.onVisibleChanged);
     } else {
+      const { position, pov } = options;
       console.log("getPanorama from singleton");
-      GManager.panorama.setPosition(position);
-      GManager.panorama.setPov(pov);
+      position && GManager.panorama.setPosition(position);
+      pov && GManager.panorama.setPov(pov);
       GManager.panorama.setVisible(true);
     }
 

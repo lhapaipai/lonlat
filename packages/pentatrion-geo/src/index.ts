@@ -8,3 +8,4 @@ export * from "./geometry";
 export type * from "./types";
 
 export * from "./maplibre";
+export * from "./google";

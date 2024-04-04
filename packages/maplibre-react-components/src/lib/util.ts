@@ -10,6 +10,7 @@ import {
   mapReactiveOptionNames,
   mapHandlerNames,
 } from "./MapManager";
+import { LngLatObj } from "../types/env";
 
 type OtherOptions = Omit<
   MapOptions,
@@ -119,27 +120,7 @@ export function deepEqual(a: any, b: any): boolean {
   return false;
 }
 
-interface GoogleLatLng {
-  lat(): number;
-  lng(): number;
-}
-
-export interface LngLatObj {
-  lng: number;
-  lat: number;
-}
-
-export function getLngLatObj(position?: GoogleLatLng | null) {
-  if (!position) {
-    return null;
-  }
-  return { lng: position.lng(), lat: position.lat() };
-}
-
-export function areLngLatClose(
-  lngLat1?: { lng: number; lat: number },
-  lngLat2?: { lng: number; lat: number },
-): boolean {
+export function areLngLatClose(lngLat1?: LngLatObj, lngLat2?: LngLatObj): boolean {
   if (!lngLat1 && !lngLat2) {
     return true;
   }
@@ -150,13 +131,6 @@ export function areLngLatClose(
     Math.round(lngLat1.lng * 100000) === Math.round(lngLat2.lng * 100000) &&
     Math.round(lngLat1.lat * 100000) === Math.round(lngLat2.lat * 100000)
   );
-}
-
-export function arePositionLngLatEqual(
-  position: GoogleLatLng,
-  lngLat: { lng: number; lat: number },
-): boolean {
-  return position.lat() === lngLat.lat && position.lng() === lngLat.lng;
 }
 
 export function lngLatClassToObj(lngLat: LngLat) {

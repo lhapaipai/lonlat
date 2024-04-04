@@ -12,12 +12,9 @@ import {
   RMarker,
   RSource,
   areLngLatClose,
-  arePositionLngLatEqual,
-  getLngLatObj,
   lngLatClassToObj,
 } from "maplibre-react-components";
-import { LLPegman, RPegman } from "pentatrion-geo";
-import { LngLat } from "maplibre-gl";
+import { LLPegman, RPegman, getLngLatObj } from "pentatrion-geo";
 
 const initialHeading = 0;
 const initialPitch = 30;

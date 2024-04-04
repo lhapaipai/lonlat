@@ -4,9 +4,7 @@ import { useState } from "react";
 import { ResizeArea } from "pentatrion-design";
 import { ignPlanStyleUrl } from "../shared/constants";
 import { Event, RLayer, RMap, RSource, lngLatClassToObj } from "maplibre-react-components";
-import { LLPegman, RPegman } from "pentatrion-geo";
-import StreetView from "./StreetView";
-import GoogleApiWrapper from "./GoogleApiWrapper";
+import { GApiWrapper, LLPegman, RPegman, StreetView } from "pentatrion-geo";
 import { googleMapsApiToken } from "../shared/constants";
 import { Libraries } from "@googlemaps/js-api-loader";
 const googleLibraries: Libraries = ["streetView"];
@@ -106,21 +104,17 @@ function App() {
       {showStreetView && (
         <div id="extra">
           <ResizeArea name="extra" position="left" />
-          <GoogleApiWrapper
-            apiKey={googleMapsApiToken}
-            version="weekly"
-            libraries={googleLibraries}
-          >
+          <GApiWrapper apiKey={googleMapsApiToken} version="weekly" libraries={googleLibraries}>
             <StreetView
               heading={heading}
               pitch={pitch}
               coords={coords}
-              setHeading={setHeading}
-              setPitch={setPitch}
-              setCoords={setCoords}
-              setVisible={setShowStreetView}
+              onChangeHeading={setHeading}
+              onChangePitch={setPitch}
+              onChangeCoords={setCoords}
+              onChangeVisible={setShowStreetView}
             />
-          </GoogleApiWrapper>
+          </GApiWrapper>
         </div>
       )}
     </div>
