@@ -1,11 +1,11 @@
 import "./App.scss";
-import { Map, useMap } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { RMap, useMap } from "maplibre-react-components";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
 function NavigateButton() {
-  const { current: map } = useMap();
+  const map = useMap();
 
   const onClick = () => {
     // ici map est une référence du wrapper de l'instance de Map de maplibre

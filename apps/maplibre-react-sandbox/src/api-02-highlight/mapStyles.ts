@@ -1,6 +1,6 @@
-import { FillLayer } from "react-map-gl/maplibre";
+import { FillLayerSpecification } from "maplibre-gl";
 
-export const countiesLayer: FillLayer = {
+export const countiesLayer: FillLayerSpecification = {
   id: "counties",
   source: "",
   "source-layer": "commune",
@@ -11,7 +11,7 @@ export const countiesLayer: FillLayer = {
   },
 };
 
-export const highlightLayer: FillLayer = {
+export const highlightLayer: FillLayerSpecification = {
   id: "counties-highlighted",
   source: "counties",
   "source-layer": "commune",

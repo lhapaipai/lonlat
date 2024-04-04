@@ -9,3 +9,6 @@ export const mapTilerStreetsStyleUrl = `https://api.maptiler.com/maps/streets/st
 export const ignPlanStyleUrl = `/styles/ign/PLAN.IGN/standard.json`;
 
 export const marignier = { lng: 6.498, lat: 46.089 };
+
+// `https://data.geopf.fr/geocodage/search?q=${searchValue}&index=address&limit=10&returntruegeometry=true&lon=6.43&lat=46.08`,
+// `http://localhost:8080/ors/geocode/search?text=${searchValue}&size=10&focus.point.lon=6.43&focus.point.lat=46.08&layers=locality,county,venue`,
