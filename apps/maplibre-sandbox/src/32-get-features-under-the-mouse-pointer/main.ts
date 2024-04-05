@@ -12,6 +12,7 @@ const map = new Map({
   center: marignier,
   zoom: 14,
   style: "/styles/ign/PLAN.IGN/standard.json",
+  // style: "/styles/ign/ADMIN_EXPRESS/adminexpress.json",
 });
 
 map.on("mousemove", (e) => {
@@ -21,7 +22,7 @@ map.on("mousemove", (e) => {
 
   let displayFeatures = [];
 
-  const compact = true;
+  const compact = false;
 
   if (compact) {
     displayFeatures = features.map((f) => {

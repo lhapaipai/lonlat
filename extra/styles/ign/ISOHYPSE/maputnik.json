@@ -1,0 +1,341 @@
+{
+  "version": 8,
+  "metadata": {
+    "maputnik:renderer": "ol",
+    "geoportail:tooltip": "ISOHYPSE/tooltip_ISOHYPSE"
+  },
+  "name": "Isohypse",
+  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
+  "sprite": "https://data.geopf.fr/annexes/ressources/vectorTiles/styles/BDTOPO/sprite/sprite_bdtopo",
+  "sources": {
+    "isohypse": {
+      "type": "vector",
+      "tiles": ["https://data.geopf.fr/tms/1.0.0/ISOHYPSE/{z}/{x}/{y}.pbf"],
+      "scheme": "xyz",
+      "url": "https://data.geopf.fr/tms/1.0.0/ISOHYPSE/metadata.json",
+      "minzoom": 14
+    }
+  },
+  "transition": {
+    "duration": 300,
+    "delay": 0
+  },
+  "layers": [
+    {
+      "filter": ["all", [">=", "altitude", 0], ["<=", "altitude", 1]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "id": "ligne de côte 0 - 1",
+      "type": "line",
+      "maxzoom": 16,
+      "paint": {
+        "line-color": "#466be3",
+        "line-width": 0.5
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "id": "courbes de niveau",
+      "type": "line",
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "minzoom": 16,
+      "paint": {
+        "line-color": "#cc8066"
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      },
+      "line-width": 0.5
+    },
+    {
+      "id": "courbes de niveau intervalle 10m",
+      "type": "line",
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 14,
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": 0.5
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      },
+      "filter": ["all", ["==", ["%", ["get", "altitude"], 10], 0]]
+    },
+    {
+      "id": "courbes de niveau intervalle 5m",
+      "type": "line",
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "minzoom": 14,
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": 0.5
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      },
+      "filter": ["all", ["==", ["%", ["get", "altitude"], 5], 0]]
+    },
+    {
+      "filter": ["all", ["==", "altitude", 50]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "50m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 100]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "100m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 250]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "250m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 500]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "500m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 750]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "750m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 1000]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "1000m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 1500]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "1500m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 2000]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "2000m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 2500]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "2500m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 3000]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "3000m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "filter": ["all", ["==", "altitude", 4000]],
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "maxzoom": 16,
+      "id": "4000m",
+      "type": "line",
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "id": "courbes maîtresses 100m",
+      "type": "line",
+      "source": "isohypse",
+      "source-layer": "courbe",
+      "minzoom": 16,
+      "paint": {
+        "line-color": "#cc8066",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [10, 2]
+          ]
+        }
+      },
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel"
+      },
+      "filter": ["all", ["==", ["%", ["get", "altitude"], 100], 0]]
+    }
+  ]
+}

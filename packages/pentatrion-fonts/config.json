@@ -405,6 +405,12 @@
       "css": "raster",
       "code": 59407,
       "src": "fontawesome"
+    },
+    {
+      "uid": "4ba33d2607902cf690dd45df09774cb0",
+      "css": "plus-circled",
+      "code": 59426,
+      "src": "fontawesome"
     }
   ]
 }
