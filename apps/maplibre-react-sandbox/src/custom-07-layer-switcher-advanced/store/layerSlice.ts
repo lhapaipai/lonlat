@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { LayerId } from "../layers";
+import { BaseLayerId, OptionalLayerId } from "../layers";
 
 interface LayerState {
-  baseLayer: LayerId;
-  optionalLayers: LayerId[];
+  baseLayer: BaseLayerId;
+  optionalLayers: OptionalLayerId[];
   terrain: boolean;
   hillshade: boolean;
   streetView: boolean;
@@ -22,10 +22,10 @@ const layerSlice = createSlice({
   name: "layer",
   initialState,
   reducers: {
-    baseLayerChanged(state, action: PayloadAction<LayerId>) {
+    baseLayerChanged(state, action: PayloadAction<BaseLayerId>) {
       state.baseLayer = action.payload;
     },
-    optionalLayerToggled(state, action: PayloadAction<LayerId>) {
+    optionalLayerToggled(state, action: PayloadAction<OptionalLayerId>) {
       const layerId = action.payload;
       if (state.optionalLayers.includes(layerId)) {
         state.optionalLayers = state.optionalLayers.filter((id) => layerId !== id);

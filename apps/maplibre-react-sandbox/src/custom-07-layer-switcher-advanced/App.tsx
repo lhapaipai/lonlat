@@ -2,17 +2,21 @@ import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import BaseLayerControl from "./components/BaseLayerControl";
 import { useAppSelector } from "./store";
-import { selectBaseLayer } from "./store/layerSlice";
-import { LayerInfos, layersById } from "./layers";
-import { useEffect, useMemo } from "react";
-import { createRasterStyle } from "pentatrion-design";
+import {
+  selectBaseLayer,
+  selectHillshade,
+  selectOptionalLayers,
+  selectStreetView,
+  selectTerrain,
+} from "./store/layerSlice";
+
+import { useEffect, useState } from "react";
 import { Map, StyleSpecification } from "maplibre-gl";
 import { RMap, RNavigationControl } from "maplibre-react-components";
 import { DOM } from "maplibre-gl/src/util/dom";
+import { prepareStyle } from "./util";
 
 const marignier = { lng: 6.498, lat: 46.089 };
-
-const terrariumTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
 
 function handleAfterInstanciation(map: Map) {
   const positions = map._controlPositions;
@@ -30,36 +34,32 @@ function handleAfterInstanciation(map: Map) {
 
 function App() {
   const baseLayerId = useAppSelector(selectBaseLayer);
-  const baseLayer: LayerInfos = layersById[baseLayerId];
+  const optionalLayersId = useAppSelector(selectOptionalLayers);
+  const terrain = useAppSelector(selectTerrain);
+  const hillshade = useAppSelector(selectHillshade);
+  const streetView = useAppSelector(selectStreetView);
+
+  const [uncontrolledStyle, setUncontrolledStyle] = useState<StyleSpecification | string>({
+    version: 8,
+    sources: {},
+    layers: [],
+  });
+
+  useEffect(() => {});
 
   // for debug
   useEffect(() => {
-    console.log(baseLayerId);
-    // fetch(baseLayer.style)
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data.layers));
-  }, [baseLayerId]);
-
-  const mapStyle = useMemo((): StyleSpecification | string => {
-    switch (baseLayer.type) {
-      case "vector":
-        return baseLayer.style;
-      case "raster":
-        return createRasterStyle(baseLayer.style);
-    }
-    return {
-      version: 8,
-      sources: {},
-      layers: [],
-    };
-  }, [baseLayer]);
+    prepareStyle(baseLayerId, optionalLayersId, terrain, hillshade, streetView).then((nextStyle) =>
+      setUncontrolledStyle(nextStyle),
+    );
+  }, [baseLayerId, optionalLayersId, terrain, hillshade, streetView]);
 
   return (
     <>
       <RMap
         initialCenter={marignier}
         initialZoom={14}
-        mapStyle={mapStyle}
+        mapStyle={uncontrolledStyle}
         afterInstanciation={handleAfterInstanciation}
       >
         <RNavigationControl />

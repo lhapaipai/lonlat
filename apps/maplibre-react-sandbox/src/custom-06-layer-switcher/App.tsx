@@ -77,7 +77,7 @@ function App() {
               tileSize={256}
               encoding="terrarium"
             />
-            <RLayer type="hillshade" key="hillshade" id="hishade" source="terrarium" />
+            <RLayer type="hillshade" key="hillshade" id="hillshade" source="terrarium" />
             <RTerrain source="terrarium" exaggeration={1.3} />
           </>
         )}

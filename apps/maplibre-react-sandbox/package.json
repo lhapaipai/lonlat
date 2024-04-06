@@ -12,6 +12,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.10",
     "@googlemaps/js-api-loader": "^1.16.6",
+    "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^2.2.3",
     "@turf/turf": "6.5.0",
     "d3-array": "^3.2.4",

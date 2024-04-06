@@ -2,7 +2,6 @@
   "version": 8,
   "name": "ADMIN_EXPRESS",
   "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
-  "metadata": { "maputnik:renderer": "ol" },
   "sources": {
     "adminexpress": {
       "type": "vector",

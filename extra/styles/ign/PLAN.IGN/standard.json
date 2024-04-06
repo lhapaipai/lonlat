@@ -9,6 +9,10 @@
       "tiles": ["https://data.geopf.fr/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf"]
     }
   },
+  "metadata": {
+    "lonlat:before-id:hillshade": "oro - courbe et cuvette maitresse",
+    "lonlat:before-id:content": "toponyme continent"
+  },
   "transition": {
     "duration": 300,
     "delay": 0

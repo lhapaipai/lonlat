@@ -1,6 +1,14 @@
-import { useSelector } from "react-redux";
-import { BaseLayers, LayerId, baseLayers, countryLabels, layersById } from "../layers";
-import { useAppDispatch } from "../store";
+import {
+  BaseLayerId,
+  BaseLayerInfos,
+  BaseLayers,
+  OptionalLayerId,
+  baseLayers,
+  baseLayersById,
+  countryLabels,
+  optionalLayersById,
+} from "../layers";
+import { useAppDispatch, useAppSelector } from "../store";
 import {
   baseLayerChanged,
   terrainToggled,
@@ -24,11 +32,11 @@ export default function BaseLayerControl() {
   const [countryFilter, setCountryFilter] = useState<keyof BaseLayers>("fr");
   const dispatch = useAppDispatch();
 
-  const currentBaseLayerId = useSelector(selectBaseLayer);
-  const currentOptionalLayers = useSelector(selectOptionalLayers);
-  const currentTerrain = useSelector(selectTerrain);
-  const currentHillshade = useSelector(selectHillshade);
-  const currentStreetView = useSelector(selectStreetView);
+  const currentBaseLayerId = useAppSelector(selectBaseLayer);
+  const currentOptionalLayers = useAppSelector(selectOptionalLayers);
+  const currentTerrain = useAppSelector(selectTerrain);
+  const currentHillshade = useAppSelector(selectHillshade);
+  const currentStreetView = useAppSelector(selectStreetView);
 
   return createPortal(
     <>
@@ -48,8 +56,8 @@ export default function BaseLayerControl() {
       </ButtonGroup>
 
       {baseLayers[countryFilter].map((id) => {
-        const layerId = id as LayerId;
-        const layer = layersById[layerId];
+        const layerId = id as BaseLayerId;
+        const layer = baseLayersById[layerId];
         return (
           <div
             className={cn("layer", "base", layerId === currentBaseLayerId && "active")}
@@ -68,9 +76,9 @@ export default function BaseLayerControl() {
       <div className="separator"></div>
 
       {currentBaseLayerId &&
-        layersById[currentBaseLayerId].layers.map((id) => {
-          const layerId = id as LayerId;
-          const layer = layersById[layerId];
+        (baseLayersById[currentBaseLayerId] as BaseLayerInfos).optionalLayers.map(({ id }) => {
+          const layerId = id as OptionalLayerId;
+          const layer = optionalLayersById[layerId];
 
           return (
             <div
