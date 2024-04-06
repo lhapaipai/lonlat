@@ -1,7 +1,6 @@
 {
   "version": 8,
   "metadata": {
-    "maputnik:renderer": "ol",
     "geoportail:tooltip": "ISOHYPSE/tooltip_ISOHYPSE"
   },
   "name": "Isohypse",

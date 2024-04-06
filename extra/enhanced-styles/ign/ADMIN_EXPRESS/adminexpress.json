@@ -1,0 +1,146 @@
+{
+  "version": 8,
+  "name": "ADMIN_EXPRESS",
+  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
+  "sources": {
+    "adminexpress": {
+      "minzoom": 9,
+      "type": "vector",
+      "tiles": ["https://data.geopf.fr/tms/1.0.0/ADMIN_EXPRESS/{z}/{x}/{y}.pbf"]
+    }
+  },
+  "transition": { "duration": 300, "delay": 0 },
+  "layers": [
+    {
+      "id": "chef_lieu",
+      "type": "circle",
+      "source": "adminexpress",
+      "source-layer": "chflieu_commune",
+      "paint": {
+        "circle-color": "#273d9d",
+        "circle-stroke-color": "rgba(0, 0, 0, 1)",
+        "circle-radius": 5,
+        "circle-stroke-width": 1
+      }
+    },
+    {
+      "id": "commune_limites",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "commune",
+      "minzoom": 12,
+      "paint": { "line-color": "#e49b67", "line-width": 2 }
+    },
+    {
+      "id": "arrondissement_limites",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "arrondissement",
+      "paint": {
+        "line-color": "#000000",
+        "line-width": 0.5
+      }
+    },
+    {
+      "id": "departement",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "departement",
+      "paint": {
+        "line-color": "#000000",
+        "line-width": 1
+      }
+    },
+    {
+      "id": "region",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "region",
+      "paint": {
+        "line-color": "#000000",
+        "line-width": 2
+      }
+    },
+    {
+      "id": "capitale_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "commune",
+      "minzoom": 6,
+      "maxzoom": 11,
+      "filter": ["all", ["==", "statut", "Capitale d'état"]],
+      "layout": {
+        "text-field": "{nom}",
+        "text-allow-overlap": false,
+        "text-offset": [0, -2],
+        "icon-text-fit": "none",
+        "text-size": 13,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#273d9d",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "prefecture_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "commune",
+      "minzoom": 6,
+      "maxzoom": 11,
+      "filter": ["all", ["==", "statut", "Préfecture"]],
+      "layout": {
+        "text-field": "{nom}",
+        "text-allow-overlap": false,
+        "text-offset": [0, -2],
+        "icon-text-fit": "none",
+        "text-size": 13,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#273d9d",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "chef_lieu_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "chflieu_commune",
+      "minzoom": 12,
+      "layout": {
+        "text-field": "{nom}",
+        "text-allow-overlap": false,
+        "text-offset": [0, -2],
+        "icon-text-fit": "none",
+        "text-size": 12,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#273d9d",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "departement_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "departement",
+      "maxzoom": 10,
+      "layout": {
+        "text-field": "{nom}",
+        "icon-size": 1,
+        "text-size": 12,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 2
+      }
+    }
+  ]
+}

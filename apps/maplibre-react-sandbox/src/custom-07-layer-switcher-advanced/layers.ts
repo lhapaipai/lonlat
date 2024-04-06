@@ -119,7 +119,7 @@ export const baseLayersById = {
     label: "Plan",
     description: "",
     thumbnail: "/styles/ign/PLAN.IGN/standard.png",
-    style: "/styles/ign/PLAN.IGN/standard.json",
+    style: "/enhanced-styles/ign/PLAN.IGN/standard.json",
     optionalLayers: [],
     country: "fr",
   } satisfies BaseLayerInfos,
@@ -203,7 +203,7 @@ export const optionalLayersById = {
     label: "Libellés",
     description: "",
     thumbnail: "/styles/ign/PLAN.IGN/toponymes.png",
-    style: "/styles/ign/PLAN.IGN/toponymes.json",
+    style: "/enhanced-styles/ign/PLAN.IGN/toponymes.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -213,7 +213,7 @@ export const optionalLayersById = {
     label: "Cadastre",
     description: "",
     thumbnail: "/styles/ign/PCI/pci.png",
-    style: "/styles/ign/PCI/pci.json",
+    style: "/enhanced-styles/ign/PCI/pci.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -223,7 +223,7 @@ export const optionalLayersById = {
     label: "Frontières",
     description: "",
     thumbnail: "/styles/ign/ADMIN_EXPRESS/adminexpress.png",
-    style: "/styles/ign/ADMIN_EXPRESS/adminexpress.json",
+    style: "/enhanced-styles/ign/ADMIN_EXPRESS/adminexpress.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -233,7 +233,7 @@ export const optionalLayersById = {
     label: "Lignes niveau",
     description: "",
     thumbnail: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.png",
-    style: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
+    style: "/enhanced-styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
