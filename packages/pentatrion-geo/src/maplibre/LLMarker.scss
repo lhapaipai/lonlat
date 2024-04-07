@@ -100,9 +100,17 @@
 
     /* fontello default */
     &>.marker::after,
-    .inactive,
+    .inactive {
+        font-family: "fontello-geo", sans-serif;
+    }
+
     i::before {
         font-family: "fontello", sans-serif;
+    }
+
+    &>.marker::after,
+    .inactive,
+    i::before {
         font-style: normal;
         font-weight: normal;
 

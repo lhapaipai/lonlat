@@ -1,3 +1,5 @@
+import "./fontello-geo-inline.css";
+
 export * from "./feature-option/ign";
 export * from "./feature-option/util";
 export * from "./feature-option/lonlat";

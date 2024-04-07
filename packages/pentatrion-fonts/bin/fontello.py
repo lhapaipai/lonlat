@@ -15,31 +15,44 @@ tmp_dir = fonts_dir / "tmp"
 
 fontello_host = "https://fontello.com"
 
-id_file = fonts_dir / ".fontello"
-css_file = fonts_dir / "lonlat-fontello.css"
-font_dir = fonts_dir / "dist/fontello"
+contexts = {
+    "lonlat": {
+        "file": "config-lonlat.json",
+        "id_file": fonts_dir / ".fontello-lonlat",
+        "css_file": fonts_dir / "fontello-lonlat.css",
+        "font_dir": fonts_dir / "dist/fontello-lonlat",
+        "css_replace_str": "./dist/fontello-lonlat",
+    },
+    "geo": {
+        "file": "config-geo.json",
+        "id_file": fonts_dir / ".fontello-geo",
+        "css_file": fonts_dir / "fontello-geo.css",
+        "font_dir": fonts_dir / "dist/fontello-geo",
+        "css_replace_str": "./dist/fontello-geo",
+    },
+}
+
 fontello_id = None
 
 
-def open_browser():
-    files = {"config": open(fonts_dir / "config.json", "rb")}
+def open_browser(context):
+    files = {"config": open(fonts_dir / context["file"], "rb")}
     response = requests.post(fontello_host, files=files, timeout=60)
 
-    with open(id_file, "w", encoding="utf8") as f:
-        f.write(response.text)
+    fontello_id = response.text
 
-    with open(id_file, "r", encoding="utf8") as f:
-        fontello_id = f.read()
+    with open(context["id_file"], "w", encoding="utf8") as f:
+        f.write(fontello_id)
 
     webbrowser.open(f"{fontello_host}/{fontello_id}")
 
 
-def save_font():
+def save_font(context):
     zip_file = tmp_dir / "fontello.zip"
     zip_extraction_dir = tmp_dir / "fontello-extraction"
     tmp_fonts_dir = tmp_dir / "fontello"
 
-    if not (id_file).exists():
+    if not (context["id_file"]).exists():
         print("run fontello.py open before")
         sys.exit(1)
 
@@ -48,11 +61,11 @@ def save_font():
         shutil.rmtree(tmp_dir)
     tmp_dir.mkdir(parents=True)
 
-    if font_dir.exists():
-        shutil.rmtree(font_dir)
+    if context["font_dir"].exists():
+        shutil.rmtree(context["font_dir"])
 
     # Download File
-    with open(id_file, "r", encoding="utf8") as f:
+    with open(context["id_file"], "r", encoding="utf8") as f:
         fontello_id = f.read()
 
     response = requests.get(
@@ -76,15 +89,15 @@ def save_font():
         break
 
     # Copy files
-    shutil.copyfile(tmp_fonts_dir / "config.json", fonts_dir / "config.json")
-    shutil.copytree(tmp_fonts_dir / "font", font_dir, dirs_exist_ok=True)
+    shutil.copyfile(tmp_fonts_dir / "config.json", fonts_dir / context["file"])
+    shutil.copytree(tmp_fonts_dir / "font", context["font_dir"], dirs_exist_ok=True)
 
     with open(tmp_fonts_dir / "css/fontello.css", "r", encoding="utf8") as file:
         css_file_content = file.read()
 
-    css_file_content = css_file_content.replace("../font", "./dist/fontello")
+    css_file_content = css_file_content.replace("../font", context["css_replace_str"])
 
-    with open(css_file, "w", encoding="utf8") as file:
+    with open(context["css_file"], "w", encoding="utf8") as file:
         file.write(css_file_content)
 
     # cleanup
@@ -94,9 +107,15 @@ def save_font():
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("action", choices=["open", "save"], help="action to do")
+    parser.add_argument(
+        "context",
+        choices=["lonlat", "geo"],
+        help="geo only for pentatrion-geo",
+        default="lonlat",
+    )
     args = parser.parse_args()
 
     if args.action == "open":
-        open_browser()
+        open_browser(contexts[args.context])
     else:
-        save_font()
+        save_font(contexts[args.context])

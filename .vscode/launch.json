@@ -1,6 +1,15 @@
 {
   "configurations": [
     {
+      "name": "Python Fontello save geo",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/packages/pentatrion-fonts/bin/fontello.py",
+      "cwd": "${workspaceFolder}/packages/pentatrion-fonts",
+      "console": "integratedTerminal",
+      "args": ["save", "geo"]
+    },
+    {
       "name": "Listen for Xdebug API",
       "type": "php",
       "request": "launch",
@@ -13,14 +22,9 @@
       "request": "launch",
       "program": "${workspaceFolder}/apps/api/bin/phpunit",
       "cwd": "${workspaceFolder}/apps/api",
-      "args": [
-        "--filter",
-        "testAuthenticatedUserCanUpdateHisProfile"
-      ],
+      "args": ["--filter", "testAuthenticatedUserCanUpdateHisProfile"],
       "port": 0,
-      "runtimeArgs": [
-        "-dxdebug.start_with_request=yes"
-      ],
+      "runtimeArgs": ["-dxdebug.start_with_request=yes"],
       "env": {
         "XDEBUG_MODE": "debug,develop",
         "XDEBUG_CONFIG": "client_port=${port}"
@@ -31,15 +35,10 @@
       "request": "launch",
       "name": "Extra/shared Vitest Debug Current Test File",
       "autoAttachChildProcesses": true,
-      "skipFiles": [
-        "<node_internals>/**",
-        "**/node_modules/**"
-      ],
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
       "program": "${workspaceRoot}/extra/shared/node_modules/vitest/vitest.mjs",
       "cwd": "${workspaceFolder}/extra/shared",
-      "args": [
-        "../../${relativeFile}"
-      ],
+      "args": ["../../${relativeFile}"],
       "smartStep": true,
       "console": "integratedTerminal"
     }

@@ -1,3 +1,4 @@
-.fontello
+.fontello*
 /tmp/
 dist/
+.env/
