@@ -7,7 +7,8 @@
       "type": "vector",
       "tiles": ["https://data.geopf.fr/tms/1.0.0/PCI/{z}/{x}/{y}.pbf"],
       "scheme": "xyz",
-      "url": "https://data.geopf.fr/tms/1.0.0/PCI/metadata.json"
+      "url": "https://data.geopf.fr/tms/1.0.0/PCI/metadata.json",
+      "minzoom": 15
     }
   },
   "transition": {
@@ -15,62 +16,6 @@
     "delay": 0
   },
   "layers": [
-    {
-      "id": "pci_departement_line",
-      "type": "line",
-      "source": "pci",
-      "source-layer": "departement",
-      "paint": { "line-color": "#6a00ff" },
-      "minzoom": 5,
-      "layout": { "line-join": "bevel" }
-    },
-    {
-      "id": "pci_departement_label",
-      "type": "symbol",
-      "source": "pci",
-      "source-layer": "departement",
-      "layout": {
-        "text-field": "{insee_dep}",
-        "text-font": ["Source Sans Pro Bold Italic"],
-        "text-size": 14
-      },
-      "paint": {
-        "text-color": "#6a00ff",
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 2
-      },
-      "minzoom": 6,
-      "maxzoom": 11
-    },
-    {
-      "id": "pci_commune",
-      "type": "line",
-      "source": "pci",
-      "source-layer": "commune",
-      "paint": {
-        "line-color": "#6a00ff"
-      }
-    },
-    {
-      "id": "pci_nom_com",
-      "type": "symbol",
-      "source": "pci",
-      "source-layer": "commune",
-      "layout": {
-        "text-field": "{nom_com}",
-        "text-size": 14,
-        "text-anchor": "center",
-        "text-keep-upright": true,
-        "text-max-angle": 45,
-        "text-padding": 1,
-        "text-font": ["Source Sans Pro Bold Italic"]
-      },
-      "paint": {
-        "text-color": "#6a00ff",
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 2
-      }
-    },
     {
       "id": "pci_parcelle_fill",
       "type": "fill",
@@ -167,29 +112,13 @@
       }
     },
     {
-      "id": "pci_feuille-copy",
+      "id": "pci_feuille",
       "type": "line",
       "source": "pci",
       "source-layer": "feuille",
       "paint": {
         "line-color": "#929292",
         "line-width": 3
-      },
-      "minzoom": 14,
-      "maxzoom": 24,
-      "layout": {
-        "line-cap": "butt",
-        "line-join": "bevel"
-      }
-    },
-    {
-      "id": "pci_feuille",
-      "type": "line",
-      "source": "pci",
-      "source-layer": "feuille",
-      "paint": {
-        "line-color": "#ff8000",
-        "line-width": 1
       },
       "minzoom": 14,
       "maxzoom": 24,
@@ -209,12 +138,12 @@
         "text-size": 14
       },
       "paint": {
-        "text-color": "#ff8000",
+        "text-color": "#929292",
         "text-halo-color": "#ffffff",
         "text-halo-width": 2
       },
       "minzoom": 14,
-      "maxzoom": 16
+      "maxzoom": 17
     },
     {
       "id": "pci_localisant",

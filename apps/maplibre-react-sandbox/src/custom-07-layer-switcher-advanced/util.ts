@@ -106,7 +106,7 @@ export async function prepareStyle(
     terrain: terrain
       ? {
           source: "terrarium",
-          exaggeration: 1.4,
+          exaggeration: 1.2,
         }
       : undefined,
   };

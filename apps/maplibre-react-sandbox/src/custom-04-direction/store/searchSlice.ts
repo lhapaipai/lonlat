@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createListenerMiddleware, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
 import { FeatureOption } from "pentatrion-design";
 
@@ -23,5 +23,14 @@ const searchSlice = createSlice({
 export default searchSlice.reducer;
 
 export const { searchFeatureChanged } = searchSlice.actions;
+
+export const lonlatFeatureListenerMiddleware = createListenerMiddleware();
+
+lonlatFeatureListenerMiddleware.startListening({
+  actionCreator: searchFeatureChanged,
+  effect: async ({ type, payload }, { getState, dispatch }) => {
+    console.log("lonlatFeatureListenerMiddleware", payload);
+  },
+});
 
 export const selectSearchFeature = (state: RootState) => state.search.feature;

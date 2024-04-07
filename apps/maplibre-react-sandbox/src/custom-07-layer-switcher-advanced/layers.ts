@@ -120,7 +120,10 @@ export const baseLayersById = {
     description: "",
     thumbnail: "/styles/ign/PLAN.IGN/standard.png",
     style: "/enhanced-styles/ign/PLAN.IGN/standard.json",
-    optionalLayers: [],
+    optionalLayers: [
+      { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
+      { id: "ign-pci-pci", beforeId: "point coté" },
+    ],
     country: "fr",
   } satisfies BaseLayerInfos,
 

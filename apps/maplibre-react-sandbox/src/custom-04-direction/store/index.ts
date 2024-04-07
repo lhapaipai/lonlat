@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import searchSlice from "./searchSlice";
+import searchSlice, { lonlatFeatureListenerMiddleware } from "./searchSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import mapSlice from "./mapSlice";
 import directionSlice, { directionLocationsListenerMiddleware } from "./directionSlice";
@@ -10,8 +10,11 @@ const store = configureStore({
     search: searchSlice,
     direction: directionSlice,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(directionLocationsListenerMiddleware.middleware),
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware()
+      .prepend(lonlatFeatureListenerMiddleware.middleware)
+      .prepend(directionLocationsListenerMiddleware.middleware);
+  },
 });
 
 export default store;

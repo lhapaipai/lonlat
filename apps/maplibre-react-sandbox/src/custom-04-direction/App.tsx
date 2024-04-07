@@ -4,7 +4,7 @@ import { Tabs } from "pentatrion-design";
 import SearchTab from "./tabs/SearchTab";
 import { useAppDispatch, useAppSelector } from "./store";
 import { selectTab, selectViewState, tabChanged, viewStateChanged } from "./store/mapSlice";
-import { selectSearchFeature } from "./store/searchSlice";
+import { searchFeatureChanged, selectSearchFeature } from "./store/searchSlice";
 import MapFlyer from "./MapFlyer";
 import DirectionTab from "./tabs/DirectionTab";
 import {
@@ -51,6 +51,11 @@ function App1() {
     );
   }
 
+  function handleSearchLocationDragEnd(e: Event<Marker>) {
+    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat());
+    dispatch(searchFeatureChanged(lonlatFeature));
+  }
+
   function handleDirectionLocationDragEnd(e: Event<Marker>, index: number) {
     console.log("dragEnd", e);
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat());
@@ -68,8 +73,10 @@ function App1() {
         {searchFeature && (
           <RMarker
             key={searchFeature.properties.id}
+            draggable={true}
             longitude={searchFeature.geometry.coordinates[0]}
             latitude={searchFeature.geometry.coordinates[1]}
+            onDragEnd={handleSearchLocationDragEnd}
           />
         )}
         {validDirectionLocations.map(

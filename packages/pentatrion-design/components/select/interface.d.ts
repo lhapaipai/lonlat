@@ -1,3 +1,5 @@
+import { GeocodeType } from "pentatrion-geo";
+
 export type OptionLike = Option | FeatureOption;
 // export type OptionLike = Option | GeoFeature;
 

@@ -3,7 +3,7 @@ import { IGNAddressProperties } from "..";
 import { APISchemas } from "./openapi-types/ign-geocodage-api";
 import { FeatureOption } from "pentatrion-design";
 
-type GeocodeType =
+export type GeocodeType =
   | "housenumber"
   | "street"
   | "locality"
