@@ -7,7 +7,6 @@ import {
   IGNAddressProperties,
   IGNAddressResponse,
 } from "../types";
-import { FeatureOption } from "pentatrion-design";
 
 function getContext(properties: IGNAddressProperties) {
   switch (properties.type) {

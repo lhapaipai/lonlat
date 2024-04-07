@@ -15,6 +15,7 @@
     "devDependencies": {
         "@testing-library/jest-dom": "^6.4.2",
         "@testing-library/react": "^14.2.2",
+        "@types/geojson": "^7946.0.14",
         "@types/react": "^18.2.74",
         "@types/react-dom": "^18.2.24",
         "@vitejs/plugin-react-swc": "^3.6.0",
@@ -27,13 +28,11 @@
     },
     "dependencies": {
         "@floating-ui/react": "^0.26.10",
-        "@types/geojson": "^7946.0.14",
         "@use-gesture/react": "^10.3.1",
         "classnames": "^2.5.1",
         "fuse.js": "^7.0.0",
         "pentatrion-design": "workspace:*",
         "pentatrion-fonts": "workspace:*",
-        "pentatrion-geo": "workspace:*",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-polymorphic-types": "^2.0.0",

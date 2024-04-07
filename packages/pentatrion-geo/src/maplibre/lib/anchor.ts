@@ -1,5 +1,5 @@
 import Point from "@mapbox/point-geometry";
-import { Placement, PositionAnchor } from "maplibre-gl";
+import { PositionAnchor } from "maplibre-gl";
 import { anchorTranslate } from "maplibre-gl/src/ui/anchor";
 import { type Offset } from "maplibre-gl/src/ui/popup";
 
@@ -70,7 +70,7 @@ export function applyAnchorClass(element: HTMLElement, anchor: PositionAnchor, p
   const classList = element.classList;
   for (const key in anchorTranslate) {
     classList.remove(`maplibregl-${prefix}-anchor-${key}`);
-    classList.remove(`placement-${anchorToPlacement[key]}`);
+    classList.remove(`placement-${anchorToPlacement[key as keyof typeof anchorToPlacement]}`);
   }
   classList.add(`maplibregl-${prefix}-anchor-${anchor}`);
   classList.add(`placement-${anchorToPlacement[anchor]}`);

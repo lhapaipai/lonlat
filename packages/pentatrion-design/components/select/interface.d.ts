@@ -1,7 +1,6 @@
-import { GeocodeType } from "pentatrion-geo";
+import { BBox, Geometry } from "geojson";
 
 export type OptionLike = Option | FeatureOption;
-// export type OptionLike = Option | GeoFeature;
 
 export type Option = {
   type?: "Option";
@@ -10,7 +9,13 @@ export type Option = {
   sourceId?: string | number;
 };
 
-export type FeatureOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
+export type NoDataFeature = {
+  id: string;
+  type: "nodata";
+};
+
+/** For compatibility with OptionLike. get original types from pentatrion-geo */
+type FeatureOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
   id: string;
   type: "Feature";
   properties: FeatureProperties<OriginalProperties>;
@@ -23,22 +28,12 @@ export type FeatureOption<G extends Geometry | null = Geometry, OriginalProperti
   sourceId?: string | number;
 };
 
-export type FeatureProperties<OriginalProperties = null> = {
-  /** id and label are required for <select /> like components */
-
+type FeatureProperties<OriginalProperties = null> = {
   id: string;
-  /** compute name + short context for input string */
   label: string;
-
   name: string;
   context: string | null;
-
   score: number;
-  type: GeocodeType;
+  type: string; // GeocodeType; ??
   originalProperties: OriginalProperties;
-};
-
-export type NoDataFeature = {
-  id: string;
-  type: "nodata";
 };

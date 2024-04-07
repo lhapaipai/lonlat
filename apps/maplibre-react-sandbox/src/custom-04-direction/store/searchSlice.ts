@@ -30,6 +30,9 @@ lonlatFeatureListenerMiddleware.startListening({
   actionCreator: searchFeatureChanged,
   effect: async ({ type, payload }, { getState, dispatch }) => {
     console.log("lonlatFeatureListenerMiddleware", payload);
+    if (payload?.properties.type !== "lonlat") {
+      return;
+    }
   },
 });
 

@@ -9,6 +9,7 @@ export default {
 export const Basic = () => {
   const tabs = [
     {
+      id: "bulbasaur",
       title: "Bulbasaur",
       content: (
         <>
@@ -22,6 +23,7 @@ export const Basic = () => {
       ),
     },
     {
+      id: "charmander",
       title: "Charmander",
       content: (
         <>
@@ -35,6 +37,7 @@ export const Basic = () => {
       ),
     },
     {
+      id: "squirtle",
       title: "Squirtle",
       content: (
         <>
@@ -47,12 +50,12 @@ export const Basic = () => {
       ),
     },
   ];
-  const [index, setIndex] = useState(0);
+  const [id, setId] = useState<string | number>("bulbasaur");
   return (
     <div className="flex flex-column gap-2">
-      <Tabs tabs={tabs} stickyTabs={true} value={index} onChange={setIndex} />
-      <Tabs tabs={tabs} value={index} onChange={setIndex} />
-      <Tabs tabs={tabs} fullWidth={true} value={index} onChange={setIndex} />
+      <Tabs tabs={tabs} stickyTabs={true} value={id} onChange={setId} />
+      <Tabs tabs={tabs} value={id} onChange={setId} />
+      <Tabs tabs={tabs} fullWidth={true} value={id} onChange={setId} />
     </div>
   );
 };

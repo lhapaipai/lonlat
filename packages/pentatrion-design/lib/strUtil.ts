@@ -1,6 +1,5 @@
 import Fuse, { FuseResult } from "fuse.js";
 import { Town } from "../types";
-import { FeatureOption } from "..";
 
 export function highlight(str: string | undefined, indices: readonly [number, number][]) {
   if (!str) {
@@ -96,16 +95,4 @@ export function prepareTownsResult(towns: Town[], search: string) {
 
   const result = fuse.search(search);
   return highlightFuseResult(result);
-}
-
-export function filterFeature(towns: FeatureOption[], search: string) {
-  const fuse = new Fuse(towns, {
-    includeScore: true,
-    includeMatches: true,
-    minMatchCharLength: 2,
-    keys: ["properties.label"],
-  });
-
-  const results = fuse.search(search);
-  return results.map((result) => result.item);
 }

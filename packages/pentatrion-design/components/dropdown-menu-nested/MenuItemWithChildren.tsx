@@ -24,9 +24,8 @@ import {
 } from "@floating-ui/react";
 import { FocusEvent, forwardRef, useContext, useEffect, useRef, useState } from "react";
 import { MenuContext } from "./MenuContext";
-import { Button } from "../..";
+import { Button, type ButtonProps } from "../..";
 import cn from "classnames";
-import { type Props as ButtonProps } from "pentatrion-design/components/button/Button";
 
 export interface Props extends ButtonProps {
   label?: string;

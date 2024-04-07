@@ -1,4 +1,4 @@
-import { createNodataFeature, GeoFeature } from "pentatrion-geo";
+import { createNodataFeature, filterDataFeatures, GeoFeature } from "pentatrion-geo";
 import {
   createAsyncThunk,
   createListenerMiddleware,
@@ -10,7 +10,6 @@ import {
 import { RootState } from ".";
 import { Feature, FeatureCollection, LineString } from "geojson";
 import { NoDataFeature } from "pentatrion-design";
-import { filterDataFeatures } from "pentatrion-design/components/autocomplete/util";
 
 type DirectionState = {
   locations: (GeoFeature | NoDataFeature)[];

@@ -3,3 +3,5 @@ export { default as LLPopup } from "./LLPopup";
 export { default as LLPegman } from "./LLPegman";
 
 export * from "./react";
+
+export * from "./lib";

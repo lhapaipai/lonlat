@@ -1,4 +1,4 @@
-import { ThemeColor } from "pentatrion-design/types";
+import { ThemeColor } from "../..";
 
 export interface ModalOptions {
   initialOpen?: boolean;

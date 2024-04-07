@@ -7,8 +7,10 @@
   "main": "src/index.ts",
   "dependencies": {
     "@floating-ui/dom": "^1.6.3",
+    "@floating-ui/react": "^0.26.10",
     "@mapbox/point-geometry": "^0.1.0",
     "@types/geojson": "^7946.0.14",
+    "fuse.js": "^7.0.0",
     "maplibre-gl": "^4.1.2",
     "maplibre-react-components": "workspace:*",
     "nanoid": "^5.0.6",

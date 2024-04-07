@@ -1,12 +1,15 @@
 import { useId } from "react";
 import { useListItem } from "@floating-ui/react";
-import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";
 import { FeatureOption } from "../..";
 import { getTypeLabel } from "pentatrion-geo";
-import { getValue } from "./util";
+import { OptionLike, useAutocomplete } from "pentatrion-design";
 
 type Props = FeatureOption;
+
+function getValue(option: OptionLike) {
+  return option.type === "Feature" ? option.properties.id : option.value;
+}
 
 export default function AutocompleteFeatureOption({
   properties: { label, id, type, name, context },

@@ -28,6 +28,5 @@ export * from "./components/sortable";
 
 export * from "./lib";
 export * from "./hooks";
-export * from "./geo";
 
 export type * from "./types";

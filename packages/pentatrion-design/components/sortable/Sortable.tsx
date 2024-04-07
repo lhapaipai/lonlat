@@ -1,4 +1,4 @@
-import { arrayEquals } from "pentatrion-design/lib";
+import { arrayEquals } from "../..";
 import { useMemo } from "react";
 import {
   ItemInterface,

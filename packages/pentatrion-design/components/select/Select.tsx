@@ -195,7 +195,6 @@ const Select = forwardRef<HTMLDivElement, Props>(
       filteredOptions.map((option, i) => {
         labelsRef.current[i] = option.label;
       });
-      console.log("regenerate labelsRef", labelsRef.current);
     }, [search, filteredOptions, SelectOptionCustom]);
 
     const handleSelect = useCallback(

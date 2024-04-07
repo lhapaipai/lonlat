@@ -5,7 +5,7 @@ import { ThemeColor } from "../../types";
 import useRipple from "../../hooks/useRipple";
 import { Loader } from "../..";
 
-export interface Props extends ComponentPropsWithRef<"button"> {
+export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   withRipple?: boolean;
 
   shape?: "solid" | "outline" | "ghost" | "underline";
@@ -32,7 +32,7 @@ export interface Props extends ComponentPropsWithRef<"button"> {
   icon?: boolean;
 }
 
-const Button = forwardRef<HTMLButtonElement, Props>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       withRipple = true,
