@@ -1,7 +1,6 @@
 import {
   Steps,
   LazyAutocomplete,
-  AutocompleteFeatureOption,
   Step,
   FeatureOption,
   NoDataFeature,
@@ -14,7 +13,7 @@ import {
   directionLocationsSorted,
   selectDirectionLocations,
 } from "../store/directionSlice";
-import { createNodataFeature, isNoData, updateId } from "pentatrion-geo";
+import { createNodataFeature, isNoData, updateId, AutocompleteFeatureOption } from "pentatrion-geo";
 
 export default function DirectionTab() {
   // issue with ReactSortable and redux
@@ -52,7 +51,7 @@ export default function DirectionTab() {
               status={index < locations.length - 1 ? "done" : "current"}
               markerClassName="handle"
             >
-              <LazyAutocomplete
+              <LazyAutocomplete<FeatureOption>
                 placeholder="Search a location..."
                 icon={false}
                 selection={isNoData(location) ? null : location}

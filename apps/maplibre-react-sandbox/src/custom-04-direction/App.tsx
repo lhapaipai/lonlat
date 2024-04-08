@@ -52,13 +52,13 @@ function App1() {
   }
 
   function handleSearchLocationDragEnd(e: Event<Marker>) {
-    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat());
+    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
     dispatch(searchFeatureChanged(lonlatFeature));
   }
 
   function handleDirectionLocationDragEnd(e: Event<Marker>, index: number) {
     console.log("dragEnd", e);
-    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat());
+    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
     dispatch(directionLocationChanged({ index, feature: lonlatFeature }));
   }
   return (
@@ -70,7 +70,7 @@ function App1() {
         mapStyle="/styles/ign/PLAN.IGN/standard.json"
       >
         <MapFlyer />
-        {searchFeature && (
+        {searchFeature?.geometry.type === "Point" && (
           <RMarker
             key={searchFeature.properties.id}
             draggable={true}
@@ -81,7 +81,7 @@ function App1() {
         )}
         {validDirectionLocations.map(
           (feature, index) =>
-            feature && (
+            feature?.geometry.type === "Point" && (
               <RMarker
                 key={feature.id}
                 draggable={true}

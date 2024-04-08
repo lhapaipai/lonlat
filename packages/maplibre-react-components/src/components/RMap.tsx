@@ -13,7 +13,6 @@ import {
 
 import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
 import { MapLibreContext, mapLibreContext } from "../context";
-import { createPortal } from "react-dom";
 
 type RMapProps = MapProps &
   ManagerOptions & {

@@ -1,10 +1,12 @@
-import { createListenerMiddleware, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { FeatureOption } from "pentatrion-design";
+import { FeatureOption } from "pentatrion-geo";
 
 type SearchState = {
   feature: FeatureOption | null;
 };
+
+export type SearchPayload = FeatureOption | null;
 
 const initialState: SearchState = {
   feature: null,
@@ -14,7 +16,7 @@ const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    searchFeatureChanged(state, action: PayloadAction<FeatureOption | null>) {
+    searchFeatureChanged(state, action: PayloadAction<SearchPayload>) {
       state.feature = action.payload;
     },
   },
@@ -23,17 +25,5 @@ const searchSlice = createSlice({
 export default searchSlice.reducer;
 
 export const { searchFeatureChanged } = searchSlice.actions;
-
-export const lonlatFeatureListenerMiddleware = createListenerMiddleware();
-
-lonlatFeatureListenerMiddleware.startListening({
-  actionCreator: searchFeatureChanged,
-  effect: async ({ type, payload }, { getState, dispatch }) => {
-    console.log("lonlatFeatureListenerMiddleware", payload);
-    if (payload?.properties.type !== "lonlat") {
-      return;
-    }
-  },
-});
 
 export const selectSearchFeature = (state: RootState) => state.search.feature;

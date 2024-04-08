@@ -13,7 +13,7 @@ import {
   googleRoadURL,
   googleStreetViewURL,
   osmURL,
-} from "pentatrion-design";
+} from "pentatrion-geo";
 import { ignToken, mapTilerStreetsStyleUrl } from "../shared/constants";
 
 export interface LayerInfos {

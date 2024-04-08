@@ -21,7 +21,7 @@ const initialState: DirectionState = {
   route: null,
 };
 
-type LocationPayload = { index: number; feature: GeoFeature | NoDataFeature };
+export type LocationPayload = { index: number; feature: GeoFeature | NoDataFeature };
 
 const directionSlice = createSlice({
   name: "direction",

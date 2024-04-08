@@ -7,7 +7,9 @@ export const handleChangeSearchValue = async (search: string) => {
     res.json(),
   )) as IGNAddressResponse;
 
-  return collection.features.map(createIgnAddressFeaturePoint);
+  return collection.features.map((feature) => {
+    return createIgnAddressFeaturePoint(feature);
+  });
 };
 
 export const createUnknownFeature = (id?: string): FeatureOption<Point> => ({

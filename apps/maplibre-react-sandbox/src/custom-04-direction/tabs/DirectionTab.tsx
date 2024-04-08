@@ -1,24 +1,32 @@
 import {
   Steps,
   LazyAutocomplete,
-  AutocompleteFeatureOption,
   Step,
   Sortable,
   FeatureOption,
   NoDataFeature,
 } from "pentatrion-design";
-import { handleChangeSearchValue } from "../lib";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
   directionLocationChanged,
   directionLocationsSorted,
   selectDirectionLocations,
 } from "../store/directionSlice";
-import { createNodataFeature, isNoData, updateId } from "pentatrion-geo";
+import {
+  AutocompleteFeatureOption,
+  createNodataFeature,
+  ignSearch,
+  isNoData,
+  parseIgnAddressCollection,
+  updateId,
+} from "pentatrion-geo";
+import { selectViewState } from "../store/mapSlice";
 
 export default function DirectionTab() {
   const locations = useAppSelector(selectDirectionLocations);
   const dispatch = useAppDispatch();
+
+  const viewState = useAppSelector(selectViewState);
 
   function handleChangeSelection(index: number, selection: FeatureOption | null) {
     const itemId = locations[index].id;
@@ -53,7 +61,10 @@ export default function DirectionTab() {
                 selection={isNoData(location) ? null : location}
                 debounce={50}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
-                onChangeSearchValueCallback={(search) => handleChangeSearchValue(search)}
+                onChangeSearchValueCallback={async (searchValue) => {
+                  const collection = await ignSearch(searchValue, viewState.center);
+                  return parseIgnAddressCollection(collection);
+                }}
                 AutocompleteOptionCustom={AutocompleteFeatureOption}
               />
             </Step>

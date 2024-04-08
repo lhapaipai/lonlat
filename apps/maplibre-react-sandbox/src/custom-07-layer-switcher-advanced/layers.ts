@@ -8,7 +8,7 @@ import {
   getSwissScan25URL,
   googleOrthophotoURL,
   osmURL,
-} from "pentatrion-design";
+} from "pentatrion-geo";
 import { ignToken, mapTilerStreetsStyleUrl } from "../shared/constants";
 import { StyleSpecification } from "maplibre-gl";
 

@@ -5,11 +5,11 @@ import { useAppSelector } from "./store";
 import { selectBaseLayer, selectElevation } from "./store/layerSlice";
 import { LayerInfos, layersById } from "./layers";
 import { useEffect, useMemo } from "react";
-import { createRasterStyle } from "pentatrion-design";
 import { useSelector } from "react-redux";
 import { Map, StyleSpecification } from "maplibre-gl";
 import { RLayer, RMap, RNavigationControl, RSource, RTerrain } from "maplibre-react-components";
 import { DOM } from "maplibre-gl/src/util/dom";
+import { createRasterStyle } from "pentatrion-geo";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 

@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import searchSlice, { lonlatFeatureListenerMiddleware } from "./searchSlice";
+import searchSlice from "./searchSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import mapSlice from "./mapSlice";
 import directionSlice, { directionLocationsListenerMiddleware } from "./directionSlice";
+import { lonlatFeatureListenerMiddleware } from "./lonlatListener";
 
 const store = configureStore({
   reducer: {

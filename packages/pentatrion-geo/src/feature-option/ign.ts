@@ -1,51 +1,28 @@
 import { Feature, Point } from "geojson";
 import { nanoid } from "nanoid";
-import { getDepartmentName } from "./util";
 import {
   GeocodeType,
   IGNAddressFeatureOption,
   IGNAddressProperties,
   IGNAddressResponse,
+  LngLatObj,
 } from "../types";
+import { getContext, getLabel } from "../ign-api/geocode";
 
-function getContext(properties: IGNAddressProperties) {
-  switch (properties.type) {
-    case "housenumber":
-    case "street":
-    case "locality":
-      return `${properties.city}, ${getDepartmentName(properties.citycode)}`;
-    case "municipality":
-      return getDepartmentName(properties.citycode);
-  }
-  return properties.context || null;
-}
-
-function getLabel(properties: IGNAddressProperties) {
-  switch (properties.type) {
-    case "housenumber":
-    case "street":
-      return `${properties.name}, ${properties.city}`;
-    case "locality":
-      if (properties.name !== properties.city) {
-        return `${properties.name}, ${properties.city}`;
-      }
-      return `${properties.city}, ${getDepartmentName(properties.citycode)}`;
-    case "municipality":
-      return `${properties.name}, ${getDepartmentName(properties.citycode)}`;
-  }
-  return `${properties.name}, ${getDepartmentName(properties.citycode)}`;
-}
-
-export function createIgnAddressFeaturePoint({
-  type,
-  geometry,
-  properties,
-}: Feature<Point, IGNAddressProperties>): IGNAddressFeatureOption {
+export function createIgnAddressFeaturePoint(
+  { type, geometry, properties }: Feature<Point, IGNAddressProperties>,
+  forceCoordinates?: LngLatObj,
+): IGNAddressFeatureOption {
   const uniqId = nanoid();
   return {
     id: uniqId,
     type,
-    geometry,
+    geometry: forceCoordinates
+      ? {
+          type: "Point",
+          coordinates: [forceCoordinates.lng, forceCoordinates.lat],
+        }
+      : geometry,
     properties: {
       id: properties.id || uniqId,
       name: properties.name || "",

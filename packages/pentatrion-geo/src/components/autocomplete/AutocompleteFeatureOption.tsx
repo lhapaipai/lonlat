@@ -1,8 +1,7 @@
 import { useId } from "react";
 import { useListItem } from "@floating-ui/react";
 import cn from "classnames";
-import { FeatureOption } from "../..";
-import { getTypeLabel } from "pentatrion-geo";
+import { FeatureOption, getTypeLabel } from "../..";
 import { OptionLike, useAutocomplete } from "pentatrion-design";
 
 type Props = FeatureOption;
