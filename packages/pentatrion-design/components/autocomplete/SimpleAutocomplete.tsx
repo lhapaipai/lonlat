@@ -29,11 +29,15 @@ export default function SimpleAutocomplete<O extends OptionLike = Option>({
   const searchValueRef = useRef(searchValue);
   searchValueRef.current = searchValue;
 
+  const inputRef = useRef<HTMLInputElement>(null!);
+
   // side effect, update the searchValue <input /> value when
   // selection come from outside
   useLayoutEffect(() => {
     if (selection === null) {
-      setSearchValue("");
+      if (document.activeElement !== inputRef.current) {
+        setSearchValue("");
+      }
       return;
     }
 
@@ -55,6 +59,7 @@ export default function SimpleAutocomplete<O extends OptionLike = Option>({
 
   return (
     <Autocomplete
+      ref={inputRef}
       searchValue={searchValue}
       onChangeSearchValue={setSearchValue}
       selection={selection}

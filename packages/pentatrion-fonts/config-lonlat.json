@@ -341,6 +341,12 @@
       "css": "plus-circled",
       "code": 59426,
       "src": "fontawesome"
+    },
+    {
+      "uid": "08a23ea96a596b1b5f12f6abbbc8f5f9",
+      "css": "marker",
+      "code": 59413,
+      "src": "iconic"
     }
   ]
 }

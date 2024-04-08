@@ -37,6 +37,8 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
   const searchValueRef = useRef(searchValue);
   searchValueRef.current = searchValue;
 
+  const inputRef = useRef<HTMLInputElement>(null!);
+
   const [loading, setLoading] = useState(false);
 
   const [options, setOptions] = useState<O[]>([]);
@@ -56,7 +58,9 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
   // selection come from outside
   useLayoutEffect(() => {
     if (selection === null) {
-      setSearchValue("", true);
+      if (document.activeElement !== inputRef.current) {
+        setSearchValue("");
+      }
       return;
     }
 
@@ -113,6 +117,7 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
 
   return (
     <Autocomplete
+      ref={inputRef}
       searchValue={searchValue}
       onChangeSearchValue={(newValue, immediate) => {
         setSearchValue(newValue, immediate || newValue === "" ? true : false);

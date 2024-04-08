@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { memo, useId } from "react";
 import { useListItem } from "@floating-ui/react";
 import cn from "classnames";
 import { GeoOption, getTypeLabel } from "../..";
@@ -10,9 +10,7 @@ function getValue(option: OptionLike) {
   return option.type === "Feature" ? option.properties.id : option.value;
 }
 
-export default function AutocompleteGeoOption({
-  properties: { label, id, type, name, context },
-}: Props) {
+function AutocompleteGeoOption({ properties: { label, id, type, name, context } }: Props) {
   const uniqId = useId();
   const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
   const { ref, index } = useListItem({ label });
@@ -44,3 +42,5 @@ export default function AutocompleteGeoOption({
     </div>
   );
 }
+
+export default memo(AutocompleteGeoOption);

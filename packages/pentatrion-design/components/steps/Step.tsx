@@ -8,6 +8,7 @@ interface Props extends ComponentPropsWithoutRef<"li"> {
   align?: "start" | "center";
 
   markerClassName?: string;
+  contentClassName?: string;
 }
 
 export default function Step({
@@ -15,6 +16,7 @@ export default function Step({
   className,
   children,
   markerClassName,
+  contentClassName,
   align = "start",
   icon = null,
   ...rest
@@ -32,7 +34,7 @@ export default function Step({
           {icon}
         </div>
       </div>
-      <div className={cn(["content"])}>{children}</div>
+      <div className={cn(["content", contentClassName])}>{children}</div>
     </li>
   );
 }

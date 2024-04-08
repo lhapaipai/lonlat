@@ -1,6 +1,16 @@
-import { ChangeEvent, KeyboardEvent, useCallback, useMemo, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  forwardRef,
+  ForwardedRef,
+  ReactNode,
+} from "react";
 import type { OptionLike, Option } from "../..";
-import AutocompleteOption from "./AutocompleteOption.tsx";
+import AutocompleteOption, { AutocompleteOptionProps } from "./AutocompleteOption.tsx";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -23,7 +33,7 @@ import cn from "classnames";
 import { Button, Loader, useEventCallback } from "../..";
 import { getLabel, getValue } from "./util.ts";
 
-export interface AutocompleteProps<O extends OptionLike> {
+export interface AutocompleteProps<O extends OptionLike = Option> {
   icon?: boolean | string;
 
   placement?: Placement;
@@ -47,23 +57,32 @@ export interface AutocompleteProps<O extends OptionLike> {
   onChangeSelection: (option: O | null) => void;
   options: O[];
 
-  AutocompleteOptionCustom?: typeof AutocompleteOption<O>;
+  AutocompleteOptionCustom?: (props: AutocompleteOptionProps<O>) => ReactNode;
 
   loading?: boolean;
+
+  clearSearchButton?: boolean;
+
+  selectOnFocus?: boolean;
 }
 
-export default function Autocomplete<O extends OptionLike = Option>({
-  icon = true,
-  placeholder = "Search...",
-  searchValue,
-  onChangeSearchValue,
-  selection = null,
-  onChangeSelection,
-  options,
-  placement = "bottom",
-  AutocompleteOptionCustom,
-  loading = false,
-}: AutocompleteProps<O>) {
+function Autocomplete<O extends OptionLike = Option>(
+  {
+    icon = true,
+    placeholder = "Search...",
+    searchValue,
+    onChangeSearchValue,
+    selection = null,
+    onChangeSelection,
+    options,
+    placement = "bottom",
+    AutocompleteOptionCustom,
+    loading = false,
+    clearSearchButton = false,
+    selectOnFocus = true,
+  }: AutocompleteProps<O>,
+  inputRef: ForwardedRef<HTMLInputElement>,
+) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -176,11 +195,17 @@ export default function Autocomplete<O extends OptionLike = Option>({
         )}
         <input
           className={cn("input-element")}
+          ref={inputRef}
           type="search"
           value={searchValue}
           placeholder={placeholder}
           aria-autocomplete="list"
           {...getReferenceProps({
+            onFocus() {
+              if (selectOnFocus) {
+                (document.activeElement as HTMLInputElement)?.select();
+              }
+            },
             onChange: handleChangeSearchValue,
             onMouseDown() {
               if (options.length === 0) {
@@ -203,8 +228,8 @@ export default function Autocomplete<O extends OptionLike = Option>({
             },
           })}
         />
-        <div className="flex-center adornment">
-          {(searchValue.trim() !== "" || selection !== null) && (
+        <div className="flex-center adornment suffix">
+          {clearSearchButton && (searchValue.trim() !== "" || selection !== null) && (
             <Button
               withRipple={false}
               icon
@@ -225,7 +250,12 @@ export default function Autocomplete<O extends OptionLike = Option>({
       <FloatingPortal>
         <AutocompleteContext.Provider value={autocompleteContext}>
           {isOpen && (
-            <FloatingFocusManager context={context} initialFocus={-1} visuallyHiddenDismiss>
+            <FloatingFocusManager
+              disabled={selectOnFocus}
+              context={context}
+              initialFocus={-1}
+              visuallyHiddenDismiss
+            >
               <div
                 className={cn("ll-portail-dialog")}
                 ref={refs.setFloating}
@@ -255,3 +285,5 @@ export default function Autocomplete<O extends OptionLike = Option>({
     </div>
   );
 }
+
+export default forwardRef(Autocomplete);

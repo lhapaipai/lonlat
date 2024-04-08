@@ -3,6 +3,7 @@ import { useState } from "react";
 import { handleChangeSearchValue } from "../_mocks/town-api";
 import { AutocompleteGeoOption, createNodataFeature, isNoData, updateId } from "pentatrion-geo";
 import {
+  Button,
   GeoOption,
   LazyAutocomplete,
   NoDataOption,
@@ -10,6 +11,7 @@ import {
   Sortable,
   Step,
   Steps,
+  getIndexLetter,
 } from "pentatrion-design";
 
 const meta = {
@@ -42,6 +44,14 @@ export const WithAutocompleteSortable = () => {
     setDirection(itemsCopy);
   }
 
+  function handleRemoveItem(index: number) {
+    setDirection(direction.filter((_, idx) => idx !== index));
+  }
+
+  function handleAppendItem() {
+    setDirection([...direction, createNodataFeature()]);
+  }
+
   return (
     <>
       <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
@@ -55,11 +65,12 @@ export const WithAutocompleteSortable = () => {
           {direction.map((directionItem, index) => (
             <Step
               key={directionItem.id}
-              icon={index + 1}
+              icon={getIndexLetter(index)}
               status={index < direction.length - 1 ? "done" : "current"}
               markerClassName="handle"
+              contentClassName="flex"
             >
-              <LazyAutocomplete<GeoOption>
+              <LazyAutocomplete
                 placeholder="Search a location..."
                 icon={false}
                 selection={isNoData(directionItem) ? null : directionItem}
@@ -67,10 +78,38 @@ export const WithAutocompleteSortable = () => {
                 onChangeSearchValueCallback={handleChangeSearchValue}
                 AutocompleteOptionCustom={AutocompleteGeoOption}
               />
+              {direction.length > 2 && (
+                <Button
+                  icon
+                  shape="underline"
+                  onClick={() => handleRemoveItem(index)}
+                  style={{
+                    visibility: [0, direction.length - 1].includes(index) ? "hidden" : "visible",
+                  }}
+                >
+                  <i className="fe-cancel"></i>
+                </Button>
+              )}
             </Step>
           ))}
+          <li
+            className="ll-step status-current align-start sortable-chosen"
+            data-id="71946"
+            draggable="true"
+          >
+            <div className="marker-container">
+              <div className="marker active handle">+</div>
+            </div>
+            <div className="content flex">Ajouter un point</div>
+          </li>
         </Sortable>
       </Steps>
+      <div className="mt-4">
+        <Button shape="ghost" color="weak" onClick={handleAppendItem}>
+          <i className="fe-marker"></i>
+          Ajouter un point
+        </Button>
+      </div>
       <ul>
         {direction.map((i) => (
           <li key={i.id}>{isNoData(i) ? "non défini" : i.properties.label}</li>

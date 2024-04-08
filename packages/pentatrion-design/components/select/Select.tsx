@@ -1,6 +1,7 @@
 import {
   ChangeEvent,
   ReactElement,
+  ReactNode,
   Ref,
   forwardRef,
   useCallback,
@@ -30,8 +31,7 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 import { SelectContext } from "./useSelectContext.ts";
-import SelectOption from "./SelectOption.tsx";
-import SelectSelection from "./SelectSelection.tsx";
+import SelectSelection, { SelectSelectionProps } from "./SelectSelection.tsx";
 
 import { Input, Button, useEventCallback } from "../..";
 import type { Option } from "./interface";
@@ -55,9 +55,8 @@ type Props<O extends Option = Option> = {
   getSearchableValue?: (matchReg: RegExp, option: O) => string;
   searchable?: boolean;
   required?: boolean;
-  SelectOptionCustom?: typeof SelectOption<O>;
-  SelectSelectionCustom?: typeof SelectSelection<O>;
-
+  SelectOptionCustom?: (props: O) => ReactNode;
+  SelectSelectionCustom?: (props: SelectSelectionProps<O>) => ReactNode;
   value?: SelectValue;
   onChange?: ((e: ChangeEventLike) => void) | null;
 };

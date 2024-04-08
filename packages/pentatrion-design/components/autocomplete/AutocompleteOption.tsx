@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { memo, useId } from "react";
 import { OptionLike } from "../..";
 import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
@@ -7,9 +7,7 @@ import { getLabel, getValue } from "./util";
 
 export type AutocompleteOptionProps<O extends OptionLike> = O;
 
-export default function AutocompleteOption<O extends OptionLike>(
-  props: AutocompleteOptionProps<O>,
-) {
+function AutocompleteOption<O extends OptionLike>(props: AutocompleteOptionProps<O>) {
   const label = getLabel(props);
 
   const id = useId();
@@ -33,3 +31,5 @@ export default function AutocompleteOption<O extends OptionLike>(
     </div>
   );
 }
+
+export default memo(AutocompleteOption);
