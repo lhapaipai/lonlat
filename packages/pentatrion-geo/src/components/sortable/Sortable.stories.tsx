@@ -2,8 +2,8 @@ import { Meta } from "@storybook/react";
 import { useState } from "react";
 import { createUnknownFeature, handleChangeSearchValue } from "../_mocks/town-api";
 import {
-  AutocompleteFeatureOption,
-  FeatureOption,
+  AutocompleteGeoOption,
+  GeoOption,
   createNodataFeature,
   isNoData,
   updateId,
@@ -11,7 +11,7 @@ import {
 import {
   Button,
   LazyAutocomplete,
-  NoDataFeature,
+  NoDataOption,
   NotificationsProvider,
   Sortable,
 } from "pentatrion-design";
@@ -30,12 +30,12 @@ const meta = {
 export default meta;
 
 export const WithAutocomplete = () => {
-  const [items, setItems] = useState<(FeatureOption | NoDataFeature)[]>([
+  const [items, setItems] = useState<(GeoOption | NoDataOption)[]>([
     createNodataFeature(),
     createNodataFeature(),
   ]);
 
-  function handleChangeSelection(index: number, selection: FeatureOption | null) {
+  function handleChangeSelection(index: number, selection: GeoOption | null) {
     const itemId = items[index].id;
 
     const itemsCopy = [...items];
@@ -73,11 +73,11 @@ export const WithAutocomplete = () => {
             <Button icon shape="underline" className="handle">
               <i className="fe-braille"></i>
             </Button>
-            <LazyAutocomplete
+            <LazyAutocomplete<GeoOption>
               selection={isNoData(item) ? null : item}
               onChangeSelection={(selection) => handleChangeSelection(index, selection)}
               onChangeSearchValueCallback={handleChangeSearchValue}
-              AutocompleteOptionCustom={AutocompleteFeatureOption}
+              AutocompleteOptionCustom={AutocompleteGeoOption}
             />
           </div>
         ))}

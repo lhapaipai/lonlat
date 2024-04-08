@@ -3,8 +3,8 @@ import {
   LazyAutocomplete,
   Step,
   Sortable,
-  FeatureOption,
-  NoDataFeature,
+  GeoOption,
+  NoDataOption,
 } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
@@ -13,7 +13,7 @@ import {
   selectDirectionLocations,
 } from "../store/directionSlice";
 import {
-  AutocompleteFeatureOption,
+  AutocompleteGeoOption,
   createNodataFeature,
   ignSearch,
   isNoData,
@@ -28,13 +28,13 @@ export default function DirectionTab() {
 
   const viewState = useAppSelector(selectViewState);
 
-  function handleChangeSelection(index: number, selection: FeatureOption | null) {
+  function handleChangeSelection(index: number, selection: GeoOption | null) {
     const itemId = locations[index].id;
     const feature = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
     dispatch(directionLocationChanged({ index, feature }));
   }
 
-  function handleSortLocations(locationsUpdated: (FeatureOption | NoDataFeature)[]) {
+  function handleSortLocations(locationsUpdated: (GeoOption | NoDataOption)[]) {
     dispatch(directionLocationsSorted(locationsUpdated));
   }
 
@@ -65,7 +65,7 @@ export default function DirectionTab() {
                   const collection = await ignSearch(searchValue, viewState.center);
                   return parseIgnAddressCollection(collection);
                 }}
-                AutocompleteOptionCustom={AutocompleteFeatureOption}
+                AutocompleteOptionCustom={AutocompleteGeoOption}
               />
             </Step>
           ))}

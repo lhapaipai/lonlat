@@ -2,8 +2,8 @@ import {
   Steps,
   LazyAutocomplete,
   Step,
-  FeatureOption,
-  NoDataFeature,
+  GeoOption,
+  NoDataOption,
   Sortable,
 } from "pentatrion-design";
 import { handleChangeSearchValue } from "../lib";
@@ -13,7 +13,7 @@ import {
   directionLocationsSorted,
   selectDirectionLocations,
 } from "../store/directionSlice";
-import { createNodataFeature, isNoData, updateId, AutocompleteFeatureOption } from "pentatrion-geo";
+import { createNodataFeature, isNoData, updateId, AutocompleteGeoOption } from "pentatrion-geo";
 
 export default function DirectionTab() {
   // issue with ReactSortable and redux
@@ -23,14 +23,14 @@ export default function DirectionTab() {
 
   console.log(locations);
 
-  function handleChangeSelection(index: number, selection: FeatureOption | null) {
+  function handleChangeSelection(index: number, selection: GeoOption | null) {
     const itemId = locations[index].id;
     const feature = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
 
     dispatch(directionLocationChangedAction({ index, feature }));
   }
 
-  function handleSortLocations(locationsUpdated: (FeatureOption | NoDataFeature)[]) {
+  function handleSortLocations(locationsUpdated: (GeoOption | NoDataOption)[]) {
     dispatch(directionLocationsSorted(locationsUpdated));
   }
 
@@ -51,14 +51,14 @@ export default function DirectionTab() {
               status={index < locations.length - 1 ? "done" : "current"}
               markerClassName="handle"
             >
-              <LazyAutocomplete<FeatureOption>
+              <LazyAutocomplete<GeoOption>
                 placeholder="Search a location..."
                 icon={false}
                 selection={isNoData(location) ? null : location}
                 debounce={50}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={(search) => handleChangeSearchValue(search)}
-                AutocompleteOptionCustom={AutocompleteFeatureOption}
+                AutocompleteOptionCustom={AutocompleteGeoOption}
               />
             </Step>
           ))}

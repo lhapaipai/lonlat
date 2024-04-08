@@ -24,3 +24,11 @@ body,
         pointer-events: all;
     }
 }
+
+.maplibregl-map .maplibregl-canvas-container.maplibregl-interactive {
+    cursor: pointer;
+}
+
+.maplibregl-map .maplibregl-canvas-container.maplibregl-interactive:active {
+    cursor: grabbing;
+}

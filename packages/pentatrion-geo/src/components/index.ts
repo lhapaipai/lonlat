@@ -1,1 +1,1 @@
-export { default as AutocompleteFeatureOption } from "./autocomplete/AutocompleteFeatureOption";
+export { default as AutocompleteGeoOption } from "./autocomplete/AutocompleteGeoOption";

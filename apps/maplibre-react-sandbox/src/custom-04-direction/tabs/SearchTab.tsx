@@ -1,7 +1,7 @@
 import { LazyAutocomplete } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "../store";
 import { searchFeatureChanged, selectSearchFeature } from "../store/searchSlice";
-import { AutocompleteFeatureOption, ignSearch, parseIgnAddressCollection } from "pentatrion-geo";
+import { AutocompleteGeoOption, ignSearch, parseIgnAddressCollection } from "pentatrion-geo";
 import { selectViewState } from "../store/mapSlice";
 
 export default function SearchTab() {
@@ -20,7 +20,7 @@ export default function SearchTab() {
           const collection = await ignSearch(searchValue, viewState.center);
           return parseIgnAddressCollection(collection);
         }}
-        AutocompleteOptionCustom={AutocompleteFeatureOption}
+        AutocompleteOptionCustom={AutocompleteGeoOption}
       />
     </>
   );

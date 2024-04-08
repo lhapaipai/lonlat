@@ -1,11 +1,11 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 import { handleChangeSearchValue } from "../_mocks/town-api";
-import { AutocompleteFeatureOption, createNodataFeature, isNoData, updateId } from "pentatrion-geo";
+import { AutocompleteGeoOption, createNodataFeature, isNoData, updateId } from "pentatrion-geo";
 import {
-  FeatureOption,
+  GeoOption,
   LazyAutocomplete,
-  NoDataFeature,
+  NoDataOption,
   NotificationsProvider,
   Sortable,
   Step,
@@ -13,7 +13,7 @@ import {
 } from "pentatrion-design";
 
 const meta = {
-  title: "Components/Steps",
+  title: "pentatrion-geo/Components/Steps",
   component: Steps,
   decorators: [
     (Story) => (
@@ -27,13 +27,13 @@ const meta = {
 export default meta;
 
 export const WithAutocompleteSortable = () => {
-  const [direction, setDirection] = useState<(FeatureOption | NoDataFeature)[]>([
+  const [direction, setDirection] = useState<(GeoOption | NoDataOption)[]>([
     createNodataFeature(),
     createNodataFeature(),
     createNodataFeature(),
   ]);
 
-  function handleChangeSelection(index: number, selection: FeatureOption | null) {
+  function handleChangeSelection(index: number, selection: GeoOption | null) {
     const itemId = direction[index].id;
 
     const itemsCopy = [...direction];
@@ -59,13 +59,13 @@ export const WithAutocompleteSortable = () => {
               status={index < direction.length - 1 ? "done" : "current"}
               markerClassName="handle"
             >
-              <LazyAutocomplete
+              <LazyAutocomplete<GeoOption>
                 placeholder="Search a location..."
                 icon={false}
                 selection={isNoData(directionItem) ? null : directionItem}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={handleChangeSearchValue}
-                AutocompleteOptionCustom={AutocompleteFeatureOption}
+                AutocompleteOptionCustom={AutocompleteGeoOption}
               />
             </Step>
           ))}

@@ -1,7 +1,7 @@
 import { BBox, FeatureCollection, Geometry } from "geojson";
 import { IGNAddressProperties } from "..";
 import { APISchemas } from "./openapi-types/ign-geocodage-api";
-import { FeatureOption } from "pentatrion-design";
+import { GeoOption } from "pentatrion-design";
 
 export type LngLatObj = {
   lng: number;
@@ -32,7 +32,7 @@ export type FeatureProperties<OriginalProperties = null> = {
   originalProperties: OriginalProperties;
 };
 
-export type FeatureOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
+export type GeoOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
   id: string;
 
   type: "Feature";
@@ -49,9 +49,8 @@ export type IGNAddressResponse = FeatureCollection<Point, IGNAddressProperties>;
 export type IGNAddressReverseResponse = FeatureCollection<Point, IGNAddressReverseProperties>;
 
 // Prepared data
-// IGNAddressReverseResponse and IGNAddressResponse are converted into IGNAddressFeatureOption
-export type IGNAddressFeatureOption = FeatureOption<Point, IGNAddressProperties>;
-export type LonLatFeatureOption = FeatureOption<Point, null>;
+// IGNAddressReverseResponse and IGNAddressResponse are converted into IGNAddressGeoOption
+export type IGNAddressGeoOption = GeoOption<Point, IGNAddressProperties>;
+export type LonLatGeoOption = GeoOption<Point, null>;
 
-// IGNAddressProperties | null
-export type GeoFeature = IGNAddressFeatureOption | LonLatFeatureOption;
+export type AppGeoOption = IGNAddressGeoOption | LonLatGeoOption;

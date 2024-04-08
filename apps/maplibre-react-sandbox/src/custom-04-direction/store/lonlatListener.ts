@@ -1,6 +1,6 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
-import { NoDataFeature } from "pentatrion-design";
-import { GeoFeature, resolveLonLatFeaturePoint } from "pentatrion-geo";
+import { NoDataOption } from "pentatrion-design";
+import { AppGeoOption, resolveLonLatFeaturePoint } from "pentatrion-geo";
 import { LocationPayload, directionLocationChanged } from "./directionSlice";
 import { SearchPayload, searchFeatureChanged } from "./searchSlice";
 
@@ -9,7 +9,7 @@ export const lonlatFeatureListenerMiddleware = createListenerMiddleware();
 lonlatFeatureListenerMiddleware.startListening({
   matcher: isAnyOf(searchFeatureChanged, directionLocationChanged),
   effect: async ({ type, payload: unknownPayload }, { dispatch }) => {
-    let feature: GeoFeature | NoDataFeature | null;
+    let feature: AppGeoOption | NoDataOption | null;
     let payload: SearchPayload | LocationPayload;
 
     if (type === searchFeatureChanged.type) {
@@ -39,7 +39,7 @@ lonlatFeatureListenerMiddleware.startListening({
         dispatch(
           directionLocationChanged({
             index: (payload as LocationPayload).index,
-            feature: reversedFeature as GeoFeature,
+            feature: reversedFeature as AppGeoOption,
           }),
         );
       }

@@ -1,7 +1,7 @@
 import { LngLatBounds, LngLatLike } from "maplibre-gl";
-import { FeatureOption } from "./types";
+import { GeoOption } from "./types";
 import Fuse from "fuse.js";
-import { NoDataFeature } from "pentatrion-design";
+import { NoDataOption } from "pentatrion-design";
 
 export function getBounds(points: LngLatLike[]) {
   const bounds = points.reduce(
@@ -21,7 +21,7 @@ export function boundsContained(parentBound: LngLatBounds, childBound: LngLatBou
   );
 }
 
-export function filterFeature(towns: FeatureOption[], search: string) {
+export function filterFeature(towns: GeoOption[], search: string) {
   const fuse = new Fuse(towns, {
     includeScore: true,
     includeMatches: true,
@@ -33,6 +33,8 @@ export function filterFeature(towns: FeatureOption[], search: string) {
   return results.map((result) => result.item);
 }
 
-export function filterDataFeatures(features: (FeatureOption | NoDataFeature)[]) {
-  return features.filter((f) => f.type !== "nodata") as FeatureOption[];
+export function filterDataFeatures<O extends GeoOption = GeoOption>(
+  features: (O | NoDataOption)[],
+) {
+  return features.filter((f) => f.type !== "nodata") as O[];
 }

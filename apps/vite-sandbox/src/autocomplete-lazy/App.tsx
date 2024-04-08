@@ -1,5 +1,5 @@
 import {
-  AutocompleteFeatureOption,
+  AutocompleteGeoOption,
   LazyAutocomplete,
   NotificationsProvider,
   Town,
@@ -40,7 +40,7 @@ export default function App() {
             selection={selection}
             onChangeSelection={setSelection}
             onChangeSearchValue={handleChangeSearchValue}
-            AutocompleteOptionCustom={AutocompleteFeatureOption}
+            AutocompleteOptionCustom={AutocompleteGeoOption}
           />
           <div>sélection : {selection && selection.label}</div>
         </NotificationsProvider>

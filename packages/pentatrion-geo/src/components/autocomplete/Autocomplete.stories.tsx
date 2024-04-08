@@ -10,8 +10,8 @@ import { Meta } from "@storybook/react";
 
 import { useState } from "react";
 import { handleChangeSearchValue, createUnknownFeature } from "../_mocks/town-api";
-import { FeatureOption } from "../../types";
-import AutocompleteFeatureOption from "./AutocompleteFeatureOption";
+import { GeoOption } from "../../types";
+import AutocompleteGeoOption from "./AutocompleteGeoOption";
 
 const meta = {
   title: "pentatrion-geo/Components/Autocomplete",
@@ -26,7 +26,7 @@ const meta = {
 } satisfies Meta<typeof Autocomplete>;
 export default meta;
 
-const featureOptions: FeatureOption[] = [
+const featureOptions: GeoOption[] = [
   {
     id: "74001",
     type: "Feature",
@@ -98,7 +98,7 @@ const featureOptions: FeatureOption[] = [
 ];
 
 export const SimpleFeature = () => {
-  const [selection, setSelection] = useState<FeatureOption | null>(null);
+  const [selection, setSelection] = useState<GeoOption | null>(null);
 
   function handleClick(action: "random" | "unknown" | "unselect") {
     switch (action) {
@@ -120,7 +120,7 @@ export const SimpleFeature = () => {
         options={featureOptions}
         selection={selection}
         onChangeSelection={setSelection}
-        AutocompleteOptionCustom={AutocompleteFeatureOption}
+        AutocompleteOptionCustom={AutocompleteGeoOption}
       />
       <div>sélection : {selection && selection.properties.label}</div>
       <div>
@@ -137,7 +137,7 @@ export const SimpleFeature = () => {
 };
 
 export const Lazy = () => {
-  const [selection, setSelection] = useState<FeatureOption | null>(null);
+  const [selection, setSelection] = useState<GeoOption | null>(null);
 
   function handleClick(action: "random" | "unknown" | "unselect") {
     switch (action) {
@@ -153,12 +153,12 @@ export const Lazy = () => {
 
   return (
     <>
-      <LazyAutocomplete
+      <LazyAutocomplete<GeoOption>
         icon={false}
         selection={selection}
         onChangeSelection={setSelection}
         onChangeSearchValueCallback={handleChangeSearchValue}
-        AutocompleteOptionCustom={AutocompleteFeatureOption}
+        AutocompleteOptionCustom={AutocompleteGeoOption}
       />
       <div>sélection : {selection && selection.properties.label}</div>
 

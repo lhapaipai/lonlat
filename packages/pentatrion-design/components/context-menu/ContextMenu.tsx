@@ -37,7 +37,7 @@ interface Props extends ComponentPropsWithRef<"div"> {
   children: ReactElement[] | ReactElement;
   eventName?: "contextmenu" | "maplibre-contextmenu";
 }
-export default function ContextMenu({ children, eventName = "contextmenu" }: Props) {
+export default function ContextMenu({ children, style, eventName = "contextmenu" }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -58,10 +58,7 @@ export default function ContextMenu({ children, eventName = "contextmenu" }: Pro
         fallbackPlacements: ["left-start"],
       }),
       size({
-        apply({ rects, elements, availableHeight }) {
-          Object.assign(elements.floating.style, {
-            width: `${Math.max(130, rects.reference.width)}px`,
-          });
+        apply({ elements, availableHeight }) {
           const firstChild = elements.floating.firstElementChild as HTMLElement;
           if (firstChild) {
             firstChild.style.maxHeight = `${Math.min(availableHeight, 300)}px`;
@@ -137,7 +134,7 @@ export default function ContextMenu({ children, eventName = "contextmenu" }: Pro
             <div
               className="ll-portail-dialog"
               ref={refs.setFloating}
-              style={floatingStyles}
+              style={{ ...floatingStyles, ...style }}
               {...getFloatingProps()}
             >
               <div

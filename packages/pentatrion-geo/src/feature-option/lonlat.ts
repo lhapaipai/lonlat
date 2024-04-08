@@ -1,6 +1,6 @@
 import { LngLat } from "maplibre-gl";
 import { nanoid } from "nanoid";
-import { GeoFeature, LonLatFeatureOption } from "../types";
+import { AppGeoOption, LonLatGeoOption } from "../types";
 import { createIgnAddressFeaturePoint } from "./ign";
 import { ignReverseSearch } from "../ign-api/geocode";
 
@@ -10,7 +10,7 @@ export function createLonLatFeaturePoint(
   // if score is 1 we don't try to convert this feature into another feature
   score: number = 1,
   id?: string,
-): LonLatFeatureOption {
+): LonLatGeoOption {
   const { lng, lat } = lngLat;
   const lngRounded = Math.round(lng * 10000) / 10000;
   const latRounded = Math.round(lat * 10000) / 10000;
@@ -34,7 +34,7 @@ export function createLonLatFeaturePoint(
   };
 }
 
-export function updateLonLatFeatureScore(feature: GeoFeature, score: number) {
+export function updateLonLatFeatureScore(feature: AppGeoOption, score: number) {
   return {
     ...feature,
     properties: {
@@ -44,7 +44,7 @@ export function updateLonLatFeatureScore(feature: GeoFeature, score: number) {
   };
 }
 
-export const resolveLonLatFeaturePoint = async (feature: GeoFeature) => {
+export const resolveLonLatFeaturePoint = async (feature: AppGeoOption) => {
   if (feature.properties.type !== "lonlat") {
     return feature;
   }

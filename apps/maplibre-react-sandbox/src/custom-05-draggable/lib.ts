@@ -1,5 +1,5 @@
 import { Point } from "geojson";
-import { FeatureOption } from "pentatrion-design";
+import { GeoOption } from "pentatrion-design";
 import { IGNAddressResponse, createIgnAddressFeaturePoint } from "pentatrion-geo";
 
 export const handleChangeSearchValue = async (search: string) => {
@@ -12,7 +12,7 @@ export const handleChangeSearchValue = async (search: string) => {
   });
 };
 
-export const createUnknownFeature = (id?: string): FeatureOption<Point> => ({
+export const createUnknownFeature = (id?: string): GeoOption<Point> => ({
   id: id ?? "74001",
   type: "Feature",
   geometry: {

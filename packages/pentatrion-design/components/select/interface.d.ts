@@ -1,6 +1,6 @@
 import { BBox, Geometry } from "geojson";
 
-export type OptionLike = Option | FeatureOption;
+export type OptionLike = Option | GeoOption;
 
 export type Option = {
   type?: "Option";
@@ -9,13 +9,13 @@ export type Option = {
   sourceId?: string | number;
 };
 
-export type NoDataFeature = {
+export type NoDataOption = {
   id: string;
   type: "nodata";
 };
 
 /** For compatibility with OptionLike. get original types from pentatrion-geo */
-type FeatureOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
+type GeoOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
   id: string;
   type: "Feature";
   properties: FeatureProperties<OriginalProperties>;

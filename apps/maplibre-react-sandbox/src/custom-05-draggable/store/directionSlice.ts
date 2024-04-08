@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from ".";
 import { Feature, LineString } from "geojson";
-import { FeatureOption, NoDataFeature } from "pentatrion-design";
+import { GeoOption, NoDataOption } from "pentatrion-design";
 import { createNodataFeature } from "pentatrion-geo";
 
 type DirectionState = {
-  locations: (FeatureOption | NoDataFeature)[];
+  locations: (GeoOption | NoDataOption)[];
   route: Feature<LineString> | null;
 };
 
@@ -14,13 +14,13 @@ const initialState: DirectionState = {
   route: null,
 };
 
-type LocationPayload = { index: number; feature: FeatureOption | NoDataFeature };
+type LocationPayload = { index: number; feature: GeoOption | NoDataOption };
 
 const directionSlice = createSlice({
   name: "direction",
   initialState,
   reducers: {
-    directionLocationsSorted(state, action: PayloadAction<(FeatureOption | NoDataFeature)[]>) {
+    directionLocationsSorted(state, action: PayloadAction<(GeoOption | NoDataOption)[]>) {
       state.locations = action.payload;
     },
     directionLocationChanged(state, action: PayloadAction<LocationPayload>) {

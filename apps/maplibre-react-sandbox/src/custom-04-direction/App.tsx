@@ -1,6 +1,6 @@
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { Tabs } from "pentatrion-design";
+import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent, Tabs } from "pentatrion-design";
 import SearchTab from "./tabs/SearchTab";
 import { useAppDispatch, useAppSelector } from "./store";
 import { selectTab, selectViewState, tabChanged, viewStateChanged } from "./store/mapSlice";
@@ -12,11 +12,19 @@ import {
   selectDirectionRoute,
   selectValidDirectionLocations,
 } from "./store/directionSlice";
-import { routeLayer } from "./mapStyle";
+import { roadLayerStyle, roadLayerCasingStyle } from "./mapStyle";
 import { createLonLatFeaturePoint } from "pentatrion-geo";
-import { Event, RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
+import {
+  ContextMenuEventDispatcher,
+  Event,
+  MaplibreContextmenuEventDetail,
+  RLayer,
+  RMap,
+  RMarker,
+  RSource,
+} from "maplibre-react-components";
 import { MapLibreEvent, Marker } from "maplibre-gl";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 
 function App1() {
   const viewState = useAppSelector(selectViewState);
@@ -61,6 +69,45 @@ function App1() {
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
     dispatch(directionLocationChanged({ index, feature: lonlatFeature }));
   }
+
+  function handleDirectionIndex(e: ContextMenuItemMouseEvent, index: number) {
+    const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
+    const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
+    dispatch(directionLocationChanged({ index, feature: lonlatFeature }));
+  }
+
+  function handleClickInfos(e: ContextMenuItemMouseEvent) {
+    const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
+    const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
+    dispatch(searchFeatureChanged(lonlatFeature));
+  }
+
+  const contextItems: ReactElement[] = [];
+  if (tab === "search") {
+    contextItems.push(
+      <ContextMenuItem
+        key="search-infos"
+        label="Plus d'infos sur cet endroit"
+        onClick={handleClickInfos}
+      />,
+    );
+  } else if (tab === "direction") {
+    contextItems.push(
+      <ContextMenuItem
+        key="direction-from"
+        label="Itinéraire depuis ce lieu"
+        onClick={(e) => handleDirectionIndex(e, 0)}
+      />,
+    );
+    contextItems.push(
+      <ContextMenuItem
+        key="direction-to"
+        label="Itinéraire jusqu'à ce lieu"
+        onClick={(e) => handleDirectionIndex(e, 1)}
+      />,
+    );
+  }
+
   return (
     <>
       <RMap
@@ -92,9 +139,33 @@ function App1() {
             ),
         )}
         {directionRoute && (
-          <RSource id="direction-route" key="direction-route" type="geojson" data={directionRoute}>
-            <RLayer {...routeLayer} />
-          </RSource>
+          <>
+            <RSource
+              id="direction-route"
+              key="direction-route"
+              type="geojson"
+              data={directionRoute}
+            />
+            <RLayer
+              id="direction-road-casing"
+              type="line"
+              {...roadLayerCasingStyle}
+              source="direction-route"
+              beforeId="point coté"
+            />
+            <RLayer
+              id="direction-road"
+              type="line"
+              {...roadLayerStyle}
+              source="direction-route"
+              beforeId="point coté"
+            />
+          </>
+        )}
+        {contextItems.length > 0 && (
+          <ContextMenuEventDispatcher>
+            <ContextMenu eventName="maplibre-contextmenu">{contextItems}</ContextMenu>
+          </ContextMenuEventDispatcher>
         )}
       </RMap>
       <aside className="sidebar">

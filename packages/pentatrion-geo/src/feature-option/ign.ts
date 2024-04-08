@@ -2,7 +2,7 @@ import { Feature, Point } from "geojson";
 import { nanoid } from "nanoid";
 import {
   GeocodeType,
-  IGNAddressFeatureOption,
+  IGNAddressGeoOption,
   IGNAddressProperties,
   IGNAddressResponse,
   LngLatObj,
@@ -12,7 +12,7 @@ import { getContext, getLabel } from "../ign-api/geocode";
 export function createIgnAddressFeaturePoint(
   { type, geometry, properties }: Feature<Point, IGNAddressProperties>,
   forceCoordinates?: LngLatObj,
-): IGNAddressFeatureOption {
+): IGNAddressGeoOption {
   const uniqId = nanoid();
   return {
     id: uniqId,
@@ -37,7 +37,7 @@ export function createIgnAddressFeaturePoint(
 
 export function parseIgnAddressCollection(
   collection: IGNAddressResponse,
-): IGNAddressFeatureOption[] {
+): IGNAddressGeoOption[] {
   return collection.features.map((feature) => {
     return createIgnAddressFeaturePoint(feature);
   });

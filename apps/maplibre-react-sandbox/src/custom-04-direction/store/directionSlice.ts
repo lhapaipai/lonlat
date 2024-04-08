@@ -1,4 +1,11 @@
-import { createNodataFeature, filterDataFeatures, GeoFeature } from "pentatrion-geo";
+import {
+  createNodataFeature,
+  filterDataFeatures,
+  AppGeoOption,
+  getRoute,
+  hashCoords,
+  ORSDirectionFeature,
+} from "pentatrion-geo";
 import {
   createAsyncThunk,
   createListenerMiddleware,
@@ -8,12 +15,11 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { Feature, FeatureCollection, LineString } from "geojson";
-import { NoDataFeature } from "pentatrion-design";
+import { NoDataOption } from "pentatrion-design";
 
 type DirectionState = {
-  locations: (GeoFeature | NoDataFeature)[];
-  route: Feature<LineString> | null;
+  locations: (AppGeoOption | NoDataOption)[];
+  route: ORSDirectionFeature | null;
 };
 
 const initialState: DirectionState = {
@@ -21,13 +27,13 @@ const initialState: DirectionState = {
   route: null,
 };
 
-export type LocationPayload = { index: number; feature: GeoFeature | NoDataFeature };
+export type LocationPayload = { index: number; feature: AppGeoOption | NoDataOption };
 
 const directionSlice = createSlice({
   name: "direction",
   initialState,
   reducers: {
-    directionLocationsSorted(state, action: PayloadAction<(GeoFeature | NoDataFeature)[]>) {
+    directionLocationsSorted(state, action: PayloadAction<(AppGeoOption | NoDataOption)[]>) {
       state.locations = action.payload;
     },
     directionLocationChanged(state, action: PayloadAction<LocationPayload>) {
@@ -37,7 +43,7 @@ const directionSlice = createSlice({
       }
       state.locations[index] = feature;
     },
-    directionRouteChanged(state, action: PayloadAction<Feature<LineString> | null>) {
+    directionRouteChanged(state, action: PayloadAction<ORSDirectionFeature | null>) {
       state.route = action.payload;
     },
   },
@@ -61,7 +67,12 @@ directionLocationsListenerMiddleware.startListening({
     const state = getState() as RootState;
     const validLocations = filterDataFeatures(state.direction.locations);
     if (validLocations.length >= 2) {
-      dispatch(fetchRoute());
+      const newHash = hashCoords(validLocations);
+      if (!state.direction.route || newHash !== state.direction.route.properties.coords_hash) {
+        dispatch(fetchRoute());
+      } else {
+        console.log("same coords don't query ors");
+      }
     } else {
       dispatch(directionRouteChanged(null));
     }
@@ -75,19 +86,7 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
 
   console.log("newState", state);
 
-  const res = await fetch("http://localhost:8080/ors/v2/directions/driving-car/geojson", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      coordinates: validLocations.map((feature) => feature.geometry.coordinates),
-    }),
-  });
-
-  const collection = (await res.json()) as FeatureCollection<LineString>;
-
-  return collection.features.length < 1 ? null : collection.features[0];
+  return await getRoute(validLocations);
 });
 
 export const selectDirectionLocations = (state: RootState) => state.direction.locations;
