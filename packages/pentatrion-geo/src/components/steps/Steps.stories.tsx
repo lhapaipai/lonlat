@@ -81,10 +81,11 @@ export const WithAutocompleteSortable = () => {
               {direction.length > 2 && (
                 <Button
                   icon
-                  shape="underline"
+                  variant="ghost"
+                  color="weak"
                   onClick={() => handleRemoveItem(index)}
                   style={{
-                    visibility: [0, direction.length - 1].includes(index) ? "hidden" : "visible",
+                    visibility: index === 0 ? "hidden" : "visible",
                   }}
                 >
                   <i className="fe-cancel"></i>
@@ -92,29 +93,31 @@ export const WithAutocompleteSortable = () => {
               )}
             </Step>
           ))}
-          <li
-            className="ll-step status-current align-start sortable-chosen"
-            data-id="71946"
-            draggable="true"
-          >
-            <div className="marker-container">
-              <div className="marker active handle">+</div>
-            </div>
-            <div className="content flex">Ajouter un point</div>
-          </li>
         </Sortable>
       </Steps>
-      <div className="mt-4">
-        <Button shape="ghost" color="weak" onClick={handleAppendItem}>
-          <i className="fe-marker"></i>
-          Ajouter un point
+      <div className="ll-steps-extra mt-4">
+        <Button variant="ghost" color="weak" onClick={handleAppendItem}>
+          <span
+            className="ll-marker"
+            style={{ "--marker-color": "#c0c0c0", "--marker-size": "34px" }}
+          >
+            <span className="marker">
+              <span className="ovale"></span>
+              <i className="fe-plus"></i>
+            </span>
+            <span className="target"></span>
+          </span>
+          <span>Ajouter un point</span>
         </Button>
       </div>
-      <ul>
-        {direction.map((i) => (
-          <li key={i.id}>{isNoData(i) ? "non défini" : i.properties.label}</li>
-        ))}
-      </ul>
+      <div className="storybook-result">
+        <div>Sélections :</div>
+        <ul>
+          {direction.map((i) => (
+            <li key={i.id}>{isNoData(i) ? "non défini" : i.properties.label}</li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };

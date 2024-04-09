@@ -11,7 +11,7 @@
     overflow: clip;
     overflow-clip-margin: 1px;
 
-    &:not(.shape-underline) {
+    &:not(.variant-underline) {
         padding: .5rem 1rem;
 
         &.size-small {
@@ -23,7 +23,7 @@
         }
 
         &:focus {
-            &.shape-solid {
+            &.variant-solid {
                 box-shadow: var(--shadow-md);
             }
         }
@@ -32,8 +32,12 @@
             background-color: var(--button-hover-background-color);
             box-shadow: var(--shadow-light);
 
-            &.shape-solid {
+            &.variant-solid {
                 box-shadow: var(--shadow-md);
+            }
+
+            &.variant-ghost {
+                box-shadow: none;
             }
         }
 
@@ -42,7 +46,7 @@
             box-shadow: var(--shadow-light-md);
             background-color: var(--button-active-background-color);
 
-            &.shape-solid {
+            &.variant-solid {
                 box-shadow: var(--shadow-lg);
             }
         }
@@ -66,10 +70,10 @@
         color: var(--button-active-text-color);
     }
 
-    /* for .shape-underline : libs/styles/base/_typography.scss
+    /* for .variant-underline : libs/styles/base/_typography.scss
        same style as <a> tag
     */
-    &.shape-underline {
+    &.variant-underline {
         box-shadow: inset 0 -2px 0 var(--button-default-border-color);
         border-radius: 0;
         transition: box-shadow .05s ease, color .05s ease;
@@ -79,11 +83,11 @@
         }
     }
 
-    &.shape-solid {
+    &.variant-solid {
         box-shadow: var(--shadow);
     }
 
-    &.shape-outline {
+    &.variant-outline {
         outline: 1px solid var(--button-focus-visible-border-color);
     }
 
@@ -108,34 +112,9 @@
         align-items: center;
         justify-content: center;
 
-        &,
-        &:hover,
-        &:focus,
-        &:focus-within,
-        &:active {
-            color: var(--text-default);
-        }
-
-        &.shape-underline {
-            color: var(--text-hint);
+        &.variant-underline {
             box-shadow: none;
-            transition: color 0.3s ease;
             border-radius: var(--border-radius-md);
-            background-color: transparent;
-
-            &:focus,
-            &:focus-within {
-                color: var(--text-hint);
-            }
-
-            &:hover {
-                color: var(--text-default);
-            }
-
-
-            &:active {
-                color: var(--text-strong);
-            }
         }
     }
 }

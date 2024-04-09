@@ -24,7 +24,7 @@ export default function Badge({
 }: Props) {
   const badge = (
     <span
-      className={cn("ll-badge", "text-xs", `shape-solid-${color}`, `color-${color}`, className)}
+      className={cn("ll-badge", "text-xs", `variant-solid-${color}`, `color-${color}`, className)}
     >
       {onClick ? (
         <button className="inner" onClick={onClick}>

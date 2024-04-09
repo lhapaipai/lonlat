@@ -19,7 +19,7 @@ export default function Notification({
         {withLoader && <Loader size="small" color="weak" />}
 
         {canClose && (
-          <Button icon shape="ghost" onClick={onRemove}>
+          <Button icon variant="ghost" onClick={onRemove}>
             <i className="fe-cancel"></i>
           </Button>
         )}

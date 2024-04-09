@@ -67,7 +67,7 @@ export const Basic = () => {
         >
           <div className="bar-buttons">
             <button
-              className="ll-button icon shape-ghost-weak button-weak shape-ghost"
+              className="ll-button icon variant-ghost-weak button-weak variant-ghost"
               aria-busy="false"
               data-tabindex=""
             >
@@ -89,7 +89,7 @@ export const Basic = () => {
         >
           <div className="bar-buttons">
             <button
-              className="ll-button icon shape-ghost-weak button-weak shape-ghost"
+              className="ll-button icon variant-ghost-weak button-weak variant-ghost"
               aria-busy="false"
               data-tabindex=""
             >
@@ -112,7 +112,7 @@ export const Basic = () => {
         >
           <div className="bar-buttons">
             <button
-              className="ll-button icon shape-ghost-weak button-weak shape-ghost"
+              className="ll-button icon variant-ghost-weak button-weak variant-ghost"
               aria-busy="false"
               data-tabindex=""
             >
@@ -126,14 +126,14 @@ export const Basic = () => {
           <footer className="footer">
             <div className="actions">
               <button
-                className="ll-button shape-outline-weak button-weak shape-outline"
+                className="ll-button variant-outline-weak button-weak variant-outline"
                 aria-busy="false"
                 data-tabindex=""
               >
                 Annuler
               </button>
               <button
-                className="ll-button shape-solid-primary button-primary shape-solid"
+                className="ll-button variant-solid-primary button-primary variant-solid"
                 aria-busy="false"
                 data-tabindex=""
               >

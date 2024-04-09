@@ -36,20 +36,20 @@ export const Context = () => {
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Button shape="outline" selected={val === "one"} onClick={() => setVal("one")}>
+          <Button variant="outline" selected={val === "one"} onClick={() => setVal("one")}>
             One
           </Button>
-          <Button shape="outline" selected={val === "two"} onClick={() => setVal("two")}>
+          <Button variant="outline" selected={val === "two"} onClick={() => setVal("two")}>
             Two
           </Button>
-          <Button shape="outline" selected={val === "three"} onClick={() => setVal("three")}>
+          <Button variant="outline" selected={val === "three"} onClick={() => setVal("three")}>
             Three
           </Button>
         </ButtonGroup>
 
         <ButtonGroup>
           <Button
-            shape="outline"
+            variant="outline"
             color="weak"
             selected={val === "one"}
             onClick={() => setVal("one")}
@@ -57,7 +57,7 @@ export const Context = () => {
             One
           </Button>
           <Button
-            shape="outline"
+            variant="outline"
             color="weak"
             selected={val === "two"}
             onClick={() => setVal("two")}
@@ -65,7 +65,7 @@ export const Context = () => {
             Two
           </Button>
           <Button
-            shape="outline"
+            variant="outline"
             color="weak"
             selected={val === "three"}
             onClick={() => setVal("three")}
@@ -74,20 +74,20 @@ export const Context = () => {
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Button shape="ghost" selected={val === "one"} onClick={() => setVal("one")}>
+          <Button variant="ghost" selected={val === "one"} onClick={() => setVal("one")}>
             One
           </Button>
-          <Button shape="ghost" selected={val === "two"} onClick={() => setVal("two")}>
+          <Button variant="ghost" selected={val === "two"} onClick={() => setVal("two")}>
             Two
           </Button>
-          <Button shape="ghost" selected={val === "three"} onClick={() => setVal("three")}>
+          <Button variant="ghost" selected={val === "three"} onClick={() => setVal("three")}>
             Three
           </Button>
         </ButtonGroup>
 
         <ButtonGroup>
           <Button
-            shape="ghost"
+            variant="ghost"
             color="danger"
             selected={val === "one"}
             onClick={() => setVal("one")}
@@ -95,7 +95,7 @@ export const Context = () => {
             One
           </Button>
           <Button
-            shape="ghost"
+            variant="ghost"
             color="danger"
             selected={val === "two"}
             onClick={() => setVal("two")}
@@ -103,7 +103,7 @@ export const Context = () => {
             Two
           </Button>
           <Button
-            shape="ghost"
+            variant="ghost"
             color="danger"
             selected={val === "three"}
             onClick={() => setVal("three")}
@@ -127,7 +127,7 @@ export const Context = () => {
 
         <ButtonGroup direction="vertical">
           <Button
-            shape="outline"
+            variant="outline"
             color="weak"
             selected={val === "one"}
             onClick={() => setVal("one")}
@@ -135,7 +135,7 @@ export const Context = () => {
             One
           </Button>
           <Button
-            shape="outline"
+            variant="outline"
             color="weak"
             selected={val === "two"}
             onClick={() => setVal("two")}
@@ -143,7 +143,7 @@ export const Context = () => {
             Two
           </Button>
           <Button
-            shape="outline"
+            variant="outline"
             color="weak"
             selected={val === "three"}
             onClick={() => setVal("three")}
@@ -153,14 +153,14 @@ export const Context = () => {
         </ButtonGroup>
 
         <ButtonGroup direction="vertical">
-          <Button shape="ghost" color="weak" selected={val === "one"} onClick={() => setVal("one")}>
+          <Button variant="ghost" color="weak" selected={val === "one"} onClick={() => setVal("one")}>
             One
           </Button>
-          <Button shape="ghost" color="weak" selected={val === "two"} onClick={() => setVal("two")}>
+          <Button variant="ghost" color="weak" selected={val === "two"} onClick={() => setVal("two")}>
             Two
           </Button>
           <Button
-            shape="ghost"
+            variant="ghost"
             color="weak"
             selected={val === "three"}
             onClick={() => setVal("three")}

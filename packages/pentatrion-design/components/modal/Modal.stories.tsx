@@ -51,7 +51,7 @@ export const Context = () => {
         <ModalDescription>Content</ModalDescription>
         <ModalFooter>
           <div className="actions">
-            <Button shape="ghost" onClick={() => setIsOpen(false)}>
+            <Button variant="ghost" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button color="primary" onClick={() => setIsOpen(false)}>
@@ -103,7 +103,7 @@ export const ScrollableModal = () => {
         </ModalDescription>
         <ModalFooter>
           <div className="actions">
-            <Button shape="ghost" onClick={() => setIsOpen(false)}>
+            <Button variant="ghost" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button color="primary" onClick={() => setIsOpen(false)}>

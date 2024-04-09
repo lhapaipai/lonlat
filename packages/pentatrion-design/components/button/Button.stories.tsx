@@ -20,7 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
   args: {
-    shape: "solid",
+    variant: "solid",
     size: "medium",
     color: "primary",
     children: "My button",
@@ -32,12 +32,13 @@ export const Basic: Story = {
   },
 };
 
-export const Shapes = () => (
+export const Variants = () => (
   <div className="flex gap-2">
-    <Button shape="solid">solid</Button>
-    <Button shape="outline">outline</Button>
-    <Button shape="underline">underline</Button>
-    <Button shape="ghost">ghost</Button>
+    <Button variant="solid">solid</Button>
+    <Button variant="outline">outline</Button>
+    <Button variant="underline">underline</Button>
+    <Button variant="text">text</Button>
+    <Button variant="ghost">ghost</Button>
   </div>
 );
 
@@ -58,25 +59,28 @@ export const States = () => (
 
 export const Icons = () => (
   <div className="flex gap-2" style={{ alignItems: "center" }}>
-    <Button icon shape="solid">
+    <Button icon variant="solid" color="weak">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon shape="outline">
+    <Button icon variant="outline" color="weak">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon shape="ghost">
+    <Button icon variant="text" color="weak">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon shape="underline">
+    <Button icon variant="ghost" color="weak">
+      <i className="fe-cancel"></i>
+    </Button>
+    <Button icon variant="underline" color="weak">
       <i className="fe-cancel"></i>
     </Button>
   </div>
 );
 
-const shapes = ["solid", "outline", "ghost", "underline"] as const;
+const variants = ["solid", "outline", "text", "ghost", "underline"] as const;
 const colors = ["primary", "weak", "danger", "warning", "success", "info"] as const;
 
-export const Variants = () => {
+export const Context = () => {
   return (
     <div style={{ backgroundColor: "transparent" }}>
       <Table>
@@ -91,13 +95,13 @@ export const Variants = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {shapes.map((shape) => (
-            <TableRow key={shape}>
-              <TableCell>{shape}</TableCell>
+          {variants.map((variant) => (
+            <TableRow key={variant}>
+              <TableCell>{variant}</TableCell>
               {colors.map((color) => (
                 <TableCell key={color} label={color}>
                   <div className="flex gap-2">
-                    <Button shape={shape} color={color}>
+                    <Button variant={variant} color={color}>
                       Lorem
                     </Button>
                   </div>

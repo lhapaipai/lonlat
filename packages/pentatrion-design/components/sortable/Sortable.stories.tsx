@@ -56,7 +56,7 @@ export const BasicOriginal = () => {
     >
       {items.map((item) => (
         <div key={item.id} className="row-item">
-          <Button icon shape="underline" className="handle">
+          <Button icon variant="underline" className="handle">
             <i className="fe-braille"></i>
           </Button>
           {item.name}
@@ -79,7 +79,7 @@ export const Basic = () => {
     >
       {items.map((item) => (
         <div key={item.id} className="row-item">
-          <Button icon shape="underline" className="handle">
+          <Button icon variant="underline" className="handle">
             <i className="fe-braille"></i>
           </Button>
           {item.name}
@@ -101,7 +101,7 @@ export const WithInputs = () => {
     >
       {items.map((item) => (
         <div key={item.id} className="row-item">
-          <Button icon shape="underline" className="handle">
+          <Button icon variant="underline" className="handle">
             <i className="fe-braille"></i>
           </Button>
           <Input className="ll-input" defaultValue={item.name} />

@@ -8,7 +8,7 @@ import { Loader } from "../..";
 export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   withRipple?: boolean;
 
-  shape?: "solid" | "outline" | "ghost" | "underline";
+  variant?: "solid" | "outline" | "text" | "ghost" | "underline";
 
   size?: "small" | "medium" | "large";
 
@@ -36,7 +36,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       withRipple = true,
-      shape = "solid",
+      variant = "solid",
       loading = false,
       color = "primary",
       size = "medium",
@@ -67,9 +67,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth && "w100",
       size !== "medium" && `size-${size}`,
       selected && "selected",
-      `shape-${shape}-${color}`,
+      `variant-${variant}-${color}`,
       `color-${color}`,
-      `shape-${shape}`,
+      `variant-${variant}`,
       notClickable && "not-cliquable",
     );
 
@@ -85,7 +85,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-busy={loading}
         {...props}
       >
-        {!notClickable && withRipple && shape !== "underline" && ripples}
+        {!notClickable && withRipple && variant !== "underline" && ripples}
         {children}
         {loading && <Loader color={color} size="small" className="ml-2" />}
       </button>

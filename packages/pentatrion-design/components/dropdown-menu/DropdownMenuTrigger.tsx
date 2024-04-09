@@ -28,7 +28,7 @@ const DropdownMenuTrigger = forwardRef<HTMLElement, Props>(
 
     return (
       <Button
-        shape="underline"
+        variant="underline"
         ref={ref}
         data-state={context.open ? "open" : "closed"}
         {...context.getReferenceProps(props)}

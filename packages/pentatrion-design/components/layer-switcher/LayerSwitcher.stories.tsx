@@ -23,7 +23,7 @@ export const Basic = () => {
           <ButtonGroup direction="vertical" className="filters">
             <Button
               className="text-sm"
-              shape="ghost"
+              variant="ghost"
               color="weak"
               selected={val === "one"}
               onClick={() => setVal("one")}
@@ -32,7 +32,7 @@ export const Basic = () => {
             </Button>
             <Button
               className="text-sm"
-              shape="ghost"
+              variant="ghost"
               color="weak"
               selected={val === "two"}
               onClick={() => setVal("two")}
@@ -41,7 +41,7 @@ export const Basic = () => {
             </Button>
             <Button
               className="text-sm"
-              shape="ghost"
+              variant="ghost"
               color="weak"
               selected={val === "three"}
               onClick={() => setVal("three")}

@@ -399,7 +399,7 @@ export default class LLPopup extends Evented {
 
       this._closeButton = DOM.create(
         "button",
-        "ll-button icon shape-ghost-weak button-weak shape-ghost",
+        "ll-button icon variant-ghost-weak button-weak variant-ghost",
         actions,
       );
       this._closeButton.type = "button";

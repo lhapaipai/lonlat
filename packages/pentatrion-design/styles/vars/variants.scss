@@ -1,6 +1,6 @@
 @each $colorType in (primary, weak, danger, warning, success, info) {
 
-    .shape-solid-#{$colorType} {
+    .variant-solid-#{$colorType} {
         $solid-text-color: --color-#{$colorType}-text-invert;
 
         --button-default-background-color: var(--color-#{$colorType}-500);
@@ -13,7 +13,7 @@
         --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
-    .shape-outline-#{$colorType} {
+    .variant-outline-#{$colorType} {
         $outline-text-color: var(--color-#{$colorType}-text);
 
         --button-default-background-color: var(--background-default);
@@ -27,7 +27,20 @@
         --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
-    .shape-ghost-#{$colorType} {
+    .variant-ghost-#{$colorType} {
+        $ghost-text-color: var(--text-hint);
+
+        --button-default-background-color: transparent;
+        --button-hover-background-color: transparent;
+        --button-active-background-color: var(--color-#{$colorType}-200);
+        --button-default-text-color: var(--text-hint);
+        --button-hover-text-color: var(--text-default);
+        --button-active-text-color: var(--text-default);
+        --button-focus-border-color: transparent;
+        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
+    }
+
+    .variant-text-#{$colorType} {
         $ghost-text-color: var(--color-#{$colorType}-text);
 
         --button-default-background-color: var(--background-default);
@@ -40,7 +53,7 @@
         --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
-    .shape-underline-#{$colorType} {
+    .variant-underline-#{$colorType} {
         $underline-text-color: var(--color-#{$colorType}-700);
 
         --button-default-background-color: var(--background-default);

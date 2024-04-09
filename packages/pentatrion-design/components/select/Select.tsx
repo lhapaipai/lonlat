@@ -246,7 +246,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
             <Button
               withRipple={false}
               icon
-              shape="ghost"
+              variant="ghost"
               onMouseDown={(e) => {
                 // we don't want dropdown to open
                 e.stopPropagation();
@@ -261,7 +261,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
           {showArrow && (
             <div className="arrow">
               <div className="ll-indicator"></div>
-              <Button withRipple={false} icon shape="underline" focusable={false}>
+              <Button withRipple={false} icon variant="underline" focusable={false}>
                 <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
               </Button>
             </div>

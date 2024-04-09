@@ -1,6 +1,20 @@
+$circleRadius: 18px;
+
+.ll-steps-extra {
+    --circle-radius: #{$circleRadius};
+
+    .ll-button {
+        padding: calc(var(--circle-radius) / 2) calc(var(--circle-radius) / 2) calc(var(--circle-radius) / 2) calc(var(--circle-radius) * 1.5 + 1rem);
+    }
+
+    .ll-marker {
+        transform: translate(calc(var(--circle-radius) / 3));
+    }
+}
+
 .ll-steps {
     position: relative;
-    --circle-radius: 18px;
+    --circle-radius: #{$circleRadius};
 
     &.step-line {
         --line-space: 4px;
@@ -195,6 +209,10 @@
 
     .ll-autocomplete {
         flex: 1;
+    }
+
+    .ll-button {
+        margin: 1px 1px 1px .5rem;
     }
 
     .title {

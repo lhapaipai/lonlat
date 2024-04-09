@@ -233,7 +233,7 @@ function Autocomplete<O extends OptionLike = Option>(
             <Button
               withRipple={false}
               icon
-              shape="underline"
+              variant="underline"
               onClick={() => {
                 setIsOpen(false);
                 onChangeSelectionStable(null);

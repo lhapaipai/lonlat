@@ -18,7 +18,7 @@ export function ModalHeader({
     <>
       {closeButton && (
         <div className="bar-buttons">
-          <Button icon shape="ghost" onClick={() => setOpen(false)}>
+          <Button icon variant="ghost" onClick={() => setOpen(false)}>
             <i className="fe-cancel"></i>
           </Button>
         </div>
