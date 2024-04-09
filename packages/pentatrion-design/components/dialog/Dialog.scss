@@ -154,12 +154,16 @@
         max-height: 300px;
     }
 
+
+
     .option {
         padding: .5rem .5rem;
+
         text-align: left;
-        outline: 0;
+        outline: none;
         position: relative;
         z-index: 1;
+        cursor: pointer;
 
         &:hover {
             background-color: var(--background-light);
@@ -180,10 +184,48 @@
             pointer-events: none;
         }
 
+        i {
+            margin-right: .5rem;
+        }
+
+        .bullet {
+            width: 1rem;
+            height: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            outline: 2px solid var(--background-weak);
+            font-size: var(--font-size-sm);
+            border-radius: 50%;
+            margin: 0 .75rem 0 3px;
+        }
+
+        &.discret {
+            color: var(--text-hint);
+
+            .content {
+                font-size: .9rem;
+            }
+        }
+    }
+
+    &.compact {
+        .option {
+            padding: 0.125rem .5rem .125rem .125rem;
+        }
+    }
+
+    .options-container {
+        max-height: 200px;
+        overflow: auto;
     }
 }
 
 .ll-portail-dialog {
     outline: none;
     z-index: 100;
+}
+
+.ll-portail-overlay {
+    z-index: var(--zindex-overlay);
 }

@@ -7,7 +7,7 @@ export default meta;
 
 export const Basic = () => {
   return (
-    <div className="flex gap-8 flex-column">
+    <div className="flex gap-8 flex-column mb-4">
       <div>
         <div className="ll-dialog">
           <div className="description">coucou</div>
@@ -142,6 +142,181 @@ export const Basic = () => {
             </div>
           </footer>
           <div style={{ left: "18px", bottom: "-8px" }} className="arrow"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const Options = () => {
+  return (
+    <div className="flex gap-8 flex-column mb-4">
+      <div>
+        <div className="ll-dialog">
+          <div className="option">Default state 1</div>
+          <div className="option active">Active state 2 (keyboard navigation)</div>
+          <div className="option">Default state 3</div>
+          <div className="option selected">Selected state 4</div>
+          <div className="option">Default state 5</div>
+          <div className="option">Default state 6</div>
+        </div>
+      </div>
+
+      <div>
+        <div className="ll-dialog">
+          <div className="option">
+            <i className="fe-star"></i>
+            <span className="content">Default state 1</span>
+          </div>
+          <div className="option">
+            <i className="fe-marker"></i>
+            <span className="content">State 2</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div className="ll-dialog compact">
+          <div className="option">
+            <span className="bullet">A</span>
+            <span className="content">Itinéraire depuis ce point</span>
+          </div>
+          <div className="option discret">
+            <i className="fe-point-inter"></i>
+            <span className="content">Ajouter un point</span>
+          </div>
+          <div className="option">
+            <span className="bullet">B</span>
+            <span className="content">Itinéraire vers ce point</span>
+          </div>
+          <div className="option">
+            <i className="fe-plus"></i>
+            <span className="content">Prolonger l'itinéraire jusqu'ici</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div className="ll-dialog compact">
+          <div className="option">
+            <span className="bullet">A</span>
+            <span className="content">Itinéraire depuis ce point</span>
+          </div>
+          <div className="option discret">
+            <i className="fe-point-inter"></i>
+            <span className="content">point intermédiaire</span>
+          </div>
+          <div className="option">
+            <span className="bullet">B</span>
+            <span className="content">Déplacer ce point</span>
+          </div>
+          <div className="option discret">
+            <i className="fe-point-inter"></i>
+            <span className="content">point intermédiaire</span>
+          </div>
+          <div className="option">
+            <span className="bullet">C</span>
+            <span className="content">Déplacer ce point</span>
+          </div>
+          <div className="option discret">
+            <i className="fe-point-inter"></i>
+            <span className="content">point intermédiaire</span>
+          </div>
+          <div className="option">
+            <span className="bullet">D</span>
+            <span className="content">Itinéraire vers ce point</span>
+          </div>
+          <div className="option">
+            <i className="fe-plus"></i>
+            <span className="content">Prolonger l'itinéraire jusqu'ici</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div className="ll-dialog compact">
+          <div className="options-container">
+            <div className="option">
+              <span className="bullet">A</span>
+              <span className="content">Itinéraire depuis ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">B</span>
+              <span className="content">Déplacer ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">C</span>
+              <span className="content">Déplacer ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">D</span>
+              <span className="content">Itinéraire vers ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">E</span>
+              <span className="content">Itinéraire vers ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">F</span>
+              <span className="content">Itinéraire vers ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">G</span>
+              <span className="content">Itinéraire vers ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">H</span>
+              <span className="content">Itinéraire vers ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">I</span>
+              <span className="content">Itinéraire vers ce point</span>
+            </div>
+            <div className="option discret">
+              <i className="fe-point-inter"></i>
+              <span className="content">point intermédiaire</span>
+            </div>
+            <div className="option">
+              <span className="bullet">J</span>
+              <span className="content">Itinéraire vers ce point</span>
+            </div>
+          </div>
+          <div className="option">
+            <i className="fe-plus"></i>
+            <span className="content">Prolonger l'itinéraire jusqu'ici</span>
+          </div>
         </div>
       </div>
     </div>

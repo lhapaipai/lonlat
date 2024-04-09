@@ -1,6 +1,6 @@
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent, Tabs } from "pentatrion-design";
+import { Tabs } from "pentatrion-design";
 import SearchTab from "./tabs/SearchTab";
 import { useAppDispatch, useAppSelector } from "./store";
 import { selectTab, selectViewState, tabChanged, viewStateChanged } from "./store/mapSlice";
@@ -14,17 +14,10 @@ import {
 } from "./store/directionSlice";
 import { roadLayerStyle, roadLayerCasingStyle } from "./mapStyle";
 import { createLonLatFeaturePoint } from "pentatrion-geo";
-import {
-  ContextMenuEventDispatcher,
-  Event,
-  MaplibreContextmenuEventDetail,
-  RLayer,
-  RMap,
-  RMarker,
-  RSource,
-} from "maplibre-react-components";
+import { Event, RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
 import { MapLibreEvent, Marker } from "maplibre-gl";
-import { ReactElement, useState } from "react";
+import { useState } from "react";
+import ContextMenuManager from "./ContextMenuManager";
 
 function App1() {
   const viewState = useAppSelector(selectViewState);
@@ -65,47 +58,8 @@ function App1() {
   }
 
   function handleDirectionLocationDragEnd(e: Event<Marker>, index: number) {
-    console.log("dragEnd", e);
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
     dispatch(directionLocationChanged({ index, feature: lonlatFeature }));
-  }
-
-  function handleDirectionIndex(e: ContextMenuItemMouseEvent, index: number) {
-    const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
-    const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
-    dispatch(directionLocationChanged({ index, feature: lonlatFeature }));
-  }
-
-  function handleClickInfos(e: ContextMenuItemMouseEvent) {
-    const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
-    const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
-    dispatch(searchFeatureChanged(lonlatFeature));
-  }
-
-  const contextItems: ReactElement[] = [];
-  if (tab === "search") {
-    contextItems.push(
-      <ContextMenuItem
-        key="search-infos"
-        label="Plus d'infos sur cet endroit"
-        onClick={handleClickInfos}
-      />,
-    );
-  } else if (tab === "direction") {
-    contextItems.push(
-      <ContextMenuItem
-        key="direction-from"
-        label="Itinéraire depuis ce lieu"
-        onClick={(e) => handleDirectionIndex(e, 0)}
-      />,
-    );
-    contextItems.push(
-      <ContextMenuItem
-        key="direction-to"
-        label="Itinéraire jusqu'à ce lieu"
-        onClick={(e) => handleDirectionIndex(e, 1)}
-      />,
-    );
   }
 
   return (
@@ -162,11 +116,7 @@ function App1() {
             />
           </>
         )}
-        {contextItems.length > 0 && (
-          <ContextMenuEventDispatcher>
-            <ContextMenu eventName="maplibre-contextmenu">{contextItems}</ContextMenu>
-          </ContextMenuEventDispatcher>
-        )}
+        <ContextMenuManager />
       </RMap>
       <aside className="sidebar">
         <Tabs fullWidth={true} tabs={tabs} value={tab} onChange={(e) => dispatch(tabChanged(e))} />

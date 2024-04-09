@@ -43,6 +43,13 @@ const directionSlice = createSlice({
       }
       state.locations[index] = feature;
     },
+    directionLocationRemoved(state, action: PayloadAction<number>) {
+      state.locations = state.locations.filter((_, idx) => idx !== action.payload);
+    },
+    directionLocationInsertAt(state, action: PayloadAction<LocationPayload>) {
+      const { feature, index } = action.payload;
+      state.locations.splice(index, 0, feature);
+    },
     directionRouteChanged(state, action: PayloadAction<ORSDirectionFeature | null>) {
       state.route = action.payload;
     },
@@ -56,13 +63,23 @@ const directionSlice = createSlice({
 
 export default directionSlice.reducer;
 
-export const { directionLocationChanged, directionLocationsSorted, directionRouteChanged } =
-  directionSlice.actions;
+export const {
+  directionLocationChanged,
+  directionLocationsSorted,
+  directionRouteChanged,
+  directionLocationRemoved,
+  directionLocationInsertAt,
+} = directionSlice.actions;
 
 export const directionLocationsListenerMiddleware = createListenerMiddleware();
 
 directionLocationsListenerMiddleware.startListening({
-  matcher: isAnyOf(directionLocationChanged, directionLocationsSorted),
+  matcher: isAnyOf(
+    directionLocationChanged,
+    directionLocationsSorted,
+    directionLocationRemoved,
+    directionLocationInsertAt,
+  ),
   effect: async (_, { getState, dispatch }) => {
     const state = getState() as RootState;
     const validLocations = filterDataFeatures(state.direction.locations);

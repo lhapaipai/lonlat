@@ -3,3 +3,11 @@
 @import "./text";
 @import "./variants";
 @import "./rings";
+
+
+:root {
+    --zindex-overlay: 100;
+
+    --zindex-tooltip: 100;
+    --zindex-context-menu: 90;
+}

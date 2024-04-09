@@ -1,12 +1,18 @@
 .ll-button {
-    display: inline-block;
+
+    &,
+    &-placeholder {
+        display: inline-block;
+    }
+
     border-radius: var(--border-radius-md);
     border: 0;
     outline: none;
     cursor: pointer;
     background-color: var(--button-default-background-color);
     color: var(--button-default-text-color);
-    transition: all .3s ease, outline 0s;
+    transition: all .3s ease,
+    outline 0s;
     position: relative;
     overflow: clip;
     overflow-clip-margin: 1px;
@@ -104,9 +110,13 @@
         }
     }
 
-    &.icon {
+    &.icon,
+    &-placeholder.icon {
         width: 2rem;
         height: 2rem;
+    }
+
+    &.icon {
         padding: 0;
         display: inline-flex;
         align-items: center;

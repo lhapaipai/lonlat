@@ -1,3 +1,7 @@
-.ll-tooltip .ll-dialog {
-    padding: .25rem .5rem;
+.ll-tooltip {
+    z-index: var(--zindex-tooltip);
+
+    .ll-dialog {
+        padding: .25rem .5rem;
+    }
 }

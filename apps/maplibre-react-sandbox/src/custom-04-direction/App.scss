@@ -7,8 +7,6 @@ body,
     height: 100%;
 }
 
-#root {}
-
 .sidebar {
     position: absolute;
     top: 0;
@@ -17,7 +15,6 @@ body,
     width: 400px;
     color: #fff;
     padding: .5rem;
-    z-index: 1;
     pointer-events: none;
 
     &>* {

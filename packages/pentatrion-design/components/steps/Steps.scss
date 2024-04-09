@@ -152,7 +152,7 @@ $circleRadius: 18px;
             transform: translateX(calc(var(--circle-radius) - 1px));
             width: 0px;
             border-left-style: var(--border-style);
-            z-index: -1;
+            z-index: 0;
         }
 
         .content {
@@ -211,7 +211,8 @@ $circleRadius: 18px;
         flex: 1;
     }
 
-    .ll-button {
+    .ll-button,
+    .ll-button-placeholder {
         margin: 1px 1px 1px .5rem;
     }
 

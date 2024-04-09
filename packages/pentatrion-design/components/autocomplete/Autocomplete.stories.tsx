@@ -90,18 +90,3 @@ export const Simple = () => {
     </>
   );
 };
-
-export const Search = () => {
-  return (
-    <div className="flex flex-column gap-2">
-      <div className="ll-dialog ll-autocomplete-dialog">
-        <div className="option">Default state 1</div>
-        <div className="option active">Active state 2 (keyboard navigation)</div>
-        <div className="option">Default state 3</div>
-        <div className="option selected">Selected state 4</div>
-        <div className="option">Default state 5</div>
-        <div className="option">Default state 6</div>
-      </div>
-    </div>
-  );
-};

@@ -34,10 +34,16 @@ import cn from "classnames";
 import { useEventCallback } from "../..";
 
 interface Props extends ComponentPropsWithRef<"div"> {
+  compact?: boolean;
   children: ReactElement[] | ReactElement;
   eventName?: "contextmenu" | "maplibre-contextmenu";
 }
-export default function ContextMenu({ children, style, eventName = "contextmenu" }: Props) {
+export default function ContextMenu({
+  children,
+  style,
+  compact = false,
+  eventName = "contextmenu",
+}: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -54,9 +60,7 @@ export default function ContextMenu({ children, style, eventName = "contextmenu"
     onOpenChange: setIsOpen,
     middleware: [
       offset({ mainAxis: 5, alignmentAxis: 4 }),
-      flip({
-        fallbackPlacements: ["left-start"],
-      }),
+      flip(),
       size({
         apply({ elements, availableHeight }) {
           const firstChild = elements.floating.firstElementChild as HTMLElement;
@@ -129,7 +133,7 @@ export default function ContextMenu({ children, style, eventName = "contextmenu"
   return (
     <FloatingPortal>
       {isOpen && (
-        <FloatingOverlay lockScroll>
+        <FloatingOverlay lockScroll className="ll-portail-overlay">
           <FloatingFocusManager context={context} initialFocus={refs.floating}>
             <div
               className="ll-portail-dialog"
@@ -140,10 +144,12 @@ export default function ContextMenu({ children, style, eventName = "contextmenu"
               <div
                 className={cn(
                   "ll-dialog",
+                  "ll-context-menu",
                   `placement-${context.placement}`,
                   "ll-select-dialog",
                   "ll-animate",
                   "fade-in-list",
+                  compact && "compact",
                 )}
               >
                 {Children.map(
