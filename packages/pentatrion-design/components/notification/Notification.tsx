@@ -13,13 +13,22 @@ export default function Notification({
   onRemove = () => {},
 }: NotificationProps) {
   return (
-    <div className={cn("ll-dialog", "top", "ll-notification", `border-color-${color}`)}>
+    <div
+      className={cn(
+        "ll-dialog",
+        "ll-animate",
+        "fade-in",
+        "placement-top",
+        "ll-notification",
+        `border-color-${color}`,
+      )}
+    >
       <div className="box">
         <span className="message">{message}</span>
         {withLoader && <Loader size="small" color="weak" />}
 
         {canClose && (
-          <Button icon variant="ghost" onClick={onRemove}>
+          <Button icon variant="ghost" color="weak" onClick={onRemove}>
             <i className="fe-cancel"></i>
           </Button>
         )}

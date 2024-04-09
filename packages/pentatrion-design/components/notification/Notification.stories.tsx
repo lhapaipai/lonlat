@@ -1,6 +1,6 @@
 import { Notification, NotificationsProvider, useNotifications, Button } from "pentatrion-design";
 import { Meta } from "@storybook/react";
-import { useState } from "react";
+import { useRef } from "react";
 const meta = {
   title: "Components/Notification",
   component: Notification,
@@ -16,30 +16,37 @@ export default meta;
 
 export const Basic = () => {
   return (
-    <div className="flex flex-column gap-2">
-      <Notification id={1} message="Hello world" expiration={-1} color="primary" canClose={true} />
-      <Notification
-        id={1}
-        message="Basic notification"
-        expiration={-1}
-        color="primary"
-        canClose={false}
-        withLoader={true}
-      />
+    <div className="ll-notifications-container">
+      <div className="notifications">
+        <Notification
+          id={1}
+          message="Hello world"
+          expiration={-1}
+          color="primary"
+          canClose={true}
+        />
+        <Notification
+          id={1}
+          message="Basic notification"
+          expiration={-1}
+          color="primary"
+          canClose={false}
+          withLoader={true}
+        />
+      </div>
     </div>
   );
 };
 
 export const Context = () => {
-  const [counter, setCounter] = useState(0);
+  const counter = useRef(0);
   const { addNotification } = useNotifications();
 
   function handleClick() {
-    const nextVal = counter + 1;
-    addNotification(`Notification num. ${nextVal}`, {
+    counter.current += 1;
+    addNotification(`Notification num. ${counter.current}`, {
       expiration: 5000,
     });
-    setCounter(nextVal);
   }
 
   return (

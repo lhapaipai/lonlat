@@ -1,4 +1,4 @@
-import { ReactNode, useId, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   NotificationsContext,
@@ -12,18 +12,22 @@ interface Props {
   children: ReactNode;
 }
 
-export default function NotificationsContainer({ children }: Props) {
+export default function NotificationsProvider({ children }: Props) {
   const [notifications, setNotifications] = useState<NotificationProps[]>([]);
-  const containerId = useId();
 
-  let container = document.getElementById(containerId);
-
-  if (container === null) {
-    container = document.createElement("div");
-    container.id = containerId;
-    container.classList.add("ll-notifications-container");
-    document.body.append(container);
+  const container = useRef<HTMLDivElement>(null!);
+  if (!container.current) {
+    container.current = document.createElement("div");
+    container.current.id = Math.floor(Math.random() * 100000).toString();
+    container.current.classList.add("ll-notifications-container");
+    document.body.append(container.current);
   }
+
+  useEffect(() => {
+    return () => {
+      container.current && container.current.remove();
+    };
+  }, []);
 
   const managerRef = useRef<NotificationsManager>();
 
@@ -34,8 +38,8 @@ export default function NotificationsContainer({ children }: Props) {
   const manager = managerRef.current;
 
   return (
-    <NotificationsContext.Provider value={manager}>
-      {children}
+    <>
+      <NotificationsContext.Provider value={manager}>{children}</NotificationsContext.Provider>
       {createPortal(
         <div className="notifications">
           {notifications.map((props) => (
@@ -46,8 +50,8 @@ export default function NotificationsContainer({ children }: Props) {
             />
           ))}
         </div>,
-        container,
+        container.current,
       )}
-    </NotificationsContext.Provider>
+    </>
   );
 }
