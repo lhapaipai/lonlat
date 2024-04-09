@@ -5,6 +5,7 @@ export type ORSDirectionFeature = Feature<
   LineString,
   {
     coords_hash: string;
+    way_points: number[];
   }
 >;
 

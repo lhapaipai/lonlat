@@ -16,6 +16,7 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from ".";
 import { NoDataOption } from "pentatrion-design";
+import { FeatureCollection, Feature, Point } from "geojson";
 
 type DirectionState = {
   locations: (AppGeoOption | NoDataOption)[];
@@ -111,3 +112,28 @@ export const selectValidDirectionLocations = createSelector(selectDirectionLocat
   filterDataFeatures(locations),
 );
 export const selectDirectionRoute = (state: RootState) => state.direction.route;
+
+export const selectDirectionWaypoints = createSelector(
+  selectDirectionRoute,
+  (route): null | FeatureCollection<Point> => {
+    if (!route) {
+      return null;
+    }
+
+    const features: Feature<Point>[] = route.properties.way_points.map((index) => ({
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: route.geometry.coordinates[index],
+      },
+      properties: {},
+    }));
+
+    const geojson: FeatureCollection<Point> = {
+      type: "FeatureCollection",
+      features,
+    };
+    console.log(geojson);
+    return geojson;
+  },
+);

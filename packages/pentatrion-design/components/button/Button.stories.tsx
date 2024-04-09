@@ -12,7 +12,26 @@ import {
 const meta = {
   title: "Components/Button",
   component: Button,
-  parameters: {},
+  argTypes: {
+    variant: {
+      control: {
+        type: "select",
+      },
+      options: ["solid", "outline", "text", "ghost", "underline"],
+    },
+    size: {
+      control: {
+        type: "select",
+      },
+      options: ["small", "medium", "large"],
+    },
+    color: {
+      control: {
+        type: "select",
+      },
+      options: ["primary", "weak", "danger", "warning", "success", "info"],
+    },
+  },
 } satisfies Meta<typeof Button>;
 export default meta;
 

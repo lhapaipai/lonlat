@@ -7,11 +7,13 @@
     --marker-color: var(--color-primary-500);
     --marker-color-dark: color-mix(in srgb, var(--marker-color), black 40%);
     --ovale-color-hover: color-mix(in srgb, var(--marker-color), white 50%);
-    --marker-color-gradient: linear-gradient(120deg, var(--marker-color-dark), var(--marker-color));
+    --ovale-color-active: color-mix(in srgb, var(--marker-color), white 1%);
+    --marker-color-gradient: linear-gradient(120deg, var(--marker-color), var(--marker-color-dark));
 
     cursor: pointer;
 
-    will-change: transform;
+
+
     position: absolute;
     display: block;
 
@@ -48,8 +50,8 @@
         box-shadow: 0px 0px 2px #000;
     }
 
-    &:active,
-    &.active {
+    &.draggable:active,
+    &.draggable.active {
 
         &>.marker {
             transform: translateY(-5px);
@@ -60,6 +62,8 @@
             transform: scale(1);
         }
     }
+
+
 
     &>.marker::before,
     &>.marker::after {
@@ -169,7 +173,8 @@
 
     .text {
         z-index: 3;
-        font-size: calc(var(--marker-size) / 4);
+        font-weight: 500;
+        font-size: max(10px, calc(var(--marker-size) * .25));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -203,11 +208,19 @@
             background-position: 0px;
         }
 
-        /* ovale */
         .ovale {
             background-color: var(--ovale-color-hover);
         }
     }
+
+    &:not(.draggable):active,
+    &:not(.draggable).active {
+
+        .ovale {
+            background-color: var(--ovale-color-active);
+        }
+    }
+
 
     &.selected>* {
 

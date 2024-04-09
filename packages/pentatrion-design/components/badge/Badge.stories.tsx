@@ -8,6 +8,14 @@ const onRemoveAction = action("onRemove");
 const meta = {
   title: "Components/Badge",
   component: Badge,
+  argTypes: {
+    color: {
+      control: {
+        type: "select",
+      },
+      options: ["primary", "weak", "danger", "warning", "success", "info"],
+    },
+  },
 } satisfies Meta<typeof Badge>;
 export default meta;
 

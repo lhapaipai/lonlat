@@ -81,13 +81,13 @@ export default function ContextMenuManager() {
       contextItems.push(
         <ContextMenuItem
           className="discret"
-          key="direction-inter"
+          key={`direction-inter-${i}`}
           icon={<i className="fe-point-inter"></i>}
           label="point intermédiaire"
           onClick={(e) => handleDirectionInsertLocationBefore(e, i)}
         />,
         <ContextMenuItem
-          key="direction-to"
+          key={`direction-to-${i}`}
           icon={<span className="bullet">{getIndexLetter(i)}</span>}
           label={i < locationsLength - 1 ? "Déplacer ce point" : "Itinéraire vers ce lieu"}
           onClick={(e) => handleDirectionChangeLocationAt(e, i)}

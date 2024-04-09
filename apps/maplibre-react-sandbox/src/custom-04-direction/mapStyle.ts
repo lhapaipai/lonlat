@@ -1,4 +1,4 @@
-import { LineLayerSpecification } from "maplibre-gl";
+import { CircleLayerSpecification, LineLayerSpecification } from "maplibre-gl";
 
 type OptionalSource<T> = Omit<T, "source"> & { source?: string };
 
@@ -19,5 +19,15 @@ export const roadLayerStyle: {
   paint: {
     "line-color": "#ffe64b",
     "line-width": 5,
+  },
+};
+
+export const waypointsLayerStyle: {
+  paint?: CircleLayerSpecification["paint"];
+  layout?: CircleLayerSpecification["layout"];
+} = {
+  paint: {
+    "circle-color": "#111",
+    "circle-radius": 5,
   },
 };

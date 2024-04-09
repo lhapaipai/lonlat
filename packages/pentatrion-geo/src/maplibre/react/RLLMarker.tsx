@@ -1,18 +1,6 @@
-import { Marker, MarkerOptions } from "maplibre-gl";
+import { Marker } from "maplibre-gl";
+import { Ref, forwardRef, memo, useEffect, useImperativeHandle, useMemo, useRef } from "react";
 import {
-  Children,
-  ReactNode,
-  Ref,
-  forwardRef,
-  memo,
-  useEffect,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-} from "react";
-import { createPortal } from "react-dom";
-import {
-  arePointsEqual,
   prepareEventDep,
   transformPropsToOptions,
   updateClassNames,
@@ -20,6 +8,7 @@ import {
   Event,
 } from "maplibre-react-components";
 import { LLMarker } from "..";
+import { LLMarkerOptions } from "../LLMarker";
 
 const eventNameToCallback = {
   dragstart: "onDragStart",
@@ -27,14 +16,14 @@ const eventNameToCallback = {
   dragend: "onDragEnd",
   click: "onClick",
 } as const;
-export type MarkerEventName = keyof typeof eventNameToCallback;
+export type LLMarkerEventName = keyof typeof eventNameToCallback;
 
-type MarkerEvent = Event<Marker> | MouseEvent;
+type LLMarkerEvent = Event<Marker> | MouseEvent;
 
-export type MarkerCallbacks = {
-  onDragStart?: (e: Event<Marker>) => void;
-  onDrag?: (e: Event<Marker>) => void;
-  onDragEnd?: (e: Event<Marker>) => void;
+export type LLMarkerCallbacks = {
+  onDragStart?: (e: Event<LLMarker>) => void;
+  onDrag?: (e: Event<LLMarker>) => void;
+  onDragEnd?: (e: Event<LLMarker>) => void;
 
   // native DOM event
   onClick?: (e: MouseEvent) => void;
@@ -42,7 +31,6 @@ export type MarkerCallbacks = {
 
 export const markerReactiveOptionNames = [
   "className",
-  "offset",
   "draggable",
   "clickTolerance",
   "rotation",
@@ -50,55 +38,49 @@ export const markerReactiveOptionNames = [
   "pitchAlignment",
   "opacity",
   "opacityWhenCovered",
+  "color",
+  "scale",
+  "text",
+  "icon",
 ] as const;
-export type MarkerReactiveOptionName = (typeof markerReactiveOptionNames)[number];
-export type MarkerReactiveOptions = {
-  [key in MarkerReactiveOptionName]?: MarkerOptions[key];
+export type LLMarkerReactiveOptionName = (typeof markerReactiveOptionNames)[number];
+export type LLMarkerReactiveOptions = {
+  [key in LLMarkerReactiveOptionName]?: LLMarkerOptions[key];
 };
 
-export const markerNonReactiveOptionNames = ["anchor", "color", "scale"] as const;
-export type MarkerNonReactiveOptionName = (typeof markerNonReactiveOptionNames)[number];
-export type MarkerInitialOptionName = `initial${Capitalize<MarkerNonReactiveOptionName>}`;
-export type MarkerInitialOptions = {
-  [key in MarkerNonReactiveOptionName as `initial${Capitalize<key>}`]?: MarkerOptions[key];
+export const markerNonReactiveOptionNames = [] as const;
+export type LLMarkerNonReactiveOptionName = (typeof markerNonReactiveOptionNames)[number];
+export type LLMarkerInitialOptionName = `initial${Capitalize<LLMarkerNonReactiveOptionName>}`;
+export type LLMarkerInitialOptions = {
+  [key in LLMarkerNonReactiveOptionName as `initial${Capitalize<key>}`]?: LLMarkerOptions[key];
 };
 
-export type MarkerProps = MarkerInitialOptions & MarkerReactiveOptions & MarkerCallbacks;
+export type LLMarkerProps = LLMarkerInitialOptions & LLMarkerReactiveOptions & LLMarkerCallbacks;
 
-type RLLMarkerProps = MarkerProps & {
+type RLLMarkerProps = LLMarkerProps & {
   longitude: number;
   latitude: number;
-  children?: ReactNode;
 };
 
 function RLLMarker(props: RLLMarkerProps, ref: Ref<Marker>) {
-  const { longitude, latitude, children, ...markerProps } = props;
+  const { longitude, latitude, ...markerProps } = props;
   const map = useMap();
 
   const [options, markerCallbacks] = transformPropsToOptions(markerProps) as [
-    Omit<MarkerOptions, "element">,
-    MarkerCallbacks,
+    Omit<LLMarkerOptions, "element" | "bottom" | "offset">,
+    LLMarkerCallbacks,
   ];
 
-  const prevOptionsRef = useRef<Omit<MarkerOptions, "element">>(options);
+  const prevOptionsRef = useRef<Omit<LLMarkerOptions, "element">>(options);
 
-  const currCallbacksRef = useRef<MarkerCallbacks>();
+  const currCallbacksRef = useRef<LLMarkerCallbacks>();
   currCallbacksRef.current = markerCallbacks;
 
   const marker = useMemo(() => {
-    let hasChildren = false;
-    Children.forEach(children, (child) => {
-      if (child) {
-        hasChildren = true;
-      }
-    });
-
-    const completeOptions = {
+    const mk = new LLMarker({
       ...options,
-      element: hasChildren ? document.createElement("div") : undefined,
-    };
-
-    const mk = new LLMarker(completeOptions);
+      anchor: "bottom",
+    });
     mk.setLngLat([longitude, latitude]);
 
     return mk;
@@ -109,8 +91,8 @@ function RLLMarker(props: RLLMarkerProps, ref: Ref<Marker>) {
 
   const eventDepStr = prepareEventDep(eventNameToCallback, markerCallbacks).join("-");
   useEffect(() => {
-    function onMarkerEvent(e: MarkerEvent) {
-      const eventType = e.type as MarkerEventName;
+    function onMarkerEvent(e: LLMarkerEvent) {
+      const eventType = e.type as LLMarkerEventName;
       const callbackName = eventNameToCallback[eventType];
       if (currCallbacksRef.current?.[callbackName]) {
         // @ts-ignore
@@ -122,7 +104,7 @@ function RLLMarker(props: RLLMarkerProps, ref: Ref<Marker>) {
       }
     }
 
-    const eventNames = eventDepStr.split("-") as MarkerEventName[];
+    const eventNames = eventDepStr.split("-") as LLMarkerEventName[];
 
     eventNames.forEach((eventName) => {
       if (eventName === "click") {
@@ -152,8 +134,11 @@ function RLLMarker(props: RLLMarkerProps, ref: Ref<Marker>) {
   }, []);
 
   const {
+    scale,
+    color,
+    text,
+    icon,
     className,
-    offset,
     draggable,
     clickTolerance = 0,
     rotation,
@@ -175,9 +160,6 @@ function RLLMarker(props: RLLMarkerProps, ref: Ref<Marker>) {
   if (marker.getLngLat().lng !== longitude || marker.getLngLat().lat !== latitude) {
     marker.setLngLat([longitude, latitude]);
   }
-  if (offset && !arePointsEqual(marker.getOffset(), offset)) {
-    marker.setOffset(offset);
-  }
   if (marker.isDraggable() !== draggable) {
     marker.setDraggable(draggable);
   }
@@ -196,10 +178,22 @@ function RLLMarker(props: RLLMarkerProps, ref: Ref<Marker>) {
   if (marker._opacity !== opacity || marker._opacityWhenCovered !== opacityWhenCovered) {
     marker.setOpacity(opacity, opacityWhenCovered);
   }
+  if (marker.getColor() !== color) {
+    marker.setColor(color);
+  }
+  if (marker.getScale() !== scale) {
+    marker.setScale(scale);
+  }
+  if (marker.getText() !== text) {
+    marker.setText(text);
+  }
+  if (marker.getIcon() !== icon) {
+    marker.setIcon(icon);
+  }
 
   prevOptionsRef.current = options;
 
-  return createPortal(children, marker.getElement());
+  return null;
 }
 
 export default memo(forwardRef(RLLMarker));

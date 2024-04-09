@@ -13,11 +13,14 @@ const defaultColor = "#ffe64b";
 const defaultHeight = 50;
 
 export default class LLMarker extends Marker {
-  _icon: string;
+  _icon?: string;
   _height = defaultHeight;
   _text?: string;
   // @ts-ignore
   _popup?: Popup | LLPopup;
+
+  _iconElement?: HTMLElement;
+  _textElement?: HTMLDivElement;
 
   constructor(options?: LLMarkerOptions) {
     const useDefaultMarker = !options || !options.element;
@@ -29,9 +32,13 @@ export default class LLMarker extends Marker {
 
     super(options);
 
+    if (this._draggable) {
+      this._element.classList.add("draggable");
+    }
+
     this._anchor = (options && options.anchor) || "bottom";
     this._color = (options && options.color) || defaultColor;
-    this._icon = (options && options.icon) || "fe-star";
+    this._icon = options && options.icon;
     this._text = options && options.text;
 
     if (useDefaultMarker) {
@@ -46,10 +53,10 @@ export default class LLMarker extends Marker {
       const container = DOM.create("div", "marker");
       DOM.create("div", "ovale", container);
       if (this._text) {
-        const $text = DOM.create("div", "text", container);
-        $text.innerText = this._text;
-      } else {
-        DOM.create("i", this._icon, container);
+        this._textElement = DOM.create("div", "text", container);
+        this._textElement.innerText = this._text;
+      } else if (this._icon) {
+        this._iconElement = DOM.create("i", this._icon, container);
       }
 
       const target = DOM.create("div", "target");
@@ -91,10 +98,38 @@ export default class LLMarker extends Marker {
     return this;
   }
 
+  setIcon(icon?: string): this {
+    this._icon = icon;
+    if (this._iconElement) {
+      this._iconElement.className = this._icon || "";
+    }
+    return this;
+  }
+
+  getIcon() {
+    return this._icon;
+  }
+
+  setText(text?: string): this {
+    this._text = text;
+    if (this._textElement) {
+      this._textElement.innerText = this._text || "";
+    }
+    return this;
+  }
+
+  getText() {
+    return this._text;
+  }
+
   setColor(color?: string): this {
     this._color = color || defaultColor;
     this._element.style.setProperty("--marker-color", this._color);
     return this;
+  }
+
+  getColor() {
+    return this._color;
   }
 
   setScale(scale = 1, markerHeight = defaultHeight): this {
@@ -103,6 +138,10 @@ export default class LLMarker extends Marker {
     this._element.style.setProperty("--marker-size", `${this._height}px`);
 
     return this;
+  }
+
+  getScale() {
+    return this._scale;
   }
 
   setPopup(popup?: Popup | LLPopup | null): this {
@@ -139,6 +178,12 @@ export default class LLMarker extends Marker {
       this._element.addEventListener("keypress", this._onKeyPress);
     }
 
+    return this;
+  }
+
+  setDraggable(shouldBeDraggable?: boolean | undefined): this {
+    Marker.prototype.setDraggable.apply(this, [shouldBeDraggable]);
+    this._element.classList.toggle("draggable", shouldBeDraggable);
     return this;
   }
 }

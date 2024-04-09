@@ -4,6 +4,14 @@ import { Meta, StoryObj } from "@storybook/react";
 const meta = {
   title: "Components/Loader",
   component: Loader,
+  argTypes: {
+    color: {
+      control: {
+        type: "select",
+      },
+      options: ["primary", "weak", "danger", "warning", "success", "info"],
+    },
+  },
 } satisfies Meta<typeof Loader>;
 export default meta;
 

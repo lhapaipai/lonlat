@@ -93,7 +93,7 @@ export const Graphics = () => (
         <div className="ll-marker">
           <div className="marker">
             <div className="ovale"></div>
-            <i className="fe-road"></i>
+            <i className="fe-heart"></i>
           </div>
           <div className="target"></div>
         </div>
@@ -107,6 +107,16 @@ export const Graphics = () => (
           <div className="target"></div>
         </div>
         <pre>.selected</pre>
+      </div>
+      <div>
+        <div className="ll-marker draggable">
+          <div className="marker">
+            <div className="ovale"></div>
+            <i className="fe-heart"></i>
+          </div>
+          <div className="target"></div>
+        </div>
+        <pre>.draggable</pre>
       </div>
     </div>
 
@@ -168,6 +178,15 @@ export const Graphics = () => (
     </div>
 
     <div className="storybook-icon-grid">
+      <div>
+        <div className="ll-marker">
+          <div className="marker">
+            <div className="ovale"></div>
+            <div className="text">A</div>
+          </div>
+          <div className="target"></div>
+        </div>
+      </div>
       <div>
         <div className="ll-marker">
           <div className="marker">
