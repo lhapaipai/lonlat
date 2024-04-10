@@ -1,44 +1,4 @@
 export type APISchemas = {
-  Getcapabilities: {
-    info?: { name?: string; url?: string; description?: string };
-    api?: {
-      /* @example rest */
-      name?: string;
-      /* @example 0.0.0 */
-      version?: string;
-    };
-    operations?: Array<{
-      id?: string;
-      description?: string;
-      url?: string;
-      methods?: Array<"GET" | "POST" | "PUT" | "DELETE">;
-      parameters?: Array<{
-        name?: string;
-        in?: string;
-        description?: string;
-        required?: boolean;
-        schema?: { type?: string; example?: string };
-        example?: string;
-      }>;
-    }>;
-    indexes?: Array<{
-      id?: string;
-      description?: string;
-      fields?: Array<{
-        name?: string;
-        description?: string;
-        type?: string;
-        queryable?: boolean;
-        filter?: boolean;
-        values?: Array<unknown>;
-      }>;
-    }>;
-  };
-  SearchGeom:
-    | APISchemas["GeometryPoint"]
-    | APISchemas["GeometryLineString"]
-    | APISchemas["GeometryPolygon"]
-    | APISchemas["GeometryCircle"];
   GeocodeResponse: APISchemas["Address"] | APISchemas["Poi"] | APISchemas["Parcel"];
   GeocodeReverseResponse:
     | APISchemas["AddressReverse"]
@@ -61,7 +21,7 @@ export type APISchemas = {
     /* Nom de la commune */
     city?: string;
     /* Code de l'ancienne commune */
-    oldMunicipalitycode?: string;
+    oldmunicipalitycode?: string;
     /* Code insee de l'arrondissement */
     districtcode?: string;
     /* Section cadastrale */
@@ -91,7 +51,7 @@ export type APISchemas = {
     /* Nom de la commune */
     city?: string;
     /* Code de l'ancienne commune */
-    oldMunicipalitycode?: string;
+    oldmunicipalitycode?: string;
     /* Code insee de l'arrondissement */
     districtcode?: string;
     /* Section cadastrale */
@@ -120,7 +80,7 @@ export type APISchemas = {
     /* Commune de l'adresse */
     city?: string;
     /* Arrondissement de l'adresse */
-    disctrict?: string;
+    district?: string;
     /* Rue de l'adresse */
     street?: string;
     housenumber?: string;
@@ -153,7 +113,7 @@ export type APISchemas = {
     /* Commune de l'adresse */
     city?: string;
     /* Arrondissement de l'adresse */
-    disctrict?: string;
+    district?: string;
     /* Rue de l'adresse */
     street?: string;
     housenumber?: string;
@@ -212,7 +172,7 @@ export type APISchemas = {
     distance?: number;
   };
   PoiType: Array<string>;
-  /* Code postale */
+  /* Code postal */
   PostalCode: string;
   /* Code INSEE */
   InseeCode: string;
@@ -254,10 +214,6 @@ export type APISchemas = {
 };
 
 export type APIEndpoints = {
-  "/geocodage/getCapabilities": {
-    responses: { get: APISchemas["Getcapabilities"] };
-    requests: { method?: "get" };
-  };
   "/search": {
     responses: {
       get: {
@@ -301,7 +257,7 @@ export type APIEndpoints = {
     requests: {
       method?: "get";
       query?: {
-        searchgeom?: APISchemas["SearchGeom"];
+        searchgeom?: string;
         lon?: number;
         lat?: number;
         index?: APISchemas["Index"];
@@ -339,9 +295,7 @@ export type APIRequest<T extends APIPaths, M extends APIMethods<T>> = Omit<
 
 type DefaultToGet<T extends string | undefined> = T extends string ? T : "get";
 
-export type APIResponse<
-  T extends APIPaths,
-  M extends string | undefined,
-> = DefaultToGet<M> extends keyof APIEndpoints[T]["responses"]
-  ? APIEndpoints[T]["responses"][DefaultToGet<M>]
-  : never;
+export type APIResponse<T extends APIPaths, M extends string | undefined> =
+  DefaultToGet<M> extends keyof APIEndpoints[T]["responses"]
+    ? APIEndpoints[T]["responses"][DefaultToGet<M>]
+    : never;

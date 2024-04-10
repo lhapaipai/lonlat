@@ -1,28 +1,28 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
-import { NoDataOption } from "pentatrion-design";
-import { AppGeoOption, resolveLonLatFeaturePoint } from "pentatrion-geo";
+import { resolveLonLatFeaturePoint } from "pentatrion-geo";
 import { LocationPayload, directionLocationChanged } from "./directionSlice";
 import { SearchPayload, searchFeatureChanged } from "./searchSlice";
 
 export const lonlatFeatureListenerMiddleware = createListenerMiddleware();
 
+function extractFeature(type: string, payload: SearchPayload | LocationPayload) {
+  if (type === searchFeatureChanged.type) {
+    return payload as SearchPayload;
+  } else if (type === directionLocationChanged.type) {
+    const locationPayload = payload as LocationPayload;
+    return locationPayload.feature.type === "nodata" ? null : locationPayload.feature;
+  }
+
+  return null;
+}
+
 lonlatFeatureListenerMiddleware.startListening({
   matcher: isAnyOf(searchFeatureChanged, directionLocationChanged),
   effect: async ({ type, payload: unknownPayload }, { dispatch }) => {
-    let feature: AppGeoOption | NoDataOption | null;
-    let payload: SearchPayload | LocationPayload;
+    const payload = unknownPayload as SearchPayload | LocationPayload;
+    const feature = extractFeature(type, payload);
 
-    if (type === searchFeatureChanged.type) {
-      payload = unknownPayload as SearchPayload;
-      feature = payload;
-    } else if (type === directionLocationChanged.type) {
-      payload = unknownPayload as LocationPayload;
-      feature = payload.feature;
-
-      if (feature.type === "nodata") {
-        return;
-      }
-    } else {
+    if (!feature) {
       return;
     }
 
@@ -39,7 +39,7 @@ lonlatFeatureListenerMiddleware.startListening({
         dispatch(
           directionLocationChanged({
             index: (payload as LocationPayload).index,
-            feature: reversedFeature as AppGeoOption,
+            feature: reversedFeature,
           }),
         );
       }

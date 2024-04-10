@@ -1,6 +1,4 @@
-import { BBox, FeatureCollection, Geometry } from "geojson";
-import { IGNAddressProperties } from "..";
-import { APISchemas } from "./openapi-types/ign-geocodage-api";
+import { BBox, Geometry } from "geojson";
 import { GeoOption } from "pentatrion-design";
 
 export type LngLatObj = {
@@ -8,16 +6,12 @@ export type LngLatObj = {
   lat: number;
 };
 
-export type GeocodeType =
-  | "housenumber"
-  | "street"
-  | "locality"
-  | "municipality"
-  | "lonlat"
-  | "unknown"
-  | "nodata";
+export type GeocodeType = AddressType | LonLatType;
 
-export type FeatureProperties<OriginalProperties = null> = {
+export type AddressType = "housenumber" | "street" | "locality" | "municipality" | "unknown";
+export type LonLatType = "lonlat";
+
+export type FeatureProperties<T extends string = "unknown"> = {
   /** id and label are required for <select /> like components */
 
   id: string;
@@ -28,29 +22,21 @@ export type FeatureProperties<OriginalProperties = null> = {
   context: string | null;
 
   score: number;
-  type: string; // GeocodeType; ??
-  originalProperties: OriginalProperties;
+  type: T;
+
+  originalProperties: any;
 };
 
-export type GeoOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
+export type GeoOption<G extends Geometry | null = Geometry, T extends string = "unknown"> = {
   id: string;
-
   type: "Feature";
-  properties: FeatureProperties<OriginalProperties>;
+  properties: FeatureProperties<T>;
   geometry: G;
-
   bbox?: BBox | undefined;
 };
 
-// Raw data
-export type IGNAddressProperties = APISchemas["AddressProperties"];
-export type IGNAddressReverseProperties = APISchemas["AddressReverseProperties"];
-export type IGNAddressResponse = FeatureCollection<Point, IGNAddressProperties>;
-export type IGNAddressReverseResponse = FeatureCollection<Point, IGNAddressReverseProperties>;
-
 // Prepared data
-// IGNAddressReverseResponse and IGNAddressResponse are converted into IGNAddressGeoOption
-export type IGNAddressGeoOption = GeoOption<Point, IGNAddressProperties>;
-export type LonLatGeoOption = GeoOption<Point, null>;
+export type IGNAddressGeoOption = GeoOption<Point, AddressType>;
+export type LonLatGeoOption = GeoOption<Point, LonLatType>;
 
 export type AppGeoOption = IGNAddressGeoOption | LonLatGeoOption;

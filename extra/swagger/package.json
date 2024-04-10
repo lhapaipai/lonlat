@@ -1,29 +1,30 @@
 {
-    "name": "@lonlat/swagger",
-    "version": "0.0.1",
-    "private": true,
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "swagger": "vite preview",
-        "generate-nominatim": "o2ts ./public/nominatim.yaml ./export/nominatim.ts",
-        "generate-openrouteservice": "o2ts ./public/openrouteservice.json ./export/openrouteservice.ts",
-        "generate-ign-completion": "o2ts ./public/ign-completion.yaml ./export/ign-completion.ts",
-        "generate-ign-geocodage": "o2ts ./public/ign-geocodage.yaml ./export/ign-geocodage.ts",
-        "generate": "npm run generate-nominatim && npm run generate-ign-completion && npm run generate-ign-geocodage"
-    },
-    "keywords": [],
-    "author": "Hugues Tavernier",
-    "license": "ISC",
-    "dependencies": {
-        "@grafikart/o2ts": "^0.1.14",
-        "swagger-ui": "^5.10.3"
-    },
-    "devDependencies": {
-        "@types/react": "^18.2.43",
-        "typescript": "^5.3.3",
-        "vite": "^5.0.7"
-    }
+  "name": "@lonlat/swagger",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "swagger": "vite preview",
+    "generate-nominatim": "o2ts ./public/nominatim.yaml ./export/nominatim.ts",
+    "generate-openrouteservice": "o2ts ./public/openrouteservice.json ./export/openrouteservice.ts",
+    "generate-ign-completion": "o2ts ./public/ign-completion.yaml ./export/ign-completion.ts",
+    "generate-ign-geocodage": "o2ts ./public/ign-geocodage.yaml ../../packages/pentatrion-geo/src/ign/api-geocodage.d.ts",
+    "generate": "npm run generate-nominatim && npm run generate-ign-completion && npm run generate-ign-geocodage"
+  },
+  "keywords": [],
+  "author": "Hugues Tavernier",
+  "license": "ISC",
+  "dependencies": {
+    "@grafikart/o2ts": "^0.1.14",
+    "swagger-ui": "^5.10.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.7"
+  }
 }

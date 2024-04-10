@@ -15,7 +15,7 @@ export type ignSearchParams = {
 export const legacyWMTSEndpoint = "https://wxs.ign.fr/{TOKEN}/geoportail/wmts";
 export const geoplatformeWMTSEndpoint = "https://data.geopf.fr/private/wmts";
 
-export class ignUrlBuilder {
+export class urlBuilder {
   params: ignSearchParams = {
     SERVICE: "WMTS",
     REQUEST: "GetTile",

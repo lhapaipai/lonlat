@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { GeoOption } from "pentatrion-geo";
+import { AppGeoOption } from "pentatrion-geo";
 
 type SearchState = {
-  feature: GeoOption | null;
+  feature: AppGeoOption | null;
 };
 
-export type SearchPayload = GeoOption | null;
+export type SearchPayload = AppGeoOption | null;
 
 const initialState: SearchState = {
   feature: null,

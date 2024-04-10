@@ -80,3 +80,14 @@ const Schema: NodeType = {
 };
 ```
 
+
+
+## Modifications apportées aux fichiers source
+
+### `ign-geocodage.yaml`
+
+récupéré le yaml OpenAPI : https://geoservices.ign.fr/documentation/services/services-geoplateforme/geocodage
+
+https://data.geopf.fr/geocodage/openapi.yaml
+
+retiré les références à GetCapabilities.

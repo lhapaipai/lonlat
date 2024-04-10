@@ -11,6 +11,7 @@ export type CustomFetchOptions = Omit<RequestInit, "body"> & {
 export async function fetchAPI(
   urlObjOrString: string | URL,
   enhancedOptions: CustomFetchOptions = {},
+  origin?: string,
 ) {
   const { urlParams, query, body, ...rest } = enhancedOptions;
 
@@ -19,7 +20,7 @@ export async function fetchAPI(
   const url =
     urlObjOrString instanceof URL
       ? urlObjOrString
-      : new URL(urlObjOrString, window.location.origin);
+      : new URL(urlObjOrString, origin || window.location.origin);
 
   if (urlParams) {
     for (const [name, value] of Object.entries(urlParams)) {

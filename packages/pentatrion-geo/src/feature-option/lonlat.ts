@@ -1,8 +1,7 @@
 import { LngLat } from "maplibre-gl";
 import { nanoid } from "nanoid";
 import { AppGeoOption, LonLatGeoOption } from "../types";
-import { createIgnAddressFeaturePoint } from "./ign";
-import { ignReverseSearch } from "../ign-api/geocode";
+import { createIgnAddressFeaturePoint, ignReverseSearch } from "../ign/geocode";
 
 export function createLonLatFeaturePoint(
   lngLat: LngLat,
@@ -24,17 +23,17 @@ export function createLonLatFeaturePoint(
     },
     properties: {
       id: `${lng}-${lat}`,
+      type: "lonlat",
       name: `longitude: ${lngRounded}, latitude: ${latRounded}`,
       context: null,
       label: `longitude: ${lngRounded}, latitude: ${latRounded}`,
       score: score,
-      type: "lonlat",
       originalProperties: null,
     },
   };
 }
 
-export function updateLonLatFeatureScore(feature: AppGeoOption, score: number) {
+export function updateGeoOptionScore<T extends AppGeoOption>(feature: T, score: number): T {
   return {
     ...feature,
     properties: {
@@ -45,16 +44,12 @@ export function updateLonLatFeatureScore(feature: AppGeoOption, score: number) {
 }
 
 export const resolveLonLatFeaturePoint = async (feature: AppGeoOption) => {
-  if (feature.properties.type !== "lonlat") {
+  // feature don't need to be resolved
+  if (feature.properties.type !== "lonlat" || feature.properties.score !== 0) {
     return feature;
   }
   if (feature.geometry.type !== "Point") {
     throw new Error("only Point geometry can be reverse geocoded");
-  }
-
-  // feature don't need to be resolved
-  if (feature.properties.score !== 0) {
-    return feature;
   }
 
   const collection = await ignReverseSearch(feature.geometry.coordinates);
@@ -62,7 +57,7 @@ export const resolveLonLatFeaturePoint = async (feature: AppGeoOption) => {
   if (collection.features.length === 0) {
     // we update the score to 1 we don't try anymore to reverse geocode
     // prevent circular reference
-    return updateLonLatFeatureScore(feature, 1);
+    return updateGeoOptionScore(feature, 1);
   }
 
   const reversedFeature = collection.features[0];
@@ -75,9 +70,10 @@ export const resolveLonLatFeaturePoint = async (feature: AppGeoOption) => {
   ) {
     // we update the score to 1 we don't try anymore to reverse geocode
     // prevent circular reference
-    return updateLonLatFeatureScore(feature, 1);
+    return updateGeoOptionScore(feature, 1);
   }
 
+  // we keep the original coordinates with the resolved address.
   const [lng, lat] = feature.geometry.coordinates;
   return createIgnAddressFeaturePoint(reversedFeature, { lng, lat });
 };

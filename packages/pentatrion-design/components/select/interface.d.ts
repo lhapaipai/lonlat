@@ -15,25 +15,20 @@ export type NoDataOption = {
 };
 
 /** For compatibility with OptionLike. get original types from pentatrion-geo */
-type GeoOption<G extends Geometry | null = Geometry, OriginalProperties = any> = {
+type GeoOption<G extends Geometry | null = Geometry, T extends string = "unknown"> = {
   id: string;
   type: "Feature";
-  properties: FeatureProperties<OriginalProperties>;
-  sourceId?: string | number;
-
+  properties: FeatureProperties<T>;
   geometry: G;
   bbox?: BBox | undefined;
-
-  // required ??
-  sourceId?: string | number;
 };
 
-type FeatureProperties<OriginalProperties = null> = {
+type FeatureProperties<T extends string = "unknown"> = {
   id: string;
   label: string;
   name: string;
   context: string | null;
   score: number;
-  type: string; // GeocodeType; ??
-  originalProperties: OriginalProperties;
+  type: T;
+  originalProperties: any;
 };
