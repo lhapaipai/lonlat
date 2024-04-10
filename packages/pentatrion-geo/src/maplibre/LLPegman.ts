@@ -1,5 +1,5 @@
 import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions, Point } from "maplibre-gl";
-import { DOM } from "maplibre-gl/src/util/dom";
+import { DOM } from "./core/util/dom";
 
 import "./LLMarker.scss";
 

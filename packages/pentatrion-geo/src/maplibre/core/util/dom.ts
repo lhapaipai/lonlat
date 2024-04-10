@@ -49,18 +49,22 @@ export class DOM {
 
   public static disableDrag() {
     if (DOM.docStyle && DOM.selectProp) {
+      // @ts-ignore
       DOM.userSelect = DOM.docStyle[DOM.selectProp];
+      // @ts-ignore
       DOM.docStyle[DOM.selectProp] = "none";
     }
   }
 
   public static enableDrag() {
     if (DOM.docStyle && DOM.selectProp) {
+      // @ts-ignore
       DOM.docStyle[DOM.selectProp] = DOM.userSelect;
     }
   }
 
   public static setTransform(el: HTMLElement, value: string) {
+    // @ts-ignore
     el.style[DOM.transformProp] = value;
   }
 
@@ -97,6 +101,7 @@ export class DOM {
   }
 
   // Suppress the next click, but only if it's immediate.
+  // @ts-ignore
   private static suppressClickInternal(e) {
     e.preventDefault();
     e.stopPropagation();

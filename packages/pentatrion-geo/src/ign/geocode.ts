@@ -27,7 +27,7 @@ export async function ignReverseSearch([lon, lat]: [number, number]) {
   //   }, 500);
   // })) as AddressReverseResponse;
 
-  const collection = await fetchIGNGeodageAPI("/reverse", {
+  const collection = await fetchIGNGeodageAPI("/geocodage/reverse", {
     query: {
       lon,
       lat,
@@ -44,7 +44,7 @@ export async function ignSearch(searchValue: string, coords: [number, number]) {
   //   res.json(),
   // )) as AddressSearchResponse;
 
-  const collection = await fetchIGNGeodageAPI("/search", {
+  const collection = await fetchIGNGeodageAPI("/geocodage/search", {
     query: {
       q: searchValue,
       lon: coords[0],

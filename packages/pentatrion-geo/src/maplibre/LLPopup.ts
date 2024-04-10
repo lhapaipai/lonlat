@@ -1,8 +1,9 @@
 import { Evented, LngLat, LngLatLike, Map, MapMouseEvent } from "maplibre-gl";
-import { extend } from "maplibre-gl/src/util/util";
-import { Event } from "maplibre-gl/src/util/evented";
-import { smartWrap } from "maplibre-gl/src/util/smart_wrap";
-import { DOM } from "./core/dom";
+import { extend } from "./core/util/util";
+import { Event } from "./core/util/evented";
+import { smartWrap } from "./core/util/smart_wrap";
+import { DOM } from "./core/util/dom";
+
 import Point from "@mapbox/point-geometry";
 import VirtualElement from "./lib/VirtualElement";
 

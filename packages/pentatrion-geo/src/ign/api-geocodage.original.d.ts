@@ -1,170 +1,175 @@
 export type APISchemas = {
   GeocodeResponse: APISchemas["Address"] | APISchemas["Poi"] | APISchemas["Parcel"];
-  /* en fonction du paramètre index la réponse peut être l'un de ces 3 types. */
   GeocodeReverseResponse:
     | APISchemas["AddressReverse"]
     | APISchemas["PoiReverse"]
     | APISchemas["ParcelReverse"];
   Parcel: {
-    type: "Feature";
-    properties: APISchemas["ParcelProperties"];
-    geometry: APISchemas["GeometryPoint"];
+    /* @example Feature */
+    type?: string;
+    properties?: APISchemas["ParcelProperties"];
+    geometry?: APISchemas["GeometryPoint"];
   };
   /* @example [object Object] */
   ParcelProperties: {
     /* Identifiant de la parcelle */
-    id: string;
+    id?: string;
     /* Code du département */
-    departmentcode: string;
+    departmentcode?: string;
     /* Code de la commune */
-    municipalitycode: string;
+    municipalitycode?: string;
     /* Nom de la commune */
-    city: string;
+    city?: string;
     /* Code de l'ancienne commune */
-    oldmunicipalitycode: string;
+    oldmunicipalitycode?: string;
     /* Code insee de l'arrondissement */
-    districtcode: string;
+    districtcode?: string;
     /* Section cadastrale */
-    section: string;
+    section?: string;
     /* Numéro cadastral */
-    number: string;
+    number?: string;
     /* Feuille cadastrale */
-    sheet: string;
-    truegeometry: APISchemas["GeometryPolygon"];
-    _score: number;
-    _type: "parcel";
+    sheet?: string;
+    truegeometry?: APISchemas["GeometryPolygon"];
+    _score?: number;
+    _type?: "parcel";
   };
   ParcelReverse: {
-    type: "Feature";
-    properties: APISchemas["ParcelReverseProperties"];
-    geometry: APISchemas["GeometryPoint"];
+    /* @example Feature */
+    type?: string;
+    properties?: APISchemas["ParcelReverseProperties"];
+    geometry?: APISchemas["GeometryPoint"];
   };
   /* @example [object Object] */
   ParcelReverseProperties: {
     /* Identifiant de la parcelle */
-    id: string;
+    id?: string;
     /* Code du département */
-    departmentcode: string;
+    departmentcode?: string;
     /* Code de la commune */
-    municipalitycode: string;
+    municipalitycode?: string;
     /* Nom de la commune */
-    city: string;
+    city?: string;
     /* Code de l'ancienne commune */
-    oldmunicipalitycode: string;
+    oldmunicipalitycode?: string;
     /* Code insee de l'arrondissement */
-    districtcode: string;
+    districtcode?: string;
     /* Section cadastrale */
-    section: string;
+    section?: string;
     /* Numéro cadastral */
-    number: string;
+    number?: string;
     /* Feuille cadastrale */
-    sheet: string;
-    truegeometry: APISchemas["GeometryPolygon"];
-    _score: number;
-    _type: "parcel";
-    distance: number;
+    sheet?: string;
+    truegeometry?: APISchemas["GeometryPolygon"];
+    _score?: number;
+    _type?: "parcel";
+    distance?: number;
   };
   Address: {
-    type: "Feature";
-    properties: APISchemas["AddressProperties"];
-    geometry: APISchemas["GeometryPoint"];
+    /* @example Feature */
+    type?: string;
+    properties?: APISchemas["AddressProperties"];
+    geometry?: APISchemas["GeometryPoint"];
   };
   /* @example [object Object] */
   AddressProperties: {
     /* Libellé complet de l'adresse */
-    label: string;
-    id: string;
-    postcode: APISchemas["PostalCode"];
+    label?: string;
+    id?: string;
+    postcode?: APISchemas["PostalCode"];
     /* Commune de l'adresse */
-    city: string;
+    city?: string;
     /* Arrondissement de l'adresse */
-    district: string;
+    district?: string;
     /* Rue de l'adresse */
-    street: string;
-    housenumber: string;
-    citycode: APISchemas["InseeCode"];
+    street?: string;
+    housenumber?: string;
+    citycode?: APISchemas["InseeCode"];
     /* Longitude de l'adresse */
-    x: number;
+    x?: number;
     /* Latitude de l'adresse */
-    y: number;
-    score: number;
-    _score: number;
-    name: string;
-    type: "housenumber" | "street" | "locality" | "municipality";
+    y?: number;
+    score?: number;
+    _score?: number;
+    name?: string;
+    type?: "housenumber" | "street" | "locality" | "municipality";
     /* Rétro-compatibilité */
-    _type: "address";
-    context: string;
-    importance: number;
+    _type?: "address";
+    context?: string;
+    importance?: number;
   };
   AddressReverse: {
-    type: "Feature";
-    properties: APISchemas["AddressReverseProperties"];
-    geometry: APISchemas["GeometryPoint"];
+    /* @example Feature */
+    type?: string;
+    properties?: APISchemas["AddressReverseProperties"];
+    geometry?: APISchemas["GeometryPoint"];
   };
   /* @example [object Object] */
   AddressReverseProperties: {
     /* Libellé complet de l'adresse */
-    label: string;
-    id: string;
-    postcode: APISchemas["PostalCode"];
+    label?: string;
+    id?: string;
+    postcode?: APISchemas["PostalCode"];
     /* Commune de l'adresse */
-    city: string;
+    city?: string;
     /* Arrondissement de l'adresse */
-    district: string;
+    district?: string;
     /* Rue de l'adresse */
-    street: string;
-    housenumber: string;
-    citycode: APISchemas["InseeCode"];
+    street?: string;
+    housenumber?: string;
+    citycode?: APISchemas["InseeCode"];
     /* Longitude de l'adresse */
-    x: number;
+    x?: number;
     /* Latitude de l'adresse */
-    y: number;
-    score: number;
-    _score: number;
-    name: string;
-    type: "housenumber" | "street" | "locality" | "municipality";
+    y?: number;
+    score?: number;
+    _score?: number;
+    name?: string;
+    type?: "housenumber" | "street" | "locality" | "municipality";
     /* Rétro-compatibilité */
-    _type: "address";
-    context: string;
-    importance: number;
-    distance: number;
+    _type?: "address";
+    context?: string;
+    importance?: number;
+    distance?: number;
   };
   Poi: {
-    type: "Feature";
-    properties: APISchemas["PoiProperties"];
-    geometry: APISchemas["GeometryPoint"];
+    /* @example Feature */
+    type?: string;
+    properties?: APISchemas["PoiProperties"];
+    geometry?: APISchemas["GeometryPoint"];
   };
   /* @example [object Object] */
   PoiProperties: {
     /* Libellé du toponyme */
-    toponym: string;
-    postcode: Array<APISchemas["PostalCode"]>;
-    citycode: Array<APISchemas["InseeCode"]>;
-    city: Array<string>;
-    category: APISchemas["PoiType"];
-    extrafields: {};
-    truegeometry: APISchemas["Geometry"];
-    _score: number;
-    _type: "poi";
+    toponym?: string;
+    postcode?: Array<APISchemas["PostalCode"]>;
+    citycode?: Array<APISchemas["InseeCode"]>;
+    city?: Array<string>;
+    category?: APISchemas["PoiType"];
+    extrafields?: {};
+    truegeometry?: APISchemas["Geometry"];
+    _score?: number;
+    _type?: "poi";
   };
   PoiReverse: {
-    type: "Feature";
-    properties: APISchemas["PoiReverseProperties"];
-    geometry: APISchemas["GeometryPoint"];
+    /* @example Feature */
+    type?: string;
+    properties?: APISchemas["PoiReverseProperties"];
+    geometry?: APISchemas["GeometryPoint"];
   };
   /* @example [object Object] */
   PoiReverseProperties: {
     /* Libellé du toponyme */
-    toponym: string;
-    postcode: Array<APISchemas["PostalCode"]>;
-    citycode: Array<APISchemas["InseeCode"]>;
-    city: Array<string>;
-    category: APISchemas["PoiType"];
-    extrafields: {};
-    truegeometry: APISchemas["Geometry"];
-    _score: number;
-    _type: "poi";
-    distance: number;
+    toponym?: string;
+    postcode?: Array<APISchemas["PostalCode"]>;
+    citycode?: Array<APISchemas["InseeCode"]>;
+    city?: Array<string>;
+    category?: APISchemas["PoiType"];
+    extrafields?: {};
+    truegeometry?: APISchemas["Geometry"];
+    _score?: number;
+    _type?: "poi";
+    distance?: number;
   };
   PoiType: Array<string>;
   /* Code postal */
@@ -172,27 +177,27 @@ export type APISchemas = {
   /* Code INSEE */
   InseeCode: string;
   /* @example [object Object] */
-  Geometry: { type: APISchemas["GeometryType"]; coordinates: Array<number> };
+  Geometry: { type?: APISchemas["GeometryType"]; coordinates?: Array<number> };
   /* @example [object Object] */
-  GeometryPoint: { type: "Point"; coordinates: Array<number> };
+  GeometryPoint: { type?: "Point"; coordinates?: Array<number> };
   /* @example [object Object] */
   GeometryCircle: {
-    type: "Circle";
-    coordinates: Array<number>;
-    radius: number;
+    type?: "Circle";
+    coordinates?: Array<number>;
+    radius?: number;
   };
   /* @example [object Object] */
-  GeometryLineString: { type: "LineString"; coordinates: Array<number> };
+  GeometryLineString: { type?: "LineString"; coordinates?: Array<number> };
   /* @example [object Object] */
-  GeometryPolygon: { type: "Polygon"; coordinates: Array<number> };
+  GeometryPolygon: { type?: "Polygon"; coordinates?: Array<number> };
   /* @example [object Object] */
-  GeometryMultiPolygon: { type: "MultiPolygon"; coordinates: Array<number> };
+  GeometryMultiPolygon: { type?: "MultiPolygon"; coordinates?: Array<number> };
   GeometryType: "Point" | "MultiPolygon" | "LineString";
   Index: "address" | "poi" | "parcel";
   HouseNumberInfos: {
-    date: string;
-    kind: APISchemas["AddressPositionKing"];
-    source: string;
+    date?: string;
+    kind?: APISchemas["AddressPositionKing"];
+    source?: string;
   };
   AddressPositionKing: Array<
     | "entrance"
@@ -209,11 +214,12 @@ export type APISchemas = {
 };
 
 export type APIEndpoints = {
-  "/geocodage/search": {
+  "/search": {
     responses: {
       get: {
-        type: "FeatureCollection";
-        features: Array<APISchemas["GeocodeResponse"]>;
+        /* @example FeatureCollection */
+        type?: string;
+        features?: Array<APISchemas["GeocodeResponse"]>;
       };
     };
     requests: {
@@ -240,19 +246,20 @@ export type APIEndpoints = {
       };
     };
   };
-  "/geocodage/reverse": {
+  "/reverse": {
     responses: {
       get: {
-        type: "FeatureCollection";
-        features: Array<APISchemas["GeocodeReverseResponse"]>;
+        /* @example FeatureCollection */
+        type?: string;
+        features?: Array<APISchemas["GeocodeReverseResponse"]>;
       };
     };
     requests: {
       method?: "get";
-      query: {
+      query?: {
         searchgeom?: string;
-        lon: number;
-        lat: number;
+        lon?: number;
+        lat?: number;
         index?: APISchemas["Index"];
         limit?: number;
         returntruegeometry?: boolean;
