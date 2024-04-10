@@ -1,4 +1,10 @@
-import { Notification, NotificationsProvider, useNotifications, Button } from "pentatrion-design";
+import {
+  Notification,
+  NotificationsProvider,
+  useNotifications,
+  Button,
+  useFetch,
+} from "pentatrion-design";
 import { Meta } from "@storybook/react";
 import { useRef } from "react";
 const meta = {
@@ -52,6 +58,37 @@ export const Context = () => {
   return (
     <>
       <Button onClick={handleClick}>show notif</Button>
+    </>
+  );
+};
+
+export const WithErrors = () => {
+  const { notifyError } = useNotifications();
+
+  function throwError() {
+    try {
+      throw new Error("Erreur type Error.");
+    } catch (e) {
+      notifyError(e);
+    }
+  }
+
+  return (
+    <>
+      <Button onClick={throwError}>lève une erreur</Button>
+    </>
+  );
+};
+
+export const WithFetchErrors = () => {
+  const fetch = useFetch();
+  function handle404Error() {
+    fetch("/throw-404-error");
+  }
+
+  return (
+    <>
+      <Button onClick={handle404Error}>throw 404 error</Button>
     </>
   );
 };

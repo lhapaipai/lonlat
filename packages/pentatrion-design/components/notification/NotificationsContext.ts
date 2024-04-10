@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, createContext } from "react";
 import { NotificationProps, NotificationOptions } from "./interface";
+import { FetchError } from "../..";
 
 export function createNotificationsManager(
   setNotifications: Dispatch<SetStateAction<NotificationProps[]>>,
@@ -55,9 +56,22 @@ export function createNotificationsManager(
     return id;
   };
 
+  const notifyError = (err: unknown) => {
+    if (err instanceof FetchError) {
+      addNotification(err.message);
+    } else if (err instanceof Error) {
+      addNotification(err.message, {
+        color: "danger",
+      });
+    } else {
+      throw err;
+    }
+  };
+
   return {
     addNotification,
     removeNotification,
+    notifyError,
   };
 }
 

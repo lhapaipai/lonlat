@@ -1,6 +1,7 @@
-export type CustomFetchOptions = RequestInit & {
+export type CustomFetchOptions = Omit<RequestInit, "body"> & {
+  body?: BodyInit | { [key: string]: unknown };
   urlParams?: {
-    [key: string]: string;
+    [key: string]: string | number;
   };
   query?: {
     [key: string]: unknown;
@@ -11,22 +12,20 @@ export async function customFetch(
   urlObjOrString: string | URL,
   enhancedOptions: CustomFetchOptions = {},
 ) {
-  const { urlParams, query, ...options } = enhancedOptions;
+  const { urlParams, query, body, ...rest } = enhancedOptions;
 
-  const url = urlObjOrString instanceof URL ? urlObjOrString : new URL(urlObjOrString);
+  const options: RequestInit = rest;
 
-  const body = "body" in options ? options["body"] : null;
-  if (body && typeof body !== "string" && !(body instanceof FormData)) {
-    options.headers = {
-      ...(options.headers = {}),
-      "Content-Type": "application/json",
-    };
-    options.body = JSON.stringify(body);
-  }
+  const url =
+    urlObjOrString instanceof URL
+      ? urlObjOrString
+      : new URL(urlObjOrString, window.location.origin);
 
   if (urlParams) {
     for (const [name, value] of Object.entries(urlParams)) {
-      url.pathname = url.pathname.replace(`{${name}}`, value);
+      // %7B -> `{`
+      // %7D -> `}`
+      url.pathname = url.pathname.replace(`%7B${name}%7D`, value.toString());
     }
   }
 
@@ -37,6 +36,14 @@ export async function customFetch(
         typeof value === "object" ? JSON.stringify(value) : (value as any).toString(),
       );
     }
+  }
+
+  if (body && typeof body !== "string" && !(body instanceof FormData)) {
+    options.headers = {
+      ...(options.headers = {}),
+      "Content-Type": "application/json",
+    };
+    options.body = JSON.stringify(body);
   }
 
   const response = await fetch(url.toString(), options);

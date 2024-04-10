@@ -1,17 +1,21 @@
-import { CustomFetchOptions, FetchError, customFetch, useNotifications } from "..";
+import { useCallback } from "react";
+import { CustomFetchOptions, customFetch, useNotifications } from "..";
 
-const useFetch = async (urlObjOrString: string | URL, enhancedOptions: CustomFetchOptions = {}) => {
+const useFetch = () => {
   const notificationManager = useNotifications();
 
-  try {
-    return await customFetch(urlObjOrString, enhancedOptions);
-  } catch (err) {
-    if (err instanceof FetchError) {
-      notificationManager.addNotification(err.message);
-    } else {
-      throw err;
-    }
-  }
+  const appFetch = useCallback(
+    async (urlObjOrString: string | URL, enhancedOptions: CustomFetchOptions = {}) => {
+      try {
+        return await customFetch(urlObjOrString, enhancedOptions);
+      } catch (err) {
+        notificationManager.notifyError(err);
+      }
+    },
+    [notificationManager],
+  );
+
+  return appFetch;
 };
 
 export default useFetch;
