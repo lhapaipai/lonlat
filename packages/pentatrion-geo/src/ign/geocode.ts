@@ -5,9 +5,11 @@ import {
   APIRequests as GeocodageAPIRequests,
   APIResponse as GeocodageAPIResponse,
   APISchemas as GeocodageAPISchemas,
+  AddressProperties,
+  AddressReverseProperties,
 } from "./api-geocodage";
 import { dataGeoserviceUrl } from "./urlHelper";
-import { Feature, FeatureCollection, Point } from "geojson";
+import { Feature, Point, Position } from "geojson";
 import { IGNAddressGeoOption, LngLatObj } from "..";
 import { nanoid } from "nanoid";
 
@@ -18,14 +20,13 @@ export function fetchIGNGeodageAPI<
   return fetchAPI(path, options, dataGeoserviceUrl);
 }
 
-type AddressReverseProperties = GeocodageAPISchemas["AddressReverseProperties"];
-type AddressReverseResponse = FeatureCollection<Point, AddressReverseProperties>;
-export async function ignReverseSearch([lon, lat]: [number, number]) {
+export async function ignReverseSearch([lon, lat]: Position) {
   // const collection = (await new Promise((resolve) => {
   //   setTimeout(() => {
   //     resolve({ type: "FeatureCollection", features: [] });
   //   }, 500);
   // })) as AddressReverseResponse;
+  throw new Error("Impossible de retrouver la localisation");
 
   const collection = await fetchIGNGeodageAPI("/geocodage/reverse", {
     query: {
@@ -34,15 +35,14 @@ export async function ignReverseSearch([lon, lat]: [number, number]) {
       limit: 1,
     },
   });
-  return collection as AddressReverseResponse;
+  return collection as GeocodageAPISchemas["GeocodeAddressReverseResponse"];
 }
 
-type AddressSearchProperties = GeocodageAPISchemas["AddressProperties"];
-type AddressSearchResponse = FeatureCollection<Point, AddressSearchProperties>;
 export async function ignSearch(searchValue: string, coords: [number, number]) {
   // const collection = (await fetch(`/data/ign-search.geojson`).then((res) =>
   //   res.json(),
   // )) as AddressSearchResponse;
+  throw new Error("Impossible de faire une recherche ign");
 
   const collection = await fetchIGNGeodageAPI("/geocodage/search", {
     query: {
@@ -51,22 +51,22 @@ export async function ignSearch(searchValue: string, coords: [number, number]) {
       lat: coords[1],
     },
   });
-  return collection as AddressSearchResponse;
+  return collection as GeocodageAPISchemas["GeocodeAddressResponse"];
 }
 
-export function getContext(properties: AddressSearchProperties | AddressReverseProperties) {
+export function getContext(properties: AddressProperties | AddressReverseProperties) {
   switch (properties.type) {
     case "housenumber":
     case "street":
     case "locality":
       return `${properties.city}, ${getDepartmentName(properties.citycode)}`;
     case "municipality":
-      return getDepartmentName(properties.citycode);
+      return getDepartmentName(properties.citycode) || "";
   }
-  return properties.context || null;
+  return properties.context;
 }
 
-export function getLabel(properties: AddressSearchProperties | AddressReverseProperties) {
+export function getLabel(properties: AddressProperties | AddressReverseProperties) {
   switch (properties.type) {
     case "housenumber":
     case "street":
@@ -83,11 +83,7 @@ export function getLabel(properties: AddressSearchProperties | AddressReversePro
 }
 
 export function createIgnAddressFeaturePoint(
-  {
-    type,
-    geometry,
-    properties,
-  }: Feature<Point, AddressSearchProperties | AddressReverseProperties>,
+  { type, geometry, properties }: Feature<Point, AddressProperties | AddressReverseProperties>,
   forceCoordinates?: LngLatObj,
 ): IGNAddressGeoOption {
   const uniqId = nanoid();
@@ -113,7 +109,9 @@ export function createIgnAddressFeaturePoint(
 }
 
 export function parseIgnAddressCollection(
-  collection: AddressSearchResponse | AddressReverseResponse,
+  collection:
+    | GeocodageAPISchemas["GeocodeAddressResponse"]
+    | GeocodageAPISchemas["GeocodeAddressReverseResponse"],
 ): IGNAddressGeoOption[] {
   return collection.features.map((feature) => {
     return createIgnAddressFeaturePoint(feature);

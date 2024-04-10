@@ -11,8 +11,6 @@ pnpm swagger
 IGN complétion
 https://geoservices.ign.fr/documentation/services/api-et-services-ogc/geocodage-20/doc-technique-api-autocompletion
 
-IGN géocodage
-https://geoservices.ign.fr/documentation/services/api-et-services-ogc/geocodage-20/doc-technique-api-geocodage
 
 
 ## export ts
@@ -82,12 +80,19 @@ const Schema: NodeType = {
 
 
 
-## Modifications apportées aux fichiers source
+## Traitement manuel de transformation des fichiers OpenAPI en fichiers de déclaration de type TypeScript
+
+Utilisation du package `@grafikart/o2ts`.
 
 ### `ign-geocodage.yaml`
 
 récupéré le yaml OpenAPI : https://geoservices.ign.fr/documentation/services/services-geoplateforme/geocodage
-
 https://data.geopf.fr/geocodage/openapi.yaml
 
-retiré les références à GetCapabilities.
+retiré les références à GetCapabilities. génération du fichier `./export/api-geocodage.d.ts`
+
+```bash
+pnpm run generate-ign-geocodage
+```
+
+ce fichier est ensuite nettoyé manuellement et réinjecté dans `packages/pentatrion-geo/src/ign/api-geocodage.d.ts`

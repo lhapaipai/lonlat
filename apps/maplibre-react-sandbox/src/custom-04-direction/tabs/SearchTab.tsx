@@ -3,12 +3,13 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { searchFeatureChanged, selectSearchFeature } from "../store/searchSlice";
 import { AutocompleteGeoOption, ignSearch, parseIgnAddressCollection } from "pentatrion-geo";
 import { selectViewState } from "../store/mapSlice";
+import { useNotification } from "pentatrion-design/redux";
 
 export default function SearchTab() {
   const selection = useAppSelector(selectSearchFeature);
   const dispatch = useAppDispatch();
   const viewState = useAppSelector(selectViewState);
-
+  const { notifyError } = useNotification();
   return (
     <>
       <LazyAutocomplete
@@ -17,8 +18,13 @@ export default function SearchTab() {
         selection={selection}
         onChangeSelection={(e) => dispatch(searchFeatureChanged(e))}
         onChangeSearchValueCallback={async (searchValue) => {
-          const collection = await ignSearch(searchValue, viewState.center);
-          return parseIgnAddressCollection(collection);
+          try {
+            const collection = await ignSearch(searchValue, viewState.center);
+            return parseIgnAddressCollection(collection);
+          } catch (err) {
+            notifyError(err);
+            throw err;
+          }
         }}
         AutocompleteOptionCustom={AutocompleteGeoOption}
       />

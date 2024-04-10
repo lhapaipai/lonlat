@@ -1,5 +1,5 @@
 import { Feature, FeatureCollection, LineString } from "geojson";
-import { AppGeoOption } from "..";
+import { GeoPointOption } from "..";
 
 export type ORSDirectionFeature = Feature<
   LineString,
@@ -9,7 +9,7 @@ export type ORSDirectionFeature = Feature<
   }
 >;
 
-export async function getRoute(features: AppGeoOption[]) {
+export async function getRoute(features: GeoPointOption[]) {
   const res = await fetch("http://localhost:8080/ors/v2/directions/driving-car/geojson", {
     method: "POST",
     headers: {
@@ -36,7 +36,7 @@ export async function getRoute(features: AppGeoOption[]) {
   } as ORSDirectionFeature;
 }
 
-export function hashCoords(features: AppGeoOption[]) {
+export function hashCoords(features: GeoPointOption[]) {
   return features
     .map((feature) => {
       const [lon, lat] = feature.geometry.coordinates;

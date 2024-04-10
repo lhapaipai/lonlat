@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 
 import "pentatrion-design/styles/default.scss";
-import { NotificationsProvider } from "pentatrion-design";
 import { Provider } from "react-redux";
 
 import store from "./store/index.ts";
+import { NotificationConsumer } from "pentatrion-design/redux";
 
 /*
  <React.StrictMode>
@@ -15,9 +15,9 @@ import store from "./store/index.ts";
 */
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <NotificationsProvider>
-    <Provider store={store}>
+  <Provider store={store}>
+    <NotificationConsumer>
       <App />
-    </Provider>
-  </NotificationsProvider>,
+    </NotificationConsumer>
+  </Provider>,
 );

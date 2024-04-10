@@ -1,7 +1,9 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
-import { resolveLonLatFeaturePoint } from "pentatrion-geo";
+import { GeoPointOption, resolveLonLatFeaturePoint } from "pentatrion-geo";
 import { LocationPayload, directionLocationChanged } from "./directionSlice";
 import { SearchPayload, searchFeatureChanged } from "./searchSlice";
+import { messageAdded } from "pentatrion-design/redux";
+import { parseError } from "pentatrion-design";
 
 export const lonlatFeatureListenerMiddleware = createListenerMiddleware();
 
@@ -30,9 +32,19 @@ lonlatFeatureListenerMiddleware.startListening({
       return;
     }
 
-    const reversedFeature = await resolveLonLatFeaturePoint(feature);
+    let reversedFeature: GeoPointOption | null = null;
+    try {
+      reversedFeature = await resolveLonLatFeaturePoint(feature);
+    } catch (err) {
+      const errorMessage = parseError(err);
+      if (errorMessage) {
+        dispatch(messageAdded(...errorMessage));
+      } else {
+        throw err;
+      }
+    }
 
-    if (reversedFeature.properties.type !== "lonlat") {
+    if (reversedFeature && reversedFeature.properties.type !== "lonlat") {
       if (type === searchFeatureChanged.type) {
         dispatch(searchFeatureChanged(reversedFeature));
       } else if (type === directionLocationChanged.type) {

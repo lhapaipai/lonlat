@@ -4,9 +4,11 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import mapSlice from "./mapSlice";
 import directionSlice, { directionLocationsListenerMiddleware } from "./directionSlice";
 import { lonlatFeatureListenerMiddleware } from "./lonlatListener";
+import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
 
 const store = configureStore({
   reducer: {
+    notification: notificationSlice,
     map: mapSlice,
     search: searchSlice,
     direction: directionSlice,
@@ -14,7 +16,8 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
       .prepend(lonlatFeatureListenerMiddleware.middleware)
-      .prepend(directionLocationsListenerMiddleware.middleware);
+      .prepend(directionLocationsListenerMiddleware.middleware)
+      .concat(errorCatcherMiddleware);
   },
 });
 

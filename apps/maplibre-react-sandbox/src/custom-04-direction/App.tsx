@@ -17,10 +17,9 @@ import { roadLayerStyle, roadLayerCasingStyle, waypointsLayerStyle } from "./map
 import { LLMarker, RLLMarker, createLonLatFeaturePoint } from "pentatrion-geo";
 import { Event, RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
 import { MapLibreEvent, Marker } from "maplibre-gl";
-import { useState } from "react";
 import ContextMenuManager from "./ContextMenuManager";
 
-function App1() {
+function App() {
   const viewState = useAppSelector(selectViewState);
   const dispatch = useAppDispatch();
 
@@ -148,12 +147,6 @@ function App1() {
       </aside>
     </>
   );
-}
-
-function App() {
-  const [showMap, setShow] = useState(true);
-
-  return showMap ? <App1 /> : <button onClick={() => setShow(true)}>Afficher app</button>;
 }
 
 export default App;

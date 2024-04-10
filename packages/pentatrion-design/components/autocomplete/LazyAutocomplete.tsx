@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from ".";
 import { OptionLike, Option, useStateDebounce } from "../..";
-import { FetchError, useEventCallback, useNotifications } from "../..";
+import { useEventCallback } from "../..";
 import { getLabel } from "./util";
 
 interface Props<O extends OptionLike = Option>
@@ -42,7 +42,6 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
   const [loading, setLoading] = useState(false);
 
   const [options, setOptions] = useState<O[]>([]);
-  const notificationManager = useNotifications();
 
   const handleChangeSelection = useCallback(
     (selection: O | null) => {
@@ -99,21 +98,15 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
           setOptions(newOptions);
         }
       })
-      .catch((err) => {
+      .catch(() => {
         setLoading(false);
-
-        if (err instanceof FetchError || err instanceof TypeError) {
-          notificationManager.addNotification(err.message);
-        } else {
-          throw err;
-        }
       });
 
     return () => {
       setLoading(false);
       abort = true;
     };
-  }, [selection, searchValueDebounced, onChangeSearchValueCallback, notificationManager]);
+  }, [selection, searchValueDebounced, onChangeSearchValueCallback]);
 
   return (
     <Autocomplete

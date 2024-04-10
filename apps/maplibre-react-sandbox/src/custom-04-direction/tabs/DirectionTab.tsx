@@ -26,6 +26,7 @@ import {
   updateId,
 } from "pentatrion-geo";
 import { selectViewState } from "../store/mapSlice";
+import { useNotification } from "pentatrion-design/redux";
 
 function placeholderByIndex(idx: number, length: number) {
   if (idx === 0) {
@@ -39,6 +40,7 @@ function placeholderByIndex(idx: number, length: number) {
 export default function DirectionTab() {
   const locations = useAppSelector(selectDirectionLocations);
   const dispatch = useAppDispatch();
+  const { notifyError } = useNotification();
 
   const viewState = useAppSelector(selectViewState);
 
@@ -90,8 +92,13 @@ export default function DirectionTab() {
                 debounce={50}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={async (searchValue) => {
-                  const collection = await ignSearch(searchValue, viewState.center);
-                  return parseIgnAddressCollection(collection);
+                  try {
+                    const collection = await ignSearch(searchValue, viewState.center);
+                    return parseIgnAddressCollection(collection);
+                  } catch (err) {
+                    notifyError(err);
+                    throw err;
+                  }
                 }}
                 AutocompleteOptionCustom={AutocompleteGeoOption}
               />

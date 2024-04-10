@@ -41,4 +41,4 @@ export default notificationSlice.reducer;
 
 export const { messageAdded, messageRemoved } = notificationSlice.actions;
 
-export const selectMessages = (state) => state.notification.messages;
+export const selectMessages: (state: any) => Message[] = (state) => state.notification.messages;

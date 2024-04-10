@@ -1,10 +1,10 @@
 import {
   createNodataFeature,
   filterDataFeatures,
-  AppGeoOption,
   getRoute,
   hashCoords,
   ORSDirectionFeature,
+  GeoPointOption,
 } from "pentatrion-geo";
 import {
   createAsyncThunk,
@@ -19,7 +19,7 @@ import { NoDataOption } from "pentatrion-design";
 import { FeatureCollection, Feature, Point } from "geojson";
 
 type DirectionState = {
-  locations: (AppGeoOption | NoDataOption)[];
+  locations: (GeoPointOption | NoDataOption)[];
   route: ORSDirectionFeature | null;
 };
 
@@ -28,13 +28,13 @@ const initialState: DirectionState = {
   route: null,
 };
 
-export type LocationPayload = { index: number; feature: AppGeoOption | NoDataOption };
+export type LocationPayload = { index: number; feature: GeoPointOption | NoDataOption };
 
 const directionSlice = createSlice({
   name: "direction",
   initialState,
   reducers: {
-    directionLocationsSorted(state, action: PayloadAction<(AppGeoOption | NoDataOption)[]>) {
+    directionLocationsSorted(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
       state.locations = action.payload;
     },
     directionLocationChanged(state, action: PayloadAction<LocationPayload>) {
