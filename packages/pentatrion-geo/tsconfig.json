@@ -1,20 +1,15 @@
 {
-    "extends": "../../tsconfig.base.json",
-    "compilerOptions": {
-        "types": ["google.maps"],
-        "paths": {
-            "pentatrion-geo": [
-                "."
-            ],
-            "pentatrion-geo/*": [
-                "./*"
-            ],
-            "@storybook/react": [
-                "../../apps/storybook/node_modules/@storybook/react"
-            ],
-            "@storybook/addon-actions": [
-                "../../apps/storybook/node_modules/@storybook/addon-actions"
-            ]
-        }
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "types": ["google.maps"],
+    "paths": {
+      "pentatrion-geo": ["."],
+      "pentatrion-geo/*": ["./*"],
+      "@storybook/react": ["../../apps/storybook/node_modules/@storybook/react"],
+      "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
     }
+  },
+  "exclude": ["**/node_modules"],
+  "include": ["src/index.ts"]
 }

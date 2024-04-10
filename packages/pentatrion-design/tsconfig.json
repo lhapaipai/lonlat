@@ -18,5 +18,8 @@
                 "../../apps/storybook/node_modules/@storybook/addon-actions"
             ]
         }
-    }
+    },
+    "include": [
+      "components", "hooks","lib","redux", "tests", "styles"
+    ],
 }

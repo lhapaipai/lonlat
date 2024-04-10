@@ -154,7 +154,7 @@ function RPegman(props: RPegmanProps, ref: Ref<LLPegman>) {
   if (marker.getLngLat().lng !== longitude || marker.getLngLat().lat !== latitude) {
     marker.setLngLat([longitude, latitude]);
   }
-  if (marker.getBearing() !== bearing) {
+  if (bearing !== undefined && marker.getBearing() !== bearing) {
     marker.setBearing(bearing);
   }
   if (marker.isDraggable() !== draggable) {

@@ -11,7 +11,7 @@ export type GeocodeType = AddressType | LonLatType;
 export type AddressType = "housenumber" | "street" | "locality" | "municipality" | "unknown";
 export type LonLatType = "lonlat";
 
-export type FeatureProperties<T extends string = "unknown"> = {
+export type FeatureProperties<T extends string = string> = {
   /** id and label are required for <select /> like components */
 
   id: string;
@@ -27,7 +27,7 @@ export type FeatureProperties<T extends string = "unknown"> = {
   originalProperties: any;
 };
 
-export type GeoOption<G extends Geometry | null = Geometry, T extends string = "unknown"> = {
+export type GeoOption<G extends Geometry | null = Geometry, T extends string = string> = {
   id: string;
   type: "Feature";
   properties: FeatureProperties<T>;

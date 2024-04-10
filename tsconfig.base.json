@@ -24,14 +24,11 @@
         "types": [
             "react/experimental"
         ],
-        "paths": {
-            "@lonlat/shared/*": [
-                "./extra/shared/*"
-            ]
-        }
     },
     "exclude": [
         "**/node_modules",
         "**/.*/"
-    ]
+    ],
+    "include": []
+
 }

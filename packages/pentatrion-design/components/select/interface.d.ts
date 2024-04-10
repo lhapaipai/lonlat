@@ -15,7 +15,7 @@ export type NoDataOption = {
 };
 
 /** For compatibility with OptionLike. get original types from pentatrion-geo */
-type GeoOption<G extends Geometry | null = Geometry, T extends string = "unknown"> = {
+type GeoOption<G extends Geometry | null = Geometry, T extends string = string> = {
   id: string;
   type: "Feature";
   properties: FeatureProperties<T>;
@@ -23,7 +23,7 @@ type GeoOption<G extends Geometry | null = Geometry, T extends string = "unknown
   bbox?: BBox | undefined;
 };
 
-type FeatureProperties<T extends string = "unknown"> = {
+type FeatureProperties<T extends string = string> = {
   id: string;
   label: string;
   name: string;

@@ -1,12 +1,11 @@
 {
-    "extends": "../../tsconfig.base.json",
-    "compilerOptions": {
-        "checkJs": true,
-        "allowJs": true,
-        "paths": {
-          "~/*": [
-            "./src/*"
-          ]
-        }
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "checkJs": true,
+    "allowJs": true,
+    "paths": {
+      "~/*": ["./src/*"]
     }
+  },
+  "include": ["src"]
 }
