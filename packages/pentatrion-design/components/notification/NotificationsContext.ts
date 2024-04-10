@@ -1,14 +1,11 @@
 import { Dispatch, SetStateAction, createContext } from "react";
-import { NotificationProps, NotificationOptions } from "./interface";
-import { FetchError } from "../..";
+import { Message, MessageOptions, parseError } from "../..";
 
-export function createNotificationsManager(
-  setNotifications: Dispatch<SetStateAction<NotificationProps[]>>,
-) {
+export function createNotificationsManager(setNotifications: Dispatch<SetStateAction<Message[]>>) {
   let idx = 1;
-  const timeoutIds = new Map<number, any>();
+  const timeoutIds = new Map<string, any>();
 
-  const removeNotification = (id: number) => {
+  const removeNotification = (id: string) => {
     const timeoutId = timeoutIds.get(id);
     if (!timeoutId) {
       return;
@@ -22,27 +19,27 @@ export function createNotificationsManager(
   };
 
   const addNotification = (
-    message = "",
+    content = "",
     {
-      id = idx++,
       expiration = 5000,
       color = "primary",
       canClose = true,
-      ...rest
-    }: NotificationOptions = {},
+      withLoader = false,
+    }: MessageOptions = {},
   ) => {
+    const id = (idx++).toString();
     if (timeoutIds.has(id)) {
       throw new Error("notification already exists");
     }
 
     setNotifications((oldNotifications) => {
-      const newNotification: NotificationProps = {
+      const newNotification: Message = {
         id,
+        content,
         expiration,
-        message,
         color,
         canClose,
-        ...rest,
+        withLoader,
       };
 
       return [newNotification, ...oldNotifications];
@@ -57,12 +54,9 @@ export function createNotificationsManager(
   };
 
   const notifyError = (err: unknown) => {
-    if (err instanceof FetchError) {
-      addNotification(err.message);
-    } else if (err instanceof Error) {
-      addNotification(err.message, {
-        color: "danger",
-      });
+    const errorMessage = parseError(err);
+    if (errorMessage) {
+      addNotification(...errorMessage);
     } else {
       throw err;
     }

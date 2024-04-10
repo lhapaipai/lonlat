@@ -10,8 +10,9 @@ export { default as Highlight } from "./components/highlight/Highlight";
 export { default as HighlightLegacy } from "./components/highlight/HighlightLegacy";
 export { default as InputField } from "./components/input-field/InputField";
 export { default as ResizeArea } from "./components/resize-area/ResizeArea";
-
+export { default as Snack } from "./components/snack/Snack";
 export { default as Href } from "./components/href/Href";
+
 export * from "./components/autocomplete";
 export * from "./components/button";
 export * from "./components/context-menu";

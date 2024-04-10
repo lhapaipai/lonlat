@@ -1,4 +1,4 @@
-.ll-notification {
+.ll-snack {
     .box {
         pointer-events: all;
         width: fit-content;
@@ -23,14 +23,14 @@
     }
 }
 
-.ll-notifications-container {
+.ll-snack-bar {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     pointer-events: none;
 
-    .notifications {
+    .snack-bar-inner {
         margin-bottom: 1rem;
         display: flex;
         flex-direction: column;

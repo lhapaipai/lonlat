@@ -5,21 +5,21 @@ import {
   createNotificationsManager,
   type NotificationsManager,
 } from "./NotificationsContext";
-import { Notification } from ".";
-import { NotificationProps } from "./interface";
+import Snack from "../snack/Snack";
+import { Message } from "../..";
 
 interface Props {
   children: ReactNode;
 }
 
 export default function NotificationsProvider({ children }: Props) {
-  const [notifications, setNotifications] = useState<NotificationProps[]>([]);
+  const [notifications, setNotifications] = useState<Message[]>([]);
 
   const container = useRef<HTMLDivElement>(null!);
   if (!container.current) {
     container.current = document.createElement("div");
     container.current.id = Math.floor(Math.random() * 100000).toString();
-    container.current.classList.add("ll-notifications-container");
+    container.current.classList.add("ll-snack-bar");
     document.body.append(container.current);
   }
 
@@ -41,9 +41,9 @@ export default function NotificationsProvider({ children }: Props) {
     <>
       <NotificationsContext.Provider value={manager}>{children}</NotificationsContext.Provider>
       {createPortal(
-        <div className="notifications">
+        <div className="snack-bar-inner">
           {notifications.map((props) => (
-            <Notification
+            <Snack
               {...props}
               key={props.id}
               onRemove={() => manager.removeNotification(props.id)}
