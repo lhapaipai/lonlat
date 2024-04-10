@@ -8,7 +8,7 @@ export type CustomFetchOptions = Omit<RequestInit, "body"> & {
   };
 };
 
-export async function customFetch(
+export async function fetchAPI(
   urlObjOrString: string | URL,
   enhancedOptions: CustomFetchOptions = {},
 ) {
@@ -72,14 +72,14 @@ export async function customFetch(
     return dataText;
   }
 
-  throw new FetchError(dataText, response.status);
+  throw new FetchError(`${response.status} ${response.statusText}`, response.status, dataText);
 }
 
 export class FetchError extends Error {
   constructor(
     message: string,
     public status: number,
-    public data: object = {},
+    public data?: unknown,
   ) {
     super(message);
     this.name = "FetchError";

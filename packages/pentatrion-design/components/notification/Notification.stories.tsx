@@ -16,8 +16,8 @@ export default meta;
 
 export const Context = () => {
   const counter = useRef(0);
-  const { addNotification } = useNotifications();
-
+  const { addNotification, notifyError } = useNotifications();
+  const fetch = useFetch();
   function handleClick() {
     counter.current += 1;
     addNotification(`Notification num. ${counter.current}`, {
@@ -25,40 +25,23 @@ export const Context = () => {
     });
   }
 
-  return (
-    <>
-      <Button onClick={handleClick}>show notif</Button>
-    </>
-  );
-};
-
-export const WithErrors = () => {
-  const { notifyError } = useNotifications();
-
   function throwError() {
     try {
-      throw new Error("Erreur type Error.");
+      throw new Error("Custom error message");
     } catch (e) {
       notifyError(e);
     }
   }
 
-  return (
-    <>
-      <Button onClick={throwError}>lève une erreur</Button>
-    </>
-  );
-};
-
-export const WithFetchErrors = () => {
-  const fetch = useFetch();
   function handle404Error() {
     fetch("/throw-404-error");
   }
 
   return (
-    <>
-      <Button onClick={handle404Error}>throw 404 error</Button>
-    </>
+    <div className="storybook-gap">
+      <Button onClick={handleClick}>Show info notification</Button>
+      <Button onClick={throwError}>Throw custom error</Button>
+      <Button onClick={handle404Error}>Throw 404 fetch error</Button>
+    </div>
   );
 };

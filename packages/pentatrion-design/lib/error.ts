@@ -1,5 +1,4 @@
 import { ThemeColor } from "pentatrion-design/types";
-import { FetchError } from "./fetch";
 
 export type MessageOptions = Partial<Omit<Message, "message" | "id">>;
 
@@ -12,13 +11,19 @@ export interface Message {
   withLoader: boolean;
 }
 
+export function isErrorLike(err: any): err is Error {
+  if (err instanceof Error) {
+    return true;
+  } else if (err.name !== undefined && err.message !== undefined) {
+    return true;
+  }
+
+  return false;
+}
+
 export function parseError(err: any): [string, MessageOptions] | null {
-  if (err instanceof FetchError || err.name === "FetchError") {
-    return [err.message, { color: "danger" }];
-  } else if (err instanceof Error || err.name === "Error") {
-    return [err.message, { color: "danger" }];
-  } else if ((err as any).message) {
-    return [(err as any).message, { color: "danger" }];
+  if (isErrorLike(err)) {
+    return [err.message || "An error occured", { color: "danger" }];
   }
   return null;
 }

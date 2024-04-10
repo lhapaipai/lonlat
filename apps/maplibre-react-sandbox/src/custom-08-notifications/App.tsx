@@ -1,6 +1,6 @@
 import "./App.scss";
 import { useState } from "react";
-import { customFetch } from "pentatrion-design";
+import { fetchAPI } from "pentatrion-design";
 import { useAppDispatch } from "./store";
 import { basicAsyncError, fetchAsyncError } from "./store/counterSlice";
 import { useNotification } from "pentatrion-design/redux";
@@ -24,7 +24,7 @@ function App() {
 
   async function handleRunFetchError() {
     try {
-      await customFetch("http://unknown/hello");
+      await fetchAPI("http://unknown/hello");
     } catch (err: unknown) {
       notifyError(err);
     }

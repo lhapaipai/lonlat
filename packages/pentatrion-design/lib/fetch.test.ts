@@ -1,5 +1,5 @@
 import { afterEach, describe, test, vi } from "vitest";
-import { customFetch } from "./fetch";
+import { fetchAPI } from "./fetch";
 
 function get200Response() {
   return {
@@ -12,7 +12,7 @@ function get200Response() {
   };
 }
 
-describe("customFetch", () => {
+describe("fetchAPI", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
   });
@@ -22,7 +22,7 @@ describe("customFetch", () => {
 
     vi.stubGlobal("fetch", mock);
 
-    const result = await customFetch("/hello");
+    const result = await fetchAPI("/hello");
 
     expect(mock).toBeCalledTimes(1);
     expect(mock).toHaveBeenCalledWith("http://localhost:3000/hello", {});
@@ -34,7 +34,7 @@ describe("customFetch", () => {
 
     vi.stubGlobal("fetch", mock);
 
-    await customFetch("/user/{name}/{id}", {
+    await fetchAPI("/user/{name}/{id}", {
       urlParams: {
         name: "dupond",
         id: 3,
@@ -43,7 +43,7 @@ describe("customFetch", () => {
 
     expect(mock).toHaveBeenCalledWith("http://localhost:3000/user/dupond/3", {});
 
-    await customFetch("/user/{name}/{id}", {
+    await fetchAPI("/user/{name}/{id}", {
       urlParams: {
         name: "dupond",
       },
@@ -51,7 +51,7 @@ describe("customFetch", () => {
 
     expect(mock).toHaveBeenCalledWith("http://localhost:3000/user/dupond/%7Bid%7D", {});
 
-    await customFetch("/user/{name}/{id}", {
+    await fetchAPI("/user/{name}/{id}", {
       urlParams: {
         name: "dupond",
         id: 3,
@@ -67,7 +67,7 @@ describe("customFetch", () => {
 
     vi.stubGlobal("fetch", mock);
 
-    await customFetch("/user", {
+    await fetchAPI("/user", {
       query: {
         name: "dupond",
         id: 3,
@@ -75,7 +75,7 @@ describe("customFetch", () => {
     });
     expect(mock).toHaveBeenCalledWith("http://localhost:3000/user?name=dupond&id=3", {});
 
-    await customFetch("/user?page=1#hash", {
+    await fetchAPI("/user?page=1#hash", {
       query: {
         name: "dupond",
         id: 3,
@@ -91,7 +91,7 @@ describe("customFetch", () => {
     const mock = vi.fn().mockResolvedValue(get200Response());
 
     vi.stubGlobal("fetch", mock);
-    await customFetch("/user", {
+    await fetchAPI("/user", {
       body: {
         name: "dupond",
         id: 3,

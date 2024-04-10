@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { customFetch } from "pentatrion-design";
+import { fetchAPI } from "pentatrion-design";
 
 export interface CounterSliceState {
   value: number;
@@ -40,7 +40,7 @@ export const basicAsyncError = createAsyncThunk("counter/basicAsyncError", async
 });
 
 export const fetchAsyncError = createAsyncThunk("counter/fetchAsyncError", async (data: number) => {
-  const response = await customFetch(`http://unknown/incr/${data}`);
+  const response = await fetchAPI(`http://unknown/incr/${data}`);
   return response.data;
 });
 

@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { CustomFetchOptions, customFetch, useNotifications } from "..";
+import { CustomFetchOptions, fetchAPI, useNotifications } from "..";
 
 const useFetch = () => {
   const notificationManager = useNotifications();
@@ -7,7 +7,7 @@ const useFetch = () => {
   const appFetch = useCallback(
     async (urlObjOrString: string | URL, enhancedOptions: CustomFetchOptions = {}) => {
       try {
-        return await customFetch(urlObjOrString, enhancedOptions);
+        return await fetchAPI(urlObjOrString, enhancedOptions);
       } catch (err) {
         notificationManager.notifyError(err);
       }

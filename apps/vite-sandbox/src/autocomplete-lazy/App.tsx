@@ -20,7 +20,7 @@ async function mockServerRequest() {
 export default function App() {
   const handleChangeSearchValue = useCallback(async (searchValue: string) => {
     const towns = (await mockServerRequest()) as Town[];
-    // const towns = (await customFetch(`http://localhost:6005/towns?q=${searchValue}`)) as Town[];
+    // const towns = (await fetchAPI(`http://localhost:6005/towns?q=${searchValue}`)) as Town[];
     return prepareTownsResult(towns, searchValue).map((town) => {
       return {
         ...town,
