@@ -7,8 +7,7 @@
       "type": "vector",
       "tiles": ["https://data.geopf.fr/tms/1.0.0/PCI/{z}/{x}/{y}.pbf"],
       "scheme": "xyz",
-      "url": "https://data.geopf.fr/tms/1.0.0/PCI/metadata.json",
-      "minzoom": 15
+      "url": "https://data.geopf.fr/tms/1.0.0/PCI/metadata.json"
     }
   },
   "transition": {
@@ -17,7 +16,63 @@
   },
   "layers": [
     {
-      "id": "pci_parcelle_fill",
+      "id": "departement_line",
+      "type": "line",
+      "source": "pci",
+      "source-layer": "departement",
+      "paint": { "line-color": "#6a00ff" },
+      "minzoom": 5,
+      "layout": { "line-join": "bevel" }
+    },
+    {
+      "id": "departement_label",
+      "type": "symbol",
+      "source": "pci",
+      "source-layer": "departement",
+      "layout": {
+        "text-field": "{insee_dep}",
+        "text-font": ["Source Sans Pro Bold Italic"],
+        "text-size": 14
+      },
+      "paint": {
+        "text-color": "#6a00ff",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      },
+      "minzoom": 6,
+      "maxzoom": 11
+    },
+    {
+      "id": "commune",
+      "type": "line",
+      "source": "pci",
+      "source-layer": "commune",
+      "paint": {
+        "line-color": "#6a00ff"
+      }
+    },
+    {
+      "id": "nom_com",
+      "type": "symbol",
+      "source": "pci",
+      "source-layer": "commune",
+      "layout": {
+        "text-field": "{nom_com}",
+        "text-size": 14,
+        "text-anchor": "center",
+        "text-keep-upright": true,
+        "text-max-angle": 45,
+        "text-padding": 1,
+        "text-font": ["Source Sans Pro Bold Italic"]
+      },
+      "paint": {
+        "text-color": "#6a00ff",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "parcelle_fill",
       "type": "fill",
       "source": "pci",
       "source-layer": "parcelle",
@@ -29,7 +84,7 @@
       }
     },
     {
-      "id": "pci_parcelle-limit",
+      "id": "parcelle-limit",
       "type": "line",
       "source": "pci",
       "source-layer": "parcelle",
@@ -42,7 +97,7 @@
       "maxzoom": 17
     },
     {
-      "id": "pci_parcelle",
+      "id": "parcelle",
       "type": "line",
       "source": "pci",
       "source-layer": "parcelle",
@@ -55,7 +110,7 @@
       "maxzoom": 21
     },
     {
-      "id": "pci_batiment",
+      "id": "batiment",
       "type": "fill",
       "source": "pci",
       "source-layer": "batiment",
@@ -66,7 +121,7 @@
       }
     },
     {
-      "id": "pci_batiment_line",
+      "id": "batiment_line",
       "type": "line",
       "source": "pci",
       "source-layer": "batiment",
@@ -75,7 +130,7 @@
       "minzoom": 17
     },
     {
-      "id": "pci_batiment-leger",
+      "id": "batiment-leger",
       "type": "fill",
       "source": "pci",
       "source-layer": "batiment",
@@ -87,7 +142,7 @@
       }
     },
     {
-      "id": "pci_batiment-dur",
+      "id": "batiment-dur",
       "type": "fill",
       "source": "pci",
       "source-layer": "batiment",
@@ -99,7 +154,7 @@
       "filter": ["==", "type", "Bâtiment en dur"]
     },
     {
-      "id": "pci_borne",
+      "id": "borne",
       "type": "circle",
       "source": "pci",
       "source-layer": "borne_limite_propriete",
@@ -112,7 +167,7 @@
       }
     },
     {
-      "id": "pci_feuille",
+      "id": "feuille-copy",
       "type": "line",
       "source": "pci",
       "source-layer": "feuille",
@@ -128,7 +183,23 @@
       }
     },
     {
-      "id": "pci_feuille_label",
+      "id": "feuille",
+      "type": "line",
+      "source": "pci",
+      "source-layer": "feuille",
+      "paint": {
+        "line-color": "#ff8000",
+        "line-width": 1
+      },
+      "minzoom": 14,
+      "maxzoom": 24,
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "bevel"
+      }
+    },
+    {
+      "id": "feuille_label",
       "type": "symbol",
       "source": "pci",
       "source-layer": "feuille",
@@ -138,15 +209,15 @@
         "text-size": 14
       },
       "paint": {
-        "text-color": "#929292",
+        "text-color": "#ff8000",
         "text-halo-color": "#ffffff",
         "text-halo-width": 2
       },
       "minzoom": 14,
-      "maxzoom": 17
+      "maxzoom": 16
     },
     {
-      "id": "pci_localisant",
+      "id": "localisant",
       "type": "symbol",
       "source": "pci",
       "source-layer": "localisant",

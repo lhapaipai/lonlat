@@ -113,14 +113,14 @@ export default function BaseLayerControl() {
         <div className="legend text-sm">Relief</div>
       </div>
 
-      <div
+      {/* <div
         className={cn("layer", "base", currentHillshade && "active")}
         key="hillshade"
         onClick={() => dispatch(hillshadeToggled())}
       >
         <img className="preview" src="/thumbnail/terrarium.jpg" />
         <div className="legend text-sm">Relief ombré</div>
-      </div>
+      </div> */}
 
       <div
         className={cn("layer", "base", currentStreetView && "active")}

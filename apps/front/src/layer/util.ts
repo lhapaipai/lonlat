@@ -31,7 +31,7 @@ export async function prepareStyle(
 
   const allOptionalLayersId: (OptionalLayerId | null)[] = [
     terrain ? "terrain" : null,
-    hillshade ? "hillshade" : null,
+    terrain ? "hillshade" : null,
     ...optionalLayersId,
   ];
 

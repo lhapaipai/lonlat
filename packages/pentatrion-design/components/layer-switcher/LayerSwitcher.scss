@@ -1,7 +1,14 @@
 .ll-layer-switcher {
     display: flex;
     overflow-x: auto;
-    pointer-events: all;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 1;
+    user-select: none;
+
+    &>* {
+        pointer-events: all;
+    }
 
     .separator {
         width: 0;
@@ -23,7 +30,7 @@
 
     .layer {
         width: 0;
-        flex: 1 0 80px;
+        flex: 1 0 90px;
         max-width: 100px;
         border-radius: var(--border-radius-sm);
         display: flex;

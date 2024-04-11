@@ -21,11 +21,11 @@ export function fetchIGNGeodageAPI<
 }
 
 export async function ignReverseSearch([lon, lat]: Position) {
-  return (await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ type: "FeatureCollection", features: [] });
-    }, 500);
-  })) as GeocodageAPISchemas["GeocodeAddressReverseResponse"];
+  // return (await new Promise((resolve) => {
+  //   setTimeout(() => {
+  //     resolve({ type: "FeatureCollection", features: [] });
+  //   }, 500);
+  // })) as GeocodageAPISchemas["GeocodeAddressReverseResponse"];
   // throw new Error("Impossible de retrouver la localisation");
 
   const collection = await fetchIGNGeodageAPI("/geocodage/reverse", {
@@ -39,9 +39,9 @@ export async function ignReverseSearch([lon, lat]: Position) {
 }
 
 export async function ignSearch(searchValue: string, coords: [number, number]) {
-  return (await fetch(`/data/ign-search.geojson`).then((res) =>
-    res.json(),
-  )) as GeocodageAPISchemas["GeocodeAddressResponse"];
+  // return (await fetch(`/data/ign-search.geojson`).then((res) =>
+  //   res.json(),
+  // )) as GeocodageAPISchemas["GeocodeAddressResponse"];
   // throw new Error("Impossible de faire une recherche ign");
 
   const collection = await fetchIGNGeodageAPI("/geocodage/search", {

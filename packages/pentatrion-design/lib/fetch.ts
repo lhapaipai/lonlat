@@ -11,16 +11,25 @@ export type CustomFetchOptions = Omit<RequestInit, "body"> & {
 export async function fetchAPI(
   urlObjOrString: string | URL,
   enhancedOptions: CustomFetchOptions = {},
-  origin?: string,
+  baseUrl?: string,
+  baseOptions?: RequestInit,
 ) {
   const { urlParams, query, body, ...rest } = enhancedOptions;
 
-  const options: RequestInit = rest;
+  let options: RequestInit = rest;
 
-  const url =
-    urlObjOrString instanceof URL
-      ? urlObjOrString
-      : new URL(urlObjOrString, origin || window.location.origin);
+  let url: URL;
+
+  if (urlObjOrString instanceof URL) {
+    url = urlObjOrString;
+  } else {
+    const origin = baseUrl ? new URL(baseUrl).origin : window.location.origin;
+    let prefix = baseUrl ? new URL(baseUrl).pathname : "";
+    if (prefix === "/") {
+      prefix = "";
+    }
+    url = new URL(`${prefix}${urlObjOrString}`, origin);
+  }
 
   if (urlParams) {
     for (const [name, value] of Object.entries(urlParams)) {
@@ -45,6 +54,18 @@ export async function fetchAPI(
       "Content-Type": "application/json",
     };
     options.body = JSON.stringify(body);
+  }
+
+  if (baseOptions) {
+    const { headers: baseHeaders = {}, ...baseRest } = baseOptions;
+    options = {
+      ...baseRest,
+      ...options,
+      headers: {
+        ...baseHeaders,
+        ...options.headers,
+      },
+    };
   }
 
   const response = await fetch(url.toString(), options);

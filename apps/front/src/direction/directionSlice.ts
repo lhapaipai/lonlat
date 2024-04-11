@@ -1,7 +1,6 @@
 import {
   createNodataFeature,
   filterDataFeatures,
-  getRoute,
   hashCoords,
   GeoPointOption,
   RouteFeatureResponse,
@@ -17,6 +16,7 @@ import {
 import { RootState } from "../store";
 import { NoDataOption } from "pentatrion-design";
 import { FeatureCollection, Feature, Point } from "geojson";
+import { getRoute } from "~/lib/api/openRouteService";
 
 type DirectionState = {
   locations: (GeoPointOption | NoDataOption)[];

@@ -1,20 +1,15 @@
-import { Tabs } from "pentatrion-design";
 import { RMap } from "maplibre-react-components";
-import { Map, MapLibreEvent, StyleSpecification } from "maplibre-gl";
-
-import SearchTab from "./search/SearchTab";
-
-import DirectionTab from "./direction/DirectionTab";
+import { AttributionControl, Map, MapLibreEvent, StyleSpecification } from "maplibre-gl";
 
 import { useAppDispatch, useAppSelector } from "./store";
-import { selectTab, selectViewState, tabChanged, viewStateChanged } from "./store/mapSlice";
+import { selectTab, selectViewState, viewStateChanged } from "./store/mapSlice";
 
 import MapFlyer from "./MapFlyer";
 
 import ContextMenuManager from "./ContextMenuManager";
 
+import "./css/index.scss";
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
 import DirectionMap from "./direction/DirectionMap";
 import SearchMap from "./search/SearchMap";
 import { DOM } from "pentatrion-geo/src/maplibre/core/util/dom";
@@ -31,6 +26,7 @@ import { useEffect, useState } from "react";
 import { prepareStyle } from "./layer/util";
 import StreetViewMap from "./street-view/StreetViewMap";
 import StreetViewWindow from "./street-view/StreetViewWindow";
+import TabsControl from "./TabsControl";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/icons/arrow.png").then((img) => {
@@ -50,6 +46,9 @@ function handleAfterMapInstanciation(map: Map) {
     positions["bottom-right"] && bottomContainer.append(positions["bottom-right"]);
     positions["bottom"] = DOM.create("div", "maplibregl-ctrl-bottom", bottomContainer);
   }
+
+  // @ts-ignore position added above
+  map.addControl(new AttributionControl(), "bottom");
 }
 
 function App() {
@@ -61,27 +60,13 @@ function App() {
   const terrain = useAppSelector(selectTerrain);
   const hillshade = useAppSelector(selectHillshade);
   const streetView = useAppSelector(selectStreetView);
+  const tab = useAppSelector(selectTab);
 
   const [uncontrolledStyle, setUncontrolledStyle] = useState<StyleSpecification | string>({
     version: 8,
     sources: {},
     layers: [],
   });
-
-  const tab = useAppSelector(selectTab);
-
-  const tabs = [
-    {
-      id: "search",
-      title: <i className="fe-search"></i>,
-      content: <SearchTab />,
-    },
-    {
-      id: "direction",
-      title: <i className="fe-route"></i>,
-      content: <DirectionTab />,
-    },
-  ];
 
   function handleMoveEnd(e: MapLibreEvent) {
     const map = e.target;
@@ -106,25 +91,20 @@ function App() {
           onMoveEnd={handleMoveEnd}
           initialCenter={viewState.center}
           initialZoom={viewState.zoom}
+          initialAttributionControl={false}
           mapStyle={uncontrolledStyle}
           afterInstanciation={handleAfterMapInstanciation}
         >
+          <TabsControl />
           <BaseLayerControl />
 
           <MapFlyer />
+          {streetView && <StreetViewMap />}
           {tab === "direction" && <DirectionMap />}
           {tab === "search" && <SearchMap />}
-          {streetView && <StreetViewMap />}
           <ContextMenuManager />
         </RMap>
-        <aside className="sidebar">
-          <Tabs
-            fullWidth={true}
-            tabs={tabs}
-            value={tab}
-            onChange={(e) => dispatch(tabChanged(e))}
-          />
-        </aside>
+        <aside className="sidebar"></aside>
       </div>
       {streetView && <StreetViewWindow />}
     </div>

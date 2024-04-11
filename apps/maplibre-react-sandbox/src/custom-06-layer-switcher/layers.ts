@@ -5,9 +5,9 @@ import {
   getIgnOrthophotoURL,
   getIgnScan25URL,
   getIgnStreetsURL,
-  getSwissDefaultURL,
-  getSwissOrthophotoURL,
-  getSwissScan25URL,
+  swissDefaultURL,
+  swissOrthophotoURL,
+  swissScan25URL,
   googleOrthophotoURL,
   googleReliefURL,
   googleRoadURL,
@@ -21,7 +21,7 @@ export interface LayerInfos {
   label: string;
   description?: string;
   thumbnail: string;
-  style: string;
+  style: string | string[];
   type: "vector" | "raster";
 }
 
@@ -152,21 +152,21 @@ export const layersById = {
     type: "raster",
     label: "Swiss Orthophoto",
     thumbnail: "/styles/swiss/orthophoto.png",
-    style: getSwissOrthophotoURL(),
+    style: swissOrthophotoURL,
   } satisfies LayerInfos,
   "swiss-raster-default": {
     id: "swiss-raster-default",
     type: "raster",
     label: "Swiss défaut",
     thumbnail: "/styles/swiss/default.png",
-    style: getSwissDefaultURL(),
+    style: swissDefaultURL,
   } satisfies LayerInfos,
   "swiss-raster-default_25": {
     id: "swiss-raster-default_25",
     type: "raster",
     label: "Swiss 1/25",
     thumbnail: "/styles/swiss/default_25.png",
-    style: getSwissScan25URL(),
+    style: swissScan25URL,
   } satisfies LayerInfos,
   maptiler: {
     id: "maptiler",

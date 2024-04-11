@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["google.maps"]
+    "types": ["google.maps"],
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }

@@ -20,7 +20,7 @@
       "source": "plan_ign",
       "source-layer": "routier_chemin_sou",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -52,7 +52,7 @@
       "source": "plan_ign",
       "source-layer": "routier_chemin_sou",
       "minzoom": 14,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -83,7 +83,7 @@
       "source": "plan_ign",
       "source-layer": "routier_chemin_sou",
       "minzoom": 14,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -115,7 +115,7 @@
       "source": "plan_ign",
       "source-layer": "routier_chemin_sou",
       "minzoom": 14,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -147,7 +147,7 @@
       "source": "plan_ign",
       "source-layer": "routier_chemin_sou",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -179,7 +179,7 @@
       "source": "plan_ign",
       "source-layer": "routier_chemin_sou",
       "minzoom": 12,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -209,7 +209,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -241,7 +241,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 12,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -275,7 +275,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -305,7 +305,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -335,7 +335,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -369,7 +369,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 11,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -400,7 +400,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -435,7 +435,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -468,7 +468,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 7,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -503,7 +503,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -536,7 +536,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 7,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -563,7 +563,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -595,7 +595,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -626,7 +626,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 12,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -660,7 +660,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -690,7 +690,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -720,7 +720,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -754,7 +754,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 11,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -792,7 +792,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -827,7 +827,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -867,7 +867,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -903,7 +903,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -942,7 +942,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -970,7 +970,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1002,7 +1002,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -1042,7 +1042,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1069,12 +1069,26 @@
       }
     },
     {
+      "id": "parcellaire - parcelle surface",
+      "type": "fill",
+      "source": "plan_ign",
+      "source-layer": "parcellaire_parcelle",
+      "layout": {
+        "visibility": "visible"
+      },
+      "filter": ["==", "symbo", "PARCELLE"],
+      "paint": {
+        "fill-color": "#FFFFD1",
+        "fill-opacity": 0.5
+      }
+    },
+    {
       "id": "bati ZAI - Autres",
       "type": "fill",
       "source": "plan_ign",
       "source-layer": "bati_zai",
       "minzoom": 15,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible"
       },
@@ -1360,7 +1374,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1579,7 +1593,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "minzoom": 11,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1658,7 +1672,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1736,7 +1750,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1807,7 +1821,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "minzoom": 8,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1840,7 +1854,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "minzoom": 12,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1885,7 +1899,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1915,7 +1929,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1945,7 +1959,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -2023,7 +2037,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -2113,7 +2127,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -2201,7 +2215,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -2240,7 +2254,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -2312,7 +2326,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -2344,7 +2358,7 @@
       "source": "plan_ign",
       "source-layer": "routier_liaison",
       "minzoom": 8,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -2407,7 +2421,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_liaison",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -2476,7 +2490,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_liaison",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -2506,7 +2520,7 @@
       "type": "fill",
       "source": "plan_ign",
       "source-layer": "routier_surf",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible"
       },
@@ -2749,7 +2763,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -2945,7 +2959,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 11,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3024,7 +3038,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3102,7 +3116,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3173,7 +3187,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3236,7 +3250,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 12,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3281,7 +3295,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3311,7 +3325,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3341,7 +3355,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3387,7 +3401,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 11,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3425,7 +3439,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3472,7 +3486,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3511,7 +3525,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3558,7 +3572,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3596,7 +3610,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3635,7 +3649,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3667,7 +3681,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 10,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3707,7 +3721,7 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3731,6 +3745,101 @@
             [17, 2.1]
           ]
         }
+      }
+    },
+    {
+      "id": "parcellaire - parcelle bordure",
+      "type": "line",
+      "source": "plan_ign",
+      "source-layer": "parcellaire_parcelle",
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "filter": ["==", "symbo", "PARCELLE"],
+      "paint": {
+        "line-color": "#9933FF",
+        "line-width": 1
+      }
+    },
+    {
+      "id": "parcellaire - section",
+      "type": "line",
+      "source": "plan_ign",
+      "source-layer": "parcellaire_section",
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "butt",
+        "line-join": "round"
+      },
+      "filter": ["==", "symbo", "SECTION"],
+      "paint": {
+        "line-color": "#287B00",
+        "line-width": 1.9,
+        "line-dasharray": [2, 4, 2]
+      }
+    },
+    {
+      "id": "toponyme - parcellaire - section",
+      "type": "symbol",
+      "source": "plan_ign",
+      "source-layer": "toponyme_parcellaire_section",
+      "filter": ["==", "txt_typo", "SECTION"],
+      "layout": {
+        "symbol-placement": "line",
+        "text-offset": [0, 0],
+        "text-field": "{texte}",
+        "text-size": 15,
+        "text-anchor": "center",
+        "text-keep-upright": true,
+        "text-max-angle": 45,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#287B00"
+      }
+    },
+    {
+      "id": "toponyme - parcellaire - parcelle",
+      "type": "symbol",
+      "source": "plan_ign",
+      "source-layer": "toponyme_parcellaire_parcelle",
+      "filter": ["==", "txt_typo", "PARCELLE"],
+      "layout": {
+        "symbol-placement": "point",
+        "text-field": "{texte}",
+        "text-size": 11,
+        "text-anchor": "center",
+        "text-keep-upright": true,
+        "text-max-angle": 45,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#9933FF",
+        "text-halo-width": 1,
+        "text-halo-color": "#FFFFFF"
+      }
+    },
+    {
+      "id": "toponyme - parcellaire - adresse",
+      "type": "symbol",
+      "source": "plan_ign",
+      "source-layer": "toponyme_parcellaire_adresse_ponc",
+      "filter": ["==", "txt_typo", "ADRESSE"],
+      "layout": {
+        "symbol-placement": "point",
+        "text-field": ["concat", ["get", "numero"], ["get", "indice_de_repetition"]],
+        "text-size": 11,
+        "text-anchor": "center",
+        "text-keep-upright": true,
+        "text-max-angle": 45,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#695744",
+        "text-halo-width": 1,
+        "text-halo-color": "#FFFFFF"
       }
     },
     {
@@ -3762,7 +3871,7 @@
       "source": "plan_ign",
       "source-layer": "limite_lin",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3809,7 +3918,7 @@
       "source": "plan_ign",
       "source-layer": "limite_lin",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3886,7 +3995,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -3926,7 +4035,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -3961,7 +4070,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -4001,7 +4110,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -4039,7 +4148,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -4078,7 +4187,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -4118,7 +4227,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -4153,7 +4262,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -4193,7 +4302,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -4231,7 +4340,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_borne",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "in",
         "symbo",
@@ -4270,7 +4379,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_routier_liaison_lin",
       "minzoom": 8,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": ["in", "txt_typo", "LIAISON_MARITIME", "LIAISON_MAR"],
       "layout": {
         "symbol-placement": "line",
@@ -5203,7 +5312,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 17,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": ["all", ["==", "symbo", "QUARTIER"], ["==", "txt_typo", "TYPO_E_GE"]],
       "layout": {
         "visibility": "visible",
@@ -5232,7 +5341,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 16,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": ["all", ["==", "symbo", "LIEU-DIT-HABITE"], ["==", "txt_typo", "TYPO_E_GE"]],
       "layout": {
         "visibility": "visible",
@@ -5260,7 +5369,7 @@
       "type": "symbol",
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": ["==", "txt_typo", "TYPO_A_10"],
       "layout": {
         "visibility": "visible",
@@ -5804,7 +5913,7 @@
       "type": "symbol",
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": ["==", "txt_typo", "TYPO_A_9"],
       "layout": {
         "visibility": "visible",
@@ -5833,7 +5942,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "all",
         ["!=", "symbo", "COMMUNE_FUSIONNEE"],
@@ -6207,7 +6316,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "all",
         ["!=", "symbo", "COMMUNE_FUSIONNEE"],
@@ -6241,7 +6350,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "all",
         ["!=", "symbo", "COMMUNE_FUSIONNEE"],
@@ -6679,7 +6788,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "all",
         ["in", "symbo", "COMMUNE_FUSIONNEE", "COMMUNE_CHEF_LIEU"],
@@ -6713,7 +6822,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "all",
         ["in", "symbo", "COMMUNE_FUSIONNEE", "COMMUNE_CHEF_LIEU"],
@@ -6747,7 +6856,7 @@
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 13,
-      "maxzoom": 20,
+      "maxzoom": 18,
       "filter": [
         "all",
         ["in", "symbo", "COMMUNE_FUSIONNEE", "COMMUNE_CHEF_LIEU"],

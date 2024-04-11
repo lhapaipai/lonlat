@@ -1,13 +1,17 @@
 import { StyleSpecification } from "maplibre-gl";
 
-export function createRasterStyle(wmtsUrl: string): StyleSpecification {
+export function createRasterStyle(
+  wmtsUrl: string[] | string,
+  attribution?: string,
+): StyleSpecification {
   return {
     version: 8,
     sources: {
       orthophoto: {
         type: "raster",
-        tiles: [wmtsUrl],
+        tiles: Array.isArray(wmtsUrl) ? wmtsUrl : [wmtsUrl],
         tileSize: 256,
+        attribution,
       },
     },
     layers: [

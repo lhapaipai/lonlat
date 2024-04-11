@@ -3,11 +3,11 @@ import {
   getIgnDefaultScanURL,
   getIgnOrthophotoURL,
   getIgnScan25URL,
-  getSwissDefaultURL,
-  getSwissOrthophotoURL,
-  getSwissScan25URL,
   googleOrthophotoURL,
   osmURL,
+  swissDefaultURL,
+  swissOrthophotoURL,
+  swissScan25URL,
 } from "pentatrion-geo";
 import { ignToken, mapTilerStreetsStyleUrl } from "../config/constants";
 import { StyleSpecification } from "maplibre-gl";
@@ -83,7 +83,10 @@ export const baseLayersById = {
     dataType: "raster",
     label: "IGN Scan",
     thumbnail: "/styles/ign/raster/default_scan.png",
-    style: createRasterStyle(getIgnDefaultScanURL(ignToken)),
+    style: createRasterStyle(
+      [getIgnDefaultScanURL(ignToken)],
+      '© <a href="https://www.ign.fr/">IGN</a>',
+    ),
     optionalLayers: [{ id: "ign-admin_express-adminexpress" }],
     country: "fr",
   } satisfies BaseLayerInfos,
@@ -93,7 +96,10 @@ export const baseLayersById = {
     dataType: "raster",
     label: "IGN Scan 25",
     thumbnail: "/styles/ign/raster/scan_25.png",
-    style: createRasterStyle(getIgnScan25URL(ignToken)),
+    style: createRasterStyle(
+      [getIgnScan25URL(ignToken)],
+      `© <a href="https://www.ign.fr/">IGN</a>`,
+    ),
     optionalLayers: [{ id: "ign-admin_express-adminexpress" }],
     country: "fr",
   } satisfies BaseLayerInfos,
@@ -103,7 +109,7 @@ export const baseLayersById = {
     dataType: "raster",
     label: "Satellite",
     thumbnail: "/styles/ign/raster/orthophoto.png",
-    style: createRasterStyle(getIgnOrthophotoURL()),
+    style: createRasterStyle([getIgnOrthophotoURL()], `© <a href="https://www.ign.fr/">IGN</a>`),
     optionalLayers: [
       { id: "ign-admin_express-adminexpress" },
       { id: "ign-pci-pci" },
@@ -119,7 +125,7 @@ export const baseLayersById = {
     label: "Plan",
     description: "",
     thumbnail: "/styles/ign/PLAN.IGN/standard.png",
-    style: "/enhanced-styles/ign/PLAN.IGN/standard.json",
+    style: "/styles/ign/PLAN.IGN/standard.json",
     optionalLayers: [
       { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
       { id: "ign-pci-pci", beforeId: "point coté" },
@@ -133,7 +139,10 @@ export const baseLayersById = {
     dataType: "raster",
     label: "Satellite",
     thumbnail: "/styles/swiss/orthophoto.png",
-    style: createRasterStyle(getSwissOrthophotoURL()),
+    style: createRasterStyle(
+      swissOrthophotoURL,
+      `© Données: <a href="https://www.swisstopo.admin.ch">swisstopo</a>`,
+    ),
     optionalLayers: [],
     country: "ch",
   } satisfies BaseLayerInfos,
@@ -143,7 +152,10 @@ export const baseLayersById = {
     dataType: "raster",
     label: "Scan",
     thumbnail: "/styles/swiss/default.png",
-    style: createRasterStyle(getSwissDefaultURL()),
+    style: createRasterStyle(
+      swissDefaultURL,
+      `© Données: <a href="https://www.swisstopo.admin.ch">swisstopo</a>`,
+    ),
     optionalLayers: [],
     country: "ch",
   } satisfies BaseLayerInfos,
@@ -153,7 +165,10 @@ export const baseLayersById = {
     dataType: "raster",
     label: "Scan 1/25",
     thumbnail: "/styles/swiss/default_25.png",
-    style: createRasterStyle(getSwissScan25URL()),
+    style: createRasterStyle(
+      swissScan25URL,
+      `© Données: <a href="https://www.swisstopo.admin.ch">swisstopo</a>`,
+    ),
     optionalLayers: [],
     country: "ch",
   } satisfies BaseLayerInfos,
@@ -164,7 +179,10 @@ export const baseLayersById = {
     dataType: "raster",
     label: "OSM",
     thumbnail: "/styles/osm/default.png",
-    style: createRasterStyle(osmURL),
+    style: createRasterStyle(
+      osmURL,
+      `© <a href="https://www.openstreetmap.org">Les Contributeurs d'OpenStreetMap</a>`,
+    ),
     optionalLayers: [
       { id: "ign-admin_express-adminexpress" },
       { id: "ign-pci-pci" },
@@ -178,8 +196,17 @@ export const baseLayersById = {
     dataType: "raster",
     label: "Google Sat",
     thumbnail: "/styles/google/orthophoto.png",
-    style: createRasterStyle(googleOrthophotoURL),
-    optionalLayers: [{ id: "ign-isohypse-isohypse_monochrome_marron" }],
+    style: createRasterStyle(
+      googleOrthophotoURL,
+      `© Données cartographiques <a href="https://www.google.com">Google</a>`,
+    ),
+    optionalLayers: [
+      { id: "ign-admin_express-adminexpress" },
+      { id: "ign-pci-pci" },
+      { id: "ign-isohypse-isohypse_monochrome_marron" },
+      { id: "ign-plan_ign-toponymes" },
+    ],
+
     country: "world",
   } satisfies BaseLayerInfos,
   maptiler: {
@@ -206,7 +233,7 @@ export const optionalLayersById = {
     label: "Libellés",
     description: "",
     thumbnail: "/styles/ign/PLAN.IGN/toponymes.png",
-    style: "/enhanced-styles/ign/PLAN.IGN/toponymes.json",
+    style: "/styles/ign/PLAN.IGN/toponymes.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -216,7 +243,7 @@ export const optionalLayersById = {
     label: "Cadastre",
     description: "",
     thumbnail: "/styles/ign/PCI/pci.png",
-    style: "/enhanced-styles/ign/PCI/pci.json",
+    style: "/styles/ign/PCI/pci.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -226,7 +253,7 @@ export const optionalLayersById = {
     label: "Frontières",
     description: "",
     thumbnail: "/styles/ign/ADMIN_EXPRESS/adminexpress.png",
-    style: "/enhanced-styles/ign/ADMIN_EXPRESS/adminexpress.json",
+    style: "/styles/ign/ADMIN_EXPRESS/adminexpress.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -236,7 +263,7 @@ export const optionalLayersById = {
     label: "Lignes niveau",
     description: "",
     thumbnail: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.png",
-    style: "/enhanced-styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
+    style: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
