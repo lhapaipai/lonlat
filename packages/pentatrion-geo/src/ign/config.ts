@@ -3,6 +3,8 @@
 import { urlBuilder } from "./urlBuilder";
 
 export const dataGeoserviceUrl = "https://data.geopf.fr";
+export const legacyWMTSEndpoint = "https://wxs.ign.fr/{TOKEN}/geoportail/wmts";
+export const geoplatformeWMTSEndpoint = "https://data.geopf.fr/private/wmts";
 
 /**
  * maxZoom: 20

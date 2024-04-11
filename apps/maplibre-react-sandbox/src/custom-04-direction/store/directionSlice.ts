@@ -3,8 +3,8 @@ import {
   filterDataFeatures,
   getRoute,
   hashCoords,
-  ORSDirectionFeature,
   GeoPointOption,
+  RouteFeatureResponse,
 } from "pentatrion-geo";
 import {
   createAsyncThunk,
@@ -20,7 +20,7 @@ import { FeatureCollection, Feature, Point } from "geojson";
 
 type DirectionState = {
   locations: (GeoPointOption | NoDataOption)[];
-  route: ORSDirectionFeature | null;
+  route: RouteFeatureResponse | null;
 };
 
 const initialState: DirectionState = {
@@ -51,7 +51,7 @@ const directionSlice = createSlice({
       const { feature, index } = action.payload;
       state.locations.splice(index, 0, feature);
     },
-    directionRouteChanged(state, action: PayloadAction<ORSDirectionFeature | null>) {
+    directionRouteChanged(state, action: PayloadAction<RouteFeatureResponse | null>) {
       state.route = action.payload;
     },
   },
@@ -88,8 +88,6 @@ directionLocationsListenerMiddleware.startListening({
       const newHash = hashCoords(validLocations);
       if (!state.direction.route || newHash !== state.direction.route.properties.coords_hash) {
         dispatch(fetchRoute());
-      } else {
-        console.log("same coords don't query ors");
       }
     } else {
       dispatch(directionRouteChanged(null));
@@ -99,10 +97,7 @@ directionLocationsListenerMiddleware.startListening({
 
 export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { getState }) => {
   const state = getState() as RootState;
-
   const validLocations = filterDataFeatures(state.direction.locations);
-
-  console.log("newState", state);
 
   return await getRoute(validLocations);
 });
@@ -113,27 +108,23 @@ export const selectValidDirectionLocations = createSelector(selectDirectionLocat
 );
 export const selectDirectionRoute = (state: RootState) => state.direction.route;
 
-export const selectDirectionWaypoints = createSelector(
-  selectDirectionRoute,
-  (route): null | FeatureCollection<Point> => {
-    if (!route) {
-      return null;
-    }
+export const selectDirectionWaypoints = createSelector(selectDirectionRoute, (route) => {
+  if (!route) {
+    return null;
+  }
 
-    const features: Feature<Point>[] = route.properties.way_points.map((index) => ({
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: route.geometry.coordinates[index],
-      },
-      properties: {},
-    }));
+  const features: Feature<Point>[] = route.properties.way_points.map((index) => ({
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: route.geometry.coordinates[index],
+    },
+    properties: {},
+  }));
 
-    const geojson: FeatureCollection<Point> = {
-      type: "FeatureCollection",
-      features,
-    };
-    console.log(geojson);
-    return geojson;
-  },
-);
+  const geojson: FeatureCollection<Point> = {
+    type: "FeatureCollection",
+    features,
+  };
+  return geojson;
+});

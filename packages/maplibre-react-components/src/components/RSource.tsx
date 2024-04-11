@@ -40,7 +40,7 @@ function uniqueId(): number {
 
 function createSource(map: Map, sourceId: string, sourceOptions: SourceSpecification) {
   if (map.style && map.style._loaded) {
-    console.log("createSource", sourceId);
+    // console.log("createSource", sourceId);
     map.addSource(sourceId, sourceOptions);
     return map.getSource(sourceId);
   }
@@ -119,7 +119,7 @@ function updateSource(
 
 function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   const { id, children, ...sourceOptions } = props;
-  console.log("Render RSource");
+  // console.log("Render RSource");
 
   const context = useContext(mapLibreContext);
   const map = context.map;
@@ -179,7 +179,7 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   let source = map.style && map.getSource(sourceId);
 
   if (source) {
-    console.log("updateSource", sourceId);
+    // console.log("updateSource", sourceId);
     updateSource(source, sourceOptions, prevOptionsRef.current);
   } else {
     source = createSource(map, sourceId, sourceOptions);

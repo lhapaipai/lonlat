@@ -33,6 +33,7 @@ lonlatFeatureListenerMiddleware.startListening({
     }
 
     let reversedFeature: GeoPointOption | null = null;
+
     try {
       reversedFeature = await resolveLonLatFeaturePoint(feature);
     } catch (err) {

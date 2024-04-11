@@ -1,5 +1,5 @@
 import { LngLatBounds, LngLatLike } from "maplibre-gl";
-import { GeoOption } from "./types";
+import { GeoOption } from "..";
 import Fuse from "fuse.js";
 import { NoDataOption } from "pentatrion-design";
 

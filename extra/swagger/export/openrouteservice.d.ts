@@ -5,17 +5,15 @@ export type APISchemas = {
      * The locations to be snapped as array of `longitude/latitude` pairs.
      * @example 6.501,46.0916,6.5025,46.0839
      */
-    locations: Array<Array<number>>;
-    /*
+    locations: Array<Array<number>> /*
      * Arbitrary identification string of the request reflected in the meta information.
      * @example my_request
-     */
-    id?: string;
-    /*
+     */;
+    id?: string /*
      * Maximum radius in meters around given coordinates to search for graph edges.
      * Format: double
      * @example 300
-     */
+     */;
     radius: number;
   };
   /* Information about the openrouteservice engine used */
@@ -24,16 +22,14 @@ export type APISchemas = {
      * The backend version of the openrouteservice that was queried
      * @example 8.0
      */
-    version?: string;
-    /*
+    version?: string /*
      * The date that the service was last updated
      * @example 2019-02-07T14:28:11Z
-     */
-    build_date?: string;
-    /*
+     */;
+    build_date?: string /*
      * The date that the graph data was last updated
      * @example 2019-02-07T14:28:11Z
-     */
+     */;
     graph_date?: string;
   };
   /* The snapped locations as coordinates and snapping distance. */
@@ -42,17 +38,15 @@ export type APISchemas = {
      * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
      * @example 8.678962,49.40783
      */
-    location?: Array<number>;
-    /*
+    location?: Array<number> /*
      * Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
      * @example Bergheimer Straße
-     */
-    name?: string;
-    /*
+     */;
+    name?: string /*
      * Distance between the `source/destination` Location and the used point on the routing graph in meters.
      * Format: double
      * @example 1.2
-     */
+     */;
     snapped_distance?: number;
   };
   /* The Snapping Response contains the snapped coordinates. */
@@ -63,17 +57,15 @@ export type APISchemas = {
        * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
        * @example 8.678962,49.40783
        */
-      location?: Array<number>;
-      /*
+      location?: Array<number> /*
        * Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
        * @example Bergheimer Straße
-       */
-      name?: string;
-      /*
+       */;
+      name?: string /*
        * Distance between the `source/destination` Location and the used point on the routing graph in meters.
        * Format: double
        * @example 1.2
-       */
+       */;
       snapped_distance?: number;
     }>;
     /* Information about the request */
@@ -82,22 +74,19 @@ export type APISchemas = {
        * Copyright and attribution information
        * @example openrouteservice.org | OpenStreetMap contributors
        */
-      attribution?: string;
-      /*
+      attribution?: string /*
        * The MD5 hash of the OSM planet file that was used for generating graphs
        * @example c0327ba6
-       */
-      osm_file_md5_hash?: string;
-      /*
+       */;
+      osm_file_md5_hash?: string /*
        * The service that was requested
        * @example snap
-       */
-      service?: string;
-      /*
+       */;
+      service?: string /*
        * Time that the request was made (UNIX Epoch time)
        * Format: int64
        * @example 1549549847974
-       */
+       */;
       timestamp?: number;
       /* Snapping service endpoint. */
       query?: {
@@ -105,17 +94,15 @@ export type APISchemas = {
          * The locations to be snapped as array of `longitude/latitude` pairs.
          * @example 6.501,46.0916,6.5025,46.0839
          */
-        locations: Array<Array<number>>;
-        /*
+        locations: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
-        id?: string;
-        /*
+         */;
+        id?: string /*
          * Maximum radius in meters around given coordinates to search for graph edges.
          * Format: double
          * @example 300
-         */
+         */;
         radius: number;
       };
       /* Information about the openrouteservice engine used */
@@ -124,22 +111,19 @@ export type APISchemas = {
          * The backend version of the openrouteservice that was queried
          * @example 8.0
          */
-        version?: string;
-        /*
+        version?: string /*
          * The date that the service was last updated
          * @example 2019-02-07T14:28:11Z
-         */
-        build_date?: string;
-        /*
+         */;
+        build_date?: string /*
          * The date that the graph data was last updated
          * @example 2019-02-07T14:28:11Z
-         */
+         */;
         graph_date?: string;
-      };
-      /*
+      } /*
        * System message
        * @example A message string configured in the service
-       */
+       */;
       system_message?: string;
     };
   };
@@ -149,22 +133,19 @@ export type APISchemas = {
      * Copyright and attribution information
      * @example openrouteservice.org | OpenStreetMap contributors
      */
-    attribution?: string;
-    /*
+    attribution?: string /*
      * The MD5 hash of the OSM planet file that was used for generating graphs
      * @example c0327ba6
-     */
-    osm_file_md5_hash?: string;
-    /*
+     */;
+    osm_file_md5_hash?: string /*
      * The service that was requested
      * @example snap
-     */
-    service?: string;
-    /*
+     */;
+    service?: string /*
      * Time that the request was made (UNIX Epoch time)
      * Format: int64
      * @example 1549549847974
-     */
+     */;
     timestamp?: number;
     /* Snapping service endpoint. */
     query?: {
@@ -172,17 +153,15 @@ export type APISchemas = {
        * The locations to be snapped as array of `longitude/latitude` pairs.
        * @example 6.501,46.0916,6.5025,46.0839
        */
-      locations: Array<Array<number>>;
-      /*
+      locations: Array<Array<number>> /*
        * Arbitrary identification string of the request reflected in the meta information.
        * @example my_request
-       */
-      id?: string;
-      /*
+       */;
+      id?: string /*
        * Maximum radius in meters around given coordinates to search for graph edges.
        * Format: double
        * @example 300
-       */
+       */;
       radius: number;
     };
     /* Information about the openrouteservice engine used */
@@ -191,22 +170,19 @@ export type APISchemas = {
        * The backend version of the openrouteservice that was queried
        * @example 8.0
        */
-      version?: string;
-      /*
+      version?: string /*
        * The date that the service was last updated
        * @example 2019-02-07T14:28:11Z
-       */
-      build_date?: string;
-      /*
+       */;
+      build_date?: string /*
        * The date that the graph data was last updated
        * @example 2019-02-07T14:28:11Z
-       */
+       */;
       graph_date?: string;
-    };
-    /*
+    } /*
      * System message
      * @example A message string configured in the service
-     */
+     */;
     system_message?: string;
   };
   /* Information about the service and request */
@@ -219,27 +195,24 @@ export type APISchemas = {
        * "Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
        * @example Gerhart-Hauptmann-Straße
        */
-      name?: string;
-      /*
+      name?: string /*
        * Distance between the `source/destination` Location and the used point on the routing graph in meters.
        * Format: double
        * @example 0.02
-       */
-      snapped_distance?: number;
-      /*
+       */;
+      snapped_distance?: number /*
        * Index of the requested location
        * Format: int32
-       */
+       */;
       source_id?: number;
     };
     /* Feature geometry */
     geometry?: {
       /* GeoJSON type */
-      type?: string;
-      /*
+      type?: string /*
        * Lon/Lat coordinates of the snapped location
        * @example 6.501,46.0916
-       */
+       */;
       coordinates?: Array<number>;
     };
   };
@@ -249,27 +222,24 @@ export type APISchemas = {
      * "Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
      * @example Gerhart-Hauptmann-Straße
      */
-    name?: string;
-    /*
+    name?: string /*
      * Distance between the `source/destination` Location and the used point on the routing graph in meters.
      * Format: double
      * @example 0.02
-     */
-    snapped_distance?: number;
-    /*
+     */;
+    snapped_distance?: number /*
      * Index of the requested location
      * Format: int32
-     */
+     */;
     source_id?: number;
   };
   /* Feature geometry */
   GeoJSONPointGeometry: {
     /* GeoJSON type */
-    type?: string;
-    /*
+    type?: string /*
      * Lon/Lat coordinates of the snapped location
      * @example 6.501,46.0916
-     */
+     */;
     coordinates?: Array<number>;
   };
   /* The GeoJSON Snapping Response contains the snapped coordinates in GeoJSON format. */
@@ -286,27 +256,24 @@ export type APISchemas = {
          * "Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
          * @example Gerhart-Hauptmann-Straße
          */
-        name?: string;
-        /*
+        name?: string /*
          * Distance between the `source/destination` Location and the used point on the routing graph in meters.
          * Format: double
          * @example 0.02
-         */
-        snapped_distance?: number;
-        /*
+         */;
+        snapped_distance?: number /*
          * Index of the requested location
          * Format: int32
-         */
+         */;
         source_id?: number;
       };
       /* Feature geometry */
       geometry?: {
         /* GeoJSON type */
-        type?: string;
-        /*
+        type?: string /*
          * Lon/Lat coordinates of the snapped location
          * @example 6.501,46.0916
-         */
+         */;
         coordinates?: Array<number>;
       };
     }>;
@@ -316,22 +283,19 @@ export type APISchemas = {
        * Copyright and attribution information
        * @example openrouteservice.org | OpenStreetMap contributors
        */
-      attribution?: string;
-      /*
+      attribution?: string /*
        * The MD5 hash of the OSM planet file that was used for generating graphs
        * @example c0327ba6
-       */
-      osm_file_md5_hash?: string;
-      /*
+       */;
+      osm_file_md5_hash?: string /*
        * The service that was requested
        * @example snap
-       */
-      service?: string;
-      /*
+       */;
+      service?: string /*
        * Time that the request was made (UNIX Epoch time)
        * Format: int64
        * @example 1549549847974
-       */
+       */;
       timestamp?: number;
       /* Snapping service endpoint. */
       query?: {
@@ -339,17 +303,15 @@ export type APISchemas = {
          * The locations to be snapped as array of `longitude/latitude` pairs.
          * @example 6.501,46.0916,6.5025,46.0839
          */
-        locations: Array<Array<number>>;
-        /*
+        locations: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
-        id?: string;
-        /*
+         */;
+        id?: string /*
          * Maximum radius in meters around given coordinates to search for graph edges.
          * Format: double
          * @example 300
-         */
+         */;
         radius: number;
       };
       /* Information about the openrouteservice engine used */
@@ -358,28 +320,24 @@ export type APISchemas = {
          * The backend version of the openrouteservice that was queried
          * @example 8.0
          */
-        version?: string;
-        /*
+        version?: string /*
          * The date that the service was last updated
          * @example 2019-02-07T14:28:11Z
-         */
-        build_date?: string;
-        /*
+         */;
+        build_date?: string /*
          * The date that the graph data was last updated
          * @example 2019-02-07T14:28:11Z
-         */
+         */;
         graph_date?: string;
-      };
-      /*
+      } /*
        * System message
        * @example A message string configured in the service
-       */
+       */;
       system_message?: string;
-    };
-    /*
+    } /*
      * Bounding box that covers all returned snapping points
      * @example 46.1336,6.4245,46.0547,6.5603
-     */
+     */;
     bbox?: Array<number>;
   };
   /* The JSON body request sent to the matrix service which defines options and parameters regarding the matrix to generate. */
@@ -388,11 +346,10 @@ export type APISchemas = {
      * List of comma separated lists of `longitude,latitude` coordinates in WGS 84 (EPSG:4326)
      * @example 9.70093,48.477473,9.207916,49.153868,37.573242,55.801281,115.663757,38.106467
      */
-    locations: Array<Array<number>>;
-    /*
+    locations: Array<Array<number>> /*
      * Arbitrary identification string of the request reflected in the meta information.
      * @example my_request
-     */
+     */;
     id?: string;
     /* A list of indices that refers to the list of locations (starting with `0`). `{index_1},{index_2}[,{index_N} ...]` or `all` (default). example `[0,3]` for the first and fourth locations  */
     sources?: Array<string>;
@@ -415,17 +372,15 @@ Default: m. */
      * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
      * @example 8.678962,49.40783
      */
-    location?: Array<number>;
-    /*
+    location?: Array<number> /*
      * Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
      * @example Bergheimer Straße
-     */
-    name?: string;
-    /*
+     */;
+    name?: string /*
      * Distance between the `source/destination` Location and the used point on the routing graph in meters.
      * Format: double
      * @example 1.2
-     */
+     */;
     snapped_distance?: number;
   };
   /* The individual sources of the matrix calculations. */
@@ -434,17 +389,15 @@ Default: m. */
      * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
      * @example 8.678962,49.40783
      */
-    location?: Array<number>;
-    /*
+    location?: Array<number> /*
      * Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
      * @example Bergheimer Straße
-     */
-    name?: string;
-    /*
+     */;
+    name?: string /*
      * Distance between the `source/destination` Location and the used point on the routing graph in meters.
      * Format: double
      * @example 1.2
-     */
+     */;
     snapped_distance?: number;
   };
   /* The Matrix Response contains one matrix for each specified `metrics` value. */
@@ -455,27 +408,23 @@ Default: m. */
        * ID of the request (as passed in by the query)
        * @example request123
        */
-      id?: string;
-      /*
+      id?: string /*
        * Copyright and attribution information
        * @example openrouteservice.org, OpenStreetMap contributors
-       */
-      attribution?: string;
-      /*
+       */;
+      attribution?: string /*
        * The MD5 hash of the OSM planet file that was used for generating graphs
        * @example c0327ba6
-       */
-      osm_file_md5_hash?: string;
-      /*
+       */;
+      osm_file_md5_hash?: string /*
        * The service that was requested
        * @example matrix
-       */
-      service?: string;
-      /*
+       */;
+      service?: string /*
        * Time that the request was made (UNIX Epoch time)
        * Format: int64
        * @example 1549549847974
-       */
+       */;
       timestamp?: number;
       /* The JSON body request sent to the matrix service which defines options and parameters regarding the matrix to generate. */
       query?: {
@@ -483,11 +432,10 @@ Default: m. */
          * List of comma separated lists of `longitude,latitude` coordinates in WGS 84 (EPSG:4326)
          * @example 9.70093,48.477473,9.207916,49.153868,37.573242,55.801281,115.663757,38.106467
          */
-        locations: Array<Array<number>>;
-        /*
+        locations: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
+         */;
         id?: string;
         /* A list of indices that refers to the list of locations (starting with `0`). `{index_1},{index_2}[,{index_N} ...]` or `all` (default). example `[0,3]` for the first and fourth locations  */
         sources?: Array<string>;
@@ -510,33 +458,28 @@ Default: m. */
          * The backend version of the openrouteservice that was queried
          * @example 8.0
          */
-        version?: string;
-        /*
+        version?: string /*
          * The date that the service was last updated
          * @example 2019-02-07T14:28:11Z
-         */
-        build_date?: string;
-        /*
+         */;
+        build_date?: string /*
          * The date that the graph data was last updated
          * @example 2019-02-07T14:28:11Z
-         */
+         */;
         graph_date?: string;
-      };
-      /*
+      } /*
        * System message
        * @example A message string configured in the service
-       */
+       */;
       system_message?: string;
-    };
-    /*
+    } /*
      * The durations of the matrix calculations.
      * @example 0,25,25,0
-     */
-    durations?: Array<Array<number>>;
-    /*
+     */;
+    durations?: Array<Array<number>> /*
      * The distances of the matrix calculations.
      * @example 0,0.25,0.25,0
-     */
+     */;
     distances?: Array<Array<number>>;
     /* The individual destinations of the matrix calculations. */
     destinations?: Array<{
@@ -544,17 +487,15 @@ Default: m. */
        * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
        * @example 8.678962,49.40783
        */
-      location?: Array<number>;
-      /*
+      location?: Array<number> /*
        * Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
        * @example Bergheimer Straße
-       */
-      name?: string;
-      /*
+       */;
+      name?: string /*
        * Distance between the `source/destination` Location and the used point on the routing graph in meters.
        * Format: double
        * @example 1.2
-       */
+       */;
       snapped_distance?: number;
     }>;
     /* The individual sources of the matrix calculations. */
@@ -563,17 +504,15 @@ Default: m. */
        * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
        * @example 8.678962,49.40783
        */
-      location?: Array<number>;
-      /*
+      location?: Array<number> /*
        * Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
        * @example Bergheimer Straße
-       */
-      name?: string;
-      /*
+       */;
+      name?: string /*
        * Distance between the `source/destination` Location and the used point on the routing graph in meters.
        * Format: double
        * @example 1.2
-       */
+       */;
       snapped_distance?: number;
     }>;
   };
@@ -583,27 +522,23 @@ Default: m. */
      * ID of the request (as passed in by the query)
      * @example request123
      */
-    id?: string;
-    /*
+    id?: string /*
      * Copyright and attribution information
      * @example openrouteservice.org, OpenStreetMap contributors
-     */
-    attribution?: string;
-    /*
+     */;
+    attribution?: string /*
      * The MD5 hash of the OSM planet file that was used for generating graphs
      * @example c0327ba6
-     */
-    osm_file_md5_hash?: string;
-    /*
+     */;
+    osm_file_md5_hash?: string /*
      * The service that was requested
      * @example matrix
-     */
-    service?: string;
-    /*
+     */;
+    service?: string /*
      * Time that the request was made (UNIX Epoch time)
      * Format: int64
      * @example 1549549847974
-     */
+     */;
     timestamp?: number;
     /* The JSON body request sent to the matrix service which defines options and parameters regarding the matrix to generate. */
     query?: {
@@ -611,11 +546,10 @@ Default: m. */
        * List of comma separated lists of `longitude,latitude` coordinates in WGS 84 (EPSG:4326)
        * @example 9.70093,48.477473,9.207916,49.153868,37.573242,55.801281,115.663757,38.106467
        */
-      locations: Array<Array<number>>;
-      /*
+      locations: Array<Array<number>> /*
        * Arbitrary identification string of the request reflected in the meta information.
        * @example my_request
-       */
+       */;
       id?: string;
       /* A list of indices that refers to the list of locations (starting with `0`). `{index_1},{index_2}[,{index_N} ...]` or `all` (default). example `[0,3]` for the first and fourth locations  */
       sources?: Array<string>;
@@ -638,22 +572,19 @@ Default: m. */
        * The backend version of the openrouteservice that was queried
        * @example 8.0
        */
-      version?: string;
-      /*
+      version?: string /*
        * The date that the service was last updated
        * @example 2019-02-07T14:28:11Z
-       */
-      build_date?: string;
-      /*
+       */;
+      build_date?: string /*
        * The date that the graph data was last updated
        * @example 2019-02-07T14:28:11Z
-       */
+       */;
       graph_date?: string;
-    };
-    /*
+    } /*
      * System message
      * @example A message string configured in the service
-     */
+     */;
     system_message?: string;
   };
   /* The JSON body request sent to the isochrones service which defines options and parameters regarding the isochrones to generate. */
@@ -662,43 +593,38 @@ Default: m. */
      * Arbitrary identification string of the request reflected in the meta information.
      * @example my_request
      */
-    id?: string;
-    /*
+    id?: string /*
      * The locations to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
      * @example 6.501,46.0916,6.5025,46.0839
-     */
+     */;
     locations: Array<Array<number>>;
     /* `start` treats the location(s) as starting point, `destination` as goal. */
-    location_type?: "start" | "destination";
-    /*
+    location_type?: "start" | "destination" /*
      * Maximum range value of the analysis in **seconds** for time and **metres** for distance.Alternatively a comma separated list of specific range values. Ranges will be the same for all locations.
      * @example 300,200
-     */
+     */;
     range: Array<number>;
     /* Specifies the isochrones reachability type. */
     range_type?: "time" | "distance";
     /* Specifies the distance units only if `range_type` is set to distance.
 Default: m.  */
-    units?: "m" | "km" | "mi";
-    /*
+    units?: "m" | "km" | "mi" /*
      * Advanced options for routing
      * @example [object Object]
-     */
+     */;
     options?: {
       /*
        * List of features to avoid.
        * @example highways
        */
-      avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-      /*
+      avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
        * Specify which type of border crossing to avoid
        * @example controlled
-       */
-      avoid_borders?: "all" | "controlled" | "none";
-      /*
+       */;
+      avoid_borders?: "all" | "controlled" | "none" /*
        * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
        * @example 11,193
-       */
+       */;
       avoid_countries?: Array<string>;
       /* Definition of the vehicle type. */
       vehicle_type?: "hgv" | "bus" | "agricultural" | "delivery" | "forestry" | "goods" | "unknown";
@@ -743,30 +669,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
            * Format: float
            * @example 8.4
            */
-          length?: number;
-          /*
+          length?: number /*
            * Width restriction in metres.
            * Format: float
            * @example 5.6
-           */
-          width?: number;
-          /*
+           */;
+          width?: number /*
            * Height restriction in metres.
            * Format: float
            * @example 4.2
-           */
-          height?: number;
-          /*
+           */;
+          height?: number /*
            * Axleload restriction in tons.
            * Format: float
            * @example 50
-           */
-          axleload?: number;
-          /*
+           */;
+          axleload?: number /*
            * Weight restriction in tons.
            * Format: float
            * @example 40
-           */
+           */;
           weight?: number;
           /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
           hazmat?: boolean;
@@ -783,33 +705,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             | "very_bad"
             | "horrible"
             | "very_horrible"
-            | "impassable";
-          /*
+            | "impassable" /*
            * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
            * Format: float
-           */
-          maximum_sloped_kerb?: number;
-          /*
+           */;
+          maximum_sloped_kerb?: number /*
            * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
            * Format: int32
-           */
-          maximum_incline?: number;
-          /*
+           */;
+          maximum_incline?: number /*
            * Specifies the minimum width of the footway in metres.
            * Format: float
            * @example 2.5
-           */
+           */;
           minimum_width?: number;
-        };
-        /*
+        } /*
          * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
          * @example true
-         */
-        surface_quality_known?: boolean;
-        /*
+         */;
+        surface_quality_known?: boolean /*
          * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
          * @example true
-         */
+         */;
         allow_unsuitable?: boolean;
       };
       /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -817,29 +734,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         empty?: boolean;
         /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
         [key: string]: {};
-      };
-      /*
+      } /*
        * Specifies the parameters for generating round trip routes.
        * @example [object Object]
-       */
+       */;
       round_trip?: {
         /*
          * The target length of the route in `m` (note that this is a preferred value, but results may be different).
          * Format: float
          * @example 10000
          */
-        length?: number;
-        /*
+        length?: number /*
          * The number of points to use on the route. Larger values create more circular routes.
          * Format: int32
          * @example 5
-         */
-        points?: number;
-        /*
+         */;
+        points?: number /*
          * A seed to use for adding randomisation to the overall direction of the generated route
          * Format: int64
          * @example 1
-         */
+         */;
         seed?: number;
       };
     };
@@ -847,17 +761,15 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
 Default: m.  */
     area_units?: "m" | "km" | "mi";
     /* Specifies whether to return intersecting polygons.  */
-    intersections?: boolean;
-    /*
+    intersections?: boolean /*
      * List of isochrones attributes
      * @example area
-     */
-    attributes?: Array<"area" | "reachfactor" | "total_pop">;
-    /*
+     */;
+    attributes?: Array<"area" | "reachfactor" | "total_pop"> /*
      * Interval of isochrones or equidistants. This is only used if a single range value is given. Value in **seconds** for time and **meters** for distance.
      * Format: double
      * @example 30
-     */
+     */;
     interval?: number /*
  * Applies a level of generalisation to the isochrone polygons generated as a `smoothing_factor` between `0` and `100.0`.
 Generalisation is produced by determining a maximum length of a connecting line between two points found on the outside of a containing polygon.
@@ -884,30 +796,26 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
      * Format: float
      * @example 8.4
      */
-    length?: number;
-    /*
+    length?: number /*
      * Width restriction in metres.
      * Format: float
      * @example 5.6
-     */
-    width?: number;
-    /*
+     */;
+    width?: number /*
      * Height restriction in metres.
      * Format: float
      * @example 4.2
-     */
-    height?: number;
-    /*
+     */;
+    height?: number /*
      * Axleload restriction in tons.
      * Format: float
      * @example 50
-     */
-    axleload?: number;
-    /*
+     */;
+    axleload?: number /*
      * Weight restriction in tons.
      * Format: float
      * @example 40
-     */
+     */;
     weight?: number;
     /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
     hazmat?: boolean;
@@ -924,22 +832,19 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
       | "very_bad"
       | "horrible"
       | "very_horrible"
-      | "impassable";
-    /*
+      | "impassable" /*
      * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
      * Format: float
-     */
-    maximum_sloped_kerb?: number;
-    /*
+     */;
+    maximum_sloped_kerb?: number /*
      * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
      * Format: int32
-     */
-    maximum_incline?: number;
-    /*
+     */;
+    maximum_incline?: number /*
      * Specifies the minimum width of the footway in metres.
      * Format: float
      * @example 2.5
-     */
+     */;
     minimum_width?: number;
   };
   /* Specifies additional routing parameters. For all profiles except `driving-car`. */
@@ -983,30 +888,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
        * Format: float
        * @example 8.4
        */
-      length?: number;
-      /*
+      length?: number /*
        * Width restriction in metres.
        * Format: float
        * @example 5.6
-       */
-      width?: number;
-      /*
+       */;
+      width?: number /*
        * Height restriction in metres.
        * Format: float
        * @example 4.2
-       */
-      height?: number;
-      /*
+       */;
+      height?: number /*
        * Axleload restriction in tons.
        * Format: float
        * @example 50
-       */
-      axleload?: number;
-      /*
+       */;
+      axleload?: number /*
        * Weight restriction in tons.
        * Format: float
        * @example 40
-       */
+       */;
       weight?: number;
       /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
       hazmat?: boolean;
@@ -1023,33 +924,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         | "very_bad"
         | "horrible"
         | "very_horrible"
-        | "impassable";
-      /*
+        | "impassable" /*
        * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
        * Format: float
-       */
-      maximum_sloped_kerb?: number;
-      /*
+       */;
+      maximum_sloped_kerb?: number /*
        * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
        * Format: int32
-       */
-      maximum_incline?: number;
-      /*
+       */;
+      maximum_incline?: number /*
        * Specifies the minimum width of the footway in metres.
        * Format: float
        * @example 2.5
-       */
+       */;
       minimum_width?: number;
-    };
-    /*
+    } /*
      * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
      * @example true
-     */
-    surface_quality_known?: boolean;
-    /*
+     */;
+    surface_quality_known?: boolean /*
      * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
      * @example true
-     */
+     */;
     allow_unsuitable?: boolean;
   };
   /* Describe additional weightings to be applied to edges on the routing. */
@@ -1083,50 +979,44 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
  * @example 0.4
  */;
     shadow?: number;
-  };
-  /*
+  } /*
    * Specifies the parameters for generating round trip routes.
    * @example [object Object]
-   */
+   */;
   roundTripRouteOptions: {
     /*
      * The target length of the route in `m` (note that this is a preferred value, but results may be different).
      * Format: float
      * @example 10000
      */
-    length?: number;
-    /*
+    length?: number /*
      * The number of points to use on the route. Larger values create more circular routes.
      * Format: int32
      * @example 5
-     */
-    points?: number;
-    /*
+     */;
+    points?: number /*
      * A seed to use for adding randomisation to the overall direction of the generated route
      * Format: int64
      * @example 1
-     */
+     */;
     seed?: number;
-  };
-  /*
+  } /*
    * Advanced options for routing
    * @example [object Object]
-   */
+   */;
   routeOptions: {
     /*
      * List of features to avoid.
      * @example highways
      */
-    avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-    /*
+    avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
      * Specify which type of border crossing to avoid
      * @example controlled
-     */
-    avoid_borders?: "all" | "controlled" | "none";
-    /*
+     */;
+    avoid_borders?: "all" | "controlled" | "none" /*
      * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
      * @example 11,193
-     */
+     */;
     avoid_countries?: Array<string>;
     /* Definition of the vehicle type. */
     vehicle_type?: "hgv" | "bus" | "agricultural" | "delivery" | "forestry" | "goods" | "unknown";
@@ -1171,30 +1061,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * Format: float
          * @example 8.4
          */
-        length?: number;
-        /*
+        length?: number /*
          * Width restriction in metres.
          * Format: float
          * @example 5.6
-         */
-        width?: number;
-        /*
+         */;
+        width?: number /*
          * Height restriction in metres.
          * Format: float
          * @example 4.2
-         */
-        height?: number;
-        /*
+         */;
+        height?: number /*
          * Axleload restriction in tons.
          * Format: float
          * @example 50
-         */
-        axleload?: number;
-        /*
+         */;
+        axleload?: number /*
          * Weight restriction in tons.
          * Format: float
          * @example 40
-         */
+         */;
         weight?: number;
         /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
         hazmat?: boolean;
@@ -1211,33 +1097,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
           | "very_bad"
           | "horrible"
           | "very_horrible"
-          | "impassable";
-        /*
+          | "impassable" /*
          * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
          * Format: float
-         */
-        maximum_sloped_kerb?: number;
-        /*
+         */;
+        maximum_sloped_kerb?: number /*
          * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
          * Format: int32
-         */
-        maximum_incline?: number;
-        /*
+         */;
+        maximum_incline?: number /*
          * Specifies the minimum width of the footway in metres.
          * Format: float
          * @example 2.5
-         */
+         */;
         minimum_width?: number;
-      };
-      /*
+      } /*
        * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
        * @example true
-       */
-      surface_quality_known?: boolean;
-      /*
+       */;
+      surface_quality_known?: boolean /*
        * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
        * @example true
-       */
+       */;
       allow_unsuitable?: boolean;
     };
     /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -1245,29 +1126,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
       empty?: boolean;
       /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
       [key: string]: {};
-    };
-    /*
+    } /*
      * Specifies the parameters for generating round trip routes.
      * @example [object Object]
-     */
+     */;
     round_trip?: {
       /*
        * The target length of the route in `m` (note that this is a preferred value, but results may be different).
        * Format: float
        * @example 10000
        */
-      length?: number;
-      /*
+      length?: number /*
        * The number of points to use on the route. Larger values create more circular routes.
        * Format: int32
        * @example 5
-       */
-      points?: number;
-      /*
+       */;
+      points?: number /*
        * A seed to use for adding randomisation to the overall direction of the generated route
        * Format: int64
        * @example 1
-       */
+       */;
       seed?: number;
     };
   };
@@ -1291,27 +1169,23 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
        * ID of the request (as passed in by the query)
        * @example request123
        */
-      id?: string;
-      /*
+      id?: string /*
        * Copyright and attribution information
        * @example openrouteservice.org | OpenStreetMap contributors
-       */
-      attribution?: string;
-      /*
+       */;
+      attribution?: string /*
        * The MD5 hash of the OSM planet file that was used for generating graphs
        * @example c0327ba6
-       */
-      osm_file_md5_hash?: string;
-      /*
+       */;
+      osm_file_md5_hash?: string /*
        * The service that was requested
        * @example isochrones
-       */
-      service?: string;
-      /*
+       */;
+      service?: string /*
        * Time that the request was made (UNIX Epoch time)
        * Format: int64
        * @example 1549549847974
-       */
+       */;
       timestamp?: number;
       /* The JSON body request sent to the isochrones service which defines options and parameters regarding the isochrones to generate. */
       query?: {
@@ -1319,43 +1193,38 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
          */
-        id?: string;
-        /*
+        id?: string /*
          * The locations to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
          * @example 6.501,46.0916,6.5025,46.0839
-         */
+         */;
         locations: Array<Array<number>>;
         /* `start` treats the location(s) as starting point, `destination` as goal. */
-        location_type?: "start" | "destination";
-        /*
+        location_type?: "start" | "destination" /*
          * Maximum range value of the analysis in **seconds** for time and **metres** for distance.Alternatively a comma separated list of specific range values. Ranges will be the same for all locations.
          * @example 300,200
-         */
+         */;
         range: Array<number>;
         /* Specifies the isochrones reachability type. */
         range_type?: "time" | "distance";
         /* Specifies the distance units only if `range_type` is set to distance.
 Default: m.  */
-        units?: "m" | "km" | "mi";
-        /*
+        units?: "m" | "km" | "mi" /*
          * Advanced options for routing
          * @example [object Object]
-         */
+         */;
         options?: {
           /*
            * List of features to avoid.
            * @example highways
            */
-          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-          /*
+          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
            * Specify which type of border crossing to avoid
            * @example controlled
-           */
-          avoid_borders?: "all" | "controlled" | "none";
-          /*
+           */;
+          avoid_borders?: "all" | "controlled" | "none" /*
            * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
            * @example 11,193
-           */
+           */;
           avoid_countries?: Array<string>;
           /* Definition of the vehicle type. */
           vehicle_type?:
@@ -1407,30 +1276,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: float
                * @example 8.4
                */
-              length?: number;
-              /*
+              length?: number /*
                * Width restriction in metres.
                * Format: float
                * @example 5.6
-               */
-              width?: number;
-              /*
+               */;
+              width?: number /*
                * Height restriction in metres.
                * Format: float
                * @example 4.2
-               */
-              height?: number;
-              /*
+               */;
+              height?: number /*
                * Axleload restriction in tons.
                * Format: float
                * @example 50
-               */
-              axleload?: number;
-              /*
+               */;
+              axleload?: number /*
                * Weight restriction in tons.
                * Format: float
                * @example 40
-               */
+               */;
               weight?: number;
               /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
               hazmat?: boolean;
@@ -1447,33 +1312,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 | "very_bad"
                 | "horrible"
                 | "very_horrible"
-                | "impassable";
-              /*
+                | "impassable" /*
                * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                * Format: float
-               */
-              maximum_sloped_kerb?: number;
-              /*
+               */;
+              maximum_sloped_kerb?: number /*
                * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                * Format: int32
-               */
-              maximum_incline?: number;
-              /*
+               */;
+              maximum_incline?: number /*
                * Specifies the minimum width of the footway in metres.
                * Format: float
                * @example 2.5
-               */
+               */;
               minimum_width?: number;
-            };
-            /*
+            } /*
              * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
              * @example true
-             */
-            surface_quality_known?: boolean;
-            /*
+             */;
+            surface_quality_known?: boolean /*
              * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
              * @example true
-             */
+             */;
             allow_unsuitable?: boolean;
           };
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -1481,29 +1341,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             empty?: boolean;
             /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
             [key: string]: {};
-          };
-          /*
+          } /*
            * Specifies the parameters for generating round trip routes.
            * @example [object Object]
-           */
+           */;
           round_trip?: {
             /*
              * The target length of the route in `m` (note that this is a preferred value, but results may be different).
              * Format: float
              * @example 10000
              */
-            length?: number;
-            /*
+            length?: number /*
              * The number of points to use on the route. Larger values create more circular routes.
              * Format: int32
              * @example 5
-             */
-            points?: number;
-            /*
+             */;
+            points?: number /*
              * A seed to use for adding randomisation to the overall direction of the generated route
              * Format: int64
              * @example 1
-             */
+             */;
             seed?: number;
           };
         };
@@ -1511,17 +1368,15 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
 Default: m.  */
         area_units?: "m" | "km" | "mi";
         /* Specifies whether to return intersecting polygons.  */
-        intersections?: boolean;
-        /*
+        intersections?: boolean /*
          * List of isochrones attributes
          * @example area
-         */
-        attributes?: Array<"area" | "reachfactor" | "total_pop">;
-        /*
+         */;
+        attributes?: Array<"area" | "reachfactor" | "total_pop"> /*
          * Interval of isochrones or equidistants. This is only used if a single range value is given. Value in **seconds** for time and **meters** for distance.
          * Format: double
          * @example 30
-         */
+         */;
         interval?: number /*
  * Applies a level of generalisation to the isochrone polygons generated as a `smoothing_factor` between `0` and `100.0`.
 Generalisation is produced by determining a maximum length of a connecting line between two points found on the outside of a containing polygon.
@@ -1541,22 +1396,19 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
          * The backend version of the openrouteservice that was queried
          * @example 8.0
          */
-        version?: string;
-        /*
+        version?: string /*
          * The date that the service was last updated
          * @example 2019-02-07T14:28:11Z
-         */
-        build_date?: string;
-        /*
+         */;
+        build_date?: string /*
          * The date that the graph data was last updated
          * @example 2019-02-07T14:28:11Z
-         */
+         */;
         graph_date?: string;
-      };
-      /*
+      } /*
        * System message
        * @example A message string configured in the service
-       */
+       */;
       system_message?: string;
     };
     features?: Array<{
@@ -1570,11 +1422,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
           [key: string]: {};
         };
       };
-    }>;
-    /*
+    }> /*
      * Bounding box that covers all returned isochrones
      * @example 46.1336,6.4245,46.0547,6.5603
-     */
+     */;
     bbox?: Array<number>;
   };
   /* Information about the request */
@@ -1583,27 +1434,23 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
      * ID of the request (as passed in by the query)
      * @example request123
      */
-    id?: string;
-    /*
+    id?: string /*
      * Copyright and attribution information
      * @example openrouteservice.org | OpenStreetMap contributors
-     */
-    attribution?: string;
-    /*
+     */;
+    attribution?: string /*
      * The MD5 hash of the OSM planet file that was used for generating graphs
      * @example c0327ba6
-     */
-    osm_file_md5_hash?: string;
-    /*
+     */;
+    osm_file_md5_hash?: string /*
      * The service that was requested
      * @example isochrones
-     */
-    service?: string;
-    /*
+     */;
+    service?: string /*
      * Time that the request was made (UNIX Epoch time)
      * Format: int64
      * @example 1549549847974
-     */
+     */;
     timestamp?: number;
     /* The JSON body request sent to the isochrones service which defines options and parameters regarding the isochrones to generate. */
     query?: {
@@ -1611,43 +1458,38 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
        * Arbitrary identification string of the request reflected in the meta information.
        * @example my_request
        */
-      id?: string;
-      /*
+      id?: string /*
        * The locations to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
        * @example 6.501,46.0916,6.5025,46.0839
-       */
+       */;
       locations: Array<Array<number>>;
       /* `start` treats the location(s) as starting point, `destination` as goal. */
-      location_type?: "start" | "destination";
-      /*
+      location_type?: "start" | "destination" /*
        * Maximum range value of the analysis in **seconds** for time and **metres** for distance.Alternatively a comma separated list of specific range values. Ranges will be the same for all locations.
        * @example 300,200
-       */
+       */;
       range: Array<number>;
       /* Specifies the isochrones reachability type. */
       range_type?: "time" | "distance";
       /* Specifies the distance units only if `range_type` is set to distance.
 Default: m.  */
-      units?: "m" | "km" | "mi";
-      /*
+      units?: "m" | "km" | "mi" /*
        * Advanced options for routing
        * @example [object Object]
-       */
+       */;
       options?: {
         /*
          * List of features to avoid.
          * @example highways
          */
-        avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-        /*
+        avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
          * Specify which type of border crossing to avoid
          * @example controlled
-         */
-        avoid_borders?: "all" | "controlled" | "none";
-        /*
+         */;
+        avoid_borders?: "all" | "controlled" | "none" /*
          * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
          * @example 11,193
-         */
+         */;
         avoid_countries?: Array<string>;
         /* Definition of the vehicle type. */
         vehicle_type?:
@@ -1699,30 +1541,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * Format: float
              * @example 8.4
              */
-            length?: number;
-            /*
+            length?: number /*
              * Width restriction in metres.
              * Format: float
              * @example 5.6
-             */
-            width?: number;
-            /*
+             */;
+            width?: number /*
              * Height restriction in metres.
              * Format: float
              * @example 4.2
-             */
-            height?: number;
-            /*
+             */;
+            height?: number /*
              * Axleload restriction in tons.
              * Format: float
              * @example 50
-             */
-            axleload?: number;
-            /*
+             */;
+            axleload?: number /*
              * Weight restriction in tons.
              * Format: float
              * @example 40
-             */
+             */;
             weight?: number;
             /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
             hazmat?: boolean;
@@ -1739,33 +1577,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
               | "very_bad"
               | "horrible"
               | "very_horrible"
-              | "impassable";
-            /*
+              | "impassable" /*
              * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
              * Format: float
-             */
-            maximum_sloped_kerb?: number;
-            /*
+             */;
+            maximum_sloped_kerb?: number /*
              * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
              * Format: int32
-             */
-            maximum_incline?: number;
-            /*
+             */;
+            maximum_incline?: number /*
              * Specifies the minimum width of the footway in metres.
              * Format: float
              * @example 2.5
-             */
+             */;
             minimum_width?: number;
-          };
-          /*
+          } /*
            * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
            * @example true
-           */
-          surface_quality_known?: boolean;
-          /*
+           */;
+          surface_quality_known?: boolean /*
            * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
            * @example true
-           */
+           */;
           allow_unsuitable?: boolean;
         };
         /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -1773,29 +1606,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
           empty?: boolean;
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
           [key: string]: {};
-        };
-        /*
+        } /*
          * Specifies the parameters for generating round trip routes.
          * @example [object Object]
-         */
+         */;
         round_trip?: {
           /*
            * The target length of the route in `m` (note that this is a preferred value, but results may be different).
            * Format: float
            * @example 10000
            */
-          length?: number;
-          /*
+          length?: number /*
            * The number of points to use on the route. Larger values create more circular routes.
            * Format: int32
            * @example 5
-           */
-          points?: number;
-          /*
+           */;
+          points?: number /*
            * A seed to use for adding randomisation to the overall direction of the generated route
            * Format: int64
            * @example 1
-           */
+           */;
           seed?: number;
         };
       };
@@ -1803,17 +1633,15 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
 Default: m.  */
       area_units?: "m" | "km" | "mi";
       /* Specifies whether to return intersecting polygons.  */
-      intersections?: boolean;
-      /*
+      intersections?: boolean /*
        * List of isochrones attributes
        * @example area
-       */
-      attributes?: Array<"area" | "reachfactor" | "total_pop">;
-      /*
+       */;
+      attributes?: Array<"area" | "reachfactor" | "total_pop"> /*
        * Interval of isochrones or equidistants. This is only used if a single range value is given. Value in **seconds** for time and **meters** for distance.
        * Format: double
        * @example 30
-       */
+       */;
       interval?: number /*
  * Applies a level of generalisation to the isochrone polygons generated as a `smoothing_factor` between `0` and `100.0`.
 Generalisation is produced by determining a maximum length of a connecting line between two points found on the outside of a containing polygon.
@@ -1833,22 +1661,19 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
        * The backend version of the openrouteservice that was queried
        * @example 8.0
        */
-      version?: string;
-      /*
+      version?: string /*
        * The date that the service was last updated
        * @example 2019-02-07T14:28:11Z
-       */
-      build_date?: string;
-      /*
+       */;
+      build_date?: string /*
        * The date that the graph data was last updated
        * @example 2019-02-07T14:28:11Z
-       */
+       */;
       graph_date?: string;
-    };
-    /*
+    } /*
      * System message
      * @example A message string configured in the service
-     */
+     */;
     system_message?: string;
   };
   /* The request payload */
@@ -1857,11 +1682,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
      * The bounding box to use for the request as an array of `longitude/latitude` pairs
      * @example 6.501,46.0916,6.5025,46.0839
      */
-    bbox: Array<Array<number>>;
-    /*
+    bbox: Array<Array<number>> /*
      * Arbitrary identification string of the request reflected in the meta information.
      * @example export_request
-     */
+     */;
     id?: string;
   };
   /* Informs about possible difficulties like access restrictions on the generated route. Generates a corresponding `extras` object with the affected segments. */
@@ -1871,11 +1695,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
      * Format: int32
      * @example 1
      */
-    code?: number;
-    /*
+    code?: number /*
      * The message associated with the warning
      * @example This route may go over restricted roads
-     */
+     */;
     message?: string;
   };
   JsonEdge: {
@@ -1884,18 +1707,16 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
      * Format: int32
      * @example 1
      */
-    fromId?: number;
-    /*
+    fromId?: number /*
      * Id of the end point of the edge
      * Format: int32
      * @example 2
-     */
-    toId?: number;
-    /*
+     */;
+    toId?: number /*
      * Weight of the corresponding edge in the given bounding box
      * Format: double
      * @example 123.45
-     */
+     */;
     weight?: number;
   };
   JsonEdgeExtra: {
@@ -1903,11 +1724,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
      * Id of the corresponding edge in the graph
      * @example 1
      */
-    edgeId?: string;
-    /*
+    edgeId?: string /*
      * Extra info stored on the edge
      * @example [object Object]
-     */
+     */;
     extra?: {};
   };
   /* The Export Response contains nodes and edge weights from the requested BBox */
@@ -1918,11 +1738,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
        * Format: int32
        * @example 1
        */
-      nodeId?: number;
-      /*
+      nodeId?: number /*
        * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
        * @example 8.678962,49.40783
-       */
+       */;
       location?: Array<number>;
     }>;
     edges?: Array<{
@@ -1931,18 +1750,16 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
        * Format: int32
        * @example 1
        */
-      fromId?: number;
-      /*
+      fromId?: number /*
        * Id of the end point of the edge
        * Format: int32
        * @example 2
-       */
-      toId?: number;
-      /*
+       */;
+      toId?: number /*
        * Weight of the corresponding edge in the given bounding box
        * Format: double
        * @example 123.45
-       */
+       */;
       weight?: number;
     }>;
     edges_extra?: Array<{
@@ -1950,11 +1767,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
        * Id of the corresponding edge in the graph
        * @example 1
        */
-      edgeId?: string;
-      /*
+      edgeId?: string /*
        * Extra info stored on the edge
        * @example [object Object]
-       */
+       */;
       extra?: {};
     }>;
     /* Informs about possible difficulties like access restrictions on the generated route. Generates a corresponding `extras` object with the affected segments. */
@@ -1964,11 +1780,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
        * Format: int32
        * @example 1
        */
-      code?: number;
-      /*
+      code?: number /*
        * The message associated with the warning
        * @example This route may go over restricted roads
-       */
+       */;
       message?: string;
     };
     /* Format: int64 */
@@ -1982,35 +1797,31 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
      * Format: int32
      * @example 1
      */
-    nodeId?: number;
-    /*
+    nodeId?: number /*
      * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
      * @example 8.678962,49.40783
-     */
+     */;
     location?: Array<number>;
-  };
-  /*
+  } /*
    * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
    * @example [object Object]
-   */
+   */;
   alternativeRoutes: {
     /*
      * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
      * Format: int32
      * @example 2
      */
-    target_count?: number;
-    /*
+    target_count?: number /*
      * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
      * Format: double
      * @example 1.4
-     */
-    weight_factor?: number;
-    /*
+     */;
+    weight_factor?: number /*
      * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
      * Format: double
      * @example 0.6
-     */
+     */;
     share_factor?: number;
   };
   /* The JSON body request sent to the routing service which defines options and parameters regarding the route to generate. */
@@ -2019,11 +1830,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
      * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
      * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
      */
-    coordinates: Array<Array<number>>;
-    /*
+    coordinates: Array<Array<number>> /*
      * Arbitrary identification string of the request reflected in the meta information.
      * @example my_request
-     */
+     */;
     id?: string;
     /* Specifies the route preference */
     preference?: "fastest" | "shortest" | "recommended";
@@ -2080,18 +1890,16 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
     /* Select html for more verbose instructions. */
     instructions_format?: "html" | "text";
     /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-    roundabout_exits?: boolean;
-    /*
+    roundabout_exits?: boolean /*
      * List of route attributes
      * @example avgspeed,percentage
-     */
+     */;
     attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
     /* Specifies whether the maneuver object is included into the step object or not.  */
-    maneuvers?: boolean;
-    /*
+    maneuvers?: boolean /*
      * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
      * @example 200,-1,30
-     */
+     */;
     radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -2106,11 +1914,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
     /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
     continue_straight?: boolean;
     /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-    elevation?: boolean;
-    /*
+    elevation?: boolean /*
      * The extra info items to include in the response
      * @example waytype,surface
-     */
+     */;
     extra_info?: Array<
       | "steepness"
       | "suitability"
@@ -2126,26 +1933,23 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
       | "noise"
       | "csv"
       | "shadow"
-    >;
-    /*
+    > /*
      * Advanced options for routing
      * @example [object Object]
-     */
+     */;
     options?: {
       /*
        * List of features to avoid.
        * @example highways
        */
-      avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-      /*
+      avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
        * Specify which type of border crossing to avoid
        * @example controlled
-       */
-      avoid_borders?: "all" | "controlled" | "none";
-      /*
+       */;
+      avoid_borders?: "all" | "controlled" | "none" /*
        * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
        * @example 11,193
-       */
+       */;
       avoid_countries?: Array<string>;
       /* Definition of the vehicle type. */
       vehicle_type?: "hgv" | "bus" | "agricultural" | "delivery" | "forestry" | "goods" | "unknown";
@@ -2190,30 +1994,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
            * Format: float
            * @example 8.4
            */
-          length?: number;
-          /*
+          length?: number /*
            * Width restriction in metres.
            * Format: float
            * @example 5.6
-           */
-          width?: number;
-          /*
+           */;
+          width?: number /*
            * Height restriction in metres.
            * Format: float
            * @example 4.2
-           */
-          height?: number;
-          /*
+           */;
+          height?: number /*
            * Axleload restriction in tons.
            * Format: float
            * @example 50
-           */
-          axleload?: number;
-          /*
+           */;
+          axleload?: number /*
            * Weight restriction in tons.
            * Format: float
            * @example 40
-           */
+           */;
           weight?: number;
           /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
           hazmat?: boolean;
@@ -2230,33 +2030,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             | "very_bad"
             | "horrible"
             | "very_horrible"
-            | "impassable";
-          /*
+            | "impassable" /*
            * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
            * Format: float
-           */
-          maximum_sloped_kerb?: number;
-          /*
+           */;
+          maximum_sloped_kerb?: number /*
            * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
            * Format: int32
-           */
-          maximum_incline?: number;
-          /*
+           */;
+          maximum_incline?: number /*
            * Specifies the minimum width of the footway in metres.
            * Format: float
            * @example 2.5
-           */
+           */;
           minimum_width?: number;
-        };
-        /*
+        } /*
          * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
          * @example true
-         */
-        surface_quality_known?: boolean;
-        /*
+         */;
+        surface_quality_known?: boolean /*
          * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
          * @example true
-         */
+         */;
         allow_unsuitable?: boolean;
       };
       /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -2264,96 +2059,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         empty?: boolean;
         /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
         [key: string]: {};
-      };
-      /*
+      } /*
        * Specifies the parameters for generating round trip routes.
        * @example [object Object]
-       */
+       */;
       round_trip?: {
         /*
          * The target length of the route in `m` (note that this is a preferred value, but results may be different).
          * Format: float
          * @example 10000
          */
-        length?: number;
-        /*
+        length?: number /*
          * The number of points to use on the route. Larger values create more circular routes.
          * Format: int32
          * @example 5
-         */
-        points?: number;
-        /*
+         */;
+        points?: number /*
          * A seed to use for adding randomisation to the overall direction of the generated route
          * Format: int64
          * @example 1
-         */
+         */;
         seed?: number;
       };
     };
     /* Suppress warning messages in the response */
     suppress_warnings?: boolean;
     /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-    geometry_simplify?: boolean;
-    /*
+    geometry_simplify?: boolean /*
      * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
      * @example 2,4
-     */
-    skip_segments?: Array<number>;
-    /*
+     */;
+    skip_segments?: Array<number> /*
      * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
      * @example [object Object]
-     */
+     */;
     alternative_routes?: {
       /*
        * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
        * Format: int32
        * @example 2
        */
-      target_count?: number;
-      /*
+      target_count?: number /*
        * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
        * Format: double
        * @example 1.4
-       */
-      weight_factor?: number;
-      /*
+       */;
+      weight_factor?: number /*
        * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
        * Format: double
        * @example 0.6
-       */
+       */;
       share_factor?: number;
-    };
-    /*
+    } /*
      * The maximum speed specified by user.
      * Format: double
      * @example 90
-     */
-    maximum_speed?: number;
-    /*
+     */;
+    maximum_speed?: number /*
      * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
      * @example true
-     */
-    schedule?: boolean;
-    /*
+     */;
+    schedule?: boolean /*
      * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
      * @example PT30M
-     */
-    schedule_duration?: string;
-    /*
+     */;
+    schedule_duration?: string /*
      * The maximum amount of entries that should be returned when requesting a schedule.
      * Format: int32
      * @example 3
-     */
-    schedule_rows?: number;
-    /*
+     */;
+    schedule_rows?: number /*
      * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
      * @example PT30M
-     */
-    walking_time?: string;
-    /*
+     */;
+    walking_time?: string /*
      * Specifies if transfers as criterion should be ignored.
      * @example true
-     */
+     */;
     ignore_transfers?: boolean;
   };
   /* An object representing one of the extra info items requested */
@@ -2373,18 +2155,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * Format: double
        * @example 5
        */
-      value?: number;
-      /*
+      value?: number /*
        * Cumulative distance of this value.
        * Format: double
        * @example 123.1
-       */
-      distance?: number;
-      /*
+       */;
+      distance?: number /*
        * Category percentage of the entire route.
        * Format: double
        * @example 23.8
-       */
+       */;
       amount?: number;
     }>;
   };
@@ -2395,18 +2175,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
      * Format: double
      * @example 5
      */
-    value?: number;
-    /*
+    value?: number /*
      * Cumulative distance of this value.
      * Format: double
      * @example 123.1
-     */
-    distance?: number;
-    /*
+     */;
+    distance?: number /*
      * Category percentage of the entire route.
      * Format: double
      * @example 23.8
-     */
+     */;
     amount?: number;
   };
   /* An individual JSON based route created by the service */
@@ -2418,24 +2196,21 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * Format: double
        * @example 12.6
        */
-      distance?: number;
-      /*
+      distance?: number /*
        * Total duration in seconds.
        * Format: double
        * @example 604
-       */
-      duration?: number;
-      /*
+       */;
+      duration?: number /*
        * Total ascent in meters.
        * Format: double
        * @example 166.3
-       */
-      ascent?: number;
-      /*
+       */;
+      ascent?: number /*
        * Total descent in meters.
        * Format: double
        * @example 201.3
-       */
+       */;
       descent?: number;
       /* Format: int32 */
       transfers?: number;
@@ -2449,12 +2224,11 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * Format: double
        * @example 253
        */
-      distance?: number;
-      /*
+      distance?: number /*
        * Contains the duration of the segment in seconds.
        * Format: double
        * @example 37.7
-       */
+       */;
       duration?: number;
       /* List containing the specific steps the segment consists of. */
       steps?: Array<{
@@ -2463,44 +2237,37 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
          * Format: double
          * @example 245
          */
-        distance?: number;
-        /*
+        distance?: number /*
          * The duration for the step in seconds.
          * Format: double
          * @example 96.2
-         */
-        duration?: number;
-        /*
+         */;
+        duration?: number /*
          * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
          * Format: int32
          * @example 1
-         */
-        type?: number;
-        /*
+         */;
+        type?: number /*
          * The routing instruction text for the step.
          * @example Turn right onto Berliner Straße
-         */
-        instruction?: string;
-        /*
+         */;
+        instruction?: string /*
          * The name of the next street.
          * @example Berliner Straße
-         */
-        name?: string;
-        /*
+         */;
+        name?: string /*
          * Only for roundabouts. Contains the number of the exit to take.
          * Format: int32
          * @example 2
-         */
-        exit_number?: number;
-        /*
+         */;
+        exit_number?: number /*
          * Contains the bearing of the entrance and all passed exits in a roundabout.
          * @example 10,45,60
-         */
-        exit_bearings?: Array<number>;
-        /*
+         */;
+        exit_bearings?: Array<number> /*
          * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
          * @example 45,48
-         */
+         */;
         way_points?: Array<number>;
         /* Maneuver object of the step */
         maneuver?: {
@@ -2508,66 +2275,56 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
            * The coordinate of the point where a maneuver takes place.
            * @example 8.678962,49.407819
            */
-          location?: Array<number>;
-          /*
+          location?: Array<number> /*
            * The azimuth angle (in degrees) of the direction right before the maneuver.
            * Format: int32
            * @example 24
-           */
-          bearing_before?: number;
-          /*
+           */;
+          bearing_before?: number /*
            * The azimuth angle (in degrees) of the direction right after the maneuver.
            * Format: int32
            * @example 96
-           */
+           */;
           bearing_after?: number;
         };
-      }>;
-      /*
+      }> /*
        * Contains the deviation compared to a straight line that would have the factor `1`. Double the Distance would be a `2`.
        * Format: double
        * @example 0.5
-       */
-      detourfactor?: number;
-      /*
+       */;
+      detourfactor?: number /*
        * Contains the proportion of the route in percent.
        * Format: double
        * @example 43.2
-       */
-      percentage?: number;
-      /*
+       */;
+      percentage?: number /*
        * Contains the average speed of this segment in km/h.
        * Format: double
        * @example 56.3
-       */
-      avgspeed?: number;
-      /*
+       */;
+      avgspeed?: number /*
        *  Contains ascent of this segment in metres.
        * Format: double
        * @example 56.3
-       */
-      ascent?: number;
-      /*
+       */;
+      ascent?: number /*
        * Contains descent of this segment in metres.
        * Format: double
        * @example 45.2
-       */
+       */;
       descent?: number;
-    }>;
-    /*
+    }> /*
      * A bounding box which contains the entire route
      * @example 46.1336,6.4245,46.0547,6.5603
-     */
-    bbox?: Array<number>;
-    /*
+     */;
+    bbox?: Array<number> /*
      * The geometry of the route. For JSON route responses this is an encoded polyline.
      * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-     */
-    geometry?: string;
-    /*
+     */;
+    geometry?: string /*
      * List containing the indices of way points corresponding to the *geometry*.
      * @example 0,23
-     */
+     */;
     way_points?: Array<number>;
     /* List of warnings that have been generated for the route */
     warnings?: Array<{
@@ -2576,11 +2333,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * Format: int32
        * @example 1
        */
-      code?: number;
-      /*
+      code?: number /*
        * The message associated with the warning
        * @example This route may go over restricted roads
-       */
+       */;
       message?: string;
     }>;
     /* List containing the legs the route consists of. */
@@ -2589,83 +2345,69 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * The type of the leg, possible values are currently 'walk' and 'pt'.
        * @example pt
        */
-      type?: string;
-      /*
+      type?: string /*
        * The departure location of the leg.
        * @example Dossenheim, Süd Bstg G1
-       */
-      departure_location?: string;
-      /*
+       */;
+      departure_location?: string /*
        * The headsign of the public transport vehicle of the leg.
        * @example Bismarckplatz - Speyererhof - EMBL - Boxberg - Mombertplatz
-       */
-      trip_headsign?: string;
-      /*
+       */;
+      trip_headsign?: string /*
        * The public transport route name of the leg.
        * @example RNV Bus 39A
-       */
-      route_long_name?: string;
-      /*
+       */;
+      route_long_name?: string /*
        * The public transport route name (short version) of the leg.
        * @example 39A
-       */
-      route_short_name?: string;
-      /*
+       */;
+      route_short_name?: string /*
        * The route description of the leg (if provided in the GTFS data set).
        * @example Bus
-       */
-      route_desc?: string;
-      /*
+       */;
+      route_desc?: string /*
        * The route type of the leg (if provided in the GTFS data set).
        * Format: int32
        * @example 1
-       */
-      route_type?: number;
-      /*
+       */;
+      route_type?: number /*
        * The distance for the leg in metres.
        * Format: double
        * @example 245
-       */
-      distance?: number;
-      /*
+       */;
+      distance?: number /*
        * The duration for the leg in seconds.
        * Format: double
        * @example 96.2
-       */
-      duration?: number;
-      /*
+       */;
+      duration?: number /*
        * Departure date and time
        * Format: date-time
        * @example 2020-01-31T12:45:00+01:00
-       */
-      departure?: string;
-      /*
+       */;
+      departure?: string /*
        * Arrival date and time
        * Format: date-time
        * @example 2020-01-31T13:15:00+01:00
-       */
-      arrival?: string;
-      /*
+       */;
+      arrival?: string /*
        * The feed ID this public transport leg based its information from.
        * @example gtfs_0
-       */
-      feed_id?: string;
-      /*
+       */;
+      feed_id?: string /*
        * The trip ID of this public transport leg.
        * @example trip_id: vrn-19-39A-1-2-21-H-8-Special-50-42
-       */
-      trip_id?: string;
-      /*
+       */;
+      trip_id?: string /*
        * The route ID of this public transport leg.
        * @example vrn-19-39A-1
-       */
+       */;
       route_id?: string;
       /* Whether the legs continues in the same vehicle as the previous one. */
-      is_in_same_vehicle_as_previous?: boolean;
-      /*
+      is_in_same_vehicle_as_previous?: boolean /*
        * The geometry of the leg. This is an encoded polyline.
        * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-       */
+       */;
       geometry?: string;
       /* List containing the specific steps the segment consists of. */
       instructions?: Array<{
@@ -2674,44 +2416,37 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
          * Format: double
          * @example 245
          */
-        distance?: number;
-        /*
+        distance?: number /*
          * The duration for the step in seconds.
          * Format: double
          * @example 96.2
-         */
-        duration?: number;
-        /*
+         */;
+        duration?: number /*
          * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
          * Format: int32
          * @example 1
-         */
-        type?: number;
-        /*
+         */;
+        type?: number /*
          * The routing instruction text for the step.
          * @example Turn right onto Berliner Straße
-         */
-        instruction?: string;
-        /*
+         */;
+        instruction?: string /*
          * The name of the next street.
          * @example Berliner Straße
-         */
-        name?: string;
-        /*
+         */;
+        name?: string /*
          * Only for roundabouts. Contains the number of the exit to take.
          * Format: int32
          * @example 2
-         */
-        exit_number?: number;
-        /*
+         */;
+        exit_number?: number /*
          * Contains the bearing of the entrance and all passed exits in a roundabout.
          * @example 10,45,60
-         */
-        exit_bearings?: Array<number>;
-        /*
+         */;
+        exit_bearings?: Array<number> /*
          * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
          * @example 45,48
-         */
+         */;
         way_points?: Array<number>;
         /* Maneuver object of the step */
         maneuver?: {
@@ -2719,18 +2454,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
            * The coordinate of the point where a maneuver takes place.
            * @example 8.678962,49.407819
            */
-          location?: Array<number>;
-          /*
+          location?: Array<number> /*
            * The azimuth angle (in degrees) of the direction right before the maneuver.
            * Format: int32
            * @example 24
-           */
-          bearing_before?: number;
-          /*
+           */;
+          bearing_before?: number /*
            * The azimuth angle (in degrees) of the direction right after the maneuver.
            * Format: int32
            * @example 96
-           */
+           */;
           bearing_after?: number;
         };
       }>;
@@ -2740,54 +2473,46 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
          * The ID of the stop.
          * @example de:08221:1138:0:O
          */
-        stop_id?: string;
-        /*
+        stop_id?: string /*
          * The name of the stop.
          * @example Heidelberg, Alois-Link-Platz
-         */
-        name?: string;
-        /*
+         */;
+        name?: string /*
          * The location of the stop.
          * @example 8.6912542,49.399979
-         */
-        location?: Array<number>;
-        /*
+         */;
+        location?: Array<number> /*
          * Arrival time of the stop.
          * Format: date-time
          * @example 2022-07-04T13:22:00Z
-         */
-        arrival_time?: string;
-        /*
+         */;
+        arrival_time?: string /*
          * Planned arrival time of the stop.
          * Format: date-time
          * @example 2022-07-04T13:22:00Z
-         */
-        planned_arrival_time?: string;
-        /*
+         */;
+        planned_arrival_time?: string /*
          * Predicted arrival time of the stop.
          * Format: date-time
          * @example 2022-07-04T13:22:00Z
-         */
+         */;
         predicted_arrival_time?: string;
         /* Whether arrival at the stop was cancelled. */
-        arrival_cancelled?: boolean;
-        /*
+        arrival_cancelled?: boolean /*
          * Departure time of the stop.
          * Format: date-time
          * @example 2022-07-04T13:22:00Z
-         */
-        departure_time?: string;
-        /*
+         */;
+        departure_time?: string /*
          * Planned departure time of the stop.
          * Format: date-time
          * @example 2022-07-04T13:22:00Z
-         */
-        planned_departure_time?: string;
-        /*
+         */;
+        planned_departure_time?: string /*
          * Predicted departure time of the stop.
          * Format: date-time
          * @example 2022-07-04T13:22:00Z
-         */
+         */;
         predicted_departure_time?: string;
         /* Whether departure at the stop was cancelled. */
         departure_cancelled?: boolean;
@@ -2812,33 +2537,29 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
            * Format: double
            * @example 5
            */
-          value?: number;
-          /*
+          value?: number /*
            * Cumulative distance of this value.
            * Format: double
            * @example 123.1
-           */
-          distance?: number;
-          /*
+           */;
+          distance?: number /*
            * Category percentage of the entire route.
            * Format: double
            * @example 23.8
-           */
+           */;
           amount?: number;
         }>;
       };
-    };
-    /*
+    } /*
      * Departure date and time
      * Format: date-time
      * @example 2020-01-31T12:45:00+01:00
-     */
-    departure?: string;
-    /*
+     */;
+    departure?: string /*
      * Arrival date and time
      * Format: date-time
      * @example 2020-01-31T13:15:00+01:00
-     */
+     */;
     arrival?: string;
   };
   /* Leg of a route */
@@ -2847,83 +2568,69 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
      * The type of the leg, possible values are currently 'walk' and 'pt'.
      * @example pt
      */
-    type?: string;
-    /*
+    type?: string /*
      * The departure location of the leg.
      * @example Dossenheim, Süd Bstg G1
-     */
-    departure_location?: string;
-    /*
+     */;
+    departure_location?: string /*
      * The headsign of the public transport vehicle of the leg.
      * @example Bismarckplatz - Speyererhof - EMBL - Boxberg - Mombertplatz
-     */
-    trip_headsign?: string;
-    /*
+     */;
+    trip_headsign?: string /*
      * The public transport route name of the leg.
      * @example RNV Bus 39A
-     */
-    route_long_name?: string;
-    /*
+     */;
+    route_long_name?: string /*
      * The public transport route name (short version) of the leg.
      * @example 39A
-     */
-    route_short_name?: string;
-    /*
+     */;
+    route_short_name?: string /*
      * The route description of the leg (if provided in the GTFS data set).
      * @example Bus
-     */
-    route_desc?: string;
-    /*
+     */;
+    route_desc?: string /*
      * The route type of the leg (if provided in the GTFS data set).
      * Format: int32
      * @example 1
-     */
-    route_type?: number;
-    /*
+     */;
+    route_type?: number /*
      * The distance for the leg in metres.
      * Format: double
      * @example 245
-     */
-    distance?: number;
-    /*
+     */;
+    distance?: number /*
      * The duration for the leg in seconds.
      * Format: double
      * @example 96.2
-     */
-    duration?: number;
-    /*
+     */;
+    duration?: number /*
      * Departure date and time
      * Format: date-time
      * @example 2020-01-31T12:45:00+01:00
-     */
-    departure?: string;
-    /*
+     */;
+    departure?: string /*
      * Arrival date and time
      * Format: date-time
      * @example 2020-01-31T13:15:00+01:00
-     */
-    arrival?: string;
-    /*
+     */;
+    arrival?: string /*
      * The feed ID this public transport leg based its information from.
      * @example gtfs_0
-     */
-    feed_id?: string;
-    /*
+     */;
+    feed_id?: string /*
      * The trip ID of this public transport leg.
      * @example trip_id: vrn-19-39A-1-2-21-H-8-Special-50-42
-     */
-    trip_id?: string;
-    /*
+     */;
+    trip_id?: string /*
      * The route ID of this public transport leg.
      * @example vrn-19-39A-1
-     */
+     */;
     route_id?: string;
     /* Whether the legs continues in the same vehicle as the previous one. */
-    is_in_same_vehicle_as_previous?: boolean;
-    /*
+    is_in_same_vehicle_as_previous?: boolean /*
      * The geometry of the leg. This is an encoded polyline.
      * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-     */
+     */;
     geometry?: string;
     /* List containing the specific steps the segment consists of. */
     instructions?: Array<{
@@ -2932,44 +2639,37 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * Format: double
        * @example 245
        */
-      distance?: number;
-      /*
+      distance?: number /*
        * The duration for the step in seconds.
        * Format: double
        * @example 96.2
-       */
-      duration?: number;
-      /*
+       */;
+      duration?: number /*
        * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
        * Format: int32
        * @example 1
-       */
-      type?: number;
-      /*
+       */;
+      type?: number /*
        * The routing instruction text for the step.
        * @example Turn right onto Berliner Straße
-       */
-      instruction?: string;
-      /*
+       */;
+      instruction?: string /*
        * The name of the next street.
        * @example Berliner Straße
-       */
-      name?: string;
-      /*
+       */;
+      name?: string /*
        * Only for roundabouts. Contains the number of the exit to take.
        * Format: int32
        * @example 2
-       */
-      exit_number?: number;
-      /*
+       */;
+      exit_number?: number /*
        * Contains the bearing of the entrance and all passed exits in a roundabout.
        * @example 10,45,60
-       */
-      exit_bearings?: Array<number>;
-      /*
+       */;
+      exit_bearings?: Array<number> /*
        * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
        * @example 45,48
-       */
+       */;
       way_points?: Array<number>;
       /* Maneuver object of the step */
       maneuver?: {
@@ -2977,18 +2677,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
          * The coordinate of the point where a maneuver takes place.
          * @example 8.678962,49.407819
          */
-        location?: Array<number>;
-        /*
+        location?: Array<number> /*
          * The azimuth angle (in degrees) of the direction right before the maneuver.
          * Format: int32
          * @example 24
-         */
-        bearing_before?: number;
-        /*
+         */;
+        bearing_before?: number /*
          * The azimuth angle (in degrees) of the direction right after the maneuver.
          * Format: int32
          * @example 96
-         */
+         */;
         bearing_after?: number;
       };
     }>;
@@ -2998,54 +2696,46 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * The ID of the stop.
        * @example de:08221:1138:0:O
        */
-      stop_id?: string;
-      /*
+      stop_id?: string /*
        * The name of the stop.
        * @example Heidelberg, Alois-Link-Platz
-       */
-      name?: string;
-      /*
+       */;
+      name?: string /*
        * The location of the stop.
        * @example 8.6912542,49.399979
-       */
-      location?: Array<number>;
-      /*
+       */;
+      location?: Array<number> /*
        * Arrival time of the stop.
        * Format: date-time
        * @example 2022-07-04T13:22:00Z
-       */
-      arrival_time?: string;
-      /*
+       */;
+      arrival_time?: string /*
        * Planned arrival time of the stop.
        * Format: date-time
        * @example 2022-07-04T13:22:00Z
-       */
-      planned_arrival_time?: string;
-      /*
+       */;
+      planned_arrival_time?: string /*
        * Predicted arrival time of the stop.
        * Format: date-time
        * @example 2022-07-04T13:22:00Z
-       */
+       */;
       predicted_arrival_time?: string;
       /* Whether arrival at the stop was cancelled. */
-      arrival_cancelled?: boolean;
-      /*
+      arrival_cancelled?: boolean /*
        * Departure time of the stop.
        * Format: date-time
        * @example 2022-07-04T13:22:00Z
-       */
-      departure_time?: string;
-      /*
+       */;
+      departure_time?: string /*
        * Planned departure time of the stop.
        * Format: date-time
        * @example 2022-07-04T13:22:00Z
-       */
-      planned_departure_time?: string;
-      /*
+       */;
+      planned_departure_time?: string /*
        * Predicted departure time of the stop.
        * Format: date-time
        * @example 2022-07-04T13:22:00Z
-       */
+       */;
       predicted_departure_time?: string;
       /* Whether departure at the stop was cancelled. */
       departure_cancelled?: boolean;
@@ -3057,54 +2747,46 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
      * The ID of the stop.
      * @example de:08221:1138:0:O
      */
-    stop_id?: string;
-    /*
+    stop_id?: string /*
      * The name of the stop.
      * @example Heidelberg, Alois-Link-Platz
-     */
-    name?: string;
-    /*
+     */;
+    name?: string /*
      * The location of the stop.
      * @example 8.6912542,49.399979
-     */
-    location?: Array<number>;
-    /*
+     */;
+    location?: Array<number> /*
      * Arrival time of the stop.
      * Format: date-time
      * @example 2022-07-04T13:22:00Z
-     */
-    arrival_time?: string;
-    /*
+     */;
+    arrival_time?: string /*
      * Planned arrival time of the stop.
      * Format: date-time
      * @example 2022-07-04T13:22:00Z
-     */
-    planned_arrival_time?: string;
-    /*
+     */;
+    planned_arrival_time?: string /*
      * Predicted arrival time of the stop.
      * Format: date-time
      * @example 2022-07-04T13:22:00Z
-     */
+     */;
     predicted_arrival_time?: string;
     /* Whether arrival at the stop was cancelled. */
-    arrival_cancelled?: boolean;
-    /*
+    arrival_cancelled?: boolean /*
      * Departure time of the stop.
      * Format: date-time
      * @example 2022-07-04T13:22:00Z
-     */
-    departure_time?: string;
-    /*
+     */;
+    departure_time?: string /*
      * Planned departure time of the stop.
      * Format: date-time
      * @example 2022-07-04T13:22:00Z
-     */
-    planned_departure_time?: string;
-    /*
+     */;
+    planned_departure_time?: string /*
      * Predicted departure time of the stop.
      * Format: date-time
      * @example 2022-07-04T13:22:00Z
-     */
+     */;
     predicted_departure_time?: string;
     /* Whether departure at the stop was cancelled. */
     departure_cancelled?: boolean;
@@ -3116,27 +2798,23 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * ID of the request (as passed in by the query)
        * @example request123
        */
-      id?: string;
-      /*
+      id?: string /*
        * Copyright and attribution information
        * @example openrouteservice.org | OpenStreetMap contributors
-       */
-      attribution?: string;
-      /*
+       */;
+      attribution?: string /*
        * The MD5 hash of the OSM planet file that was used for generating graphs
        * @example c0327ba6
-       */
-      osm_file_md5_hash?: string;
-      /*
+       */;
+      osm_file_md5_hash?: string /*
        * The service that was requested
        * @example routing
-       */
-      service?: string;
-      /*
+       */;
+      service?: string /*
        * Time that the request was made (UNIX Epoch time)
        * Format: int64
        * @example 1549549847974
-       */
+       */;
       timestamp?: number;
       /* The JSON body request sent to the routing service which defines options and parameters regarding the route to generate. */
       query?: {
@@ -3144,11 +2822,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
          * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
          * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
          */
-        coordinates: Array<Array<number>>;
-        /*
+        coordinates: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
+         */;
         id?: string;
         /* Specifies the route preference */
         preference?: "fastest" | "shortest" | "recommended";
@@ -3205,18 +2882,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
         /* Select html for more verbose instructions. */
         instructions_format?: "html" | "text";
         /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-        roundabout_exits?: boolean;
-        /*
+        roundabout_exits?: boolean /*
          * List of route attributes
          * @example avgspeed,percentage
-         */
+         */;
         attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
         /* Specifies whether the maneuver object is included into the step object or not.  */
-        maneuvers?: boolean;
-        /*
+        maneuvers?: boolean /*
          * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
          * @example 200,-1,30
-         */
+         */;
         radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -3231,11 +2906,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
         /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
         continue_straight?: boolean;
         /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-        elevation?: boolean;
-        /*
+        elevation?: boolean /*
          * The extra info items to include in the response
          * @example waytype,surface
-         */
+         */;
         extra_info?: Array<
           | "steepness"
           | "suitability"
@@ -3251,26 +2925,23 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
           | "noise"
           | "csv"
           | "shadow"
-        >;
-        /*
+        > /*
          * Advanced options for routing
          * @example [object Object]
-         */
+         */;
         options?: {
           /*
            * List of features to avoid.
            * @example highways
            */
-          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-          /*
+          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
            * Specify which type of border crossing to avoid
            * @example controlled
-           */
-          avoid_borders?: "all" | "controlled" | "none";
-          /*
+           */;
+          avoid_borders?: "all" | "controlled" | "none" /*
            * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
            * @example 11,193
-           */
+           */;
           avoid_countries?: Array<string>;
           /* Definition of the vehicle type. */
           vehicle_type?:
@@ -3322,30 +2993,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: float
                * @example 8.4
                */
-              length?: number;
-              /*
+              length?: number /*
                * Width restriction in metres.
                * Format: float
                * @example 5.6
-               */
-              width?: number;
-              /*
+               */;
+              width?: number /*
                * Height restriction in metres.
                * Format: float
                * @example 4.2
-               */
-              height?: number;
-              /*
+               */;
+              height?: number /*
                * Axleload restriction in tons.
                * Format: float
                * @example 50
-               */
-              axleload?: number;
-              /*
+               */;
+              axleload?: number /*
                * Weight restriction in tons.
                * Format: float
                * @example 40
-               */
+               */;
               weight?: number;
               /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
               hazmat?: boolean;
@@ -3362,33 +3029,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 | "very_bad"
                 | "horrible"
                 | "very_horrible"
-                | "impassable";
-              /*
+                | "impassable" /*
                * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                * Format: float
-               */
-              maximum_sloped_kerb?: number;
-              /*
+               */;
+              maximum_sloped_kerb?: number /*
                * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                * Format: int32
-               */
-              maximum_incline?: number;
-              /*
+               */;
+              maximum_incline?: number /*
                * Specifies the minimum width of the footway in metres.
                * Format: float
                * @example 2.5
-               */
+               */;
               minimum_width?: number;
-            };
-            /*
+            } /*
              * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
              * @example true
-             */
-            surface_quality_known?: boolean;
-            /*
+             */;
+            surface_quality_known?: boolean /*
              * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
              * @example true
-             */
+             */;
             allow_unsuitable?: boolean;
           };
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -3396,96 +3058,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             empty?: boolean;
             /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
             [key: string]: {};
-          };
-          /*
+          } /*
            * Specifies the parameters for generating round trip routes.
            * @example [object Object]
-           */
+           */;
           round_trip?: {
             /*
              * The target length of the route in `m` (note that this is a preferred value, but results may be different).
              * Format: float
              * @example 10000
              */
-            length?: number;
-            /*
+            length?: number /*
              * The number of points to use on the route. Larger values create more circular routes.
              * Format: int32
              * @example 5
-             */
-            points?: number;
-            /*
+             */;
+            points?: number /*
              * A seed to use for adding randomisation to the overall direction of the generated route
              * Format: int64
              * @example 1
-             */
+             */;
             seed?: number;
           };
         };
         /* Suppress warning messages in the response */
         suppress_warnings?: boolean;
         /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-        geometry_simplify?: boolean;
-        /*
+        geometry_simplify?: boolean /*
          * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
          * @example 2,4
-         */
-        skip_segments?: Array<number>;
-        /*
+         */;
+        skip_segments?: Array<number> /*
          * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
          * @example [object Object]
-         */
+         */;
         alternative_routes?: {
           /*
            * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
            * Format: int32
            * @example 2
            */
-          target_count?: number;
-          /*
+          target_count?: number /*
            * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
            * Format: double
            * @example 1.4
-           */
-          weight_factor?: number;
-          /*
+           */;
+          weight_factor?: number /*
            * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
            * Format: double
            * @example 0.6
-           */
+           */;
           share_factor?: number;
-        };
-        /*
+        } /*
          * The maximum speed specified by user.
          * Format: double
          * @example 90
-         */
-        maximum_speed?: number;
-        /*
+         */;
+        maximum_speed?: number /*
          * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
          * @example true
-         */
-        schedule?: boolean;
-        /*
+         */;
+        schedule?: boolean /*
          * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        schedule_duration?: string;
-        /*
+         */;
+        schedule_duration?: string /*
          * The maximum amount of entries that should be returned when requesting a schedule.
          * Format: int32
          * @example 3
-         */
-        schedule_rows?: number;
-        /*
+         */;
+        schedule_rows?: number /*
          * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        walking_time?: string;
-        /*
+         */;
+        walking_time?: string /*
          * Specifies if transfers as criterion should be ignored.
          * @example true
-         */
+         */;
         ignore_transfers?: boolean;
       };
       /* Information about the openrouteservice engine used */
@@ -3494,22 +3143,19 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * The backend version of the openrouteservice that was queried
          * @example 8.0
          */
-        version?: string;
-        /*
+        version?: string /*
          * The date that the service was last updated
          * @example 2019-02-07T14:28:11Z
-         */
-        build_date?: string;
-        /*
+         */;
+        build_date?: string /*
          * The date that the graph data was last updated
          * @example 2019-02-07T14:28:11Z
-         */
+         */;
         graph_date?: string;
-      };
-      /*
+      } /*
        * System message
        * @example A message string configured in the service
-       */
+       */;
       system_message?: string;
     };
     /* A list of routes returned from the request */
@@ -3521,24 +3167,21 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * Format: double
          * @example 12.6
          */
-        distance?: number;
-        /*
+        distance?: number /*
          * Total duration in seconds.
          * Format: double
          * @example 604
-         */
-        duration?: number;
-        /*
+         */;
+        duration?: number /*
          * Total ascent in meters.
          * Format: double
          * @example 166.3
-         */
-        ascent?: number;
-        /*
+         */;
+        ascent?: number /*
          * Total descent in meters.
          * Format: double
          * @example 201.3
-         */
+         */;
         descent?: number;
         /* Format: int32 */
         transfers?: number;
@@ -3552,12 +3195,11 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * Format: double
          * @example 253
          */
-        distance?: number;
-        /*
+        distance?: number /*
          * Contains the duration of the segment in seconds.
          * Format: double
          * @example 37.7
-         */
+         */;
         duration?: number;
         /* List containing the specific steps the segment consists of. */
         steps?: Array<{
@@ -3566,44 +3208,37 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
            * Format: double
            * @example 245
            */
-          distance?: number;
-          /*
+          distance?: number /*
            * The duration for the step in seconds.
            * Format: double
            * @example 96.2
-           */
-          duration?: number;
-          /*
+           */;
+          duration?: number /*
            * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
            * Format: int32
            * @example 1
-           */
-          type?: number;
-          /*
+           */;
+          type?: number /*
            * The routing instruction text for the step.
            * @example Turn right onto Berliner Straße
-           */
-          instruction?: string;
-          /*
+           */;
+          instruction?: string /*
            * The name of the next street.
            * @example Berliner Straße
-           */
-          name?: string;
-          /*
+           */;
+          name?: string /*
            * Only for roundabouts. Contains the number of the exit to take.
            * Format: int32
            * @example 2
-           */
-          exit_number?: number;
-          /*
+           */;
+          exit_number?: number /*
            * Contains the bearing of the entrance and all passed exits in a roundabout.
            * @example 10,45,60
-           */
-          exit_bearings?: Array<number>;
-          /*
+           */;
+          exit_bearings?: Array<number> /*
            * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
            * @example 45,48
-           */
+           */;
           way_points?: Array<number>;
           /* Maneuver object of the step */
           maneuver?: {
@@ -3611,66 +3246,56 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * The coordinate of the point where a maneuver takes place.
              * @example 8.678962,49.407819
              */
-            location?: Array<number>;
-            /*
+            location?: Array<number> /*
              * The azimuth angle (in degrees) of the direction right before the maneuver.
              * Format: int32
              * @example 24
-             */
-            bearing_before?: number;
-            /*
+             */;
+            bearing_before?: number /*
              * The azimuth angle (in degrees) of the direction right after the maneuver.
              * Format: int32
              * @example 96
-             */
+             */;
             bearing_after?: number;
           };
-        }>;
-        /*
+        }> /*
          * Contains the deviation compared to a straight line that would have the factor `1`. Double the Distance would be a `2`.
          * Format: double
          * @example 0.5
-         */
-        detourfactor?: number;
-        /*
+         */;
+        detourfactor?: number /*
          * Contains the proportion of the route in percent.
          * Format: double
          * @example 43.2
-         */
-        percentage?: number;
-        /*
+         */;
+        percentage?: number /*
          * Contains the average speed of this segment in km/h.
          * Format: double
          * @example 56.3
-         */
-        avgspeed?: number;
-        /*
+         */;
+        avgspeed?: number /*
          *  Contains ascent of this segment in metres.
          * Format: double
          * @example 56.3
-         */
-        ascent?: number;
-        /*
+         */;
+        ascent?: number /*
          * Contains descent of this segment in metres.
          * Format: double
          * @example 45.2
-         */
+         */;
         descent?: number;
-      }>;
-      /*
+      }> /*
        * A bounding box which contains the entire route
        * @example 46.1336,6.4245,46.0547,6.5603
-       */
-      bbox?: Array<number>;
-      /*
+       */;
+      bbox?: Array<number> /*
        * The geometry of the route. For JSON route responses this is an encoded polyline.
        * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-       */
-      geometry?: string;
-      /*
+       */;
+      geometry?: string /*
        * List containing the indices of way points corresponding to the *geometry*.
        * @example 0,23
-       */
+       */;
       way_points?: Array<number>;
       /* List of warnings that have been generated for the route */
       warnings?: Array<{
@@ -3679,11 +3304,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * Format: int32
          * @example 1
          */
-        code?: number;
-        /*
+        code?: number /*
          * The message associated with the warning
          * @example This route may go over restricted roads
-         */
+         */;
         message?: string;
       }>;
       /* List containing the legs the route consists of. */
@@ -3692,83 +3316,69 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * The type of the leg, possible values are currently 'walk' and 'pt'.
          * @example pt
          */
-        type?: string;
-        /*
+        type?: string /*
          * The departure location of the leg.
          * @example Dossenheim, Süd Bstg G1
-         */
-        departure_location?: string;
-        /*
+         */;
+        departure_location?: string /*
          * The headsign of the public transport vehicle of the leg.
          * @example Bismarckplatz - Speyererhof - EMBL - Boxberg - Mombertplatz
-         */
-        trip_headsign?: string;
-        /*
+         */;
+        trip_headsign?: string /*
          * The public transport route name of the leg.
          * @example RNV Bus 39A
-         */
-        route_long_name?: string;
-        /*
+         */;
+        route_long_name?: string /*
          * The public transport route name (short version) of the leg.
          * @example 39A
-         */
-        route_short_name?: string;
-        /*
+         */;
+        route_short_name?: string /*
          * The route description of the leg (if provided in the GTFS data set).
          * @example Bus
-         */
-        route_desc?: string;
-        /*
+         */;
+        route_desc?: string /*
          * The route type of the leg (if provided in the GTFS data set).
          * Format: int32
          * @example 1
-         */
-        route_type?: number;
-        /*
+         */;
+        route_type?: number /*
          * The distance for the leg in metres.
          * Format: double
          * @example 245
-         */
-        distance?: number;
-        /*
+         */;
+        distance?: number /*
          * The duration for the leg in seconds.
          * Format: double
          * @example 96.2
-         */
-        duration?: number;
-        /*
+         */;
+        duration?: number /*
          * Departure date and time
          * Format: date-time
          * @example 2020-01-31T12:45:00+01:00
-         */
-        departure?: string;
-        /*
+         */;
+        departure?: string /*
          * Arrival date and time
          * Format: date-time
          * @example 2020-01-31T13:15:00+01:00
-         */
-        arrival?: string;
-        /*
+         */;
+        arrival?: string /*
          * The feed ID this public transport leg based its information from.
          * @example gtfs_0
-         */
-        feed_id?: string;
-        /*
+         */;
+        feed_id?: string /*
          * The trip ID of this public transport leg.
          * @example trip_id: vrn-19-39A-1-2-21-H-8-Special-50-42
-         */
-        trip_id?: string;
-        /*
+         */;
+        trip_id?: string /*
          * The route ID of this public transport leg.
          * @example vrn-19-39A-1
-         */
+         */;
         route_id?: string;
         /* Whether the legs continues in the same vehicle as the previous one. */
-        is_in_same_vehicle_as_previous?: boolean;
-        /*
+        is_in_same_vehicle_as_previous?: boolean /*
          * The geometry of the leg. This is an encoded polyline.
          * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-         */
+         */;
         geometry?: string;
         /* List containing the specific steps the segment consists of. */
         instructions?: Array<{
@@ -3777,44 +3387,37 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
            * Format: double
            * @example 245
            */
-          distance?: number;
-          /*
+          distance?: number /*
            * The duration for the step in seconds.
            * Format: double
            * @example 96.2
-           */
-          duration?: number;
-          /*
+           */;
+          duration?: number /*
            * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
            * Format: int32
            * @example 1
-           */
-          type?: number;
-          /*
+           */;
+          type?: number /*
            * The routing instruction text for the step.
            * @example Turn right onto Berliner Straße
-           */
-          instruction?: string;
-          /*
+           */;
+          instruction?: string /*
            * The name of the next street.
            * @example Berliner Straße
-           */
-          name?: string;
-          /*
+           */;
+          name?: string /*
            * Only for roundabouts. Contains the number of the exit to take.
            * Format: int32
            * @example 2
-           */
-          exit_number?: number;
-          /*
+           */;
+          exit_number?: number /*
            * Contains the bearing of the entrance and all passed exits in a roundabout.
            * @example 10,45,60
-           */
-          exit_bearings?: Array<number>;
-          /*
+           */;
+          exit_bearings?: Array<number> /*
            * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
            * @example 45,48
-           */
+           */;
           way_points?: Array<number>;
           /* Maneuver object of the step */
           maneuver?: {
@@ -3822,18 +3425,16 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * The coordinate of the point where a maneuver takes place.
              * @example 8.678962,49.407819
              */
-            location?: Array<number>;
-            /*
+            location?: Array<number> /*
              * The azimuth angle (in degrees) of the direction right before the maneuver.
              * Format: int32
              * @example 24
-             */
-            bearing_before?: number;
-            /*
+             */;
+            bearing_before?: number /*
              * The azimuth angle (in degrees) of the direction right after the maneuver.
              * Format: int32
              * @example 96
-             */
+             */;
             bearing_after?: number;
           };
         }>;
@@ -3843,54 +3444,46 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
            * The ID of the stop.
            * @example de:08221:1138:0:O
            */
-          stop_id?: string;
-          /*
+          stop_id?: string /*
            * The name of the stop.
            * @example Heidelberg, Alois-Link-Platz
-           */
-          name?: string;
-          /*
+           */;
+          name?: string /*
            * The location of the stop.
            * @example 8.6912542,49.399979
-           */
-          location?: Array<number>;
-          /*
+           */;
+          location?: Array<number> /*
            * Arrival time of the stop.
            * Format: date-time
            * @example 2022-07-04T13:22:00Z
-           */
-          arrival_time?: string;
-          /*
+           */;
+          arrival_time?: string /*
            * Planned arrival time of the stop.
            * Format: date-time
            * @example 2022-07-04T13:22:00Z
-           */
-          planned_arrival_time?: string;
-          /*
+           */;
+          planned_arrival_time?: string /*
            * Predicted arrival time of the stop.
            * Format: date-time
            * @example 2022-07-04T13:22:00Z
-           */
+           */;
           predicted_arrival_time?: string;
           /* Whether arrival at the stop was cancelled. */
-          arrival_cancelled?: boolean;
-          /*
+          arrival_cancelled?: boolean /*
            * Departure time of the stop.
            * Format: date-time
            * @example 2022-07-04T13:22:00Z
-           */
-          departure_time?: string;
-          /*
+           */;
+          departure_time?: string /*
            * Planned departure time of the stop.
            * Format: date-time
            * @example 2022-07-04T13:22:00Z
-           */
-          planned_departure_time?: string;
-          /*
+           */;
+          planned_departure_time?: string /*
            * Predicted departure time of the stop.
            * Format: date-time
            * @example 2022-07-04T13:22:00Z
-           */
+           */;
           predicted_departure_time?: string;
           /* Whether departure at the stop was cancelled. */
           departure_cancelled?: boolean;
@@ -3915,39 +3508,34 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
              * Format: double
              * @example 5
              */
-            value?: number;
-            /*
+            value?: number /*
              * Cumulative distance of this value.
              * Format: double
              * @example 123.1
-             */
-            distance?: number;
-            /*
+             */;
+            distance?: number /*
              * Category percentage of the entire route.
              * Format: double
              * @example 23.8
-             */
+             */;
             amount?: number;
           }>;
         };
-      };
-      /*
+      } /*
        * Departure date and time
        * Format: date-time
        * @example 2020-01-31T12:45:00+01:00
-       */
-      departure?: string;
-      /*
+       */;
+      departure?: string /*
        * Arrival date and time
        * Format: date-time
        * @example 2020-01-31T13:15:00+01:00
-       */
+       */;
       arrival?: string;
-    }>;
-    /*
+    }> /*
      * Bounding box that covers all returned routes
      * @example 46.1336,6.4245,46.0547,6.5603
-     */
+     */;
     bbox?: Array<number>;
   };
   /* List containing the segments and its correspoding steps which make up the route. */
@@ -3957,12 +3545,11 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
      * Format: double
      * @example 253
      */
-    distance?: number;
-    /*
+    distance?: number /*
      * Contains the duration of the segment in seconds.
      * Format: double
      * @example 37.7
-     */
+     */;
     duration?: number;
     /* List containing the specific steps the segment consists of. */
     steps?: Array<{
@@ -3971,44 +3558,37 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * Format: double
        * @example 245
        */
-      distance?: number;
-      /*
+      distance?: number /*
        * The duration for the step in seconds.
        * Format: double
        * @example 96.2
-       */
-      duration?: number;
-      /*
+       */;
+      duration?: number /*
        * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
        * Format: int32
        * @example 1
-       */
-      type?: number;
-      /*
+       */;
+      type?: number /*
        * The routing instruction text for the step.
        * @example Turn right onto Berliner Straße
-       */
-      instruction?: string;
-      /*
+       */;
+      instruction?: string /*
        * The name of the next street.
        * @example Berliner Straße
-       */
-      name?: string;
-      /*
+       */;
+      name?: string /*
        * Only for roundabouts. Contains the number of the exit to take.
        * Format: int32
        * @example 2
-       */
-      exit_number?: number;
-      /*
+       */;
+      exit_number?: number /*
        * Contains the bearing of the entrance and all passed exits in a roundabout.
        * @example 10,45,60
-       */
-      exit_bearings?: Array<number>;
-      /*
+       */;
+      exit_bearings?: Array<number> /*
        * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
        * @example 45,48
-       */
+       */;
       way_points?: Array<number>;
       /* Maneuver object of the step */
       maneuver?: {
@@ -4016,50 +3596,43 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
          * The coordinate of the point where a maneuver takes place.
          * @example 8.678962,49.407819
          */
-        location?: Array<number>;
-        /*
+        location?: Array<number> /*
          * The azimuth angle (in degrees) of the direction right before the maneuver.
          * Format: int32
          * @example 24
-         */
-        bearing_before?: number;
-        /*
+         */;
+        bearing_before?: number /*
          * The azimuth angle (in degrees) of the direction right after the maneuver.
          * Format: int32
          * @example 96
-         */
+         */;
         bearing_after?: number;
       };
-    }>;
-    /*
+    }> /*
      * Contains the deviation compared to a straight line that would have the factor `1`. Double the Distance would be a `2`.
      * Format: double
      * @example 0.5
-     */
-    detourfactor?: number;
-    /*
+     */;
+    detourfactor?: number /*
      * Contains the proportion of the route in percent.
      * Format: double
      * @example 43.2
-     */
-    percentage?: number;
-    /*
+     */;
+    percentage?: number /*
      * Contains the average speed of this segment in km/h.
      * Format: double
      * @example 56.3
-     */
-    avgspeed?: number;
-    /*
+     */;
+    avgspeed?: number /*
      *  Contains ascent of this segment in metres.
      * Format: double
      * @example 56.3
-     */
-    ascent?: number;
-    /*
+     */;
+    ascent?: number /*
      * Contains descent of this segment in metres.
      * Format: double
      * @example 45.2
-     */
+     */;
     descent?: number;
   };
   /* Step of a route segment */
@@ -4069,44 +3642,37 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
      * Format: double
      * @example 245
      */
-    distance?: number;
-    /*
+    distance?: number /*
      * The duration for the step in seconds.
      * Format: double
      * @example 96.2
-     */
-    duration?: number;
-    /*
+     */;
+    duration?: number /*
      * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
      * Format: int32
      * @example 1
-     */
-    type?: number;
-    /*
+     */;
+    type?: number /*
      * The routing instruction text for the step.
      * @example Turn right onto Berliner Straße
-     */
-    instruction?: string;
-    /*
+     */;
+    instruction?: string /*
      * The name of the next street.
      * @example Berliner Straße
-     */
-    name?: string;
-    /*
+     */;
+    name?: string /*
      * Only for roundabouts. Contains the number of the exit to take.
      * Format: int32
      * @example 2
-     */
-    exit_number?: number;
-    /*
+     */;
+    exit_number?: number /*
      * Contains the bearing of the entrance and all passed exits in a roundabout.
      * @example 10,45,60
-     */
-    exit_bearings?: Array<number>;
-    /*
+     */;
+    exit_bearings?: Array<number> /*
      * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
      * @example 45,48
-     */
+     */;
     way_points?: Array<number>;
     /* Maneuver object of the step */
     maneuver?: {
@@ -4114,18 +3680,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * The coordinate of the point where a maneuver takes place.
        * @example 8.678962,49.407819
        */
-      location?: Array<number>;
-      /*
+      location?: Array<number> /*
        * The azimuth angle (in degrees) of the direction right before the maneuver.
        * Format: int32
        * @example 24
-       */
-      bearing_before?: number;
-      /*
+       */;
+      bearing_before?: number /*
        * The azimuth angle (in degrees) of the direction right after the maneuver.
        * Format: int32
        * @example 96
-       */
+       */;
       bearing_after?: number;
     };
   };
@@ -4135,18 +3699,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
      * The coordinate of the point where a maneuver takes place.
      * @example 8.678962,49.407819
      */
-    location?: Array<number>;
-    /*
+    location?: Array<number> /*
      * The azimuth angle (in degrees) of the direction right before the maneuver.
      * Format: int32
      * @example 24
-     */
-    bearing_before?: number;
-    /*
+     */;
+    bearing_before?: number /*
      * The azimuth angle (in degrees) of the direction right after the maneuver.
      * Format: int32
      * @example 96
-     */
+     */;
     bearing_after?: number;
   };
   /* Contains total sums of duration, route distance and actual distance of the route. */
@@ -4156,24 +3718,21 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
      * Format: double
      * @example 12.6
      */
-    distance?: number;
-    /*
+    distance?: number /*
      * Total duration in seconds.
      * Format: double
      * @example 604
-     */
-    duration?: number;
-    /*
+     */;
+    duration?: number /*
      * Total ascent in meters.
      * Format: double
      * @example 166.3
-     */
-    ascent?: number;
-    /*
+     */;
+    ascent?: number /*
      * Total descent in meters.
      * Format: double
      * @example 201.3
-     */
+     */;
     descent?: number;
     /* Format: int32 */
     transfers?: number;
@@ -4186,27 +3745,23 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
      * ID of the request (as passed in by the query)
      * @example request123
      */
-    id?: string;
-    /*
+    id?: string /*
      * Copyright and attribution information
      * @example openrouteservice.org | OpenStreetMap contributors
-     */
-    attribution?: string;
-    /*
+     */;
+    attribution?: string /*
      * The MD5 hash of the OSM planet file that was used for generating graphs
      * @example c0327ba6
-     */
-    osm_file_md5_hash?: string;
-    /*
+     */;
+    osm_file_md5_hash?: string /*
      * The service that was requested
      * @example routing
-     */
-    service?: string;
-    /*
+     */;
+    service?: string /*
      * Time that the request was made (UNIX Epoch time)
      * Format: int64
      * @example 1549549847974
-     */
+     */;
     timestamp?: number;
     /* The JSON body request sent to the routing service which defines options and parameters regarding the route to generate. */
     query?: {
@@ -4214,11 +3769,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
        * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
        * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
        */
-      coordinates: Array<Array<number>>;
-      /*
+      coordinates: Array<Array<number>> /*
        * Arbitrary identification string of the request reflected in the meta information.
        * @example my_request
-       */
+       */;
       id?: string;
       /* Specifies the route preference */
       preference?: "fastest" | "shortest" | "recommended";
@@ -4275,18 +3829,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
       /* Select html for more verbose instructions. */
       instructions_format?: "html" | "text";
       /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-      roundabout_exits?: boolean;
-      /*
+      roundabout_exits?: boolean /*
        * List of route attributes
        * @example avgspeed,percentage
-       */
+       */;
       attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
       /* Specifies whether the maneuver object is included into the step object or not.  */
-      maneuvers?: boolean;
-      /*
+      maneuvers?: boolean /*
        * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
        * @example 200,-1,30
-       */
+       */;
       radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -4301,11 +3853,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
       /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
       continue_straight?: boolean;
       /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-      elevation?: boolean;
-      /*
+      elevation?: boolean /*
        * The extra info items to include in the response
        * @example waytype,surface
-       */
+       */;
       extra_info?: Array<
         | "steepness"
         | "suitability"
@@ -4321,26 +3872,23 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
         | "noise"
         | "csv"
         | "shadow"
-      >;
-      /*
+      > /*
        * Advanced options for routing
        * @example [object Object]
-       */
+       */;
       options?: {
         /*
          * List of features to avoid.
          * @example highways
          */
-        avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-        /*
+        avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
          * Specify which type of border crossing to avoid
          * @example controlled
-         */
-        avoid_borders?: "all" | "controlled" | "none";
-        /*
+         */;
+        avoid_borders?: "all" | "controlled" | "none" /*
          * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
          * @example 11,193
-         */
+         */;
         avoid_countries?: Array<string>;
         /* Definition of the vehicle type. */
         vehicle_type?:
@@ -4392,30 +3940,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * Format: float
              * @example 8.4
              */
-            length?: number;
-            /*
+            length?: number /*
              * Width restriction in metres.
              * Format: float
              * @example 5.6
-             */
-            width?: number;
-            /*
+             */;
+            width?: number /*
              * Height restriction in metres.
              * Format: float
              * @example 4.2
-             */
-            height?: number;
-            /*
+             */;
+            height?: number /*
              * Axleload restriction in tons.
              * Format: float
              * @example 50
-             */
-            axleload?: number;
-            /*
+             */;
+            axleload?: number /*
              * Weight restriction in tons.
              * Format: float
              * @example 40
-             */
+             */;
             weight?: number;
             /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
             hazmat?: boolean;
@@ -4432,33 +3976,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
               | "very_bad"
               | "horrible"
               | "very_horrible"
-              | "impassable";
-            /*
+              | "impassable" /*
              * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
              * Format: float
-             */
-            maximum_sloped_kerb?: number;
-            /*
+             */;
+            maximum_sloped_kerb?: number /*
              * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
              * Format: int32
-             */
-            maximum_incline?: number;
-            /*
+             */;
+            maximum_incline?: number /*
              * Specifies the minimum width of the footway in metres.
              * Format: float
              * @example 2.5
-             */
+             */;
             minimum_width?: number;
-          };
-          /*
+          } /*
            * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
            * @example true
-           */
-          surface_quality_known?: boolean;
-          /*
+           */;
+          surface_quality_known?: boolean /*
            * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
            * @example true
-           */
+           */;
           allow_unsuitable?: boolean;
         };
         /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -4466,96 +4005,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
           empty?: boolean;
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
           [key: string]: {};
-        };
-        /*
+        } /*
          * Specifies the parameters for generating round trip routes.
          * @example [object Object]
-         */
+         */;
         round_trip?: {
           /*
            * The target length of the route in `m` (note that this is a preferred value, but results may be different).
            * Format: float
            * @example 10000
            */
-          length?: number;
-          /*
+          length?: number /*
            * The number of points to use on the route. Larger values create more circular routes.
            * Format: int32
            * @example 5
-           */
-          points?: number;
-          /*
+           */;
+          points?: number /*
            * A seed to use for adding randomisation to the overall direction of the generated route
            * Format: int64
            * @example 1
-           */
+           */;
           seed?: number;
         };
       };
       /* Suppress warning messages in the response */
       suppress_warnings?: boolean;
       /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-      geometry_simplify?: boolean;
-      /*
+      geometry_simplify?: boolean /*
        * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
        * @example 2,4
-       */
-      skip_segments?: Array<number>;
-      /*
+       */;
+      skip_segments?: Array<number> /*
        * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
        * @example [object Object]
-       */
+       */;
       alternative_routes?: {
         /*
          * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
          * Format: int32
          * @example 2
          */
-        target_count?: number;
-        /*
+        target_count?: number /*
          * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
          * Format: double
          * @example 1.4
-         */
-        weight_factor?: number;
-        /*
+         */;
+        weight_factor?: number /*
          * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
          * Format: double
          * @example 0.6
-         */
+         */;
         share_factor?: number;
-      };
-      /*
+      } /*
        * The maximum speed specified by user.
        * Format: double
        * @example 90
-       */
-      maximum_speed?: number;
-      /*
+       */;
+      maximum_speed?: number /*
        * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
        * @example true
-       */
-      schedule?: boolean;
-      /*
+       */;
+      schedule?: boolean /*
        * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
        * @example PT30M
-       */
-      schedule_duration?: string;
-      /*
+       */;
+      schedule_duration?: string /*
        * The maximum amount of entries that should be returned when requesting a schedule.
        * Format: int32
        * @example 3
-       */
-      schedule_rows?: number;
-      /*
+       */;
+      schedule_rows?: number /*
        * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
        * @example PT30M
-       */
-      walking_time?: string;
-      /*
+       */;
+      walking_time?: string /*
        * Specifies if transfers as criterion should be ignored.
        * @example true
-       */
+       */;
       ignore_transfers?: boolean;
     };
     /* Information about the openrouteservice engine used */
@@ -4564,22 +4090,19 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
        * The backend version of the openrouteservice that was queried
        * @example 8.0
        */
-      version?: string;
-      /*
+      version?: string /*
        * The date that the service was last updated
        * @example 2019-02-07T14:28:11Z
-       */
-      build_date?: string;
-      /*
+       */;
+      build_date?: string /*
        * The date that the graph data was last updated
        * @example 2019-02-07T14:28:11Z
-       */
+       */;
       graph_date?: string;
-    };
-    /*
+    } /*
      * System message
      * @example A message string configured in the service
-     */
+     */;
     system_message?: string;
   };
   gpx: { gpxRouteElements?: Array<{}> };
@@ -4592,27 +4115,23 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
        * ID of the request (as passed in by the query)
        * @example request123
        */
-      id?: string;
-      /*
+      id?: string /*
        * Copyright and attribution information
        * @example openrouteservice.org | OpenStreetMap contributors
-       */
-      attribution?: string;
-      /*
+       */;
+      attribution?: string /*
        * The MD5 hash of the OSM planet file that was used for generating graphs
        * @example c0327ba6
-       */
-      osm_file_md5_hash?: string;
-      /*
+       */;
+      osm_file_md5_hash?: string /*
        * The service that was requested
        * @example routing
-       */
-      service?: string;
-      /*
+       */;
+      service?: string /*
        * Time that the request was made (UNIX Epoch time)
        * Format: int64
        * @example 1549549847974
-       */
+       */;
       timestamp?: number;
       /* The JSON body request sent to the routing service which defines options and parameters regarding the route to generate. */
       query?: {
@@ -4620,11 +4139,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
          * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
          */
-        coordinates: Array<Array<number>>;
-        /*
+        coordinates: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
+         */;
         id?: string;
         /* Specifies the route preference */
         preference?: "fastest" | "shortest" | "recommended";
@@ -4681,18 +4199,16 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         /* Select html for more verbose instructions. */
         instructions_format?: "html" | "text";
         /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-        roundabout_exits?: boolean;
-        /*
+        roundabout_exits?: boolean /*
          * List of route attributes
          * @example avgspeed,percentage
-         */
+         */;
         attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
         /* Specifies whether the maneuver object is included into the step object or not.  */
-        maneuvers?: boolean;
-        /*
+        maneuvers?: boolean /*
          * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
          * @example 200,-1,30
-         */
+         */;
         radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -4707,11 +4223,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
         continue_straight?: boolean;
         /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-        elevation?: boolean;
-        /*
+        elevation?: boolean /*
          * The extra info items to include in the response
          * @example waytype,surface
-         */
+         */;
         extra_info?: Array<
           | "steepness"
           | "suitability"
@@ -4727,26 +4242,23 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
           | "noise"
           | "csv"
           | "shadow"
-        >;
-        /*
+        > /*
          * Advanced options for routing
          * @example [object Object]
-         */
+         */;
         options?: {
           /*
            * List of features to avoid.
            * @example highways
            */
-          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-          /*
+          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
            * Specify which type of border crossing to avoid
            * @example controlled
-           */
-          avoid_borders?: "all" | "controlled" | "none";
-          /*
+           */;
+          avoid_borders?: "all" | "controlled" | "none" /*
            * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
            * @example 11,193
-           */
+           */;
           avoid_countries?: Array<string>;
           /* Definition of the vehicle type. */
           vehicle_type?:
@@ -4798,30 +4310,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: float
                * @example 8.4
                */
-              length?: number;
-              /*
+              length?: number /*
                * Width restriction in metres.
                * Format: float
                * @example 5.6
-               */
-              width?: number;
-              /*
+               */;
+              width?: number /*
                * Height restriction in metres.
                * Format: float
                * @example 4.2
-               */
-              height?: number;
-              /*
+               */;
+              height?: number /*
                * Axleload restriction in tons.
                * Format: float
                * @example 50
-               */
-              axleload?: number;
-              /*
+               */;
+              axleload?: number /*
                * Weight restriction in tons.
                * Format: float
                * @example 40
-               */
+               */;
               weight?: number;
               /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
               hazmat?: boolean;
@@ -4838,33 +4346,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 | "very_bad"
                 | "horrible"
                 | "very_horrible"
-                | "impassable";
-              /*
+                | "impassable" /*
                * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                * Format: float
-               */
-              maximum_sloped_kerb?: number;
-              /*
+               */;
+              maximum_sloped_kerb?: number /*
                * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                * Format: int32
-               */
-              maximum_incline?: number;
-              /*
+               */;
+              maximum_incline?: number /*
                * Specifies the minimum width of the footway in metres.
                * Format: float
                * @example 2.5
-               */
+               */;
               minimum_width?: number;
-            };
-            /*
+            } /*
              * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
              * @example true
-             */
-            surface_quality_known?: boolean;
-            /*
+             */;
+            surface_quality_known?: boolean /*
              * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
              * @example true
-             */
+             */;
             allow_unsuitable?: boolean;
           };
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -4872,96 +4375,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             empty?: boolean;
             /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
             [key: string]: {};
-          };
-          /*
+          } /*
            * Specifies the parameters for generating round trip routes.
            * @example [object Object]
-           */
+           */;
           round_trip?: {
             /*
              * The target length of the route in `m` (note that this is a preferred value, but results may be different).
              * Format: float
              * @example 10000
              */
-            length?: number;
-            /*
+            length?: number /*
              * The number of points to use on the route. Larger values create more circular routes.
              * Format: int32
              * @example 5
-             */
-            points?: number;
-            /*
+             */;
+            points?: number /*
              * A seed to use for adding randomisation to the overall direction of the generated route
              * Format: int64
              * @example 1
-             */
+             */;
             seed?: number;
           };
         };
         /* Suppress warning messages in the response */
         suppress_warnings?: boolean;
         /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-        geometry_simplify?: boolean;
-        /*
+        geometry_simplify?: boolean /*
          * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
          * @example 2,4
-         */
-        skip_segments?: Array<number>;
-        /*
+         */;
+        skip_segments?: Array<number> /*
          * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
          * @example [object Object]
-         */
+         */;
         alternative_routes?: {
           /*
            * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
            * Format: int32
            * @example 2
            */
-          target_count?: number;
-          /*
+          target_count?: number /*
            * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
            * Format: double
            * @example 1.4
-           */
-          weight_factor?: number;
-          /*
+           */;
+          weight_factor?: number /*
            * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
            * Format: double
            * @example 0.6
-           */
+           */;
           share_factor?: number;
-        };
-        /*
+        } /*
          * The maximum speed specified by user.
          * Format: double
          * @example 90
-         */
-        maximum_speed?: number;
-        /*
+         */;
+        maximum_speed?: number /*
          * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
          * @example true
-         */
-        schedule?: boolean;
-        /*
+         */;
+        schedule?: boolean /*
          * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        schedule_duration?: string;
-        /*
+         */;
+        schedule_duration?: string /*
          * The maximum amount of entries that should be returned when requesting a schedule.
          * Format: int32
          * @example 3
-         */
-        schedule_rows?: number;
-        /*
+         */;
+        schedule_rows?: number /*
          * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        walking_time?: string;
-        /*
+         */;
+        walking_time?: string /*
          * Specifies if transfers as criterion should be ignored.
          * @example true
-         */
+         */;
         ignore_transfers?: boolean;
       };
       /* Information about the openrouteservice engine used */
@@ -4970,29 +4460,25 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * The backend version of the openrouteservice that was queried
          * @example 8.0
          */
-        version?: string;
-        /*
+        version?: string /*
          * The date that the service was last updated
          * @example 2019-02-07T14:28:11Z
-         */
-        build_date?: string;
-        /*
+         */;
+        build_date?: string /*
          * The date that the graph data was last updated
          * @example 2019-02-07T14:28:11Z
-         */
+         */;
         graph_date?: string;
-      };
-      /*
+      } /*
        * System message
        * @example A message string configured in the service
-       */
+       */;
       system_message?: string;
     };
-    features?: Array<{}>;
-    /*
+    features?: Array<{}> /*
      * Bounding box that covers all returned routes
      * @example 46.1336,6.4245,46.0547,6.5603
-     */
+     */;
     bbox?: Array<number>;
   };
 };
@@ -5008,17 +4494,15 @@ export type APIEndpoints = {
            * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
            * @example 8.678962,49.40783
            */
-          location?: Array<number>;
-          /*
+          location?: Array<number> /*
            * Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
            * @example Bergheimer Straße
-           */
-          name?: string;
-          /*
+           */;
+          name?: string /*
            * Distance between the `source/destination` Location and the used point on the routing graph in meters.
            * Format: double
            * @example 1.2
-           */
+           */;
           snapped_distance?: number;
         }>;
         /* Information about the request */
@@ -5027,22 +4511,19 @@ export type APIEndpoints = {
            * Copyright and attribution information
            * @example openrouteservice.org | OpenStreetMap contributors
            */
-          attribution?: string;
-          /*
+          attribution?: string /*
            * The MD5 hash of the OSM planet file that was used for generating graphs
            * @example c0327ba6
-           */
-          osm_file_md5_hash?: string;
-          /*
+           */;
+          osm_file_md5_hash?: string /*
            * The service that was requested
            * @example snap
-           */
-          service?: string;
-          /*
+           */;
+          service?: string /*
            * Time that the request was made (UNIX Epoch time)
            * Format: int64
            * @example 1549549847974
-           */
+           */;
           timestamp?: number;
           /* Snapping service endpoint. */
           query?: {
@@ -5050,17 +4531,15 @@ export type APIEndpoints = {
              * The locations to be snapped as array of `longitude/latitude` pairs.
              * @example 6.501,46.0916,6.5025,46.0839
              */
-            locations: Array<Array<number>>;
-            /*
+            locations: Array<Array<number>> /*
              * Arbitrary identification string of the request reflected in the meta information.
              * @example my_request
-             */
-            id?: string;
-            /*
+             */;
+            id?: string /*
              * Maximum radius in meters around given coordinates to search for graph edges.
              * Format: double
              * @example 300
-             */
+             */;
             radius: number;
           };
           /* Information about the openrouteservice engine used */
@@ -5069,22 +4548,19 @@ export type APIEndpoints = {
              * The backend version of the openrouteservice that was queried
              * @example 8.0
              */
-            version?: string;
-            /*
+            version?: string /*
              * The date that the service was last updated
              * @example 2019-02-07T14:28:11Z
-             */
-            build_date?: string;
-            /*
+             */;
+            build_date?: string /*
              * The date that the graph data was last updated
              * @example 2019-02-07T14:28:11Z
-             */
+             */;
             graph_date?: string;
-          };
-          /*
+          } /*
            * System message
            * @example A message string configured in the service
-           */
+           */;
           system_message?: string;
         };
       };
@@ -5109,17 +4585,15 @@ export type APIEndpoints = {
          * The locations to be snapped as array of `longitude/latitude` pairs.
          * @example 6.501,46.0916,6.5025,46.0839
          */
-        locations: Array<Array<number>>;
-        /*
+        locations: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
-        id?: string;
-        /*
+         */;
+        id?: string /*
          * Maximum radius in meters around given coordinates to search for graph edges.
          * Format: double
          * @example 300
-         */
+         */;
         radius: number;
       };
     };
@@ -5134,17 +4608,15 @@ export type APIEndpoints = {
            * {longitude},{latitude} coordinates of the closest accessible point on the routing graph
            * @example 8.678962,49.40783
            */
-          location?: Array<number>;
-          /*
+          location?: Array<number> /*
            * Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
            * @example Bergheimer Straße
-           */
-          name?: string;
-          /*
+           */;
+          name?: string /*
            * Distance between the `source/destination` Location and the used point on the routing graph in meters.
            * Format: double
            * @example 1.2
-           */
+           */;
           snapped_distance?: number;
         }>;
         /* Information about the request */
@@ -5153,22 +4625,19 @@ export type APIEndpoints = {
            * Copyright and attribution information
            * @example openrouteservice.org | OpenStreetMap contributors
            */
-          attribution?: string;
-          /*
+          attribution?: string /*
            * The MD5 hash of the OSM planet file that was used for generating graphs
            * @example c0327ba6
-           */
-          osm_file_md5_hash?: string;
-          /*
+           */;
+          osm_file_md5_hash?: string /*
            * The service that was requested
            * @example snap
-           */
-          service?: string;
-          /*
+           */;
+          service?: string /*
            * Time that the request was made (UNIX Epoch time)
            * Format: int64
            * @example 1549549847974
-           */
+           */;
           timestamp?: number;
           /* Snapping service endpoint. */
           query?: {
@@ -5176,17 +4645,15 @@ export type APIEndpoints = {
              * The locations to be snapped as array of `longitude/latitude` pairs.
              * @example 6.501,46.0916,6.5025,46.0839
              */
-            locations: Array<Array<number>>;
-            /*
+            locations: Array<Array<number>> /*
              * Arbitrary identification string of the request reflected in the meta information.
              * @example my_request
-             */
-            id?: string;
-            /*
+             */;
+            id?: string /*
              * Maximum radius in meters around given coordinates to search for graph edges.
              * Format: double
              * @example 300
-             */
+             */;
             radius: number;
           };
           /* Information about the openrouteservice engine used */
@@ -5195,22 +4662,19 @@ export type APIEndpoints = {
              * The backend version of the openrouteservice that was queried
              * @example 8.0
              */
-            version?: string;
-            /*
+            version?: string /*
              * The date that the service was last updated
              * @example 2019-02-07T14:28:11Z
-             */
-            build_date?: string;
-            /*
+             */;
+            build_date?: string /*
              * The date that the graph data was last updated
              * @example 2019-02-07T14:28:11Z
-             */
+             */;
             graph_date?: string;
-          };
-          /*
+          } /*
            * System message
            * @example A message string configured in the service
-           */
+           */;
           system_message?: string;
         };
       };
@@ -5235,17 +4699,15 @@ export type APIEndpoints = {
          * The locations to be snapped as array of `longitude/latitude` pairs.
          * @example 6.501,46.0916,6.5025,46.0839
          */
-        locations: Array<Array<number>>;
-        /*
+        locations: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
-        id?: string;
-        /*
+         */;
+        id?: string /*
          * Maximum radius in meters around given coordinates to search for graph edges.
          * Format: double
          * @example 300
-         */
+         */;
         radius: number;
       };
     };
@@ -5266,27 +4728,24 @@ export type APIEndpoints = {
              * "Name of the street the closest accessible point is situated on. Only for `resolve_locations=true` and only if name is available.
              * @example Gerhart-Hauptmann-Straße
              */
-            name?: string;
-            /*
+            name?: string /*
              * Distance between the `source/destination` Location and the used point on the routing graph in meters.
              * Format: double
              * @example 0.02
-             */
-            snapped_distance?: number;
-            /*
+             */;
+            snapped_distance?: number /*
              * Index of the requested location
              * Format: int32
-             */
+             */;
             source_id?: number;
           };
           /* Feature geometry */
           geometry?: {
             /* GeoJSON type */
-            type?: string;
-            /*
+            type?: string /*
              * Lon/Lat coordinates of the snapped location
              * @example 6.501,46.0916
-             */
+             */;
             coordinates?: Array<number>;
           };
         }>;
@@ -5296,22 +4755,19 @@ export type APIEndpoints = {
            * Copyright and attribution information
            * @example openrouteservice.org | OpenStreetMap contributors
            */
-          attribution?: string;
-          /*
+          attribution?: string /*
            * The MD5 hash of the OSM planet file that was used for generating graphs
            * @example c0327ba6
-           */
-          osm_file_md5_hash?: string;
-          /*
+           */;
+          osm_file_md5_hash?: string /*
            * The service that was requested
            * @example snap
-           */
-          service?: string;
-          /*
+           */;
+          service?: string /*
            * Time that the request was made (UNIX Epoch time)
            * Format: int64
            * @example 1549549847974
-           */
+           */;
           timestamp?: number;
           /* Snapping service endpoint. */
           query?: {
@@ -5319,17 +4775,15 @@ export type APIEndpoints = {
              * The locations to be snapped as array of `longitude/latitude` pairs.
              * @example 6.501,46.0916,6.5025,46.0839
              */
-            locations: Array<Array<number>>;
-            /*
+            locations: Array<Array<number>> /*
              * Arbitrary identification string of the request reflected in the meta information.
              * @example my_request
-             */
-            id?: string;
-            /*
+             */;
+            id?: string /*
              * Maximum radius in meters around given coordinates to search for graph edges.
              * Format: double
              * @example 300
-             */
+             */;
             radius: number;
           };
           /* Information about the openrouteservice engine used */
@@ -5338,28 +4792,24 @@ export type APIEndpoints = {
              * The backend version of the openrouteservice that was queried
              * @example 8.0
              */
-            version?: string;
-            /*
+            version?: string /*
              * The date that the service was last updated
              * @example 2019-02-07T14:28:11Z
-             */
-            build_date?: string;
-            /*
+             */;
+            build_date?: string /*
              * The date that the graph data was last updated
              * @example 2019-02-07T14:28:11Z
-             */
+             */;
             graph_date?: string;
-          };
-          /*
+          } /*
            * System message
            * @example A message string configured in the service
-           */
+           */;
           system_message?: string;
-        };
-        /*
+        } /*
          * Bounding box that covers all returned snapping points
          * @example 46.1336,6.4245,46.0547,6.5603
-         */
+         */;
         bbox?: Array<number>;
       };
     };
@@ -5383,17 +4833,15 @@ export type APIEndpoints = {
          * The locations to be snapped as array of `longitude/latitude` pairs.
          * @example 6.501,46.0916,6.5025,46.0839
          */
-        locations: Array<Array<number>>;
-        /*
+        locations: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
-        id?: string;
-        /*
+         */;
+        id?: string /*
          * Maximum radius in meters around given coordinates to search for graph edges.
          * Format: double
          * @example 300
-         */
+         */;
         radius: number;
       };
     };
@@ -5420,11 +4868,10 @@ export type APIEndpoints = {
          * List of comma separated lists of `longitude,latitude` coordinates in WGS 84 (EPSG:4326)
          * @example 9.70093,48.477473,9.207916,49.153868,37.573242,55.801281,115.663757,38.106467
          */
-        locations: Array<Array<number>>;
-        /*
+        locations: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
+         */;
         id?: string;
         /* A list of indices that refers to the list of locations (starting with `0`). `{index_1},{index_2}[,{index_N} ...]` or `all` (default). example `[0,3]` for the first and fourth locations  */
         sources?: Array<string>;
@@ -5465,43 +4912,38 @@ Default: m. */
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
          */
-        id?: string;
-        /*
+        id?: string /*
          * The locations to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
          * @example 6.501,46.0916,6.5025,46.0839
-         */
+         */;
         locations: Array<Array<number>>;
         /* `start` treats the location(s) as starting point, `destination` as goal. */
-        location_type?: "start" | "destination";
-        /*
+        location_type?: "start" | "destination" /*
          * Maximum range value of the analysis in **seconds** for time and **metres** for distance.Alternatively a comma separated list of specific range values. Ranges will be the same for all locations.
          * @example 300,200
-         */
+         */;
         range: Array<number>;
         /* Specifies the isochrones reachability type. */
         range_type?: "time" | "distance";
         /* Specifies the distance units only if `range_type` is set to distance.
 Default: m.  */
-        units?: "m" | "km" | "mi";
-        /*
+        units?: "m" | "km" | "mi" /*
          * Advanced options for routing
          * @example [object Object]
-         */
+         */;
         options?: {
           /*
            * List of features to avoid.
            * @example highways
            */
-          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-          /*
+          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
            * Specify which type of border crossing to avoid
            * @example controlled
-           */
-          avoid_borders?: "all" | "controlled" | "none";
-          /*
+           */;
+          avoid_borders?: "all" | "controlled" | "none" /*
            * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
            * @example 11,193
-           */
+           */;
           avoid_countries?: Array<string>;
           /* Definition of the vehicle type. */
           vehicle_type?:
@@ -5553,30 +4995,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: float
                * @example 8.4
                */
-              length?: number;
-              /*
+              length?: number /*
                * Width restriction in metres.
                * Format: float
                * @example 5.6
-               */
-              width?: number;
-              /*
+               */;
+              width?: number /*
                * Height restriction in metres.
                * Format: float
                * @example 4.2
-               */
-              height?: number;
-              /*
+               */;
+              height?: number /*
                * Axleload restriction in tons.
                * Format: float
                * @example 50
-               */
-              axleload?: number;
-              /*
+               */;
+              axleload?: number /*
                * Weight restriction in tons.
                * Format: float
                * @example 40
-               */
+               */;
               weight?: number;
               /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
               hazmat?: boolean;
@@ -5593,33 +5031,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 | "very_bad"
                 | "horrible"
                 | "very_horrible"
-                | "impassable";
-              /*
+                | "impassable" /*
                * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                * Format: float
-               */
-              maximum_sloped_kerb?: number;
-              /*
+               */;
+              maximum_sloped_kerb?: number /*
                * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                * Format: int32
-               */
-              maximum_incline?: number;
-              /*
+               */;
+              maximum_incline?: number /*
                * Specifies the minimum width of the footway in metres.
                * Format: float
                * @example 2.5
-               */
+               */;
               minimum_width?: number;
-            };
-            /*
+            } /*
              * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
              * @example true
-             */
-            surface_quality_known?: boolean;
-            /*
+             */;
+            surface_quality_known?: boolean /*
              * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
              * @example true
-             */
+             */;
             allow_unsuitable?: boolean;
           };
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -5627,29 +5060,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             empty?: boolean;
             /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
             [key: string]: {};
-          };
-          /*
+          } /*
            * Specifies the parameters for generating round trip routes.
            * @example [object Object]
-           */
+           */;
           round_trip?: {
             /*
              * The target length of the route in `m` (note that this is a preferred value, but results may be different).
              * Format: float
              * @example 10000
              */
-            length?: number;
-            /*
+            length?: number /*
              * The number of points to use on the route. Larger values create more circular routes.
              * Format: int32
              * @example 5
-             */
-            points?: number;
-            /*
+             */;
+            points?: number /*
              * A seed to use for adding randomisation to the overall direction of the generated route
              * Format: int64
              * @example 1
-             */
+             */;
             seed?: number;
           };
         };
@@ -5657,17 +5087,15 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
 Default: m.  */
         area_units?: "m" | "km" | "mi";
         /* Specifies whether to return intersecting polygons.  */
-        intersections?: boolean;
-        /*
+        intersections?: boolean /*
          * List of isochrones attributes
          * @example area
-         */
-        attributes?: Array<"area" | "reachfactor" | "total_pop">;
-        /*
+         */;
+        attributes?: Array<"area" | "reachfactor" | "total_pop"> /*
          * Interval of isochrones or equidistants. This is only used if a single range value is given. Value in **seconds** for time and **meters** for distance.
          * Format: double
          * @example 30
-         */
+         */;
         interval?: number /*
  * Applies a level of generalisation to the isochrone polygons generated as a `smoothing_factor` between `0` and `100.0`.
 Generalisation is produced by determining a maximum length of a connecting line between two points found on the outside of a containing polygon.
@@ -5705,11 +5133,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
          * The bounding box to use for the request as an array of `longitude/latitude` pairs
          * @example 6.501,46.0916,6.5025,46.0839
          */
-        bbox: Array<Array<number>>;
-        /*
+        bbox: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example export_request
-         */
+         */;
         id?: string;
       };
     };
@@ -5736,11 +5163,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
          * The bounding box to use for the request as an array of `longitude/latitude` pairs
          * @example 6.501,46.0916,6.5025,46.0839
          */
-        bbox: Array<Array<number>>;
-        /*
+        bbox: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example export_request
-         */
+         */;
         id?: string;
       };
     };
@@ -5755,27 +5181,23 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
            * ID of the request (as passed in by the query)
            * @example request123
            */
-          id?: string;
-          /*
+          id?: string /*
            * Copyright and attribution information
            * @example openrouteservice.org | OpenStreetMap contributors
-           */
-          attribution?: string;
-          /*
+           */;
+          attribution?: string /*
            * The MD5 hash of the OSM planet file that was used for generating graphs
            * @example c0327ba6
-           */
-          osm_file_md5_hash?: string;
-          /*
+           */;
+          osm_file_md5_hash?: string /*
            * The service that was requested
            * @example routing
-           */
-          service?: string;
-          /*
+           */;
+          service?: string /*
            * Time that the request was made (UNIX Epoch time)
            * Format: int64
            * @example 1549549847974
-           */
+           */;
           timestamp?: number;
           /* The JSON body request sent to the routing service which defines options and parameters regarding the route to generate. */
           query?: {
@@ -5783,11 +5205,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
              * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
              * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
              */
-            coordinates: Array<Array<number>>;
-            /*
+            coordinates: Array<Array<number>> /*
              * Arbitrary identification string of the request reflected in the meta information.
              * @example my_request
-             */
+             */;
             id?: string;
             /* Specifies the route preference */
             preference?: "fastest" | "shortest" | "recommended";
@@ -5844,18 +5265,16 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
             /* Select html for more verbose instructions. */
             instructions_format?: "html" | "text";
             /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-            roundabout_exits?: boolean;
-            /*
+            roundabout_exits?: boolean /*
              * List of route attributes
              * @example avgspeed,percentage
-             */
+             */;
             attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
             /* Specifies whether the maneuver object is included into the step object or not.  */
-            maneuvers?: boolean;
-            /*
+            maneuvers?: boolean /*
              * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
              * @example 200,-1,30
-             */
+             */;
             radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -5870,11 +5289,10 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
             /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
             continue_straight?: boolean;
             /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-            elevation?: boolean;
-            /*
+            elevation?: boolean /*
              * The extra info items to include in the response
              * @example waytype,surface
-             */
+             */;
             extra_info?: Array<
               | "steepness"
               | "suitability"
@@ -5890,26 +5308,23 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
               | "noise"
               | "csv"
               | "shadow"
-            >;
-            /*
+            > /*
              * Advanced options for routing
              * @example [object Object]
-             */
+             */;
             options?: {
               /*
                * List of features to avoid.
                * @example highways
                */
-              avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-              /*
+              avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
                * Specify which type of border crossing to avoid
                * @example controlled
-               */
-              avoid_borders?: "all" | "controlled" | "none";
-              /*
+               */;
+              avoid_borders?: "all" | "controlled" | "none" /*
                * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
                * @example 11,193
-               */
+               */;
               avoid_countries?: Array<string>;
               /* Definition of the vehicle type. */
               vehicle_type?:
@@ -5961,30 +5376,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                    * Format: float
                    * @example 8.4
                    */
-                  length?: number;
-                  /*
+                  length?: number /*
                    * Width restriction in metres.
                    * Format: float
                    * @example 5.6
-                   */
-                  width?: number;
-                  /*
+                   */;
+                  width?: number /*
                    * Height restriction in metres.
                    * Format: float
                    * @example 4.2
-                   */
-                  height?: number;
-                  /*
+                   */;
+                  height?: number /*
                    * Axleload restriction in tons.
                    * Format: float
                    * @example 50
-                   */
-                  axleload?: number;
-                  /*
+                   */;
+                  axleload?: number /*
                    * Weight restriction in tons.
                    * Format: float
                    * @example 40
-                   */
+                   */;
                   weight?: number;
                   /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
                   hazmat?: boolean;
@@ -6001,33 +5412,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                     | "very_bad"
                     | "horrible"
                     | "very_horrible"
-                    | "impassable";
-                  /*
+                    | "impassable" /*
                    * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                    * Format: float
-                   */
-                  maximum_sloped_kerb?: number;
-                  /*
+                   */;
+                  maximum_sloped_kerb?: number /*
                    * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                    * Format: int32
-                   */
-                  maximum_incline?: number;
-                  /*
+                   */;
+                  maximum_incline?: number /*
                    * Specifies the minimum width of the footway in metres.
                    * Format: float
                    * @example 2.5
-                   */
+                   */;
                   minimum_width?: number;
-                };
-                /*
+                } /*
                  * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
                  * @example true
-                 */
-                surface_quality_known?: boolean;
-                /*
+                 */;
+                surface_quality_known?: boolean /*
                  * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
                  * @example true
-                 */
+                 */;
                 allow_unsuitable?: boolean;
               };
               /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -6035,96 +5441,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 empty?: boolean;
                 /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
                 [key: string]: {};
-              };
-              /*
+              } /*
                * Specifies the parameters for generating round trip routes.
                * @example [object Object]
-               */
+               */;
               round_trip?: {
                 /*
                  * The target length of the route in `m` (note that this is a preferred value, but results may be different).
                  * Format: float
                  * @example 10000
                  */
-                length?: number;
-                /*
+                length?: number /*
                  * The number of points to use on the route. Larger values create more circular routes.
                  * Format: int32
                  * @example 5
-                 */
-                points?: number;
-                /*
+                 */;
+                points?: number /*
                  * A seed to use for adding randomisation to the overall direction of the generated route
                  * Format: int64
                  * @example 1
-                 */
+                 */;
                 seed?: number;
               };
             };
             /* Suppress warning messages in the response */
             suppress_warnings?: boolean;
             /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-            geometry_simplify?: boolean;
-            /*
+            geometry_simplify?: boolean /*
              * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
              * @example 2,4
-             */
-            skip_segments?: Array<number>;
-            /*
+             */;
+            skip_segments?: Array<number> /*
              * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
              * @example [object Object]
-             */
+             */;
             alternative_routes?: {
               /*
                * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
                * Format: int32
                * @example 2
                */
-              target_count?: number;
-              /*
+              target_count?: number /*
                * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
                * Format: double
                * @example 1.4
-               */
-              weight_factor?: number;
-              /*
+               */;
+              weight_factor?: number /*
                * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
                * Format: double
                * @example 0.6
-               */
+               */;
               share_factor?: number;
-            };
-            /*
+            } /*
              * The maximum speed specified by user.
              * Format: double
              * @example 90
-             */
-            maximum_speed?: number;
-            /*
+             */;
+            maximum_speed?: number /*
              * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
              * @example true
-             */
-            schedule?: boolean;
-            /*
+             */;
+            schedule?: boolean /*
              * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
              * @example PT30M
-             */
-            schedule_duration?: string;
-            /*
+             */;
+            schedule_duration?: string /*
              * The maximum amount of entries that should be returned when requesting a schedule.
              * Format: int32
              * @example 3
-             */
-            schedule_rows?: number;
-            /*
+             */;
+            schedule_rows?: number /*
              * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
              * @example PT30M
-             */
-            walking_time?: string;
-            /*
+             */;
+            walking_time?: string /*
              * Specifies if transfers as criterion should be ignored.
              * @example true
-             */
+             */;
             ignore_transfers?: boolean;
           };
           /* Information about the openrouteservice engine used */
@@ -6133,22 +5526,19 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * The backend version of the openrouteservice that was queried
              * @example 8.0
              */
-            version?: string;
-            /*
+            version?: string /*
              * The date that the service was last updated
              * @example 2019-02-07T14:28:11Z
-             */
-            build_date?: string;
-            /*
+             */;
+            build_date?: string /*
              * The date that the graph data was last updated
              * @example 2019-02-07T14:28:11Z
-             */
+             */;
             graph_date?: string;
-          };
-          /*
+          } /*
            * System message
            * @example A message string configured in the service
-           */
+           */;
           system_message?: string;
         };
         /* A list of routes returned from the request */
@@ -6160,24 +5550,21 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * Format: double
              * @example 12.6
              */
-            distance?: number;
-            /*
+            distance?: number /*
              * Total duration in seconds.
              * Format: double
              * @example 604
-             */
-            duration?: number;
-            /*
+             */;
+            duration?: number /*
              * Total ascent in meters.
              * Format: double
              * @example 166.3
-             */
-            ascent?: number;
-            /*
+             */;
+            ascent?: number /*
              * Total descent in meters.
              * Format: double
              * @example 201.3
-             */
+             */;
             descent?: number;
             /* Format: int32 */
             transfers?: number;
@@ -6191,12 +5578,11 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * Format: double
              * @example 253
              */
-            distance?: number;
-            /*
+            distance?: number /*
              * Contains the duration of the segment in seconds.
              * Format: double
              * @example 37.7
-             */
+             */;
             duration?: number;
             /* List containing the specific steps the segment consists of. */
             steps?: Array<{
@@ -6205,44 +5591,37 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: double
                * @example 245
                */
-              distance?: number;
-              /*
+              distance?: number /*
                * The duration for the step in seconds.
                * Format: double
                * @example 96.2
-               */
-              duration?: number;
-              /*
+               */;
+              duration?: number /*
                * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
                * Format: int32
                * @example 1
-               */
-              type?: number;
-              /*
+               */;
+              type?: number /*
                * The routing instruction text for the step.
                * @example Turn right onto Berliner Straße
-               */
-              instruction?: string;
-              /*
+               */;
+              instruction?: string /*
                * The name of the next street.
                * @example Berliner Straße
-               */
-              name?: string;
-              /*
+               */;
+              name?: string /*
                * Only for roundabouts. Contains the number of the exit to take.
                * Format: int32
                * @example 2
-               */
-              exit_number?: number;
-              /*
+               */;
+              exit_number?: number /*
                * Contains the bearing of the entrance and all passed exits in a roundabout.
                * @example 10,45,60
-               */
-              exit_bearings?: Array<number>;
-              /*
+               */;
+              exit_bearings?: Array<number> /*
                * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
                * @example 45,48
-               */
+               */;
               way_points?: Array<number>;
               /* Maneuver object of the step */
               maneuver?: {
@@ -6250,66 +5629,56 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                  * The coordinate of the point where a maneuver takes place.
                  * @example 8.678962,49.407819
                  */
-                location?: Array<number>;
-                /*
+                location?: Array<number> /*
                  * The azimuth angle (in degrees) of the direction right before the maneuver.
                  * Format: int32
                  * @example 24
-                 */
-                bearing_before?: number;
-                /*
+                 */;
+                bearing_before?: number /*
                  * The azimuth angle (in degrees) of the direction right after the maneuver.
                  * Format: int32
                  * @example 96
-                 */
+                 */;
                 bearing_after?: number;
               };
-            }>;
-            /*
+            }> /*
              * Contains the deviation compared to a straight line that would have the factor `1`. Double the Distance would be a `2`.
              * Format: double
              * @example 0.5
-             */
-            detourfactor?: number;
-            /*
+             */;
+            detourfactor?: number /*
              * Contains the proportion of the route in percent.
              * Format: double
              * @example 43.2
-             */
-            percentage?: number;
-            /*
+             */;
+            percentage?: number /*
              * Contains the average speed of this segment in km/h.
              * Format: double
              * @example 56.3
-             */
-            avgspeed?: number;
-            /*
+             */;
+            avgspeed?: number /*
              *  Contains ascent of this segment in metres.
              * Format: double
              * @example 56.3
-             */
-            ascent?: number;
-            /*
+             */;
+            ascent?: number /*
              * Contains descent of this segment in metres.
              * Format: double
              * @example 45.2
-             */
+             */;
             descent?: number;
-          }>;
-          /*
+          }> /*
            * A bounding box which contains the entire route
            * @example 46.1336,6.4245,46.0547,6.5603
-           */
-          bbox?: Array<number>;
-          /*
+           */;
+          bbox?: Array<number> /*
            * The geometry of the route. For JSON route responses this is an encoded polyline.
            * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-           */
-          geometry?: string;
-          /*
+           */;
+          geometry?: string /*
            * List containing the indices of way points corresponding to the *geometry*.
            * @example 0,23
-           */
+           */;
           way_points?: Array<number>;
           /* List of warnings that have been generated for the route */
           warnings?: Array<{
@@ -6318,11 +5687,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * Format: int32
              * @example 1
              */
-            code?: number;
-            /*
+            code?: number /*
              * The message associated with the warning
              * @example This route may go over restricted roads
-             */
+             */;
             message?: string;
           }>;
           /* List containing the legs the route consists of. */
@@ -6331,83 +5699,69 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * The type of the leg, possible values are currently 'walk' and 'pt'.
              * @example pt
              */
-            type?: string;
-            /*
+            type?: string /*
              * The departure location of the leg.
              * @example Dossenheim, Süd Bstg G1
-             */
-            departure_location?: string;
-            /*
+             */;
+            departure_location?: string /*
              * The headsign of the public transport vehicle of the leg.
              * @example Bismarckplatz - Speyererhof - EMBL - Boxberg - Mombertplatz
-             */
-            trip_headsign?: string;
-            /*
+             */;
+            trip_headsign?: string /*
              * The public transport route name of the leg.
              * @example RNV Bus 39A
-             */
-            route_long_name?: string;
-            /*
+             */;
+            route_long_name?: string /*
              * The public transport route name (short version) of the leg.
              * @example 39A
-             */
-            route_short_name?: string;
-            /*
+             */;
+            route_short_name?: string /*
              * The route description of the leg (if provided in the GTFS data set).
              * @example Bus
-             */
-            route_desc?: string;
-            /*
+             */;
+            route_desc?: string /*
              * The route type of the leg (if provided in the GTFS data set).
              * Format: int32
              * @example 1
-             */
-            route_type?: number;
-            /*
+             */;
+            route_type?: number /*
              * The distance for the leg in metres.
              * Format: double
              * @example 245
-             */
-            distance?: number;
-            /*
+             */;
+            distance?: number /*
              * The duration for the leg in seconds.
              * Format: double
              * @example 96.2
-             */
-            duration?: number;
-            /*
+             */;
+            duration?: number /*
              * Departure date and time
              * Format: date-time
              * @example 2020-01-31T12:45:00+01:00
-             */
-            departure?: string;
-            /*
+             */;
+            departure?: string /*
              * Arrival date and time
              * Format: date-time
              * @example 2020-01-31T13:15:00+01:00
-             */
-            arrival?: string;
-            /*
+             */;
+            arrival?: string /*
              * The feed ID this public transport leg based its information from.
              * @example gtfs_0
-             */
-            feed_id?: string;
-            /*
+             */;
+            feed_id?: string /*
              * The trip ID of this public transport leg.
              * @example trip_id: vrn-19-39A-1-2-21-H-8-Special-50-42
-             */
-            trip_id?: string;
-            /*
+             */;
+            trip_id?: string /*
              * The route ID of this public transport leg.
              * @example vrn-19-39A-1
-             */
+             */;
             route_id?: string;
             /* Whether the legs continues in the same vehicle as the previous one. */
-            is_in_same_vehicle_as_previous?: boolean;
-            /*
+            is_in_same_vehicle_as_previous?: boolean /*
              * The geometry of the leg. This is an encoded polyline.
              * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-             */
+             */;
             geometry?: string;
             /* List containing the specific steps the segment consists of. */
             instructions?: Array<{
@@ -6416,44 +5770,37 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: double
                * @example 245
                */
-              distance?: number;
-              /*
+              distance?: number /*
                * The duration for the step in seconds.
                * Format: double
                * @example 96.2
-               */
-              duration?: number;
-              /*
+               */;
+              duration?: number /*
                * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
                * Format: int32
                * @example 1
-               */
-              type?: number;
-              /*
+               */;
+              type?: number /*
                * The routing instruction text for the step.
                * @example Turn right onto Berliner Straße
-               */
-              instruction?: string;
-              /*
+               */;
+              instruction?: string /*
                * The name of the next street.
                * @example Berliner Straße
-               */
-              name?: string;
-              /*
+               */;
+              name?: string /*
                * Only for roundabouts. Contains the number of the exit to take.
                * Format: int32
                * @example 2
-               */
-              exit_number?: number;
-              /*
+               */;
+              exit_number?: number /*
                * Contains the bearing of the entrance and all passed exits in a roundabout.
                * @example 10,45,60
-               */
-              exit_bearings?: Array<number>;
-              /*
+               */;
+              exit_bearings?: Array<number> /*
                * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
                * @example 45,48
-               */
+               */;
               way_points?: Array<number>;
               /* Maneuver object of the step */
               maneuver?: {
@@ -6461,18 +5808,16 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                  * The coordinate of the point where a maneuver takes place.
                  * @example 8.678962,49.407819
                  */
-                location?: Array<number>;
-                /*
+                location?: Array<number> /*
                  * The azimuth angle (in degrees) of the direction right before the maneuver.
                  * Format: int32
                  * @example 24
-                 */
-                bearing_before?: number;
-                /*
+                 */;
+                bearing_before?: number /*
                  * The azimuth angle (in degrees) of the direction right after the maneuver.
                  * Format: int32
                  * @example 96
-                 */
+                 */;
                 bearing_after?: number;
               };
             }>;
@@ -6482,54 +5827,46 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * The ID of the stop.
                * @example de:08221:1138:0:O
                */
-              stop_id?: string;
-              /*
+              stop_id?: string /*
                * The name of the stop.
                * @example Heidelberg, Alois-Link-Platz
-               */
-              name?: string;
-              /*
+               */;
+              name?: string /*
                * The location of the stop.
                * @example 8.6912542,49.399979
-               */
-              location?: Array<number>;
-              /*
+               */;
+              location?: Array<number> /*
                * Arrival time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
-              arrival_time?: string;
-              /*
+               */;
+              arrival_time?: string /*
                * Planned arrival time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
-              planned_arrival_time?: string;
-              /*
+               */;
+              planned_arrival_time?: string /*
                * Predicted arrival time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
+               */;
               predicted_arrival_time?: string;
               /* Whether arrival at the stop was cancelled. */
-              arrival_cancelled?: boolean;
-              /*
+              arrival_cancelled?: boolean /*
                * Departure time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
-              departure_time?: string;
-              /*
+               */;
+              departure_time?: string /*
                * Planned departure time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
-              planned_departure_time?: string;
-              /*
+               */;
+              planned_departure_time?: string /*
                * Predicted departure time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
+               */;
               predicted_departure_time?: string;
               /* Whether departure at the stop was cancelled. */
               departure_cancelled?: boolean;
@@ -6554,39 +5891,34 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
                  * Format: double
                  * @example 5
                  */
-                value?: number;
-                /*
+                value?: number /*
                  * Cumulative distance of this value.
                  * Format: double
                  * @example 123.1
-                 */
-                distance?: number;
-                /*
+                 */;
+                distance?: number /*
                  * Category percentage of the entire route.
                  * Format: double
                  * @example 23.8
-                 */
+                 */;
                 amount?: number;
               }>;
             };
-          };
-          /*
+          } /*
            * Departure date and time
            * Format: date-time
            * @example 2020-01-31T12:45:00+01:00
-           */
-          departure?: string;
-          /*
+           */;
+          departure?: string /*
            * Arrival date and time
            * Format: date-time
            * @example 2020-01-31T13:15:00+01:00
-           */
+           */;
           arrival?: string;
-        }>;
-        /*
+        }> /*
          * Bounding box that covers all returned routes
          * @example 46.1336,6.4245,46.0547,6.5603
-         */
+         */;
         bbox?: Array<number>;
       };
     };
@@ -6628,11 +5960,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
              * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
              * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
              */
-            coordinates: Array<Array<number>>;
-            /*
+            coordinates: Array<Array<number>> /*
              * Arbitrary identification string of the request reflected in the meta information.
              * @example my_request
-             */
+             */;
             id?: string;
             /* Specifies the route preference */
             preference?: "fastest" | "shortest" | "recommended";
@@ -6689,18 +6020,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
             /* Select html for more verbose instructions. */
             instructions_format?: "html" | "text";
             /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-            roundabout_exits?: boolean;
-            /*
+            roundabout_exits?: boolean /*
              * List of route attributes
              * @example avgspeed,percentage
-             */
+             */;
             attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
             /* Specifies whether the maneuver object is included into the step object or not.  */
-            maneuvers?: boolean;
-            /*
+            maneuvers?: boolean /*
              * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
              * @example 200,-1,30
-             */
+             */;
             radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -6715,11 +6044,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
             /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
             continue_straight?: boolean;
             /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-            elevation?: boolean;
-            /*
+            elevation?: boolean /*
              * The extra info items to include in the response
              * @example waytype,surface
-             */
+             */;
             extra_info?: Array<
               | "steepness"
               | "suitability"
@@ -6735,26 +6063,23 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
               | "noise"
               | "csv"
               | "shadow"
-            >;
-            /*
+            > /*
              * Advanced options for routing
              * @example [object Object]
-             */
+             */;
             options?: {
               /*
                * List of features to avoid.
                * @example highways
                */
-              avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-              /*
+              avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
                * Specify which type of border crossing to avoid
                * @example controlled
-               */
-              avoid_borders?: "all" | "controlled" | "none";
-              /*
+               */;
+              avoid_borders?: "all" | "controlled" | "none" /*
                * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
                * @example 11,193
-               */
+               */;
               avoid_countries?: Array<string>;
               /* Definition of the vehicle type. */
               vehicle_type?:
@@ -6806,30 +6131,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                    * Format: float
                    * @example 8.4
                    */
-                  length?: number;
-                  /*
+                  length?: number /*
                    * Width restriction in metres.
                    * Format: float
                    * @example 5.6
-                   */
-                  width?: number;
-                  /*
+                   */;
+                  width?: number /*
                    * Height restriction in metres.
                    * Format: float
                    * @example 4.2
-                   */
-                  height?: number;
-                  /*
+                   */;
+                  height?: number /*
                    * Axleload restriction in tons.
                    * Format: float
                    * @example 50
-                   */
-                  axleload?: number;
-                  /*
+                   */;
+                  axleload?: number /*
                    * Weight restriction in tons.
                    * Format: float
                    * @example 40
-                   */
+                   */;
                   weight?: number;
                   /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
                   hazmat?: boolean;
@@ -6846,33 +6167,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                     | "very_bad"
                     | "horrible"
                     | "very_horrible"
-                    | "impassable";
-                  /*
+                    | "impassable" /*
                    * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                    * Format: float
-                   */
-                  maximum_sloped_kerb?: number;
-                  /*
+                   */;
+                  maximum_sloped_kerb?: number /*
                    * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                    * Format: int32
-                   */
-                  maximum_incline?: number;
-                  /*
+                   */;
+                  maximum_incline?: number /*
                    * Specifies the minimum width of the footway in metres.
                    * Format: float
                    * @example 2.5
-                   */
+                   */;
                   minimum_width?: number;
-                };
-                /*
+                } /*
                  * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
                  * @example true
-                 */
-                surface_quality_known?: boolean;
-                /*
+                 */;
+                surface_quality_known?: boolean /*
                  * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
                  * @example true
-                 */
+                 */;
                 allow_unsuitable?: boolean;
               };
               /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -6880,96 +6196,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 empty?: boolean;
                 /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
                 [key: string]: {};
-              };
-              /*
+              } /*
                * Specifies the parameters for generating round trip routes.
                * @example [object Object]
-               */
+               */;
               round_trip?: {
                 /*
                  * The target length of the route in `m` (note that this is a preferred value, but results may be different).
                  * Format: float
                  * @example 10000
                  */
-                length?: number;
-                /*
+                length?: number /*
                  * The number of points to use on the route. Larger values create more circular routes.
                  * Format: int32
                  * @example 5
-                 */
-                points?: number;
-                /*
+                 */;
+                points?: number /*
                  * A seed to use for adding randomisation to the overall direction of the generated route
                  * Format: int64
                  * @example 1
-                 */
+                 */;
                 seed?: number;
               };
             };
             /* Suppress warning messages in the response */
             suppress_warnings?: boolean;
             /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-            geometry_simplify?: boolean;
-            /*
+            geometry_simplify?: boolean /*
              * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
              * @example 2,4
-             */
-            skip_segments?: Array<number>;
-            /*
+             */;
+            skip_segments?: Array<number> /*
              * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
              * @example [object Object]
-             */
+             */;
             alternative_routes?: {
               /*
                * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
                * Format: int32
                * @example 2
                */
-              target_count?: number;
-              /*
+              target_count?: number /*
                * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
                * Format: double
                * @example 1.4
-               */
-              weight_factor?: number;
-              /*
+               */;
+              weight_factor?: number /*
                * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
                * Format: double
                * @example 0.6
-               */
+               */;
               share_factor?: number;
-            };
-            /*
+            } /*
              * The maximum speed specified by user.
              * Format: double
              * @example 90
-             */
-            maximum_speed?: number;
-            /*
+             */;
+            maximum_speed?: number /*
              * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
              * @example true
-             */
-            schedule?: boolean;
-            /*
+             */;
+            schedule?: boolean /*
              * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
              * @example PT30M
-             */
-            schedule_duration?: string;
-            /*
+             */;
+            schedule_duration?: string /*
              * The maximum amount of entries that should be returned when requesting a schedule.
              * Format: int32
              * @example 3
-             */
-            schedule_rows?: number;
-            /*
+             */;
+            schedule_rows?: number /*
              * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
              * @example PT30M
-             */
-            walking_time?: string;
-            /*
+             */;
+            walking_time?: string /*
              * Specifies if transfers as criterion should be ignored.
              * @example true
-             */
+             */;
             ignore_transfers?: boolean;
           };
         };
@@ -6983,27 +6286,23 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
            * ID of the request (as passed in by the query)
            * @example request123
            */
-          id?: string;
-          /*
+          id?: string /*
            * Copyright and attribution information
            * @example openrouteservice.org | OpenStreetMap contributors
-           */
-          attribution?: string;
-          /*
+           */;
+          attribution?: string /*
            * The MD5 hash of the OSM planet file that was used for generating graphs
            * @example c0327ba6
-           */
-          osm_file_md5_hash?: string;
-          /*
+           */;
+          osm_file_md5_hash?: string /*
            * The service that was requested
            * @example routing
-           */
-          service?: string;
-          /*
+           */;
+          service?: string /*
            * Time that the request was made (UNIX Epoch time)
            * Format: int64
            * @example 1549549847974
-           */
+           */;
           timestamp?: number;
           /* The JSON body request sent to the routing service which defines options and parameters regarding the route to generate. */
           query?: {
@@ -7011,11 +6310,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
              * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
              */
-            coordinates: Array<Array<number>>;
-            /*
+            coordinates: Array<Array<number>> /*
              * Arbitrary identification string of the request reflected in the meta information.
              * @example my_request
-             */
+             */;
             id?: string;
             /* Specifies the route preference */
             preference?: "fastest" | "shortest" | "recommended";
@@ -7072,18 +6370,16 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             /* Select html for more verbose instructions. */
             instructions_format?: "html" | "text";
             /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-            roundabout_exits?: boolean;
-            /*
+            roundabout_exits?: boolean /*
              * List of route attributes
              * @example avgspeed,percentage
-             */
+             */;
             attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
             /* Specifies whether the maneuver object is included into the step object or not.  */
-            maneuvers?: boolean;
-            /*
+            maneuvers?: boolean /*
              * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
              * @example 200,-1,30
-             */
+             */;
             radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -7098,11 +6394,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
             continue_straight?: boolean;
             /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-            elevation?: boolean;
-            /*
+            elevation?: boolean /*
              * The extra info items to include in the response
              * @example waytype,surface
-             */
+             */;
             extra_info?: Array<
               | "steepness"
               | "suitability"
@@ -7118,26 +6413,23 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
               | "noise"
               | "csv"
               | "shadow"
-            >;
-            /*
+            > /*
              * Advanced options for routing
              * @example [object Object]
-             */
+             */;
             options?: {
               /*
                * List of features to avoid.
                * @example highways
                */
-              avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-              /*
+              avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
                * Specify which type of border crossing to avoid
                * @example controlled
-               */
-              avoid_borders?: "all" | "controlled" | "none";
-              /*
+               */;
+              avoid_borders?: "all" | "controlled" | "none" /*
                * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
                * @example 11,193
-               */
+               */;
               avoid_countries?: Array<string>;
               /* Definition of the vehicle type. */
               vehicle_type?:
@@ -7189,30 +6481,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                    * Format: float
                    * @example 8.4
                    */
-                  length?: number;
-                  /*
+                  length?: number /*
                    * Width restriction in metres.
                    * Format: float
                    * @example 5.6
-                   */
-                  width?: number;
-                  /*
+                   */;
+                  width?: number /*
                    * Height restriction in metres.
                    * Format: float
                    * @example 4.2
-                   */
-                  height?: number;
-                  /*
+                   */;
+                  height?: number /*
                    * Axleload restriction in tons.
                    * Format: float
                    * @example 50
-                   */
-                  axleload?: number;
-                  /*
+                   */;
+                  axleload?: number /*
                    * Weight restriction in tons.
                    * Format: float
                    * @example 40
-                   */
+                   */;
                   weight?: number;
                   /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
                   hazmat?: boolean;
@@ -7229,33 +6517,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                     | "very_bad"
                     | "horrible"
                     | "very_horrible"
-                    | "impassable";
-                  /*
+                    | "impassable" /*
                    * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                    * Format: float
-                   */
-                  maximum_sloped_kerb?: number;
-                  /*
+                   */;
+                  maximum_sloped_kerb?: number /*
                    * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                    * Format: int32
-                   */
-                  maximum_incline?: number;
-                  /*
+                   */;
+                  maximum_incline?: number /*
                    * Specifies the minimum width of the footway in metres.
                    * Format: float
                    * @example 2.5
-                   */
+                   */;
                   minimum_width?: number;
-                };
-                /*
+                } /*
                  * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
                  * @example true
-                 */
-                surface_quality_known?: boolean;
-                /*
+                 */;
+                surface_quality_known?: boolean /*
                  * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
                  * @example true
-                 */
+                 */;
                 allow_unsuitable?: boolean;
               };
               /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -7263,96 +6546,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 empty?: boolean;
                 /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
                 [key: string]: {};
-              };
-              /*
+              } /*
                * Specifies the parameters for generating round trip routes.
                * @example [object Object]
-               */
+               */;
               round_trip?: {
                 /*
                  * The target length of the route in `m` (note that this is a preferred value, but results may be different).
                  * Format: float
                  * @example 10000
                  */
-                length?: number;
-                /*
+                length?: number /*
                  * The number of points to use on the route. Larger values create more circular routes.
                  * Format: int32
                  * @example 5
-                 */
-                points?: number;
-                /*
+                 */;
+                points?: number /*
                  * A seed to use for adding randomisation to the overall direction of the generated route
                  * Format: int64
                  * @example 1
-                 */
+                 */;
                 seed?: number;
               };
             };
             /* Suppress warning messages in the response */
             suppress_warnings?: boolean;
             /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-            geometry_simplify?: boolean;
-            /*
+            geometry_simplify?: boolean /*
              * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
              * @example 2,4
-             */
-            skip_segments?: Array<number>;
-            /*
+             */;
+            skip_segments?: Array<number> /*
              * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
              * @example [object Object]
-             */
+             */;
             alternative_routes?: {
               /*
                * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
                * Format: int32
                * @example 2
                */
-              target_count?: number;
-              /*
+              target_count?: number /*
                * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
                * Format: double
                * @example 1.4
-               */
-              weight_factor?: number;
-              /*
+               */;
+              weight_factor?: number /*
                * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
                * Format: double
                * @example 0.6
-               */
+               */;
               share_factor?: number;
-            };
-            /*
+            } /*
              * The maximum speed specified by user.
              * Format: double
              * @example 90
-             */
-            maximum_speed?: number;
-            /*
+             */;
+            maximum_speed?: number /*
              * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
              * @example true
-             */
-            schedule?: boolean;
-            /*
+             */;
+            schedule?: boolean /*
              * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
              * @example PT30M
-             */
-            schedule_duration?: string;
-            /*
+             */;
+            schedule_duration?: string /*
              * The maximum amount of entries that should be returned when requesting a schedule.
              * Format: int32
              * @example 3
-             */
-            schedule_rows?: number;
-            /*
+             */;
+            schedule_rows?: number /*
              * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
              * @example PT30M
-             */
-            walking_time?: string;
-            /*
+             */;
+            walking_time?: string /*
              * Specifies if transfers as criterion should be ignored.
              * @example true
-             */
+             */;
             ignore_transfers?: boolean;
           };
           /* Information about the openrouteservice engine used */
@@ -7361,22 +6631,19 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * The backend version of the openrouteservice that was queried
              * @example 8.0
              */
-            version?: string;
-            /*
+            version?: string /*
              * The date that the service was last updated
              * @example 2019-02-07T14:28:11Z
-             */
-            build_date?: string;
-            /*
+             */;
+            build_date?: string /*
              * The date that the graph data was last updated
              * @example 2019-02-07T14:28:11Z
-             */
+             */;
             graph_date?: string;
-          };
-          /*
+          } /*
            * System message
            * @example A message string configured in the service
-           */
+           */;
           system_message?: string;
         };
         /* A list of routes returned from the request */
@@ -7388,24 +6655,21 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * Format: double
              * @example 12.6
              */
-            distance?: number;
-            /*
+            distance?: number /*
              * Total duration in seconds.
              * Format: double
              * @example 604
-             */
-            duration?: number;
-            /*
+             */;
+            duration?: number /*
              * Total ascent in meters.
              * Format: double
              * @example 166.3
-             */
-            ascent?: number;
-            /*
+             */;
+            ascent?: number /*
              * Total descent in meters.
              * Format: double
              * @example 201.3
-             */
+             */;
             descent?: number;
             /* Format: int32 */
             transfers?: number;
@@ -7419,12 +6683,11 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * Format: double
              * @example 253
              */
-            distance?: number;
-            /*
+            distance?: number /*
              * Contains the duration of the segment in seconds.
              * Format: double
              * @example 37.7
-             */
+             */;
             duration?: number;
             /* List containing the specific steps the segment consists of. */
             steps?: Array<{
@@ -7433,44 +6696,37 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: double
                * @example 245
                */
-              distance?: number;
-              /*
+              distance?: number /*
                * The duration for the step in seconds.
                * Format: double
                * @example 96.2
-               */
-              duration?: number;
-              /*
+               */;
+              duration?: number /*
                * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
                * Format: int32
                * @example 1
-               */
-              type?: number;
-              /*
+               */;
+              type?: number /*
                * The routing instruction text for the step.
                * @example Turn right onto Berliner Straße
-               */
-              instruction?: string;
-              /*
+               */;
+              instruction?: string /*
                * The name of the next street.
                * @example Berliner Straße
-               */
-              name?: string;
-              /*
+               */;
+              name?: string /*
                * Only for roundabouts. Contains the number of the exit to take.
                * Format: int32
                * @example 2
-               */
-              exit_number?: number;
-              /*
+               */;
+              exit_number?: number /*
                * Contains the bearing of the entrance and all passed exits in a roundabout.
                * @example 10,45,60
-               */
-              exit_bearings?: Array<number>;
-              /*
+               */;
+              exit_bearings?: Array<number> /*
                * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
                * @example 45,48
-               */
+               */;
               way_points?: Array<number>;
               /* Maneuver object of the step */
               maneuver?: {
@@ -7478,66 +6734,56 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                  * The coordinate of the point where a maneuver takes place.
                  * @example 8.678962,49.407819
                  */
-                location?: Array<number>;
-                /*
+                location?: Array<number> /*
                  * The azimuth angle (in degrees) of the direction right before the maneuver.
                  * Format: int32
                  * @example 24
-                 */
-                bearing_before?: number;
-                /*
+                 */;
+                bearing_before?: number /*
                  * The azimuth angle (in degrees) of the direction right after the maneuver.
                  * Format: int32
                  * @example 96
-                 */
+                 */;
                 bearing_after?: number;
               };
-            }>;
-            /*
+            }> /*
              * Contains the deviation compared to a straight line that would have the factor `1`. Double the Distance would be a `2`.
              * Format: double
              * @example 0.5
-             */
-            detourfactor?: number;
-            /*
+             */;
+            detourfactor?: number /*
              * Contains the proportion of the route in percent.
              * Format: double
              * @example 43.2
-             */
-            percentage?: number;
-            /*
+             */;
+            percentage?: number /*
              * Contains the average speed of this segment in km/h.
              * Format: double
              * @example 56.3
-             */
-            avgspeed?: number;
-            /*
+             */;
+            avgspeed?: number /*
              *  Contains ascent of this segment in metres.
              * Format: double
              * @example 56.3
-             */
-            ascent?: number;
-            /*
+             */;
+            ascent?: number /*
              * Contains descent of this segment in metres.
              * Format: double
              * @example 45.2
-             */
+             */;
             descent?: number;
-          }>;
-          /*
+          }> /*
            * A bounding box which contains the entire route
            * @example 46.1336,6.4245,46.0547,6.5603
-           */
-          bbox?: Array<number>;
-          /*
+           */;
+          bbox?: Array<number> /*
            * The geometry of the route. For JSON route responses this is an encoded polyline.
            * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-           */
-          geometry?: string;
-          /*
+           */;
+          geometry?: string /*
            * List containing the indices of way points corresponding to the *geometry*.
            * @example 0,23
-           */
+           */;
           way_points?: Array<number>;
           /* List of warnings that have been generated for the route */
           warnings?: Array<{
@@ -7546,11 +6792,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * Format: int32
              * @example 1
              */
-            code?: number;
-            /*
+            code?: number /*
              * The message associated with the warning
              * @example This route may go over restricted roads
-             */
+             */;
             message?: string;
           }>;
           /* List containing the legs the route consists of. */
@@ -7559,83 +6804,69 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
              * The type of the leg, possible values are currently 'walk' and 'pt'.
              * @example pt
              */
-            type?: string;
-            /*
+            type?: string /*
              * The departure location of the leg.
              * @example Dossenheim, Süd Bstg G1
-             */
-            departure_location?: string;
-            /*
+             */;
+            departure_location?: string /*
              * The headsign of the public transport vehicle of the leg.
              * @example Bismarckplatz - Speyererhof - EMBL - Boxberg - Mombertplatz
-             */
-            trip_headsign?: string;
-            /*
+             */;
+            trip_headsign?: string /*
              * The public transport route name of the leg.
              * @example RNV Bus 39A
-             */
-            route_long_name?: string;
-            /*
+             */;
+            route_long_name?: string /*
              * The public transport route name (short version) of the leg.
              * @example 39A
-             */
-            route_short_name?: string;
-            /*
+             */;
+            route_short_name?: string /*
              * The route description of the leg (if provided in the GTFS data set).
              * @example Bus
-             */
-            route_desc?: string;
-            /*
+             */;
+            route_desc?: string /*
              * The route type of the leg (if provided in the GTFS data set).
              * Format: int32
              * @example 1
-             */
-            route_type?: number;
-            /*
+             */;
+            route_type?: number /*
              * The distance for the leg in metres.
              * Format: double
              * @example 245
-             */
-            distance?: number;
-            /*
+             */;
+            distance?: number /*
              * The duration for the leg in seconds.
              * Format: double
              * @example 96.2
-             */
-            duration?: number;
-            /*
+             */;
+            duration?: number /*
              * Departure date and time
              * Format: date-time
              * @example 2020-01-31T12:45:00+01:00
-             */
-            departure?: string;
-            /*
+             */;
+            departure?: string /*
              * Arrival date and time
              * Format: date-time
              * @example 2020-01-31T13:15:00+01:00
-             */
-            arrival?: string;
-            /*
+             */;
+            arrival?: string /*
              * The feed ID this public transport leg based its information from.
              * @example gtfs_0
-             */
-            feed_id?: string;
-            /*
+             */;
+            feed_id?: string /*
              * The trip ID of this public transport leg.
              * @example trip_id: vrn-19-39A-1-2-21-H-8-Special-50-42
-             */
-            trip_id?: string;
-            /*
+             */;
+            trip_id?: string /*
              * The route ID of this public transport leg.
              * @example vrn-19-39A-1
-             */
+             */;
             route_id?: string;
             /* Whether the legs continues in the same vehicle as the previous one. */
-            is_in_same_vehicle_as_previous?: boolean;
-            /*
+            is_in_same_vehicle_as_previous?: boolean /*
              * The geometry of the leg. This is an encoded polyline.
              * @example yuqlH{i~s@gaUe@VgEQFcBRbB_C
-             */
+             */;
             geometry?: string;
             /* List containing the specific steps the segment consists of. */
             instructions?: Array<{
@@ -7644,44 +6875,37 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: double
                * @example 245
                */
-              distance?: number;
-              /*
+              distance?: number /*
                * The duration for the step in seconds.
                * Format: double
                * @example 96.2
-               */
-              duration?: number;
-              /*
+               */;
+              duration?: number /*
                * The [instruction](https://GIScience.github.io/openrouteservice/documentation/Instruction-Types.html) action for symbolisation purposes.
                * Format: int32
                * @example 1
-               */
-              type?: number;
-              /*
+               */;
+              type?: number /*
                * The routing instruction text for the step.
                * @example Turn right onto Berliner Straße
-               */
-              instruction?: string;
-              /*
+               */;
+              instruction?: string /*
                * The name of the next street.
                * @example Berliner Straße
-               */
-              name?: string;
-              /*
+               */;
+              name?: string /*
                * Only for roundabouts. Contains the number of the exit to take.
                * Format: int32
                * @example 2
-               */
-              exit_number?: number;
-              /*
+               */;
+              exit_number?: number /*
                * Contains the bearing of the entrance and all passed exits in a roundabout.
                * @example 10,45,60
-               */
-              exit_bearings?: Array<number>;
-              /*
+               */;
+              exit_bearings?: Array<number> /*
                * List containing the indices of the steps start- and endpoint corresponding to the *geometry*.
                * @example 45,48
-               */
+               */;
               way_points?: Array<number>;
               /* Maneuver object of the step */
               maneuver?: {
@@ -7689,18 +6913,16 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                  * The coordinate of the point where a maneuver takes place.
                  * @example 8.678962,49.407819
                  */
-                location?: Array<number>;
-                /*
+                location?: Array<number> /*
                  * The azimuth angle (in degrees) of the direction right before the maneuver.
                  * Format: int32
                  * @example 24
-                 */
-                bearing_before?: number;
-                /*
+                 */;
+                bearing_before?: number /*
                  * The azimuth angle (in degrees) of the direction right after the maneuver.
                  * Format: int32
                  * @example 96
-                 */
+                 */;
                 bearing_after?: number;
               };
             }>;
@@ -7710,54 +6932,46 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * The ID of the stop.
                * @example de:08221:1138:0:O
                */
-              stop_id?: string;
-              /*
+              stop_id?: string /*
                * The name of the stop.
                * @example Heidelberg, Alois-Link-Platz
-               */
-              name?: string;
-              /*
+               */;
+              name?: string /*
                * The location of the stop.
                * @example 8.6912542,49.399979
-               */
-              location?: Array<number>;
-              /*
+               */;
+              location?: Array<number> /*
                * Arrival time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
-              arrival_time?: string;
-              /*
+               */;
+              arrival_time?: string /*
                * Planned arrival time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
-              planned_arrival_time?: string;
-              /*
+               */;
+              planned_arrival_time?: string /*
                * Predicted arrival time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
+               */;
               predicted_arrival_time?: string;
               /* Whether arrival at the stop was cancelled. */
-              arrival_cancelled?: boolean;
-              /*
+              arrival_cancelled?: boolean /*
                * Departure time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
-              departure_time?: string;
-              /*
+               */;
+              departure_time?: string /*
                * Planned departure time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
-              planned_departure_time?: string;
-              /*
+               */;
+              planned_departure_time?: string /*
                * Predicted departure time of the stop.
                * Format: date-time
                * @example 2022-07-04T13:22:00Z
-               */
+               */;
               predicted_departure_time?: string;
               /* Whether departure at the stop was cancelled. */
               departure_cancelled?: boolean;
@@ -7782,39 +6996,34 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
                  * Format: double
                  * @example 5
                  */
-                value?: number;
-                /*
+                value?: number /*
                  * Cumulative distance of this value.
                  * Format: double
                  * @example 123.1
-                 */
-                distance?: number;
-                /*
+                 */;
+                distance?: number /*
                  * Category percentage of the entire route.
                  * Format: double
                  * @example 23.8
-                 */
+                 */;
                 amount?: number;
               }>;
             };
-          };
-          /*
+          } /*
            * Departure date and time
            * Format: date-time
            * @example 2020-01-31T12:45:00+01:00
-           */
-          departure?: string;
-          /*
+           */;
+          departure?: string /*
            * Arrival date and time
            * Format: date-time
            * @example 2020-01-31T13:15:00+01:00
-           */
+           */;
           arrival?: string;
-        }>;
-        /*
+        }> /*
          * Bounding box that covers all returned routes
          * @example 46.1336,6.4245,46.0547,6.5603
-         */
+         */;
         bbox?: Array<number>;
       };
     };
@@ -7838,11 +7047,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
          * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
          * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
          */
-        coordinates: Array<Array<number>>;
-        /*
+        coordinates: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
+         */;
         id?: string;
         /* Specifies the route preference */
         preference?: "fastest" | "shortest" | "recommended";
@@ -7899,18 +7107,16 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
         /* Select html for more verbose instructions. */
         instructions_format?: "html" | "text";
         /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-        roundabout_exits?: boolean;
-        /*
+        roundabout_exits?: boolean /*
          * List of route attributes
          * @example avgspeed,percentage
-         */
+         */;
         attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
         /* Specifies whether the maneuver object is included into the step object or not.  */
-        maneuvers?: boolean;
-        /*
+        maneuvers?: boolean /*
          * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
          * @example 200,-1,30
-         */
+         */;
         radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -7925,11 +7131,10 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
         /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
         continue_straight?: boolean;
         /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-        elevation?: boolean;
-        /*
+        elevation?: boolean /*
          * The extra info items to include in the response
          * @example waytype,surface
-         */
+         */;
         extra_info?: Array<
           | "steepness"
           | "suitability"
@@ -7945,26 +7150,23 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
           | "noise"
           | "csv"
           | "shadow"
-        >;
-        /*
+        > /*
          * Advanced options for routing
          * @example [object Object]
-         */
+         */;
         options?: {
           /*
            * List of features to avoid.
            * @example highways
            */
-          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-          /*
+          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
            * Specify which type of border crossing to avoid
            * @example controlled
-           */
-          avoid_borders?: "all" | "controlled" | "none";
-          /*
+           */;
+          avoid_borders?: "all" | "controlled" | "none" /*
            * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
            * @example 11,193
-           */
+           */;
           avoid_countries?: Array<string>;
           /* Definition of the vehicle type. */
           vehicle_type?:
@@ -8016,30 +7218,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: float
                * @example 8.4
                */
-              length?: number;
-              /*
+              length?: number /*
                * Width restriction in metres.
                * Format: float
                * @example 5.6
-               */
-              width?: number;
-              /*
+               */;
+              width?: number /*
                * Height restriction in metres.
                * Format: float
                * @example 4.2
-               */
-              height?: number;
-              /*
+               */;
+              height?: number /*
                * Axleload restriction in tons.
                * Format: float
                * @example 50
-               */
-              axleload?: number;
-              /*
+               */;
+              axleload?: number /*
                * Weight restriction in tons.
                * Format: float
                * @example 40
-               */
+               */;
               weight?: number;
               /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
               hazmat?: boolean;
@@ -8056,33 +7254,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 | "very_bad"
                 | "horrible"
                 | "very_horrible"
-                | "impassable";
-              /*
+                | "impassable" /*
                * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                * Format: float
-               */
-              maximum_sloped_kerb?: number;
-              /*
+               */;
+              maximum_sloped_kerb?: number /*
                * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                * Format: int32
-               */
-              maximum_incline?: number;
-              /*
+               */;
+              maximum_incline?: number /*
                * Specifies the minimum width of the footway in metres.
                * Format: float
                * @example 2.5
-               */
+               */;
               minimum_width?: number;
-            };
-            /*
+            } /*
              * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
              * @example true
-             */
-            surface_quality_known?: boolean;
-            /*
+             */;
+            surface_quality_known?: boolean /*
              * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
              * @example true
-             */
+             */;
             allow_unsuitable?: boolean;
           };
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -8090,96 +7283,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             empty?: boolean;
             /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
             [key: string]: {};
-          };
-          /*
+          } /*
            * Specifies the parameters for generating round trip routes.
            * @example [object Object]
-           */
+           */;
           round_trip?: {
             /*
              * The target length of the route in `m` (note that this is a preferred value, but results may be different).
              * Format: float
              * @example 10000
              */
-            length?: number;
-            /*
+            length?: number /*
              * The number of points to use on the route. Larger values create more circular routes.
              * Format: int32
              * @example 5
-             */
-            points?: number;
-            /*
+             */;
+            points?: number /*
              * A seed to use for adding randomisation to the overall direction of the generated route
              * Format: int64
              * @example 1
-             */
+             */;
             seed?: number;
           };
         };
         /* Suppress warning messages in the response */
         suppress_warnings?: boolean;
         /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-        geometry_simplify?: boolean;
-        /*
+        geometry_simplify?: boolean /*
          * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
          * @example 2,4
-         */
-        skip_segments?: Array<number>;
-        /*
+         */;
+        skip_segments?: Array<number> /*
          * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
          * @example [object Object]
-         */
+         */;
         alternative_routes?: {
           /*
            * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
            * Format: int32
            * @example 2
            */
-          target_count?: number;
-          /*
+          target_count?: number /*
            * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
            * Format: double
            * @example 1.4
-           */
-          weight_factor?: number;
-          /*
+           */;
+          weight_factor?: number /*
            * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
            * Format: double
            * @example 0.6
-           */
+           */;
           share_factor?: number;
-        };
-        /*
+        } /*
          * The maximum speed specified by user.
          * Format: double
          * @example 90
-         */
-        maximum_speed?: number;
-        /*
+         */;
+        maximum_speed?: number /*
          * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
          * @example true
-         */
-        schedule?: boolean;
-        /*
+         */;
+        schedule?: boolean /*
          * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        schedule_duration?: string;
-        /*
+         */;
+        schedule_duration?: string /*
          * The maximum amount of entries that should be returned when requesting a schedule.
          * Format: int32
          * @example 3
-         */
-        schedule_rows?: number;
-        /*
+         */;
+        schedule_rows?: number /*
          * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        walking_time?: string;
-        /*
+         */;
+        walking_time?: string /*
          * Specifies if transfers as criterion should be ignored.
          * @example true
-         */
+         */;
         ignore_transfers?: boolean;
       };
     };
@@ -8206,11 +7386,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
          * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
          */
-        coordinates: Array<Array<number>>;
-        /*
+        coordinates: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
+         */;
         id?: string;
         /* Specifies the route preference */
         preference?: "fastest" | "shortest" | "recommended";
@@ -8267,18 +7446,16 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         /* Select html for more verbose instructions. */
         instructions_format?: "html" | "text";
         /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-        roundabout_exits?: boolean;
-        /*
+        roundabout_exits?: boolean /*
          * List of route attributes
          * @example avgspeed,percentage
-         */
+         */;
         attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
         /* Specifies whether the maneuver object is included into the step object or not.  */
-        maneuvers?: boolean;
-        /*
+        maneuvers?: boolean /*
          * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
          * @example 200,-1,30
-         */
+         */;
         radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -8293,11 +7470,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
         continue_straight?: boolean;
         /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-        elevation?: boolean;
-        /*
+        elevation?: boolean /*
          * The extra info items to include in the response
          * @example waytype,surface
-         */
+         */;
         extra_info?: Array<
           | "steepness"
           | "suitability"
@@ -8313,26 +7489,23 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
           | "noise"
           | "csv"
           | "shadow"
-        >;
-        /*
+        > /*
          * Advanced options for routing
          * @example [object Object]
-         */
+         */;
         options?: {
           /*
            * List of features to avoid.
            * @example highways
            */
-          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-          /*
+          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
            * Specify which type of border crossing to avoid
            * @example controlled
-           */
-          avoid_borders?: "all" | "controlled" | "none";
-          /*
+           */;
+          avoid_borders?: "all" | "controlled" | "none" /*
            * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
            * @example 11,193
-           */
+           */;
           avoid_countries?: Array<string>;
           /* Definition of the vehicle type. */
           vehicle_type?:
@@ -8384,30 +7557,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: float
                * @example 8.4
                */
-              length?: number;
-              /*
+              length?: number /*
                * Width restriction in metres.
                * Format: float
                * @example 5.6
-               */
-              width?: number;
-              /*
+               */;
+              width?: number /*
                * Height restriction in metres.
                * Format: float
                * @example 4.2
-               */
-              height?: number;
-              /*
+               */;
+              height?: number /*
                * Axleload restriction in tons.
                * Format: float
                * @example 50
-               */
-              axleload?: number;
-              /*
+               */;
+              axleload?: number /*
                * Weight restriction in tons.
                * Format: float
                * @example 40
-               */
+               */;
               weight?: number;
               /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
               hazmat?: boolean;
@@ -8424,33 +7593,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 | "very_bad"
                 | "horrible"
                 | "very_horrible"
-                | "impassable";
-              /*
+                | "impassable" /*
                * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                * Format: float
-               */
-              maximum_sloped_kerb?: number;
-              /*
+               */;
+              maximum_sloped_kerb?: number /*
                * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                * Format: int32
-               */
-              maximum_incline?: number;
-              /*
+               */;
+              maximum_incline?: number /*
                * Specifies the minimum width of the footway in metres.
                * Format: float
                * @example 2.5
-               */
+               */;
               minimum_width?: number;
-            };
-            /*
+            } /*
              * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
              * @example true
-             */
-            surface_quality_known?: boolean;
-            /*
+             */;
+            surface_quality_known?: boolean /*
              * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
              * @example true
-             */
+             */;
             allow_unsuitable?: boolean;
           };
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -8458,96 +7622,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             empty?: boolean;
             /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
             [key: string]: {};
-          };
-          /*
+          } /*
            * Specifies the parameters for generating round trip routes.
            * @example [object Object]
-           */
+           */;
           round_trip?: {
             /*
              * The target length of the route in `m` (note that this is a preferred value, but results may be different).
              * Format: float
              * @example 10000
              */
-            length?: number;
-            /*
+            length?: number /*
              * The number of points to use on the route. Larger values create more circular routes.
              * Format: int32
              * @example 5
-             */
-            points?: number;
-            /*
+             */;
+            points?: number /*
              * A seed to use for adding randomisation to the overall direction of the generated route
              * Format: int64
              * @example 1
-             */
+             */;
             seed?: number;
           };
         };
         /* Suppress warning messages in the response */
         suppress_warnings?: boolean;
         /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-        geometry_simplify?: boolean;
-        /*
+        geometry_simplify?: boolean /*
          * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
          * @example 2,4
-         */
-        skip_segments?: Array<number>;
-        /*
+         */;
+        skip_segments?: Array<number> /*
          * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
          * @example [object Object]
-         */
+         */;
         alternative_routes?: {
           /*
            * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
            * Format: int32
            * @example 2
            */
-          target_count?: number;
-          /*
+          target_count?: number /*
            * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
            * Format: double
            * @example 1.4
-           */
-          weight_factor?: number;
-          /*
+           */;
+          weight_factor?: number /*
            * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
            * Format: double
            * @example 0.6
-           */
+           */;
           share_factor?: number;
-        };
-        /*
+        } /*
          * The maximum speed specified by user.
          * Format: double
          * @example 90
-         */
-        maximum_speed?: number;
-        /*
+         */;
+        maximum_speed?: number /*
          * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
          * @example true
-         */
-        schedule?: boolean;
-        /*
+         */;
+        schedule?: boolean /*
          * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        schedule_duration?: string;
-        /*
+         */;
+        schedule_duration?: string /*
          * The maximum amount of entries that should be returned when requesting a schedule.
          * Format: int32
          * @example 3
-         */
-        schedule_rows?: number;
-        /*
+         */;
+        schedule_rows?: number /*
          * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        walking_time?: string;
-        /*
+         */;
+        walking_time?: string /*
          * Specifies if transfers as criterion should be ignored.
          * @example true
-         */
+         */;
         ignore_transfers?: boolean;
       };
     };
@@ -8574,11 +7725,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
          * The waypoints to use for the route as an array of `longitude/latitude` pairs in WGS 84 (EPSG:4326)
          * @example 6.501,46.0916,6.5025,46.0839,6.5058,46.0762
          */
-        coordinates: Array<Array<number>>;
-        /*
+        coordinates: Array<Array<number>> /*
          * Arbitrary identification string of the request reflected in the meta information.
          * @example my_request
-         */
+         */;
         id?: string;
         /* Specifies the route preference */
         preference?: "fastest" | "shortest" | "recommended";
@@ -8635,18 +7785,16 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         /* Select html for more verbose instructions. */
         instructions_format?: "html" | "text";
         /* Provides bearings of the entrance and all passed roundabout exits. Adds the `exit_bearings` array to the step object in the response.  */
-        roundabout_exits?: boolean;
-        /*
+        roundabout_exits?: boolean /*
          * List of route attributes
          * @example avgspeed,percentage
-         */
+         */;
         attributes?: Array<"avgspeed" | "detourfactor" | "percentage">;
         /* Specifies whether the maneuver object is included into the step object or not.  */
-        maneuvers?: boolean;
-        /*
+        maneuvers?: boolean /*
          * A list of maximum distances (measured in metres) that limit the search of nearby road segments to every given waypoint. The values must be greater than 0, the value of -1 specifies using the maximum possible search radius. The number of radiuses correspond to the number of waypoints. If only a single value is given, it will be applied to all waypoints.
          * @example 200,-1,30
-         */
+         */;
         radiuses?: Array<number> /*
  * Specifies a list of pairs (bearings and deviations) to filter the segments of the road network a waypoint can snap to.
 "For example `bearings=[[45,10],[120,20]]`.
@@ -8661,11 +7809,10 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
         /* Forces the route to keep going straight at waypoints restricting uturns there even if it would be faster. */
         continue_straight?: boolean;
         /* Specifies whether to return elevation values for points. Please note that elevation also gets encoded for json response encoded polyline. */
-        elevation?: boolean;
-        /*
+        elevation?: boolean /*
          * The extra info items to include in the response
          * @example waytype,surface
-         */
+         */;
         extra_info?: Array<
           | "steepness"
           | "suitability"
@@ -8681,26 +7828,23 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
           | "noise"
           | "csv"
           | "shadow"
-        >;
-        /*
+        > /*
          * Advanced options for routing
          * @example [object Object]
-         */
+         */;
         options?: {
           /*
            * List of features to avoid.
            * @example highways
            */
-          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
-          /*
+          avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps"> /*
            * Specify which type of border crossing to avoid
            * @example controlled
-           */
-          avoid_borders?: "all" | "controlled" | "none";
-          /*
+           */;
+          avoid_borders?: "all" | "controlled" | "none" /*
            * List of countries to exclude from matrix with `driving-*` profiles. Can be used together with `'avoid_borders': 'controlled'`. `[ 11, 193 ]` would exclude Austria and Switzerland. List of countries and application examples can be found [here](https://GIScience.github.io/openrouteservice/documentation/routing-options/Country-List.html). Also, ISO standard country codes cna be used in place of the numerical ids, for example, DE or DEU for Germany.
            * @example 11,193
-           */
+           */;
           avoid_countries?: Array<string>;
           /* Definition of the vehicle type. */
           vehicle_type?:
@@ -8752,30 +7896,26 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                * Format: float
                * @example 8.4
                */
-              length?: number;
-              /*
+              length?: number /*
                * Width restriction in metres.
                * Format: float
                * @example 5.6
-               */
-              width?: number;
-              /*
+               */;
+              width?: number /*
                * Height restriction in metres.
                * Format: float
                * @example 4.2
-               */
-              height?: number;
-              /*
+               */;
+              height?: number /*
                * Axleload restriction in tons.
                * Format: float
                * @example 50
-               */
-              axleload?: number;
-              /*
+               */;
+              axleload?: number /*
                * Weight restriction in tons.
                * Format: float
                * @example 40
-               */
+               */;
               weight?: number;
               /* Specifies whether to use appropriate routing for delivering hazardous goods and avoiding water protected areas. Default is `false`.  */
               hazmat?: boolean;
@@ -8792,33 +7932,28 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
                 | "very_bad"
                 | "horrible"
                 | "very_horrible"
-                | "impassable";
-              /*
+                | "impassable" /*
                * Specifies the maximum height of the sloped curb in metres. Values are `0.03`, `0.06` (default), `0.1`.
                * Format: float
-               */
-              maximum_sloped_kerb?: number;
-              /*
+               */;
+              maximum_sloped_kerb?: number /*
                * Specifies the maximum incline as a percentage. `3`, `6` (default), `10`, `15.
                * Format: int32
-               */
-              maximum_incline?: number;
-              /*
+               */;
+              maximum_incline?: number /*
                * Specifies the minimum width of the footway in metres.
                * Format: float
                * @example 2.5
-               */
+               */;
               minimum_width?: number;
-            };
-            /*
+            } /*
              * Specifies whether to enforce that only ways with known information on surface quality be taken into account - default false
              * @example true
-             */
-            surface_quality_known?: boolean;
-            /*
+             */;
+            surface_quality_known?: boolean /*
              * Specifies if ways that might not be suitable (e.g. unknown pedestrian usage) should be included in finding routes - default false
              * @example true
-             */
+             */;
             allow_unsuitable?: boolean;
           };
           /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
@@ -8826,96 +7961,83 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
             empty?: boolean;
             /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
             [key: string]: {};
-          };
-          /*
+          } /*
            * Specifies the parameters for generating round trip routes.
            * @example [object Object]
-           */
+           */;
           round_trip?: {
             /*
              * The target length of the route in `m` (note that this is a preferred value, but results may be different).
              * Format: float
              * @example 10000
              */
-            length?: number;
-            /*
+            length?: number /*
              * The number of points to use on the route. Larger values create more circular routes.
              * Format: int32
              * @example 5
-             */
-            points?: number;
-            /*
+             */;
+            points?: number /*
              * A seed to use for adding randomisation to the overall direction of the generated route
              * Format: int64
              * @example 1
-             */
+             */;
             seed?: number;
           };
         };
         /* Suppress warning messages in the response */
         suppress_warnings?: boolean;
         /* Specifies whether to simplify the geometry. Simplify geometry cannot be applied to routes with more than **one segment** and when `extra_info` is required. */
-        geometry_simplify?: boolean;
-        /*
+        geometry_simplify?: boolean /*
          * Specifies the segments that should be skipped in the route calculation. A segment is the connection between two given coordinates and the counting starts with 1 for the connection between the first and second coordinate.
          * @example 2,4
-         */
-        skip_segments?: Array<number>;
-        /*
+         */;
+        skip_segments?: Array<number> /*
          * Specifies whether alternative routes are computed, and parameters for the algorithm determining suitable alternatives.
          * @example [object Object]
-         */
+         */;
         alternative_routes?: {
           /*
            * Target number of alternative routes to compute. Service returns up to this number of routes that fulfill the share-factor and weight-factor constraints.
            * Format: int32
            * @example 2
            */
-          target_count?: number;
-          /*
+          target_count?: number /*
            * Maximum factor by which route weight may diverge from the optimal route. The default value of 1.4 means alternatives can be up to 1.4 times longer (costly) than the optimal route.
            * Format: double
            * @example 1.4
-           */
-          weight_factor?: number;
-          /*
+           */;
+          weight_factor?: number /*
            * Maximum fraction of the route that alternatives may share with the optimal route. The default value of 0.6 means alternatives can share up to 60% of path segments with the optimal route.
            * Format: double
            * @example 0.6
-           */
+           */;
           share_factor?: number;
-        };
-        /*
+        } /*
          * The maximum speed specified by user.
          * Format: double
          * @example 90
-         */
-        maximum_speed?: number;
-        /*
+         */;
+        maximum_speed?: number /*
          * If true, return a public transport schedule starting at <departure> for the next <schedule_duration> minutes.
          * @example true
-         */
-        schedule?: boolean;
-        /*
+         */;
+        schedule?: boolean /*
          * The time window when requesting a public transport schedule. The format is passed as ISO 8601 duration: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        schedule_duration?: string;
-        /*
+         */;
+        schedule_duration?: string /*
          * The maximum amount of entries that should be returned when requesting a schedule.
          * Format: int32
          * @example 3
-         */
-        schedule_rows?: number;
-        /*
+         */;
+        schedule_rows?: number /*
          * Maximum duration for walking access and egress of public transport. The value is passed in ISO 8601 duration format: https://en.wikipedia.org/wiki/ISO_8601#Durations
          * @example PT30M
-         */
-        walking_time?: string;
-        /*
+         */;
+        walking_time?: string /*
          * Specifies if transfers as criterion should be ignored.
          * @example true
-         */
+         */;
         ignore_transfers?: boolean;
       };
     };
@@ -9243,55 +8365,47 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
            * Format: int64
            * @example 500
            */
-          buffer?: number;
-          /*
+          buffer?: number /*
            * The pattern for this bbox string is minlon,minlat,maxlon,maxlat
            * @example 53.075051,8.798952,53.080785,8.90716
-           */
+           */;
           bbox?: Array<number>;
           /* This is a GeoJSON object. Is either Point, Polygon or LineString. */
           geojson?: {};
-        };
-        /*
+        } /*
          * Filters in terms of osm_tags which should be applied to the query.
          * @example {"fee":"no"}
-         */
+         */;
         filters?: {
           /* @example 420 */
           category_group_ids?: Array<number>;
           /* @example 601,280 */
-          category_ids?: Array<number>;
-          /*
+          category_ids?: Array<number> /*
            * Filter by name of the poi object.
            * @example Gas station,...
-           */
-          name?: Array<string>;
-          /*
+           */;
+          name?: Array<string> /*
            * Filter example.
            * @example true,false,limited,designated
-           */
-          wheelchair?: Array<string>;
-          /*
+           */;
+          wheelchair?: Array<string> /*
            * Filter example.
            * @example dedicated,true,false,separated,isolated,outside
-           */
-          smoking?: Array<string>;
-          /*
+           */;
+          smoking?: Array<string> /*
            * Filter example.
            * @example true,false
-           */
+           */;
           fee?: Array<string>;
-        };
-        /*
+        } /*
          * The limit of objects to be returned in the response.
          * Format: int64
          * @example 1000
-         */
-        limit?: number;
-        /*
+         */;
+        limit?: number /*
          * Either you can sort by category or the distance to the geometry object provided in the request.
          * @example category
-         */
+         */;
         sortby?: "category" | "distance";
       };
     };
@@ -9414,36 +8528,31 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
 
  * Format: int32
  */;
-          routes?: number;
-          /*
+          routes?: number /*
            * number of jobs that could not be served
            * Format: int32
-           */
+           */;
           unassigned?: number /*
  * Total setup time for all routes
 
  * Format: int32
  */;
-          setup?: number;
-          /*
+          setup?: number /*
            * total service time for all routes
            * Format: float
-           */
-          service?: number;
-          /*
+           */;
+          service?: number /*
            * total travel time for all routes
            * Format: float
-           */
-          duration?: number;
-          /*
+           */;
+          duration?: number /*
            * total waiting time for all routes
            * Format: float
-           */
-          waiting_time?: number;
-          /*
+           */;
+          waiting_time?: number /*
            * total priority sum for all assigned tasks
            * Format: int32
-           */
+           */;
           priority?: number;
           /* array of violation objects for all routes */
           violations?: Array<{
@@ -9465,21 +8574,18 @@ Possible violation causes are:
  * Format: int32
  */;
             duration?: number;
-          }>;
-          /*
+          }> /*
            * Total delivery for all routes
            * Format: int32
-           */
-          delivery?: number;
-          /*
+           */;
+          delivery?: number /*
            * Total pickup for all routes
            * Format: int32
-           */
-          pickup?: number;
-          /*
+           */;
+          pickup?: number /*
            * total distance for all routes. Only provided when using the `-g` flag with `OSRM`
            * Format: float
-           */
+           */;
           distance?: number;
         };
         /* array of objects describing unassigned jobs with their `id` and `location` (if provided)
@@ -9504,16 +8610,14 @@ Possible violation causes are:
           /* array of `step` objects */
           steps?: Array<{
             /* string that is either `start`, `job` or `end` */
-            type?: string;
-            /*
+            type?: string /*
              * estimated time of arrival at this step in seconds
              * Format: float
-             */
-            arrival?: number;
-            /*
+             */;
+            arrival?: number /*
              * cumulated travel time upon arrival at this step in seconds
              * Format: float
-             */
+             */;
             duration?: number /*
  * setup time at this step
 
@@ -9524,11 +8628,10 @@ Possible violation causes are:
 
  * Format: int32
  */;
-            service?: number;
-            /*
+            service?: number /*
              * waiting time upon arrival at this step, only provided if `type` value is `job`
              * Format: float
-             */
+             */;
             waiting_time?: number;
             /* array of violation objects for this step */
             violations?: Array<{
@@ -9565,32 +8668,27 @@ Possible violation causes are:
 
  * Format: int32
  */;
-            load?: number;
-            /*
+            load?: number /*
              * traveled distance upon arrival at this step. Only provided when using the `-g` flag
              * Format: float
-             */
+             */;
             distance?: number;
-          }>;
-          /*
+          }> /*
            * cost for this route
            * Format: float
-           */
-          cost?: number;
-          /*
+           */;
+          cost?: number /*
            * total service time for this route
            * Format: float
-           */
-          service?: number;
-          /*
+           */;
+          service?: number /*
            * total travel time for this route
            * Format: float
-           */
-          duration?: number;
-          /*
+           */;
+          duration?: number /*
            * total waiting time for this route
            * Format: float
-           */
+           */;
           waiting_time?: number;
           /* Total delivery for tasks in this route */
           delivery?: Array<number>;
@@ -9600,11 +8698,10 @@ Possible violation causes are:
            */
           description?: string;
           /* polyline encoded route geometry. Only provided when using the `-g` flag */
-          geometry?: string;
-          /*
+          geometry?: string /*
            * total route distance. Only provided when using the `-g` flag
            * Format: float
-           */
+           */;
           distance?: number;
         }>;
       };

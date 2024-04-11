@@ -53,7 +53,7 @@ function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
       // source exists for LayerSpecification who need one
       (layerOptions.source && map.getSource(layerOptions.source))
     ) {
-      console.log("createLayer", layerOptions.id);
+      // console.log("createLayer", layerOptions.id);
       // @ts-ignore optional source checked above
       map.addLayer(layerOptions, beforeId);
       return map.getLayer(layerOptions.id);
@@ -72,7 +72,7 @@ function updateLayer(
   if (prevOptions.type === "custom" || nextOptions.type === "custom") {
     return;
   }
-  console.log("updateLayer", nextOptions.id);
+  // console.log("updateLayer", nextOptions.id);
 
   if (prevBeforeId !== nextBeforeId) {
     map.moveLayer(nextOptions.id, nextBeforeId);
@@ -137,7 +137,7 @@ function updateLayer(
 
 function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
   const { beforeId, ...layerOptions } = props;
-  console.log("Render RLayer");
+  // console.log("Render RLayer");
 
   const context = useContext(mapLibreContext);
   const map = context.map;

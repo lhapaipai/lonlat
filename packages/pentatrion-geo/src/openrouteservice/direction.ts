@@ -1,26 +1,31 @@
-import { Feature, FeatureCollection, LineString } from "geojson";
 import { GeoPointOption } from "..";
 
-export type ORSDirectionFeature = Feature<
-  LineString,
-  {
-    coords_hash: string;
-    way_points: number[];
-  }
->;
+import {
+  APIPaths as OrsAPIPaths,
+  APIRequests as OrsAPIRequests,
+  APIResponse as OrsAPIResponse,
+  RouteFeatureResponse,
+} from "./api-ors";
+import { fetchAPI } from "pentatrion-design";
+import { openRouteServiceUrl } from "./config";
 
-export async function getRoute(features: GeoPointOption[]) {
-  const res = await fetch("http://localhost:8080/ors/v2/directions/driving-car/geojson", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+export function fetchOpenRouteServiceAPI<
+  Path extends OrsAPIPaths,
+  Options extends OrsAPIRequests<Path>,
+>(path: Path, options?: Options): Promise<OrsAPIResponse<Path, Options["method"]>> {
+  return fetchAPI(path, options, openRouteServiceUrl);
+}
+
+export async function getRoute(features: GeoPointOption[]): Promise<RouteFeatureResponse | null> {
+  const collection = await fetchOpenRouteServiceAPI("/ors/v2/directions/{profile}/geojson", {
+    urlParams: {
+      profile: "driving-car",
     },
-    body: JSON.stringify({
+    method: "post",
+    body: {
       coordinates: features.map((feature) => feature.geometry.coordinates),
-    }),
+    },
   });
-
-  const collection = (await res.json()) as FeatureCollection<LineString>;
 
   if (collection.features.length < 1) {
     return null;
@@ -33,7 +38,7 @@ export async function getRoute(features: GeoPointOption[]) {
       ...feature.properties,
       coords_hash: hashCoords(features),
     },
-  } as ORSDirectionFeature;
+  };
 }
 
 export function hashCoords(features: GeoPointOption[]) {

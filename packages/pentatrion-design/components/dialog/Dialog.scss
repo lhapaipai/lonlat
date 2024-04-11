@@ -207,6 +207,45 @@
                 font-size: .9rem;
             }
         }
+
+        &.search {
+            display: flex;
+            height: 48px;
+            padding: 0;
+
+            .prefix {
+                width: 48px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .icon {
+                flex: 1;
+                font-size: 1.25rem;
+            }
+
+            .type {
+                text-align: center;
+                height: 18px;
+                line-height: 10px;
+                color: var(--text-hint);
+                font-size: var(--font-size-xs);
+            }
+
+            .content {
+                padding: 0 .5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                font-size: var(--font-size-rg);
+                flex: 1;
+            }
+
+            .context {
+                color: var(--text-hint);
+                font-size: var(--font-size-sm);
+            }
+        }
     }
 
     &.compact {
@@ -219,6 +258,7 @@
         max-height: 200px;
         overflow: auto;
     }
+
 }
 
 .ll-portail-dialog {

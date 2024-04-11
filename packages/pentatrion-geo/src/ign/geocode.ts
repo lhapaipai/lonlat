@@ -1,5 +1,5 @@
 import { fetchAPI } from "pentatrion-design";
-import { getDepartmentName } from "../feature-option/util";
+import { getDepartmentName } from "../..";
 import {
   APIPaths as GeocodageAPIPaths,
   APIRequests as GeocodageAPIRequests,
@@ -8,7 +8,7 @@ import {
   AddressProperties,
   AddressReverseProperties,
 } from "./api-geocodage";
-import { dataGeoserviceUrl } from "./urlHelper";
+import { dataGeoserviceUrl } from "./config";
 import { Feature, Point, Position } from "geojson";
 import { IGNAddressGeoOption, LngLatObj } from "..";
 import { nanoid } from "nanoid";
@@ -21,12 +21,12 @@ export function fetchIGNGeodageAPI<
 }
 
 export async function ignReverseSearch([lon, lat]: Position) {
-  // const collection = (await new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve({ type: "FeatureCollection", features: [] });
-  //   }, 500);
-  // })) as AddressReverseResponse;
-  throw new Error("Impossible de retrouver la localisation");
+  return (await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ type: "FeatureCollection", features: [] });
+    }, 500);
+  })) as GeocodageAPISchemas["GeocodeAddressReverseResponse"];
+  // throw new Error("Impossible de retrouver la localisation");
 
   const collection = await fetchIGNGeodageAPI("/geocodage/reverse", {
     query: {
@@ -39,10 +39,10 @@ export async function ignReverseSearch([lon, lat]: Position) {
 }
 
 export async function ignSearch(searchValue: string, coords: [number, number]) {
-  // const collection = (await fetch(`/data/ign-search.geojson`).then((res) =>
-  //   res.json(),
-  // )) as AddressSearchResponse;
-  throw new Error("Impossible de faire une recherche ign");
+  return (await fetch(`/data/ign-search.geojson`).then((res) =>
+    res.json(),
+  )) as GeocodageAPISchemas["GeocodeAddressResponse"];
+  // throw new Error("Impossible de faire une recherche ign");
 
   const collection = await fetchIGNGeodageAPI("/geocodage/search", {
     query: {
