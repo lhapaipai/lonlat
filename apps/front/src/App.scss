@@ -1,0 +1,54 @@
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    color: #fff;
+    padding: .5rem;
+    pointer-events: none;
+
+    &>* {
+        pointer-events: all;
+    }
+}
+
+.maplibregl-map .maplibregl-canvas-container.maplibregl-interactive {
+    cursor: pointer;
+}
+
+.maplibregl-map .maplibregl-canvas-container.maplibregl-interactive:active {
+    cursor: grabbing;
+}
+
+.ll-layer-switcher {
+    flex-wrap: wrap;
+}
+
+
+.maplibregl-ctrl-bottom-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 10px 10px 10px;
+
+    .maplibregl-ctrl-bottom-left {
+        bottom: 100%;
+        left: 0;
+    }
+
+    .maplibregl-ctrl-bottom-right {
+        right: 0;
+        bottom: 100%;
+    }
+}

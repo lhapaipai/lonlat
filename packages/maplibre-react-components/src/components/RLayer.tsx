@@ -54,8 +54,13 @@ function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
       (layerOptions.source && map.getSource(layerOptions.source))
     ) {
       // console.log("createLayer", layerOptions.id);
-      // @ts-ignore optional source checked above
-      map.addLayer(layerOptions, beforeId);
+      if (beforeId && map.getLayer(beforeId)) {
+        // @ts-ignore optional source checked above
+        map.addLayer(layerOptions, beforeId);
+      } else {
+        // @ts-ignore optional source checked above
+        map.addLayer(layerOptions);
+      }
       return map.getLayer(layerOptions.id);
     }
   }
