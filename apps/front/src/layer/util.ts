@@ -13,7 +13,6 @@ export async function prepareStyle(
   optionalLayersId: OptionalLayerId[],
   terrain: boolean,
   hillshade: boolean,
-  streetView: boolean,
 ): Promise<StyleSpecification | string> {
   const baseLayer: LayerInfos = baseLayersById[baseLayerId];
 
@@ -34,7 +33,6 @@ export async function prepareStyle(
     terrain ? "terrain" : null,
     hillshade ? "hillshade" : null,
     ...optionalLayersId,
-    streetView ? "street-view" : null,
   ];
 
   for (const optionalLayerId of allOptionalLayersId) {

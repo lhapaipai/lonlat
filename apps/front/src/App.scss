@@ -1,10 +1,29 @@
 html,
 body,
-#root {
+#root,
+#app {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+}
+
+html {
+    --sidebar-extra-width: 50%;
+}
+
+#app {
+    display: flex;
+}
+
+#principal {
+    flex: 1;
+}
+
+#extra {
+    flex: 0 0 var(--sidebar-extra-width);
+    position: relative;
+    border-left: 1px solid var(--background-strong);
 }
 
 .sidebar {

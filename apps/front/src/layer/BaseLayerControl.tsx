@@ -23,14 +23,17 @@ import {
 } from "./layerSlice";
 import cn from "classnames";
 import { createPortal } from "react-dom";
-import { useRControl } from "maplibre-react-components";
+import { useMap, useRControl } from "maplibre-react-components";
 import { useState } from "react";
 import { Button, ButtonGroup } from "pentatrion-design";
+import { coordsChanged } from "../street-view/streetViewSlice";
 
 export default function BaseLayerControl() {
   const container = useRControl("bottom", "ll-layer-switcher");
   const [countryFilter, setCountryFilter] = useState<keyof BaseLayers>("fr");
   const dispatch = useAppDispatch();
+
+  const map = useMap();
 
   const currentBaseLayerId = useAppSelector(selectBaseLayer);
   const currentOptionalLayers = useAppSelector(selectOptionalLayers);
@@ -122,7 +125,10 @@ export default function BaseLayerControl() {
       <div
         className={cn("layer", "base", currentStreetView && "active")}
         key="street-view"
-        onClick={() => dispatch(streetViewToggled())}
+        onClick={() => {
+          dispatch(coordsChanged(map.getCenter().toArray()));
+          dispatch(streetViewToggled());
+        }}
       >
         <img className="preview" src="/thumbnail/pegman.png" />
         <div className="legend text-sm">Street View</div>

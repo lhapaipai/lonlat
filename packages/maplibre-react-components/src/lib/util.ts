@@ -1,4 +1,4 @@
-import { LngLat, MapOptions, Offset, PointLike } from "maplibre-gl";
+import { LngLat, LngLatLike, MapOptions, Offset, PointLike } from "maplibre-gl";
 import {
   type MapCallbacks,
   type MapHandlerOptionName,
@@ -127,6 +127,22 @@ export function areLngLatClose(lngLat1?: LngLatObj, lngLat2?: LngLatObj): boolea
   if (!lngLat1 || !lngLat2) {
     return false;
   }
+  return (
+    Math.round(lngLat1.lng * 100000) === Math.round(lngLat2.lng * 100000) &&
+    Math.round(lngLat1.lat * 100000) === Math.round(lngLat2.lat * 100000)
+  );
+}
+
+export function areCoordsClose(coords1?: LngLatLike, coords2?: LngLatLike): boolean {
+  if (!coords1 && !coords2) {
+    return true;
+  }
+  if (!coords1 || !coords2) {
+    return false;
+  }
+  const lngLat1 = LngLat.convert(coords1);
+  const lngLat2 = LngLat.convert(coords2);
+
   return (
     Math.round(lngLat1.lng * 100000) === Math.round(lngLat2.lng * 100000) &&
     Math.round(lngLat1.lat * 100000) === Math.round(lngLat2.lat * 100000)

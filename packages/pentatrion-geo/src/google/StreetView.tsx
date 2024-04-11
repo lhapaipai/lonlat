@@ -2,16 +2,15 @@ import { useEventCallback } from "pentatrion-design";
 import GManager from "./GManager";
 import { CSSProperties, useEffect, useRef } from "react";
 import { LngLatObj, areLngLatClose } from "maplibre-react-components";
-import { getLngLatObj } from ".";
+import { LngLat } from "maplibre-gl";
 
 interface Props {
   heading: number;
   pitch: number;
-  coords: { lng: number; lat: number };
+  coords: [number, number];
   onChangeVisible: (visible: boolean) => void;
-  onChangeHeading: (heading: number) => void;
-  onChangePitch: (pitch: number) => void;
-  onChangeCoords: (lngLat: LngLatObj) => void;
+  onChangePov: (pov: google.maps.StreetViewPov) => void;
+  onChangeCoords: (lngLat: [number, number]) => void;
 }
 
 function latLngStr(lngLat: { lng: number; lat: number }) {
@@ -28,8 +27,7 @@ export default function StreetView({
   heading,
   pitch,
   coords,
-  onChangeHeading,
-  onChangePitch,
+  onChangePov,
   onChangeCoords,
   onChangeVisible,
 }: Props) {
@@ -45,21 +43,23 @@ export default function StreetView({
   }, [heading, pitch]);
 
   useEffect(() => {
-    const gLngLat = getLngLatObj(panoramaRef.current?.getPosition());
-    if (gLngLat && !areLngLatClose(gLngLat, coords)) {
-      console.log("useEffect coords. gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(coords));
+    const gLngLat = panoramaRef.current?.getPosition()?.toJSON();
+    const lngLatCoords = LngLat.convert(coords);
+    if (gLngLat && !areLngLatClose(gLngLat, lngLatCoords)) {
+      console.log("useEffect gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(lngLatCoords));
       // submit a new position to google streetview
       // will normally relaunch a "pano_changed" with a position closest to the snapshots
-      panoramaRef.current?.setPosition(coords);
+      panoramaRef.current?.setPosition(lngLatCoords);
     }
   }, [coords]);
 
   const handlePosChangedStable = useEventCallback((gLngLat: LngLatObj) => {
     console.log("handlePanoChanged");
+    const lngLatCoords = LngLat.convert(coords);
 
-    if (!areLngLatClose(gLngLat, coords)) {
-      console.log("pano_changed gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(coords));
-      onChangeCoords(gLngLat);
+    if (!areLngLatClose(gLngLat, lngLatCoords)) {
+      console.log("pano_changed gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(lngLatCoords));
+      onChangeCoords([gLngLat.lng, gLngLat.lat]);
     }
   });
 
@@ -71,8 +71,10 @@ export default function StreetView({
     // actually no change for the pitch
     if (Math.round(pov.heading * 0.2) !== Math.round(heading * 0.2)) {
       console.log("pov_changed gPov:", pov, "current:", heading, pitch);
-      onChangeHeading(pov.heading);
-      onChangePitch(pov.pitch);
+      onChangePov({
+        heading: pov.heading,
+        pitch: pov.pitch,
+      });
     }
   });
 
@@ -93,7 +95,7 @@ export default function StreetView({
     const street = GManager.createOrGetPanorama(
       streetViewContainer,
       {
-        position: coords,
+        position: { lng: coords[0], lat: coords[1] },
         pov: { pitch, heading },
       },
       {

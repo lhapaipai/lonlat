@@ -29,6 +29,8 @@ import {
 } from "./layer/layerSlice";
 import { useEffect, useState } from "react";
 import { prepareStyle } from "./layer/util";
+import StreetViewMap from "./street-view/StreetViewMap";
+import StreetViewWindow from "./street-view/StreetViewWindow";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/icons/arrow.png").then((img) => {
@@ -92,31 +94,40 @@ function App() {
   }
 
   useEffect(() => {
-    prepareStyle(baseLayerId, optionalLayersId, terrain, hillshade, streetView).then((nextStyle) =>
+    prepareStyle(baseLayerId, optionalLayersId, terrain, hillshade).then((nextStyle) =>
       setUncontrolledStyle(nextStyle),
     );
-  }, [baseLayerId, optionalLayersId, terrain, hillshade, streetView]);
+  }, [baseLayerId, optionalLayersId, terrain, hillshade]);
 
   return (
-    <>
-      <RMap
-        onMoveEnd={handleMoveEnd}
-        initialCenter={viewState.center}
-        initialZoom={viewState.zoom}
-        mapStyle={uncontrolledStyle}
-        afterInstanciation={handleAfterMapInstanciation}
-      >
-        <BaseLayerControl />
+    <div id="app">
+      <div id="principal">
+        <RMap
+          onMoveEnd={handleMoveEnd}
+          initialCenter={viewState.center}
+          initialZoom={viewState.zoom}
+          mapStyle={uncontrolledStyle}
+          afterInstanciation={handleAfterMapInstanciation}
+        >
+          <BaseLayerControl />
 
-        <MapFlyer />
-        {tab === "direction" && <DirectionMap />}
-        {tab === "search" && <SearchMap />}
-        <ContextMenuManager />
-      </RMap>
-      <aside className="sidebar">
-        <Tabs fullWidth={true} tabs={tabs} value={tab} onChange={(e) => dispatch(tabChanged(e))} />
-      </aside>
-    </>
+          <MapFlyer />
+          {tab === "direction" && <DirectionMap />}
+          {tab === "search" && <SearchMap />}
+          {streetView && <StreetViewMap />}
+          <ContextMenuManager />
+        </RMap>
+        <aside className="sidebar">
+          <Tabs
+            fullWidth={true}
+            tabs={tabs}
+            value={tab}
+            onChange={(e) => dispatch(tabChanged(e))}
+          />
+        </aside>
+      </div>
+      {streetView && <StreetViewWindow />}
+    </div>
   );
 }
 

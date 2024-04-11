@@ -9,7 +9,7 @@ import { googleMapsApiToken } from "../shared/constants";
 import { Libraries } from "@googlemaps/js-api-loader";
 const googleLibraries: Libraries = ["streetView"];
 
-const marignier = { lat: 46.0918, lng: 6.4988 };
+const marignier: [number, number] = [6.4988, 46.0918];
 const initialHeading = 0;
 const initialPitch = 0;
 
@@ -29,7 +29,12 @@ function App() {
   const [coords, setCoords] = useState(marignier);
 
   function handlePegmanDragEnd(e: Event<LLPegman>) {
-    setCoords(lngLatClassToObj(e.target.getLngLat()));
+    setCoords(e.target.getLngLat().toArray());
+  }
+
+  function handleChangePov({ heading, pitch }) {
+    setHeading(heading);
+    setPitch(pitch);
   }
 
   return (
@@ -46,8 +51,8 @@ function App() {
           {showStreetView && (
             <>
               <RPegman
-                longitude={coords.lng}
-                latitude={coords.lat}
+                longitude={coords[0]}
+                latitude={coords[1]}
                 bearing={heading}
                 draggable={true}
                 onDragEnd={handlePegmanDragEnd}
@@ -109,8 +114,7 @@ function App() {
               heading={heading}
               pitch={pitch}
               coords={coords}
-              onChangeHeading={setHeading}
-              onChangePitch={setPitch}
+              onChangePov={handleChangePov}
               onChangeCoords={setCoords}
               onChangeVisible={setShowStreetView}
             />

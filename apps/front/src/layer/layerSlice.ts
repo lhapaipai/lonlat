@@ -39,8 +39,9 @@ const layerSlice = createSlice({
     hillshadeToggled(state) {
       state.hillshade = !state.hillshade;
     },
-    streetViewToggled(state) {
-      state.streetView = !state.streetView;
+    streetViewToggled(state, action: PayloadAction<boolean | undefined>) {
+      const status = action.payload;
+      state.streetView = status === undefined ? !state.streetView : status;
     },
   },
 });

@@ -6,6 +6,7 @@ import directionSlice, { directionLocationsListenerMiddleware } from "../directi
 import { lonlatFeatureListenerMiddleware } from "./lonlatListener";
 import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
 import layerSlice from "../layer/layerSlice";
+import streetViewSlice from "../street-view/streetViewSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     layer: layerSlice,
     search: searchSlice,
     direction: directionSlice,
+    streetView: streetViewSlice,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
