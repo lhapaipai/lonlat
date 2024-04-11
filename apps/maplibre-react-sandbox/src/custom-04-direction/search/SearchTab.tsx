@@ -1,6 +1,6 @@
 import { LazyAutocomplete } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "../store";
-import { searchFeatureChanged, selectSearchFeature } from "../store/searchSlice";
+import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import { AutocompleteGeoOption, ignSearch, parseIgnAddressCollection } from "pentatrion-geo";
 import { selectViewState } from "../store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";

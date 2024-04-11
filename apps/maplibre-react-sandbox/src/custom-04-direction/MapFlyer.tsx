@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useAppSelector } from "./store";
-import { selectSearchFeature } from "./store/searchSlice";
+import { selectSearchFeature } from "./search/searchSlice";
 import { selectTab } from "./store/mapSlice";
-import { selectValidDirectionLocations } from "./store/directionSlice";
+import { selectValidDirectionLocations } from "./direction/directionSlice";
 import { boundsContained, getBounds } from "pentatrion-geo";
 import { useMap } from "maplibre-react-components";
 
@@ -19,11 +19,11 @@ export default function MapFlyer() {
     }
 
     if (searchFeature && tab === "search") {
-      const center = searchFeature.geometry.coordinates;
-      const contains = map.getBounds().contains(center);
+      const [lon, lat] = searchFeature.geometry.coordinates;
+      const contains = map.getBounds().contains([lon, lat]);
 
       if (!contains) {
-        map.flyTo({ center });
+        map.flyTo({ center: [lon, lat] });
       }
       return;
     }
@@ -33,11 +33,11 @@ export default function MapFlyer() {
         case 0:
           return;
         case 1: {
-          const center = validLocations[0].geometry.coordinates;
-          const contains = map.getBounds().contains(center);
+          const [lon, lat] = validLocations[0].geometry.coordinates;
+          const contains = map.getBounds().contains([lon, lat]);
 
           if (!contains) {
-            map.flyTo({ center });
+            map.flyTo({ center: [lon, lat] });
           }
           return;
         }

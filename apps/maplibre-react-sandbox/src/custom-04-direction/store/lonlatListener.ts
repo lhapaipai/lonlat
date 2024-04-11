@@ -1,7 +1,7 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 import { GeoPointOption, resolveLonLatFeaturePoint } from "pentatrion-geo";
-import { LocationPayload, directionLocationChanged } from "./directionSlice";
-import { SearchPayload, searchFeatureChanged } from "./searchSlice";
+import { LocationPayload, directionLocationChanged } from "../direction/directionSlice";
+import { SearchPayload, searchFeatureChanged } from "../search/searchSlice";
 import { messageAdded } from "pentatrion-design/redux";
 import { parseError } from "pentatrion-design";
 

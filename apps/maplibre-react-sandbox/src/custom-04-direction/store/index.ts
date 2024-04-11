@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import searchSlice from "./searchSlice";
+import searchSlice from "../search/searchSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import mapSlice from "./mapSlice";
-import directionSlice, { directionLocationsListenerMiddleware } from "./directionSlice";
+import directionSlice, { directionLocationsListenerMiddleware } from "../direction/directionSlice";
 import { lonlatFeatureListenerMiddleware } from "./lonlatListener";
 import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
 

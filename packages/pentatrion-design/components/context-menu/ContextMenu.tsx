@@ -2,6 +2,7 @@ import {
   Children,
   ComponentPropsWithRef,
   ReactElement,
+  ReactNode,
   cloneElement,
   isValidElement,
   useEffect,

@@ -14,7 +14,7 @@ import {
   isAnyOf,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { RootState } from ".";
+import { RootState } from "../store";
 import { NoDataOption } from "pentatrion-design";
 import { FeatureCollection, Feature, Point } from "geojson";
 

@@ -16,9 +16,10 @@ import {
   directionLocationInsertAt,
   directionLocationRemoved,
   selectDirectionLocations,
-} from "../store/directionSlice";
+} from "./directionSlice";
 import {
   AutocompleteGeoOption,
+  GeoPointOption,
   createNodataFeature,
   ignSearch,
   isNoData,
@@ -47,11 +48,13 @@ export default function DirectionTab() {
   function handleChangeSelection(index: number, selection: GeoOption | null) {
     const itemId = locations[index].id;
     const feature = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
-    dispatch(directionLocationChanged({ index, feature }));
+    const featurePointOrNoData = feature as GeoPointOption | NoDataOption;
+    dispatch(directionLocationChanged({ index, feature: featurePointOrNoData }));
   }
 
   function handleSortLocations(locationsUpdated: (GeoOption | NoDataOption)[]) {
-    dispatch(directionLocationsSorted(locationsUpdated));
+    const locationPointsUpdated = locationsUpdated as (GeoPointOption | NoDataOption)[];
+    dispatch(directionLocationsSorted(locationPointsUpdated));
   }
 
   function handleRemoveItem(index: number) {
