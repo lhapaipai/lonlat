@@ -13,11 +13,24 @@ import {
   selectDirectionWaypoints,
   selectValidDirectionLocations,
 } from "./store/directionSlice";
-import { roadLayerStyle, roadLayerCasingStyle, waypointsLayerStyle } from "./mapStyle";
+import {
+  roadLayerStyle,
+  roadLayerCasingStyle,
+  waypointsLayerStyle,
+  roadArrowLayerStyle,
+} from "./mapStyle";
 import { LLMarker, RLLMarker, createLonLatFeaturePoint } from "pentatrion-geo";
 import { Event, RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
-import { MapLibreEvent, Marker } from "maplibre-gl";
+import { Map, MapLibreEvent, Marker } from "maplibre-gl";
 import ContextMenuManager from "./ContextMenuManager";
+
+function handleAfterMapInstanciation(map: Map) {
+  map.loadImage("/icons/arrow.png").then((img) => {
+    if (!map.hasImage("oneway")) {
+      map.addImage("oneway", img.data);
+    }
+  });
+}
 
 function App() {
   const viewState = useAppSelector(selectViewState);
@@ -70,6 +83,7 @@ function App() {
         initialCenter={viewState.center}
         initialZoom={viewState.zoom}
         mapStyle="/styles/ign/PLAN.IGN/standard.json"
+        afterInstanciation={handleAfterMapInstanciation}
       >
         <MapFlyer />
         {searchFeature?.geometry.type === "Point" && (
@@ -108,6 +122,7 @@ function App() {
             />
             <RLayer
               id="direction-road-casing"
+              key="direction-road-casing"
               type="line"
               {...roadLayerCasingStyle}
               source="direction-route"
@@ -115,8 +130,17 @@ function App() {
             />
             <RLayer
               id="direction-road"
+              key="direction-road"
               type="line"
               {...roadLayerStyle}
+              source="direction-route"
+              beforeId="point coté"
+            />
+            <RLayer
+              id="directon-arrow"
+              key="directon-arrow"
+              type="symbol"
+              {...roadArrowLayerStyle}
               source="direction-route"
               beforeId="point coté"
             />

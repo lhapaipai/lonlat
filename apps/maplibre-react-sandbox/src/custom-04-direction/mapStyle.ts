@@ -1,4 +1,8 @@
-import { CircleLayerSpecification, LineLayerSpecification } from "maplibre-gl";
+import {
+  CircleLayerSpecification,
+  LineLayerSpecification,
+  SymbolLayerSpecification,
+} from "maplibre-gl";
 
 export const roadLayerCasingStyle: {
   paint?: LineLayerSpecification["paint"];
@@ -28,5 +32,20 @@ export const waypointsLayerStyle: {
     "circle-pitch-alignment": "map",
     "circle-color": "#111",
     "circle-radius": 5,
+  },
+};
+
+export const roadArrowLayerStyle: {
+  paint?: SymbolLayerSpecification["paint"];
+  layout?: SymbolLayerSpecification["layout"];
+} = {
+  layout: {
+    "icon-size": 0.5,
+    "icon-image": "oneway",
+    "symbol-placement": "line",
+    "symbol-spacing": 75,
+    "icon-rotation-alignment": "map",
+    "icon-rotate": 90,
+    "icon-padding": 2,
   },
 };
