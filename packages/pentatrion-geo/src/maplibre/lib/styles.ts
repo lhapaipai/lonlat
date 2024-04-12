@@ -10,8 +10,8 @@ export function createRasterStyle(
       orthophoto: {
         type: "raster",
         tiles: Array.isArray(wmtsUrl) ? wmtsUrl : [wmtsUrl],
-        tileSize: 256,
-        attribution,
+        tileSize: window.devicePixelRatio < 1.5 ? 256 : 128,
+        attribution: attribution || "",
       },
     },
     layers: [

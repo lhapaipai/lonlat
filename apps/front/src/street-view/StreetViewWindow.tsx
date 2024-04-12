@@ -32,6 +32,7 @@ export default function StreetViewWindow() {
     coords && (
       <div id="extra">
         <ResizeArea name="extra" position="left" />
+        <ResizeArea name="extra" position="top" />
         <GApiWrapper apiKey={googleMapsApiToken} version="weekly" libraries={googleLibraries}>
           <StreetView
             heading={heading}

@@ -7,7 +7,8 @@ help:
 
 .PHONY: deploy
 deploy: ## Build and deploy examples
-	rsync -av \
+	pnpm build-with-errors
+	rsync -av --delete \
 		$(local_path)/dist/ \
 		berlin:prod/$(remote_host)
 	@echo "go : https://$(remote_host)"

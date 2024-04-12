@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { Map, StyleSpecification } from "maplibre-gl";
 import { RLayer, RMap, RNavigationControl, RSource, RTerrain } from "maplibre-react-components";
 import { DOM } from "maplibre-gl/src/util/dom";
-import { createRasterStyle } from "pentatrion-geo";
+import { RFrameRateControl, createRasterStyle } from "pentatrion-geo";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
@@ -65,6 +65,7 @@ function App() {
         mapStyle={mapStyle}
         afterInstanciation={handleAfterInstanciation}
       >
+        <RFrameRateControl />
         <RNavigationControl />
         <BaseLayerControl />
         {elevation && (

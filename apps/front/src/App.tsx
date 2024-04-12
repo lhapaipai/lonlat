@@ -1,5 +1,11 @@
 import { RMap } from "maplibre-react-components";
-import { AttributionControl, Map, MapLibreEvent, StyleSpecification } from "maplibre-gl";
+import {
+  AttributionControl,
+  Map,
+  MapLibreEvent,
+  NavigationControl,
+  StyleSpecification,
+} from "maplibre-gl";
 
 import { useAppDispatch, useAppSelector } from "./store";
 import { selectTab, selectViewState, viewStateChanged } from "./store/mapSlice";
@@ -26,6 +32,7 @@ import { prepareStyle } from "./layer/util";
 import StreetViewMap from "./street-view/StreetViewMap";
 import StreetViewWindow from "./street-view/StreetViewWindow";
 import TabsControl from "./TabsControl";
+import { RFrameRateControl } from "pentatrion-geo";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/icons/arrow.png").then((img) => {
@@ -45,9 +52,9 @@ function handleAfterMapInstanciation(map: Map) {
     positions["bottom-right"] && bottomContainer.append(positions["bottom-right"]);
     positions["bottom"] = DOM.create("div", "maplibregl-ctrl-bottom", bottomContainer);
   }
-
+  // map.addControl(new NavigationControl(), "top-left");
   // @ts-ignore position added above
-  map.addControl(new AttributionControl(), "bottom");
+  // map.addControl(new AttributionControl(), "bottom");
 }
 
 function App() {
@@ -93,16 +100,15 @@ function App() {
           mapStyle={uncontrolledStyle}
           afterInstanciation={handleAfterMapInstanciation}
         >
+          <RFrameRateControl />
           <TabsControl />
           <BaseLayerControl />
-
           <MapFlyer />
           {streetView && <StreetViewMap />}
           {tab === "direction" && <DirectionMap />}
           {tab === "search" && <SearchMap />}
           <ContextMenuManager />
         </RMap>
-        <aside className="sidebar"></aside>
       </div>
       {streetView && <StreetViewWindow />}
     </div>

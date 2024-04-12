@@ -10,6 +10,7 @@ body,
 
 html {
     --sidebar-extra-width: 50%;
+    --sidebar-extra-height: 50%;
     font-family: ui-sans-serif, system-ui, sans-serif;
     font-size: 1rem;
 }
@@ -23,15 +24,19 @@ html {
 }
 
 #extra {
-    flex: 0 0 var(--sidebar-extra-width);
+    flex: 0 0 clamp(25vw, var(--sidebar-extra-width), calc(100vw - 400px - 1rem));
     position: relative;
     border-left: 1px solid var(--background-strong);
 }
 
-.tabs-ctrl {
-    width: 400px;
+@media (max-width: 700px) {
+    #app {
+        flex-direction: column;
+    }
 
-    .ll-tabs {
-        margin: .25rem;
+    #extra {
+        flex: 0 0 clamp(25vw, var(--sidebar-extra-height), 60vw);
+        border-left: 0;
+        border-top: 1px solid var(--background-strong);
     }
 }

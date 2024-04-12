@@ -8,7 +8,7 @@ import { selectTab, tabChanged } from "./store/mapSlice";
 import { memo } from "react";
 
 function TabsControl() {
-  const container = useRControl("top-right", "maplibregl-ctrl tabs-ctrl");
+  const container = useRControl("top-right", "maplibregl-ctrl maplibregl-ctrl-tabs");
   const tab = useAppSelector(selectTab);
   const dispatch = useAppDispatch();
 

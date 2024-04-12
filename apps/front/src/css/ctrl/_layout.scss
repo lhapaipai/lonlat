@@ -35,22 +35,22 @@
 
 .maplibregl-ctrl-top-left .maplibregl-ctrl {
     float: left;
-    margin: .25rem 0 0 .25rem;
+    margin: .5rem 0 0 .5rem;
 }
 
 .maplibregl-ctrl-top-right .maplibregl-ctrl {
     float: right;
-    margin: .25rem .25rem 0 0;
+    margin: .5rem .5rem 0 0;
 }
 
 .maplibregl-ctrl-bottom-left .maplibregl-ctrl {
     float: left;
-    margin: 0 0 .25rem .25rem;
+    margin: 0 0 .5rem .5rem;
 }
 
 .maplibregl-ctrl-bottom-right .maplibregl-ctrl {
     float: right;
-    margin: 0 .25rem .25rem 0;
+    margin: 0 .5rem .5rem 0;
 }
 
 .maplibregl-ctrl-bottom-container {
@@ -59,7 +59,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 0 .25rem .25rem .25rem;
+    margin: 0 0 0 0;
 
     .maplibregl-ctrl-bottom-left {
         bottom: 100%;

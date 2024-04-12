@@ -28,6 +28,7 @@ export interface LayerInfos {
 export type LayerId = keyof typeof layersById;
 
 export const layers: LayerId[] = [
+  "maplibre",
   "ign-raster-cadastre",
   "ign-raster-default_scan",
   "ign-raster-scan_25",
@@ -70,6 +71,14 @@ export const layers: LayerId[] = [
 ];
 
 export const layersById = {
+  maplibre: {
+    id: "maplibre",
+    type: "vector",
+    label: "Maplibre",
+    offsetY: -2160,
+    style: "https://demotiles.maplibre.org/style.json",
+  } satisfies LayerInfos,
+
   "ign-raster-cadastre": {
     id: "ign-raster-cadastre",
     type: "raster",
