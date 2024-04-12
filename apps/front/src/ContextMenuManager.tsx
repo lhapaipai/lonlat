@@ -3,9 +3,9 @@ import { ContextMenuEventDispatcher } from "maplibre-react-components";
 import { selectTab } from "./store/mapSlice";
 import SearchContextMenu from "./search/SearchContextMenu";
 import DirectionContextMenu from "./direction/DirectionContextMenu";
-import { ReactElement } from "react";
+import { ReactElement, memo } from "react";
 
-export default function ContextMenuManager() {
+function ContextMenuManager() {
   const tab = useAppSelector(selectTab);
 
   let ContextMenuElement: ReactElement | null = null;
@@ -24,3 +24,5 @@ export default function ContextMenuManager() {
 
   return <ContextMenuEventDispatcher>{ContextMenuElement}</ContextMenuEventDispatcher>;
 }
+
+export default memo(ContextMenuManager);

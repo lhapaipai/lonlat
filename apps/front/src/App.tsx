@@ -17,7 +17,6 @@ import BaseLayerControl from "./layer/BaseLayerControl";
 
 import {
   selectBaseLayer,
-  selectHillshade,
   selectOptionalLayers,
   selectStreetView,
   selectTerrain,
@@ -58,7 +57,6 @@ function App() {
   const baseLayerId = useAppSelector(selectBaseLayer);
   const optionalLayersId = useAppSelector(selectOptionalLayers);
   const terrain = useAppSelector(selectTerrain);
-  const hillshade = useAppSelector(selectHillshade);
   const streetView = useAppSelector(selectStreetView);
   const tab = useAppSelector(selectTab);
 
@@ -79,10 +77,10 @@ function App() {
   }
 
   useEffect(() => {
-    prepareStyle(baseLayerId, optionalLayersId, terrain, hillshade).then((nextStyle) =>
+    prepareStyle(baseLayerId, optionalLayersId, terrain).then((nextStyle) =>
       setUncontrolledStyle(nextStyle),
     );
-  }, [baseLayerId, optionalLayersId, terrain, hillshade]);
+  }, [baseLayerId, optionalLayersId, terrain]);
 
   return (
     <div id="app">

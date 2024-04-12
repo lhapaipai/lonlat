@@ -12,7 +12,6 @@ export async function prepareStyle(
   baseLayerId: BaseLayerId,
   optionalLayersId: OptionalLayerId[],
   terrain: boolean,
-  hillshade: boolean,
 ): Promise<StyleSpecification | string> {
   const baseLayer: LayerInfos = baseLayersById[baseLayerId];
 
@@ -29,17 +28,12 @@ export async function prepareStyle(
 
   let extraSources: StyleSpecification["sources"] = {};
 
-  const allOptionalLayersId: (OptionalLayerId | null)[] = [
-    terrain ? "terrain" : null,
-    terrain ? "hillshade" : null,
+  const allOptionalLayersId: OptionalLayerId[] = [
+    ...(terrain ? (["terrain", "hillshade"] as const) : []),
     ...optionalLayersId,
   ];
 
   for (const optionalLayerId of allOptionalLayersId) {
-    if (optionalLayerId === null) {
-      continue;
-    }
-
     let optionalLayerInfo: OptionalLayerInfo = {
       id: optionalLayerId,
       beforeId: undefined,
@@ -87,12 +81,16 @@ export async function prepareStyle(
 
     if (optionalLayerInfo.beforeId) {
       insertLayerIndex = nextLayers.findIndex((l) => l.id === optionalLayerInfo.beforeId);
+
+      if (insertLayerIndex === -1) {
+        insertLayerIndex = nextLayers.length;
+      }
     }
 
     nextLayers.splice(insertLayerIndex, 0, ...optionalStyle.layers);
   }
 
-  console.log("end foreach");
+  console.log("calculate uncontrolled styles");
 
   const nextStyle: StyleSpecification = {
     ...style,

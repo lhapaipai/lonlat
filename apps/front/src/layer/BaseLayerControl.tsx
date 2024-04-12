@@ -13,12 +13,10 @@ import {
   baseLayerChanged,
   terrainToggled,
   optionalLayerToggled,
-  hillshadeToggled,
   streetViewToggled,
   selectBaseLayer,
   selectOptionalLayers,
   selectTerrain,
-  selectHillshade,
   selectStreetView,
 } from "./layerSlice";
 import cn from "classnames";
@@ -38,7 +36,6 @@ export default function BaseLayerControl() {
   const currentBaseLayerId = useAppSelector(selectBaseLayer);
   const currentOptionalLayers = useAppSelector(selectOptionalLayers);
   const currentTerrain = useAppSelector(selectTerrain);
-  const currentHillshade = useAppSelector(selectHillshade);
   const currentStreetView = useAppSelector(selectStreetView);
 
   return createPortal(
@@ -112,15 +109,6 @@ export default function BaseLayerControl() {
         <img className="preview" src="/thumbnail/terrain.jpg" />
         <div className="legend text-sm">Relief</div>
       </div>
-
-      {/* <div
-        className={cn("layer", "base", currentHillshade && "active")}
-        key="hillshade"
-        onClick={() => dispatch(hillshadeToggled())}
-      >
-        <img className="preview" src="/thumbnail/terrarium.jpg" />
-        <div className="legend text-sm">Relief ombré</div>
-      </div> */}
 
       <div
         className={cn("layer", "base", currentStreetView && "active")}

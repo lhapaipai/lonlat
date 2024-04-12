@@ -6,7 +6,6 @@ interface LayerState {
   baseLayer: BaseLayerId;
   optionalLayers: OptionalLayerId[];
   terrain: boolean;
-  hillshade: boolean;
   streetView: boolean;
 }
 
@@ -14,7 +13,6 @@ const initialState: LayerState = {
   baseLayer: "ign-plan_ign-standard",
   optionalLayers: [],
   terrain: false,
-  hillshade: false,
   streetView: false,
 };
 
@@ -36,9 +34,6 @@ const layerSlice = createSlice({
     terrainToggled(state) {
       state.terrain = !state.terrain;
     },
-    hillshadeToggled(state) {
-      state.hillshade = !state.hillshade;
-    },
     streetViewToggled(state, action: PayloadAction<boolean | undefined>) {
       const status = action.payload;
       state.streetView = status === undefined ? !state.streetView : status;
@@ -48,16 +43,10 @@ const layerSlice = createSlice({
 
 export default layerSlice.reducer;
 
-export const {
-  baseLayerChanged,
-  optionalLayerToggled,
-  terrainToggled,
-  hillshadeToggled,
-  streetViewToggled,
-} = layerSlice.actions;
+export const { baseLayerChanged, optionalLayerToggled, terrainToggled, streetViewToggled } =
+  layerSlice.actions;
 
 export const selectBaseLayer = (state: RootState) => state.layer.baseLayer;
 export const selectOptionalLayers = (state: RootState) => state.layer.optionalLayers;
 export const selectTerrain = (state: RootState) => state.layer.terrain;
-export const selectHillshade = (state: RootState) => state.layer.hillshade;
 export const selectStreetView = (state: RootState) => state.layer.streetView;

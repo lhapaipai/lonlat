@@ -5,8 +5,9 @@ import SearchTab from "./search/SearchTab";
 import DirectionTab from "./direction/DirectionTab";
 import { useAppDispatch, useAppSelector } from "./store";
 import { selectTab, tabChanged } from "./store/mapSlice";
+import { memo } from "react";
 
-export default function TabsControl() {
+function TabsControl() {
   const container = useRControl("top-right", "maplibregl-ctrl tabs-ctrl");
   const tab = useAppSelector(selectTab);
   const dispatch = useAppDispatch();
@@ -29,3 +30,5 @@ export default function TabsControl() {
     container,
   );
 }
+
+export default memo(TabsControl);

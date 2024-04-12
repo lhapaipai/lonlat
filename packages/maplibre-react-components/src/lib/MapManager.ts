@@ -327,7 +327,7 @@ export default class MapManager {
       this._map.setStyle(nextStyle, {
         diff: styleDiffing,
         transformStyle(prevStyle, nextStyle) {
-          console.log("transformstyle", context.controlledSources);
+          console.log("merge controlled sources/layers", context.controlledSources);
 
           const prevControlledSources = prevStyle
             ? Object.fromEntries(
