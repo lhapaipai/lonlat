@@ -66,7 +66,7 @@ export const baseLayers: BaseLayers = {
     "ign-raster-orthophoto",
     "ign-plan_ign-standard",
   ],
-  ch: ["swiss-raster-orthophoto", "swiss-raster-default", "swiss-raster-default_25"],
+  ch: ["swisstopo-raster-orthophoto", "swisstopo-raster-default", "swisstopo-raster-default_25"],
   world: ["osm-raster-default", "google-raster-orthophoto", "maptiler"],
 };
 
@@ -127,8 +127,8 @@ export const baseLayersById = {
     country: "fr",
   } satisfies BaseLayerInfos,
 
-  "swiss-raster-orthophoto": {
-    id: "swiss-raster-orthophoto",
+  "swisstopo-raster-orthophoto": {
+    id: "swisstopo-raster-orthophoto",
     type: "base",
     dataType: "raster",
     label: "Satellite",
@@ -137,8 +137,8 @@ export const baseLayersById = {
     optionalLayers: [],
     country: "ch",
   } satisfies BaseLayerInfos,
-  "swiss-raster-default": {
-    id: "swiss-raster-default",
+  "swisstopo-raster-default": {
+    id: "swisstopo-raster-default",
     type: "base",
     dataType: "raster",
     label: "Scan",
@@ -147,8 +147,8 @@ export const baseLayersById = {
     optionalLayers: [],
     country: "ch",
   } satisfies BaseLayerInfos,
-  "swiss-raster-default_25": {
-    id: "swiss-raster-default_25",
+  "swisstopo-raster-default_25": {
+    id: "swisstopo-raster-default_25",
     type: "base",
     dataType: "raster",
     label: "Scan 1/25",

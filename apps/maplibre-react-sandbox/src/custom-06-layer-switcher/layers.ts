@@ -39,9 +39,9 @@ export const layers: LayerId[] = [
   "google-raster-road",
   "google-raster-relief",
   "google-raster-street_view",
-  "swiss-raster-orthophoto",
-  "swiss-raster-default",
-  "swiss-raster-default_25",
+  "swisstopo-raster-orthophoto",
+  "swisstopo-raster-default",
+  "swisstopo-raster-default_25",
   "maptiler",
   "etalab-osm_bright",
   "ign-admin_express-adminexpress",
@@ -147,22 +147,22 @@ export const layersById = {
     thumbnail: "/styles/google/street_view.png",
     style: googleStreetViewURL,
   } satisfies LayerInfos,
-  "swiss-raster-orthophoto": {
-    id: "swiss-raster-orthophoto",
+  "swisstopo-raster-orthophoto": {
+    id: "swisstopo-raster-orthophoto",
     type: "raster",
     label: "Swiss Orthophoto",
     thumbnail: "/styles/swiss/orthophoto.png",
     style: swissOrthophotoURL,
   } satisfies LayerInfos,
-  "swiss-raster-default": {
-    id: "swiss-raster-default",
+  "swisstopo-raster-default": {
+    id: "swisstopo-raster-default",
     type: "raster",
     label: "Swiss défaut",
     thumbnail: "/styles/swiss/default.png",
     style: swissDefaultURL,
   } satisfies LayerInfos,
-  "swiss-raster-default_25": {
-    id: "swiss-raster-default_25",
+  "swisstopo-raster-default_25": {
+    id: "swisstopo-raster-default_25",
     type: "raster",
     label: "Swiss 1/25",
     thumbnail: "/styles/swiss/default_25.png",

@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 
 import "./LayerSwitcher.scss";
 import { useState } from "react";
-import { Button, ButtonGroup } from "../button";
+import { Button, ButtonGroup } from "pentatrion-design";
 
 const meta = {
   title: "LayerSwitcher",
