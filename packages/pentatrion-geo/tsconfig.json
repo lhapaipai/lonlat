@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "skipLibCheck": true,
-    "types": ["google.maps"],
+    "types": ["google.maps", "react/experimental"],
     "paths": {
       "pentatrion-geo": ["."],
       "pentatrion-geo/*": ["./*"],

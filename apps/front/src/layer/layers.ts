@@ -34,10 +34,10 @@ export interface BaseLayerInfos {
   id: string;
   label: string;
   description?: string;
-  thumbnail: string;
   style: string | StyleSpecification;
   optionalLayers: OptionalLayerInfo[];
   country: "fr" | "ch" | "world";
+  offsetY: number; // position of the thumbnail in the layers sprite
 }
 
 export interface OptionalLayerInfos {
@@ -45,9 +45,9 @@ export interface OptionalLayerInfos {
   id: string;
   label: string;
   description?: string;
-  thumbnail: string;
   style: string | StyleSpecification;
   country: "fr" | "ch" | "world";
+  offsetY: number;
 }
 
 export type BaseLayerId = keyof typeof baseLayersById;
@@ -67,7 +67,7 @@ export const baseLayers: BaseLayers = {
     "ign-plan_ign-standard",
   ],
   ch: ["swisstopo-raster-orthophoto", "swisstopo-raster-default", "swisstopo-raster-default_25"],
-  world: ["osm-raster-default", "google-raster-orthophoto", "maptiler"],
+  world: ["osm-raster-default", "google-raster-orthophoto", "maptiler-streets"],
 };
 
 export const countryLabels = {
@@ -82,7 +82,7 @@ export const baseLayersById = {
     type: "base",
     dataType: "raster",
     label: "IGN Scan",
-    thumbnail: "/styles/ign/raster/default_scan.png",
+    offsetY: 0,
     style: createRasterStyle(
       [getIgnDefaultScanURL(ignToken)],
       '© <a href="https://www.ign.fr/">IGN</a>',
@@ -95,7 +95,7 @@ export const baseLayersById = {
     type: "base",
     dataType: "raster",
     label: "IGN Scan 25",
-    thumbnail: "/styles/ign/raster/scan_25.png",
+    offsetY: -54,
     style: createRasterStyle(
       [getIgnScan25URL(ignToken)],
       `© <a href="https://www.ign.fr/">IGN</a>`,
@@ -108,7 +108,7 @@ export const baseLayersById = {
     type: "base",
     dataType: "raster",
     label: "Satellite",
-    thumbnail: "/styles/ign/raster/orthophoto.png",
+    offsetY: -108,
     style: createRasterStyle([getIgnOrthophotoURL()], `© <a href="https://www.ign.fr/">IGN</a>`),
     optionalLayers: [
       { id: "ign-admin_express-adminexpress" },
@@ -124,7 +124,7 @@ export const baseLayersById = {
     dataType: "vector",
     label: "Plan",
     description: "",
-    thumbnail: "/styles/ign/PLAN.IGN/standard.png",
+    offsetY: -162,
     style: "/styles/ign/PLAN.IGN/standard.json",
     optionalLayers: [
       { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
@@ -138,7 +138,7 @@ export const baseLayersById = {
     type: "base",
     dataType: "raster",
     label: "Satellite",
-    thumbnail: "/styles/swiss/orthophoto.png",
+    offsetY: -216,
     style: createRasterStyle(
       swissOrthophotoURL,
       `© Données: <a href="https://www.swisstopo.admin.ch">swisstopo</a>`,
@@ -151,7 +151,7 @@ export const baseLayersById = {
     type: "base",
     dataType: "raster",
     label: "Scan",
-    thumbnail: "/styles/swiss/default.png",
+    offsetY: -270,
     style: createRasterStyle(
       swissDefaultURL,
       `© Données: <a href="https://www.swisstopo.admin.ch">swisstopo</a>`,
@@ -164,7 +164,7 @@ export const baseLayersById = {
     type: "base",
     dataType: "raster",
     label: "Scan 1/25",
-    thumbnail: "/styles/swiss/default_25.png",
+    offsetY: -324,
     style: createRasterStyle(
       swissScan25URL,
       `© Données: <a href="https://www.swisstopo.admin.ch">swisstopo</a>`,
@@ -178,7 +178,7 @@ export const baseLayersById = {
     type: "base",
     dataType: "raster",
     label: "OSM",
-    thumbnail: "/styles/osm/default.png",
+    offsetY: -378,
     style: createRasterStyle(
       osmURL,
       `© <a href="https://www.openstreetmap.org">Les Contributeurs d'OpenStreetMap</a>`,
@@ -195,7 +195,7 @@ export const baseLayersById = {
     type: "base",
     dataType: "raster",
     label: "Google Sat",
-    thumbnail: "/styles/google/orthophoto.png",
+    offsetY: -432,
     style: createRasterStyle(
       googleOrthophotoURL,
       `© Données cartographiques <a href="https://www.google.com">Google</a>`,
@@ -209,12 +209,12 @@ export const baseLayersById = {
 
     country: "world",
   } satisfies BaseLayerInfos,
-  maptiler: {
-    id: "maptiler",
+  "maptiler-streets": {
+    id: "maptiler-streets",
     type: "base",
     dataType: "vector",
     label: "Plan",
-    thumbnail: "/styles/maptiler/streets.png",
+    offsetY: -486,
     style: mapTilerStreetsStyleUrl,
     optionalLayers: [
       { id: "ign-admin_express-adminexpress" },
@@ -232,7 +232,7 @@ export const optionalLayersById = {
     type: "optional",
     label: "Libellés",
     description: "",
-    thumbnail: "/styles/ign/PLAN.IGN/toponymes.png",
+    offsetY: -648,
     style: "/styles/ign/PLAN.IGN/toponymes.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
@@ -242,7 +242,7 @@ export const optionalLayersById = {
     type: "optional",
     label: "Cadastre",
     description: "",
-    thumbnail: "/styles/ign/PCI/pci.png",
+    offsetY: -702,
     style: "/styles/ign/PCI/pci.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
@@ -252,7 +252,7 @@ export const optionalLayersById = {
     type: "optional",
     label: "Frontières",
     description: "",
-    thumbnail: "/styles/ign/ADMIN_EXPRESS/adminexpress.png",
+    offsetY: -594,
     style: "/styles/ign/ADMIN_EXPRESS/adminexpress.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
@@ -262,7 +262,7 @@ export const optionalLayersById = {
     type: "optional",
     label: "Lignes niveau",
     description: "",
-    thumbnail: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.png",
+    offsetY: -756,
     style: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
@@ -272,7 +272,7 @@ export const optionalLayersById = {
     type: "optional",
     label: "Relief ombré",
     description: "",
-    thumbnail: "/thumbnail/terrarium.jpg",
+    offsetY: -810,
     style: {
       version: 8,
       sources: {
@@ -302,7 +302,7 @@ export const optionalLayersById = {
     type: "optional",
     label: "Street View",
     description: "",
-    thumbnail: "/thumbnail/pegman.png",
+    offsetY: -864,
     style: {
       version: 8,
       sources: {
@@ -328,7 +328,7 @@ export const optionalLayersById = {
     type: "optional",
     label: "Relief",
     description: "",
-    thumbnail: "/thumbnail/terrain.jpg",
+    offsetY: -540,
     style: {
       version: 8,
       sources: {

@@ -67,7 +67,12 @@ export default function BaseLayerControl() {
             <div className="type">
               <i className={`fe-${layer.type}`}></i>
             </div>
-            <img className="preview" src={layer.thumbnail} />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-1x.jpg"
+              srcSet="/graphics/sprites/layers-1x.jpg 1x, /graphics/sprites/layers-2x.jpg 2x"
+              style={{ objectPosition: `0px ${layer.offsetY}px` }}
+            />
             <div className="legend text-sm">{layer.label}</div>
           </div>
         );
@@ -93,7 +98,12 @@ export default function BaseLayerControl() {
               <div className="type">
                 <i className={`fe-${layer.type}`}></i>
               </div>
-              <img className="preview" src={layer.thumbnail} />
+              <img
+                className="preview"
+                src="/graphics/sprites/layers-1x.jpg"
+                srcSet="/graphics/sprites/layers-1x.jpg 1x, /graphics/sprites/layers-2x.jpg 2x"
+                style={{ objectPosition: `0px ${layer.offsetY}px` }}
+              />
               <div className="legend text-sm">{layer.label}</div>
             </div>
           );
@@ -106,7 +116,12 @@ export default function BaseLayerControl() {
         key="terrain"
         onClick={() => dispatch(terrainToggled())}
       >
-        <img className="preview" src="/thumbnail/terrain.jpg" />
+        <img
+          className="preview"
+          src="/graphics/sprites/layers-1x.jpg"
+          srcSet="/graphics/sprites/layers-1x.jpg 1x, /graphics/sprites/layers-2x.jpg 2x"
+          style={{ objectPosition: `0px ${optionalLayersById["terrain"].offsetY}px` }}
+        />
         <div className="legend text-sm">Relief</div>
       </div>
 
@@ -118,7 +133,12 @@ export default function BaseLayerControl() {
           dispatch(streetViewToggled());
         }}
       >
-        <img className="preview" src="/thumbnail/pegman.png" />
+        <img
+          className="preview"
+          src="/graphics/sprites/layers-1x.jpg"
+          srcSet="/graphics/sprites/layers-1x.jpg 1x, /graphics/sprites/layers-2x.jpg 2x"
+          style={{ objectPosition: `0px ${optionalLayersById["street-view"].offsetY}px` }}
+        />
         <div className="legend text-sm">Street View</div>
       </div>
     </>,

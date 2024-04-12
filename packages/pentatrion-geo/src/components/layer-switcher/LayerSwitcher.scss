@@ -30,8 +30,7 @@
 
     .layer {
         width: 0;
-        flex: 1 0 90px;
-        max-width: 100px;
+        flex: 0 0 calc(90px + .5rem);
         border-radius: var(--border-radius-sm);
         display: flex;
         flex-direction: column;
@@ -83,7 +82,6 @@
     .preview {
         height: 54px;
         object-fit: cover;
-        object-position: center;
     }
 
     .legend {

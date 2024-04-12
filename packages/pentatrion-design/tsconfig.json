@@ -1,25 +1,13 @@
 {
-    "extends": "../../tsconfig.base.json",
-    "compilerOptions": {
-        "types": [
-            "@testing-library/jest-dom"
-        ],
-        "paths": {
-            "pentatrion-design": [
-                "."
-            ],
-            "pentatrion-design/*": [
-                "./*"
-            ],
-            "@storybook/react": [
-                "../../apps/storybook/node_modules/@storybook/react"
-            ],
-            "@storybook/addon-actions": [
-                "../../apps/storybook/node_modules/@storybook/addon-actions"
-            ]
-        }
-    },
-    "include": [
-      "components", "hooks","lib","redux", "tests", "styles"
-    ],
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["react/experimental", "@testing-library/jest-dom"],
+    "paths": {
+      "pentatrion-design": ["."],
+      "pentatrion-design/*": ["./*"],
+      "@storybook/react": ["../../apps/storybook/node_modules/@storybook/react"],
+      "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
+    }
+  },
+  "include": ["components", "hooks", "lib", "redux", "tests", "styles"]
 }

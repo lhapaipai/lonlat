@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 
 import "pentatrion-design/styles/default.scss";
+import "pentatrion-geo/src/default.scss";
+
 import { Provider } from "react-redux";
 import store from "./store/index.ts";
 /*

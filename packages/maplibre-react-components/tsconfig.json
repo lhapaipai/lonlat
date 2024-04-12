@@ -1,23 +1,13 @@
 {
-    "extends": "../../tsconfig.base.json",
-    "compilerOptions": {
-        "types": [
-            "@testing-library/jest-dom"
-        ],
-        "paths": {
-            "maplibre-react-components": [
-                "."
-            ],
-            "maplibre-react-components/*": [
-                "./*"
-            ],
-            "@storybook/react": [
-                "../../apps/storybook/node_modules/@storybook/react"
-            ],
-            "@storybook/addon-actions": [
-                "../../apps/storybook/node_modules/@storybook/addon-actions"
-            ]
-        }
-    },
-    "include": ["src"]
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["react/experimental", "@testing-library/jest-dom"],
+    "paths": {
+      "maplibre-react-components": ["."],
+      "maplibre-react-components/*": ["./*"],
+      "@storybook/react": ["../../apps/storybook/node_modules/@storybook/react"],
+      "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
+    }
+  },
+  "include": ["src"]
 }

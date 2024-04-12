@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["google.maps"]
+    "types": ["react/experimental", "google.maps"]
   },
   "include": ["src"]
 }

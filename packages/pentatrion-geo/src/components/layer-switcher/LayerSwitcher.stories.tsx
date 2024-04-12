@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button, ButtonGroup } from "pentatrion-design";
 
 const meta = {
-  title: "LayerSwitcher",
+  title: "pentatrion-geo/LayerSwitcher",
   decorators: (Story) => (
     <div className="storybook-gap">
       <Story />
@@ -23,7 +23,7 @@ export const Basic = () => {
           <ButtonGroup direction="vertical" className="filters">
             <Button
               className="text-sm"
-              variant="ghost"
+              variant="text"
               color="weak"
               selected={val === "one"}
               onClick={() => setVal("one")}
@@ -32,7 +32,7 @@ export const Basic = () => {
             </Button>
             <Button
               className="text-sm"
-              variant="ghost"
+              variant="text"
               color="weak"
               selected={val === "two"}
               onClick={() => setVal("two")}
@@ -41,7 +41,7 @@ export const Basic = () => {
             </Button>
             <Button
               className="text-sm"
-              variant="ghost"
+              variant="text"
               color="weak"
               selected={val === "three"}
               onClick={() => setVal("three")}
@@ -54,28 +54,44 @@ export const Basic = () => {
             <div className="type">
               <i className="fe-raster"></i>
             </div>
-            <img className="preview" src="/thumbnail/base-layers/fr/default_scan.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px 0px` }}
+            />
             <div className="legend text-sm">IGN Scan</div>
           </div>
           <div className="layer base">
             <div className="type">
               <i className="fe-raster"></i>
             </div>
-            <img className="preview" src="/thumbnail/base-layers/fr/scan_25.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -54px` }}
+            />
             <div className="legend text-sm">IGN Scan 1/25</div>
           </div>
           <div className="layer base active">
             <div className="type">
               <i className="fe-raster"></i>
             </div>
-            <img className="preview" src="/thumbnail/base-layers/fr/orthophoto.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -108px` }}
+            />
             <div className="legend text-sm">Satellite</div>
           </div>
           <div className="layer base">
             <div className="type">
               <i className="fe-vector"></i>
             </div>
-            <img className="preview" src="/thumbnail/base-layers/fr/ign-plan_ign-standard.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -162px` }}
+            />
             <div className="legend text-sm">Plan</div>
           </div>
 
@@ -85,48 +101,76 @@ export const Basic = () => {
             <div className="type">
               <i className="fe-plus-circled"></i>
             </div>
-            <img className="preview" src="/thumbnail/layers/terrain.jpg" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -540px` }}
+            />
             <div className="legend text-sm">Relief</div>
           </div>
           <div className="layer optional">
             <div className="type">
               <i className="fe-plus-circled"></i>
             </div>
-            <img className="preview" src="/thumbnail/layers/hillshade.jpg" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -810px` }}
+            />
             <div className="legend text-sm">Ombrage</div>
           </div>
           <div className="layer optional active">
             <div className="type">
               <i className="fe-plus-circled"></i>
             </div>
-            <img className="preview" src="/thumbnail/layers/isohypse.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -756px` }}
+            />
             <div className="legend text-sm">Lignes niveau</div>
           </div>
           <div className="layer optional">
             <div className="type">
               <i className="fe-plus-circled"></i>
             </div>
-            <img className="preview" src="/thumbnail/layers/cadastre.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -702px` }}
+            />
             <div className="legend text-sm">Cadastre</div>
           </div>
           <div className="layer optional">
             <div className="type">
               <i className="fe-plus-circled"></i>
             </div>
-            <img className="preview" src="/thumbnail/layers/streets.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -648px` }}
+            />
             <div className="legend text-sm">Libellés</div>
           </div>
           <div className="layer optional">
             <div className="type">
               <i className="fe-plus-circled"></i>
             </div>
-            <img className="preview" src="/thumbnail/layers/adminexpress.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -594px` }}
+            />
             <div className="legend text-sm">Frontières</div>
           </div>
 
           <div className="separator"></div>
           <div className="layer base active">
-            <img className="preview" src="/thumbnail/layers/pegman.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -864px` }}
+            />
             <div className="legend text-sm">Street View</div>
           </div>
         </div>
@@ -137,7 +181,11 @@ export const Basic = () => {
             <div className="type">
               <i className="fe-raster"></i>
             </div>
-            <img className="preview" src="/thumbnail/base-layers/fr/orthophoto.png" />
+            <img
+              className="preview"
+              src="/graphics/sprites/layers-2x.jpg"
+              style={{ objectPosition: `0px -108px` }}
+            />
             <div className="legend text-sm">Satellite</div>
           </div>
         </div>
