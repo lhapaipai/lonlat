@@ -11,8 +11,8 @@ const map = new Map({
   container: $map,
   center: marignier,
   zoom: 14,
-  style: "/styles/ign/PLAN.IGN/standard.json",
-  // style: "/styles/ign/ADMIN_EXPRESS/adminexpress.json",
+  style: "/assets/styles/ign/PLAN.IGN/standard.json",
+  // style: "/assets/styles/ign/ADMIN_EXPRESS/adminexpress.json",
 });
 
 map.on("mousemove", (e) => {

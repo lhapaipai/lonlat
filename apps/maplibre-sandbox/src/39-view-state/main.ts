@@ -11,7 +11,7 @@ const map = new Map({
   container: $map,
   center: marignier,
   zoom: 14,
-  // style: "/styles/ign/PLAN.IGN/standard.json",
+  // style: "/assets/styles/ign/PLAN.IGN/standard.json",
   style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
   // maxBounds: new LngLatBounds(new LngLat(6.3, 45.8), new LngLat(6.7, 46.2)),
   renderWorldCopies: false,

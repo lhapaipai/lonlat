@@ -190,7 +190,7 @@ export const layersById = {
     type: "vector",
     label: "Etalab bright",
     offsetY: 0,
-    style: "/styles/etalab/osm_bright.json",
+    style: "/assets/styles/etalab/osm_bright.json",
   } satisfies LayerInfos,
   "ign-admin_express-adminexpress": {
     id: "ign-admin_express-adminexpress",
@@ -198,7 +198,7 @@ export const layersById = {
     label: "Admin Express",
     description: "",
     offsetY: -324,
-    style: "/styles/ign/ADMIN_EXPRESS/adminexpress.json",
+    style: "/assets/styles/ign/ADMIN_EXPRESS/adminexpress.json",
   } satisfies LayerInfos,
   "ign-bd_topo-classique": {
     id: "ign-bd_topo-classique",
@@ -206,7 +206,7 @@ export const layersById = {
     label: "Topo Classique",
     description: "",
     offsetY: -540,
-    style: "/styles/ign/BDTOPO/classique.json",
+    style: "/assets/styles/ign/BDTOPO/classique.json",
   } satisfies LayerInfos,
   "ign-bd_topo-bati": {
     id: "ign-bd_topo-bati",
@@ -214,7 +214,7 @@ export const layersById = {
     label: "Topo Bati",
     description: "",
     offsetY: -378,
-    style: "/styles/ign/BDTOPO/bati.json",
+    style: "/assets/styles/ign/BDTOPO/bati.json",
   } satisfies LayerInfos,
   "ign-bd_topo-hydrographie": {
     id: "ign-bd_topo-hydrographie",
@@ -222,7 +222,7 @@ export const layersById = {
     label: "Topo Hydrographie",
     description: "",
     offsetY: -594,
-    style: "/styles/ign/BDTOPO/hydrographie.json",
+    style: "/assets/styles/ign/BDTOPO/hydrographie.json",
   } satisfies LayerInfos,
   "ign-bd_topo-routier": {
     id: "ign-bd_topo-routier",
@@ -230,7 +230,7 @@ export const layersById = {
     label: "Topo Routier",
     description: "",
     offsetY: -648,
-    style: "/styles/ign/BDTOPO/routier.json",
+    style: "/assets/styles/ign/BDTOPO/routier.json",
   } satisfies LayerInfos,
   "ign-bd_topo-bati_date": {
     id: "ign-bd_topo-bati_date",
@@ -238,7 +238,7 @@ export const layersById = {
     label: "Topo Bati date",
     description: "",
     offsetY: -432,
-    style: "/styles/ign/BDTOPO/bati_date.json",
+    style: "/assets/styles/ign/BDTOPO/bati_date.json",
   } satisfies LayerInfos,
   "ign-bd_topo-bati_etages": {
     id: "ign-bd_topo-bati_etages",
@@ -246,7 +246,7 @@ export const layersById = {
     label: "Topo Bati étages",
     description: "",
     offsetY: -486,
-    style: "/styles/ign/BDTOPO/bati_etages.json",
+    style: "/assets/styles/ign/BDTOPO/bati_etages.json",
   } satisfies LayerInfos,
   "ign-isohypse-isohypse_multicolore": {
     id: "ign-isohypse-isohypse_multicolore",
@@ -254,7 +254,7 @@ export const layersById = {
     label: "Isohypse multi",
     description: "",
     offsetY: -810,
-    style: "/styles/ign/ISOHYPSE/isohypse_multicolore.json",
+    style: "/assets/styles/ign/ISOHYPSE/isohypse_multicolore.json",
   } satisfies LayerInfos,
   "ign-isohypse-isohypse_monochrome_marron": {
     id: "ign-isohypse-isohypse_monochrome_marron",
@@ -262,7 +262,7 @@ export const layersById = {
     label: "Isohypse marron",
     description: "",
     offsetY: -702,
-    style: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
+    style: "/assets/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
   } satisfies LayerInfos,
   "ign-isohypse-isohypse_monochrome_orange": {
     id: "ign-isohypse-isohypse_monochrome_orange",
@@ -270,7 +270,7 @@ export const layersById = {
     label: "Isohypse orange",
     description: "",
     offsetY: -756,
-    style: "/styles/ign/ISOHYPSE/isohypse_monochrome_orange.json",
+    style: "/assets/styles/ign/ISOHYPSE/isohypse_monochrome_orange.json",
   } satisfies LayerInfos,
   "ign-ocsge-ocsge_couverture": {
     id: "ign-ocsge-ocsge_couverture",
@@ -278,7 +278,7 @@ export const layersById = {
     label: "OCS couverture",
     description: "",
     offsetY: -2160,
-    style: "/styles/ign/OCSGE/ocsge_couverture.json",
+    style: "/assets/styles/ign/OCSGE/ocsge_couverture.json",
   } satisfies LayerInfos,
   "ign-ocsge-ocsge_usage": {
     id: "ign-ocsge-ocsge_usage",
@@ -286,7 +286,7 @@ export const layersById = {
     label: "OCS Usage",
     description: "",
     offsetY: -2160,
-    style: "/styles/ign/OCSGE/ocsge_usage.json",
+    style: "/assets/styles/ign/OCSGE/ocsge_usage.json",
   } satisfies LayerInfos,
   "ign-ocsge-ocsge_occupation": {
     id: "ign-ocsge-ocsge_occupation",
@@ -294,7 +294,7 @@ export const layersById = {
     label: "OCS Occupation",
     description: "",
     offsetY: -2160,
-    style: "/styles/ign/OCSGE/ocsge_occupation.json",
+    style: "/assets/styles/ign/OCSGE/ocsge_occupation.json",
   } satisfies LayerInfos,
   "ign-pci-noir_et_blanc": {
     id: "ign-pci-noir_et_blanc",
@@ -302,7 +302,7 @@ export const layersById = {
     label: "Parcellaire n&b",
     description: "",
     offsetY: -864,
-    style: "/styles/ign/PCI/noir_et_blanc.json",
+    style: "/assets/styles/ign/PCI/noir_et_blanc.json",
   } satisfies LayerInfos,
   "ign-pci-pci": {
     id: "ign-pci-pci",
@@ -310,7 +310,7 @@ export const layersById = {
     label: "Parcellaire",
     description: "",
     offsetY: -918,
-    style: "/styles/ign/PCI/pci.json",
+    style: "/assets/styles/ign/PCI/pci.json",
   } satisfies LayerInfos,
   "ign-plan_ign-standard": {
     id: "ign-plan_ign-standard",
@@ -318,7 +318,7 @@ export const layersById = {
     label: "Plan standard",
     description: "",
     offsetY: -1296,
-    style: "/styles/ign/PLAN.IGN/standard.json",
+    style: "/assets/styles/ign/PLAN.IGN/standard.json",
   } satisfies LayerInfos,
   "ign-plan_ign-attenue": {
     id: "ign-plan_ign-attenue",
@@ -326,7 +326,7 @@ export const layersById = {
     label: "Plan attenué",
     description: "",
     offsetY: -1026,
-    style: "/styles/ign/PLAN.IGN/attenue.json",
+    style: "/assets/styles/ign/PLAN.IGN/attenue.json",
   } satisfies LayerInfos,
   "ign-plan_ign-gris": {
     id: "ign-plan_ign-gris",
@@ -334,7 +334,7 @@ export const layersById = {
     label: "Plan gris",
     description: "",
     offsetY: -1188,
-    style: "/styles/ign/PLAN.IGN/gris.json",
+    style: "/assets/styles/ign/PLAN.IGN/gris.json",
   } satisfies LayerInfos,
   "ign-plan_ign-sans_toponymes": {
     id: "ign-plan_ign-sans_toponymes",
@@ -342,7 +342,7 @@ export const layersById = {
     label: "Plan sans toponymes",
     description: "",
     offsetY: -1242,
-    style: "/styles/ign/PLAN.IGN/sans_toponymes.json",
+    style: "/assets/styles/ign/PLAN.IGN/sans_toponymes.json",
   } satisfies LayerInfos,
   "ign-plan_ign-toponymes": {
     id: "ign-plan_ign-toponymes",
@@ -350,7 +350,7 @@ export const layersById = {
     label: "Toponymes",
     description: "",
     offsetY: -1350,
-    style: "/styles/ign/PLAN.IGN/toponymes.json",
+    style: "/assets/styles/ign/PLAN.IGN/toponymes.json",
   } satisfies LayerInfos,
   "ign-plan_ign-accentue": {
     id: "ign-plan_ign-accentue",
@@ -358,7 +358,7 @@ export const layersById = {
     label: "Plan accentué",
     description: "",
     offsetY: -972,
-    style: "/styles/ign/PLAN.IGN/accentue.json",
+    style: "/assets/styles/ign/PLAN.IGN/accentue.json",
   } satisfies LayerInfos,
   "ign-plan_ign-classique": {
     id: "ign-plan_ign-classique",
@@ -366,7 +366,7 @@ export const layersById = {
     label: "Plan classique",
     description: "",
     offsetY: -1080,
-    style: "/styles/ign/PLAN.IGN/classique.json",
+    style: "/assets/styles/ign/PLAN.IGN/classique.json",
   } satisfies LayerInfos,
   "ign-plan_ign-epure": {
     id: "ign-plan_ign-epure",
@@ -374,6 +374,6 @@ export const layersById = {
     label: "Plan épuré",
     description: "",
     offsetY: -1134,
-    style: "/styles/ign/PLAN.IGN/epure.json",
+    style: "/assets/styles/ign/PLAN.IGN/epure.json",
   } satisfies LayerInfos,
 };

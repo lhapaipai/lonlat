@@ -8,7 +8,7 @@ const $map = document.getElementById("map");
 
 const map = new maplibre.Map({
   container: $map!,
-  style: "/styles/ign/PLAN.IGN/toponymes.json",
+  style: "/assets/styles/ign/PLAN.IGN/toponymes.json",
   center: [6.49, 46.089],
   zoom: 10,
 });

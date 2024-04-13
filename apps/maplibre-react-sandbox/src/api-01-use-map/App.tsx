@@ -25,7 +25,7 @@ function App() {
       <RMap
         initialCenter={marignier}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="/styles/ign/PLAN.IGN/standard.json"
+        mapStyle="/assets/styles/ign/PLAN.IGN/standard.json"
       >
         <NavigateButton />
       </RMap>

@@ -15,7 +15,7 @@ const mole: maplibre.LngLatLike = [6.4546, 46.1067];
 const map = new maplibre.Map({
   container: $map!,
   // style: "https://demotiles.maplibre.org/style.json", // style URL
-  style: "/styles/ign/PLAN.IGN/standard.json",
+  style: "/assets/styles/ign/PLAN.IGN/standard.json",
   center: house,
   zoom: 16,
 });

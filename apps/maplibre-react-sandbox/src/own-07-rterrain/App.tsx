@@ -22,7 +22,7 @@ function App() {
       {showMap && (
         <RMap
           ref={mapRef}
-          mapStyle="/styles/ign/PLAN.IGN/standard.json"
+          mapStyle="/assets/styles/ign/PLAN.IGN/standard.json"
           initialCenter={marignier}
           initialZoom={13}
         >

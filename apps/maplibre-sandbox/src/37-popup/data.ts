@@ -1,5 +1,5 @@
-// style: "/styles/ign/PLAN.IGN/standard.json",
-// style: "/styles/ign/elevation.json",
+// style: "/assets/styles/ign/PLAN.IGN/standard.json",
+// style: "/assets/styles/ign/elevation.json",
 export const terrainStyle = {
   version: 8,
   sources: {

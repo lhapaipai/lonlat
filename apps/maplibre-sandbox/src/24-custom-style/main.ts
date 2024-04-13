@@ -20,7 +20,7 @@ const map = new Map({
   // center: [0, 20],
   center: berlin,
   zoom: 3,
-  style: "/styles/ign/PLAN.IGN/standard.json",
+  style: "/assets/styles/ign/PLAN.IGN/standard.json",
 });
 
 const highlightLayer: CustomLayerInterface & {

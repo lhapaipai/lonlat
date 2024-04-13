@@ -9,7 +9,7 @@ const marignier: maplibre.LngLatLike = [6.498, 46.089];
 
 const map = new maplibre.Map({
   container: $map!,
-  style: "/styles/ign/PLAN.IGN/standard.json",
+  style: "/assets/styles/ign/PLAN.IGN/standard.json",
   center: marignier,
   zoom: 17,
 });

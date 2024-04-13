@@ -11,7 +11,7 @@ const map = new Map({
   container: $map,
   center: marignier,
   zoom: 16,
-  style: "/styles/ign/PLAN.IGN/standard.json",
+  style: "/assets/styles/ign/PLAN.IGN/standard.json",
 
   scrollZoom: true,
   boxZoom: false, // ok

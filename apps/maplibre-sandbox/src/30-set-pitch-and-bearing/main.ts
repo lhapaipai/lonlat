@@ -11,7 +11,7 @@ new Map({
   container: $map,
   center: marignier,
   zoom: 14,
-  style: "/styles/ign/PLAN.IGN/standard.json",
+  style: "/assets/styles/ign/PLAN.IGN/standard.json",
   // pitch: 60,
   bearing: -60,
 });

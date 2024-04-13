@@ -16,6 +16,8 @@
 - [X] documentation d3js et react avec `<canvas />`. https://2019.wattenberger.com/blog/react-and-d3
 - [ ] rlisting
 
+- [ ] vérifier les performances du style IGN. Il contient 400 couches ce qui parait beaucoup, est-ce qu'une réduction du nombre de layer améliorera les performances globales ?
+
 en profondeur avec React
 https://github.com/lizuncong/mini-react
 

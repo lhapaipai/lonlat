@@ -17,11 +17,11 @@ const map = new Map({
   // center: [0, 20],
   center: marignier,
   zoom: 14,
-  style: "/styles/ign/PLAN.IGN/standard.json",
+  style: "/assets/styles/ign/PLAN.IGN/standard.json",
 });
 
 document.getElementById("action-1")?.addEventListener("click", () => {
-  map.setStyle("/styles/ign/PLAN.IGN/standard.json", {
+  map.setStyle("/assets/styles/ign/PLAN.IGN/standard.json", {
     transformStyle(prevStyle, nextStyle) {
       console.log("transformStyle");
       return nextStyle;

@@ -12,7 +12,7 @@ function App() {
       <RMap
         initialCenter={marignier}
         initialZoom={14}
-        mapStyle="/styles/ign/PLAN.IGN/standard.json"
+        mapStyle="/assets/styles/ign/PLAN.IGN/standard.json"
       >
         <RLLMarker longitude={marignierChurch.lng} latitude={marignierChurch.lat} />
       </RMap>

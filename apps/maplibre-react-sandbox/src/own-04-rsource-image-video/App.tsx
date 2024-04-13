@@ -42,7 +42,7 @@ function App() {
           initialCenter={marignier}
           initialZoom={11}
           onStyleData={handleStyleData}
-          mapStyle={"/styles/ign/PLAN.IGN/standard.json"}
+          mapStyle={"/assets/styles/ign/PLAN.IGN/standard.json"}
         >
           <RMarker
             longitude={marignier.lng}

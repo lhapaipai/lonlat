@@ -125,7 +125,7 @@ export const baseLayersById = {
     label: "Plan",
     description: "",
     offsetY: -162,
-    style: "/styles/ign/PLAN.IGN/standard.json",
+    style: "/assets/styles/ign/PLAN.IGN/standard.json",
     optionalLayers: [
       { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
       { id: "ign-pci-pci", beforeId: "point coté" },
@@ -233,7 +233,7 @@ export const optionalLayersById = {
     label: "Libellés",
     description: "",
     offsetY: -648,
-    style: "/styles/ign/PLAN.IGN/toponymes.json",
+    style: "/assets/styles/ign/PLAN.IGN/toponymes.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -243,7 +243,7 @@ export const optionalLayersById = {
     label: "Cadastre",
     description: "",
     offsetY: -702,
-    style: "/styles/ign/PCI/pci.json",
+    style: "/assets/styles/ign/PCI/pci.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -253,7 +253,7 @@ export const optionalLayersById = {
     label: "Frontières",
     description: "",
     offsetY: -594,
-    style: "/styles/ign/ADMIN_EXPRESS/adminexpress.json",
+    style: "/assets/styles/ign/ADMIN_EXPRESS/adminexpress.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 
@@ -263,7 +263,7 @@ export const optionalLayersById = {
     label: "Lignes niveau",
     description: "",
     offsetY: -756,
-    style: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
+    style: "/assets/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
     country: "fr",
   } satisfies OptionalLayerInfos,
 

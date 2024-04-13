@@ -10,8 +10,8 @@ const startPoint: maplibre.LngLat = [6.500239938608518, 46.09073992765464];
 const mole: maplibre.LngLat = [6.4576, 46.1057];
 const map = new maplibre.Map({
   container: $map!,
-  // style: "/styles/ign/PLAN.IGN/standard.json",
-  style: "/styles/ign/custom/top-25-dem.json",
+  // style: "/assets/styles/ign/PLAN.IGN/standard.json",
+  style: "/assets/styles/ign/custom/top-25-dem.json",
   center: marignier,
   zoom: 13,
   pitch: 43,

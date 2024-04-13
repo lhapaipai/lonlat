@@ -534,7 +534,7 @@ importers:
         specifier: ^5.2.8
         version: 5.2.8(@types/node@20.12.5)(sass@1.74.1)
 
-  extra/prepare-data:
+  extra/assets:
     dependencies:
       '@types/node':
         specifier: ^20.12.4
@@ -4666,6 +4666,7 @@ packages:
 
   /@swagger-api/apidom-ns-json-schema-draft-4@0.99.1:
     resolution: {integrity: sha512-HdxD4WXnaMJsdodrWoynzgteg9UDaZsVkX04oObQPR3C1ZWW9KahEGBSbtr/oBhnE/QgiPfNHUDWrQvk3oC6lg==}
+    requiresBuild: true
     dependencies:
       '@babel/runtime-corejs3': 7.24.4
       '@swagger-api/apidom-ast': 0.99.1

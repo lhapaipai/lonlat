@@ -78,7 +78,7 @@ const map = new Map({
   // center: [0, 20],
   center: marignier,
   zoom: 14,
-  style: "/styles/ign/PLAN.IGN/standard.json",
+  style: "/assets/styles/ign/PLAN.IGN/standard.json",
 });
 
 console.log(map.unproject([100, 100]), map.unproject([500, 500]));

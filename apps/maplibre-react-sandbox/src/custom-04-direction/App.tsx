@@ -61,7 +61,7 @@ function App() {
         onMoveEnd={handleMoveEnd}
         initialCenter={viewState.center}
         initialZoom={viewState.zoom}
-        mapStyle="/styles/ign/PLAN.IGN/standard.json"
+        mapStyle="/assets/styles/ign/PLAN.IGN/standard.json"
         afterInstanciation={handleAfterMapInstanciation}
       >
         <MapFlyer />

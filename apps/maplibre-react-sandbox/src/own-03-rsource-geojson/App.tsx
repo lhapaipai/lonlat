@@ -12,9 +12,9 @@ const townPaintStyle = {
 };
 
 const baseStyles = {
-  standard: "/styles/ign/PLAN.IGN/standard.json",
-  classique: "/styles/ign/PLAN.IGN/classique.json",
-  accentue: "/styles/ign/PLAN.IGN/accentue.json",
+  standard: "/assets/styles/ign/PLAN.IGN/standard.json",
+  classique: "/assets/styles/ign/PLAN.IGN/classique.json",
+  accentue: "/assets/styles/ign/PLAN.IGN/accentue.json",
 };
 
 type BaseStyle = keyof typeof baseStyles;

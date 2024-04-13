@@ -38,96 +38,96 @@ const styles = [
 const entities = {
   "ign.adminexpress.standard": {
     title: "IGN > Admin Express > adminexpress",
-    url: "/styles/ign/ADMIN_EXPRESS/adminexpress.json",
+    url: "/assets/styles/ign/ADMIN_EXPRESS/adminexpress.json",
   },
   "ign.bdtopo.classique": {
     title: "IGN > Plan IGN > classique",
-    url: "/styles/ign/BDTOPO/classique.json",
+    url: "/assets/styles/ign/BDTOPO/classique.json",
   },
   "ign.bdtopo.bati": {
     title: "IGN > BD TOPO > bati",
-    url: "/styles/ign/BDTOPO/bati.json",
+    url: "/assets/styles/ign/BDTOPO/bati.json",
   },
   "ign.bdtopo.hydrographie": {
     title: "IGN > BD TOPO > hydrographie",
-    url: "/styles/ign/BDTOPO/hydrographie.json",
+    url: "/assets/styles/ign/BDTOPO/hydrographie.json",
   },
   "ign.bdtopo.routier": {
     title: "IGN > BD TOPO > routier",
-    url: "/styles/ign/BDTOPO/routier.json",
+    url: "/assets/styles/ign/BDTOPO/routier.json",
   },
   "ign.bdtopo.bati_date": {
     title: "IGN > BD TOPO > bati date",
-    url: "/styles/ign/BDTOPO/bati_date.json",
+    url: "/assets/styles/ign/BDTOPO/bati_date.json",
   },
   "ign.bdtopo.bati_etages": {
     title: "IGN > BD TOPO > bati étages",
-    url: "/styles/ign/BDTOPO/bati_etages.json",
+    url: "/assets/styles/ign/BDTOPO/bati_etages.json",
   },
   "ign.isohypse.isohypse_multicolore": {
     title: "IGN > Courbes de niveau > isohypse multicolore",
-    url: "/styles/ign/ISOHYPSE/isohypse_multicolore.json",
+    url: "/assets/styles/ign/ISOHYPSE/isohypse_multicolore.json",
   },
   "ign.isohypse.isohypse_marron": {
     title: "IGN > Courbes de niveau > isohypse marron",
-    url: "/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
+    url: "/assets/styles/ign/ISOHYPSE/isohypse_monochrome_marron.json",
   },
   "ign.isohypse.isohypse_orange": {
     title: "IGN > Courbes de niveau > isohypse orange",
-    url: "/styles/ign/ISOHYPSE/isohypse_monochrome_orange.json",
+    url: "/assets/styles/ign/ISOHYPSE/isohypse_monochrome_orange.json",
   },
   "ign.ocsge.ocsge_couverture": {
     title: "IGN > OCS GE > ocsge couverture",
-    url: "/styles/ign/OGSGE/ocsge_couverture.json",
+    url: "/assets/styles/ign/OGSGE/ocsge_couverture.json",
   },
   "ign.ocsge.ocsge_usage": {
     title: "IGN > OCS GE > ocsge usage",
-    url: "/styles/ign/OGSGE/ocsge_usage.json",
+    url: "/assets/styles/ign/OGSGE/ocsge_usage.json",
   },
   "ign.ocsge.ocsge_occupation": {
     title: "IGN > OCS GE > ocsge occupation",
-    url: "/styles/ign/OGSGE/ocsge_occupation.json",
+    url: "/assets/styles/ign/OGSGE/ocsge_occupation.json",
   },
   "ign.pci.noir_et_blanc": {
     title: "IGN > Parcellaire Express > Noir et blanc",
-    url: "/styles/ign/PCI/noir_et_blanc.json",
+    url: "/assets/styles/ign/PCI/noir_et_blanc.json",
   },
   "ign.pci.pci": {
     title: "IGN > Parcellaire Express > Pci",
-    url: "/styles/ign/PCI/pci.json",
+    url: "/assets/styles/ign/PCI/pci.json",
   },
   "ign.plan.ign.standard": {
     title: "IGN > Plan IGN > Standard",
-    url: "/styles/ign/PLAN.IGN/standard.json",
+    url: "/assets/styles/ign/PLAN.IGN/standard.json",
   },
   "ign.plan.ign.attenue": {
     title: "IGN > Plan IGN > Attenué",
-    url: "/styles/ign/PLAN.IGN/attenue.json",
+    url: "/assets/styles/ign/PLAN.IGN/attenue.json",
   },
   "ign.plan.ign.gris": {
     title: "IGN > Plan IGN > Gris",
-    url: "/styles/ign/PLAN.IGN/gris.json",
+    url: "/assets/styles/ign/PLAN.IGN/gris.json",
   },
   "ign.plan.ign.sans_toponymes": {
     title: "IGN > Plan IGN > Sans Toponymes",
-    url: "/styles/ign/PLAN.IGN/sans_toponymes.json",
+    url: "/assets/styles/ign/PLAN.IGN/sans_toponymes.json",
   },
 
   "ign.plan.ign.toponymes": {
     title: "IGN > Plan IGN > Toponymes",
-    url: "/styles/ign/PLAN.IGN/toponymes.json",
+    url: "/assets/styles/ign/PLAN.IGN/toponymes.json",
   },
   "ign.plan.ign.accentue": {
     title: "IGN > Plan IGN > Accentué",
-    url: "/styles/ign/PLAN.IGN/accentue.json",
+    url: "/assets/styles/ign/PLAN.IGN/accentue.json",
   },
   "ign.plan.ign.classique": {
     title: "IGN > Plan IGN > Classique",
-    url: "/styles/ign/PLAN.IGN/classique.json",
+    url: "/assets/styles/ign/PLAN.IGN/classique.json",
   },
   "ign.plan.ign.epure": {
     title: "IGN > Plan IGN > Épuré",
-    url: "/styles/ign/PLAN.IGN/epure.json",
+    url: "/assets/styles/ign/PLAN.IGN/epure.json",
   },
 };
 
