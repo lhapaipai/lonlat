@@ -2,13 +2,12 @@ import "./Button.scss";
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import cn from "classnames";
 import { ThemeColor } from "../../types";
-import useRipple from "../../hooks/useRipple";
-import { Loader } from "../..";
+import { Loader, useRipple } from "../..";
 
 export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   withRipple?: boolean;
 
-  variant?: "solid" | "outline" | "text" | "ghost" | "underline";
+  variant?: "solid" | "outline" | "light" | "text" | "ghost" | "underline";
 
   size?: "small" | "medium" | "large";
 

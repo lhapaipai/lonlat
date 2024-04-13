@@ -34,6 +34,16 @@ const directionSlice = createSlice({
   name: "direction",
   initialState,
   reducers: {
+    directionLocationsAddedFromSearch: {
+      reducer(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
+        state.locations = action.payload;
+      },
+      prepare(location: GeoPointOption) {
+        return {
+          payload: [createNodataFeature(), location],
+        };
+      },
+    },
     directionLocationsSorted(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
       state.locations = action.payload;
     },
@@ -65,6 +75,7 @@ const directionSlice = createSlice({
 export default directionSlice.reducer;
 
 export const {
+  directionLocationsAddedFromSearch,
   directionLocationChanged,
   directionLocationsSorted,
   directionRouteChanged,

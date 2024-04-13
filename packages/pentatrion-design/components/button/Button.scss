@@ -46,6 +46,9 @@
                 box-shadow: none;
             }
         }
+    }
+
+    &:not(.variant-underline, .variant-ghost) {
 
         &:active,
         &.selected {

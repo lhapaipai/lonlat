@@ -100,7 +100,7 @@ function App() {
           mapStyle={uncontrolledStyle}
           afterInstanciation={handleAfterMapInstanciation}
         >
-          <RFrameRateControl />
+          {/* <RFrameRateControl /> */}
           <TabsControl />
           <BaseLayerControl />
           <MapFlyer />

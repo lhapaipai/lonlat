@@ -2,9 +2,12 @@ import { LngLatObj } from "maplibre-react-components";
 import { getLngLatObj } from ".";
 
 const streetViewPanoramaDefaultOptions: google.maps.StreetViewPanoramaOptions = {
-  addressControlOptions: {
-    position: 6, // google.maps.ControlPosition.BOTTOM_CENTER,
-  },
+  zoomControl: false,
+  imageDateControl: true,
+  addressControl: false,
+  // addressControlOptions: {
+  //   position: 6, // google.maps.ControlPosition.BOTTOM_CENTER,
+  // },
   linksControl: false,
   panControl: false,
   enableCloseButton: true,
@@ -68,7 +71,6 @@ export default class GManager {
     const isCreation = !GManager.panorama;
 
     if (isCreation) {
-      console.log("createPanorama from singleton");
       const div = document.createElement("div");
       div.style.width = "100%";
       div.style.height = "100%";
@@ -84,7 +86,6 @@ export default class GManager {
       GManager.panorama.addListener("visible_changed", GManager.onVisibleChanged);
     } else {
       const { position, pov } = options;
-      console.log("getPanorama from singleton");
       position && GManager.panorama.setPosition(position);
       pov && GManager.panorama.setPov(pov);
       GManager.panorama.setVisible(true);

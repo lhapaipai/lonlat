@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 
-const useIsMounted = () => {
+export const useIsMounted = () => {
   const mountedRef = useRef(false);
 
   useEffect(() => {
@@ -14,5 +14,3 @@ const useIsMounted = () => {
     return mountedRef.current;
   }, []);
 };
-
-export default useIsMounted;

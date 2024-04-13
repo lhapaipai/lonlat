@@ -10,7 +10,7 @@ interface LayerState {
 }
 
 const initialState: LayerState = {
-  baseLayer: "ign-plan_ign-standard",
+  baseLayer: "ign-raster-default_scan",
   optionalLayers: [],
   terrain: false,
   streetView: false,

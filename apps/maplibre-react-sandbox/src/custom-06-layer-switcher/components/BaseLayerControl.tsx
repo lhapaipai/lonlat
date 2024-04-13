@@ -32,8 +32,8 @@ export default function BaseLayerControl() {
       >
         <img
           className="preview"
-          src="/graphics/sprites/all-layers-1x.jpg"
-          srcSet="/graphics/sprites/all-layers-1x.jpg 1x, /graphics/sprites/all-layers-2x.jpg 2x"
+          src="/assets/graphics/sprites/all-layers-1x.jpg"
+          srcSet="/assets/graphics/sprites/all-layers-1x.jpg 1x, /graphics/sprites/all-layers-2x.jpg 2x"
           style={{ objectPosition: `0px -2052px` }}
         />
         <div className="legend text-sm">3D</div>
@@ -51,8 +51,8 @@ export default function BaseLayerControl() {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/all-layers-1x.jpg"
-              srcSet="/graphics/sprites/all-layers-1x.jpg 1x, /graphics/sprites/all-layers-2x.jpg 2x"
+              src="/assets/graphics/sprites/all-layers-1x.jpg"
+              srcSet="/assets/graphics/sprites/all-layers-1x.jpg 1x, /graphics/sprites/all-layers-2x.jpg 2x"
               style={{ objectPosition: `0px ${layer.offsetY}px` }}
             />
             <div className="legend text-sm">{layer.label}</div>

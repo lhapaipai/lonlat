@@ -1,3 +1,5 @@
+import { GeoOption } from "../types";
+
 export function updateId<T extends { id: string }>(obj: T, id: string): T {
   return {
     ...obj,
@@ -127,4 +129,42 @@ export function getDepartmentName(inseeCode?: string) {
   };
 
   return departments[departmentNumber] || null;
+}
+
+export function convertToDms(dd: number, isLng: boolean) {
+  const dir = dd < 0 ? (isLng ? "W" : "S") : isLng ? "E" : "N";
+
+  const absDd = Math.abs(dd);
+  const deg = absDd | 0;
+  const frac = absDd - deg;
+  const min = (frac * 60) | 0;
+  let sec = frac * 3600 - min * 60;
+  // Round it to 2 decimal points.
+  sec = Math.round(sec * 100) / 100;
+  return deg + "°" + min + "'" + sec + '"' + dir;
+}
+
+type CoordsUnit = "lonlat" | "latlon" | "dms";
+export function getCoordsStr([lon, lat]: [number, number], coordsUnit: CoordsUnit) {
+  switch (coordsUnit) {
+    case "lonlat":
+      return `${lon}, ${lat}`;
+    case "latlon":
+      return `${lat}, ${lon}`;
+    case "dms":
+      return `${convertToDms(lat, false)} ${convertToDms(lon, true)}`;
+  }
+}
+
+export function stringifyGeoOption(geoFeature: GeoOption) {
+  const { label, name, context, type } = geoFeature.properties;
+  return JSON.stringify(
+    {
+      type: "Feature",
+      properties: { label, name, context, type },
+      geometry: geoFeature.geometry,
+    },
+    undefined,
+    2,
+  );
 }

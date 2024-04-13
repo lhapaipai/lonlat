@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { CustomFetchOptions, fetchAPI, useNotifications } from "..";
 
-const useFetch = () => {
+export const useFetch = () => {
   const notificationManager = useNotifications();
 
   const appFetch = useCallback(
@@ -17,5 +17,3 @@ const useFetch = () => {
 
   return appFetch;
 };
-
-export default useFetch;

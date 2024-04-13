@@ -69,8 +69,8 @@ export default function BaseLayerControl() {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-1x.jpg"
-              srcSet="/graphics/sprites/layers-1x.jpg 1x, /graphics/sprites/layers-2x.jpg 2x"
+              src="/assets/graphics/sprites/layers-1x.jpg"
+              srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
               style={{ objectPosition: `0px ${layer.offsetY}px` }}
             />
             <div className="legend text-sm">{layer.label}</div>
@@ -100,8 +100,8 @@ export default function BaseLayerControl() {
               </div>
               <img
                 className="preview"
-                src="/graphics/sprites/layers-1x.jpg"
-                srcSet="/graphics/sprites/layers-1x.jpg 1x, /graphics/sprites/layers-2x.jpg 2x"
+                src="/assets/graphics/sprites/layers-1x.jpg"
+                srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
                 style={{ objectPosition: `0px ${layer.offsetY}px` }}
               />
               <div className="legend text-sm">{layer.label}</div>
@@ -118,8 +118,8 @@ export default function BaseLayerControl() {
       >
         <img
           className="preview"
-          src="/graphics/sprites/layers-1x.jpg"
-          srcSet="/graphics/sprites/layers-1x.jpg 1x, /graphics/sprites/layers-2x.jpg 2x"
+          src="/assets/graphics/sprites/layers-1x.jpg"
+          srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
           style={{ objectPosition: `0px ${optionalLayersById["terrain"].offsetY}px` }}
         />
         <div className="legend text-sm">Relief</div>
@@ -135,8 +135,8 @@ export default function BaseLayerControl() {
       >
         <img
           className="preview"
-          src="/graphics/sprites/layers-1x.jpg"
-          srcSet="/graphics/sprites/layers-1x.jpg 1x, /graphics/sprites/layers-2x.jpg 2x"
+          src="/assets/graphics/sprites/layers-1x.jpg"
+          srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
           style={{ objectPosition: `0px ${optionalLayersById["street-view"].offsetY}px` }}
         />
         <div className="legend text-sm">Street View</div>

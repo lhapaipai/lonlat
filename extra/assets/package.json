@@ -16,6 +16,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@maplibre/maplibre-gl-style-spec": "^20.1.1",
     "@types/node": "^20.12.4",
     "sharp": "^0.33.3"
   }

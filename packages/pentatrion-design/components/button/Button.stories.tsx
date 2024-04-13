@@ -96,7 +96,7 @@ export const Icons = () => (
   </div>
 );
 
-const variants = ["solid", "outline", "text", "ghost", "underline"] as const;
+const variants = ["solid", "outline", "light", "text", "ghost", "underline"] as const;
 const colors = ["primary", "weak", "danger", "warning", "success", "info"] as const;
 
 export const Context = () => {
@@ -121,6 +121,37 @@ export const Context = () => {
                 <TableCell key={color} label={color}>
                   <div className="flex gap-2">
                     <Button variant={variant} color={color}>
+                      Lorem
+                    </Button>
+                  </div>
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+
+      <h3>Selected</h3>
+
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderCell>
+              <></>
+            </TableHeaderCell>
+            {colors.map((color) => (
+              <TableHeaderCell key={color}>{color}</TableHeaderCell>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {variants.map((variant) => (
+            <TableRow key={variant}>
+              <TableCell>{variant}</TableCell>
+              {colors.map((color) => (
+                <TableCell key={color} label={color}>
+                  <div className="flex gap-2">
+                    <Button selected variant={variant} color={color}>
                       Lorem
                     </Button>
                   </div>

@@ -1,0 +1,43 @@
+.maplibregl-ctrl-tabs {
+    .tabs-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .5rem;
+    }
+
+    .search-selector {
+        text-align: right;
+        margin-bottom: .25rem;
+
+        .ll-button {
+            margin-left: .25rem;
+        }
+    }
+
+    .setting {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .actions {
+        display: flex;
+        gap: 1rem;
+
+        &>* {
+
+            padding: .5rem 0;
+            flex: 1 1 0;
+            width: 0px;
+        }
+
+        i {
+            font-size: 1.5rem;
+        }
+    }
+
+    .ll-textarea.raw {
+        min-height: 15rem;
+
+    }
+}

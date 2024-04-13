@@ -84,5 +84,8 @@ export const Content = () => (
       </a>{" "}
       link.
     </p>
+    <p>
+      Click <span className="can-copy">HERE</span> to copy to clipboard
+    </p>
   </div>
 );

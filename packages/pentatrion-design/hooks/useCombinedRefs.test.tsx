@@ -2,7 +2,7 @@ import { createElement, useEffect, useRef } from "react";
 
 import { render } from "@testing-library/react";
 
-import useCombinedRefs from "./useCombinedRefs";
+import { useCombinedRefs } from "./useCombinedRefs";
 import { describe, expect, it, vi } from "vitest";
 
 describe("useCombinedRefs", () => {

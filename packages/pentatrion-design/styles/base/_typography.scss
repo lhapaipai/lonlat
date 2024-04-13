@@ -77,6 +77,16 @@ a {
     }
 }
 
+.can-copy {
+    color: var(--text-strong);
+    text-decoration: underline dashed var(--color-weak-300);
+    cursor: copy;
+
+    &:hover {
+        text-decoration-color: var(--text-default);
+    }
+}
+
 
 a.ghost {
     color: var(--text-default);

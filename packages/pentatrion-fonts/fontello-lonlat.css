@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'fontello';
-  src: url('./dist/fontello-lonlat/fontello.eot?8178892');
-  src: url('./dist/fontello-lonlat/fontello.eot?8178892#iefix') format('embedded-opentype'),
-       url('./dist/fontello-lonlat/fontello.woff2?8178892') format('woff2'),
-       url('./dist/fontello-lonlat/fontello.woff?8178892') format('woff'),
-       url('./dist/fontello-lonlat/fontello.ttf?8178892') format('truetype'),
-       url('./dist/fontello-lonlat/fontello.svg?8178892#fontello') format('svg');
+  src: url('./dist/fontello-lonlat/fontello.eot?78549455');
+  src: url('./dist/fontello-lonlat/fontello.eot?78549455#iefix') format('embedded-opentype'),
+       url('./dist/fontello-lonlat/fontello.woff2?78549455') format('woff2'),
+       url('./dist/fontello-lonlat/fontello.woff?78549455') format('woff'),
+       url('./dist/fontello-lonlat/fontello.ttf?78549455') format('truetype'),
+       url('./dist/fontello-lonlat/fontello.svg?78549455#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('./dist/fontello-lonlat/fontello.svg?8178892#fontello') format('svg');
+    src: url('./dist/fontello-lonlat/fontello.svg?78549455#fontello') format('svg');
   }
 }
 */
@@ -85,9 +85,14 @@
 .fe-point-to:before { content: '\e81c'; } /* '' */
 .fe-braille:before { content: '\e81d'; } /* '' */
 .fe-locality:before { content: '\e81e'; } /* '' */
+.fe-globe:before { content: '\e81f'; } /* '' */
 .fe-municipality:before { content: '\e820'; } /* '' */
 .fe-street:before { content: '\e821'; } /* '' */
 .fe-plus-circled:before { content: '\e822'; } /* '' */
+.fe-clipboard-copy:before { content: '\e823'; } /* '' */
+.fe-target:before { content: '\e824'; } /* '' */
+.fe-isochrone:before { content: '\e825'; } /* '' */
 .fe-vector:before { content: '\f045'; } /* '' */
+.fe-exchange:before { content: '\f0ec'; } /* '' */
 .fe-star-half:before { content: '\f123'; } /* '' */
 .fe-history:before { content: '\f1da'; } /* '' */

@@ -56,7 +56,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px 0px` }}
             />
             <div className="legend text-sm">IGN Scan</div>
@@ -67,7 +67,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -54px` }}
             />
             <div className="legend text-sm">IGN Scan 1/25</div>
@@ -78,7 +78,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -108px` }}
             />
             <div className="legend text-sm">Satellite</div>
@@ -89,7 +89,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -162px` }}
             />
             <div className="legend text-sm">Plan</div>
@@ -103,7 +103,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -540px` }}
             />
             <div className="legend text-sm">Relief</div>
@@ -114,7 +114,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -810px` }}
             />
             <div className="legend text-sm">Ombrage</div>
@@ -125,7 +125,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -756px` }}
             />
             <div className="legend text-sm">Lignes niveau</div>
@@ -136,7 +136,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -702px` }}
             />
             <div className="legend text-sm">Cadastre</div>
@@ -147,7 +147,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -648px` }}
             />
             <div className="legend text-sm">Libellés</div>
@@ -158,7 +158,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -594px` }}
             />
             <div className="legend text-sm">Frontières</div>
@@ -168,7 +168,7 @@ export const Basic = () => {
           <div className="layer base active">
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -864px` }}
             />
             <div className="legend text-sm">Street View</div>
@@ -183,7 +183,7 @@ export const Basic = () => {
             </div>
             <img
               className="preview"
-              src="/graphics/sprites/layers-2x.jpg"
+              src="/assets/graphics/sprites/layers-2x.jpg"
               style={{ objectPosition: `0px -108px` }}
             />
             <div className="legend text-sm">Satellite</div>

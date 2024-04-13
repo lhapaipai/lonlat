@@ -4,7 +4,7 @@ import { useDebounce } from ".";
 /**
  * This hook accepts a ref to any element and adds a click event handler that creates ripples when click
  */
-const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
+export const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
   //ripples are just styles that we attach to span elements
   const [ripples, setRipples] = useState<React.CSSProperties[]>([]);
 
@@ -78,5 +78,3 @@ const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
     );
   });
 };
-
-export default useRipple;

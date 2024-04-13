@@ -1,0 +1,13 @@
+{
+  "searchPlaceholder": {
+    "ign-address": "Chercher une ville, une adresse en France",
+    "c2c": "Chercher un sommet, un col...",
+    "nominatim": "Chercher une ville, une adresse dans le monde"
+  },
+  "coordsUnit": {
+    "lonlat": "lon/lat",
+    "latlon": "lat/lon",
+    "dms": "DMS"
+  },
+  "copiedIntoClipboard": "Ajouté au presse papier"
+}

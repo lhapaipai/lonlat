@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export default function useIsClosing(initialValue = false, delay = 500) {
+export function useIsClosing(initialValue = false, delay = 500) {
   const [[isOpen, isClosing], setState] = useState([initialValue, false]);
   const isMounted = useRef(false);
   useEffect(() => {
