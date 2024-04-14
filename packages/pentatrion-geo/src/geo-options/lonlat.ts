@@ -2,7 +2,7 @@ import { LngLat } from "maplibre-gl";
 import { nanoid } from "nanoid";
 import { FeatureProperties, GeoPointOption, LonLatGeoOption } from "../types";
 import { ignReverseSearch } from "../ign/geocode";
-import { ignElevationPoint, noDataElevationValue } from "../ign";
+import { ignElevationPoint } from "../ign";
 import { Point } from "geojson";
 
 export function createLonLatFeaturePoint(

@@ -10,6 +10,16 @@
             text-align: center;
             flex: 1 1 0;
         }
+
+        .extra {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+
+            .ll-button {
+                margin: 0 .25rem;
+            }
+        }
     }
 
     .tabs-list-item {
@@ -31,6 +41,8 @@
             width: 100%;
             padding: var(--space-2);
         }
+
+
     }
 
     .tabs-content {

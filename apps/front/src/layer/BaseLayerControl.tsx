@@ -25,9 +25,16 @@ import { useMap, useRControl } from "maplibre-react-components";
 import { useState } from "react";
 import { Button, ButtonGroup } from "pentatrion-design";
 import { coordsChanged } from "../street-view/streetViewSlice";
+import { selectDistractionFree } from "~/store/mapSlice";
+import "./BaseLayerControl.scss";
 
 export default function BaseLayerControl() {
-  const container = useRControl("bottom", "ll-layer-switcher");
+  const distractionFree = useAppSelector(selectDistractionFree);
+
+  const container = useRControl({
+    position: "bottom",
+    className: cn("ll-layer-switcher", distractionFree && "distraction-free"),
+  });
   const [countryFilter, setCountryFilter] = useState<keyof BaseLayers>("fr");
   const dispatch = useAppDispatch();
 

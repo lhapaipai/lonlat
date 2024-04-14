@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { FeatureProperties, GeoPointOption } from "pentatrion-geo";
-import { Point, Position } from "geojson";
+import { Point } from "geojson";
 
 type SearchState = {
   feature: GeoPointOption | null;

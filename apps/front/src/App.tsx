@@ -1,11 +1,5 @@
 import { RMap } from "maplibre-react-components";
-import {
-  AttributionControl,
-  Map,
-  MapLibreEvent,
-  NavigationControl,
-  StyleSpecification,
-} from "maplibre-gl";
+import { AttributionControl, Map, MapLibreEvent, StyleSpecification } from "maplibre-gl";
 
 import { useAppDispatch, useAppSelector } from "./store";
 import { selectTab, selectViewState, viewStateChanged } from "./store/mapSlice";
@@ -52,7 +46,6 @@ function handleAfterMapInstanciation(map: Map) {
     positions["bottom-right"] && bottomContainer.append(positions["bottom-right"]);
     positions["bottom"] = DOM.create("div", "maplibregl-ctrl-bottom", bottomContainer);
   }
-  // map.addControl(new NavigationControl(), "top-left");
   // @ts-ignore position added above
   // map.addControl(new AttributionControl(), "bottom");
 }

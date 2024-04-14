@@ -22,6 +22,7 @@ type MapState = {
   tab: string | number;
   searchEngine: SearchEngine;
   coordsUnit: CoordsUnit;
+  distractionFree: boolean;
 };
 
 const initialState: MapState = {
@@ -32,6 +33,7 @@ const initialState: MapState = {
   tab: "search",
   searchEngine: "ign-address",
   coordsUnit: "lonlat",
+  distractionFree: false,
 };
 
 const mapSlice = createSlice({
@@ -55,14 +57,23 @@ const mapSlice = createSlice({
         state.coordsUnit = coordsUnits[(currentIndex + 1) % coordsUnits.length];
       }
     },
+    distractionFreeChanged(state, action: PayloadAction<boolean>) {
+      state.distractionFree = action.payload;
+    },
   },
 });
 
 export default mapSlice.reducer;
-export const { viewStateChanged, tabChanged, searchEngineChanged, coordsUnitChanged } =
-  mapSlice.actions;
+export const {
+  distractionFreeChanged,
+  viewStateChanged,
+  tabChanged,
+  searchEngineChanged,
+  coordsUnitChanged,
+} = mapSlice.actions;
 
 export const selectViewState = (state: RootState) => state.map.viewState;
 export const selectTab = (state: RootState) => state.map.tab;
 export const selectSearchEngine = (state: RootState) => state.map.searchEngine;
 export const selectCoordsUnit = (state: RootState) => state.map.coordsUnit;
+export const selectDistractionFree = (state: RootState) => state.map.distractionFree;

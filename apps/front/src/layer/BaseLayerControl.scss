@@ -1,0 +1,8 @@
+.ll-layer-switcher {
+    transition: transform .3s ease;
+
+    &.distraction-free {
+        transform: translateY(calc(100% + .5rem));
+    }
+
+}

@@ -1,17 +1,26 @@
 import { ControlPosition } from "maplibre-gl";
 import { useEffect, useRef } from "react";
-import { useMap } from "..";
+import { updateClassNames, useMap } from "..";
 
-export default function useRControl<T extends string = ControlPosition>(
-  position: T,
-  classNames = "maplibregl-ctrl maplibregl-ctrl-group",
-) {
+type RControlHookOptions<T extends string = ControlPosition> = {
+  position: T;
+  className: string;
+};
+
+export default function useRControl<T extends string = ControlPosition>({
+  position,
+  className = "maplibregl-ctrl maplibregl-ctrl-group",
+}: RControlHookOptions<T>) {
   const map = useMap();
   const controlElementRef = useRef<HTMLDivElement>();
 
+  const prevOptionsRef = useRef<{ className: string }>({
+    className,
+  });
+
   if (!controlElementRef.current) {
     const ctrl = document.createElement("div");
-    classNames.split(" ").forEach((name) => {
+    className.split(" ").forEach((name) => {
       name !== "" && ctrl.classList.add(name);
     });
 
@@ -36,6 +45,18 @@ export default function useRControl<T extends string = ControlPosition>(
       controlElementRef.current && controlElementRef.current.remove();
     };
   }, [map, position]);
+
+  if (prevOptionsRef.current.className !== className) {
+    updateClassNames(
+      controlElementRef.current,
+      prevOptionsRef.current.className?.split(" ") || [],
+      className?.split(" ") || [],
+    );
+  }
+
+  prevOptionsRef.current = {
+    className,
+  };
 
   return controlElementRef.current;
 }

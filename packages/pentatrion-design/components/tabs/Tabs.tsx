@@ -23,26 +23,31 @@ interface Props {
    */
   fullWidth?: boolean;
   onChange: (id: number | string) => void;
+
+  children?: ReactNode;
+
+  className?: string;
 }
 
 export default function Tabs({
+  className,
   tabs = [],
   value,
   onChange,
   fullWidth = false,
   stickyTabs = false,
+  children,
 }: Props) {
   const content = tabs.find((t) => t.id === value)?.content;
-
   return (
-    <div className="ll-tabs rounded-sm">
-      <ul
+    <div className={cn("ll-tabs", "rounded-sm", className)}>
+      <div
         role="tablist"
         className={cn("tabs-list", fullWidth && "full-width", stickyTabs && "sticky-top")}
       >
         {tabs.map(({ title, id }) => {
           return (
-            <li key={id} className={cn("tabs-list-item", value === id && "selected")}>
+            <div key={id} className={cn("tabs-list-item", value === id && "selected")}>
               <button
                 onClick={(event) => {
                   event.stopPropagation();
@@ -52,10 +57,11 @@ export default function Tabs({
               >
                 {title}
               </button>
-            </li>
+            </div>
           );
         })}
-      </ul>
+        {children && <div className="extra">{children}</div>}
+      </div>
       <div className="tabs-content">{content}</div>
     </div>
   );

@@ -1,10 +1,5 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
-import {
-  FeatureProperties,
-  GeoPointOption,
-  getFeaturePointAltitude,
-  reverseGeocodeLonLatFeaturePoint,
-} from "pentatrion-geo";
+import { getFeaturePointAltitude, reverseGeocodeLonLatFeaturePoint } from "pentatrion-geo";
 import {
   LocationPayload,
   directionLocationChanged,
@@ -71,11 +66,20 @@ lonlatFeatureListenerMiddleware.startListening({
       });
 
     if (type === searchFeatureChanged.type) {
-      getFeaturePointAltitude(feature).then((geometryWithAltitude) => {
-        if (geometryWithAltitude) {
-          dispatch(searchFeatureGeometryChanged(geometryWithAltitude));
-        }
-      });
+      getFeaturePointAltitude(feature)
+        .then((geometryWithAltitude) => {
+          if (geometryWithAltitude) {
+            dispatch(searchFeatureGeometryChanged(geometryWithAltitude));
+          }
+        })
+        .catch((err) => {
+          const errorMessage = parseError(err);
+          if (errorMessage) {
+            dispatch(messageAdded(...errorMessage));
+          } else {
+            throw err;
+          }
+        });
     }
   },
 });
