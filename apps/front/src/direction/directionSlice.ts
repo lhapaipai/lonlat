@@ -4,6 +4,7 @@ import {
   hashCoords,
   GeoPointOption,
   RouteFeatureResponse,
+  FeatureProperties,
 } from "pentatrion-geo";
 import {
   createAsyncThunk,
@@ -54,6 +55,16 @@ const directionSlice = createSlice({
       }
       state.locations[index] = feature;
     },
+    directionLocationPropertiesChanged(
+      state,
+      action: PayloadAction<{ index: number; properties: FeatureProperties }>,
+    ) {
+      const { index, properties } = action.payload;
+      if (state.locations[index] === undefined || state.locations[index].type === "nodata") {
+        throw new Error("direction location index invalid");
+      }
+      (state.locations[index] as GeoPointOption).properties = properties;
+    },
     directionLocationRemoved(state, action: PayloadAction<number>) {
       state.locations = state.locations.filter((_, idx) => idx !== action.payload);
     },
@@ -77,6 +88,7 @@ export default directionSlice.reducer;
 export const {
   directionLocationsAddedFromSearch,
   directionLocationChanged,
+  directionLocationPropertiesChanged,
   directionLocationsSorted,
   directionRouteChanged,
   directionLocationRemoved,

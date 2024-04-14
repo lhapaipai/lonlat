@@ -30,5 +30,5 @@ type FeatureProperties<T extends string = string> = {
   context: string | null;
   score: number;
   type: T;
-  originalProperties: any;
+  originalProperties?: any;
 };

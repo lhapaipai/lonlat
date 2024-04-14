@@ -1,4 +1,4 @@
-import { BBox, Geometry, GeometryCollection, Point, Position } from "geojson";
+import { BBox, Geometry, GeometryCollection, Point } from "geojson";
 import { GeoOption } from "pentatrion-design";
 
 export type LngLatObj = {
@@ -24,7 +24,7 @@ export type FeatureProperties<T extends string = string> = {
   score: number;
   type: T;
 
-  originalProperties: any;
+  originalProperties?: any;
 };
 
 type GeometryWithCoordinates = Exclude<Geometry, GeometryCollection>;

@@ -1,7 +1,9 @@
 import { LngLat } from "maplibre-gl";
 import { nanoid } from "nanoid";
-import { GeoOption, GeoPointOption, LonLatGeoOption } from "../types";
-import { createIgnAddressFeaturePoint, ignReverseSearch } from "../ign/geocode";
+import { FeatureProperties, GeoPointOption, LonLatGeoOption } from "../types";
+import { ignReverseSearch } from "../ign/geocode";
+import { ignElevationPoint, noDataElevationValue } from "../ign";
+import { Point } from "geojson";
 
 export function createLonLatFeaturePoint(
   lngLat: LngLat,
@@ -33,20 +35,22 @@ export function createLonLatFeaturePoint(
   };
 }
 
-export function updateGeoOptionScore<T extends GeoOption>(feature: T, score: number): T {
+export function updateFeaturePropertiesScore<T extends FeatureProperties>(
+  properties: T,
+  score: number,
+): T {
   return {
-    ...feature,
-    properties: {
-      ...feature.properties,
-      score,
-    },
+    ...properties,
+    score,
   };
 }
 
-export const resolveLonLatFeaturePoint = async (feature: GeoPointOption) => {
+export const reverseGeocodeLonLatFeaturePoint = async (
+  feature: GeoPointOption,
+): Promise<FeatureProperties | null> => {
   // feature don't need to be resolved
   if (feature.properties.type !== "lonlat" || feature.properties.score !== 0) {
-    return feature;
+    return null;
   }
   if (feature.geometry.type !== "Point") {
     throw new Error("only Point geometry can be reverse geocoded");
@@ -57,7 +61,7 @@ export const resolveLonLatFeaturePoint = async (feature: GeoPointOption) => {
   if (collection.features.length === 0) {
     // we update the score to 1 we don't try anymore to reverse geocode
     // prevent circular reference
-    return updateGeoOptionScore(feature, 1);
+    return updateFeaturePropertiesScore(feature.properties, 1);
   }
 
   const reversedFeature = collection.features[0];
@@ -66,14 +70,25 @@ export const resolveLonLatFeaturePoint = async (feature: GeoPointOption) => {
   // that it does not match
   if (
     reversedFeature.properties.distance === undefined ||
-    reversedFeature.properties.distance > 50
+    reversedFeature.properties.distance > 100
   ) {
     // we update the score to 1 we don't try anymore to reverse geocode
     // prevent circular reference
-    return updateGeoOptionScore(feature, 1);
+    return updateFeaturePropertiesScore(feature.properties, 1);
   }
 
-  // we keep the original coordinates with the resolved address.
-  const [lng, lat] = feature.geometry.coordinates;
-  return createIgnAddressFeaturePoint(reversedFeature, { lng, lat });
+  return reversedFeature.properties;
+};
+
+export const getFeaturePointAltitude = async (feature: GeoPointOption): Promise<Point | null> => {
+  if (feature.geometry.type !== "Point" || feature.geometry.coordinates[2] !== undefined) {
+    return null;
+  }
+
+  const coordinates = await ignElevationPoint(feature.geometry.coordinates);
+
+  return {
+    type: "Point",
+    coordinates,
+  };
 };

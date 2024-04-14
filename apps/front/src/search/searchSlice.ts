@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { GeoPointOption } from "pentatrion-geo";
+import { FeatureProperties, GeoPointOption } from "pentatrion-geo";
+import { Point, Position } from "geojson";
 
 type SearchState = {
   feature: GeoPointOption | null;
@@ -49,11 +50,27 @@ const searchSlice = createSlice({
     searchFeatureChanged(state, action: PayloadAction<SearchPayload>) {
       state.feature = action.payload;
     },
+    searchFeaturePropertiesChanged(state, action: PayloadAction<FeatureProperties>) {
+      if (!state.feature) {
+        return;
+      }
+      state.feature.properties = action.payload;
+    },
+    searchFeatureGeometryChanged(state, action: PayloadAction<Point>) {
+      if (!state.feature || state.feature.geometry.type !== "Point") {
+        return;
+      }
+      state.feature.geometry = action.payload;
+    },
   },
 });
 
 export default searchSlice.reducer;
 
-export const { searchFeatureChanged } = searchSlice.actions;
+export const {
+  searchFeatureChanged,
+  searchFeaturePropertiesChanged,
+  searchFeatureGeometryChanged,
+} = searchSlice.actions;
 
 export const selectSearchFeature = (state: RootState) => state.search.feature;

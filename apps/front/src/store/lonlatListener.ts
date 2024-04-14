@@ -1,7 +1,21 @@
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
-import { GeoPointOption, resolveLonLatFeaturePoint } from "pentatrion-geo";
-import { LocationPayload, directionLocationChanged } from "../direction/directionSlice";
-import { SearchPayload, searchFeatureChanged } from "../search/searchSlice";
+import {
+  FeatureProperties,
+  GeoPointOption,
+  getFeaturePointAltitude,
+  reverseGeocodeLonLatFeaturePoint,
+} from "pentatrion-geo";
+import {
+  LocationPayload,
+  directionLocationChanged,
+  directionLocationPropertiesChanged,
+} from "../direction/directionSlice";
+import {
+  SearchPayload,
+  searchFeatureChanged,
+  searchFeatureGeometryChanged,
+  searchFeaturePropertiesChanged,
+} from "../search/searchSlice";
 import { messageAdded } from "pentatrion-design/redux";
 import { parseError } from "pentatrion-design";
 
@@ -32,30 +46,36 @@ lonlatFeatureListenerMiddleware.startListening({
       return;
     }
 
-    let reversedFeature: GeoPointOption | null = null;
+    reverseGeocodeLonLatFeaturePoint(feature)
+      .then((accurateProperties) => {
+        if (accurateProperties && accurateProperties.type !== "lonlat") {
+          if (type === searchFeatureChanged.type) {
+            dispatch(searchFeaturePropertiesChanged(accurateProperties));
+          } else if (type === directionLocationChanged.type) {
+            dispatch(
+              directionLocationPropertiesChanged({
+                index: (payload as LocationPayload).index,
+                properties: accurateProperties,
+              }),
+            );
+          }
+        }
+      })
+      .catch((err) => {
+        const errorMessage = parseError(err);
+        if (errorMessage) {
+          dispatch(messageAdded(...errorMessage));
+        } else {
+          throw err;
+        }
+      });
 
-    try {
-      reversedFeature = await resolveLonLatFeaturePoint(feature);
-    } catch (err) {
-      const errorMessage = parseError(err);
-      if (errorMessage) {
-        dispatch(messageAdded(...errorMessage));
-      } else {
-        throw err;
-      }
-    }
-
-    if (reversedFeature && reversedFeature.properties.type !== "lonlat") {
-      if (type === searchFeatureChanged.type) {
-        dispatch(searchFeatureChanged(reversedFeature));
-      } else if (type === directionLocationChanged.type) {
-        dispatch(
-          directionLocationChanged({
-            index: (payload as LocationPayload).index,
-            feature: reversedFeature,
-          }),
-        );
-      }
+    if (type === searchFeatureChanged.type) {
+      getFeaturePointAltitude(feature).then((geometryWithAltitude) => {
+        if (geometryWithAltitude) {
+          dispatch(searchFeatureGeometryChanged(geometryWithAltitude));
+        }
+      });
     }
   },
 });
