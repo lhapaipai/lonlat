@@ -56,7 +56,7 @@ function TabsControl() {
             color="weak"
             onClick={() => dispatch(distractionFreeChanged(false))}
           >
-            <i className="fe-sidebar-expand"></i>
+            <i className="fe-menu"></i>
           </Button>
         </div>
       )}
