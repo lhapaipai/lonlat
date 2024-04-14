@@ -27,8 +27,10 @@ import { Button, ButtonGroup } from "pentatrion-design";
 import { coordsChanged } from "../street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/mapSlice";
 import "./BaseLayerControl.scss";
+import { FloatingOverlay } from "@floating-ui/react";
 
 export default function BaseLayerControl() {
+  const [collapsed, setCollapsed] = useState(true);
   const distractionFree = useAppSelector(selectDistractionFree);
 
   const container = useRControl({
@@ -45,62 +47,56 @@ export default function BaseLayerControl() {
   const currentTerrain = useAppSelector(selectTerrain);
   const currentStreetView = useAppSelector(selectStreetView);
 
+  const currentLayer = baseLayersById[currentBaseLayerId];
+
   return createPortal(
-    <>
-      <ButtonGroup direction="vertical" className="filters">
-        {(Object.keys(baseLayers) as (keyof BaseLayers)[]).map((countryId) => (
-          <Button
-            key={countryId}
-            className="text-sm"
-            variant="text"
-            color="weak"
-            selected={countryFilter === countryId}
-            onClick={() => setCountryFilter(countryId)}
-          >
-            {countryLabels[countryId]}
-          </Button>
-        ))}
-      </ButtonGroup>
+    collapsed ? (
+      <Button
+        className={cn("layer", "base")}
+        key="current-layer"
+        onClick={() => setCollapsed(false)}
+      >
+        <div className="type">
+          <i className={`fe-${currentLayer.type}`}></i>
+        </div>
+        <img
+          className="preview"
+          src="/assets/graphics/sprites/layers-1x.jpg"
+          srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+          style={{ objectPosition: `0px ${currentLayer.offsetY}px` }}
+        />
+        <div className="legend text-sm">{currentLayer.label}</div>
+      </Button>
+    ) : (
+      <>
+        <FloatingOverlay
+          className={cn(["ll-modal-overlay", "ll-animate", "fade-in-opacity"])}
+          lockScroll
+          onClick={() => setCollapsed(true)}
+        />
+        <ButtonGroup direction="vertical" className="filters">
+          {(Object.keys(baseLayers) as (keyof BaseLayers)[]).map((countryId) => (
+            <Button
+              key={countryId}
+              className="text-sm"
+              variant="text"
+              color="weak"
+              selected={countryFilter === countryId}
+              onClick={() => setCountryFilter(countryId)}
+            >
+              {countryLabels[countryId]}
+            </Button>
+          ))}
+        </ButtonGroup>
 
-      {baseLayers[countryFilter].map((id) => {
-        const layerId = id as BaseLayerId;
-        const layer = baseLayersById[layerId];
-        return (
-          <div
-            className={cn("layer", "base", layerId === currentBaseLayerId && "active")}
-            key={layerId}
-            onClick={() => dispatch(baseLayerChanged(layerId))}
-          >
-            <div className="type">
-              <i className={`fe-${layer.type}`}></i>
-            </div>
-            <img
-              className="preview"
-              src="/assets/graphics/sprites/layers-1x.jpg"
-              srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-              style={{ objectPosition: `0px ${layer.offsetY}px` }}
-            />
-            <div className="legend text-sm">{layer.label}</div>
-          </div>
-        );
-      })}
-
-      <div className="separator"></div>
-
-      {currentBaseLayerId &&
-        (baseLayersById[currentBaseLayerId] as BaseLayerInfos).optionalLayers.map(({ id }) => {
-          const layerId = id as OptionalLayerId;
-          const layer = optionalLayersById[layerId];
-
+        {baseLayers[countryFilter].map((id) => {
+          const layerId = id as BaseLayerId;
+          const layer = baseLayersById[layerId];
           return (
-            <div
-              className={cn(
-                "layer",
-                "optional",
-                currentOptionalLayers.includes(layerId) && "active",
-              )}
+            <Button
+              className={cn("layer", "base", layerId === currentBaseLayerId && "active")}
               key={layerId}
-              onClick={() => dispatch(optionalLayerToggled(layerId))}
+              onClick={() => dispatch(baseLayerChanged(layerId))}
             >
               <div className="type">
                 <i className={`fe-${layer.type}`}></i>
@@ -112,43 +108,75 @@ export default function BaseLayerControl() {
                 style={{ objectPosition: `0px ${layer.offsetY}px` }}
               />
               <div className="legend text-sm">{layer.label}</div>
-            </div>
+            </Button>
           );
         })}
 
-      <div className="separator"></div>
+        <div className="separator"></div>
 
-      <div
-        className={cn("layer", "base", currentTerrain && "active")}
-        key="terrain"
-        onClick={() => dispatch(terrainToggled())}
-      >
-        <img
-          className="preview"
-          src="/assets/graphics/sprites/layers-1x.jpg"
-          srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-          style={{ objectPosition: `0px ${optionalLayersById["terrain"].offsetY}px` }}
-        />
-        <div className="legend text-sm">Relief</div>
-      </div>
+        {currentBaseLayerId &&
+          (baseLayersById[currentBaseLayerId] as BaseLayerInfos).optionalLayers.map(({ id }) => {
+            const layerId = id as OptionalLayerId;
+            const layer = optionalLayersById[layerId];
 
-      <div
-        className={cn("layer", "base", currentStreetView && "active")}
-        key="street-view"
-        onClick={() => {
-          dispatch(coordsChanged(map.getCenter().toArray()));
-          dispatch(streetViewToggled());
-        }}
-      >
-        <img
-          className="preview"
-          src="/assets/graphics/sprites/layers-1x.jpg"
-          srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-          style={{ objectPosition: `0px ${optionalLayersById["street-view"].offsetY}px` }}
-        />
-        <div className="legend text-sm">Street View</div>
-      </div>
-    </>,
+            return (
+              <Button
+                className={cn(
+                  "layer",
+                  "optional",
+                  currentOptionalLayers.includes(layerId) && "active",
+                )}
+                key={layerId}
+                onClick={() => dispatch(optionalLayerToggled(layerId))}
+              >
+                <div className="type">
+                  <i className={`fe-${layer.type}`}></i>
+                </div>
+                <img
+                  className="preview"
+                  src="/assets/graphics/sprites/layers-1x.jpg"
+                  srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+                  style={{ objectPosition: `0px ${layer.offsetY}px` }}
+                />
+                <div className="legend text-sm">{layer.label}</div>
+              </Button>
+            );
+          })}
+
+        <div className="separator"></div>
+
+        <Button
+          className={cn("layer", "base", currentTerrain && "active")}
+          key="terrain"
+          onClick={() => dispatch(terrainToggled())}
+        >
+          <img
+            className="preview"
+            src="/assets/graphics/sprites/layers-1x.jpg"
+            srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+            style={{ objectPosition: `0px ${optionalLayersById["terrain"].offsetY}px` }}
+          />
+          <div className="legend text-sm">Relief</div>
+        </Button>
+
+        <Button
+          className={cn("layer", "base", currentStreetView && "active")}
+          key="street-view"
+          onClick={() => {
+            dispatch(coordsChanged(map.getCenter().toArray()));
+            dispatch(streetViewToggled());
+          }}
+        >
+          <img
+            className="preview"
+            src="/assets/graphics/sprites/layers-1x.jpg"
+            srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+            style={{ objectPosition: `0px ${optionalLayersById["street-view"].offsetY}px` }}
+          />
+          <div className="legend text-sm">Street View</div>
+        </Button>
+      </>
+    ),
     container,
   );
 }

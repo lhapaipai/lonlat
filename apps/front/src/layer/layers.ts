@@ -87,7 +87,7 @@ export const baseLayersById = {
       [getIgnDefaultScanURL(ignToken)],
       '© <a href="https://www.ign.fr/">IGN</a>',
     ),
-    optionalLayers: [{ id: "ign-admin_express-adminexpress" }],
+    optionalLayers: [{ id: "ign-admin_express-adminexpress" }, { id: "ign-pci-pci" }],
     country: "fr",
   } satisfies BaseLayerInfos,
   "ign-raster-scan_25": {
@@ -100,7 +100,7 @@ export const baseLayersById = {
       [getIgnScan25URL(ignToken)],
       `© <a href="https://www.ign.fr/">IGN</a>`,
     ),
-    optionalLayers: [{ id: "ign-admin_express-adminexpress" }],
+    optionalLayers: [{ id: "ign-admin_express-adminexpress" }, { id: "ign-pci-pci" }],
     country: "fr",
   } satisfies BaseLayerInfos,
   "ign-raster-orthophoto": {
