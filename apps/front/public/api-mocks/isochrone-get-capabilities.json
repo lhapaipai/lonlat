@@ -1,0 +1,1006 @@
+{
+  "info": {
+    "name": "Road2",
+    "title": "Service de calcul d'itinéraire et d'isochrone",
+    "description": "Ce service permet de calculer des itinéraires et des isochrones sur les données du Géoportail.",
+    "url": ""
+  },
+  "provider": {
+    "name": "IGN",
+    "site": "www.ign.fr",
+    "mail": "contact.geoservices@ign.fr"
+  },
+  "api": {
+    "name": "simple",
+    "version": "1.0.0"
+  },
+  "operations": [
+    {
+      "id": "route",
+      "description": "Calculer un itinéraire",
+      "url": "/itineraire?",
+      "methods": ["GET", "POST"],
+      "parameters": [
+        {
+          "name": "resource",
+          "in": "query",
+          "description": "Ressource utilisée par le calcul",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "string"
+          },
+          "example": "bduni"
+        },
+        {
+          "name": "start",
+          "in": "query",
+          "description": "Point de départ",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "string"
+          },
+          "example": "2.337306,48.849319"
+        },
+        {
+          "name": "end",
+          "in": "query",
+          "description": "Point d'arrivée",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "string"
+          },
+          "example": "2.367776,48.852891"
+        },
+        {
+          "name": "intermediates",
+          "in": "query",
+          "description": "Liste ordonnée des points de passage à emprunter par l'itinéraire",
+          "required": "false",
+          "default": "false",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "min": 0,
+          "max": 15,
+          "explode": "false",
+          "style": "pipeDelimited",
+          "example": "2.368776,48.852890|2.367976,48.842891"
+        },
+        {
+          "name": "profile",
+          "in": "query",
+          "description": "Moyen de déplacement utilisé pour le calcul",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "car"
+        },
+        {
+          "name": "optimization",
+          "in": "query",
+          "description": "Critère d'optimisation utilisé pour le calcul (plus court, plus rapide)",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "fastest"
+        },
+        {
+          "name": "getSteps",
+          "in": "query",
+          "description": "Présence de la description des tronçons de route dans l’itinéraire retourné",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "boolean"
+          },
+          "example": "true"
+        },
+        {
+          "name": "waysAttributes",
+          "in": "query",
+          "description": "Caractéristiques des tronçons de route à afficher dans la réponse",
+          "required": "false",
+          "default": "false",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "min": 0,
+          "max": 10,
+          "explode": "false",
+          "style": "pipeDelimited",
+          "example": "name|type"
+        },
+        {
+          "name": "geometryFormat",
+          "in": "query",
+          "description": "Format d'encodage de la géométrie",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "geojson"
+        },
+        {
+          "name": "getBbox",
+          "in": "query",
+          "description": "Présence de l'emprise de l'itinéraire dans la réponse",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "boolean"
+          },
+          "example": "true"
+        },
+        {
+          "name": "crs",
+          "in": "query",
+          "description": "Projection utilisée pour exprimer les coordonnées et récupérer les géométries",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "EPSG:4326"
+        },
+        {
+          "name": "timeUnit",
+          "in": "query",
+          "description": "Unité utilisée pour exprimer les durées",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "minute"
+        },
+        {
+          "name": "distanceUnit",
+          "in": "query",
+          "description": "Unité utilisée pour exprimer les distances",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "meter"
+        },
+        {
+          "name": "constraints",
+          "in": "query",
+          "description": "Contraintes utilisées pour le calcul",
+          "required": "false",
+          "default": "false",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "constraintType": {
+                  "type": "string"
+                },
+                "key": {
+                  "type": "string"
+                },
+                "operator": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "min": 0,
+          "max": 3,
+          "explode": "false",
+          "style": "pipeDelimited",
+          "example": "{'constraintType':'banned','key':'ways_type','operator':'=','value':'autoroute'}"
+        }
+      ]
+    },
+    {
+      "id": "isochrone",
+      "description": "Calculer une zone isochrone ou isodistance",
+      "url": "/isochrone?",
+      "methods": ["GET", "POST"],
+      "parameters": [
+        {
+          "name": "resource",
+          "in": "query",
+          "description": "Ressource utilisée par le calcul",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "string"
+          },
+          "example": "bduni"
+        },
+        {
+          "name": "point",
+          "in": "query",
+          "description": "Point de départ ou d'arrivée du calcul",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "string"
+          },
+          "example": "2.337306,48.849319"
+        },
+        {
+          "name": "costType",
+          "in": "query",
+          "description": "Méthode de calcul utilisée (durée ou distance)",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "string"
+          },
+          "example": "time"
+        },
+        {
+          "name": "costValue",
+          "in": "query",
+          "description": "Valeur du critère utilisé pour le calcul (durée ou distance)",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "float"
+          },
+          "example": "100"
+        },
+        {
+          "name": "profile",
+          "in": "query",
+          "description": "Moyen de déplacement utilisé pour le calcul",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "string"
+          },
+          "example": "2.337306,48.849319"
+        },
+        {
+          "name": "direction",
+          "in": "query",
+          "description": "Sens de déplacement utilisé pour le calcul (point de départ ou d'arrivée)",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "string"
+          },
+          "example": "departure"
+        },
+        {
+          "name": "crs",
+          "in": "query",
+          "description": "Projection utilisée pour exprimer les coordonnées et récupérer les géométries",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "EPSG:4326"
+        },
+        {
+          "name": "geometryFormat",
+          "in": "query",
+          "description": "Format d'encodage de la géométrie",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "geojson"
+        },
+        {
+          "name": "timeUnit",
+          "in": "query",
+          "description": "Unité utilisée pour exprimer les durées",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "minute"
+        },
+        {
+          "name": "distanceUnit",
+          "in": "query",
+          "description": "Unité utilisée pour exprimer les distances",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "meter"
+        },
+        {
+          "name": "constraints",
+          "in": "query",
+          "description": "Contraintes utilisées pour le calcul",
+          "required": "false",
+          "default": "false",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "constraintType": {
+                  "type": "string"
+                },
+                "key": {
+                  "type": "string"
+                },
+                "operator": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "min": 0,
+          "max": 3,
+          "explode": "false",
+          "style": "pipeDelimited",
+          "example": "{'constraintType':'banned','key':'ways_type','operator':'=','value':'autoroute'}"
+        }
+      ]
+    },
+    {
+      "id": "nearest",
+      "description": "Trouver les points du graphe le plus proche",
+      "url": "/nearest?",
+      "methods": ["GET", "POST"],
+      "parameters": [
+        {
+          "name": "resource",
+          "in": "query",
+          "description": "Ressource utilisée par le calcul",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "string"
+          },
+          "example": "bduni"
+        },
+        {
+          "name": "coordinates",
+          "in": "query",
+          "description": "Coordonnées utilisées pour le calcul",
+          "required": "true",
+          "default": "false",
+          "schema": {
+            "type": "string"
+          },
+          "example": "2.337306,48.849319"
+        },
+        {
+          "name": "nbPoints",
+          "in": "query",
+          "description": "Nombre de points voulu en retour",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "integer"
+          },
+          "example": 1
+        },
+        {
+          "name": "crs",
+          "in": "query",
+          "description": "Projection utilisée pour exprimer les coordonnées et récupérer les géométries",
+          "required": "false",
+          "default": "true",
+          "schema": {
+            "type": "enumeration"
+          },
+          "example": "EPSG:4326"
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "bdtopo-osrm",
+      "description": "Publication du service Itinéraire via OSRM",
+      "availableOperations": [
+        {
+          "id": "route",
+          "availableParameters": [
+            {
+              "id": "resource",
+              "values": ["bdtopo-osrm"]
+            },
+            {
+              "id": "start",
+              "values": {
+                "bbox": "-179.49999463,-74.99999974,179.49999463,74.99999974"
+              }
+            },
+            {
+              "id": "end",
+              "values": {
+                "bbox": "-179.49999463,-74.99999974,179.49999463,74.99999974"
+              }
+            },
+            {
+              "id": "intermediates",
+              "values": {
+                "bbox": "-179.49999463,-74.99999974,179.49999463,74.99999974"
+              }
+            },
+            {
+              "id": "profile",
+              "values": ["pedestrian", "car"],
+              "defaultValue": "pedestrian"
+            },
+            {
+              "id": "optimization",
+              "values": ["shortest", "fastest"],
+              "defaultValue": "shortest"
+            },
+            {
+              "id": "getSteps",
+              "values": [true, false],
+              "defaultValue": true
+            },
+            {
+              "id": "waysAttributes",
+              "values": ["name"]
+            },
+            {
+              "id": "geometryFormat",
+              "values": ["geojson", "polyline", "wkt"],
+              "defaultValue": "geojson"
+            },
+            {
+              "id": "getBbox",
+              "values": [true, false],
+              "defaultValue": true
+            },
+            {
+              "id": "crs",
+              "values": ["EPSG:4326"],
+              "defaultValue": "EPSG:4326"
+            },
+            {
+              "id": "timeUnit",
+              "values": ["hour", "minute", "second", "standard"],
+              "defaultValue": "second"
+            },
+            {
+              "id": "distanceUnit",
+              "values": ["meter", "kilometer"],
+              "defaultValue": "meter"
+            },
+            {
+              "id": "constraints",
+              "values": {
+                "keys": [
+                  {
+                    "key": "waytype",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["="],
+                    "values": ["autoroute", "tunnel", "pont"]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bdtopo-pgr",
+      "description": "Publication du service Itinéraire / Isochrone via PGRouting",
+      "availableOperations": [
+        {
+          "id": "route",
+          "availableParameters": [
+            {
+              "id": "resource",
+              "values": ["bdtopo-pgr"]
+            },
+            {
+              "id": "start",
+              "values": {
+                "bbox": "-63.28125,-21.421484375,55.8984375,51.27109375"
+              }
+            },
+            {
+              "id": "end",
+              "values": {
+                "bbox": "-63.28125,-21.421484375,55.8984375,51.27109375"
+              }
+            },
+            {
+              "id": "intermediates",
+              "values": {
+                "bbox": "-63.28125,-21.421484375,55.8984375,51.27109375"
+              }
+            },
+            {
+              "id": "profile",
+              "values": ["car", "pedestrian"],
+              "defaultValue": "car"
+            },
+            {
+              "id": "optimization",
+              "values": ["fastest", "shortest"],
+              "defaultValue": "fastest"
+            },
+            {
+              "id": "getSteps",
+              "values": [true, false],
+              "defaultValue": true
+            },
+            {
+              "id": "waysAttributes",
+              "values": [
+                "name",
+                "insee_commune_droite",
+                "restriction_de_poids_par_essieu",
+                "nature",
+                "importance",
+                "insee_commune_gauche",
+                "acces_pieton",
+                "bande_cyclable",
+                "nombre_de_voies",
+                "restriction_de_poids_total",
+                "position_par_rapport_au_sol",
+                "urbain",
+                "restriction_de_hauteur",
+                "itineraire_vert",
+                "cleabs",
+                "sens_de_circulation",
+                "vitesse_moyenne_vl",
+                "cpx_numero",
+                "cpx_classement_administratif",
+                "cpx_gestionnaire",
+                "cpx_toponyme_route_nommee",
+                "acces_vehicule_leger",
+                "nom_1_gauche",
+                "largeur_de_chaussee",
+                "nature_de_la_restriction",
+                "cpx_numero_route_europeenne",
+                "reserve_aux_bus",
+                "matieres_dangereuses_interdites",
+                "restriction_de_largeur",
+                "nom_1_droite",
+                "restriction_de_longueur"
+              ]
+            },
+            {
+              "id": "geometryFormat",
+              "values": ["geojson", "polyline", "wkt"],
+              "defaultValue": "geojson"
+            },
+            {
+              "id": "getBbox",
+              "values": [true, false],
+              "defaultValue": true
+            },
+            {
+              "id": "crs",
+              "values": ["EPSG:4326"],
+              "defaultValue": "EPSG:4326"
+            },
+            {
+              "id": "timeUnit",
+              "values": ["hour", "minute", "second", "standard"],
+              "defaultValue": "second"
+            },
+            {
+              "id": "distanceUnit",
+              "values": ["meter", "kilometer"],
+              "defaultValue": "meter"
+            },
+            {
+              "id": "constraints",
+              "values": {
+                "keys": [
+                  {
+                    "key": "waytype",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!="],
+                    "values": ["autoroute", "tunnel", "pont"]
+                  },
+                  {
+                    "key": "largeur_de_chaussee",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "importance",
+                    "availableConstraintType": ["banned", "prefer", "avoid"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "nature",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!="],
+                    "values": [
+                      "sentier",
+                      "bac_ou_liaison_maritime",
+                      "bretelle",
+                      "chemin",
+                      "escalier",
+                      "piste_cyclable",
+                      "rond-point",
+                      "route_a_1_chaussee",
+                      "route_a_2_chaussees",
+                      "route_empierree",
+                      "type_autoroutier"
+                    ]
+                  },
+                  {
+                    "key": "restriction_de_hauteur",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "restriction_de_largeur",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "restriction_de_poids_total",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "restriction_de_poids_par_essieu",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "matieres_dangereuses_interdites",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!="],
+                    "values": ["vrai", "faux"]
+                  },
+                  {
+                    "key": "itineraire_vert",
+                    "availableConstraintType": ["banned", "prefer", "avoid"],
+                    "availableOperators": ["=", "!="],
+                    "values": ["vrai", "faux"]
+                  },
+                  {
+                    "key": "cpx_classement_administratif",
+                    "availableConstraintType": ["banned", "prefer", "avoid"],
+                    "availableOperators": ["=", "!="],
+                    "values": [
+                      "vide",
+                      "autoroute",
+                      "nationale",
+                      "departementale",
+                      "voie_communale",
+                      "chemin_rural"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "isochrone",
+          "availableParameters": [
+            {
+              "id": "resource",
+              "values": ["bdtopo-pgr"]
+            },
+            {
+              "id": "point",
+              "values": {
+                "bbox": "-63.28125,-21.421484375,55.8984375,51.27109375"
+              }
+            },
+            {
+              "id": "costType",
+              "values": ["time", "distance"]
+            },
+            {
+              "id": "costValue",
+              "values": {
+                "min": 30,
+                "max": 50000
+              }
+            },
+            {
+              "id": "profile",
+              "values": ["car", "pedestrian"],
+              "defaultValue": "car"
+            },
+            {
+              "id": "direction",
+              "values": ["departure", "arrival"],
+              "defaultValue": "departure"
+            },
+            {
+              "id": "projection",
+              "values": ["EPSG:4326"],
+              "defaultValue": "EPSG:4326"
+            },
+            {
+              "id": "geometryFormat",
+              "values": ["geojson", "polyline", "wkt"],
+              "defaultValue": "geojson"
+            },
+            {
+              "id": "timeUnit",
+              "values": ["hour", "minute", "second", "standard"],
+              "defaultValue": "second"
+            },
+            {
+              "id": "distanceUnit",
+              "values": ["meter", "kilometer"],
+              "defaultValue": "meter"
+            },
+            {
+              "id": "constraints",
+              "values": {
+                "keys": [
+                  {
+                    "key": "waytype",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!="],
+                    "values": ["autoroute", "tunnel", "pont"]
+                  },
+                  {
+                    "key": "largeur_de_chaussee",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "importance",
+                    "availableConstraintType": ["banned", "prefer", "avoid"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "nature",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!="],
+                    "values": [
+                      "sentier",
+                      "bac_ou_liaison_maritime",
+                      "bretelle",
+                      "chemin",
+                      "escalier",
+                      "piste_cyclable",
+                      "rond-point",
+                      "route_a_1_chaussee",
+                      "route_a_2_chaussees",
+                      "route_empierree",
+                      "type_autoroutier"
+                    ]
+                  },
+                  {
+                    "key": "restriction_de_hauteur",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "restriction_de_largeur",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "restriction_de_poids_total",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "restriction_de_poids_par_essieu",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!=", ">", ">=", "<", "<="]
+                  },
+                  {
+                    "key": "matieres_dangereuses_interdites",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["=", "!="],
+                    "values": ["vrai", "faux"]
+                  },
+                  {
+                    "key": "itineraire_vert",
+                    "availableConstraintType": ["banned", "prefer", "avoid"],
+                    "availableOperators": ["=", "!="],
+                    "values": ["vrai", "faux"]
+                  },
+                  {
+                    "key": "cpx_classement_administratif",
+                    "availableConstraintType": ["banned", "prefer", "avoid"],
+                    "availableOperators": ["=", "!="],
+                    "values": [
+                      "vide",
+                      "autoroute",
+                      "nationale",
+                      "departementale",
+                      "voie_communale",
+                      "chemin_rural"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bdtopo-valhalla",
+      "description": "Publication du service Itinéraire via Valhalla",
+      "availableOperations": [
+        {
+          "id": "route",
+          "availableParameters": [
+            {
+              "id": "resource",
+              "values": ["bdtopo-valhalla"]
+            },
+            {
+              "id": "start",
+              "values": {
+                "bbox": "-63.28125,-21.42148437,55.8984375,51.27109375"
+              }
+            },
+            {
+              "id": "end",
+              "values": {
+                "bbox": "-63.28125,-21.42148437,55.8984375,51.27109375"
+              }
+            },
+            {
+              "id": "intermediates",
+              "values": {
+                "bbox": "-63.28125,-21.42148437,55.8984375,51.27109375"
+              }
+            },
+            {
+              "id": "profile",
+              "values": ["car", "pedestrian"],
+              "defaultValue": "car"
+            },
+            {
+              "id": "optimization",
+              "values": ["fastest", "shortest"],
+              "defaultValue": "fastest"
+            },
+            {
+              "id": "getSteps",
+              "values": [true, false],
+              "defaultValue": true
+            },
+            {
+              "id": "waysAttributes",
+              "values": ["name"]
+            },
+            {
+              "id": "geometryFormat",
+              "values": ["geojson", "polyline", "wkt"],
+              "defaultValue": "geojson"
+            },
+            {
+              "id": "getBbox",
+              "values": [true, false],
+              "defaultValue": true
+            },
+            {
+              "id": "crs",
+              "values": ["EPSG:4326"],
+              "defaultValue": "EPSG:4326"
+            },
+            {
+              "id": "timeUnit",
+              "values": ["hour", "minute", "second", "standard"],
+              "defaultValue": "second"
+            },
+            {
+              "id": "distanceUnit",
+              "values": ["meter", "kilometer"],
+              "defaultValue": "meter"
+            },
+            {
+              "id": "constraints",
+              "values": {
+                "keys": [
+                  {
+                    "key": "waytype",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["="],
+                    "values": ["autoroute", "pont", "tunnel"]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "isochrone",
+          "availableParameters": [
+            {
+              "id": "resource",
+              "values": ["bdtopo-valhalla"]
+            },
+            {
+              "id": "point",
+              "values": {
+                "bbox": "-63.28125,-21.42148437,55.8984375,51.27109375"
+              }
+            },
+            {
+              "id": "costType",
+              "values": ["time", "distance"]
+            },
+            {
+              "id": "costValue",
+              "values": {
+                "min": 30,
+                "max": 50000
+              }
+            },
+            {
+              "id": "profile",
+              "values": ["car", "pedestrian"],
+              "defaultValue": "car"
+            },
+            {
+              "id": "direction",
+              "values": ["departure", "arrival"],
+              "defaultValue": "departure"
+            },
+            {
+              "id": "projection",
+              "values": ["EPSG:4326"],
+              "defaultValue": "EPSG:4326"
+            },
+            {
+              "id": "geometryFormat",
+              "values": ["geojson", "polyline", "wkt"],
+              "defaultValue": "geojson"
+            },
+            {
+              "id": "timeUnit",
+              "values": ["hour", "minute", "second", "standard"],
+              "defaultValue": "second"
+            },
+            {
+              "id": "distanceUnit",
+              "values": ["meter", "kilometer"],
+              "defaultValue": "meter"
+            },
+            {
+              "id": "constraints",
+              "values": {
+                "keys": [
+                  {
+                    "key": "waytype",
+                    "availableConstraintType": ["banned"],
+                    "availableOperators": ["="],
+                    "values": ["autoroute", "pont", "tunnel"]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,4 +6,4 @@ export type {
   APIPaths as OrsAPIPaths,
   APIRequests as OrsAPIRequests,
   APIResponse as OrsAPIResponse,
-} from "./api-ors";
+} from "./api";

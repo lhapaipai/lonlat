@@ -4,6 +4,7 @@ import {
   FeatureProperties,
   GeoPointOption,
   getFeaturePointAltitude,
+  IsochroneGeoJSON,
   reverseGeocodeLonLatFeaturePoint,
 } from "pentatrion-geo";
 import { Point } from "geojson";
@@ -11,6 +12,7 @@ import { errorAdded } from "pentatrion-design/redux";
 
 type SearchState = {
   feature: GeoPointOption | null;
+  isochrone: IsochroneGeoJSON | null;
 };
 
 const initialState: SearchState = {
@@ -45,6 +47,7 @@ const initialState: SearchState = {
       },
     },
   },
+  isochrone: null,
 };
 
 const searchSlice = createSlice({

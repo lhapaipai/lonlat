@@ -5,7 +5,7 @@ import {
   APIRequests as OrsAPIRequests,
   APIResponse as OrsAPIResponse,
   RouteFeatureResponse,
-} from "./api-ors";
+} from "./api";
 import { fetchAPI } from "pentatrion-design";
 import { openRouteServiceUrl } from "./config";
 

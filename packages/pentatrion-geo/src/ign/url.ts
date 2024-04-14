@@ -18,7 +18,6 @@ export const getIgnCadastreURL = () => {
 };
 
 /**
- * clé pour les données scan
  * https://geoservices.ign.fr/actualites/2023-11-20-acces-donnesnonlibres-gpf
  * maxZoom: 18
  */
@@ -27,7 +26,6 @@ export const getIgnDefaultScanURL = (ignToken: string) => {
 };
 
 /**
- * clé pour les données scan
  * maxZoom 16
  */
 export const getIgnScan25URL = (ignToken: string) => {

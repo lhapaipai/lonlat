@@ -1,4 +1,4 @@
-import { geoplatformeWMTSEndpoint, legacyWMTSEndpoint } from "./config";
+import { geoplatformeWMTSEndpoint, legacyWMTSEndpoint } from "./url";
 
 export type ignSearchParams = {
   SERVICE: "WMTS";

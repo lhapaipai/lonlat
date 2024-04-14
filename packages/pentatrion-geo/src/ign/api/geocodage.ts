@@ -7,10 +7,10 @@ import {
   APISchemas as GeocodageAPISchemas,
   AddressProperties,
   AddressReverseProperties,
-} from "./api-geocodage";
-import { dataGeoserviceUrl } from "./config";
+} from "./geocodage-api";
+import { dataGeoserviceUrl } from "../url";
 import { Feature, Point, Position } from "geojson";
-import { IGNAddressGeoOption, LngLatObj } from "..";
+import { IGNAddressGeoOption, LngLatObj } from "../..";
 import { nanoid } from "nanoid";
 
 export function fetchIGNGeodageAPI<
