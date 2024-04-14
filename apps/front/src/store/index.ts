@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import searchSlice from "../search/searchSlice";
+import searchSlice, { searchFeatureListenerMiddleware } from "../search/searchSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import mapSlice from "./mapSlice";
-import directionSlice, { directionLocationsListenerMiddleware } from "../direction/directionSlice";
-import { lonlatFeatureListenerMiddleware } from "./lonlatListener";
+import directionSlice, {
+  directionLocationListenerMiddleware,
+  directionLocationsListenerMiddleware,
+} from "../direction/directionSlice";
 import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
 import layerSlice from "../layer/layerSlice";
 import streetViewSlice from "../street-view/streetViewSlice";
@@ -19,7 +21,8 @@ const store = configureStore({
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
-      .prepend(lonlatFeatureListenerMiddleware.middleware)
+      .prepend(searchFeatureListenerMiddleware.middleware)
+      .prepend(directionLocationListenerMiddleware.middleware)
       .prepend(directionLocationsListenerMiddleware.middleware)
       .concat(errorCatcherMiddleware);
   },

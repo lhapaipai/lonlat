@@ -447,7 +447,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -469,7 +469,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -491,7 +491,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -509,7 +509,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -531,7 +531,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -553,7 +553,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -576,7 +576,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -593,7 +593,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -610,7 +610,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -633,7 +633,7 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "oro_courbe",
-      "maxzoom": 16,
+      "maxzoom": 18,
       "layout": {
         "visibility": "visible",
         "line-cap": "round",

@@ -5,6 +5,7 @@ import {
   GeoPointOption,
   RouteFeatureResponse,
   FeatureProperties,
+  reverseGeocodeLonLatFeaturePoint,
 } from "pentatrion-geo";
 import {
   createAsyncThunk,
@@ -18,6 +19,7 @@ import { RootState } from "../store";
 import { NoDataOption } from "pentatrion-design";
 import { FeatureCollection, Feature, Point } from "geojson";
 import { getRoute } from "~/lib/api/openRouteService";
+import { errorAdded } from "pentatrion-design/redux";
 
 type DirectionState = {
   locations: (GeoPointOption | NoDataOption)[];
@@ -95,8 +97,34 @@ export const {
   directionLocationInsertAt,
 } = directionSlice.actions;
 
-export const directionLocationsListenerMiddleware = createListenerMiddleware();
+export const selectDirectionLocations = (state: RootState) => state.direction.locations;
+export const selectValidDirectionLocations = createSelector(selectDirectionLocations, (locations) =>
+  filterDataFeatures(locations),
+);
+export const selectDirectionRoute = (state: RootState) => state.direction.route;
 
+export const selectDirectionWaypoints = createSelector(selectDirectionRoute, (route) => {
+  if (!route) {
+    return null;
+  }
+
+  const features: Feature<Point>[] = route.properties.way_points.map((index) => ({
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: route.geometry.coordinates[index],
+    },
+    properties: {},
+  }));
+
+  const geojson: FeatureCollection<Point> = {
+    type: "FeatureCollection",
+    features,
+  };
+  return geojson;
+});
+
+export const directionLocationsListenerMiddleware = createListenerMiddleware();
 directionLocationsListenerMiddleware.startListening({
   matcher: isAnyOf(
     directionLocationChanged,
@@ -125,29 +153,27 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
   return await getRoute(validLocations);
 });
 
-export const selectDirectionLocations = (state: RootState) => state.direction.locations;
-export const selectValidDirectionLocations = createSelector(selectDirectionLocations, (locations) =>
-  filterDataFeatures(locations),
-);
-export const selectDirectionRoute = (state: RootState) => state.direction.route;
+export const directionLocationListenerMiddleware = createListenerMiddleware();
+directionLocationListenerMiddleware.startListening({
+  actionCreator: directionLocationChanged,
+  effect: async ({ payload: { index, feature } }, { dispatch }) => {
+    if (!feature || feature.type === "nodata") {
+      return;
+    }
 
-export const selectDirectionWaypoints = createSelector(selectDirectionRoute, (route) => {
-  if (!route) {
-    return null;
-  }
-
-  const features: Feature<Point>[] = route.properties.way_points.map((index) => ({
-    type: "Feature",
-    geometry: {
-      type: "Point",
-      coordinates: route.geometry.coordinates[index],
-    },
-    properties: {},
-  }));
-
-  const geojson: FeatureCollection<Point> = {
-    type: "FeatureCollection",
-    features,
-  };
-  return geojson;
+    if (feature.properties.type !== "lonlat" || feature.properties.score !== 0) {
+      reverseGeocodeLonLatFeaturePoint(feature)
+        .then((accurateProperties) => {
+          if (accurateProperties && accurateProperties.type !== "lonlat") {
+            dispatch(
+              directionLocationPropertiesChanged({
+                index,
+                properties: accurateProperties,
+              }),
+            );
+          }
+        })
+        .catch((err) => void dispatch(errorAdded(err)));
+    }
+  },
 });

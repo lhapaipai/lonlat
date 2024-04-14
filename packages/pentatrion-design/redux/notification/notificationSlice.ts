@@ -1,5 +1,5 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
-import { Message, MessageOptions } from "pentatrion-design";
+import { Message, MessageOptions, parseError } from "pentatrion-design";
 
 type NotificationState = {
   messages: Message[];
@@ -13,6 +13,29 @@ const notificationSlice = createSlice({
   name: "notification",
   initialState,
   reducers: {
+    errorAdded: {
+      reducer(state, action: PayloadAction<Message>) {
+        state.messages.push(action.payload);
+      },
+      prepare(err: any) {
+        const errorMessage = parseError(err);
+        if (errorMessage) {
+          const [content, options] = errorMessage;
+          const {
+            expiration = 5000,
+            color = "danger",
+            canClose = true,
+            withLoader = false,
+          } = options || {};
+          const id = nanoid();
+          return {
+            payload: { id, content, expiration, color, canClose, withLoader },
+          };
+        } else {
+          throw err;
+        }
+      },
+    },
     messageAdded: {
       reducer(state, action: PayloadAction<Message>) {
         state.messages.push(action.payload);
@@ -39,6 +62,6 @@ const notificationSlice = createSlice({
 
 export default notificationSlice.reducer;
 
-export const { messageAdded, messageRemoved } = notificationSlice.actions;
+export const { messageAdded, messageRemoved, errorAdded } = notificationSlice.actions;
 
 export const selectMessages: (state: any) => Message[] = (state) => state.notification.messages;
