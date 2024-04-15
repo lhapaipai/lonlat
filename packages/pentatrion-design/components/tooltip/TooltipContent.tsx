@@ -5,7 +5,7 @@ import cn from "classnames";
 import { computeArrowStyle } from "../dialog/util";
 
 const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ style, children, ...props }, propRef) => {
+  ({ style, children, className, ...props }, propRef) => {
     const context = useTooltipContext();
     const ref = useMergeRefs([context.refs.setFloating, propRef]);
     if (!context.open) {
@@ -26,6 +26,7 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
               "ll-dialog",
               `placement-${context.placement}`,
               `border-color-${context.color}`,
+              className,
             )}
           >
             {children}

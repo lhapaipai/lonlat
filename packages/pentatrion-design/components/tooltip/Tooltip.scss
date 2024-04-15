@@ -3,5 +3,10 @@
 
     .ll-dialog {
         padding: .25rem .5rem;
+
+        &.description {
+            max-width: 300px;
+            font-size: var(--font-size-sm);
+        }
     }
 }

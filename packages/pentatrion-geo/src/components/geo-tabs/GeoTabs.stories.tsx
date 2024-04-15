@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Button, ButtonGroup, Checkbox, Input, Select } from "pentatrion-design";
+import { Button, Checkbox, Input, Select } from "pentatrion-design";
 import "./GeoTabs.scss";
 import { useState } from "react";
 
@@ -129,6 +129,7 @@ export const Search = () => {
                 options={profileOptions}
                 value={profile}
                 onChange={(o) => {
+                  // @ts-ignore
                   setProfile(o.target.value);
                 }}
               ></Select>
@@ -141,6 +142,7 @@ export const Search = () => {
               options={directionOptions}
               value={direction}
               onChange={(o) => {
+                // @ts-ignore
                 setDirection(o.target.value);
               }}
             ></Select>

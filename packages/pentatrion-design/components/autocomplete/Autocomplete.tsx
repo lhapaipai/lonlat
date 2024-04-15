@@ -69,16 +69,16 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
 function Autocomplete<O extends OptionLike = Option>(
   {
     icon = true,
+    placement = "bottom",
     placeholder = "Search...",
-    searchValue,
-    onChangeSearchValue,
     selection = null,
     onChangeSelection,
-    options,
-    placement = "bottom",
     AutocompleteOptionCustom,
     loading = false,
     clearSearchButton = false,
+    searchValue,
+    onChangeSearchValue,
+    options,
     selectOnFocus = true,
   }: AutocompleteProps<O>,
   inputRef: ForwardedRef<HTMLInputElement>,
@@ -186,7 +186,7 @@ function Autocomplete<O extends OptionLike = Option>(
 
   return (
     <div className="ll-autocomplete">
-      <div className={cn("ll-input")} ref={refs.setReference}>
+      <div className={cn("ll-input", "variant-normal")} ref={refs.setReference}>
         {icon !== false && (
           <div className="flex-center adornment">
             {icon === true ? <i className="fe-search"></i> : <i className={icon}></i>}
@@ -233,7 +233,7 @@ function Autocomplete<O extends OptionLike = Option>(
             <Button
               withRipple={false}
               icon
-              variant="underline"
+              variant="ghost"
               onClick={() => {
                 setIsOpen(false);
                 onChangeSelectionStable(null);

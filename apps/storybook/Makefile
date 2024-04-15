@@ -7,7 +7,8 @@ help:
 
 .PHONY: deploy
 deploy: ## Build and deploy examples
-	rsync -av \
+	pnpm build
+	rsync -av --delete \
 		$(local_path)/storybook-static/ \
 		berlin:prod/$(remote_host)
 	@echo "go : https://$(remote_host)"

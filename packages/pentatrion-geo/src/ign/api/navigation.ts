@@ -16,7 +16,7 @@ export function fetchIGNNavigationAPI<
   return fetchAPI(path, options, dataGeoserviceUrl);
 }
 
-type IsochroneOptions = Omit<NavigationAPISchemas["IsochroneRequest"], "point" | "resource">;
+export type IsochroneOptions = Omit<NavigationAPISchemas["IsochroneRequest"], "point" | "resource">;
 export async function ignIsochrone(
   [lon, lat]: Position,
   options: IsochroneOptions,
@@ -27,9 +27,11 @@ export async function ignIsochrone(
       ...options,
       point: `${lon},${lat}`,
       resource: "bdtopo-pgr",
+      geometryFormat: "geojson",
+      distanceUnit: "meter",
+      timeUnit: "minute",
     },
   });
-
   const { geometry, ...properties } = response;
 
   return {

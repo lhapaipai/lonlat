@@ -22,6 +22,7 @@ import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useCallback, useState } from "react";
 import { directionLocationsAddedFromSearch } from "~/direction/directionSlice";
+import Isochrone from "./Isochrone";
 
 function iconBySearchEngine(searchEngine: SearchEngine) {
   switch (searchEngine) {
@@ -60,7 +61,7 @@ export default function SearchTab() {
   );
 
   return (
-    <>
+    <div className="ll-quick-settings">
       <div>
         <div className="search-selector">
           {searchEngines.map((s) => (
@@ -77,6 +78,7 @@ export default function SearchTab() {
           ))}
         </div>
         <LazyAutocomplete
+          clearSearchButton={true}
           placeholder={T(`searchPlaceholder.${searchEngine}`)}
           debounce={1000}
           icon={iconBySearchEngine(searchEngine)}
@@ -97,37 +99,35 @@ export default function SearchTab() {
       {searchFeature && (
         <>
           <div>
-            <div>
-              <div className="setting">
-                <div className="text-hint">Coordonnées</div>
-                <div>
-                  <Button
-                    className="size-small text-hint"
-                    variant="ghost"
-                    color="weak"
-                    onClick={() => dispatch(coordsUnitChanged())}
-                  >
-                    {T(`coordsUnit.${coordsUnit}`)}{" "}
-                  </Button>
-                  &nbsp;
-                  <span
-                    className="can-copy"
-                    onClick={() => {
-                      const value = getCoordsStr([6.497886, 46.091857], coordsUnit);
-                      copy(value);
-                      notify(`${T("copiedIntoClipboard")} : ${value}`);
-                    }}
-                  >
-                    {getCoordsStr([6.497886, 46.091857], coordsUnit)}
-                  </span>
-                </div>
+            <div className="setting">
+              <div className="text-hint">{T("coordinates")}</div>
+              <div>
+                <Button
+                  className="size-small text-hint"
+                  variant="ghost"
+                  color="weak"
+                  onClick={() => dispatch(coordsUnitChanged())}
+                >
+                  {T(`coordsUnit.${coordsUnit}`)}{" "}
+                </Button>
+                &nbsp;
+                <span
+                  className="can-copy"
+                  onClick={() => {
+                    const value = getCoordsStr([6.497886, 46.091857], coordsUnit);
+                    copy(value);
+                    notify(`${T("copiedIntoClipboard")} : ${value}`);
+                  }}
+                >
+                  {getCoordsStr([6.497886, 46.091857], coordsUnit)}
+                </span>
               </div>
-              <div className="setting">
-                <div className="text-hint">Altitude</div>
-                <div>
-                  {searchFeature.geometry.coordinates[2] ?? "-"}
-                  <span className="text-hint"> m</span>
-                </div>
+            </div>
+            <div className="setting">
+              <div className="text-hint">{T("altitude")}</div>
+              <div>
+                {searchFeature.geometry.coordinates[2] ?? "-"}
+                <span className="text-hint"> m</span>
               </div>
             </div>
           </div>
@@ -145,7 +145,6 @@ export default function SearchTab() {
               color="weak"
               onClick={() => {
                 dispatch(directionLocationsAddedFromSearch(searchFeature));
-                dispatch(searchFeatureChanged(null));
                 dispatch(tabChanged("direction"));
               }}
             >
@@ -162,14 +161,24 @@ export default function SearchTab() {
           </div>
 
           {action === "raw" && (
-            <textarea
-              className="ll-textarea text-sm raw"
-              readOnly
-              defaultValue={stringifyGeoOption(searchFeature)}
-            />
+            <>
+              <div className="separator"></div>
+              <textarea
+                className="ll-textarea text-sm raw"
+                readOnly
+                defaultValue={stringifyGeoOption(searchFeature)}
+              />
+            </>
+          )}
+
+          {action === "isochrone" && (
+            <>
+              <div className="separator"></div>
+              <Isochrone />
+            </>
           )}
         </>
       )}
-    </>
+    </div>
   );
 }

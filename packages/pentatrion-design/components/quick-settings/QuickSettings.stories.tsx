@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Button, ButtonGroup, Checkbox, Input, Select } from "pentatrion-design";
+import { Button, Checkbox, Input, Select } from "pentatrion-design";
 import { useState } from "react";
 
 const meta = {
@@ -84,6 +84,7 @@ export const Basic = () => {
             options={profileOptions}
             value={profile}
             onChange={(o) => {
+              // @ts-ignore
               setProfile(o.target.value);
             }}
           ></Select>
@@ -96,6 +97,7 @@ export const Basic = () => {
           options={directionOptions}
           value={direction}
           onChange={(o) => {
+            // @ts-ignore
             setDirection(o.target.value);
           }}
         ></Select>

@@ -7,10 +7,10 @@ interface Props extends TooltipOptions {
   content: ReactNode;
 }
 
-export default function SimpleTooltip({ content, children, ...options }: Props) {
+export default function SimpleTooltip({ content, children, contentClassName, ...options }: Props) {
   return (
     <Tooltip {...options}>
-      <TooltipContent>{content}</TooltipContent>
+      <TooltipContent className={contentClassName}>{content}</TooltipContent>
       <TooltipTrigger asChild={isValidElement(children)}>{children}</TooltipTrigger>
     </Tooltip>
   );

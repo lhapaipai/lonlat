@@ -9,4 +9,5 @@ export interface TooltipOptions {
   openDelay?: number;
   closeDelay?: number;
   color?: ThemeColor | "default";
+  contentClassName?: string;
 }

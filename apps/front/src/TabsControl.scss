@@ -1,5 +1,5 @@
 .maplibregl-ctrl-tabs {
-    width: 400px;
+    width: 320px;
     position: relative;
     transition: transform .3s ease;
 
@@ -11,6 +11,16 @@
         .tabs-list-item button {
             padding: var(--space-2) 2rem;
         }
+    }
+
+    .tabs-content {
+        max-height: calc(100vh - 39px - 1rem);
+        overflow: auto;
+    }
+
+    .ll-quick-settings .actions>.help {
+        width: 34px;
+        flex: 0 0 34px;
     }
 
     .expand-all {

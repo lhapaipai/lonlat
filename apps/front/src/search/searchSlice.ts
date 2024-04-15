@@ -56,6 +56,7 @@ const searchSlice = createSlice({
   reducers: {
     searchFeatureChanged(state, action: PayloadAction<GeoPointOption | null>) {
       state.feature = action.payload;
+      state.isochrone = null;
     },
     searchFeaturePropertiesChanged(state, action: PayloadAction<FeatureProperties>) {
       if (!state.feature) {
@@ -69,6 +70,9 @@ const searchSlice = createSlice({
       }
       state.feature.geometry = action.payload;
     },
+    isochroneChanged(state, action: PayloadAction<IsochroneGeoJSON | null>) {
+      state.isochrone = action.payload;
+    },
   },
 });
 
@@ -78,9 +82,11 @@ export const {
   searchFeatureChanged,
   searchFeaturePropertiesChanged,
   searchFeatureGeometryChanged,
+  isochroneChanged,
 } = searchSlice.actions;
 
 export const selectSearchFeature = (state: RootState) => state.search.feature;
+export const selectIsochrone = (state: RootState) => state.search.isochrone;
 
 export const searchFeatureListenerMiddleware = createListenerMiddleware();
 searchFeatureListenerMiddleware.startListening({

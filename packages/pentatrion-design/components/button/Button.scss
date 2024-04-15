@@ -149,4 +149,10 @@
     &.with-prefix {
         padding-left: .25rem;
     }
+
+    .ll-loader {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }

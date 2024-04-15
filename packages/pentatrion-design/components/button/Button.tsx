@@ -67,7 +67,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size !== "medium" && `size-${size}`,
       selected && "selected",
       `variant-${variant}-${color}`,
-      `color-${color}`,
       `variant-${variant}`,
       notClickable && "not-cliquable",
     );

@@ -135,6 +135,52 @@ export const Context = () => {
         </TableBody>
       </Table>
 
+      <h3>Icons</h3>
+
+      <div className="flex gap-2" style={{ alignItems: "center" }}>
+        <Button icon variant="solid" color="weak">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="outline" color="weak">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="text" color="weak">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="ghost" color="weak">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="underline" color="weak">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button variant="solid" color="weak" className="with-icon with-prefix">
+          <i className="fe-cancel"></i>
+          Cancel
+        </Button>
+      </div>
+
+      <div className="flex gap-2" style={{ alignItems: "center" }}>
+        <Button icon variant="solid">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="outline">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="text">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="ghost">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="underline">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button variant="solid" className="with-icon with-prefix">
+          <i className="fe-cancel"></i>
+          Cancel
+        </Button>
+      </div>
+
       <h3>Selected</h3>
 
       <Table>

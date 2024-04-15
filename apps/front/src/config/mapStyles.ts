@@ -1,5 +1,6 @@
 import {
   CircleLayerSpecification,
+  FillLayerSpecification,
   LineLayerSpecification,
   SymbolLayerSpecification,
 } from "maplibre-gl";
@@ -11,6 +12,27 @@ export const roadLayerCasingStyle: {
   paint: {
     "line-color": "#111",
     "line-width": 7,
+  },
+};
+
+export const isochroneFillLayerStyle: {
+  paint?: FillLayerSpecification["paint"];
+  layout?: FillLayerSpecification["layout"];
+} = {
+  paint: {
+    "fill-color": "#000",
+    "fill-opacity": 0.3,
+  },
+};
+
+export const isochroneLineLayerStyle: {
+  paint?: LineLayerSpecification["paint"];
+  layout?: LineLayerSpecification["layout"];
+} = {
+  paint: {
+    "line-color": "#333",
+    "line-width": 3,
+    "line-dasharray": [1, 1],
   },
 };
 

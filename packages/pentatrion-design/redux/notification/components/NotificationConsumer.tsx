@@ -18,6 +18,11 @@ export default function NotificationConsumer({ children }: Props) {
     document.body.append(container.current);
   }
 
+  if (!container.current.parentElement) {
+    console.log("NotificationConsumer n'a pas de parent !!", container);
+    document.body.append(container.current);
+  }
+
   useEffect(() => {
     return () => {
       container.current && container.current.remove();

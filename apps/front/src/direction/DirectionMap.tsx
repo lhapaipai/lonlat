@@ -16,7 +16,7 @@ import {
   roadLayerCasingStyle,
   waypointsLayerStyle,
   roadArrowLayerStyle,
-} from "./mapStyles";
+} from "../config/mapStyles";
 
 export default function DirectionMap() {
   const dispatch = useAppDispatch();

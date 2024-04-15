@@ -495,6 +495,12 @@
       "search": [
         "ruler"
       ]
+    },
+    {
+      "uid": "3a230e539a4f3b904debd04c6c155034",
+      "css": "help",
+      "code": 59434,
+      "src": "entypo"
     }
   ]
 }

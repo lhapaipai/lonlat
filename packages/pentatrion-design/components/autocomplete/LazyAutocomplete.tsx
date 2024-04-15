@@ -15,6 +15,7 @@ interface Props<O extends OptionLike = Option>
     | "onChangeSelection"
     | "AutocompleteOptionCustom"
     | "loading"
+    | "clearSearchButton"
   > {
   onChangeSearchValueCallback: (searchValue: string) => Promise<O[]>;
   debounce?: number;

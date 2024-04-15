@@ -1,13 +1,32 @@
 {
   "searchPlaceholder": {
-    "ign-address": "Chercher une ville, une adresse en France",
-    "c2c": "Chercher un sommet, un col...",
-    "nominatim": "Chercher une ville, une adresse dans le monde"
+    "ign-address": "Rechercher un lieu en France",
+    "c2c": "Rehercher un sommet, un col...",
+    "nominatim": "Rechercher un lieu dans le monde"
   },
   "coordsUnit": {
     "lonlat": "lon/lat",
     "latlon": "lat/lon",
     "dms": "DMS"
   },
-  "copiedIntoClipboard": "Ajouté au presse papier"
+  "copiedIntoClipboard": "Ajouté au presse papier",
+  "coordinates": "Coordonnées",
+  "altitude": "Altitude",
+  "time": "Temps",
+  "distance": "Distance",
+  "compute": "Calculer",
+  "abort": "Annuler",
+  "isochrone": {
+    "description": "Permet de déterminer l’ensemble des lieux que l’on peut atteindre depuis un point de départ ou dont il faut partir pour atteindre un point d’arrivée en un temps (isochrone) ou une distance (isodistance) donné(e).",
+    "profile": "Mode de transport",
+    "direction": "Sens de parcours",
+    "constraints": "Passages autorisés",
+    "isochrone": "Isochrone",
+    "isodistance": "Isodistance"
+  },
+  "constraints": {
+    "highway": "Autoroute",
+    "bridge": "Pont",
+    "tunnel": "Tunnel"
+  }
 }

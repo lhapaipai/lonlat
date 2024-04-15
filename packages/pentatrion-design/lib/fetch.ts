@@ -83,11 +83,15 @@ export async function fetchAPI(
       return dataJson;
     }
 
-    if (!dataJson.message) {
-      dataJson.message = "request Error";
-    }
+    let errorMessage = "request Error";
 
-    throw new FetchError(dataJson.message, response.status, dataJson);
+    if (dataJson.message) {
+      errorMessage = dataJson.message;
+    }
+    if (dataJson.error?.message) {
+      errorMessage = dataJson.error?.message;
+    }
+    throw new FetchError(errorMessage, response.status, dataJson);
   }
 
   const dataText = await response.text();
