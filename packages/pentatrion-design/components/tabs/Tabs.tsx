@@ -49,6 +49,7 @@ export default function Tabs({
           return (
             <div key={id} className={cn("tabs-list-item", value === id && "selected")}>
               <button
+                className="variant-solid-primary"
                 onClick={(event) => {
                   event.stopPropagation();
                   event.preventDefault();

@@ -22,9 +22,9 @@ export default function useTooltip({
   placement = "top",
   open: controlledOpen,
   onOpen: setControlledOpen,
-  openDelay = 100,
+  openDelay = 500,
   closeDelay = 500,
-  color = "default",
+  color = "primary",
 }: TooltipOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 

@@ -501,6 +501,18 @@
       "css": "help",
       "code": 59434,
       "src": "entypo"
+    },
+    {
+      "uid": "7034e4d22866af82bef811f52fb1ba46",
+      "css": "code",
+      "code": 61729,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9a76bc135eac17d2c8b8ad4a5774fc87",
+      "css": "download",
+      "code": 59435,
+      "src": "fontawesome"
     }
   ]
 }

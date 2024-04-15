@@ -1,4 +1,4 @@
-import { Button, LazyAutocomplete, useCopyToClipboard } from "pentatrion-design";
+import { Button, LazyAutocomplete, SimpleTooltip, useCopyToClipboard } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "../store";
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import {
@@ -132,32 +132,38 @@ export default function SearchTab() {
             </div>
           </div>
           <div className="actions">
-            <Button
-              variant="light"
-              color="weak"
-              selected={action === "isochrone"}
-              onClick={() => setOrToggleAction("isochrone")}
-            >
-              <i className="fe-isochrone"></i>
-            </Button>
-            <Button
-              variant="light"
-              color="weak"
-              onClick={() => {
-                dispatch(directionLocationsAddedFromSearch(searchFeature));
-                dispatch(tabChanged("direction"));
-              }}
-            >
-              <i className="fe-route"></i>
-            </Button>
-            <Button
-              variant="light"
-              color="weak"
-              selected={action === "raw"}
-              onClick={() => setOrToggleAction("raw")}
-            >
-              RAW
-            </Button>
+            <SimpleTooltip content={T("tooltip.direction")} placement="top-start">
+              <Button
+                variant="light"
+                color="weak"
+                onClick={() => {
+                  dispatch(directionLocationsAddedFromSearch(searchFeature));
+                  dispatch(tabChanged("direction"));
+                }}
+              >
+                <i className="fe-route"></i>
+              </Button>
+            </SimpleTooltip>
+            <SimpleTooltip content={T("tooltip.code")} placement="top">
+              <Button
+                variant="light"
+                color="weak"
+                selected={action === "raw"}
+                onClick={() => setOrToggleAction("raw")}
+              >
+                <i className="fe-code"></i>
+              </Button>
+            </SimpleTooltip>
+            <SimpleTooltip content={T("tooltip.isochrone")} placement="top-end">
+              <Button
+                variant="light"
+                color="weak"
+                selected={action === "isochrone"}
+                onClick={() => setOrToggleAction("isochrone")}
+              >
+                <i className="fe-isochrone"></i>
+              </Button>
+            </SimpleTooltip>
           </div>
 
           {action === "raw" && (

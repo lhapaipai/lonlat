@@ -17,7 +17,7 @@
   "compute": "Calculer",
   "abort": "Annuler",
   "isochrone": {
-    "description": "Permet de déterminer l’ensemble des lieux que l’on peut atteindre depuis un point de départ ou dont il faut partir pour atteindre un point d’arrivée en un temps (isochrone) ou une distance (isodistance) donné(e).",
+    "description": "Permet de déterminer l’ensemble des lieux que l’on peut atteindre depuis un point de départ pour atteindre un point d’arrivée en un temps ou une distance donné(e).",
     "profile": "Mode de transport",
     "direction": "Sens de parcours",
     "constraints": "Passages autorisés",
@@ -28,5 +28,10 @@
     "highway": "Autoroute",
     "bridge": "Pont",
     "tunnel": "Tunnel"
+  },
+  "tooltip": {
+    "direction": "Calculer un itinéraire vers ce point",
+    "code": "Afficher la donnée brute",
+    "isochrone": "Calculer un temps de trajet"
   }
 }

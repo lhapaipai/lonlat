@@ -6,6 +6,10 @@
     .tabs-list {
         display: flex;
 
+        button:focus-visible {
+            outline: 2px solid var(--button-focus-visible-border-color);
+        }
+
         &.full-width .tabs-list-item {
             text-align: center;
             flex: 1 1 0;
