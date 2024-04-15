@@ -31,13 +31,14 @@ $size in $title-sizes {
 }
 
 $text-sizes: (
-    2xl: 20,
+    3xl: 20,
+    2xl: 19,
     xl: 18,
-    lg: 16,
-    rg: 14,
-    sm: 13,
-    xs: 12,
-    2xs: 10
+    lg: 17,
+    rg: 16,
+    sm: 14,
+    xs: 13,
+    2xs: 12,
 );
 
 @each $label,
@@ -106,5 +107,5 @@ mark {
 
 .text-hint {
     color: var(--text-hint);
-    font-size: .9rem;
+    font-size: var(--font-size-sm);
 }

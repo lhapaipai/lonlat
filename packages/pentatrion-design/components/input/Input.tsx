@@ -4,15 +4,16 @@ import cn from "classnames";
 import "./Input.scss";
 
 export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix"> {
+  variant?: "normal" | "ghost";
   disabled?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ disabled = false, prefix, suffix, className, ...rest }, ref) => {
+  ({ variant = "normal", disabled = false, prefix, suffix, className, ...rest }, ref) => {
     return (
-      <div className={cn("ll-input", disabled && "disabled", className)}>
+      <div className={cn("ll-input", disabled && "disabled", `variant-${variant}`, className)}>
         {prefix && (
           <div
             className={cn([

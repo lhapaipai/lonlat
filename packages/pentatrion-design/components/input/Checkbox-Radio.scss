@@ -93,7 +93,8 @@
 
 }
 
-.ll-input-radio-container {
+.ll-input-radio-container,
+.ll-input-checkbox-container {
     &.placement-block {
         display: flex;
         flex-direction: column;

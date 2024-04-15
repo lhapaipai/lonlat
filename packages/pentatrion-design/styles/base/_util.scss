@@ -3,3 +3,15 @@
     height: 24px;
     background-color: var(--border-default);
 }
+
+.variant-ghost {
+    .ll-indicator {
+        background-color: transparent;
+    }
+
+    &:hover {
+        .ll-indicator {
+            background-color: var(--border-default);
+        }
+    }
+}

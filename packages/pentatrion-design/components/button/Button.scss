@@ -15,6 +15,7 @@
     outline 0s;
     position: relative;
     overflow: clip;
+    line-height: 1.25rem;
     overflow-clip-margin: 1px;
 
     &:not(.variant-underline) {
@@ -22,6 +23,8 @@
 
         &.size-small {
             padding: .125rem .5rem;
+            font-size: var(--font-size-sm);
+            height: 1.5rem;
         }
 
         &.size-large {
@@ -119,6 +122,8 @@
         height: 2rem;
     }
 
+
+
     &.icon {
         padding: 0;
         display: inline-flex;
@@ -129,5 +134,19 @@
             box-shadow: none;
             border-radius: var(--border-radius-md);
         }
+    }
+
+    &.with-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            margin-right: .25rem;
+        }
+    }
+
+    &.with-prefix {
+        padding-left: .25rem;
     }
 }

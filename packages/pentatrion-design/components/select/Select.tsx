@@ -46,6 +46,7 @@ type ChangeEventLike = {
 };
 
 type Props<O extends Option = Option> = {
+  variant?: "normal" | "ghost";
   showArrow?: boolean;
   selectionClassName?: string;
   width?: string;
@@ -68,6 +69,7 @@ function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
 const Select = forwardRef<HTMLDivElement, Props>(
   (
     {
+      variant = "normal",
       showArrow = true,
       selectionClassName,
       width = "100%",
@@ -225,7 +227,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
     );
 
     return (
-      <div className={cn("ll-select")}>
+      <div className={cn("ll-select", `variant-${variant}`)}>
         <div
           className={cn("selection", selectionClassName, isOpen && "focus")}
           ref={ref}

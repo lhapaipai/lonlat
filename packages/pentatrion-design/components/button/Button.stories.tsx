@@ -93,6 +93,10 @@ export const Icons = () => (
     <Button icon variant="underline" color="weak">
       <i className="fe-cancel"></i>
     </Button>
+    <Button variant="solid" color="weak" className="with-icon with-prefix">
+      <i className="fe-cancel"></i>
+      Cancel
+    </Button>
   </div>
 );
 
