@@ -26,10 +26,8 @@ export async function ignIsochrone(
     body: {
       ...options,
       point: `${lon},${lat}`,
-      resource: "bdtopo-pgr",
+      resource: "bdtopo-valhalla",
       geometryFormat: "geojson",
-      distanceUnit: "meter",
-      timeUnit: "minute",
     },
   });
   const { geometry, ...properties } = response;

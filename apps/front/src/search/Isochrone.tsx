@@ -16,6 +16,14 @@ const directionOptions = [
   { value: "arrival", label: "Arrivée" },
 ];
 
+function minutesStr2secStr(minStr: string) {
+  const minutes = parseInt(minStr);
+  if (isNaN(minutes)) {
+    throw new Error(`unable to parse number value ${minStr}`);
+  }
+  return (minutes * 60).toString();
+}
+
 export default function Isochrone() {
   const [costType, setCostType] = useState<IsochroneOptions["costType"]>("time");
   const [costValue, setCostValue] = useState<string>("30");
@@ -56,6 +64,17 @@ export default function Isochrone() {
     setLoading(true);
     isAbortedRef.current = false;
 
+    const constraints: ("autoroute" | "tunnel" | "pont")[] = [];
+    if (!constraintHighway) {
+      constraints.push("autoroute");
+    }
+    if (!constraintTunnel) {
+      constraints.push("tunnel");
+    }
+    if (!constraintBridge) {
+      constraints.push("pont");
+    }
+
     // mock for development
     // new Promise((resolve) => {
     //   setTimeout(() => {
@@ -70,11 +89,24 @@ export default function Isochrone() {
     //       });
     //   }, 500);
     // })
+
     ignIsochrone(searchFeature.geometry.coordinates, {
       costType,
-      costValue,
+      costValue: costType === "distance" ? costValue : minutesStr2secStr(costValue),
       profile,
       direction,
+      distanceUnit: "meter",
+      timeUnit: "second",
+      ...(constraints.length > 0
+        ? {
+            constraints: constraints.map((value) => ({
+              key: "waytype",
+              constraintType: "banned",
+              operator: "=",
+              value,
+            })),
+          }
+        : {}),
     })
       .then((isochroneFeature: IsochroneGeoJSON) => {
         if (!isAbortedRef.current) {
