@@ -14,6 +14,8 @@ export type APISchemas = {
     operator?: string;
     value?: string;
   };
+  errorResponse: { error?: { errorType?: string; message?: string } };
+
   /* @example [object Object] */
   routeBody: {
     resource?: string;
@@ -23,6 +25,7 @@ export type APISchemas = {
     profile?: string;
     optimization?: string;
     constraints?: Array<APISchemas["constraint"]>;
+
     getSteps?: boolean;
     geometryFormat?: "geojson" | "polyline";
     getBbox?: boolean;
@@ -31,8 +34,26 @@ export type APISchemas = {
     crs?: string;
     waysAttributes?: Array<string>;
   };
-  errorResponse: { error?: { errorType?: string; message?: string } };
-  itineraire: {
+
+  routeQuery: {
+    resource: string;
+    start: APISchemas["point"];
+    end: APISchemas["point"];
+    intermediates?: APISchemas["coordinates"];
+    profile?: string;
+    optimization?: string;
+    constraints?: Array<string>;
+
+    getSteps?: boolean;
+    geometryFormat?: "geojson" | "polyline";
+    getBbox?: boolean;
+    distanceUnit?: string;
+    timeUnit?: string;
+    crs?: string;
+    waysAttributes?: Array<string>;
+  };
+
+  routeResponse: {
     start?: APISchemas["point"];
     end?: APISchemas["point"];
     geometry?: string;
@@ -111,26 +132,11 @@ export type APISchemas = {
 
 export type APIEndpoints = {
   "/route": {
-    responses: { get: APISchemas["itineraire"]; post: APISchemas["itineraire"] };
+    responses: { get: APISchemas["routeResponse"]; post: APISchemas["routeResponse"] };
     requests:
       | {
           method?: "get";
-          query: {
-            resource: string;
-            start: APISchemas["point"];
-            end: APISchemas["point"];
-            intermediates?: APISchemas["coordinates"];
-            profile?: string;
-            optimization?: string;
-            geometryFormat?: "geojson" | "polyline";
-            constraints?: Array<string>;
-            getSteps?: boolean;
-            getBbox?: boolean;
-            distanceUnit?: string;
-            timeUnit?: string;
-            crs?: string;
-            waysAttributes?: Array<string>;
-          };
+          query: APISchemas["routeQuery"];
         }
       | { method: "post"; body: APISchemas["routeBody"] };
   };
