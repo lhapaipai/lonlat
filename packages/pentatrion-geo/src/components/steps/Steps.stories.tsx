@@ -29,65 +29,57 @@ const meta = {
 export default meta;
 
 export const WithAutocompleteSortable = () => {
-  const [direction, setDirection] = useState<(GeoOption | NoDataOption)[]>([
+  const [locations, setLocations] = useState<(GeoOption | NoDataOption)[]>([
     createNodataFeature(),
     createNodataFeature(),
     createNodataFeature(),
   ]);
 
   function handleChangeSelection(index: number, selection: GeoOption | null) {
-    const itemId = direction[index].id;
+    const itemId = locations[index].id;
 
-    const itemsCopy = [...direction];
+    const itemsCopy = [...locations];
     itemsCopy[index] = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
 
-    setDirection(itemsCopy);
+    setLocations(itemsCopy);
   }
 
   function handleRemoveItem(index: number) {
-    setDirection(direction.filter((_, idx) => idx !== index));
+    setLocations(locations.filter((_, idx) => idx !== index));
   }
 
   function handleAppendItem() {
-    setDirection([...direction, createNodataFeature()]);
+    setLocations([...locations, createNodataFeature()]);
   }
 
   return (
     <>
       <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
         <Sortable
-          list={direction}
-          setList={setDirection}
+          list={locations}
+          setList={setLocations}
           animation={200}
           className="ll-sortable"
           handle=".handle"
         >
-          {direction.map((directionItem, index) => (
+          {locations.map((location, index) => (
             <Step
-              key={directionItem.id}
+              key={location.id}
               icon={getIndexLetter(index)}
-              status={index < direction.length - 1 ? "done" : "current"}
+              status={index < locations.length - 1 ? "done" : "current"}
               markerClassName="handle"
               contentClassName="flex"
             >
               <LazyAutocomplete
                 placeholder="Search a location..."
                 icon={false}
-                selection={isNoData(directionItem) ? null : directionItem}
+                selection={isNoData(location) ? null : location}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={handleChangeSearchValue}
                 AutocompleteOptionCustom={AutocompleteGeoOption}
               />
-              {direction.length > 2 && (
-                <Button
-                  icon
-                  variant="ghost"
-                  color="weak"
-                  onClick={() => handleRemoveItem(index)}
-                  style={{
-                    visibility: index === 0 ? "hidden" : "visible",
-                  }}
-                >
+              {locations.length > 2 && (
+                <Button icon variant="ghost" color="weak" onClick={() => handleRemoveItem(index)}>
                   <i className="fe-cancel"></i>
                 </Button>
               )}
@@ -113,7 +105,7 @@ export const WithAutocompleteSortable = () => {
       <div className="storybook-result">
         <div>Sélections :</div>
         <ul>
-          {direction.map((i) => (
+          {locations.map((i) => (
             <li key={i.id}>{isNoData(i) ? "non défini" : i.properties.label}</li>
           ))}
         </ul>

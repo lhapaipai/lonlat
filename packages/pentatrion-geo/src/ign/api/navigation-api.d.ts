@@ -234,7 +234,7 @@ export type APISchemas = {
 
     constraints?: (APISchemas["OsrmConstraint"] | APISchemas["PgrConstraint"])[];
 
-    portions: Array<{
+    portions: {
       start: string;
       end: string;
       /* Format: float */
@@ -248,9 +248,9 @@ export type APISchemas = {
       bbox?: [number, number, number, number];
 
       /**
-       * return empty array if getSteps set to "false"
+       * retourne un tableau vide si getSteps est à "false"
        */
-      steps: Array<{
+      steps: {
         geometry: string;
         duration: number;
         distance: number;
@@ -288,8 +288,8 @@ export type APISchemas = {
           modifier?: string | "right" | "slight right" | "left" | "slight left" | "straight";
         };
         // alerts?: Array<{ message?: string }>;
-      }>;
-    }>;
+      }[];
+    }[];
   };
 
   IsochroneRequest: {

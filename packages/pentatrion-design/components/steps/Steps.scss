@@ -3,13 +3,16 @@ $circleRadius: 18px;
 .ll-steps-extra {
     --circle-radius: #{$circleRadius};
 
-    .ll-button {
+    .ll-button:first-child {
         padding: calc(var(--circle-radius) / 2) calc(var(--circle-radius) / 2) calc(var(--circle-radius) / 2) calc(var(--circle-radius) * 1.5 + 1rem);
     }
 
     .ll-marker {
         transform: translate(calc(var(--circle-radius) / 3));
     }
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .ll-steps {
@@ -124,7 +127,7 @@ $circleRadius: 18px;
             position: relative;
 
             &:not(:last-child) {
-                padding-bottom: 1rem;
+                padding-bottom: .5rem;
             }
 
             &.align-center {
@@ -213,7 +216,7 @@ $circleRadius: 18px;
 
     .ll-button,
     .ll-button-placeholder {
-        margin: 1px 1px 1px .5rem;
+        margin: 2px 0px 2px .5rem;
     }
 
     .title {
