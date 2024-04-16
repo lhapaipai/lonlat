@@ -3,10 +3,13 @@ import { Feature, LineString, Polygon } from "geojson";
 export type IsochroneProperties = Omit<APISchemas["IsochroneResponse"], "geometry">;
 export type IsochroneGeoJSON = Feature<Polygon, IsochroneProperties>;
 
-/**
- * Les contraintes applicables dépendent de la ressource utilisée : osrm / pgr mais pas de la requête : isochrone / itinéraire.
- */
+export type ItineraireProperties = Omit<APISchemas["ItineraireResponse"], "portions" | "geometry">;
+export type ItineraireGeoJSON = Feature<LineString, ItineraireProperties>;
+
 export type APISchemas = {
+  /**
+   * Les contraintes applicables dépendent de la ressource utilisée : osrm / pgr mais pas de la requête : isochrone / itinéraire.
+   */
   OsrmConstraint: {
     key: "waytype";
     constraintType: "banned";
@@ -131,6 +134,7 @@ export type APISchemas = {
     /**
      * Valeur par défaut : "car" avec pgr
      *                     "pedestrian" avec osmr
+     * pourquoi ces différences ?
      */
     profile?: "car" | "pedestrian";
 
@@ -138,14 +142,16 @@ export type APISchemas = {
      * au plus court / au plus rapide
      * Valeur par défaut : "fastest" avec pgr
      *                     "shortest" avec osmr
+     * pourquoi ces différences ?
      */
     optimization: "shortest" | "fastest";
 
     /**
      * Permet de préciser si la réponse du service doit comporter ou non le détail
      * de l’itinéraire tronçon par tronçon. Si ce n’est pas le cas l’itinéraire est
-     * retourné avec une géométrie globale simplifiée et ses caractéristiques générales
+     * retourné avec uniquement la géométrie globale simplifiée et ses caractéristiques générales.
      * (durée et distance totales)
+     * la propriété "steps" contient alors un objet vide.
      * Valeur par défaut : "true"
      */
     getSteps?: "true" | "false";
@@ -160,7 +166,9 @@ export type APISchemas = {
      * bdtopo-valhala : "name"
      * bdtopo-pgr : "name"|"insee_commune_droite"|"restriction_de_poids_par_essieu"|"nature"|"importance"|"insee_commune_gauche"|"acces_pieton"|"bande_cyclable"|"nombre_de_voies"|"restriction_de_poids_total"|"position_par_rapport_au_sol"|"urbain"|"restriction_de_hauteur"|"itineraire_vert"|"cleabs"|"sens_de_circulation"|"vitesse_moyenne_vl"|"cpx_numero"|"cpx_classement_administratif"|"cpx_gestionnaire"|"cpx_toponyme_route_nommee"|"acces_vehicule_leger"|"nom_1_gauche"|"largeur_de_chaussee"|"nature_de_la_restriction"|"cpx_numero_route_europeenne"|"reserve_aux_bus"|"matieres_dangereuses_interdites"|"restriction_de_largeur"|"nom_1_droite"|"restriction_de_longueur"
      *
+     * Voir le détail dans ItineraireResponse. la présentation dépend de la ressource.
      * on peut définir jusqu'à 10 attributs
+     *
      */
     waysAttributes?: string[];
 
@@ -392,7 +400,7 @@ export type APIEndpoints = {
         }
       | {
           method: "post";
-          body: APISchemas["IsochroneRequest"];
+          body: APISchemas["ItineraireRequest"];
         };
   };
   "/navigation/isochrone": {

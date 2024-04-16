@@ -375,12 +375,6 @@ Value 3: [Value](https://GIScience.github.io/openrouteservice/documentation/extr
   arrival?: string;
 };
 
-export type RoutePropertiesWithHash = RouteProperties & {
-  coords_hash: string;
-};
-
-export type RouteFeatureResponse = Feature<LineString, RoutePropertiesWithHash>;
-
 export type APISchemas = {
   /* Snapping service endpoint. */
   SnappingRequest: {
@@ -3296,7 +3290,7 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
 };
 
 export type APIEndpoints = {
-  "/ors/v2/matrix/{profile}": {
+  "/v2/matrix/{profile}": {
     responses: { post: null };
     requests: {
       method: "post";
@@ -3340,7 +3334,7 @@ Default: m. */
       };
     };
   };
-  "/ors/v2/isochrones/{profile}": {
+  "/v2/isochrones/{profile}": {
     responses: { post: null };
     requests: {
       method: "post";
@@ -3561,7 +3555,7 @@ The polygon generation algorithm is based on Duckham and al. (2008) `"Efficient 
       };
     };
   };
-  "/ors/v2/directions/{profile}/geojson": {
+  "/v2/directions/{profile}/geojson": {
     responses: { post: APISchemas["GeoJSONRouteResponse"] };
     requests: {
       method: "post";
@@ -3858,9 +3852,9 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
       };
     };
   };
-  "/ors/v2/status": { responses: { get: null }; requests: { method?: "get" } };
-  "/ors/v2/health": { responses: { get: null }; requests: { method?: "get" } };
-  "/ors/geocode/search": {
+  "/v2/status": { responses: { get: null }; requests: { method?: "get" } };
+  "/v2/health": { responses: { get: null }; requests: { method?: "get" } };
+  "/geocode/search": {
     responses: {
       get: {
         geocoding?: {};
@@ -3914,7 +3908,7 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
       };
     };
   };
-  "/ors/geocode/search/structured": {
+  "/geocode/search/structured": {
     responses: {
       get: {
         geocoding?: {};
@@ -3974,7 +3968,7 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
       };
     };
   };
-  "/ors/geocode/reverse": {
+  "/geocode/reverse": {
     responses: {
       get: {
         geocoding?: {};
@@ -4014,7 +4008,7 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
       };
     };
   };
-  "/ors/pois": {
+  "/pois": {
     responses: {
       /* The POI response GeoJSON FeatureCollection */
       post: {
@@ -4181,7 +4175,7 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
       };
     };
   };
-  "/ors/elevation/line": {
+  "/elevation/line": {
     responses: {
       post: {
         attribution?: string;
@@ -4221,7 +4215,7 @@ factor: Multiplication factor range from 0 to 1. 0 is the shadow routing base fa
       };
     };
   };
-  "/ors/elevation/point": {
+  "/elevation/point": {
     responses: {
       get: {
         attribution?: string;

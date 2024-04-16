@@ -1,11 +1,13 @@
 import {
   createNodataFeature,
   filterDataFeatures,
-  hashCoords,
   GeoPointOption,
   RouteFeatureResponse,
   FeatureProperties,
   reverseGeocodeLonLatFeaturePoint,
+  ignItineraire,
+  hashRoute,
+  DirectionOptions,
 } from "pentatrion-geo";
 import {
   createAsyncThunk,
@@ -17,62 +19,89 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { NoDataOption } from "pentatrion-design";
-import { FeatureCollection, Feature, Point } from "geojson";
 import { getRoute } from "~/lib/api/openRouteService";
 import { errorAdded } from "pentatrion-design/redux";
+import { FeatureCollection, Point } from "geojson";
 
 type DirectionState = {
-  locations: (GeoPointOption | NoDataOption)[];
+  wayPoints: (GeoPointOption | NoDataOption)[];
   route: RouteFeatureResponse | null;
+  permissions: {
+    highway: boolean;
+    bridge: boolean;
+    tunnel: boolean;
+  };
+  optimization: DirectionOptions["optimization"];
+  profile: DirectionOptions["profile"];
 };
 
 const initialState: DirectionState = {
-  locations: [createNodataFeature(), createNodataFeature()],
+  wayPoints: [createNodataFeature(), createNodataFeature()],
   route: null,
+  permissions: {
+    highway: true,
+    bridge: true,
+    tunnel: true,
+  },
+  optimization: "fastest",
+  profile: "car",
 };
 
-export type LocationPayload = { index: number; feature: GeoPointOption | NoDataOption };
+export type WayPointPayload = { index: number; feature: GeoPointOption | NoDataOption };
 
 const directionSlice = createSlice({
   name: "direction",
   initialState,
   reducers: {
-    directionLocationsAddedFromSearch: {
+    directionWayPointsAddedFromSearch: {
       reducer(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
-        state.locations = action.payload;
+        state.wayPoints = action.payload;
       },
-      prepare(location: GeoPointOption) {
+      prepare(wayPoint: GeoPointOption) {
         return {
-          payload: [createNodataFeature(), location],
+          payload: [createNodataFeature(), wayPoint],
         };
       },
     },
-    directionLocationsSorted(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
-      state.locations = action.payload;
+    optimizationChanged(state, action: PayloadAction<DirectionOptions["optimization"]>) {
+      state.optimization = action.payload;
     },
-    directionLocationChanged(state, action: PayloadAction<LocationPayload>) {
+    profileChanged(state, action: PayloadAction<DirectionOptions["profile"]>) {
+      state.profile = action.payload;
+    },
+    permissionChanged(
+      state,
+      action: PayloadAction<{ key: keyof DirectionState["permissions"]; value: boolean }>,
+    ) {
+      const { key, value } = action.payload;
+      state.permissions[key] = value;
+    },
+    directionWayPointsChanged(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
+      state.wayPoints = action.payload;
+    },
+    directionWayPointChanged(state, action: PayloadAction<WayPointPayload>) {
       const { index, feature } = action.payload;
-      if (state.locations[index] === undefined) {
-        throw new Error("direction location index invalid");
+      if (state.wayPoints[index] === undefined) {
+        throw new Error("direction wayPoint index invalid");
       }
-      state.locations[index] = feature;
+      state.wayPoints[index] = feature;
     },
-    directionLocationPropertiesChanged(
+    directionWayPointPropertiesChanged(
       state,
       action: PayloadAction<{ index: number; properties: FeatureProperties }>,
     ) {
       const { index, properties } = action.payload;
-      if (state.locations[index] === undefined || state.locations[index].type === "nodata") {
-        throw new Error("direction location index invalid");
+      if (state.wayPoints[index] === undefined || state.wayPoints[index].type === "nodata") {
+        throw new Error("direction wayPoint index invalid");
       }
-      (state.locations[index] as GeoPointOption).properties = properties;
+      (state.wayPoints[index] as GeoPointOption).properties = properties;
     },
-    directionLocationRemoved(state, action: PayloadAction<number>) {
-      state.locations = state.locations.filter((_, idx) => idx !== action.payload);
+    directionWayPointRemoved(state, action: PayloadAction<number>) {
+      state.wayPoints = state.wayPoints.filter((_, idx) => idx !== action.payload);
     },
-    directionLocationInsertAt(state, action: PayloadAction<LocationPayload>) {
+    directionWayPointInsertAt(state, action: PayloadAction<WayPointPayload>) {
       const { feature, index } = action.payload;
-      state.locations.splice(index, 0, feature);
+      state.wayPoints.splice(index, 0, feature);
     },
     directionRouteChanged(state, action: PayloadAction<RouteFeatureResponse | null>) {
       state.route = action.payload;
@@ -88,56 +117,71 @@ const directionSlice = createSlice({
 export default directionSlice.reducer;
 
 export const {
-  directionLocationsAddedFromSearch,
-  directionLocationChanged,
-  directionLocationPropertiesChanged,
-  directionLocationsSorted,
+  directionWayPointsAddedFromSearch,
+  directionWayPointChanged,
+  directionWayPointPropertiesChanged,
+  directionWayPointsChanged,
   directionRouteChanged,
-  directionLocationRemoved,
-  directionLocationInsertAt,
+  directionWayPointRemoved,
+  directionWayPointInsertAt,
+  profileChanged,
+  permissionChanged,
+  optimizationChanged,
 } = directionSlice.actions;
 
-export const selectDirectionLocations = (state: RootState) => state.direction.locations;
-export const selectValidDirectionLocations = createSelector(selectDirectionLocations, (locations) =>
-  filterDataFeatures(locations),
+export const selectDirectionWayPoints = (state: RootState) => state.direction.wayPoints;
+export const selectValidDirectionWayPoints = createSelector(selectDirectionWayPoints, (wayPoints) =>
+  filterDataFeatures(wayPoints),
 );
 export const selectDirectionRoute = (state: RootState) => state.direction.route;
 
-export const selectDirectionWaypoints = createSelector(selectDirectionRoute, (route) => {
-  if (!route) {
-    return null;
-  }
+export const selectDirectionWaypoints = createSelector(
+  selectDirectionRoute,
+  (route): null | FeatureCollection<Point> => {
+    if (!route) {
+      return null;
+    }
+    return {
+      type: "FeatureCollection",
+      features: route.properties.wayPoints,
+    };
+    // const features: Feature<Point>[] = route.properties.way_points.map((index) => ({
+    //   type: "Feature",
+    //   geometry: {
+    //     type: "Point",
+    //     coordinates: route.geometry.coordinates[index],
+    //   },
+    //   properties: {},
+    // }));
 
-  const features: Feature<Point>[] = route.properties.way_points.map((index) => ({
-    type: "Feature",
-    geometry: {
-      type: "Point",
-      coordinates: route.geometry.coordinates[index],
-    },
-    properties: {},
-  }));
+    // const geojson: FeatureCollection<Point> = {
+    //   type: "FeatureCollection",
+    //   features,
+    // };
+    // return geojson;
+  },
+);
 
-  const geojson: FeatureCollection<Point> = {
-    type: "FeatureCollection",
-    features,
-  };
-  return geojson;
-});
+export const selectDirection = (state: RootState) => state.direction;
 
-export const directionLocationsListenerMiddleware = createListenerMiddleware();
-directionLocationsListenerMiddleware.startListening({
+export const directionWayPointsListenerMiddleware = createListenerMiddleware();
+directionWayPointsListenerMiddleware.startListening({
   matcher: isAnyOf(
-    directionLocationChanged,
-    directionLocationsSorted,
-    directionLocationRemoved,
-    directionLocationInsertAt,
+    directionWayPointChanged,
+    directionWayPointsChanged,
+    directionWayPointRemoved,
+    directionWayPointInsertAt,
+    profileChanged,
+    permissionChanged,
+    optimizationChanged,
   ),
   effect: async (_, { getState, dispatch }) => {
     const state = getState() as RootState;
-    const validLocations = filterDataFeatures(state.direction.locations);
-    if (validLocations.length >= 2) {
-      const newHash = hashCoords(validLocations);
-      if (!state.direction.route || newHash !== state.direction.route.properties.coords_hash) {
+    const { wayPoints, optimization, permissions, profile } = state.direction;
+    const validWayPoints = filterDataFeatures(wayPoints);
+    if (validWayPoints.length >= 2) {
+      const newHash = hashRoute(validWayPoints, optimization, profile, permissions);
+      if (!state.direction.route || newHash !== state.direction.route.properties.hash) {
         dispatch(fetchRoute());
       }
     } else {
@@ -148,14 +192,24 @@ directionLocationsListenerMiddleware.startListening({
 
 export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { getState }) => {
   const state = getState() as RootState;
-  const validLocations = filterDataFeatures(state.direction.locations);
+  const { wayPoints, optimization, permissions, profile } = state.direction;
+  const validWayPoints = filterDataFeatures(wayPoints);
+  console.log("fetching route");
 
-  return await getRoute(validLocations);
+  return await ignItineraire(
+    validWayPoints,
+    {
+      optimization,
+      profile,
+    },
+    permissions,
+  );
+  return await getRoute(validWayPoints);
 });
 
-export const directionLocationListenerMiddleware = createListenerMiddleware();
-directionLocationListenerMiddleware.startListening({
-  actionCreator: directionLocationChanged,
+export const directionWayPointListenerMiddleware = createListenerMiddleware();
+directionWayPointListenerMiddleware.startListening({
+  actionCreator: directionWayPointChanged,
   effect: async ({ payload: { index, feature } }, { dispatch }) => {
     if (!feature || feature.type === "nodata") {
       return;
@@ -166,7 +220,7 @@ directionLocationListenerMiddleware.startListening({
         .then((accurateProperties) => {
           if (accurateProperties && accurateProperties.type !== "lonlat") {
             dispatch(
-              directionLocationPropertiesChanged({
+              directionWayPointPropertiesChanged({
                 index,
                 properties: accurateProperties,
               }),

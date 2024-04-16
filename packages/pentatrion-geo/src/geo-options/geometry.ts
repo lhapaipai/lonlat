@@ -1,14 +1,16 @@
-import { LngLatBounds, LngLatLike } from "maplibre-gl";
+import { LngLat, LngLatBounds } from "maplibre-gl";
 import { GeoOption } from "..";
 import Fuse from "fuse.js";
 import { NoDataOption } from "pentatrion-design";
+import { Position } from "geojson";
 
-export function getBounds(points: LngLatLike[]) {
-  const bounds = points.reduce(
+export function getBounds([firstPoint, ...rest]: Position[]) {
+  const lngLat = LngLat.convert([firstPoint[0], firstPoint[1]]);
+  const bounds = rest.reduce(
     (bounds, point) => {
-      return bounds.extend(point);
+      return bounds.extend([point[0], point[1]]);
     },
-    new LngLatBounds(points[0], points[0]),
+    new LngLatBounds(lngLat, lngLat),
   );
 
   return bounds;

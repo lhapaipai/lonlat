@@ -21,7 +21,7 @@ import {
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useCallback, useState } from "react";
-import { directionLocationsAddedFromSearch } from "~/direction/directionSlice";
+import { directionWayPointsAddedFromSearch } from "~/direction/directionSlice";
 import Isochrone from "./Isochrone";
 
 function iconBySearchEngine(searchEngine: SearchEngine) {
@@ -137,7 +137,7 @@ export default function SearchTab() {
                 variant="light"
                 color="weak"
                 onClick={() => {
-                  dispatch(directionLocationsAddedFromSearch(searchFeature));
+                  dispatch(directionWayPointsAddedFromSearch(searchFeature));
                   dispatch(tabChanged("direction"));
                 }}
               >

@@ -16,18 +16,27 @@
   "distance": "Distance",
   "compute": "Calculer",
   "abort": "Annuler",
+  "addPoint": "Ajouter un point",
   "isochrone": {
     "description": "Permet de déterminer l’ensemble des lieux que l’on peut atteindre depuis un point de départ pour atteindre un point d’arrivée en un temps ou une distance donné(e).",
     "profile": "Mode de transport",
     "direction": "Sens de parcours",
-    "constraints": "Passages autorisés",
     "isochrone": "Isochrone",
     "isodistance": "Isodistance"
   },
-  "constraints": {
+  "permissions": {
+    "title": "Passages autorisés",
     "highway": "Autoroute",
     "bridge": "Pont",
     "tunnel": "Tunnel"
+  },
+  "profile": {
+    "car": "Voiture",
+    "pedestrian": "Piéton"
+  },
+  "optimization": {
+    "fastest": "Le plus rapide",
+    "shortest": "Le plus court"
   },
   "tooltip": {
     "direction": "Calculer un itinéraire vers ce point",

@@ -3,8 +3,8 @@ import searchSlice, { searchFeatureListenerMiddleware } from "../search/searchSl
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import mapSlice from "./mapSlice";
 import directionSlice, {
-  directionLocationListenerMiddleware,
-  directionLocationsListenerMiddleware,
+  directionWayPointListenerMiddleware,
+  directionWayPointsListenerMiddleware,
 } from "../direction/directionSlice";
 import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
 import layerSlice from "../layer/layerSlice";
@@ -22,8 +22,8 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
       .prepend(searchFeatureListenerMiddleware.middleware)
-      .prepend(directionLocationListenerMiddleware.middleware)
-      .prepend(directionLocationsListenerMiddleware.middleware)
+      .prepend(directionWayPointListenerMiddleware.middleware)
+      .prepend(directionWayPointsListenerMiddleware.middleware)
       .concat(errorCatcherMiddleware);
   },
 });

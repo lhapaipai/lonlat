@@ -3,10 +3,10 @@ import { LLMarker, RLLMarker, createLonLatFeaturePoint } from "pentatrion-geo";
 import { Event, RLayer, RSource } from "maplibre-react-components";
 
 import {
-  directionLocationChanged,
+  directionWayPointChanged,
   selectDirectionRoute,
   selectDirectionWaypoints,
-  selectValidDirectionLocations,
+  selectValidDirectionWayPoints,
 } from "./directionSlice";
 
 import { useAppDispatch, useAppSelector } from "../store";
@@ -21,30 +21,30 @@ import {
 export default function DirectionMap() {
   const dispatch = useAppDispatch();
 
-  const validDirectionLocations = useAppSelector(selectValidDirectionLocations);
+  const validDirectionWayPoints = useAppSelector(selectValidDirectionWayPoints);
   const directionRoute = useAppSelector(selectDirectionRoute);
   const directionWaypoints = useAppSelector(selectDirectionWaypoints);
 
-  function handleDirectionLocationDragEnd(e: Event<LLMarker>, index: number) {
+  function handleDirectionWayPointDragEnd(e: Event<LLMarker>, index: number) {
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
-    dispatch(directionLocationChanged({ index, feature: lonlatFeature }));
+    dispatch(directionWayPointChanged({ index, feature: lonlatFeature }));
   }
 
   return (
     <>
-      {validDirectionLocations.map(
+      {validDirectionWayPoints.map(
         (feature, index) =>
           feature?.geometry.type === "Point" && (
             <RLLMarker
               color={
-                [0, validDirectionLocations.length - 1].includes(index) ? "#ffe64b" : "#c0c0c0"
+                [0, validDirectionWayPoints.length - 1].includes(index) ? "#ffe64b" : "#c0c0c0"
               }
-              scale={[0, validDirectionLocations.length - 1].includes(index) ? 1 : 0.75}
+              scale={[0, validDirectionWayPoints.length - 1].includes(index) ? 1 : 0.75}
               key={feature.id}
               draggable={true}
               longitude={feature.geometry.coordinates[0]}
               latitude={feature.geometry.coordinates[1]}
-              onDragEnd={(e) => handleDirectionLocationDragEnd(e, index)}
+              onDragEnd={(e) => handleDirectionWayPointDragEnd(e, index)}
               text={getIndexLetter(index)}
             />
           ),
