@@ -23,6 +23,10 @@
         }
     }
 
+    .two-cols .setting>:nth-child(2) {
+        min-width: auto;
+    }
+
     .actions {
         display: flex;
         gap: .5rem;

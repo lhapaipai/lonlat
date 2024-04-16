@@ -1,3 +1,4 @@
+import { Position } from "geojson";
 import { GeoOption } from "../types";
 
 export function updateId<T extends { id: string }>(obj: T, id: string): T {
@@ -145,14 +146,16 @@ export function convertToDms(dd: number, isLng: boolean) {
 }
 
 type CoordsUnit = "lonlat" | "latlon" | "dms";
-export function getCoordsStr([lon, lat]: [number, number], coordsUnit: CoordsUnit) {
+export function getCoordsStr([lng, lat]: Position, coordsUnit: CoordsUnit) {
+  const lngRounded = Math.round(lng * 10000) / 10000;
+  const latRounded = Math.round(lat * 10000) / 10000;
   switch (coordsUnit) {
     case "lonlat":
-      return `${lon}, ${lat}`;
+      return `${lngRounded}, ${latRounded}`;
     case "latlon":
-      return `${lat}, ${lon}`;
+      return `${latRounded}, ${lngRounded}`;
     case "dms":
-      return `${convertToDms(lat, false)} ${convertToDms(lon, true)}`;
+      return `${convertToDms(lat, false)} ${convertToDms(lng, true)}`;
   }
 }
 
@@ -167,4 +170,26 @@ export function stringifyGeoOption(geoFeature: GeoOption) {
     undefined,
     2,
   );
+}
+
+export function m2km(value: number) {
+  return Math.round(value / 100) / 10;
+}
+
+export function getHours(seconds: number) {
+  return Math.floor(seconds / 3600);
+}
+
+export function getMinutes(seconds: number) {
+  return Math.floor((seconds % 3600) / 60);
+}
+
+export function humanDuration(seconds: number) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+
+  if (hours > 0) {
+    return `${hours}h ${minutes}min`;
+  }
+  return `${minutes}min`;
 }

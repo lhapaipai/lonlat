@@ -95,8 +95,8 @@ searchFeatureListenerMiddleware.startListening({
     if (!feature) {
       return;
     }
-
-    if (feature.properties.type !== "lonlat" || feature.properties.score !== 0) {
+    console.log(feature.properties.type, feature.properties.score, feature);
+    if (feature.properties.type === "lonlat" && feature.properties.score === 0) {
       reverseGeocodeLonLatFeaturePoint(feature)
         .then((accurateProperties) => {
           if (accurateProperties && accurateProperties.type !== "lonlat") {

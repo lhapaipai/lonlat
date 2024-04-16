@@ -114,12 +114,12 @@ export default function SearchTab() {
                 <span
                   className="can-copy"
                   onClick={() => {
-                    const value = getCoordsStr([6.497886, 46.091857], coordsUnit);
+                    const value = getCoordsStr(searchFeature.geometry.coordinates, coordsUnit);
                     copy(value);
                     notify(`${T("copiedIntoClipboard")} : ${value}`);
                   }}
                 >
-                  {getCoordsStr([6.497886, 46.091857], coordsUnit)}
+                  {getCoordsStr(searchFeature.geometry.coordinates, coordsUnit)}
                 </span>
               </div>
             </div>

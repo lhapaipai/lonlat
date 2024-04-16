@@ -5,16 +5,6 @@ import {
   SymbolLayerSpecification,
 } from "maplibre-gl";
 
-export const roadLayerCasingStyle: {
-  paint?: LineLayerSpecification["paint"];
-  layout?: LineLayerSpecification["layout"];
-} = {
-  paint: {
-    "line-color": "#111",
-    "line-width": 7,
-  },
-};
-
 export const isochroneFillLayerStyle: {
   paint?: FillLayerSpecification["paint"];
   layout?: FillLayerSpecification["layout"];
@@ -36,13 +26,37 @@ export const isochroneLineLayerStyle: {
   },
 };
 
+export const roadLayerCasingStyle: {
+  paint?: LineLayerSpecification["paint"];
+  layout?: LineLayerSpecification["layout"];
+} = {
+  paint: {
+    "line-color": "#111",
+    "line-width": {
+      stops: [
+        [14, 3.5],
+        [15, 6],
+        [16, 8.4],
+        [17, 18.3],
+      ],
+    },
+  },
+};
+
 export const roadLayerStyle: {
   paint?: LineLayerSpecification["paint"];
   layout?: LineLayerSpecification["layout"];
 } = {
   paint: {
     "line-color": "#ffe64b",
-    "line-width": 5,
+    "line-width": {
+      stops: [
+        [14, 2.3],
+        [15, 4.1],
+        [16, 6.1],
+        [17, 13.1],
+      ],
+    },
   },
 };
 

@@ -5,7 +5,6 @@ import {
   RouteFeatureResponse,
   FeatureProperties,
   reverseGeocodeLonLatFeaturePoint,
-  ignItineraire,
   hashRoute,
   DirectionOptions,
 } from "pentatrion-geo";
@@ -19,7 +18,7 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { NoDataOption } from "pentatrion-design";
-import { getRoute } from "~/lib/api/openRouteService";
+import { orsRoute } from "~/lib/api/openRouteService";
 import { errorAdded } from "pentatrion-design/redux";
 import { FeatureCollection, Point } from "geojson";
 
@@ -27,9 +26,9 @@ type DirectionState = {
   wayPoints: (GeoPointOption | NoDataOption)[];
   route: RouteFeatureResponse | null;
   permissions: {
-    highway: boolean;
-    bridge: boolean;
-    tunnel: boolean;
+    highways: boolean;
+    tollways: boolean;
+    border: boolean;
   };
   optimization: DirectionOptions["optimization"];
   profile: DirectionOptions["profile"];
@@ -39,11 +38,11 @@ const initialState: DirectionState = {
   wayPoints: [createNodataFeature(), createNodataFeature()],
   route: null,
   permissions: {
-    highway: true,
-    bridge: true,
-    tunnel: true,
+    highways: true,
+    tollways: true,
+    border: true,
   },
-  optimization: "fastest",
+  optimization: "recommended",
   profile: "car",
 };
 
@@ -145,20 +144,6 @@ export const selectDirectionWaypoints = createSelector(
       type: "FeatureCollection",
       features: route.properties.wayPoints,
     };
-    // const features: Feature<Point>[] = route.properties.way_points.map((index) => ({
-    //   type: "Feature",
-    //   geometry: {
-    //     type: "Point",
-    //     coordinates: route.geometry.coordinates[index],
-    //   },
-    //   properties: {},
-    // }));
-
-    // const geojson: FeatureCollection<Point> = {
-    //   type: "FeatureCollection",
-    //   features,
-    // };
-    // return geojson;
   },
 );
 
@@ -196,7 +181,15 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
   const validWayPoints = filterDataFeatures(wayPoints);
   console.log("fetching route");
 
-  return await ignItineraire(
+  // return await ignItineraire(
+  //   validWayPoints,
+  //   {
+  //     optimization,
+  //     profile,
+  //   },
+  //   permissions,
+  // );
+  return await orsRoute(
     validWayPoints,
     {
       optimization,
@@ -204,7 +197,6 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
     },
     permissions,
   );
-  return await getRoute(validWayPoints);
 });
 
 export const directionWayPointListenerMiddleware = createListenerMiddleware();
@@ -215,7 +207,7 @@ directionWayPointListenerMiddleware.startListening({
       return;
     }
 
-    if (feature.properties.type !== "lonlat" || feature.properties.score !== 0) {
+    if (feature.properties.type === "lonlat" && feature.properties.score === 0) {
       reverseGeocodeLonLatFeaturePoint(feature)
         .then((accurateProperties) => {
           if (accurateProperties && accurateProperties.type !== "lonlat") {

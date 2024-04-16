@@ -9,6 +9,8 @@ export type RouteProperties = {
   distanceUnit?: "meter" | "kilometer";
   distance: number;
   duration: number;
+  ascent?: number;
+  descent?: number;
   resource: string;
   hash: string;
 };
@@ -20,9 +22,9 @@ export type DirectionOptions = {
   optimization: DirectionOptimization;
 };
 
-export type DirectionOptimization = "shortest" | "fastest";
-export type DirectionProfile = "car" | "pedestrian";
-export type DirectionPermission = "highway" | "bridge" | "tunnel";
+export type DirectionOptimization = "shortest" | "fastest" | "recommended";
+export type DirectionProfile = "car" | "pedestrian" | "bike";
+export type DirectionPermission = "highways" | "tollways" | "bridge" | "tunnel" | "border";
 export type DirectionPermissionOptions = {
   [key in DirectionPermission]: boolean;
 };
@@ -31,7 +33,7 @@ export function hashRoute(
   features: GeoPointOption[],
   optimization: DirectionOptimization,
   profile: DirectionProfile,
-  permissions: DirectionPermissionOptions,
+  permissions: Partial<DirectionPermissionOptions>,
 ) {
   const featuresStr = features
     .map((feature) => {

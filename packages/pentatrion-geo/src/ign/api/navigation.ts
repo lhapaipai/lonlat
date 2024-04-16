@@ -53,7 +53,7 @@ function stringifyPosition(position: Position) {
 
 export async function ignItineraire(
   locations: GeoPointOption[],
-  options: DirectionOptions,
+  { profile, optimization }: DirectionOptions,
   permissions: DirectionPermissionOptions,
 ): Promise<RouteFeatureResponse> {
   const positions = locations.map((location) => location.geometry.coordinates);
@@ -63,14 +63,22 @@ export async function ignItineraire(
   const end = intermediates.splice(-1, 1)[0];
 
   const constraints: ("autoroute" | "tunnel" | "pont")[] = [];
-  !permissions.highway && constraints.push("autoroute");
+  !permissions.highways && constraints.push("autoroute");
   !permissions.bridge && constraints.push("pont");
   !permissions.tunnel && constraints.push("tunnel");
+
+  if (profile === "bike") {
+    throw Error("bike profile Not compatible with ignItineraire");
+  }
+  if (optimization === "recommended") {
+    throw Error("recommended optimization Not compatible with ignItineraire");
+  }
 
   const response = await fetchIGNNavigationAPI("/navigation/itineraire", {
     method: "post",
     body: {
-      ...options,
+      profile,
+      optimization,
       ...(intermediates.length > 0 ? { intermediates: intermediates.map(stringifyPosition) } : {}),
       ...(constraints.length > 0
         ? {
@@ -93,18 +101,7 @@ export async function ignItineraire(
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {
-    geometry,
-    profile,
-    optimization,
-    timeUnit,
-    distanceUnit,
-    distance,
-    duration,
-    resource,
-    bbox,
-  } = response;
+  const { geometry, timeUnit, distanceUnit, distance, duration, resource, bbox } = response;
 
   return {
     type: "Feature",
