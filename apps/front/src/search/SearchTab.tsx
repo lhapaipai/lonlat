@@ -87,7 +87,7 @@ export default function SearchTab() {
           onChangeSearchValueCallback={async (searchValue) => {
             try {
               const collection = await ignSearch(searchValue, viewState.center);
-              return parseIgnAddressCollection(collection);
+              return collection;
             } catch (err) {
               notifyError(err);
               throw err;

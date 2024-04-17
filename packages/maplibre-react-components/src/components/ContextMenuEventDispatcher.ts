@@ -34,17 +34,10 @@ export function ContextMenuEventDispatcher({ children, enabled = true }: Props) 
       );
     }
 
-    if (window.matchMedia("(pointer: coarse)").matches) {
-      map.on("click", handleContextMenu);
-    } else {
-      map.on("contextmenu", handleContextMenu);
-    }
+    const eventName = window.matchMedia("(pointer: coarse)").matches ? "click" : "contextmenu";
+    map.on(eventName, handleContextMenu);
     return () => {
-      if (window.matchMedia("(pointer: coarse)").matches) {
-        map.off("click", handleContextMenu);
-      } else {
-        map.off("contextmenu", handleContextMenu);
-      }
+      map.off(eventName, handleContextMenu);
     };
   }, [map, enabled]);
 

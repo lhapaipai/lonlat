@@ -23,7 +23,6 @@ import {
   createNodataFeature,
   ignSearch,
   isNoData,
-  parseIgnAddressCollection,
   updateId,
 } from "pentatrion-geo";
 import { selectViewState } from "../store/mapSlice";
@@ -97,7 +96,7 @@ export default function DirectionTab() {
                 onChangeSearchValueCallback={async (searchValue) => {
                   try {
                     const collection = await ignSearch(searchValue, viewState.center);
-                    return parseIgnAddressCollection(collection);
+                    return collection;
                   } catch (err) {
                     notifyError(err);
                     throw err;

@@ -55,28 +55,15 @@ export const reverseGeocodeLonLatFeaturePoint = async (
     throw new Error("only Point geometry can be reverse geocoded");
   }
 
-  const collection = await ignReverseSearch(feature.geometry.coordinates);
+  const reversedGeoOption = await ignReverseSearch(feature.geometry.coordinates);
 
-  if (collection.features.length === 0) {
+  if (reversedGeoOption === null) {
     // we update the score to 1 we don't try anymore to reverse geocode
     // prevent circular reference
     return updateFeaturePropertiesScore(feature.properties, 1);
   }
 
-  const reversedFeature = collection.features[0];
-
-  // the best result returns an address more than 50m away we will judge
-  // that it does not match
-  if (
-    reversedFeature.properties.distance === undefined ||
-    reversedFeature.properties.distance > 100
-  ) {
-    // we update the score to 1 we don't try anymore to reverse geocode
-    // prevent circular reference
-    return updateFeaturePropertiesScore(feature.properties, 1);
-  }
-
-  return reversedFeature.properties;
+  return reversedGeoOption.properties;
 };
 
 export const getFeaturePointAltitude = async (feature: GeoPointOption): Promise<Point | null> => {
