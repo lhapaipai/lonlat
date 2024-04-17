@@ -28,15 +28,22 @@
         top: 0px;
         right: 100%;
 
+        @media (min-width: 700px) {
+            top: -0.5rem;
+        }
+
         button {
             padding: 1.25rem;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
 
-            @media (max-width: 700px) {
-                border-top-left-radius: 0;
 
-            }
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            max-width: none;
         }
     }
 }

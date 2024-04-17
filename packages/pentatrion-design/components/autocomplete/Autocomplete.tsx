@@ -194,6 +194,7 @@ function Autocomplete<O extends OptionLike = Option>(
           </div>
         )}
         <input
+          spellCheck="false"
           className={cn("input-element")}
           ref={inputRef}
           type="search"

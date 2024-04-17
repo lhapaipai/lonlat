@@ -27,7 +27,7 @@ export function fetchOpenRouteServiceAPI<
 export async function orsRoute(
   wayPoints: GeoPointOption[],
   options: DirectionOptions,
-  permissions: Partial<DirectionPermissionOptions>,
+  avoid: Partial<DirectionPermissionOptions>,
 ): Promise<RouteFeatureResponse | null> {
   let profile: ORSProfile = "driving-car";
   switch (options.profile) {
@@ -43,8 +43,8 @@ export async function orsRoute(
   }
 
   const avoidFeatures: ("highways" | "tollways")[] = [];
-  !permissions.highways && avoidFeatures.push("highways");
-  !permissions.tollways && avoidFeatures.push("tollways");
+  !avoid.highways && avoidFeatures.push("highways");
+  !avoid.tollways && avoidFeatures.push("tollways");
 
   const collection = await fetchOpenRouteServiceAPI("/v2/directions/{profile}/geojson", {
     urlParams: {
@@ -61,7 +61,7 @@ export async function orsRoute(
       elevation: true,
       options: {
         avoid_features: avoidFeatures,
-        avoid_borders: permissions.border ? "none" : "all",
+        avoid_borders: avoid.border ? "none" : "all",
       },
     },
   });
@@ -95,7 +95,7 @@ export async function orsRoute(
       ascent: ascent && Math.round(ascent),
       descent: descent && Math.round(descent),
       resource: "open-route-service",
-      hash: hashRoute(wayPoints, options.optimization, options.profile, permissions),
+      hash: hashRoute(wayPoints, options.optimization, options.profile, avoid),
     },
     geometry,
     bbox,

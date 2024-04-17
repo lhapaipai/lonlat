@@ -27,8 +27,8 @@
     "isochrone": "Isochrone",
     "isodistance": "Isodistance"
   },
-  "permissions": {
-    "title": "Passages autorisés",
+  "avoid": {
+    "title": "Éviter",
     "highway": "Autoroute",
     "bridge": "Pont",
     "tunnel": "Tunnel",

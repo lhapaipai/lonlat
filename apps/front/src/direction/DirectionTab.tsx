@@ -51,7 +51,7 @@ function placeholderByIndex(idx: number, length: number) {
 
 export default function DirectionTab() {
   const direction = useAppSelector(selectDirection);
-  const { wayPoints, optimization, permissions, profile, route } = direction;
+  const { wayPoints, optimization, avoid, profile, route } = direction;
   const dispatch = useAppDispatch();
   const { notifyError } = useNotification();
   const { T } = useT();
@@ -217,31 +217,31 @@ export default function DirectionTab() {
           </div>
 
           <div className="setting constraints">
-            <div>{T("permissions.title")}</div>
+            <div>{T("avoid.title")}</div>
             <div className="ll-input-checkbox-container placement-block">
               <Checkbox
-                checked={permissions.highways}
+                checked={avoid.highways}
                 onChange={(e) =>
                   dispatch(permissionChanged({ key: "highways", value: e.target.checked }))
                 }
               >
-                <span>{T("permissions.highway")}</span>
+                <span>{T("avoid.highway")}</span>
               </Checkbox>
               <Checkbox
-                checked={permissions.tollways}
+                checked={avoid.tollways}
                 onChange={(e) =>
                   dispatch(permissionChanged({ key: "tollways", value: e.target.checked }))
                 }
               >
-                <span>{T("permissions.tollway")}</span>
+                <span>{T("avoid.tollway")}</span>
               </Checkbox>
               <Checkbox
-                checked={permissions.border}
+                checked={avoid.border}
                 onChange={(e) =>
                   dispatch(permissionChanged({ key: "border", value: e.target.checked }))
                 }
               >
-                <span>{T("permissions.border")}</span>
+                <span>{T("avoid.border")}</span>
               </Checkbox>
             </div>
           </div>

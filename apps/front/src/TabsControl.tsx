@@ -52,11 +52,18 @@ function TabsControl() {
         <div className="expand-all">
           <Button
             icon
-            variant="light"
+            variant="ghost"
             color="weak"
             onClick={() => dispatch(distractionFreeChanged(false))}
           >
-            <i className="fe-menu"></i>
+            <img
+              width="32"
+              height="32"
+              src="/favicon-white-32x32.png"
+              srcSet="/favicon-white-32x32.png 1x, /favicon-white-64x64.png 2x"
+              alt="LonLat logo"
+              className="logo"
+            />
           </Button>
         </div>
       )}

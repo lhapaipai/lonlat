@@ -25,7 +25,7 @@ import { FeatureCollection, Point } from "geojson";
 type DirectionState = {
   wayPoints: (GeoPointOption | NoDataOption)[];
   route: RouteFeatureResponse | null;
-  permissions: {
+  avoid: {
     highways: boolean;
     tollways: boolean;
     border: boolean;
@@ -37,7 +37,7 @@ type DirectionState = {
 const initialState: DirectionState = {
   wayPoints: [createNodataFeature(), createNodataFeature()],
   route: null,
-  permissions: {
+  avoid: {
     highways: true,
     tollways: true,
     border: true,
@@ -70,10 +70,10 @@ const directionSlice = createSlice({
     },
     permissionChanged(
       state,
-      action: PayloadAction<{ key: keyof DirectionState["permissions"]; value: boolean }>,
+      action: PayloadAction<{ key: keyof DirectionState["avoid"]; value: boolean }>,
     ) {
       const { key, value } = action.payload;
-      state.permissions[key] = value;
+      state.avoid[key] = value;
     },
     directionWayPointsChanged(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
       state.wayPoints = action.payload;
@@ -162,10 +162,10 @@ directionWayPointsListenerMiddleware.startListening({
   ),
   effect: async (_, { getState, dispatch }) => {
     const state = getState() as RootState;
-    const { wayPoints, optimization, permissions, profile } = state.direction;
+    const { wayPoints, optimization, avoid, profile } = state.direction;
     const validWayPoints = filterDataFeatures(wayPoints);
     if (validWayPoints.length >= 2) {
-      const newHash = hashRoute(validWayPoints, optimization, profile, permissions);
+      const newHash = hashRoute(validWayPoints, optimization, profile, avoid);
       if (!state.direction.route || newHash !== state.direction.route.properties.hash) {
         dispatch(fetchRoute());
       }
@@ -177,7 +177,7 @@ directionWayPointsListenerMiddleware.startListening({
 
 export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { getState }) => {
   const state = getState() as RootState;
-  const { wayPoints, optimization, permissions, profile } = state.direction;
+  const { wayPoints, optimization, avoid, profile } = state.direction;
   const validWayPoints = filterDataFeatures(wayPoints);
   console.log("fetching route");
 
@@ -187,7 +187,7 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
   //     optimization,
   //     profile,
   //   },
-  //   permissions,
+  //   avoid,
   // );
   return await orsRoute(
     validWayPoints,
@@ -195,7 +195,7 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
       optimization,
       profile,
     },
-    permissions,
+    avoid,
   );
 });
 

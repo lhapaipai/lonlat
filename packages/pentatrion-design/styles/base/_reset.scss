@@ -194,3 +194,12 @@ hr {
 *:focus:not(:focus-visible) {
     outline: none;
 }
+
+input,
+textarea {
+    appearance: none;
+}
+
+input::-webkit-search-cancel-button {
+    appearance: none;
+}

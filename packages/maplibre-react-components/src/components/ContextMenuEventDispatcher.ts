@@ -23,6 +23,7 @@ export function ContextMenuEventDispatcher({ children, enabled = true }: Props) 
     }
 
     function handleContextMenu({ originalEvent, point, lngLat }: MapMouseEvent) {
+      console.log("map.contextmenu");
       document.dispatchEvent(
         new CustomEvent<MaplibreContextmenuEventDetail>("maplibre-contextmenu", {
           detail: {

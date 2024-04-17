@@ -29,7 +29,7 @@ import TabsControl from "./TabsControl";
 import { RFrameRateControl } from "pentatrion-geo";
 
 function handleAfterMapInstanciation(map: Map) {
-  map.loadImage("/icons/arrow.png").then((img) => {
+  map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {
     if (!map.hasImage("oneway")) {
       map.addImage("oneway", img.data);
     }

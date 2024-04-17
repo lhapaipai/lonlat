@@ -227,28 +227,28 @@ export default function Isochrone() {
       )}
 
       <div className="setting constraints">
-        <div>{T("permissions.title")}</div>
+        <div>{T("avoid.title")}</div>
         <div className="ll-input-checkbox-container placement-block">
           <Checkbox
             disabled={loading}
             checked={constraintHighway}
             onChange={(e) => setConstraintHighway(e.target.checked)}
           >
-            <span>{T("permissions.highway")}</span>
+            <span>{T("avoid.highway")}</span>
           </Checkbox>
           <Checkbox
             disabled={loading}
             checked={constraintBridge}
             onChange={(e) => setConstraintBridge(e.target.checked)}
           >
-            <span>{T("permissions.bridge")}</span>
+            <span>{T("avoid.bridge")}</span>
           </Checkbox>
           <Checkbox
             disabled={loading}
             checked={constraintTunnel}
             onChange={(e) => setConstraintTunnel(e.target.checked)}
           >
-            <span>{T("permissions.tunnel")}</span>
+            <span>{T("avoid.tunnel")}</span>
           </Checkbox>
         </div>
       </div>
