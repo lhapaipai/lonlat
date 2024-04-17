@@ -23,7 +23,6 @@ export function ContextMenuEventDispatcher({ children, enabled = true }: Props) 
     }
 
     function handleContextMenu({ originalEvent, point, lngLat }: MapMouseEvent) {
-      console.log("map.contextmenu");
       document.dispatchEvent(
         new CustomEvent<MaplibreContextmenuEventDetail>("maplibre-contextmenu", {
           detail: {
@@ -35,9 +34,17 @@ export function ContextMenuEventDispatcher({ children, enabled = true }: Props) 
       );
     }
 
-    map.on("contextmenu", handleContextMenu);
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      map.on("click", handleContextMenu);
+    } else {
+      map.on("contextmenu", handleContextMenu);
+    }
     return () => {
-      map.off("contextmenu", handleContextMenu);
+      if (window.matchMedia("(pointer: coarse)").matches) {
+        map.off("click", handleContextMenu);
+      } else {
+        map.off("contextmenu", handleContextMenu);
+      }
     };
   }, [map, enabled]);
 

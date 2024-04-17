@@ -1,4 +1,12 @@
-import { Dispatch, SetStateAction, useCallback, useEffect, useState } from "react";
+import {
+  Dispatch,
+  MutableRefObject,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 export function useDebounce<T>(value: T, delay?: number): [T, Dispatch<SetStateAction<T>>] {
   const [debouncedValue, setImmediateValue] = useState(value);
@@ -10,6 +18,20 @@ export function useDebounce<T>(value: T, delay?: number): [T, Dispatch<SetStateA
     };
   }, [value, delay]);
   return [debouncedValue, setImmediateValue];
+}
+
+export function useRefDebounce<T>(value: T, delay?: number): MutableRefObject<T> {
+  const debouncedValueRef = useRef(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      debouncedValueRef.current = value;
+    }, delay || 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+  return debouncedValueRef;
 }
 
 export function useStateDebounce<T>(

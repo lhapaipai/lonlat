@@ -6,5 +6,5 @@ export { useCombinedRefs } from "./useCombinedRefs";
 export { useIsClosing } from "./useIsClosing";
 export { usePrevious } from "./usePrevious";
 export { useEventCallback } from "./useEventCallback";
-export { useDebounce, useStateDebounce } from "./useDebounce";
+export { useDebounce, useStateDebounce, useRefDebounce } from "./useDebounce";
 export { useCopyToClipboard } from "./useCopyToClipboard";

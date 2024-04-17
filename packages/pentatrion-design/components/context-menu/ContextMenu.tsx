@@ -2,7 +2,6 @@ import {
   Children,
   ComponentPropsWithRef,
   ReactElement,
-  ReactNode,
   cloneElement,
   isValidElement,
   useEffect,
@@ -11,7 +10,6 @@ import {
 } from "react";
 import {
   FloatingFocusManager,
-  FloatingOverlay,
   FloatingPortal,
   autoUpdate,
   flip,
@@ -32,7 +30,7 @@ import "../select/Select.scss";
 import "./ContextMenu.scss";
 import { ContextMenuItemProps } from "./ContextMenuItem";
 import cn from "classnames";
-import { useEventCallback } from "../..";
+import { useDebounce, useEventCallback, useRefDebounce } from "../..";
 
 interface Props extends ComponentPropsWithRef<"div"> {
   compact?: boolean;
@@ -47,7 +45,7 @@ export default function ContextMenu({
 }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-
+  const isOpenDebounceRef = useRefDebounce(isOpen, 100);
   const contextEvent = useRef<MouseEvent | CustomEvent | null>(null);
   const listItemsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const listContentRef = useRef(
@@ -73,7 +71,10 @@ export default function ContextMenu({
       }),
       shift({ padding: 10 }),
     ],
-    placement: "right-start",
+    /**
+     * it is better to be less demanding on small screen sizes to see the content displayed correctly
+     */
+    placement: window.matchMedia("(min-width: 700px)").matches ? "right-start" : undefined,
     strategy: "fixed",
     whileElementsMounted: autoUpdate,
   });
@@ -101,6 +102,9 @@ export default function ContextMenu({
   ]);
 
   const onContextMenuStable = useEventCallback(function onContextMenu(e: MouseEvent | CustomEvent) {
+    if (isOpenDebounceRef.current) {
+      return;
+    }
     e.preventDefault();
 
     const originalEvent = e instanceof MouseEvent ? e : (e.detail.originalEvent as MouseEvent);
@@ -134,51 +138,49 @@ export default function ContextMenu({
   return (
     <FloatingPortal>
       {isOpen && (
-        <FloatingOverlay lockScroll className="ll-portail-overlay">
-          <FloatingFocusManager context={context} initialFocus={refs.floating}>
+        <FloatingFocusManager context={context} initialFocus={refs.floating}>
+          <div
+            className="ll-portail-dialog"
+            ref={refs.setFloating}
+            style={{ ...floatingStyles, ...style }}
+            {...getFloatingProps()}
+          >
             <div
-              className="ll-portail-dialog"
-              ref={refs.setFloating}
-              style={{ ...floatingStyles, ...style }}
-              {...getFloatingProps()}
+              className={cn(
+                "ll-dialog",
+                "ll-context-menu",
+                `placement-${context.placement}`,
+                "ll-select-dialog",
+                "ll-animate",
+                "fade-in-list",
+                compact && "compact",
+              )}
             >
-              <div
-                className={cn(
-                  "ll-dialog",
-                  "ll-context-menu",
-                  `placement-${context.placement}`,
-                  "ll-select-dialog",
-                  "ll-animate",
-                  "fade-in-list",
-                  compact && "compact",
-                )}
-              >
-                {Children.map(
-                  children,
-                  (child, index) =>
-                    isValidElement<ContextMenuItemProps>(child) &&
-                    cloneElement(
-                      child,
-                      getItemProps({
-                        tabIndex: activeIndex === index ? 0 : -1,
-                        ref(node: HTMLButtonElement) {
-                          listItemsRef.current[index] = node;
-                        },
-                        onClick() {
-                          child.props.onClick?.(contextEvent.current);
-                          setIsOpen(false);
-                        },
-                        onMouseUp() {
-                          child.props.onClick?.(contextEvent.current);
-                          setIsOpen(false);
-                        },
-                      }),
-                    ),
-                )}
-              </div>
+              {Children.map(
+                children,
+                (child, index) =>
+                  isValidElement<ContextMenuItemProps>(child) &&
+                  cloneElement(
+                    child,
+                    getItemProps({
+                      tabIndex: activeIndex === index ? 0 : -1,
+                      ref(node: HTMLButtonElement) {
+                        listItemsRef.current[index] = node;
+                      },
+                      onClick() {
+                        child.props.onClick?.(contextEvent.current);
+                        setIsOpen(false);
+                      },
+                      onMouseUp() {
+                        child.props.onClick?.(contextEvent.current);
+                        setIsOpen(false);
+                      },
+                    }),
+                  ),
+              )}
             </div>
-          </FloatingFocusManager>
-        </FloatingOverlay>
+          </div>
+        </FloatingFocusManager>
       )}
     </FloatingPortal>
   );

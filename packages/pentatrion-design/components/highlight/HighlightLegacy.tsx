@@ -6,7 +6,6 @@ interface Props {
 }
 
 export default function Hightlight({ zones, fallback = "" }: Props) {
-  console.log(zones);
   if (!zones) {
     return fallback;
   }

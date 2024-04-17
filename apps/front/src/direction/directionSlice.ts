@@ -179,7 +179,6 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
   const state = getState() as RootState;
   const { wayPoints, optimization, constraints, profile } = state.direction;
   const validWayPoints = filterDataFeatures(wayPoints);
-  console.log("fetching route");
 
   // return await ignItineraire(
   //   validWayPoints,
