@@ -25,10 +25,10 @@ import { FeatureCollection, Point } from "geojson";
 type DirectionState = {
   wayPoints: (GeoPointOption | NoDataOption)[];
   route: RouteFeatureResponse | null;
-  avoid: {
-    highways: boolean;
-    tollways: boolean;
-    border: boolean;
+  constraints: {
+    avoidHighways: boolean;
+    avoidTollways: boolean;
+    avoidBorders: boolean;
   };
   optimization: DirectionOptions["optimization"];
   profile: DirectionOptions["profile"];
@@ -37,10 +37,10 @@ type DirectionState = {
 const initialState: DirectionState = {
   wayPoints: [createNodataFeature(), createNodataFeature()],
   route: null,
-  avoid: {
-    highways: true,
-    tollways: true,
-    border: true,
+  constraints: {
+    avoidHighways: false,
+    avoidTollways: false,
+    avoidBorders: false,
   },
   optimization: "recommended",
   profile: "car",
@@ -68,12 +68,12 @@ const directionSlice = createSlice({
     profileChanged(state, action: PayloadAction<DirectionOptions["profile"]>) {
       state.profile = action.payload;
     },
-    permissionChanged(
+    constraintChanged(
       state,
-      action: PayloadAction<{ key: keyof DirectionState["avoid"]; value: boolean }>,
+      action: PayloadAction<{ key: keyof DirectionState["constraints"]; value: boolean }>,
     ) {
       const { key, value } = action.payload;
-      state.avoid[key] = value;
+      state.constraints[key] = value;
     },
     directionWayPointsChanged(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
       state.wayPoints = action.payload;
@@ -124,7 +124,7 @@ export const {
   directionWayPointRemoved,
   directionWayPointInsertAt,
   profileChanged,
-  permissionChanged,
+  constraintChanged,
   optimizationChanged,
 } = directionSlice.actions;
 
@@ -157,15 +157,15 @@ directionWayPointsListenerMiddleware.startListening({
     directionWayPointRemoved,
     directionWayPointInsertAt,
     profileChanged,
-    permissionChanged,
+    constraintChanged,
     optimizationChanged,
   ),
   effect: async (_, { getState, dispatch }) => {
     const state = getState() as RootState;
-    const { wayPoints, optimization, avoid, profile } = state.direction;
+    const { wayPoints, optimization, constraints, profile } = state.direction;
     const validWayPoints = filterDataFeatures(wayPoints);
     if (validWayPoints.length >= 2) {
-      const newHash = hashRoute(validWayPoints, optimization, profile, avoid);
+      const newHash = hashRoute(validWayPoints, optimization, profile, constraints);
       if (!state.direction.route || newHash !== state.direction.route.properties.hash) {
         dispatch(fetchRoute());
       }
@@ -177,7 +177,7 @@ directionWayPointsListenerMiddleware.startListening({
 
 export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { getState }) => {
   const state = getState() as RootState;
-  const { wayPoints, optimization, avoid, profile } = state.direction;
+  const { wayPoints, optimization, constraints, profile } = state.direction;
   const validWayPoints = filterDataFeatures(wayPoints);
   console.log("fetching route");
 
@@ -187,16 +187,13 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
   //     optimization,
   //     profile,
   //   },
-  //   avoid,
+  //   constraints,
   // );
-  return await orsRoute(
-    validWayPoints,
-    {
-      optimization,
-      profile,
-    },
-    avoid,
-  );
+  return await orsRoute(validWayPoints, {
+    optimization,
+    profile,
+    constraints,
+  });
 });
 
 export const directionWayPointListenerMiddleware = createListenerMiddleware();

@@ -27,13 +27,13 @@
     "isochrone": "Isochrone",
     "isodistance": "Isodistance"
   },
-  "avoid": {
-    "title": "Éviter",
-    "highway": "Autoroute",
-    "bridge": "Pont",
-    "tunnel": "Tunnel",
-    "tollway": "Sections à péage",
-    "border": "Frontières"
+  "constraints": {
+    "avoid": "Éviter",
+    "highways": "Autoroutes",
+    "bridges": "Ponts",
+    "tunnels": "Tunnels",
+    "tollways": "Sections à péage",
+    "borders": "Frontières"
   },
   "profile": {
     "car": "Voiture",

@@ -20,7 +20,7 @@ import {
   selectDirection,
   optimizationChanged,
   profileChanged,
-  permissionChanged,
+  constraintChanged,
 } from "./directionSlice";
 import {
   AutocompleteGeoOption,
@@ -51,7 +51,7 @@ function placeholderByIndex(idx: number, length: number) {
 
 export default function DirectionTab() {
   const direction = useAppSelector(selectDirection);
-  const { wayPoints, optimization, avoid, profile, route } = direction;
+  const { wayPoints, optimization, constraints, profile, route } = direction;
   const dispatch = useAppDispatch();
   const { notifyError } = useNotification();
   const { T } = useT();
@@ -217,31 +217,31 @@ export default function DirectionTab() {
           </div>
 
           <div className="setting constraints">
-            <div>{T("avoid.title")}</div>
+            <div>{T("constraints.avoid")}</div>
             <div className="ll-input-checkbox-container placement-block">
               <Checkbox
-                checked={avoid.highways}
+                checked={constraints.avoidTollways}
                 onChange={(e) =>
-                  dispatch(permissionChanged({ key: "highways", value: e.target.checked }))
+                  dispatch(constraintChanged({ key: "avoidTollways", value: e.target.checked }))
                 }
               >
-                <span>{T("avoid.highway")}</span>
+                <span>{T("constraints.tollways")}</span>
+              </Checkbox>{" "}
+              <Checkbox
+                checked={constraints.avoidHighways}
+                onChange={(e) =>
+                  dispatch(constraintChanged({ key: "avoidHighways", value: e.target.checked }))
+                }
+              >
+                <span>{T("constraints.highways")}</span>
               </Checkbox>
               <Checkbox
-                checked={avoid.tollways}
+                checked={constraints.avoidBorders}
                 onChange={(e) =>
-                  dispatch(permissionChanged({ key: "tollways", value: e.target.checked }))
+                  dispatch(constraintChanged({ key: "avoidBorders", value: e.target.checked }))
                 }
               >
-                <span>{T("avoid.tollway")}</span>
-              </Checkbox>
-              <Checkbox
-                checked={avoid.border}
-                onChange={(e) =>
-                  dispatch(permissionChanged({ key: "border", value: e.target.checked }))
-                }
-              >
-                <span>{T("avoid.border")}</span>
+                <span>{T("constraints.borders")}</span>
               </Checkbox>
             </div>
           </div>

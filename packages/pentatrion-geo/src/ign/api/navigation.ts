@@ -10,10 +10,10 @@ import { dataGeoserviceUrl } from "../url";
 import { LineString, Position } from "geojson";
 import {
   DirectionOptions,
-  DirectionPermissionOptions,
   RouteFeatureResponse,
   hashRoute,
   GeoPointOption,
+  IsochroneOptions,
 } from "../..";
 
 export function fetchIGNNavigationAPI<
@@ -24,18 +24,37 @@ export function fetchIGNNavigationAPI<
   return fetchAPI(path, options, dataGeoserviceUrl);
 }
 
-export type IsochroneOptions = Omit<NavigationAPISchemas["IsochroneRequest"], "point" | "resource">;
 export async function ignIsochrone(
   position: Position,
-  options: IsochroneOptions,
+  { costType, costValue, direction, profile, constraints }: IsochroneOptions,
 ): Promise<IsochroneGeoJSON> {
+  const bannedFeatures: ("autoroute" | "tunnel" | "pont")[] = [];
+  constraints.avoidHighways && bannedFeatures.push("autoroute");
+  constraints.avoidBridges && bannedFeatures.push("pont");
+  constraints.avoidTunnels && bannedFeatures.push("tunnel");
+
   const response = await fetchIGNNavigationAPI("/navigation/isochrone", {
     method: "post",
     body: {
-      ...options,
+      costType,
+      costValue: (costType === "distance" ? costValue : costValue * 60).toString(),
+      profile,
+      direction,
+      distanceUnit: "meter",
+      timeUnit: "second",
       point: stringifyPosition(position),
       resource: "bdtopo-valhalla",
       geometryFormat: "geojson",
+      ...(bannedFeatures.length > 0
+        ? {
+            constraints: bannedFeatures.map((value) => ({
+              key: "waytype",
+              constraintType: "banned",
+              operator: "=",
+              value,
+            })),
+          }
+        : {}),
     },
   });
   const { geometry, ...properties } = response;
@@ -53,8 +72,7 @@ function stringifyPosition(position: Position) {
 
 export async function ignItineraire(
   locations: GeoPointOption[],
-  { profile, optimization }: DirectionOptions,
-  permissions: DirectionPermissionOptions,
+  { profile, optimization, constraints }: DirectionOptions,
 ): Promise<RouteFeatureResponse> {
   const positions = locations.map((location) => location.geometry.coordinates);
 
@@ -62,10 +80,10 @@ export async function ignItineraire(
   const start = intermediates.splice(0, 1)[0];
   const end = intermediates.splice(-1, 1)[0];
 
-  const constraints: ("autoroute" | "tunnel" | "pont")[] = [];
-  !permissions.highways && constraints.push("autoroute");
-  !permissions.bridge && constraints.push("pont");
-  !permissions.tunnel && constraints.push("tunnel");
+  const bannedFeatures: ("autoroute" | "tunnel" | "pont")[] = [];
+  constraints.avoidHighways && bannedFeatures.push("autoroute");
+  constraints.avoidBridges && bannedFeatures.push("pont");
+  constraints.avoidTunnels && bannedFeatures.push("tunnel");
 
   if (profile === "bike") {
     throw Error("bike profile Not compatible with ignItineraire");
@@ -80,9 +98,9 @@ export async function ignItineraire(
       profile,
       optimization,
       ...(intermediates.length > 0 ? { intermediates: intermediates.map(stringifyPosition) } : {}),
-      ...(constraints.length > 0
+      ...(bannedFeatures.length > 0
         ? {
-            constraints: constraints.map((value) => ({
+            constraints: bannedFeatures.map((value) => ({
               key: "waytype",
               constraintType: "banned",
               operator: "=",
@@ -114,7 +132,7 @@ export async function ignItineraire(
       distance,
       duration,
       resource,
-      hash: hashRoute(locations, optimization, profile, permissions),
+      hash: hashRoute(locations, optimization, profile, constraints),
     },
     geometry: geometry as LineString,
     bbox,

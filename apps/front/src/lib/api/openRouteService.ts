@@ -1,7 +1,6 @@
 import { openRouteServiceToken, openRouteServiceUrl } from "~/config/constants";
 import {
   DirectionOptions,
-  DirectionPermissionOptions,
   GeoPointOption,
   OrsAPIPaths,
   OrsAPIRequests,
@@ -27,41 +26,42 @@ export function fetchOpenRouteServiceAPI<
 export async function orsRoute(
   wayPoints: GeoPointOption[],
   options: DirectionOptions,
-  avoid: Partial<DirectionPermissionOptions>,
 ): Promise<RouteFeatureResponse | null> {
-  let profile: ORSProfile = "driving-car";
-  switch (options.profile) {
+  const { profile, optimization, constraints } = options;
+
+  let orsProfile: ORSProfile = "driving-car";
+  switch (profile) {
     case "car":
-      profile = "driving-car";
+      orsProfile = "driving-car";
       break;
     case "bike":
-      profile = "cycling-regular";
+      orsProfile = "cycling-regular";
       break;
     case "pedestrian":
-      profile = "foot-hiking";
+      orsProfile = "foot-hiking";
       break;
   }
 
   const avoidFeatures: ("highways" | "tollways")[] = [];
-  !avoid.highways && avoidFeatures.push("highways");
-  !avoid.tollways && avoidFeatures.push("tollways");
+  constraints.avoidHighways && avoidFeatures.push("highways");
+  constraints.avoidTollways && avoidFeatures.push("tollways");
 
   const collection = await fetchOpenRouteServiceAPI("/v2/directions/{profile}/geojson", {
     urlParams: {
-      profile,
+      profile: orsProfile,
     },
     method: "post",
     body: {
       id: nanoid(),
       coordinates: wayPoints.map((wayPoint) => wayPoint.geometry.coordinates),
-      preference: options.optimization,
+      preference: optimization,
       units: "m",
       geometry: true,
       instructions: false,
       elevation: true,
       options: {
         avoid_features: avoidFeatures,
-        avoid_borders: avoid.border ? "none" : "all",
+        avoid_borders: constraints.avoidBorders ? "none" : "all",
       },
     },
   });
@@ -86,7 +86,7 @@ export async function orsRoute(
     type: "Feature",
     properties: {
       wayPoints,
-      profile: options.profile,
+      profile,
       optimization: options.optimization,
       timeUnit: "second",
       distanceUnit: "meter",
@@ -95,7 +95,7 @@ export async function orsRoute(
       ascent: ascent && Math.round(ascent),
       descent: descent && Math.round(descent),
       resource: "open-route-service",
-      hash: hashRoute(wayPoints, options.optimization, options.profile, avoid),
+      hash: hashRoute(wayPoints, options.optimization, profile, constraints),
     },
     geometry,
     bbox,

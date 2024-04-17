@@ -16,22 +16,14 @@ const directionOptions = [
   { value: "arrival", label: "Arrivée" },
 ];
 
-function minutesStr2secStr(minStr: string) {
-  const minutes = parseInt(minStr);
-  if (isNaN(minutes)) {
-    throw new Error(`unable to parse number value ${minStr}`);
-  }
-  return (minutes * 60).toString();
-}
-
 export default function Isochrone() {
   const [costType, setCostType] = useState<IsochroneOptions["costType"]>("time");
-  const [costValue, setCostValue] = useState<string>("30");
+  const [costValue, setCostValue] = useState(30);
   const [profile, setProfile] = useState<IsochroneOptions["profile"]>("car");
   const [direction, setDirection] = useState<IsochroneOptions["direction"]>("departure");
-  const [constraintHighway, setConstraintHighway] = useState(true);
-  const [constraintBridge, setConstraintBridge] = useState(true);
-  const [constraintTunnel, setConstraintTunnel] = useState(true);
+  const [avoidHighways, setAvoidHighways] = useState(false);
+  const [avoidBridges, setAvoidBridges] = useState(false);
+  const [avoidTunnels, setAvoidTunnels] = useState(false);
   const { T } = useT();
   const searchFeature = useAppSelector(selectSearchFeature);
   const dispatch = useAppDispatch();
@@ -47,9 +39,9 @@ export default function Isochrone() {
     costValue,
     profile,
     direction,
-    constraintBridge,
-    constraintHighway,
-    constraintTunnel,
+    avoidBridges,
+    avoidHighways,
+    avoidTunnels,
   ]);
 
   useEffect(() => {
@@ -63,17 +55,6 @@ export default function Isochrone() {
     }
     setLoading(true);
     isAbortedRef.current = false;
-
-    const constraints: ("autoroute" | "tunnel" | "pont")[] = [];
-    if (!constraintHighway) {
-      constraints.push("autoroute");
-    }
-    if (!constraintTunnel) {
-      constraints.push("tunnel");
-    }
-    if (!constraintBridge) {
-      constraints.push("pont");
-    }
 
     // mock for development
     // new Promise((resolve) => {
@@ -92,21 +73,14 @@ export default function Isochrone() {
 
     ignIsochrone(searchFeature.geometry.coordinates, {
       costType,
-      costValue: costType === "distance" ? costValue : minutesStr2secStr(costValue),
+      costValue,
       profile,
       direction,
-      distanceUnit: "meter",
-      timeUnit: "second",
-      ...(constraints.length > 0
-        ? {
-            constraints: constraints.map((value) => ({
-              key: "waytype",
-              constraintType: "banned",
-              operator: "=",
-              value,
-            })),
-          }
-        : {}),
+      constraints: {
+        avoidHighways,
+        avoidBridges,
+        avoidTunnels,
+      },
     })
       .then((isochroneFeature: IsochroneGeoJSON) => {
         if (!isAbortedRef.current) {
@@ -132,7 +106,7 @@ export default function Isochrone() {
           onClick={() => {
             if (costType !== "time") {
               setCostType("time");
-              setCostValue("30");
+              setCostValue(30);
             }
           }}
         >
@@ -148,7 +122,7 @@ export default function Isochrone() {
           onClick={() => {
             if (costType !== "distance") {
               setCostType("distance");
-              setCostValue("10");
+              setCostValue(10);
             }
           }}
         >
@@ -210,7 +184,7 @@ export default function Isochrone() {
             variant="ghost"
             suffix="min"
             value={costValue}
-            onChange={(e) => setCostValue(e.target.value)}
+            onChange={(e) => setCostValue(e.target.valueAsNumber)}
           />
         </div>
       ) : (
@@ -221,34 +195,34 @@ export default function Isochrone() {
             variant="ghost"
             suffix="km"
             value={costValue}
-            onChange={(e) => setCostValue(e.target.value)}
+            onChange={(e) => setCostValue(e.target.valueAsNumber)}
           />
         </div>
       )}
 
       <div className="setting constraints">
-        <div>{T("avoid.title")}</div>
+        <div>{T("constraints.avoid")}</div>
         <div className="ll-input-checkbox-container placement-block">
           <Checkbox
             disabled={loading}
-            checked={constraintHighway}
-            onChange={(e) => setConstraintHighway(e.target.checked)}
+            checked={avoidHighways}
+            onChange={(e) => setAvoidHighways(e.target.checked)}
           >
-            <span>{T("avoid.highway")}</span>
+            <span>{T("constraints.highways")}</span>
           </Checkbox>
           <Checkbox
             disabled={loading}
-            checked={constraintBridge}
-            onChange={(e) => setConstraintBridge(e.target.checked)}
+            checked={avoidBridges}
+            onChange={(e) => setAvoidBridges(e.target.checked)}
           >
-            <span>{T("avoid.bridge")}</span>
+            <span>{T("constraints.bridges")}</span>
           </Checkbox>
           <Checkbox
             disabled={loading}
-            checked={constraintTunnel}
-            onChange={(e) => setConstraintTunnel(e.target.checked)}
+            checked={avoidTunnels}
+            onChange={(e) => setAvoidTunnels(e.target.checked)}
           >
-            <span>{T("avoid.tunnel")}</span>
+            <span>{T("constraints.tunnels")}</span>
           </Checkbox>
         </div>
       </div>
