@@ -219,22 +219,27 @@ export default function DirectionTab() {
           <div className="setting constraints">
             <div>{T("constraints.avoid")}</div>
             <div className="ll-input-checkbox-container placement-block">
-              <Checkbox
-                checked={constraints.avoidTollways}
-                onChange={(e) =>
-                  dispatch(constraintChanged({ key: "avoidTollways", value: e.target.checked }))
-                }
-              >
-                <span>{T("constraints.tollways")}</span>
-              </Checkbox>{" "}
-              <Checkbox
-                checked={constraints.avoidHighways}
-                onChange={(e) =>
-                  dispatch(constraintChanged({ key: "avoidHighways", value: e.target.checked }))
-                }
-              >
-                <span>{T("constraints.highways")}</span>
-              </Checkbox>
+              {profile === "car" && (
+                <>
+                  <Checkbox
+                    checked={constraints.avoidTollways}
+                    onChange={(e) =>
+                      dispatch(constraintChanged({ key: "avoidTollways", value: e.target.checked }))
+                    }
+                  >
+                    <span>{T("constraints.tollways")}</span>
+                  </Checkbox>{" "}
+                  <Checkbox
+                    checked={constraints.avoidHighways}
+                    onChange={(e) =>
+                      dispatch(constraintChanged({ key: "avoidHighways", value: e.target.checked }))
+                    }
+                  >
+                    <span>{T("constraints.highways")}</span>
+                  </Checkbox>
+                </>
+              )}
+
               <Checkbox
                 checked={constraints.avoidBorders}
                 onChange={(e) =>

@@ -165,7 +165,7 @@ directionWayPointsListenerMiddleware.startListening({
     const { wayPoints, optimization, constraints, profile } = state.direction;
     const validWayPoints = filterDataFeatures(wayPoints);
     if (validWayPoints.length >= 2) {
-      const newHash = hashRoute(validWayPoints, optimization, profile, constraints);
+      const newHash = hashRoute(validWayPoints, { optimization, constraints, profile });
       if (!state.direction.route || newHash !== state.direction.route.properties.hash) {
         dispatch(fetchRoute());
       }

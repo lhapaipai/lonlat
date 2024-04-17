@@ -43,8 +43,10 @@ export async function orsRoute(
   }
 
   const avoidFeatures: ("highways" | "tollways")[] = [];
-  constraints.avoidHighways && avoidFeatures.push("highways");
-  constraints.avoidTollways && avoidFeatures.push("tollways");
+  if (profile === "car") {
+    constraints.avoidHighways && avoidFeatures.push("highways");
+    constraints.avoidTollways && avoidFeatures.push("tollways");
+  }
 
   const collection = await fetchOpenRouteServiceAPI("/v2/directions/{profile}/geojson", {
     urlParams: {
@@ -95,7 +97,7 @@ export async function orsRoute(
       ascent: ascent && Math.round(ascent),
       descent: descent && Math.round(descent),
       resource: "open-route-service",
-      hash: hashRoute(wayPoints, options.optimization, profile, constraints),
+      hash: hashRoute(wayPoints, options),
     },
     geometry,
     bbox,

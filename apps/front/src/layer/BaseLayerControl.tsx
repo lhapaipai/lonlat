@@ -52,26 +52,27 @@ export default function BaseLayerControl() {
   return createPortal(
     collapsed ? (
       <Button
-        className={cn("layer", "base")}
+        className={cn("layer", "base", "principal")}
         key="current-layer"
         onClick={() => setCollapsed(false)}
       >
         <div className="type">
           <i className={`fe-${currentLayer.type}`}></i>
         </div>
-        <img
-          className="preview"
-          src="/assets/graphics/sprites/layers-1x.jpg"
-          srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-          style={{ objectPosition: `0px ${currentLayer.offsetY}px` }}
-        />
+        <div className="preview-container">
+          <img
+            className="preview"
+            src="/assets/graphics/sprites/layers-1x.jpg"
+            srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+            style={{ objectPosition: `0px ${currentLayer.offsetY}px` }}
+          />
+        </div>
         <div className="legend text-sm">{currentLayer.label}</div>
       </Button>
     ) : (
       <>
         <FloatingOverlay
           className={cn(["ll-modal-overlay", "ll-animate", "fade-in-opacity"])}
-          lockScroll
           onClick={() => setCollapsed(true)}
         />
         <ButtonGroup direction="vertical" className="filters">
