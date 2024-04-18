@@ -102,7 +102,7 @@ export default function DirectionTab() {
                     throw err;
                   }
                 }}
-                AutocompleteOptionCustom={AutocompleteGeoOption}
+                autocompleteOptionComponent={AutocompleteGeoOption}
               />
               {locations.length > 2 &&
                 (index === 0 ? (

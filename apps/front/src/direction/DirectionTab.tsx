@@ -32,13 +32,13 @@ import {
   ignSearch,
   isNoData,
   m2km,
-  parseIgnAddressCollection,
   updateId,
 } from "pentatrion-geo";
 import { selectViewState } from "../store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo, useState } from "react";
+import { inputSearchDebounceDelay } from "~/config/constants";
 
 function placeholderByIndex(idx: number, length: number) {
   if (idx === 0) {
@@ -144,7 +144,8 @@ export default function DirectionTab() {
                 placeholder={placeholderByIndex(index, wayPoints.length)}
                 icon={false}
                 selection={isNoData(wayPoint) ? null : wayPoint}
-                debounce={50}
+                debounce={inputSearchDebounceDelay}
+                autocompleteOptionComponent={AutocompleteGeoOption}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={async (searchValue) => {
                   try {
@@ -155,7 +156,6 @@ export default function DirectionTab() {
                     throw err;
                   }
                 }}
-                AutocompleteOptionCustom={AutocompleteGeoOption}
               />
               {wayPoints.length > 2 && (
                 <SimpleTooltip

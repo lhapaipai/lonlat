@@ -16,6 +16,32 @@ export function getTypeLabel(type?: string) {
     street: "Rue",
     locality: "Lieu-dit",
     municipality: "Ville",
+
+    access: "Accès",
+    base_camp: "Camp", // de base",
+    bisse: "Bisse",
+    bivouac: "Bivouac",
+    camp_site: "Camping",
+    canyon: "Canyon",
+    cave: "Grotte",
+    climbing_indoor: "S.A.E.",
+    climbing_outdoor: "Escalade",
+    gite: "Gite",
+    hut: "Refuge",
+    lake: "Lac",
+    local_product: "Produits",
+    misc: "Divers",
+    paragliding_landing: "Parapente", // atterissage
+    paragliding_takeoff: "Parapente", // décollage
+    pass: "Col",
+    shelter: "Abri",
+    slackline_spot: "Slackline",
+    summit: "Sommet",
+    virtual: "Virtuel",
+    waterfall: "Cascade",
+    waterpoint: "Eau",
+    weather_station: "Météo",
+    webcam: "Webcam",
   };
 
   return types[type] || null;

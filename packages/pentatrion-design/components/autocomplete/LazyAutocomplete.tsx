@@ -13,7 +13,7 @@ interface Props<O extends OptionLike = Option>
     | "placeholder"
     | "selection"
     | "onChangeSelection"
-    | "AutocompleteOptionCustom"
+    | "autocompleteOptionComponent"
     | "loading"
     | "clearSearchButton"
   > {

@@ -1,0 +1,58 @@
+.ll-dialog {
+    .option.search {
+        --prefix-size: 48px;
+        display: flex;
+        height: var(--prefix-size);
+        padding: 0;
+
+        .prefix {
+            width: var(--prefix-size);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .icon {
+            flex: 1;
+            font-size: 1.25rem;
+        }
+
+        i {
+            margin: 0;
+        }
+
+        .type {
+            text-align: center;
+            height: 18px;
+            line-height: 10px;
+            color: var(--text-hint);
+            font-size: var(--font-size-3xs);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+        }
+
+        .content {
+            padding: 0 .5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            width: calc(100% - var(--prefix-size));
+            position: relative;
+
+            &>div {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+            }
+        }
+
+        .context {
+            color: var(--text-hint);
+            font-size: var(--font-size-2xs);
+        }
+
+    }
+}

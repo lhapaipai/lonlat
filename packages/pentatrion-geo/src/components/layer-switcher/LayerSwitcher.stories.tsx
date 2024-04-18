@@ -99,7 +99,7 @@ export const Basic = () => {
 
           <Button className="layer optional active">
             <div className="type">
-              <i className="fe-plus-circled"></i>
+              <i className="fe-plus"></i>
             </div>
             <img
               className="preview"
@@ -110,7 +110,7 @@ export const Basic = () => {
           </Button>
           <Button className="layer optional">
             <div className="type">
-              <i className="fe-plus-circled"></i>
+              <i className="fe-plus"></i>
             </div>
             <img
               className="preview"
@@ -121,7 +121,7 @@ export const Basic = () => {
           </Button>
           <Button className="layer optional active">
             <div className="type">
-              <i className="fe-plus-circled"></i>
+              <i className="fe-plus"></i>
             </div>
             <img
               className="preview"
@@ -132,7 +132,7 @@ export const Basic = () => {
           </Button>
           <Button className="layer optional">
             <div className="type">
-              <i className="fe-plus-circled"></i>
+              <i className="fe-plus"></i>
             </div>
             <img
               className="preview"
@@ -143,7 +143,7 @@ export const Basic = () => {
           </Button>
           <Button className="layer optional">
             <div className="type">
-              <i className="fe-plus-circled"></i>
+              <i className="fe-plus"></i>
             </div>
             <img
               className="preview"
@@ -154,7 +154,7 @@ export const Basic = () => {
           </Button>
           <Button className="layer optional">
             <div className="type">
-              <i className="fe-plus-circled"></i>
+              <i className="fe-plus"></i>
             </div>
             <img
               className="preview"

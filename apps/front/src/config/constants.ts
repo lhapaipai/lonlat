@@ -12,3 +12,5 @@ export const marignier = { lng: 6.498, lat: 46.089 };
 
 export const openRouteServiceToken = import.meta.env.VITE_OPENROUTESERVICE_TOKEN as string;
 export const openRouteServiceUrl = import.meta.env.VITE_OPENROUTESERVICE_URL as string;
+
+export const inputSearchDebounceDelay = 1000;

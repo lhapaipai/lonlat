@@ -3,7 +3,7 @@ import { getDepartmentName } from "../..";
 import { APIPaths, APIRequests, APIResponse, APISchemas } from "./geocodage-api";
 import { dataGeoserviceUrl } from "../url";
 import { Feature, FeatureCollection, Point, Position } from "geojson";
-import { IGNAddressGeoOption, LngLatObj } from "../..";
+import { AddressGeoOption, LngLatObj } from "../..";
 import { nanoid } from "nanoid";
 
 type AddressProperties = APISchemas["AddressProperties"];
@@ -35,7 +35,7 @@ export async function ignReverseSearch([lon, lat]: Position) {
   // that it does not match
   if (
     reversedFeature.properties.distance === undefined ||
-    reversedFeature.properties.distance > 100
+    reversedFeature.properties.distance > 300
   ) {
     return null;
   }
@@ -43,7 +43,14 @@ export async function ignReverseSearch([lon, lat]: Position) {
   return createIgnAddressFeaturePoint(reversedFeature);
 }
 
-export async function ignSearch(searchValue: string, coords: [number, number]) {
+export async function ignSearch(
+  searchValue: string,
+  coords: [number, number],
+): Promise<AddressGeoOption[]> {
+  // Geocode API min length is 3
+  if (searchValue.length < 3) {
+    return [];
+  }
   const collection = await fetchIGNGeodageAPI("/geocodage/search?index=address", {
     query: {
       q: searchValue,
@@ -54,7 +61,7 @@ export async function ignSearch(searchValue: string, coords: [number, number]) {
   return parseIgnAddressCollection(collection);
 }
 
-export function getContext(properties: AddressProperties | AddressReverseProperties) {
+function getContext(properties: AddressProperties | AddressReverseProperties) {
   switch (properties.type) {
     case "housenumber":
     case "street":
@@ -66,7 +73,7 @@ export function getContext(properties: AddressProperties | AddressReversePropert
   return properties.context;
 }
 
-export function getLabel(properties: AddressProperties | AddressReverseProperties) {
+function getLabel(properties: AddressProperties | AddressReverseProperties) {
   switch (properties.type) {
     case "housenumber":
     case "street":
@@ -85,7 +92,7 @@ export function getLabel(properties: AddressProperties | AddressReversePropertie
 export function createIgnAddressFeaturePoint(
   { type, geometry, properties }: Feature<Point, AddressProperties | AddressReverseProperties>,
   forceCoordinates?: LngLatObj,
-): IGNAddressGeoOption {
+): AddressGeoOption {
   const uniqId = nanoid();
   return {
     id: uniqId,
@@ -108,11 +115,11 @@ export function createIgnAddressFeaturePoint(
   };
 }
 
-export function parseIgnAddressCollection(
+function parseIgnAddressCollection(
   collection:
     | FeatureCollection<Point, AddressProperties>
     | FeatureCollection<Point, AddressReverseProperties>,
-): IGNAddressGeoOption[] {
+): AddressGeoOption[] {
   return collection.features.map((feature) => {
     return createIgnAddressFeaturePoint(feature);
   });

@@ -57,7 +57,7 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
   onChangeSelection: (option: O | null) => void;
   options: O[];
 
-  AutocompleteOptionCustom?: (props: AutocompleteOptionProps<O>) => ReactNode;
+  autocompleteOptionComponent?: (props: AutocompleteOptionProps<O>) => ReactNode;
 
   loading?: boolean;
 
@@ -73,7 +73,7 @@ function Autocomplete<O extends OptionLike = Option>(
     placeholder = "Search...",
     selection = null,
     onChangeSelection,
-    AutocompleteOptionCustom,
+    autocompleteOptionComponent,
     loading = false,
     clearSearchButton = false,
     searchValue,
@@ -89,7 +89,7 @@ function Autocomplete<O extends OptionLike = Option>(
   const onChangeSearchValueStable = useEventCallback(onChangeSearchValue);
   const onChangeSelectionStable = useEventCallback(onChangeSelection);
 
-  const OptionComponent = AutocompleteOptionCustom ?? AutocompleteOption;
+  const OptionComponent = autocompleteOptionComponent ?? AutocompleteOption;
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
 

@@ -55,7 +55,7 @@ export async function orsRoute(
     method: "post",
     body: {
       id: nanoid(),
-      coordinates: wayPoints.map((wayPoint) => wayPoint.geometry.coordinates),
+      coordinates: wayPoints.map((wayPoint) => wayPoint.geometry.coordinates.slice(0, 2)),
       preference: optimization,
       units: "m",
       geometry: true,

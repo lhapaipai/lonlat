@@ -2,10 +2,11 @@ import { Button, LazyAutocomplete, SimpleTooltip, useCopyToClipboard } from "pen
 import { useAppDispatch, useAppSelector } from "../store";
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import {
+  AppGeoOption,
   AutocompleteGeoOption,
+  c2cWaypointSearch,
   getCoordsStr,
   ignSearch,
-  parseIgnAddressCollection,
   stringifyGeoOption,
 } from "pentatrion-geo";
 import {
@@ -23,6 +24,7 @@ import { useT } from "talkr";
 import { useCallback, useState } from "react";
 import { directionWayPointsAddedFromSearch } from "~/direction/directionSlice";
 import Isochrone from "./Isochrone";
+import { inputSearchDebounceDelay } from "~/config/constants";
 
 function iconBySearchEngine(searchEngine: SearchEngine) {
   switch (searchEngine) {
@@ -78,22 +80,29 @@ export default function SearchTab() {
           ))}
         </div>
         <LazyAutocomplete
+          autocompleteOptionComponent={AutocompleteGeoOption}
           clearSearchButton={true}
           placeholder={T(`searchPlaceholder.${searchEngine}`)}
-          debounce={1000}
+          debounce={inputSearchDebounceDelay}
           icon={iconBySearchEngine(searchEngine)}
           selection={searchFeature}
           onChangeSelection={(e) => dispatch(searchFeatureChanged(e))}
           onChangeSearchValueCallback={async (searchValue) => {
+            let collection: AppGeoOption[] = [];
             try {
-              const collection = await ignSearch(searchValue, viewState.center);
+              if (searchEngine === "c2c") {
+                collection = await c2cWaypointSearch(searchValue);
+              } else if (searchEngine === "nominatim") {
+                // TODO
+              } else {
+                collection = await ignSearch(searchValue, viewState.center);
+              }
               return collection;
             } catch (err) {
               notifyError(err);
               throw err;
             }
           }}
-          AutocompleteOptionCustom={AutocompleteGeoOption}
         />
       </div>
       {searchFeature && (

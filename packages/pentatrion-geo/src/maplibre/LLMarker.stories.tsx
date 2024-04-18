@@ -265,7 +265,7 @@ export const Graphics = () => (
         <div className="ll-marker" style={{ "--marker-size": "70px" }}>
           <div className="marker">
             <div className="ovale"></div>
-            <i className="fe-home"></i>
+            <i className="fe-globe"></i>
           </div>
           <div className="target"></div>
         </div>

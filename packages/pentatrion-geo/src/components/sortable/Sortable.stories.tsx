@@ -77,7 +77,7 @@ export const WithAutocomplete = () => {
               selection={isNoData(item) ? null : item}
               onChangeSelection={(selection) => handleChangeSelection(index, selection)}
               onChangeSearchValueCallback={handleChangeSearchValue}
-              AutocompleteOptionCustom={AutocompleteGeoOption}
+              autocompleteOptionComponent={AutocompleteGeoOption}
             />
           </div>
         ))}

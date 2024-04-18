@@ -119,7 +119,7 @@ export const Direction = () => {
                     selection={isNoData(location) ? null : location}
                     onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                     onChangeSearchValueCallback={handleChangeSearchValue}
-                    AutocompleteOptionCustom={AutocompleteGeoOption}
+                    autocompleteOptionComponent={AutocompleteGeoOption}
                   />
                   {locations.length > 2 && (
                     <Button
@@ -151,7 +151,7 @@ export const Direction = () => {
             </Button>
 
             <Button icon variant="text" color="weak" onClick={() => setShowSettings((s) => !s)}>
-              <i className="fe-settings"></i>
+              <i className="fe-sliders"></i>
             </Button>
           </div>
 

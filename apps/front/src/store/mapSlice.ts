@@ -11,7 +11,7 @@ type ViewState = {
   zoom: number;
 };
 
-export const searchEngines = ["ign-address", "c2c", "nominatim"] as const;
+export const searchEngines = ["ign-address", "c2c" /*, "nominatim" */] as const;
 export type SearchEngine = (typeof searchEngines)[number];
 
 export const coordsUnits = ["lonlat", "latlon", "dms"] as const;

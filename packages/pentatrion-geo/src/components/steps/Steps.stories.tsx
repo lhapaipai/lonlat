@@ -76,7 +76,7 @@ export const WithAutocompleteSortable = () => {
                 selection={isNoData(location) ? null : location}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={handleChangeSearchValue}
-                AutocompleteOptionCustom={AutocompleteGeoOption}
+                autocompleteOptionComponent={AutocompleteGeoOption}
               />
               {locations.length > 2 && (
                 <Button icon variant="ghost" color="weak" onClick={() => handleRemoveItem(index)}>

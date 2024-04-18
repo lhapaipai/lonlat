@@ -58,7 +58,7 @@ export default function DirectionTab() {
                 debounce={50}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={(search) => handleChangeSearchValue(search)}
-                AutocompleteOptionCustom={AutocompleteGeoOption}
+                autocompleteOptionComponent={AutocompleteGeoOption}
               />
             </Step>
           ))}

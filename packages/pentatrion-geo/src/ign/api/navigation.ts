@@ -1,11 +1,5 @@
 import { fetchAPI } from "pentatrion-design";
-import {
-  IsochroneGeoJSON,
-  APIPaths as NavigationAPIPaths,
-  APIRequests as NavigationAPIRequests,
-  APIResponse as NavigationAPIResponse,
-  APISchemas as NavigationAPISchemas,
-} from "./navigation-api";
+import { IsochroneGeoJSON, APIPaths, APIRequests, APIResponse } from "./navigation-api";
 import { dataGeoserviceUrl } from "../url";
 import { LineString, Position } from "geojson";
 import {
@@ -16,10 +10,10 @@ import {
   IsochroneOptions,
 } from "../..";
 
-export function fetchIGNNavigationAPI<
-  Path extends NavigationAPIPaths,
-  Options extends NavigationAPIRequests<Path>,
->(path: Path, options?: Options): Promise<NavigationAPIResponse<Path, Options["method"]>> {
+export function fetchIGNNavigationAPI<Path extends APIPaths, Options extends APIRequests<Path>>(
+  path: Path,
+  options?: Options,
+): Promise<APIResponse<Path, Options["method"]>> {
   console.log("fetchAPI", path, options);
   return fetchAPI(path, options, dataGeoserviceUrl);
 }
@@ -72,8 +66,10 @@ function stringifyPosition(position: Position) {
 
 export async function ignItineraire(
   locations: GeoPointOption[],
-  { profile, optimization, constraints }: DirectionOptions,
+  options: DirectionOptions,
 ): Promise<RouteFeatureResponse> {
+  const { profile, optimization, constraints } = options;
+
   const positions = locations.map((location) => location.geometry.coordinates);
 
   const intermediates = positions.slice();
@@ -132,7 +128,7 @@ export async function ignItineraire(
       distance,
       duration,
       resource,
-      hash: hashRoute(locations, optimization, profile, constraints),
+      hash: hashRoute(locations, options),
     },
     geometry: geometry as LineString,
     bbox,

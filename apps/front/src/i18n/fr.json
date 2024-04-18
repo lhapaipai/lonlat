@@ -1,7 +1,7 @@
 {
   "searchPlaceholder": {
     "ign-address": "Rechercher un lieu en France",
-    "c2c": "Rehercher un sommet, un col...",
+    "c2c": "Rechercher un sommet, un col...",
     "nominatim": "Rechercher un lieu dans le monde"
   },
   "coordsUnit": {

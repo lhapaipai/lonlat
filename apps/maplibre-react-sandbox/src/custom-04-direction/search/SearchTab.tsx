@@ -16,7 +16,7 @@ export default function SearchTab() {
         debounce={1000}
         icon={false}
         selection={selection}
-        AutocompleteOptionCustom={AutocompleteGeoOption}
+        autocompleteOptionComponent={AutocompleteGeoOption}
         onChangeSelection={(e) => dispatch(searchFeatureChanged(e))}
         onChangeSearchValueCallback={async (searchValue) => {
           try {

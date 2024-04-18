@@ -40,7 +40,7 @@ export default function App() {
             selection={selection}
             onChangeSelection={setSelection}
             onChangeSearchValue={handleChangeSearchValue}
-            AutocompleteOptionCustom={AutocompleteGeoOption}
+            autocompleteOptionComponent={AutocompleteGeoOption}
           />
           <div>sélection : {selection && selection.label}</div>
         </NotificationsProvider>
