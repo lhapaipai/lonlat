@@ -116,21 +116,21 @@ function Autocomplete<O extends OptionLike = Option>(
     ],
   });
 
-  const role = useRole(context, { role: "listbox" });
+  // const role = useRole(context, { role: "listbox" });
   const dismiss = useDismiss(context);
-  const listNav = useListNavigation(context, {
-    listRef,
-    activeIndex,
-    onNavigate: setActiveIndex,
-    /* we want the real focus to stay on the input, so focus associated to active items is simulated */
-    virtual: true,
-    loop: true,
-  });
+  // const listNav = useListNavigation(context, {
+  //   listRef,
+  //   activeIndex,
+  //   onNavigate: setActiveIndex,
+  //   /* we want the real focus to stay on the input, so focus associated to active items is simulated */
+  //   virtual: true,
+  //   loop: true,
+  // });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-    role,
+    // role,
     dismiss,
-    listNav,
+    // listNav,
   ]);
 
   function handleChangeSearchValue(e: ChangeEvent<HTMLInputElement>) {

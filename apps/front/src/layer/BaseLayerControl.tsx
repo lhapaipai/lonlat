@@ -23,11 +23,10 @@ import cn from "classnames";
 import { createPortal } from "react-dom";
 import { useMap, useRControl } from "maplibre-react-components";
 import { useState } from "react";
-import { Button, ButtonGroup } from "pentatrion-design";
+import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
 import { coordsChanged } from "../street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/mapSlice";
 import "./BaseLayerControl.scss";
-import { FloatingOverlay } from "@floating-ui/react";
 
 export default function BaseLayerControl() {
   const [collapsed, setCollapsed] = useState(true);
@@ -37,6 +36,16 @@ export default function BaseLayerControl() {
     position: "bottom",
     className: cn("ll-layer-switcher", distractionFree && "distraction-free"),
   });
+
+  function handleClickOutside() {
+    if (collapsed) {
+      return;
+    }
+    setCollapsed(true);
+  }
+
+  useOnClickOutside({ current: container }, handleClickOutside);
+
   const [countryFilter, setCountryFilter] = useState<keyof BaseLayers>("fr");
   const dispatch = useAppDispatch();
 
@@ -71,10 +80,6 @@ export default function BaseLayerControl() {
       </Button>
     ) : (
       <>
-        <FloatingOverlay
-          className={cn(["ll-modal-overlay", "ll-animate", "fade-in-opacity"])}
-          onClick={() => setCollapsed(true)}
-        />
         <ButtonGroup direction="vertical" className="filters">
           {(Object.keys(baseLayers) as (keyof BaseLayers)[]).map((countryId) => (
             <Button

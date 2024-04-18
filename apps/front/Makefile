@@ -1,5 +1,6 @@
 local_path	:= $(PWD)
-remote_host	:= lonlat.pentatrion.com
+remote_test_host	:= lonlat.pentatrion.com
+remote_prod_host 	:= lonlat.org
 
 .PHONY: help
 help:
@@ -10,5 +11,13 @@ deploy: ## Build and deploy examples
 	pnpm build-with-errors
 	rsync -av --delete \
 		$(local_path)/dist/ \
-		berlin:prod/$(remote_host)
-	@echo "go : https://$(remote_host)"
+		berlin:prod/$(remote_test_host)
+	@echo "go : https://$(remote_test_host)"
+
+.PHONY: deploy-prod
+deploy-prod: ## Build and deploy examples
+	pnpm build-with-errors
+	rsync -av --delete \
+		$(local_path)/dist/ \
+		berlin:prod/$(remote_prod_host)
+	@echo "go : https://$(remote_prod_host)"
