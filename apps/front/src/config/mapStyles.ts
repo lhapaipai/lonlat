@@ -31,15 +31,8 @@ export const roadLayerCasingStyle: {
   layout?: LineLayerSpecification["layout"];
 } = {
   paint: {
-    "line-color": "#111",
-    "line-width": {
-      stops: [
-        [14, 3.5],
-        [15, 6],
-        [16, 8.4],
-        [17, 18.3],
-      ],
-    },
+    "line-color": "#136a7a",
+    "line-width": ["step", ["zoom"], 6, 10, 8, 14, 10],
   },
 };
 
@@ -48,15 +41,8 @@ export const roadLayerStyle: {
   layout?: LineLayerSpecification["layout"];
 } = {
   paint: {
-    "line-color": "#ffe64b",
-    "line-width": {
-      stops: [
-        [14, 2.3],
-        [15, 4.1],
-        [16, 6.1],
-        [17, 13.1],
-      ],
-    },
+    "line-color": "#5fbcff",
+    "line-width": ["step", ["zoom"], 4, 10, 6, 14, 8],
   },
 };
 

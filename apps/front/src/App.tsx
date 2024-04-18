@@ -92,6 +92,7 @@ function App() {
           initialAttributionControl={false}
           mapStyle={uncontrolledStyle}
           afterInstanciation={handleAfterMapInstanciation}
+          onZoomEnd={(e) => console.log(e.target.getZoom())}
         >
           {/* <RFrameRateControl /> */}
           <TabsControl />
