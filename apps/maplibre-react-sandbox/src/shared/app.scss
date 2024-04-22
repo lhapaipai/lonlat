@@ -1,0 +1,35 @@
+body {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    transition: all .2s ease;
+
+    &:hover {
+        color: #000;
+    }
+}

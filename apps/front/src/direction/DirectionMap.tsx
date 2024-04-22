@@ -6,8 +6,7 @@ import {
   directionWayPointChanged,
   selectDirectionRoute,
   selectDirectionWayPoints,
-  selectDirectionWaypoints,
-  selectValidDirectionWayPoints,
+  selectDirectionWayPointsGeojson,
 } from "./directionSlice";
 
 import { useAppDispatch, useAppSelector } from "../store";
@@ -26,7 +25,7 @@ export default function DirectionMap() {
   // for getIndexLetter(index)
   const waypoints = useAppSelector(selectDirectionWayPoints);
   const directionRoute = useAppSelector(selectDirectionRoute);
-  const directionWaypoints = useAppSelector(selectDirectionWaypoints);
+  const directionWaypointsGeojson = useAppSelector(selectDirectionWayPointsGeojson);
 
   function handleDirectionWayPointDragEnd(e: Event<LLMarker>, index: number) {
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
@@ -86,13 +85,13 @@ export default function DirectionMap() {
           />
         </>
       )}
-      {directionWaypoints && (
+      {directionWaypointsGeojson && (
         <>
           <RSource
             id="direction-waypoints"
             key="direction-waypoints"
             type="geojson"
-            data={directionWaypoints}
+            data={directionWaypointsGeojson}
           />
           <RLayer
             id="direction-waypoints"

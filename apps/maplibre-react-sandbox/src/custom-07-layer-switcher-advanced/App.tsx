@@ -1,6 +1,6 @@
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import BaseLayerControl from "./components/BaseLayerControl";
+import LayerSwitcherControl from "./components/LayerSwitcherControl";
 import { useAppSelector } from "./store";
 import {
   selectBaseLayer,
@@ -18,7 +18,7 @@ import { prepareStyle } from "./util";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
-function handleAfterInstanciation(map: Map) {
+function handleAfterMapInstanciation(map: Map) {
   const positions = map._controlPositions;
   if (!positions["bottom"]) {
     const bottomContainer = DOM.create(
@@ -60,10 +60,10 @@ function App() {
         initialCenter={marignier}
         initialZoom={14}
         mapStyle={uncontrolledStyle}
-        afterInstanciation={handleAfterInstanciation}
+        afterInstanciation={handleAfterMapInstanciation}
       >
         <RNavigationControl />
-        <BaseLayerControl />
+        <LayerSwitcherControl />
       </RMap>
     </>
   );

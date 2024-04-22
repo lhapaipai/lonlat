@@ -1,9 +1,9 @@
-import { Map, Marker } from "maplibre-gl";
+import { Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { RMap, RMarker } from "maplibre-react-components";
 import { useRef, useState } from "react";
-import RFrameRateControl from "./RFrameRateControl";
+import { RFrameRateControl } from "pentatrion-geo";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 

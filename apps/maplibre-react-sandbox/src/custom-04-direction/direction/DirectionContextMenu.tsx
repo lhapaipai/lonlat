@@ -8,9 +8,9 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { MaplibreContextmenuEventDetail } from "maplibre-react-components";
 
 import {
-  directionLocationChanged,
-  directionLocationInsertAt,
-  selectDirectionLocations,
+  directionWayPointChanged,
+  directionWayPointInsertAt,
+  selectDirectionWayPoints,
 } from "./directionSlice";
 import { createLonLatFeaturePoint } from "pentatrion-geo";
 import { ReactElement } from "react";
@@ -18,19 +18,19 @@ import { ReactElement } from "react";
 export default function DirectionContextMenu() {
   const dispatch = useAppDispatch();
 
-  const locationsLength = useAppSelector(selectDirectionLocations).length;
+  const wayPointsLength = useAppSelector(selectDirectionWayPoints).length;
 
-  function handleDirectionChangeLocationAt(e: ContextMenuItemMouseEvent, index: number) {
+  function handleDirectionChangeWayPointAt(e: ContextMenuItemMouseEvent, index: number) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
     const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
-    dispatch(directionLocationChanged({ index, feature: lonlatFeature }));
+    dispatch(directionWayPointChanged({ index, feature: lonlatFeature }));
   }
 
-  function handleDirectionInsertLocationBefore(e: ContextMenuItemMouseEvent, index: number) {
+  function handleDirectionInsertWayPointBefore(e: ContextMenuItemMouseEvent, index: number) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
     const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
     dispatch(
-      directionLocationInsertAt({
+      directionWayPointInsertAt({
         feature: lonlatFeature,
         index,
       }),
@@ -41,9 +41,9 @@ export default function DirectionContextMenu() {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
     const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
     dispatch(
-      directionLocationInsertAt({
+      directionWayPointInsertAt({
         feature: lonlatFeature,
-        index: locationsLength,
+        index: wayPointsLength,
       }),
     );
   }
@@ -54,23 +54,23 @@ export default function DirectionContextMenu() {
       key="direction-from"
       icon={<span className="bullet">A</span>}
       label="Itinéraire depuis ce lieu"
-      onClick={(e) => handleDirectionChangeLocationAt(e, 0)}
+      onClick={(e) => handleDirectionChangeWayPointAt(e, 0)}
     />,
   );
-  for (let i = 1; i < locationsLength; i++) {
+  for (let i = 1; i < wayPointsLength; i++) {
     contextItems.push(
       <ContextMenuItem
         className="discret"
         key={`direction-inter-${i}`}
         icon={<i className="fe-point-inter"></i>}
         label="point intermédiaire"
-        onClick={(e) => handleDirectionInsertLocationBefore(e, i)}
+        onClick={(e) => handleDirectionInsertWayPointBefore(e, i)}
       />,
       <ContextMenuItem
         key={`direction-to-${i}`}
         icon={<span className="bullet">{getIndexLetter(i)}</span>}
-        label={i < locationsLength - 1 ? "Déplacer ce point" : "Itinéraire vers ce lieu"}
-        onClick={(e) => handleDirectionChangeLocationAt(e, i)}
+        label={i < wayPointsLength - 1 ? "Déplacer ce point" : "Itinéraire vers ce lieu"}
+        onClick={(e) => handleDirectionChangeWayPointAt(e, i)}
       />,
     );
   }

@@ -4,7 +4,7 @@ import { updateClassNames, useMap } from "..";
 
 type RControlHookOptions<T extends string = ControlPosition> = {
   position: T;
-  className: string;
+  className?: string;
 };
 
 export default function useRControl<T extends string = ControlPosition>({

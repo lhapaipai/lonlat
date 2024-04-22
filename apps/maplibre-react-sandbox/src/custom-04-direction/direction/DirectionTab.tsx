@@ -11,11 +11,11 @@ import {
 } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
-  directionLocationChanged,
-  directionLocationsSorted,
-  directionLocationInsertAt,
-  directionLocationRemoved,
-  selectDirectionLocations,
+  directionWayPointChanged,
+  directionWayPointsSorted,
+  directionWayPointInsertAt,
+  directionWayPointRemoved,
+  selectDirectionWayPoints,
 } from "./directionSlice";
 import {
   AutocompleteGeoOption,
@@ -38,33 +38,33 @@ function placeholderByIndex(idx: number, length: number) {
 }
 
 export default function DirectionTab() {
-  const locations = useAppSelector(selectDirectionLocations);
+  const wayPoints = useAppSelector(selectDirectionWayPoints);
   const dispatch = useAppDispatch();
   const { notifyError } = useNotification();
 
   const viewState = useAppSelector(selectViewState);
 
   function handleChangeSelection(index: number, selection: GeoOption | null) {
-    const itemId = locations[index].id;
+    const itemId = wayPoints[index].id;
     const feature = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
     const featurePointOrNoData = feature as GeoPointOption | NoDataOption;
-    dispatch(directionLocationChanged({ index, feature: featurePointOrNoData }));
+    dispatch(directionWayPointChanged({ index, feature: featurePointOrNoData }));
   }
 
-  function handleSortLocations(locationsUpdated: (GeoOption | NoDataOption)[]) {
-    const locationPointsUpdated = locationsUpdated as (GeoPointOption | NoDataOption)[];
-    dispatch(directionLocationsSorted(locationPointsUpdated));
+  function handleSortWayPoints(wayPointsUpdated: (GeoOption | NoDataOption)[]) {
+    const wayPointPointsUpdated = wayPointsUpdated as (GeoPointOption | NoDataOption)[];
+    dispatch(directionWayPointsSorted(wayPointPointsUpdated));
   }
 
   function handleRemoveItem(index: number) {
-    dispatch(directionLocationRemoved(index));
+    dispatch(directionWayPointRemoved(index));
   }
 
   function handleAppendItem() {
     dispatch(
-      directionLocationInsertAt({
+      directionWayPointInsertAt({
         feature: createNodataFeature(),
-        index: locations.length,
+        index: wayPoints.length,
       }),
     );
   }
@@ -73,24 +73,24 @@ export default function DirectionTab() {
     <>
       <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
         <Sortable
-          list={locations}
-          setList={handleSortLocations}
+          list={wayPoints}
+          setList={handleSortWayPoints}
           animation={200}
           className="ll-sortable"
           handle=".handle"
         >
-          {locations.map((location, index) => (
+          {wayPoints.map((wayPoint, index) => (
             <Step
-              key={location.id}
+              key={wayPoint.id}
               icon={getIndexLetter(index)}
-              status={index < locations.length - 1 ? "done" : "current"}
+              status={index < wayPoints.length - 1 ? "done" : "current"}
               markerClassName="handle"
               contentClassName="flex"
             >
               <LazyAutocomplete
-                placeholder={placeholderByIndex(index, locations.length)}
+                placeholder={placeholderByIndex(index, wayPoints.length)}
                 icon={false}
-                selection={isNoData(location) ? null : location}
+                selection={isNoData(wayPoint) ? null : wayPoint}
                 debounce={50}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={async (searchValue) => {
@@ -104,7 +104,7 @@ export default function DirectionTab() {
                 }}
                 autocompleteOptionComponent={AutocompleteGeoOption}
               />
-              {locations.length > 2 &&
+              {wayPoints.length > 2 &&
                 (index === 0 ? (
                   <span className="ll-button-placeholder icon"></span>
                 ) : (

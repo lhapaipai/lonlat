@@ -6,7 +6,7 @@ export const googleMapsApiToken = import.meta.env.VITE_GOOGLE_MAPS_API_TOKEN as 
 
 export const mapTilerBasicStyleUrl = `https://api.maptiler.com/maps/basic-v2/style.json?key=${maptilerToken}`;
 export const mapTilerStreetsStyleUrl = `https://api.maptiler.com/maps/streets/style.json?key=${maptilerToken}`;
-export const ignPlanStyleUrl = `/styles/ign/PLAN.IGN/standard.json`;
+export const ignPlanStyleUrl = `/assets/styles/ign/PLAN.IGN/standard.json`;
 
 export const marignier = { lng: 6.498, lat: 46.089 };
 

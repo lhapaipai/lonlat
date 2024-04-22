@@ -27,8 +27,11 @@ import { useRControl } from "maplibre-react-components";
 import { useState } from "react";
 import { Button, ButtonGroup } from "pentatrion-design";
 
-export default function BaseLayerControl() {
-  const container = useRControl("bottom", "ll-layer-switcher");
+export default function LayerSwitcherControl() {
+  const container = useRControl({
+    position: "bottom",
+    className: "ll-layer-switcher",
+  });
   const [countryFilter, setCountryFilter] = useState<keyof BaseLayers>("fr");
   const dispatch = useAppDispatch();
 
