@@ -1,7 +1,16 @@
 <p align="center">
-  <img width="128" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/packages/pentatrion-design/images/logo.svg" alt="Lonlat logo">
+  <img width="128" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/logo/logo-shadow.svg" alt="Lonlat logo">
 </p>
 
+## Démo
+
+<a href="https://lonlat.org">
+<img width="700" height="400" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/screenshots/front.jpg" alt="Lonlat App" />
+</a>
+
+<a href="https://storybook.lonlat.pentatrion.com">
+<img width="700" height="400" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/screenshots/storybook.jpg" alt="Lonlat Storybook" />
+</a>
 
 ## Installation
 
