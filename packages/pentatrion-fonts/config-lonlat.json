@@ -779,6 +779,12 @@
       ]
     },
     {
+      "uid": "bbfb51903f40597f0b70fd75bc7b5cac",
+      "css": "trash",
+      "code": 61944,
+      "src": "fontawesome"
+    },
+    {
       "uid": "24b7643d8401ffb5bd0872b14261d9ee",
       "css": "climbing-outdoor",
       "code": 59402,

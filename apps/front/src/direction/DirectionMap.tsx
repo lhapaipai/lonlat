@@ -77,7 +77,7 @@ export default function DirectionMap() {
             id="directon-arrow"
             key="directon-arrow"
             type="symbol"
-            minzoom={13}
+            minzoom={7}
             {...roadArrowLayerStyle}
             source="direction-route"
             beforeId="point coté"

@@ -13,7 +13,7 @@ import "./App.scss";
 import DirectionMap from "./direction/DirectionMap";
 import SearchMap from "./search/SearchMap";
 import { DOM } from "pentatrion-geo/src/maplibre/core/util/dom";
-import BaseLayerControl from "./layer/BaseLayerControl";
+import LayerSwitcherControl from "./layer/LayerSwitcherControl";
 
 import {
   selectBaseLayer,
@@ -27,6 +27,7 @@ import StreetViewMap from "./street-view/StreetViewMap";
 import StreetViewWindow from "./street-view/StreetViewWindow";
 import TabsControl from "./TabsControl";
 import { RFrameRateControl } from "pentatrion-geo";
+import { debug } from "./config/constants";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {
@@ -47,7 +48,7 @@ function handleAfterMapInstanciation(map: Map) {
     positions["bottom"] = DOM.create("div", "maplibregl-ctrl-bottom", bottomContainer);
   }
   // @ts-ignore position added above
-  // map.addControl(new AttributionControl(), "bottom");
+  map.addControl(new AttributionControl(), "bottom");
 }
 
 function App() {
@@ -94,9 +95,9 @@ function App() {
           afterInstanciation={handleAfterMapInstanciation}
           onZoomEnd={(e) => console.log(e.target.getZoom())}
         >
-          {/* <RFrameRateControl /> */}
+          {debug && <RFrameRateControl />}
           <TabsControl />
-          <BaseLayerControl />
+          <LayerSwitcherControl />
           <MapFlyer />
           {streetView && <StreetViewMap />}
           {tab === "direction" && <DirectionMap />}

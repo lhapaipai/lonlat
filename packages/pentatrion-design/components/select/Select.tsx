@@ -50,15 +50,16 @@ type Props<O extends Option = Option> = {
   variant?: "normal" | "ghost";
   showArrow?: boolean;
   selectionClassName?: string;
-  width?: string;
+  width?: number | string;
+  floatingMinWidth?: number;
   placement?: Placement;
   options: O[];
   placeholder?: string;
   getSearchableValue?: (matchReg: RegExp, option: O) => string;
   searchable?: boolean;
   required?: boolean;
-  SelectOptionCustom?: (props: O) => ReactNode;
-  SelectSelectionCustom?: (props: SelectSelectionProps<O>) => ReactNode;
+  selectOptionComponent?: (props: O) => ReactNode;
+  selectSelectionComponent?: (props: SelectSelectionProps<O>) => ReactNode;
   value?: SelectValue;
   onChange?: ((e: ChangeEventLike) => void) | null;
 };
@@ -75,6 +76,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
       showArrow = true,
       selectionClassName,
       width = "100%",
+      floatingMinWidth = 130,
       placement = "bottom",
       searchable = false,
       required = true,
@@ -82,8 +84,8 @@ const Select = forwardRef<HTMLDivElement, Props>(
       onChange = null,
       placeholder = "Select ...",
       getSearchableValue,
-      SelectSelectionCustom,
-      SelectOptionCustom,
+      selectSelectionComponent: SelectSelectionCustomComponent,
+      selectOptionComponent: SelectOptionCustomComponent,
       options = [],
     },
     propRef,
@@ -124,7 +126,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [searchHasFocus, setSearchHasFocus] = useState(false);
 
-    const SelectSelectionComponent = SelectSelectionCustom ?? SelectSelection;
+    const SelectSelectionComponent = SelectSelectionCustomComponent ?? SelectSelection;
 
     function handleSearchChange(e: ChangeEvent<HTMLInputElement>) {
       setActiveIndex(null);
@@ -142,7 +144,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
         size({
           apply({ rects, elements, availableHeight }) {
             Object.assign(elements.floating.style, {
-              width: `${Math.max(130, rects.reference.width)}px`,
+              width: `${Math.max(floatingMinWidth, rects.reference.width)}px`,
             });
             const firstChild = elements.floating.firstElementChild as HTMLElement;
             if (firstChild) {
@@ -192,13 +194,13 @@ const Select = forwardRef<HTMLDivElement, Props>(
     ]);
 
     useEffect(() => {
-      if (SelectOptionCustom) {
+      if (SelectOptionCustomComponent) {
         return;
       }
       filteredOptions.map((option, i) => {
         labelsRef.current[i] = option.label;
       });
-    }, [search, filteredOptions, SelectOptionCustom]);
+    }, [search, filteredOptions, SelectOptionCustomComponent]);
 
     const handleSelect = useCallback(
       (index: number | null) => {
@@ -229,13 +231,19 @@ const Select = forwardRef<HTMLDivElement, Props>(
     );
 
     return (
-      <div className={cn("ll-select", `variant-${variant}`)}>
+      <div className={cn("ll-select")}>
         <div
-          className={cn("selection", selectionClassName, isOpen && "focus", disabled && "disabled")}
+          className={cn(
+            "selection",
+            `variant-${variant}`,
+            selectionClassName,
+            isOpen && "focus",
+            disabled && "disabled",
+          )}
           ref={ref}
           tabIndex={0}
           style={{
-            width,
+            width: typeof width === "number" ? `${width}px` : width,
           }}
           {...getReferenceProps()}
         >
@@ -302,10 +310,10 @@ const Select = forwardRef<HTMLDivElement, Props>(
                         ></Input>
                       </div>
                     )}
-                    {SelectOptionCustom ? (
+                    {SelectOptionCustomComponent ? (
                       <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
                         {filteredOptions.map((option) => (
-                          <SelectOptionCustom {...option} key={option.value} />
+                          <SelectOptionCustomComponent {...option} key={option.value} />
                         ))}
                       </FloatingList>
                     ) : (

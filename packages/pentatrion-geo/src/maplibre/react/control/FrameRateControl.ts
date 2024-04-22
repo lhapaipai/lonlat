@@ -17,11 +17,12 @@ class FrameRateControl {
   totalTime: number;
   totalFrames: number;
   options: FrameRateControlOptions;
-
+  enabled: boolean;
   map: Map | null = null;
   declare container: HTMLDivElement;
   declare readOutput: HTMLDivElement;
   declare canvas: HTMLCanvasElement;
+  declare button: HTMLButtonElement;
   declare time: number;
 
   constructor(options?: Partial<FrameRateControlOptions>) {
@@ -42,6 +43,7 @@ class FrameRateControl {
     this.totalTime = 0;
     this.totalFrames = 0;
     this.options = { ...options, ...defaultOptions };
+    this.enabled = false;
   }
 
   onAdd = (map: Map) => {
@@ -70,15 +72,49 @@ class FrameRateControl {
     this.canvas.height = graphHeight;
     this.canvas.style.cssText = `width: ${width / dpr}px; height: ${graphHeight / dpr}px;`;
 
+    this.button = document.createElement("button");
+    this.button.style.display = "block";
+    this.button.style.color = color;
+    this.button.style.fontFamily = font;
+    this.button.style.padding = "0 5px 5px";
+    this.button.style.fontSize = "9px";
+    this.button.style.fontWeight = "bold";
+    this.button.innerText = "Enable";
+
+    this.button.addEventListener("click", this.toggle);
     el.appendChild(this.readOutput);
     el.appendChild(this.canvas);
-
-    this.frames = 0;
-    this.time = performance.now();
-    this.map.on("render", this.onRender);
-    this.map.repaint = true;
+    el.appendChild(this.button);
 
     return this.container;
+  };
+
+  toggle = () => {
+    this.enabled ? this.disable() : this.enable();
+  };
+
+  enable = () => {
+    this.enabled = true;
+    this.frames = 0;
+    this.time = performance.now();
+    this.button.innerText = "Disable";
+
+    if (!this.map) {
+      return;
+    }
+    this.map.on("render", this.onRender);
+    this.map.repaint = true;
+  };
+
+  disable = () => {
+    this.enabled = false;
+    this.button.innerText = "Enable";
+    if (!this.map) {
+      return;
+    }
+
+    this.map.repaint = false;
+    this.map.off("render", this.onRender);
   };
 
   onRender = () => {
@@ -139,9 +175,9 @@ class FrameRateControl {
     if (!this.map) {
       return this;
     }
-    this.map.repaint = false;
+    this.button.removeEventListener("click", this.toggle);
 
-    this.map.off("render", this.onRender);
+    this.disable();
     this.container.parentNode?.removeChild(this.container);
     this.map = null;
     return this;

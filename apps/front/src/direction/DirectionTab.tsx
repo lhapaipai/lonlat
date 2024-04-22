@@ -34,11 +34,20 @@ import {
   m2km,
   updateId,
 } from "pentatrion-geo";
-import { selectViewState } from "../store/mapSlice";
+import {
+  SearchEngine,
+  searchEngineChanged,
+  searchEngines,
+  selectSearchEngine,
+  selectViewState,
+} from "../store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo, useState } from "react";
 import { inputSearchDebounceDelay } from "~/config/constants";
+import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
+import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
+import { iconBySearchEngine } from "~/components/search-engine/util";
 
 function placeholderByIndex(idx: number, length: number) {
   if (idx === 0) {
@@ -56,6 +65,7 @@ export default function DirectionTab() {
   const { notifyError } = useNotification();
   const { T } = useT();
   const [showSettings, setShowSettings] = useState(false);
+  const searchEngine = useAppSelector(selectSearchEngine);
 
   const viewState = useAppSelector(selectViewState);
 
@@ -88,6 +98,18 @@ export default function DirectionTab() {
       }),
     );
   }
+
+  function handleReset() {
+    dispatch(directionWayPointsChanged([createNodataFeature(), createNodataFeature()]));
+  }
+
+  const searchEngineOptions = useMemo<StarOption[]>(() => {
+    return searchEngines.map((s) => ({
+      value: s,
+      label: T(`searchEngine.${s}.label`),
+      icon: iconBySearchEngine(s),
+    }));
+  }, [T]);
 
   return (
     <div className="ll-quick-settings">
@@ -142,7 +164,24 @@ export default function DirectionTab() {
             >
               <LazyAutocomplete
                 placeholder={placeholderByIndex(index, wayPoints.length)}
-                icon={false}
+                icon={
+                  <Select
+                    variant="ghost"
+                    showArrow={false}
+                    selectionClassName="ml-auto search-engine-selector"
+                    width={37}
+                    floatingMinWidth={220}
+                    placement="bottom-start"
+                    options={searchEngineOptions}
+                    value={searchEngine}
+                    onChange={(o) => {
+                      const searchEngine = o.target.value as SearchEngine;
+                      dispatch(searchEngineChanged(searchEngine));
+                    }}
+                    selectSelectionComponent={SearchEngineSelection}
+                    selectOptionComponent={SearchEngineOption}
+                  />
+                }
                 selection={isNoData(wayPoint) ? null : wayPoint}
                 debounce={inputSearchDebounceDelay}
                 autocompleteOptionComponent={AutocompleteGeoOption}
@@ -192,6 +231,11 @@ export default function DirectionTab() {
           </span>
           <span>{T("addPoint")}</span>
         </Button>
+        <Button variant="ghost" color="weak" onClick={handleReset}>
+          <i className="fe-trash"></i>
+          <span>{T("reset")}</span>
+        </Button>
+
         <Button icon variant="text" color="weak" onClick={() => setShowSettings((s) => !s)}>
           <i className="fe-sliders"></i>
         </Button>

@@ -22,13 +22,13 @@ import {
 import cn from "classnames";
 import { createPortal } from "react-dom";
 import { useMap, useRControl } from "maplibre-react-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
 import { coordsChanged } from "../street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/mapSlice";
-import "./BaseLayerControl.scss";
+import "./LayerSwitcherControl.scss";
 
-export default function BaseLayerControl() {
+export default function LayerSwitcherControl() {
   const [collapsed, setCollapsed] = useState(true);
   const distractionFree = useAppSelector(selectDistractionFree);
 
@@ -44,7 +44,12 @@ export default function BaseLayerControl() {
     setCollapsed(true);
   }
 
-  useOnClickOutside({ current: container }, handleClickOutside);
+  useEffect(() => {
+    document.documentElement.classList.toggle("ll-layer-switcher-expanded", !collapsed);
+  }, [collapsed]);
+
+  const eventName = window.matchMedia("(pointer: coarse)").matches ? "touchstart" : "mousedown";
+  useOnClickOutside({ current: container }, handleClickOutside, eventName);
 
   const [countryFilter, setCountryFilter] = useState<keyof BaseLayers>("fr");
   const dispatch = useAppDispatch();

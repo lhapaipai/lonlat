@@ -177,7 +177,7 @@ const stars: StarOption[] = [
   { value: "fill", label: "Fill", icon: "fe-star" },
 ];
 
-function SelectOptionCustom({ icon, label }: StarOption) {
+function SelectOptionComponent({ icon, label }: StarOption) {
   const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
 
   const { ref, index } = useListItem({ label });
@@ -200,7 +200,7 @@ function SelectOptionCustom({ icon, label }: StarOption) {
   );
 }
 
-function SelectSelectionCustom({ label, icon }: SelectSelectionProps<StarOption>) {
+function SelectSelectionComponent({ label, icon }: SelectSelectionProps<StarOption>) {
   return label ? (
     <span>
       <i className={icon}></i>
@@ -226,8 +226,8 @@ export const CustomRenderer = () => {
           onChangeAction(o);
           setValue(o.target.value);
         }}
-        SelectSelectionCustom={SelectSelectionCustom}
-        SelectOptionCustom={SelectOptionCustom}
+        selectSelectionComponent={SelectSelectionComponent}
+        selectOptionComponent={SelectOptionComponent}
       ></Select>
     </>
   );

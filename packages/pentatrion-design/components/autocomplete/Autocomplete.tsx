@@ -34,7 +34,7 @@ import { Button, Loader, useEventCallback } from "../..";
 import { getLabel, getValue } from "./util.ts";
 
 export interface AutocompleteProps<O extends OptionLike = Option> {
-  icon?: boolean | string;
+  icon?: boolean | ReactNode;
 
   placement?: Placement;
   placeholder?: string;
@@ -116,21 +116,21 @@ function Autocomplete<O extends OptionLike = Option>(
     ],
   });
 
-  // const role = useRole(context, { role: "listbox" });
+  const role = useRole(context, { role: "listbox" });
   const dismiss = useDismiss(context);
-  // const listNav = useListNavigation(context, {
-  //   listRef,
-  //   activeIndex,
-  //   onNavigate: setActiveIndex,
-  //   /* we want the real focus to stay on the input, so focus associated to active items is simulated */
-  //   virtual: true,
-  //   loop: true,
-  // });
+  const listNav = useListNavigation(context, {
+    listRef,
+    activeIndex,
+    onNavigate: setActiveIndex,
+    /* we want the real focus to stay on the input, so focus associated to active items is simulated */
+    virtual: true,
+    loop: true,
+  });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-    // role,
+    role,
     dismiss,
-    // listNav,
+    listNav,
   ]);
 
   function handleChangeSearchValue(e: ChangeEvent<HTMLInputElement>) {
@@ -189,7 +189,7 @@ function Autocomplete<O extends OptionLike = Option>(
       <div className={cn("ll-input", "variant-normal")} ref={refs.setReference}>
         {icon !== false && (
           <div className="flex-center adornment">
-            {icon === true ? <i className="fe-search"></i> : <i className={icon}></i>}
+            {icon === true ? <i className="fe-search"></i> : icon}
             {loading && <Loader size="medium" color="weak" />}
           </div>
         )}

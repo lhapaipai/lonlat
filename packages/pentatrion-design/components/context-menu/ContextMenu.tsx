@@ -30,7 +30,7 @@ import "../select/Select.scss";
 import "./ContextMenu.scss";
 import { ContextMenuItemProps } from "./ContextMenuItem";
 import cn from "classnames";
-import { useDebounce, useEventCallback, useRefDebounce } from "../..";
+import { useEventCallback, useRefDebounce } from "../..";
 
 interface Props extends ComponentPropsWithRef<"div"> {
   compact?: boolean;
@@ -45,7 +45,7 @@ export default function ContextMenu({
 }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const isOpenDebounceRef = useRefDebounce(isOpen, 100);
+  const isOpenDebounceRef = useRefDebounce(isOpen, 500);
   const contextEvent = useRef<MouseEvent | CustomEvent | null>(null);
   const listItemsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const listContentRef = useRef(
@@ -102,6 +102,10 @@ export default function ContextMenu({
   ]);
 
   const onContextMenuStable = useEventCallback(function onContextMenu(e: MouseEvent | CustomEvent) {
+    /**
+     * if the context menu has just been closed we probably do not want a click to immediately
+     * reopen a new context menu
+     */
     if (isOpenDebounceRef.current) {
       return;
     }
@@ -126,6 +130,7 @@ export default function ContextMenu({
     });
 
     setIsOpen(true);
+    isOpenDebounceRef.current = true;
   });
 
   useEffect(() => {

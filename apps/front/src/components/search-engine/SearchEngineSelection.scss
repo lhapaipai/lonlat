@@ -1,0 +1,14 @@
+.ll-select .selection.search-engine-selector {
+    transition: all .3s ease, outline 0s;
+
+    &:hover {
+        outline: none;
+        color: var(--text-default);
+    }
+}
+
+.select-search-engine-selection-icon {
+    .fe-locality {
+        margin-left: -2px;
+    }
+}
