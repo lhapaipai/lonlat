@@ -29,12 +29,16 @@ export function filterMapProps(options: MapProps) {
   const otherOptions = {};
   for (const key in options) {
     if (key.startsWith("on")) {
+      // @ts-ignore
       callbacks[key] = options[key];
     } else if (key in mapHandlerNames) {
+      // @ts-ignore
       mapHandlerOptions[key] = options[key];
     } else if (key in mapReactiveOptionNames) {
+      // @ts-ignore
       mapReactiveOptions[key] = options[key];
     } else if (!key.startsWith("initial") && key !== "container" && key !== "style") {
+      // @ts-ignore
       otherOptions[key] = options[key];
     }
   }
@@ -52,10 +56,13 @@ export function transformPropsToOptions(options: { [k: string]: unknown }) {
   const mapOptions = {};
   for (const key in options) {
     if (key.startsWith("initial")) {
+      // @ts-ignore
       mapOptions[key[7].toLowerCase() + key.substring(8)] = options[key];
     } else if (key.startsWith("on")) {
+      // @ts-ignore
       callbacks[key] = options[key];
     } else {
+      // @ts-ignore
       mapOptions[key] = options[key];
     }
   }

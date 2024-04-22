@@ -23,9 +23,11 @@ import {
   constraintChanged,
 } from "./directionSlice";
 import {
+  AppGeoOption,
   AutocompleteGeoOption,
   DirectionOptions,
   GeoPointOption,
+  c2cWaypointSearch,
   createNodataFeature,
   getHours,
   getMinutes,
@@ -187,8 +189,15 @@ export default function DirectionTab() {
                 autocompleteOptionComponent={AutocompleteGeoOption}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
                 onChangeSearchValueCallback={async (searchValue) => {
+                  let collection: AppGeoOption[] = [];
                   try {
-                    const collection = await ignSearch(searchValue, viewState.center);
+                    if (searchEngine === "c2c") {
+                      collection = await c2cWaypointSearch(searchValue);
+                      // } else if (searchEngine === "nominatim") {
+                      //   // TODO
+                    } else {
+                      collection = await ignSearch(searchValue, viewState.center);
+                    }
                     return collection;
                   } catch (err) {
                     notifyError(err);

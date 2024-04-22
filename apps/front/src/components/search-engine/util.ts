@@ -6,7 +6,7 @@ export function iconBySearchEngine(searchEngine: SearchEngine) {
       return "fe-locality";
     case "c2c":
       return "fe-summit";
-    case "nominatim":
-      return "fe-globe";
+    // case "nominatim":
+    //   return "fe-globe";
   }
 }

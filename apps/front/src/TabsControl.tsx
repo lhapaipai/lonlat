@@ -59,8 +59,8 @@ function TabsControl() {
             <img
               width="32"
               height="32"
-              src="/favicon-white-32x32.png"
-              srcSet="/favicon-white-32x32.png 1x, /favicon-white-64x64.png 2x"
+              src="/logo-1x.png"
+              srcSet="/logo-1x.png 1x, /logo-2x.png 2x"
               alt="LonLat logo"
               className="logo"
             />

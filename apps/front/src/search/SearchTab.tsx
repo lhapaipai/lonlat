@@ -101,8 +101,8 @@ export default function SearchTab() {
             try {
               if (searchEngine === "c2c") {
                 collection = await c2cWaypointSearch(searchValue);
-              } else if (searchEngine === "nominatim") {
-                // TODO
+                // } else if (searchEngine === "nominatim") {
+                //   // TODO
               } else {
                 collection = await ignSearch(searchValue, viewState.center);
               }
