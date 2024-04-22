@@ -5,11 +5,11 @@
 ## Démo
 
 <a href="https://lonlat.org">
-<img width="700" height="400" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/front.jpg" alt="Lonlat App" />
+<img width="1400" height="800" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/front.jpg" alt="Lonlat App" />
 </a>
 
 <a href="https://storybook.lonlat.pentatrion.com">
-<img width="700" height="400" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/storybook.jpg" alt="Lonlat Storybook" />
+<img width="1400" height="800" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/storybook.jpg" alt="Lonlat Storybook" />
 </a>
 
 ## Installation

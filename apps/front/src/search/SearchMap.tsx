@@ -20,7 +20,7 @@ export default function SearchMap() {
       {searchFeature?.geometry.type === "Point" && (
         <RLLMarker
           key={searchFeature.properties.id}
-          icon="fe-star"
+          icon={`fe-${searchFeature.properties.type}`}
           draggable={true}
           longitude={searchFeature.geometry.coordinates[0]}
           latitude={searchFeature.geometry.coordinates[1]}
