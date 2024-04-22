@@ -1,4 +1,9 @@
 {
+  "countries": {
+    "fr": "France",
+    "ch": "Suisse",
+    "world": "Monde"
+  },
   "featureType": {
     "housenumber": "Point",
     "street": "Rue",

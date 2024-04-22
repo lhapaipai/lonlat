@@ -5,6 +5,10 @@ import { selectTab } from "./store/mapSlice";
 import { selectValidDirectionWayPoints } from "./direction/directionSlice";
 import { boundsContained, getBounds } from "pentatrion-geo";
 import { useMap } from "maplibre-react-components";
+import { selectBaseLayer } from "./layer/layerSlice";
+import { BaseLayers, countryBBoxes, layerCountry } from "./layer/layers";
+import booleanContains from "@turf/boolean-contains";
+import { point } from "@turf/helpers";
 
 export default function MapFlyer() {
   const map = useMap();
@@ -12,6 +16,7 @@ export default function MapFlyer() {
   const searchFeature = useAppSelector(selectSearchFeature);
   const tab = useAppSelector(selectTab);
   const validWayPoints = useAppSelector(selectValidDirectionWayPoints);
+  const baseLayer = useAppSelector(selectBaseLayer);
 
   useEffect(() => {
     if (!map) {
@@ -53,6 +58,18 @@ export default function MapFlyer() {
       }
     }
   }, [searchFeature, map, tab, validWayPoints]);
+
+  useEffect(() => {
+    const countryId = layerCountry[baseLayer] as keyof BaseLayers;
+    if (countryId === "world") {
+      return;
+    }
+    const countryInfos = countryBBoxes[countryId];
+    const mapCenter = point(map.getCenter().toArray());
+    if (!booleanContains(countryInfos.polygon, mapCenter)) {
+      map.fitBounds(countryInfos.bbox);
+    }
+  }, [baseLayer, map]);
 
   return null;
 }

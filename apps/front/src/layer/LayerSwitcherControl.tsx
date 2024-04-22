@@ -5,7 +5,6 @@ import {
   OptionalLayerId,
   baseLayers,
   baseLayersById,
-  countryLabels,
   optionalLayersById,
 } from "./layers";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -27,10 +26,12 @@ import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
 import { coordsChanged } from "../street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/mapSlice";
 import "./LayerSwitcherControl.scss";
+import { useT } from "talkr";
 
 export default function LayerSwitcherControl() {
   const [collapsed, setCollapsed] = useState(true);
   const distractionFree = useAppSelector(selectDistractionFree);
+  const { T } = useT();
 
   const container = useRControl({
     position: "bottom",
@@ -95,7 +96,7 @@ export default function LayerSwitcherControl() {
               selected={countryFilter === countryId}
               onClick={() => setCountryFilter(countryId)}
             >
-              {countryLabels[countryId]}
+              {T(`countries.${countryId}`)}
             </Button>
           ))}
         </ButtonGroup>

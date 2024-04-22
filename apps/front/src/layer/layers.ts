@@ -10,8 +10,8 @@ import {
   swissScan25URL,
 } from "pentatrion-geo";
 import { ignToken, mapTilerStreetsStyleUrl } from "../config/constants";
-import { StyleSpecification } from "maplibre-gl";
-
+import { LngLatBounds, StyleSpecification } from "maplibre-gl";
+import { polygon } from "@turf/helpers";
 const terrariumTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
 
 const googleStreetViewURLTiles = [
@@ -67,13 +67,52 @@ export const baseLayers: BaseLayers = {
     "ign-plan_ign-standard",
   ],
   ch: ["swisstopo-raster-orthophoto", "swisstopo-raster-default", "swisstopo-raster-default_25"],
-  world: ["osm-raster-default", "google-raster-orthophoto", "maptiler-streets"],
+  world: [
+    "osm-raster-default",
+    // "google-raster-orthophoto",
+    "maptiler-streets",
+  ],
 };
 
-export const countryLabels = {
-  fr: "France",
-  ch: "Suisse",
-  world: "Monde",
+export const layerCountry: {
+  [key in BaseLayerId]?: keyof BaseLayers;
+} = {};
+for (const countryId in baseLayers) {
+  baseLayers[countryId as keyof BaseLayers].forEach((layerId) => {
+    layerCountry[layerId] = countryId as keyof BaseLayers;
+  });
+}
+
+export const countryBBoxes = {
+  fr: {
+    polygon: polygon([
+      [
+        [-6, 41],
+        [-6, 51],
+        [10, 51],
+        [10, 41],
+        [-6, 41],
+      ],
+    ]),
+    bbox: new LngLatBounds([-6, 41], [10, 51]),
+  },
+  ch: {
+    polygon: polygon([
+      [
+        [5.917, 46.145],
+        [6.325, 46.153],
+        [6.394, 46.336],
+        [6.762, 46.336],
+        [6.911, 45.974],
+        [10.79, 46.423],
+        [8.869, 48.143],
+        [6.336, 46.836],
+        [5.957, 46.259],
+        [5.917, 46.145],
+      ],
+    ]),
+    bbox: new LngLatBounds([5, 45], [11, 48]),
+  },
 };
 
 export const baseLayersById = {
