@@ -5,6 +5,7 @@ import { Event, RLayer, RSource } from "maplibre-react-components";
 import {
   directionWayPointChanged,
   selectDirectionRoute,
+  selectDirectionWayPoints,
   selectDirectionWaypoints,
   selectValidDirectionWayPoints,
 } from "./directionSlice";
@@ -21,7 +22,9 @@ import {
 export default function DirectionMap() {
   const dispatch = useAppDispatch();
 
-  const validDirectionWayPoints = useAppSelector(selectValidDirectionWayPoints);
+  // we are not using selectValidDirectionWayPoints because we want real index
+  // for getIndexLetter(index)
+  const waypoints = useAppSelector(selectDirectionWayPoints);
   const directionRoute = useAppSelector(selectDirectionRoute);
   const directionWaypoints = useAppSelector(selectDirectionWaypoints);
 
@@ -32,14 +35,13 @@ export default function DirectionMap() {
 
   return (
     <>
-      {validDirectionWayPoints.map(
+      {waypoints.map(
         (feature, index) =>
-          feature?.geometry.type === "Point" && (
+          feature.type === "Feature" &&
+          "Point" && (
             <RLLMarker
-              color={
-                [0, validDirectionWayPoints.length - 1].includes(index) ? "#ffe64b" : "#c0c0c0"
-              }
-              scale={[0, validDirectionWayPoints.length - 1].includes(index) ? 1 : 0.75}
+              color={[0, waypoints.length - 1].includes(index) ? "#ffe64b" : "#c0c0c0"}
+              scale={[0, waypoints.length - 1].includes(index) ? 1 : 0.75}
               key={feature.id}
               draggable={true}
               longitude={feature.geometry.coordinates[0]}
