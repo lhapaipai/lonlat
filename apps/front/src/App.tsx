@@ -68,11 +68,14 @@ function App() {
   });
 
   function handleMoveEnd(e: MapLibreEvent) {
+    console.log("moveend", e);
     const map = e.target;
     dispatch(
       viewStateChanged({
         center: map.getCenter().toArray(),
         zoom: map.getZoom(),
+        pitch: map.getPitch(),
+        bearing: map.getBearing(),
       }),
     );
   }

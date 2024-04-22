@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
+import { parseHashString } from "~/lib/hashUtil";
+import { france, marignier } from "~/layer/util";
+import { debug } from "~/config/constants";
 
-const marignier = {
-  lng: 6.498,
-  lat: 46.089,
-};
-
-type ViewState = {
+export type ViewState = {
   center: [number, number];
   zoom: number;
+  pitch: number;
+  bearing: number;
 };
 
 export const searchEngines = ["ign-address", "c2c" /*, "nominatim" */] as const;
@@ -25,11 +25,17 @@ type MapState = {
   distractionFree: boolean;
 };
 
+const hashInfos = parseHashString();
+
 const initialState: MapState = {
-  viewState: {
-    center: [marignier.lng, marignier.lat],
-    zoom: 14,
-  },
+  viewState: hashInfos
+    ? hashInfos.viewState
+    : {
+        center: debug ? [marignier.lng, marignier.lat] : [france.lng, france.lat],
+        zoom: debug ? marignier.zoom : france.zoom,
+        pitch: 0,
+        bearing: 0,
+      },
   tab: "search",
   searchEngine: "ign-address",
   coordsUnit: "lonlat",

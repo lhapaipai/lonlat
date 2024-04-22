@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { BaseLayerId, OptionalLayerId } from "./layers";
+import { BaseLayerId, baseLayersById, OptionalLayerId } from "./layers";
+import { parseHashString } from "~/lib/hashUtil";
 
 interface LayerState {
   baseLayer: BaseLayerId;
@@ -9,8 +10,14 @@ interface LayerState {
   streetView: boolean;
 }
 
+const hashInfos = parseHashString();
+const baseLayer: BaseLayerId =
+  hashInfos && baseLayersById[hashInfos.baseLayer as BaseLayerId]
+    ? (hashInfos.baseLayer as BaseLayerId)
+    : "ign-raster-default_scan";
+
 const initialState: LayerState = {
-  baseLayer: "ign-raster-default_scan",
+  baseLayer,
   optionalLayers: [],
   terrain: false,
   streetView: false,

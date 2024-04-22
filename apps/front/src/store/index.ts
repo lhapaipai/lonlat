@@ -9,6 +9,7 @@ import directionSlice, {
 import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
 import layerSlice from "../layer/layerSlice";
 import streetViewSlice from "../street-view/streetViewSlice";
+import { ViewStateListenerMiddleware } from "./stateStorage";
 
 const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ const store = configureStore({
       .prepend(searchFeatureListenerMiddleware.middleware)
       .prepend(directionWayPointListenerMiddleware.middleware)
       .prepend(directionWayPointsListenerMiddleware.middleware)
+      .prepend(ViewStateListenerMiddleware.middleware)
       .concat(errorCatcherMiddleware);
   },
 });

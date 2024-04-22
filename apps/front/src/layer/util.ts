@@ -111,3 +111,14 @@ export async function prepareStyle(
   // console.log(nextStyle.sources, nextStyle.layers);
   return nextStyle;
 }
+
+export const marignier = {
+  lng: 6.498,
+  lat: 46.089,
+  zoom: 14,
+};
+export const france = {
+  lng: 1.5,
+  lat: 47,
+  zoom: 6,
+};
