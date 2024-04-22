@@ -17,7 +17,7 @@
 [Storybook](https://storybook.lonlat.pentatrion.com)
 
 <a href="https://maplibre-react-sandbox.lonlat.pentatrion.com/">
-<img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/maplibre-react-sandbox.jpg" alt="Lonlat Storybook" />
+<img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/maplibre-react-sandbox.jpg" alt="Maplibre react sandbox" />
 </a>
 
 [Maplibre react sandbox](https://maplibre-react-sandbox.lonlat.pentatrion.com/)

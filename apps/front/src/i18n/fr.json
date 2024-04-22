@@ -4,6 +4,11 @@
     "ch": "Suisse",
     "world": "Monde"
   },
+  "property": {
+    "city": "Ville",
+    "postcode": "Code postal",
+    "citycode": "Code INSEE"
+  },
   "featureType": {
     "housenumber": "Point",
     "street": "Rue",
@@ -58,7 +63,7 @@
   },
   "copiedIntoClipboard": "Ajouté au presse papier",
   "coordinates": "Coordonnées",
-  "altitude": "Altitude",
+  "elevation": "Altitude",
   "time": "Temps",
   "distance": "Distance",
   "duration": "Durée",

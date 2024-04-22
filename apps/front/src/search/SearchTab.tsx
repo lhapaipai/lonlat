@@ -142,12 +142,28 @@ export default function SearchTab() {
               </div>
             </div>
             <div className="setting">
-              <div className="text-hint">{T("altitude")}</div>
+              <div className="text-hint">{T("elevation")}</div>
               <div>
-                {searchFeature.geometry.coordinates[2] ?? "-"}
+                {searchFeature.properties.originalProperties?.elevation ??
+                  searchFeature.geometry.coordinates[2] ??
+                  "-"}
                 <span className="text-hint"> m</span>
               </div>
             </div>
+            {["city", "postcode"].map((key) => {
+              const value = searchFeature.properties.originalProperties?.[key] as
+                | string
+                | undefined;
+              if (!value) {
+                return null;
+              }
+              return (
+                <div className="setting" key={key}>
+                  <div className="text-hint">{T(`property.${key}`)}</div>
+                  <div>{value}</div>
+                </div>
+              );
+            })}
           </div>
           <div className="actions">
             <SimpleTooltip content={T("tooltip.direction")} placement="top-start">

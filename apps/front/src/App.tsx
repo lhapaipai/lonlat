@@ -68,7 +68,6 @@ function App() {
   });
 
   function handleMoveEnd(e: MapLibreEvent) {
-    console.log("moveend", e);
     const map = e.target;
     dispatch(
       viewStateChanged({
@@ -98,7 +97,7 @@ function App() {
           afterInstanciation={handleAfterMapInstanciation}
           onZoomEnd={(e) => console.log(e.target.getZoom())}
           onClick={(e) => {
-            console.log(e.lngLat.toArray());
+            // console.log(e.lngLat.toArray());
           }}
         >
           {debug && <RFrameRateControl />}

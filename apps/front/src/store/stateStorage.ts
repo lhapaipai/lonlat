@@ -13,7 +13,6 @@ ViewStateListenerMiddleware.startListening({
     const baseLayer = state.layer.baseLayer;
     const viewState = state.map.viewState;
 
-    console.log(baseLayer, viewState);
     const hash = getHashString(baseLayer, viewState);
 
     const location = window.location.href.replace(/(#.+)?$/, hash);

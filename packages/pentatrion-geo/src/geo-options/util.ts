@@ -186,11 +186,11 @@ export function getCoordsStr([lng, lat]: Position, coordsUnit: CoordsUnit) {
 }
 
 export function stringifyGeoOption(geoFeature: GeoOption) {
-  const { label, name, context, type } = geoFeature.properties;
+  const { label, name, context, type, originalProperties } = geoFeature.properties;
   return JSON.stringify(
     {
       type: "Feature",
-      properties: { label, name, context, type },
+      properties: { label, name, context, type, originalProperties },
       geometry: geoFeature.geometry,
     },
     undefined,
