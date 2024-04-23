@@ -1,7 +1,7 @@
 {
   "name": "front",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -45,6 +45,7 @@
     "@types/react-dom": "^18.2.24",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "typescript": "^5.4.3",
+    "unplugin-inject-preload": "^2.0.3",
     "vite": "^5.2.8"
   }
 }
