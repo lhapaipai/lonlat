@@ -69,16 +69,11 @@ export type GeoOption<
   bbox?: BBox | undefined;
 };
 
-export interface NoDataPoint extends GeoJsonObject {
-  type: "Point";
-  coordinates: (typeof NaN)[];
-}
-
 // Prepared data
 export type AddressGeoOption = GeoOption<Point, AddressType>;
 export type LonLatGeoOption = GeoOption<Point, LonLatType>;
 export type MountainGeoOption = GeoOption<Point, WaypointType>;
-export type GeolocationGeoOption = GeoOption<NoDataPoint, GeolocationType>;
+export type GeolocationGeoOption = GeoOption<Point, GeolocationType>;
 
 export type AppGeoOption =
   | AddressGeoOption

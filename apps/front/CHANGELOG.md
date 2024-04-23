@@ -1,5 +1,7 @@
 ## 0.0.3
 
+- geolocation type refactorisation
+- fix mapFlyer minZoom when map centered with Country
 - fix marker icon with legacy browsers
 - geolocation for searchTab
 

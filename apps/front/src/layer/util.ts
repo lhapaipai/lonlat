@@ -117,8 +117,15 @@ export const marignier = {
   lat: 46.089,
   zoom: 14,
 };
-export const france = {
-  lng: 1.5,
-  lat: 47,
-  zoom: 6,
-};
+export const france =
+  document.documentElement.clientWidth > 768
+    ? {
+        lng: 2.5,
+        lat: 46.5,
+        zoom: 6,
+      }
+    : {
+        lng: 2.5,
+        lat: 47.5,
+        zoom: 4.5,
+      };

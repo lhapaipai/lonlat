@@ -11,7 +11,7 @@ export function createGeolocationGeoOption(label = "My position"): GeolocationGe
     type: "Feature",
     geometry: {
       type: "Point",
-      coordinates: [NaN, NaN],
+      coordinates: [0, 0],
     },
     properties: {
       id: "geolocation",

@@ -10,12 +10,18 @@ import { BaseLayers, countryBBoxes, layerCountry } from "./layer/layers";
 import booleanContains from "@turf/boolean-contains";
 import { point } from "@turf/helpers";
 import { selectGeolocation } from "./geolocation/geolocationSlice";
+import { LngLat, LngLatBounds } from "maplibre-gl";
 
 export default function MapFlyer() {
   const map = useMap();
 
   const geolocation = useAppSelector(selectGeolocation);
-  const { lockCamera, coords: geolocationCoords, enabled: geolocationEnabled } = geolocation;
+  const {
+    lockCamera,
+    coords: geolocationCoords,
+    enabled: geolocationEnabled,
+    accuracy,
+  } = geolocation;
 
   const searchFeature = useAppSelector(selectSearchFeature);
   const tab = useAppSelector(selectTab);
@@ -32,8 +38,19 @@ export default function MapFlyer() {
       validWayPoints.some(isGeolocationGeoOption);
 
     if (geolocationEnabled && hasGeolocationFeature) {
-      if (geolocationCoords && lockCamera && !map.getBounds().contains(geolocationCoords)) {
-        map.flyTo({ center: geolocationCoords });
+      if (
+        geolocationCoords &&
+        lockCamera &&
+        (!map.getBounds().contains(geolocationCoords) || map.getZoom() < 15)
+      ) {
+        if (!accuracy) {
+          map.flyTo({ center: geolocationCoords, zoom: Math.max(15, map.getZoom()) });
+        } else {
+          const newBounds = LngLatBounds.fromLngLat(LngLat.convert(geolocationCoords), accuracy);
+          map.fitBounds(newBounds, {
+            maxZoom: 15,
+          });
+        }
       }
       return;
     }
@@ -44,8 +61,8 @@ export default function MapFlyer() {
       const [lon, lat] = searchFeature.geometry.coordinates;
       const contains = map.getBounds().contains([lon, lat]);
 
-      if (!contains) {
-        map.flyTo({ center: [lon, lat] });
+      if (!contains || map.getZoom() < 15) {
+        map.flyTo({ center: [lon, lat], zoom: Math.max(15, map.getZoom()) });
       }
       return;
     }

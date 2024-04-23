@@ -1,4 +1,9 @@
-import { LLMarker, RLLMarker, createLonLatFeaturePoint } from "pentatrion-geo";
+import {
+  LLMarker,
+  RLLMarker,
+  createLonLatFeaturePoint,
+  isGeolocationGeoOption,
+} from "pentatrion-geo";
 import { Event, RLayer, RSource } from "maplibre-react-components";
 
 import { searchFeatureChanged, selectIsochrone, selectSearchFeature } from "./searchSlice";
@@ -17,7 +22,7 @@ export default function SearchMap() {
 
   return (
     <>
-      {searchFeature?.type == "Feature" && searchFeature?.geometry.type === "Point" && (
+      {searchFeature && !isGeolocationGeoOption(searchFeature) && (
         <RLLMarker
           key={searchFeature.id}
           icon={`fe-${searchFeature.properties.type}`}
