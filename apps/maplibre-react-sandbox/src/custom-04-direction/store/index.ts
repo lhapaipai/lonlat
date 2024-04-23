@@ -1,11 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import searchSlice, { searchFeatureListenerMiddleware } from "../search/searchSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+
+import searchSlice, { searchFeatureListenerMiddleware } from "../search/searchSlice";
 import mapSlice from "./mapSlice";
 import directionSlice, {
   directionWayPointListenerMiddleware,
   directionWayPointsListenerMiddleware,
 } from "../direction/directionSlice";
+import geolocationSlice from "../geolocation/geolocationSlice";
+
 import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
 
 const store = configureStore({
@@ -14,6 +17,7 @@ const store = configureStore({
     map: mapSlice,
     search: searchSlice,
     direction: directionSlice,
+    geolocation: geolocationSlice,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()

@@ -9,6 +9,7 @@
     "postcode": "Code postal",
     "citycode": "Code INSEE"
   },
+  "myGeolocation": "Ma position",
   "featureType": {
     "housenumber": "Point",
     "street": "Rue",

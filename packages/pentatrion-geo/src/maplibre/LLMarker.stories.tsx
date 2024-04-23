@@ -238,6 +238,16 @@ export const Graphics = () => (
         </div>
         <pre>.inactive</pre>
       </div>
+      <div>
+        <div className="ll-marker geolocation">
+          <div className="marker">
+            <div className="ovale"></div>
+            <i className="fe-locate"></i>
+          </div>
+          <div className="target"></div>
+        </div>
+        <pre>.geolocation</pre>
+      </div>
     </div>
 
     <div className="storybook-icon-grid">

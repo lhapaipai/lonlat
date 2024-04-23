@@ -1,8 +1,9 @@
+import { nanoid } from "nanoid";
 import { GeoOption, NoDataOption } from "pentatrion-design";
 
 export function createNodataFeature(id?: string): NoDataOption {
   return {
-    id: id ?? Math.floor(Math.random() * 100000).toString(),
+    id: id ?? nanoid(),
     type: "nodata",
   };
 }

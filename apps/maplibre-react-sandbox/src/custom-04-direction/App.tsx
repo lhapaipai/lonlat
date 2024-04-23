@@ -17,6 +17,7 @@ import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import DirectionMap from "./direction/DirectionMap";
 import SearchMap from "./search/SearchMap";
+import GeolocationMap from "./geolocation/GeolocationMap";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/icons/arrow.png").then((img) => {
@@ -67,6 +68,7 @@ function App() {
         <MapFlyer />
         {tab === "direction" && <DirectionMap />}
         {tab === "search" && <SearchMap />}
+        <GeolocationMap />
         <ContextMenuManager />
       </RMap>
       <aside className="sidebar">

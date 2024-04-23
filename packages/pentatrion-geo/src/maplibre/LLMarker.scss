@@ -50,6 +50,10 @@
         box-shadow: 0px 0px 2px #000;
     }
 
+    &.geolocation .target {
+        animation: geolocation-dot-pulse 2s infinite;
+    }
+
     &.draggable:active,
     &.draggable.active {
 
@@ -374,5 +378,22 @@
             background-position: 0px 900px;
         }
 
+    }
+}
+
+@keyframes geolocation-dot-pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    70% {
+        opacity: 0;
+        transform: scale(5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1);
     }
 }

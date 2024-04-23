@@ -1,14 +1,11 @@
 import { memo, useId } from "react";
 import { useListItem } from "@floating-ui/react";
 import cn from "classnames";
-import { GeoOption, getTypeLabel } from "../..";
-import { OptionLike, useAutocomplete } from "pentatrion-design";
+import { GeoOption, GeoPointOption, GeometryWithCoordinates, getTypeLabel } from "../..";
+import { GeolocationOption, useAutocomplete } from "pentatrion-design";
+import { getValue } from "pentatrion-design/components/autocomplete/util";
 
-type Props = GeoOption;
-
-function getValue(option: OptionLike) {
-  return option.type === "Feature" ? option.properties.id : option.value;
-}
+type Props = GeoPointOption | GeolocationOption;
 
 function AutocompleteGeoOption({ properties: { label, id, type, name, context } }: Props) {
   const uniqId = useId();

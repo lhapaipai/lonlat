@@ -1,9 +1,21 @@
 import { OptionLike } from "../select";
 
 export function getLabel(option: OptionLike) {
-  return option.type === "Feature" ? option.properties.label : option.label;
+  switch (option.type) {
+    case "Feature":
+    case "geolocation":
+      return option.properties.label;
+    default:
+      return option.label;
+  }
 }
 
 export function getValue(option: OptionLike) {
-  return option.type === "Feature" ? option.properties.id : option.value;
+  switch (option.type) {
+    case "Feature":
+    case "geolocation":
+      return option.properties.id;
+    default:
+      return option.value;
+  }
 }

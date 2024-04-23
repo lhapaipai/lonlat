@@ -18,7 +18,7 @@ export default function MapFlyer() {
       return;
     }
 
-    if (searchFeature && tab === "search") {
+    if (searchFeature && searchFeature.type !== "geolocation" && tab === "search") {
       const [lon, lat] = searchFeature.geometry.coordinates;
       const contains = map.getBounds().contains([lon, lat]);
 

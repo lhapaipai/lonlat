@@ -17,13 +17,15 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { NoDataOption } from "pentatrion-design";
+import { GeolocationOption, NoDataOption } from "pentatrion-design";
 import { orsRoute } from "~/lib/api/openRouteService";
 import { errorAdded } from "pentatrion-design/redux";
 import { FeatureCollection, Point } from "geojson";
 
+type WayPoint = GeoPointOption | GeolocationOption | NoDataOption;
+
 type DirectionState = {
-  wayPoints: (GeoPointOption | NoDataOption)[];
+  wayPoints: WayPoint[];
   route: RouteFeatureResponse | null;
   constraints: {
     avoidHighways: boolean;
@@ -46,17 +48,17 @@ const initialState: DirectionState = {
   profile: "car",
 };
 
-export type WayPointPayload = { index: number; feature: GeoPointOption | NoDataOption };
+export type WayPointPayload = { index: number; feature: WayPoint };
 
 const directionSlice = createSlice({
   name: "direction",
   initialState,
   reducers: {
     directionWayPointsAddedFromSearch: {
-      reducer(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
+      reducer(state, action: PayloadAction<WayPoint[]>) {
         state.wayPoints = action.payload;
       },
-      prepare(wayPoint: GeoPointOption) {
+      prepare(wayPoint: GeoPointOption | GeolocationOption) {
         return {
           payload: [createNodataFeature(), wayPoint],
         };
@@ -75,7 +77,7 @@ const directionSlice = createSlice({
       const { key, value } = action.payload;
       state.constraints[key] = value;
     },
-    directionWayPointsChanged(state, action: PayloadAction<(GeoPointOption | NoDataOption)[]>) {
+    directionWayPointsChanged(state, action: PayloadAction<WayPoint[]>) {
       state.wayPoints = action.payload;
     },
     directionWayPointChanged(state, action: PayloadAction<WayPointPayload>) {

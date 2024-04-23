@@ -10,6 +10,7 @@ import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/red
 import layerSlice from "../layer/layerSlice";
 import streetViewSlice from "../street-view/streetViewSlice";
 import { ViewStateListenerMiddleware } from "./stateStorage";
+import geolocationSlice from "~/geolocation/geolocationSlice";
 
 const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
     search: searchSlice,
     direction: directionSlice,
     streetView: streetViewSlice,
+    geolocation: geolocationSlice,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()

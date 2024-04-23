@@ -16,9 +16,9 @@ export default function SearchMap() {
 
   return (
     <>
-      {searchFeature?.geometry.type === "Point" && (
+      {searchFeature?.type == "Feature" && searchFeature.geometry.type === "Point" && (
         <RMarker
-          key={searchFeature.properties.id}
+          key={searchFeature.id}
           draggable={true}
           longitude={searchFeature.geometry.coordinates[0]}
           latitude={searchFeature.geometry.coordinates[1]}

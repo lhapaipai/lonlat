@@ -42,7 +42,7 @@ export type FeatureProperties<T extends string = string> = {
   /** id and label are required for <select /> like components */
 
   id: string;
-  /** compute name + short context for input string */
+  /** computed name + short context for input string */
   label: string;
 
   name: string;

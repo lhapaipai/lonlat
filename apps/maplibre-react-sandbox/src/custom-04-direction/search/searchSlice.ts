@@ -5,15 +5,15 @@ import {
   getFeaturePointAltitude,
   reverseGeocodeLonLatFeaturePoint,
 } from "pentatrion-geo";
-import { FeatureProperties } from "pentatrion-design";
+import { FeatureProperties, GeolocationOption } from "pentatrion-design";
 import { errorAdded } from "pentatrion-design/redux";
 import { Point } from "geojson";
 
-type SearchState = {
-  feature: GeoPointOption | null;
-};
+export type SearchPayload = GeoPointOption | GeolocationOption | null;
 
-export type SearchPayload = GeoPointOption | null;
+type SearchState = {
+  feature: SearchPayload;
+};
 
 const initialState: SearchState = {
   feature: null,
@@ -27,7 +27,11 @@ const searchSlice = createSlice({
       state.feature = action.payload;
     },
     searchFeatureGeometryChanged(state, action: PayloadAction<Point>) {
-      if (!state.feature || state.feature.geometry.type !== "Point") {
+      if (
+        !state.feature ||
+        state.feature.type === "geolocation" ||
+        state.feature.geometry.type !== "Point"
+      ) {
         return;
       }
       state.feature.geometry = action.payload;
@@ -55,7 +59,7 @@ export const searchFeatureListenerMiddleware = createListenerMiddleware();
 searchFeatureListenerMiddleware.startListening({
   actionCreator: searchFeatureChanged,
   effect: async ({ payload: feature }, { dispatch }) => {
-    if (!feature) {
+    if (!feature || feature.type === "geolocation") {
       return;
     }
     if (feature.properties.type === "lonlat" && feature.properties.score === 0) {

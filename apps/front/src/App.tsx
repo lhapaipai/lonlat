@@ -28,6 +28,8 @@ import StreetViewWindow from "./street-view/StreetViewWindow";
 import TabsControl from "./TabsControl";
 import { RFrameRateControl } from "pentatrion-geo";
 import { debug } from "./config/constants";
+import { selectGeolocationEnabled } from "./geolocation/geolocationSlice";
+import GeolocationMap from "./geolocation/GeolocationMap";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {
@@ -60,6 +62,7 @@ function App() {
   const terrain = useAppSelector(selectTerrain);
   const streetView = useAppSelector(selectStreetView);
   const tab = useAppSelector(selectTab);
+  const geolocationEnabled = useAppSelector(selectGeolocationEnabled);
 
   const [uncontrolledStyle, setUncontrolledStyle] = useState<StyleSpecification | string>({
     version: 8,
@@ -104,6 +107,7 @@ function App() {
           {streetView && <StreetViewMap />}
           {tab === "direction" && <DirectionMap />}
           {tab === "search" && <SearchMap />}
+          {geolocationEnabled && <GeolocationMap />}
           <ContextMenuManager />
         </RMap>
       </div>

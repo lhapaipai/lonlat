@@ -16,12 +16,12 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { FeatureProperties, NoDataOption } from "pentatrion-design";
+import { FeatureProperties, GeolocationOption, NoDataOption } from "pentatrion-design";
 import { FeatureCollection, Point } from "geojson";
 import { errorAdded } from "pentatrion-design/redux";
 
 type DirectionState = {
-  wayPoints: (GeoPointOption | NoDataOption)[];
+  wayPoints: (GeoPointOption | GeolocationOption | NoDataOption)[];
   route: RouteFeatureResponse | null;
 };
 

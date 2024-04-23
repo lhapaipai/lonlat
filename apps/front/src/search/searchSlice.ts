@@ -9,9 +9,12 @@ import {
 } from "pentatrion-geo";
 import { Point } from "geojson";
 import { errorAdded } from "pentatrion-design/redux";
+import { GeolocationOption } from "pentatrion-design";
+
+export type SearchFeature = GeoPointOption | GeolocationOption | null;
 
 type SearchState = {
-  feature: GeoPointOption | null;
+  feature: SearchFeature;
   isochrone: IsochroneGeoJSON | null;
 };
 
@@ -24,7 +27,7 @@ const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    searchFeatureChanged(state, action: PayloadAction<GeoPointOption | null>) {
+    searchFeatureChanged(state, action: PayloadAction<SearchFeature>) {
       state.feature = action.payload;
       state.isochrone = null;
     },
@@ -35,7 +38,11 @@ const searchSlice = createSlice({
       state.feature.properties = action.payload;
     },
     searchFeatureGeometryChanged(state, action: PayloadAction<Point>) {
-      if (!state.feature || state.feature.geometry.type !== "Point") {
+      if (
+        !state.feature ||
+        state.feature.type === "geolocation" ||
+        state.feature.geometry.type !== "Point"
+      ) {
         return;
       }
       state.feature.geometry = action.payload;
@@ -62,9 +69,10 @@ export const searchFeatureListenerMiddleware = createListenerMiddleware();
 searchFeatureListenerMiddleware.startListening({
   actionCreator: searchFeatureChanged,
   effect: async ({ payload: feature }, { dispatch }) => {
-    if (!feature) {
+    if (!feature || feature.type === "geolocation") {
       return;
     }
+
     if (feature.properties.type === "lonlat" && feature.properties.score === 0) {
       reverseGeocodeLonLatFeaturePoint(feature)
         .then((accurateProperties) => {

@@ -7,6 +7,7 @@ import LLPopup, { arrowHeight } from "./LLPopup";
 export interface LLMarkerOptions extends MarkerOptions {
   icon?: string;
   text?: string;
+  className?: string;
 }
 
 const defaultColor = "#ffe64b";
@@ -28,6 +29,9 @@ export default class LLMarker extends Marker {
     if (useDefaultMarker) {
       options ??= {};
       options.element = DOM.create("div", "ll-marker");
+      if (options.className) {
+        options.element.classList.add(options.className);
+      }
     }
 
     super(options);

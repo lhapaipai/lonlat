@@ -1,5 +1,6 @@
 import { Position } from "geojson";
 import { GeoOption } from "../types";
+import { GeolocationOption } from "pentatrion-design";
 
 export function updateId<T extends { id: string }>(obj: T, id: string): T {
   return {
@@ -185,13 +186,13 @@ export function getCoordsStr([lng, lat]: Position, coordsUnit: CoordsUnit) {
   }
 }
 
-export function stringifyGeoOption(geoFeature: GeoOption) {
+export function stringifyGeoOption(geoFeature: GeoOption | GeolocationOption) {
   const { label, name, context, type, originalProperties } = geoFeature.properties;
   return JSON.stringify(
     {
       type: "Feature",
       properties: { label, name, context, type, originalProperties },
-      geometry: geoFeature.geometry,
+      geometry: (geoFeature as GeoOption)?.geometry ?? null,
     },
     undefined,
     2,

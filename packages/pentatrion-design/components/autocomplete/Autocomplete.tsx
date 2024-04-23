@@ -36,6 +36,11 @@ import { getLabel, getValue } from "./util.ts";
 export interface AutocompleteProps<O extends OptionLike = Option> {
   icon?: boolean | ReactNode;
 
+  /**
+   * render suffix only if selection and searchValue is empty
+   */
+  noSearchSuffix?: ReactNode;
+
   placement?: Placement;
   placeholder?: string;
   /**
@@ -69,6 +74,7 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
 function Autocomplete<O extends OptionLike = Option>(
   {
     icon = true,
+    noSearchSuffix,
     placement = "bottom",
     placeholder = "Search...",
     selection = null,
@@ -246,6 +252,7 @@ function Autocomplete<O extends OptionLike = Option>(
             </Button>
           )}
           {icon === false && loading && <Loader size="medium" color="weak" />}
+          {!selection && searchValue === "" && noSearchSuffix}
         </div>
       </div>
       <FloatingPortal>

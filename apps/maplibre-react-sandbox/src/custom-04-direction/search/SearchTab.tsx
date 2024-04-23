@@ -1,9 +1,10 @@
-import { LazyAutocomplete } from "pentatrion-design";
+import { Button, LazyAutocomplete } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "../store";
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
-import { AutocompleteGeoOption, ignSearch } from "pentatrion-geo";
+import { AutocompleteGeoOption, createGeolocationFeature, ignSearch } from "pentatrion-geo";
 import { selectViewState } from "../store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";
+import { activationChanged } from "../geolocation/geolocationSlice";
 
 export default function SearchTab() {
   const selection = useAppSelector(selectSearchFeature);
@@ -15,6 +16,19 @@ export default function SearchTab() {
       <LazyAutocomplete
         debounce={1000}
         icon={false}
+        noSearchSuffix={
+          <Button
+            icon
+            variant="ghost"
+            onClick={() => {
+              dispatch(searchFeatureChanged(createGeolocationFeature()));
+              dispatch(activationChanged(true));
+            }}
+          >
+            <i className="fe-locate"></i>
+          </Button>
+        }
+        clearSearchButton={true}
         selection={selection}
         autocompleteOptionComponent={AutocompleteGeoOption}
         onChangeSelection={(e) => dispatch(searchFeatureChanged(e))}

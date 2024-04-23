@@ -1,5 +1,6 @@
 import {
   Button,
+  GeolocationOption,
   LazyAutocomplete,
   Select,
   SimpleTooltip,
@@ -10,7 +11,9 @@ import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import {
   AppGeoOption,
   AutocompleteGeoOption,
+  GeoPointOption,
   c2cWaypointSearch,
+  createGeolocationFeature,
   getCoordsStr,
   ignSearch,
   stringifyGeoOption,
@@ -34,6 +37,7 @@ import { inputSearchDebounceDelay } from "~/config/constants";
 import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { iconBySearchEngine } from "~/components/search-engine/util";
+import { activationChanged } from "~/geolocation/geolocationSlice";
 
 type Action = "isochrone" | "direction" | "raw";
 
@@ -71,7 +75,7 @@ export default function SearchTab() {
   return (
     <div className="ll-quick-settings">
       <div>
-        <LazyAutocomplete
+        <LazyAutocomplete<GeoPointOption | GeolocationOption>
           autocompleteOptionComponent={AutocompleteGeoOption}
           clearSearchButton={true}
           placeholder={T(`searchPlaceholder.${searchEngine}`)}
@@ -93,6 +97,18 @@ export default function SearchTab() {
               selectSelectionComponent={SearchEngineSelection}
               selectOptionComponent={SearchEngineOption}
             />
+          }
+          noSearchSuffix={
+            <Button
+              icon
+              variant="ghost"
+              onClick={() => {
+                dispatch(searchFeatureChanged(createGeolocationFeature(T("myGeolocation"))));
+                dispatch(activationChanged(true));
+              }}
+            >
+              <i className="fe-locate"></i>
+            </Button>
           }
           selection={searchFeature}
           onChangeSelection={(e) => dispatch(searchFeatureChanged(e))}
@@ -116,68 +132,72 @@ export default function SearchTab() {
       </div>
       {searchFeature && (
         <>
-          <div>
-            <div className="setting">
-              <div className="text-hint">{T("coordinates")}</div>
-              <div>
+          {searchFeature.type === "Feature" && (
+            <div>
+              <div className="setting">
+                <div className="text-hint">{T("coordinates")}</div>
+                <div>
+                  <Button
+                    className="size-small text-hint"
+                    variant="ghost"
+                    color="weak"
+                    onClick={() => dispatch(coordsUnitChanged())}
+                  >
+                    {T(`coordsUnit.${coordsUnit}`)}{" "}
+                  </Button>
+                  &nbsp;
+                  <span
+                    className="can-copy"
+                    onClick={() => {
+                      const value = getCoordsStr(searchFeature.geometry.coordinates, coordsUnit);
+                      copy(value);
+                      notify(`${T("copiedIntoClipboard")} : ${value}`);
+                    }}
+                  >
+                    {getCoordsStr(searchFeature.geometry.coordinates, coordsUnit)}
+                  </span>
+                </div>
+              </div>
+              <div className="setting">
+                <div className="text-hint">{T("elevation")}</div>
+                <div>
+                  {searchFeature.properties.originalProperties?.elevation ??
+                    searchFeature.geometry.coordinates[2] ??
+                    "-"}
+                  <span className="text-hint"> m</span>
+                </div>
+              </div>
+              {["city", "postcode"].map((key) => {
+                const value = searchFeature.properties.originalProperties?.[key] as
+                  | string
+                  | undefined;
+                if (!value) {
+                  return null;
+                }
+                return (
+                  <div className="setting" key={key}>
+                    <div className="text-hint">{T(`property.${key}`)}</div>
+                    <div>{value}</div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          <div className="actions">
+            {searchFeature.type !== "geolocation" && (
+              <SimpleTooltip content={T("tooltip.direction")} placement="top-start">
                 <Button
-                  className="size-small text-hint"
-                  variant="ghost"
+                  variant="light"
                   color="weak"
-                  onClick={() => dispatch(coordsUnitChanged())}
-                >
-                  {T(`coordsUnit.${coordsUnit}`)}{" "}
-                </Button>
-                &nbsp;
-                <span
-                  className="can-copy"
                   onClick={() => {
-                    const value = getCoordsStr(searchFeature.geometry.coordinates, coordsUnit);
-                    copy(value);
-                    notify(`${T("copiedIntoClipboard")} : ${value}`);
+                    dispatch(directionWayPointsAddedFromSearch(searchFeature));
+                    dispatch(tabChanged("direction"));
                   }}
                 >
-                  {getCoordsStr(searchFeature.geometry.coordinates, coordsUnit)}
-                </span>
-              </div>
-            </div>
-            <div className="setting">
-              <div className="text-hint">{T("elevation")}</div>
-              <div>
-                {searchFeature.properties.originalProperties?.elevation ??
-                  searchFeature.geometry.coordinates[2] ??
-                  "-"}
-                <span className="text-hint"> m</span>
-              </div>
-            </div>
-            {["city", "postcode"].map((key) => {
-              const value = searchFeature.properties.originalProperties?.[key] as
-                | string
-                | undefined;
-              if (!value) {
-                return null;
-              }
-              return (
-                <div className="setting" key={key}>
-                  <div className="text-hint">{T(`property.${key}`)}</div>
-                  <div>{value}</div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="actions">
-            <SimpleTooltip content={T("tooltip.direction")} placement="top-start">
-              <Button
-                variant="light"
-                color="weak"
-                onClick={() => {
-                  dispatch(directionWayPointsAddedFromSearch(searchFeature));
-                  dispatch(tabChanged("direction"));
-                }}
-              >
-                <i className="fe-route"></i>
-              </Button>
-            </SimpleTooltip>
+                  <i className="fe-route"></i>
+                </Button>
+              </SimpleTooltip>
+            )}
             <SimpleTooltip content={T("tooltip.code")} placement="top">
               <Button
                 variant="light"
