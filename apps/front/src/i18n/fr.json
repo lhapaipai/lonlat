@@ -1,4 +1,6 @@
 {
+  "accuracy": "Précision",
+  "options": "Options",
   "countries": {
     "fr": "France",
     "ch": "Suisse",
@@ -88,6 +90,10 @@
     "tunnels": "Tunnels",
     "tollways": "Sections à péage",
     "borders": "Frontières"
+  },
+  "geolocation": {
+    "lockCameraWithLocation": "Centrer sur ma position",
+    "showAccuracyCircle": "Afficher cône de précision"
   },
   "profile": {
     "car": "Voiture",

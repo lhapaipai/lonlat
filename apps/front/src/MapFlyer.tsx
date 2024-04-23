@@ -3,15 +3,22 @@ import { useAppSelector } from "./store";
 import { selectSearchFeature } from "./search/searchSlice";
 import { selectTab } from "./store/mapSlice";
 import { selectValidDirectionWayPoints } from "./direction/directionSlice";
-import { boundsContained, getBounds } from "pentatrion-geo";
+import { GeoPointOption, boundsContained, getBounds } from "pentatrion-geo";
 import { useMap } from "maplibre-react-components";
 import { selectBaseLayer } from "./layer/layerSlice";
 import { BaseLayers, countryBBoxes, layerCountry } from "./layer/layers";
 import booleanContains from "@turf/boolean-contains";
 import { point } from "@turf/helpers";
+import { selectGeolocation } from "./geolocation/geolocationSlice";
+import { GeolocationOption } from "pentatrion-design";
+import { Position } from "geojson";
+import { isNotNull } from "./lib/util";
 
 export default function MapFlyer() {
   const map = useMap();
+
+  const geolocation = useAppSelector(selectGeolocation);
+  const { lockCamera, coords: geolocationCoords, enabled: geolocationEnabled } = geolocation;
 
   const searchFeature = useAppSelector(selectSearchFeature);
   const tab = useAppSelector(selectTab);
@@ -20,6 +27,17 @@ export default function MapFlyer() {
 
   useEffect(() => {
     if (!map) {
+      return;
+    }
+
+    const hasGeolocationFeature =
+      searchFeature?.type === "geolocation" ||
+      validWayPoints.some((wayPoint) => wayPoint.type === "geolocation");
+
+    if (geolocationEnabled && hasGeolocationFeature) {
+      if (geolocationCoords && lockCamera && !map.getBounds().contains(geolocationCoords)) {
+        map.flyTo({ center: geolocationCoords });
+      }
       return;
     }
 
@@ -38,7 +56,17 @@ export default function MapFlyer() {
         case 0:
           return;
         case 1: {
-          const [lon, lat] = validWayPoints[0].geometry.coordinates;
+          const wayPoint: GeoPointOption | GeolocationOption = validWayPoints[0];
+          // TODO est-ce utile de vérifier la géolocalisation car on a un return au-dessus.
+          const coords: Position | null =
+            wayPoint.type === "geolocation" ? geolocationCoords : wayPoint.geometry.coordinates;
+
+          if (!coords) {
+            return;
+          }
+
+          const [lon, lat] = coords;
+
           const contains = map.getBounds().contains([lon, lat]);
 
           if (!contains) {
@@ -47,7 +75,11 @@ export default function MapFlyer() {
           return;
         }
         default: {
-          const wayPointsBounds = getBounds(validWayPoints.map((p) => p.geometry.coordinates));
+          const wayPointsBounds = getBounds(
+            validWayPoints
+              .map((p) => (p.type === "geolocation" ? geolocationCoords : p.geometry.coordinates))
+              .filter(isNotNull),
+          );
           const contains = boundsContained(map.getBounds(), wayPointsBounds);
 
           if (!contains) {
@@ -57,7 +89,7 @@ export default function MapFlyer() {
         }
       }
     }
-  }, [searchFeature, map, tab, validWayPoints]);
+  }, [searchFeature, map, tab, validWayPoints, geolocationEnabled, geolocationCoords, lockCamera]);
 
   useEffect(() => {
     const countryId = layerCountry[baseLayer] as keyof BaseLayers;

@@ -21,6 +21,24 @@
                 text-align: right;
             }
         }
+
+        &.multiple {
+            align-items: flex-start;
+
+            .ll-input-checkbox-container {
+                display: flex;
+
+                span {
+                    margin-left: auto;
+                    order: 1;
+                    margin-right: 1rem;
+                }
+
+                input {
+                    order: 2
+                }
+            }
+        }
     }
 
     .two-cols .setting>:nth-child(2) {

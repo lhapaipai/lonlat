@@ -1,7 +1,7 @@
 import { LngLat, LngLatBounds } from "maplibre-gl";
 import { GeoOption } from "..";
 import Fuse from "fuse.js";
-import { NoDataOption } from "pentatrion-design";
+import { GeolocationOption, NoDataOption } from "pentatrion-design";
 import { Position } from "geojson";
 
 export function getBounds([firstPoint, ...rest]: Position[]) {
@@ -36,7 +36,7 @@ export function filterFeature(towns: GeoOption[], search: string) {
 }
 
 export function filterDataFeatures<O extends GeoOption = GeoOption>(
-  features: (O | NoDataOption)[],
+  features: (O | NoDataOption | GeolocationOption)[],
 ) {
-  return features.filter((f) => f.type !== "nodata") as O[];
+  return features.filter((f) => f.type !== "nodata") as (O | GeolocationOption)[];
 }

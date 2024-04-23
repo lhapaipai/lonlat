@@ -46,6 +46,10 @@
             max-width: none;
         }
     }
+
+    .ll-textarea.raw {
+        min-height: 15rem;
+    }
 }
 
 .maplibregl-ctrl-top-right {

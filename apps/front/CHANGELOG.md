@@ -1,3 +1,8 @@
+## 0.0.3
+
+- fix marker icon with legacy browsers
+- geolocation for searchTab
+
 ## 0.0.2 (2024-04-22)
 
 - fix real elevation when querying campToCamp

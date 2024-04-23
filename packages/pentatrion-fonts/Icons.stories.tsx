@@ -23,6 +23,12 @@ interface Glyph {
   css: string;
   code: number;
   src: string;
+  selected?: boolean;
+  svg?: {
+    path: string;
+    width: number;
+  };
+  search: string[];
 }
 
 export const Icons = () => {
@@ -30,7 +36,10 @@ export const Icons = () => {
 
   const matchReg = new RegExp(search.toLowerCase().trim());
   const iconResults = fontelloConfig.glyphs.filter((glyph) => {
-    return matchReg.test(glyph.css.toLowerCase().trim());
+    return (
+      (glyph.selected === undefined || glyph.selected) &&
+      matchReg.test(glyph.css.toLowerCase().trim())
+    );
   });
 
   return (

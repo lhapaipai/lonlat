@@ -1,0 +1,8 @@
+.maplibregl-marker.geolocation-accuracy {
+    .content {
+        transition: all .1s ease;
+        border-radius: 50%;
+        background-color: var(--color-primary);
+        border: 5px solid #333;
+    }
+}

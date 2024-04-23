@@ -50,7 +50,7 @@ export default function Isochrone() {
   }, [dispatch]);
 
   async function handleProcess() {
-    if (!searchFeature) {
+    if (!searchFeature || searchFeature.type === "geolocation") {
       return;
     }
     setLoading(true);
@@ -200,7 +200,7 @@ export default function Isochrone() {
         </div>
       )}
 
-      <div className="setting constraints">
+      <div className="setting multiple">
         <div>{T("constraints.avoid")}</div>
         <div className="ll-input-checkbox-container placement-block">
           <Checkbox

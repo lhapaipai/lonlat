@@ -96,8 +96,14 @@
         z-index: 1;
 
         color: transparent;
+
+        /* legacy browser support */
+        background-color: var(--marker-color);
+        -webkit-background-clip: text;
+
         background-image: var(--marker-color-gradient);
         background-clip: text;
+
         background-size: var(--marker-height) var(--marker-height);
         background-position: var(--marker-background-position-hovered);
         width: var(--marker-width);

@@ -13,6 +13,9 @@ type GeolocationState = {
   // POSITION_UNAVAILABLE: 2;
   // TIMEOUT: 3;
   errorCode: ErrorCode;
+
+  lockCamera: boolean;
+  showAccuracyCircle: boolean;
 };
 
 const initialState: GeolocationState = {
@@ -21,6 +24,8 @@ const initialState: GeolocationState = {
   accuracy: null,
   status: "off",
   errorCode: null,
+  showAccuracyCircle: true,
+  lockCamera: true,
 };
 
 let watchId: number | null = null;
@@ -29,6 +34,12 @@ const geolocationSlice = createSlice({
   name: "geolocation",
   initialState,
   reducers: {
+    showAccuracyCircleChanged(state, action: PayloadAction<boolean>) {
+      state.showAccuracyCircle = action.payload;
+    },
+    lockCameraChanged(state, action: PayloadAction<boolean>) {
+      state.lockCamera = action.payload;
+    },
     enabledChanged(state, action: PayloadAction<boolean>) {
       const enabled = action.payload;
       if (state.enabled === enabled) {
@@ -63,10 +74,17 @@ const geolocationSlice = createSlice({
 
 export default geolocationSlice.reducer;
 
-export const { enabledChanged, positionUpdated, positionErrored } = geolocationSlice.actions;
+export const {
+  showAccuracyCircleChanged,
+  lockCameraChanged,
+  enabledChanged,
+  positionUpdated,
+  positionErrored,
+} = geolocationSlice.actions;
 
 export const selectGeolocationCoords = (state: RootState) => state.geolocation.coords;
 export const selectGeolocationEnabled = (state: RootState) => state.geolocation.enabled;
+export const selectGeolocation = (state: RootState) => state.geolocation;
 
 export const activationChanged = (enabled: boolean) => (dispatch: AppDispatch) => {
   dispatch(enabledChanged(enabled));
