@@ -13,6 +13,7 @@ import {
 import { memo } from "react";
 import cn from "classnames";
 import "./TabsControl.scss";
+import HelpTab from "./components/HelpTab";
 
 function TabsControl() {
   const distractionFree = useAppSelector(selectDistractionFree);
@@ -33,6 +34,11 @@ function TabsControl() {
       id: "direction",
       title: <i className="fe-route"></i>,
       content: <DirectionTab />,
+    },
+    {
+      id: "help",
+      title: <i className="fe-info"></i>,
+      content: <HelpTab />,
     },
   ];
 

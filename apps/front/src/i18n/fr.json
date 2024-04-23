@@ -6,6 +6,10 @@
     "ch": "Suisse",
     "world": "Monde"
   },
+  "version": "Version",
+  "sourceCode": "Code source",
+  "submitIssue": "Rapporter une anomalie",
+  "fixIssue": "Corrections",
   "property": {
     "city": "Ville",
     "postcode": "Code postal",
