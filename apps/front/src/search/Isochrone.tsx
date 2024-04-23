@@ -1,5 +1,10 @@
 import { Button, Checkbox, Input, Select, SimpleTooltip } from "pentatrion-design";
-import { IsochroneGeoJSON, IsochroneOptions, ignIsochrone } from "pentatrion-geo";
+import {
+  IsochroneGeoJSON,
+  IsochroneOptions,
+  ignIsochrone,
+  isGeolocationGeoOption,
+} from "pentatrion-geo";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "talkr";
 import { useAppDispatch, useAppSelector } from "~/store";
@@ -50,7 +55,7 @@ export default function Isochrone() {
   }, [dispatch]);
 
   async function handleProcess() {
-    if (!searchFeature || searchFeature.type === "geolocation") {
+    if (!searchFeature || isGeolocationGeoOption(searchFeature)) {
       return;
     }
     setLoading(true);

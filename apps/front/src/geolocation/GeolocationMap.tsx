@@ -1,5 +1,5 @@
-import { RLLMarker } from "pentatrion-geo";
-import { selectDirectionWayPoints } from "../direction/directionSlice";
+import { RLLMarker, isGeolocationGeoOption } from "pentatrion-geo";
+import { selectValidDirectionWayPoints } from "../direction/directionSlice";
 import { selectSearchFeature } from "../search/searchSlice";
 import { useAppSelector } from "../store";
 import { selectGeolocation } from "./geolocationSlice";
@@ -31,14 +31,14 @@ export default function GeolocationMap() {
   } = geolocation;
 
   const searchFeature = useAppSelector(selectSearchFeature);
-  const wayPoints = useAppSelector(selectDirectionWayPoints);
+  const validWayPoints = useAppSelector(selectValidDirectionWayPoints);
   if (!geolocationEnabled || !geolocationCoords) {
     return null;
   }
 
   const showMarker =
-    searchFeature?.type === "geolocation" ||
-    wayPoints.some((wayPoint) => wayPoint.type === "geolocation");
+    (searchFeature && isGeolocationGeoOption(searchFeature)) ||
+    validWayPoints.some(isGeolocationGeoOption);
 
   const circleDiameter = getCircleDiameter(map, accuracy);
 

@@ -1,10 +1,18 @@
 import { nanoid } from "nanoid";
-import { GeolocationOption } from "pentatrion-design";
+import { GeoPointOption, GeolocationGeoOption } from "../types";
 
-export function createGeolocationFeature(label = "My position"): GeolocationOption {
+export function isGeolocationGeoOption(option: GeoPointOption): option is GeolocationGeoOption {
+  return option.properties.type === "geolocation";
+}
+
+export function createGeolocationGeoOption(label = "My position"): GeolocationGeoOption {
   return {
     id: nanoid(),
-    type: "geolocation",
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [NaN, NaN],
+    },
     properties: {
       id: "geolocation",
       label: label,

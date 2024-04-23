@@ -17,12 +17,12 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { GeolocationOption, NoDataOption } from "pentatrion-design";
+import { NoDataOption } from "pentatrion-design";
 import { orsRoute } from "~/lib/api/openRouteService";
 import { errorAdded } from "pentatrion-design/redux";
 import { FeatureCollection, Point } from "geojson";
 
-type WayPoint = GeoPointOption | GeolocationOption | NoDataOption;
+type WayPoint = GeoPointOption | NoDataOption;
 
 type DirectionState = {
   wayPoints: WayPoint[];
@@ -58,7 +58,7 @@ const directionSlice = createSlice({
       reducer(state, action: PayloadAction<WayPoint[]>) {
         state.wayPoints = action.payload;
       },
-      prepare(wayPoint: GeoPointOption | GeolocationOption) {
+      prepare(wayPoint: GeoPointOption) {
         return {
           payload: [createNodataFeature(), wayPoint],
         };

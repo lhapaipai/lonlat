@@ -3,16 +3,13 @@ import { useAppSelector } from "./store";
 import { selectSearchFeature } from "./search/searchSlice";
 import { selectTab } from "./store/mapSlice";
 import { selectValidDirectionWayPoints } from "./direction/directionSlice";
-import { GeoPointOption, boundsContained, getBounds } from "pentatrion-geo";
+import { GeoPointOption, boundsContained, getBounds, isGeolocationGeoOption } from "pentatrion-geo";
 import { useMap } from "maplibre-react-components";
 import { selectBaseLayer } from "./layer/layerSlice";
 import { BaseLayers, countryBBoxes, layerCountry } from "./layer/layers";
 import booleanContains from "@turf/boolean-contains";
 import { point } from "@turf/helpers";
 import { selectGeolocation } from "./geolocation/geolocationSlice";
-import { GeolocationOption } from "pentatrion-design";
-import { Position } from "geojson";
-import { isNotNull } from "./lib/util";
 
 export default function MapFlyer() {
   const map = useMap();
@@ -31,8 +28,8 @@ export default function MapFlyer() {
     }
 
     const hasGeolocationFeature =
-      searchFeature?.type === "geolocation" ||
-      validWayPoints.some((wayPoint) => wayPoint.type === "geolocation");
+      (searchFeature && isGeolocationGeoOption(searchFeature)) ||
+      validWayPoints.some(isGeolocationGeoOption);
 
     if (geolocationEnabled && hasGeolocationFeature) {
       if (geolocationCoords && lockCamera && !map.getBounds().contains(geolocationCoords)) {
@@ -41,7 +38,9 @@ export default function MapFlyer() {
       return;
     }
 
-    if (searchFeature && searchFeature.type !== "geolocation" && tab === "search") {
+    // no searchFeature or wayPoint is a GeolocationGeoOption
+
+    if (searchFeature && tab === "search") {
       const [lon, lat] = searchFeature.geometry.coordinates;
       const contains = map.getBounds().contains([lon, lat]);
 
@@ -56,10 +55,8 @@ export default function MapFlyer() {
         case 0:
           return;
         case 1: {
-          const wayPoint: GeoPointOption | GeolocationOption = validWayPoints[0];
-          // TODO est-ce utile de vérifier la géolocalisation car on a un return au-dessus.
-          const coords: Position | null =
-            wayPoint.type === "geolocation" ? geolocationCoords : wayPoint.geometry.coordinates;
+          const wayPoint: GeoPointOption = validWayPoints[0];
+          const coords = wayPoint.geometry.coordinates;
 
           if (!coords) {
             return;
@@ -75,11 +72,7 @@ export default function MapFlyer() {
           return;
         }
         default: {
-          const wayPointsBounds = getBounds(
-            validWayPoints
-              .map((p) => (p.type === "geolocation" ? geolocationCoords : p.geometry.coordinates))
-              .filter(isNotNull),
-          );
+          const wayPointsBounds = getBounds(validWayPoints.map((p) => p.geometry.coordinates));
           const contains = boundsContained(map.getBounds(), wayPointsBounds);
 
           if (!contains) {

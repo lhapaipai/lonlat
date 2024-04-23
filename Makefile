@@ -30,6 +30,14 @@ deploy-front: ## Build and deploy examples
 		berlin:prod/$(remote_prod_host)
 	@echo "go : https://$(remote_prod_host)"
 
+.PHONY: deploy-front-with-errors
+deploy-front-with-errors: ## Build and deploy examples
+	cd $(front_path) && pnpm build-with-errors
+	rsync -av --delete \
+		$(front_path)/dist/ \
+		berlin:prod/$(remote_prod_host)
+	@echo "go : https://$(remote_prod_host)"
+
 .PHONY: deploy-maplibre-react-sandbox
 deploy-maplibre-react-sandbox: ## Build and deploy examples
 	cd $(maplibre_react_sandbox_path) && pnpm build

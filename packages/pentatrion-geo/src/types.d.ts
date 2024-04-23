@@ -1,4 +1,4 @@
-import { BBox, Geometry, GeometryCollection, Point } from "geojson";
+import { BBox, GeoJsonObject, Geometry, GeometryCollection, Point } from "geojson";
 import { GeoOption } from "pentatrion-design";
 
 export type LngLatObj = {
@@ -38,6 +38,8 @@ export type WaypointType =
   | "slackline_spot" //
   | "misc"; // divers
 
+export type GeolocationType = "geolocation";
+
 export type FeatureProperties<T extends string = string> = {
   /** id and label are required for <select /> like components */
 
@@ -67,10 +69,21 @@ export type GeoOption<
   bbox?: BBox | undefined;
 };
 
+export interface NoDataPoint extends GeoJsonObject {
+  type: "Point";
+  coordinates: (typeof NaN)[];
+}
+
 // Prepared data
 export type AddressGeoOption = GeoOption<Point, AddressType>;
 export type LonLatGeoOption = GeoOption<Point, LonLatType>;
 export type MountainGeoOption = GeoOption<Point, WaypointType>;
+export type GeolocationGeoOption = GeoOption<NoDataPoint, GeolocationType>;
 
-export type AppGeoOption = AddressGeoOption | LonLatGeoOption | MountainGeoOption;
+export type AppGeoOption =
+  | AddressGeoOption
+  | LonLatGeoOption
+  | MountainGeoOption
+  | GeolocationGeoOption;
+
 export type GeoPointOption = GeoOption<Point>;

@@ -1,4 +1,4 @@
-import { Button, GeolocationOption, LazyAutocomplete, Select } from "pentatrion-design";
+import { Button, LazyAutocomplete, Select } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "../store";
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import {
@@ -6,7 +6,7 @@ import {
   AutocompleteGeoOption,
   GeoPointOption,
   c2cWaypointSearch,
-  createGeolocationFeature,
+  createGeolocationGeoOption,
   ignSearch,
 } from "pentatrion-geo";
 import {
@@ -46,7 +46,7 @@ export default function SearchTab() {
   return (
     <div className="ll-quick-settings">
       <div>
-        <LazyAutocomplete<GeoPointOption | GeolocationOption>
+        <LazyAutocomplete<GeoPointOption>
           autocompleteOptionComponent={AutocompleteGeoOption}
           clearSearchButton={true}
           placeholder={T(`searchPlaceholder.${searchEngine}`)}
@@ -74,7 +74,7 @@ export default function SearchTab() {
               icon
               variant="ghost"
               onClick={() => {
-                dispatch(searchFeatureChanged(createGeolocationFeature(T("myGeolocation"))));
+                dispatch(searchFeatureChanged(createGeolocationGeoOption(T("myGeolocation"))));
                 dispatch(activationChanged(true));
               }}
             >
@@ -101,8 +101,8 @@ export default function SearchTab() {
           }}
         />
       </div>
-      {searchFeature?.type === "Feature" && <FeatureInfos />}
-      {searchFeature?.type === "geolocation" && <GeolocationInfos />}
+      {searchFeature && searchFeature.properties.type !== "geolocation" && <FeatureInfos />}
+      {searchFeature?.properties.type === "geolocation" && <GeolocationInfos />}
     </div>
   );
 }
