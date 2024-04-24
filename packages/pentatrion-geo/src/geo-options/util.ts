@@ -160,7 +160,7 @@ export function getDepartmentName(inseeCode?: string) {
   return departments[departmentNumber] || null;
 }
 
-export function convertToDms(dd: number, isLng: boolean) {
+export function ddToDms(dd: number, isLng: boolean) {
   const dir = dd < 0 ? (isLng ? "W" : "S") : isLng ? "E" : "N";
 
   const absDd = Math.abs(dd);
@@ -183,8 +183,42 @@ export function getCoordsStr([lng, lat]: Position, coordsUnit: CoordsUnit) {
     case "latlon":
       return `${latRounded}, ${lngRounded}`;
     case "dms":
-      return `${convertToDms(lat, false)} ${convertToDms(lng, true)}`;
+      return `${ddToDms(lat, false)} ${ddToDms(lng, true)}`;
   }
+}
+
+export function dmsToDd(
+  degStr: string | number,
+  minStr: string | number,
+  secStr: string | number,
+  dirRaw: string,
+) {
+  const deg = Number(degStr);
+  const min = Number(minStr);
+  const sec = Number(secStr);
+  const dir = dirRaw.toLowerCase();
+
+  let dd = deg + min / 60 + sec / 3600;
+
+  if (["s", "w", "o"].includes(dir)) {
+    dd *= -1;
+  }
+
+  return dd;
+}
+
+export function ddmToDd(degStr: string | number, minStr: string | number, dirRaw: string) {
+  const deg = Number(degStr);
+  const min = Number(minStr);
+  const dir = dirRaw.toLowerCase();
+
+  let dd = deg + min / 60;
+
+  if (["s", "w", "o"].includes(dir)) {
+    dd *= -1;
+  }
+
+  return dd;
 }
 
 export function stringifyGeoOption(geoFeature: GeoOption) {

@@ -3,9 +3,9 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import {
   AppGeoOption,
-  AutocompleteGeoOption,
   GeoPointOption,
   c2cWaypointSearch,
+  coordsSearch,
   createGeolocationGeoOption,
   ignSearch,
   orsSearch,
@@ -27,6 +27,7 @@ import { iconBySearchEngine } from "~/components/search-engine/util";
 import { activationChanged } from "~/geolocation/geolocationSlice";
 import FeatureInfos from "./FeatureInfos";
 import GeolocationInfos from "~/geolocation/GeolocationInfos";
+import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
 
 export default function SearchTab() {
   const searchFeature = useAppSelector(selectSearchFeature);
@@ -94,6 +95,9 @@ export default function SearchTab() {
                 // we're not defining openRouteServiceUrl because self-hosted doesn't provide
                 // geocode service
                 collection = await orsSearch(searchValue, viewState.center, openRouteServiceToken);
+              } else if (searchEngine === "coords") {
+                collection = coordsSearch(searchValue);
+                console.log("result", collection);
               } else {
                 collection = await ignSearch(searchValue, viewState.center);
               }

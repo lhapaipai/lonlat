@@ -1,6 +1,6 @@
 import { OptionLike } from "../select";
 
-export function getLabel(option: OptionLike) {
+export function getOptionLabel(option: OptionLike) {
   switch (option.type) {
     case "Feature":
       return option.properties.label;
@@ -9,7 +9,7 @@ export function getLabel(option: OptionLike) {
   }
 }
 
-export function getValue(option: OptionLike) {
+export function getOptionValue(option: OptionLike) {
   switch (option.type) {
     case "Feature":
       return option.properties.id;

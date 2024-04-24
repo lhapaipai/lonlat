@@ -6,8 +6,10 @@
   "license": "ISC",
   "main": "src/index.ts",
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "test": "vitest"
   },
+  "type": "module",
   "dependencies": {
     "@floating-ui/dom": "^1.6.3",
     "@floating-ui/react": "^0.26.10",

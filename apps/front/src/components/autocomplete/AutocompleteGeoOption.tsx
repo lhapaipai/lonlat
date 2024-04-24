@@ -1,14 +1,11 @@
 import { memo, useId } from "react";
 import { useListItem } from "@floating-ui/react";
 import cn from "classnames";
-import { GeoOption, OptionLike, useAutocomplete } from "pentatrion-design";
+import { getOptionValue, useAutocomplete } from "pentatrion-design";
 import { useT } from "talkr";
+import { GeoPointOption } from "pentatrion-geo";
 
-type Props = GeoOption;
-
-function getValue(option: OptionLike) {
-  return option.type === "Feature" ? option.properties.id : option.value;
-}
+type Props = GeoPointOption;
 
 function AutocompleteGeoOption({ properties: { label, id, type, name, context } }: Props) {
   const { T } = useT();
@@ -16,7 +13,7 @@ function AutocompleteGeoOption({ properties: { label, id, type, name, context } 
   const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
   const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;
-  const isSelected = selection ? getValue(selection) === id : false;
+  const isSelected = selection ? getOptionValue(selection) === id : false;
   return (
     <div
       className={cn("option", "search", isSelected && "selected", isActive && "active")}

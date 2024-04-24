@@ -24,7 +24,6 @@ import {
 } from "./directionSlice";
 import {
   AppGeoOption,
-  AutocompleteGeoOption,
   DirectionOptions,
   GeoPointOption,
   c2cWaypointSearch,
@@ -51,6 +50,7 @@ import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/consta
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
 import { iconBySearchEngine } from "~/components/search-engine/util";
+import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
 
 function placeholderByIndex(idx: number, length: number) {
   if (idx === 0) {

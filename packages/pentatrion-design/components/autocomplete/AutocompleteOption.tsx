@@ -3,18 +3,18 @@ import { OptionLike } from "../..";
 import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
 import cn from "classnames";
-import { getLabel, getValue } from "./util";
+import { getOptionLabel, getOptionValue } from "./util";
 
 export type AutocompleteOptionProps<O extends OptionLike> = O;
 
 function AutocompleteOption<O extends OptionLike>(props: AutocompleteOptionProps<O>) {
-  const label = getLabel(props);
+  const label = getOptionLabel(props);
 
   const id = useId();
   const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
   const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;
-  const isSelected = selection ? getValue(selection) === getValue(props) : false;
+  const isSelected = selection ? getOptionValue(selection) === getOptionValue(props) : false;
 
   return (
     <div

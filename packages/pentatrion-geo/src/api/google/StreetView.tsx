@@ -113,6 +113,10 @@ export default function StreetView({
       GManager.hidePanorama();
       panoramaRef.current = null;
     };
+    // we don't want panorama to reload on each coords, pitch, heading update
+    // they're considered as initial value
+    // update are managed in callbacks above
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div id="street-view" ref={eltRef} style={eltStyle}></div>;

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from ".";
 import { useEventCallback, Option, OptionLike } from "../..";
-import { getLabel } from "./util";
+import { getOptionLabel } from "./util";
 
 interface Props<O extends OptionLike = Option>
   extends Pick<
@@ -24,7 +24,7 @@ export default function SimpleAutocomplete<O extends OptionLike = Option>({
 }: Props<O>) {
   const onChangeSelectionStable = useEventCallback(onChangeSelection);
 
-  const [searchValue, setSearchValue] = useState(selection ? getLabel(selection) : "");
+  const [searchValue, setSearchValue] = useState(selection ? getOptionLabel(selection) : "");
 
   const searchValueRef = useRef(searchValue);
   searchValueRef.current = searchValue;
@@ -43,8 +43,8 @@ export default function SimpleAutocomplete<O extends OptionLike = Option>({
 
     // we need the fresh value of searchValue but we don't
     // want searchValue as useEffect dependency
-    const selectionLabel = getLabel(selection);
-    if (searchValueRef.current !== getLabel(selection)) {
+    const selectionLabel = getOptionLabel(selection);
+    if (searchValueRef.current !== getOptionLabel(selection)) {
       setSearchValue(selectionLabel);
     }
   }, [selection, setSearchValue]);
@@ -53,7 +53,7 @@ export default function SimpleAutocomplete<O extends OptionLike = Option>({
     selection !== null
       ? []
       : options.filter((option) => {
-          const optionLabel = getLabel(option);
+          const optionLabel = getOptionLabel(option);
           return optionLabel.toLowerCase().startsWith(searchValue.toLowerCase());
         });
 

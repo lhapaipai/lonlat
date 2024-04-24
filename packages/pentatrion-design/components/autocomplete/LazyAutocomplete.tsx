@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { Autocomplete, AutocompleteProps } from ".";
 import { OptionLike, Option, useStateDebounce } from "../..";
 import { useEventCallback } from "../..";
-import { getLabel } from "./util";
+import { getOptionLabel } from "./util";
 
 interface Props<O extends OptionLike = Option>
   // Omit "searchValue" | "onChangeSearchValue" | "options"
@@ -32,7 +32,7 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
   const onChangeSelectionStable = useEventCallback(onChangeSelection);
 
   const [searchValue, searchValueDebounced, setSearchValue] = useStateDebounce(
-    selection ? getLabel(selection) : "",
+    selection ? getOptionLabel(selection) : "",
     debounce,
   );
 
@@ -67,7 +67,7 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
 
     // we need the fresh value of searchValue but we don't
     // want searchValue as useEffect dependency
-    const selectionLabel = getLabel(selection);
+    const selectionLabel = getOptionLabel(selection);
     if (searchValueRef.current !== selectionLabel) {
       setSearchValue(selectionLabel, true);
     }

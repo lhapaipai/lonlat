@@ -45,7 +45,8 @@
     "waterfall": "Cascade",
     "waterpoint": "Eau",
     "weather_station": "Météo",
-    "webcam": "Webcam"
+    "webcam": "Webcam",
+    "lonlat": "GPS"
   },
   "searchEngine": {
     "ign-address": {

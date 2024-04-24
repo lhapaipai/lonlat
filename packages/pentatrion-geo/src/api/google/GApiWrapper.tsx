@@ -63,6 +63,8 @@ export default function GApiWrapper({ children, render, callback, ...options }: 
       () => setStatusAndExecuteCallback(Status.SUCCESS),
       () => setStatusAndExecuteCallback(Status.FAILURE),
     );
+    // source code : https://github.com/googlemaps/react-wrapper/blob/main/src/index.tsx
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (status === Status.SUCCESS && children) return <>{children}</>;

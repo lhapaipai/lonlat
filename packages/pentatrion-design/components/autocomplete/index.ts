@@ -3,3 +3,4 @@ export { default as SimpleAutocomplete } from "./SimpleAutocomplete";
 export { default as AutocompleteOption } from "./AutocompleteOption";
 export { default as LazyAutocomplete } from "./LazyAutocomplete";
 export { default as useAutocomplete } from "./useAutocompleteContext";
+export { getOptionValue, getOptionLabel } from "./util";

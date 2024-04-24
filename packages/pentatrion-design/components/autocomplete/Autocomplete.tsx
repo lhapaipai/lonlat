@@ -31,7 +31,7 @@ import "./Autocomplete.scss";
 import "../button/Button.scss";
 import cn from "classnames";
 import { Button, Loader, useEventCallback } from "../..";
-import { getLabel, getValue } from "./util.ts";
+import { getOptionLabel, getOptionValue } from "./util.ts";
 
 export interface AutocompleteProps<O extends OptionLike = Option> {
   icon?: boolean | ReactNode;
@@ -171,7 +171,7 @@ function Autocomplete<O extends OptionLike = Option>(
         const newSelection = options[index];
         onChangeSelectionStable(newSelection);
 
-        onChangeSearchValueStable(getLabel(newSelection), true);
+        onChangeSearchValueStable(getOptionLabel(newSelection), true);
       }
       setActiveIndex(null);
       setIsOpen(false);
@@ -281,7 +281,7 @@ function Autocomplete<O extends OptionLike = Option>(
                 >
                   <FloatingList elementsRef={listRef}>
                     {options.map((option) => {
-                      return <OptionComponent {...option} key={getValue(option)} />;
+                      return <OptionComponent {...option} key={getOptionValue(option)} />;
                     })}
                   </FloatingList>
                 </div>
