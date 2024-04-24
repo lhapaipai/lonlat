@@ -1,9 +1,9 @@
 import { fetchAPI } from "pentatrion-design";
-import { getDepartmentName } from "../..";
+import { getDepartmentName } from "../../..";
 import { APIPaths, APIRequests, APIResponse, APISchemas } from "./geocodage-api";
 import { dataGeoserviceUrl } from "../url";
 import { Feature, FeatureCollection, Point, Position } from "geojson";
-import { AddressGeoOption, LngLatObj } from "../..";
+import { AddressGeoOption, LngLatObj } from "../../..";
 import { nanoid } from "nanoid";
 
 type AddressProperties = APISchemas["AddressProperties"];

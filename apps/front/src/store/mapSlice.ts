@@ -11,7 +11,7 @@ export type ViewState = {
   bearing: number;
 };
 
-export const searchEngines = ["ign-address", "c2c", "ors"] as const;
+export const searchEngines = ["ign-address", "c2c", "ors", "coords"] as const;
 export type SearchEngine = (typeof searchEngines)[number];
 
 export const coordsUnits = ["lonlat", "latlon", "dms"] as const;

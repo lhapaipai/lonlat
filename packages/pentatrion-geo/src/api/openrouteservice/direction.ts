@@ -1,4 +1,4 @@
-import { DirectionOptions, GeoPointOption, RouteFeatureResponse, hashRoute } from "..";
+import { DirectionOptions, GeoPointOption, RouteFeatureResponse, hashRoute } from "../..";
 
 import { ORSProfile } from "./api";
 import { fetchOpenRouteServiceAPI, openRouteServiceUrl } from "./config";

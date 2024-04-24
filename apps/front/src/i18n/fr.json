@@ -59,6 +59,10 @@
     "ors": {
       "label": "Adresse dans le monde",
       "placeholder": "Rechercher un lieu dans le monde"
+    },
+    "coords": {
+      "label": "Coordonnées GPS",
+      "placeholder": "exemple: 40°45´36\"N 73°59´2.4\"W"
     }
   },
   "coordsUnit": {

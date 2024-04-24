@@ -8,5 +8,7 @@ export function iconBySearchEngine(searchEngine: SearchEngine) {
       return "fe-summit";
     case "ors":
       return "fe-globe";
+    case "coords":
+      return "fe-virtual";
   }
 }

@@ -8,7 +8,7 @@ import {
   hashRoute,
   GeoPointOption,
   IsochroneOptions,
-} from "../..";
+} from "../../..";
 
 export function fetchIGNNavigationAPI<Path extends APIPaths, Options extends APIRequests<Path>>(
   path: Path,
