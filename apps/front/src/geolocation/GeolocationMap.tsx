@@ -1,11 +1,12 @@
 import { RLLMarker, isGeolocationGeoOption } from "pentatrion-geo";
 import { selectValidDirectionWayPoints } from "../direction/directionSlice";
 import { selectSearchFeature } from "../search/searchSlice";
-import { useAppSelector } from "../store";
-import { selectGeolocation } from "./geolocationSlice";
+import { useAppDispatch, useAppSelector } from "../store";
+import { activationChanged, selectGeolocation } from "./geolocationSlice";
 import { RMarker, useMap } from "maplibre-react-components";
 import { Map } from "maplibre-gl";
 import "./Geolocation.scss";
+import { useEffect } from "react";
 
 function getCircleDiameter(map: Map, accuracy: number | null) {
   if (!accuracy) {
@@ -23,6 +24,8 @@ function getCircleDiameter(map: Map, accuracy: number | null) {
 export default function GeolocationMap() {
   const map = useMap();
   const geolocation = useAppSelector(selectGeolocation);
+  const dispatch = useAppDispatch();
+
   const {
     showAccuracyCircle,
     accuracy,
@@ -32,15 +35,22 @@ export default function GeolocationMap() {
 
   const searchFeature = useAppSelector(selectSearchFeature);
   const validWayPoints = useAppSelector(selectValidDirectionWayPoints);
-  if (!geolocationEnabled || !geolocationCoords) {
-    return null;
-  }
 
   const showMarker =
     (searchFeature && isGeolocationGeoOption(searchFeature)) ||
     validWayPoints.some(isGeolocationGeoOption);
 
   const circleDiameter = getCircleDiameter(map, accuracy);
+
+  useEffect(() => {
+    if (!showMarker) {
+      dispatch(activationChanged(false));
+    }
+  }, [showMarker, dispatch]);
+
+  if (!geolocationEnabled || !geolocationCoords) {
+    return null;
+  }
 
   return (
     <>

@@ -19,7 +19,7 @@ import {
 } from "../store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/constants";
 import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
@@ -36,7 +36,7 @@ export default function SearchTab() {
   const { notifyError } = useNotification();
   const searchEngine = useAppSelector(selectSearchEngine);
   const { T } = useT();
-
+  const [showGeolocationInfos, setShowGeolocationInfos] = useState(false);
   const searchEngineOptions = useMemo<StarOption[]>(() => {
     return searchEngines.map((s) => ({
       value: s,
@@ -71,6 +71,13 @@ export default function SearchTab() {
               selectOptionComponent={SearchEngineOption}
               zIndex={110}
             />
+          }
+          selectionSuffix={
+            searchFeature?.properties.type === "geolocation" && (
+              <Button icon variant="ghost" onClick={() => setShowGeolocationInfos((s) => !s)}>
+                <i className="fe-sliders"></i>
+              </Button>
+            )
           }
           noSearchSuffix={
             <Button
@@ -110,7 +117,9 @@ export default function SearchTab() {
         />
       </div>
       {searchFeature && searchFeature.properties.type !== "geolocation" && <FeatureInfos />}
-      {searchFeature?.properties.type === "geolocation" && <GeolocationInfos />}
+      {searchFeature && searchFeature.properties.type === "geolocation" && showGeolocationInfos && (
+        <GeolocationInfos />
+      )}
     </div>
   );
 }

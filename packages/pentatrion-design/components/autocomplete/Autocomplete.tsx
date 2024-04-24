@@ -37,6 +37,11 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
   icon?: boolean | ReactNode;
 
   /**
+   * render suffix only if selection
+   * ex: add contextuel buttons associated to selection
+   */
+  selectionSuffix?: ReactNode;
+  /**
    * render suffix only if selection and searchValue is empty
    */
   noSearchSuffix?: ReactNode;
@@ -74,6 +79,7 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
 function Autocomplete<O extends OptionLike = Option>(
   {
     icon = true,
+    selectionSuffix,
     noSearchSuffix,
     placement = "bottom",
     placeholder = "Search...",
@@ -236,6 +242,7 @@ function Autocomplete<O extends OptionLike = Option>(
           })}
         />
         <div className="flex-center adornment suffix">
+          {selection && selectionSuffix}
           {clearSearchButton && (searchValue.trim() !== "" || selection !== null) && (
             <Button
               withRipple={false}

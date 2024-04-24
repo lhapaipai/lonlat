@@ -1,6 +1,10 @@
 ## 0.0.4
 
 - feature OpenRouteService searchEngine
+- feature dd/ddm/dms searchEngine
+- enhancement geolocation config can be collapsed
+- fix disable geolocation when not used anymore
+- fix bug when user does not allow geolocation
 
 ## 0.0.3 (2024-04-23)
 

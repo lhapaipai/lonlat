@@ -37,8 +37,9 @@ export default function MapFlyer() {
       (searchFeature && isGeolocationGeoOption(searchFeature)) ||
       validWayPoints.some(isGeolocationGeoOption);
 
-    if (geolocationEnabled && hasGeolocationFeature) {
+    if (hasGeolocationFeature) {
       if (
+        geolocationEnabled &&
         geolocationCoords &&
         lockCamera &&
         (!map.getBounds().contains(geolocationCoords) || map.getZoom() < 15)
@@ -99,7 +100,16 @@ export default function MapFlyer() {
         }
       }
     }
-  }, [searchFeature, map, tab, validWayPoints, geolocationEnabled, geolocationCoords, lockCamera]);
+  }, [
+    searchFeature,
+    map,
+    tab,
+    validWayPoints,
+    geolocationEnabled,
+    geolocationCoords,
+    lockCamera,
+    accuracy,
+  ]);
 
   useEffect(() => {
     const countryId = layerCountry[baseLayer] as keyof BaseLayers;
