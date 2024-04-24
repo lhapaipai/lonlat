@@ -62,6 +62,7 @@ type Props<O extends Option = Option> = {
   selectSelectionComponent?: (props: SelectSelectionProps<O>) => ReactNode;
   value?: SelectValue;
   onChange?: ((e: ChangeEventLike) => void) | null;
+  zIndex?: number;
 };
 
 function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
@@ -87,6 +88,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
       selectSelectionComponent: SelectSelectionCustomComponent,
       selectOptionComponent: SelectOptionCustomComponent,
       options = [],
+      zIndex,
     },
     propRef,
   ) => {
@@ -286,7 +288,10 @@ const Select = forwardRef<HTMLDivElement, Props>(
                 <div
                   className={cn("ll-portail-dialog")}
                   ref={refs.setFloating}
-                  style={floatingStyles}
+                  style={{
+                    ...floatingStyles,
+                    zIndex,
+                  }}
                   {...getFloatingProps()}
                 >
                   <div

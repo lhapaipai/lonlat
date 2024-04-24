@@ -8,6 +8,7 @@ import {
   c2cWaypointSearch,
   createGeolocationGeoOption,
   ignSearch,
+  orsSearch,
 } from "pentatrion-geo";
 import {
   SearchEngine,
@@ -19,7 +20,7 @@ import {
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo } from "react";
-import { inputSearchDebounceDelay } from "~/config/constants";
+import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/constants";
 import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { iconBySearchEngine } from "~/components/search-engine/util";
@@ -49,7 +50,7 @@ export default function SearchTab() {
         <LazyAutocomplete<GeoPointOption>
           autocompleteOptionComponent={AutocompleteGeoOption}
           clearSearchButton={true}
-          placeholder={T(`searchPlaceholder.${searchEngine}`)}
+          placeholder={T(`searchEngine.${searchEngine}.placeholder`)}
           debounce={inputSearchDebounceDelay}
           icon={
             <Select
@@ -67,6 +68,7 @@ export default function SearchTab() {
               }}
               selectSelectionComponent={SearchEngineSelection}
               selectOptionComponent={SearchEngineOption}
+              zIndex={110}
             />
           }
           noSearchSuffix={
@@ -88,8 +90,10 @@ export default function SearchTab() {
             try {
               if (searchEngine === "c2c") {
                 collection = await c2cWaypointSearch(searchValue);
-                // } else if (searchEngine === "nominatim") {
-                //   // TODO
+              } else if (searchEngine === "ors") {
+                // we're not defining openRouteServiceUrl because self-hosted doesn't provide
+                // geocode service
+                collection = await orsSearch(searchValue, viewState.center, openRouteServiceToken);
               } else {
                 collection = await ignSearch(searchValue, viewState.center);
               }

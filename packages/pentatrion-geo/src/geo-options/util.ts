@@ -17,6 +17,8 @@ export function getTypeLabel(type?: string) {
     locality: "Lieu-dit",
     municipality: "Ville",
 
+    unknown: "Autre",
+
     access: "Accès",
     base_camp: "Camp", // de base",
     bisse: "Bisse",

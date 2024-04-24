@@ -47,20 +47,18 @@
     "weather_station": "Météo",
     "webcam": "Webcam"
   },
-  "searchPlaceholder": {
-    "ign-address": "Rechercher un lieu en France",
-    "c2c": "Rechercher un sommet, un col...",
-    "nominatim": "Rechercher un lieu dans le monde"
-  },
   "searchEngine": {
     "ign-address": {
-      "label": "Adresse en France"
+      "label": "Adresse en France",
+      "placeholder": "Rechercher un lieu en France"
     },
     "c2c": {
-      "label": "Sommet, Col, Refuge"
+      "label": "Sommet, Col, Refuge",
+      "placeholder": "Rechercher un sommet, un col..."
     },
-    "nominatim": {
-      "label": "Adresse dans le monde"
+    "ors": {
+      "label": "Adresse dans le monde",
+      "placeholder": "Rechercher un lieu dans le monde"
     }
   },
   "coordsUnit": {

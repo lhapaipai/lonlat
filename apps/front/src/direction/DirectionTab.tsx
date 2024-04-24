@@ -34,6 +34,7 @@ import {
   ignSearch,
   isNoData,
   m2km,
+  orsSearch,
   updateId,
 } from "pentatrion-geo";
 import {
@@ -46,7 +47,7 @@ import {
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo, useState } from "react";
-import { inputSearchDebounceDelay } from "~/config/constants";
+import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/constants";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
 import { iconBySearchEngine } from "~/components/search-engine/util";
@@ -193,8 +194,14 @@ export default function DirectionTab() {
                   try {
                     if (searchEngine === "c2c") {
                       collection = await c2cWaypointSearch(searchValue);
-                      // } else if (searchEngine === "nominatim") {
-                      //   // TODO
+                    } else if (searchEngine === "ors") {
+                      // we're not defining openRouteServiceUrl because self-hosted doesn't provide
+                      // geocode service
+                      collection = await orsSearch(
+                        searchValue,
+                        viewState.center,
+                        openRouteServiceToken,
+                      );
                     } else {
                       collection = await ignSearch(searchValue, viewState.center);
                     }

@@ -1,4 +1,4 @@
-import { Feature, LineString, Position } from "geojson";
+import { Feature, LineString, Point, Position } from "geojson";
 
 type Step = {
   distance: number;
@@ -104,6 +104,139 @@ export type RouteProperties = {
    */
   bbox?: Array<number>;
 };
+
+export type SearchProperties = {
+  /** example: "polyline:8654039" */
+  id: string;
+  /** example: "openstreetmap:street:polyline:8654039" */
+  gid: string;
+  /** example: "street" */
+  layer: string;
+
+  /** example: "openstreetmap" */
+  source: DataSource;
+  /** example: "polyline:8654039" */
+  source_id: string;
+
+  /** example: "Impasse des Perrières" */
+  name: string;
+  /**
+   * défini si layer est de type "street"
+   *  example: "Impasse des Perrières" */
+  street?: string;
+  /** example: 1 */
+  confidence: number;
+  /** example: "exact" */
+  match_type: string;
+  /** example: "centroid" */
+  accuracy: string;
+
+  /** example: "France" */
+  country: string;
+  /** example: "whosonfirst:country:85633147" */
+  country_gid: string;
+  /** example: "FRA" */
+  country_a: string;
+
+  /** example: "Auvergne-Rhone-Alpes" */
+  macroregion: string;
+  /** example: "whosonfirst:macroregion:1108826389" */
+  macroregion_gid: string;
+  /** example: "AR" */
+  macroregion_a: string;
+
+  /** example: "Haute-Savoie" */
+  region: string;
+  /** example: "whosonfirst:region:85683227" */
+  region_gid: string;
+  /** example: "HS" */
+  region_a: string;
+
+  /** example: "Bonneville" */
+  macrocounty: string;
+  /** example: "whosonfirst:county:102065721" */
+  macrocounty_gid: string;
+
+  /** example: "Bonneville" */
+  county: string;
+  /** example: "whosonfirst:county:102065721" */
+  county_gid: string;
+
+  /** example: "Marignier" */
+  localadmin: string;
+  /** example: "whosonfirst:localadmin:404415575" */
+  localadmin_gid: string;
+
+  /** example: "Marignier" */
+  locality: string;
+  /** example: "whosonfirst:localadmin:404415575" */
+  locality_gid: string;
+
+  /** example: "Europe" */
+  continent: string;
+  /** example: "whosonfirst:continent:102191581" */
+  continent_gid: string;
+
+  /** example: "Impasse des Perrières, Marignier, France" */
+  label: string;
+};
+
+type DataSource =
+  | "openstreetmap"
+  // short name of openstreetmap (same result)
+  | "osm"
+  | "openaddresses"
+  | "oa"
+  | "whosonfirst"
+  | "wof"
+  | "geonames"
+  | "gn";
+
+type DataType =
+  /* places with a street address */
+  | "address"
+  /** points of interest, businesses, things with walls */
+  | "venue"
+  /** a local administrative boundary, currently only used for New York City */
+  | "borough"
+  /** social communities, neighbourhoods */
+  | "neighbourhood"
+
+  // to Add ?
+  | "street"
+  | "dependency"
+  | "macrohood"
+  | "microhood"
+  | "postalcode"
+
+  /** towns, hamlets, cities */
+  | "locality"
+
+  /** local administrative boundaries */
+  | "localadmin"
+
+  /**
+   * official governmental area; usually bigger than a locality,
+   * almost always smaller than a region
+   * ex: Bonneville
+   */
+  | "county"
+  /** a related group of counties. Mostly in Europe. */
+  | "macrocounty"
+  /** states and provinces (ex: Bouches-du-Rhône) */
+  | "region"
+  /** a related group of regions. Mostly in Europe (ex: Rhône-Alpes) */
+  | "macroregion"
+  /** places that issue passports, nations, nation-states */
+  | "country"
+  | "continent"
+  | "empire"
+  | "ocean"
+  | "marinearea"
+  | "disputed"
+
+  /** alias for simultaneously using all administrative layers (everything except venue and address) */
+  | "coarse";
 
 export type APISchemas = {
   DirectionsRequest: {
@@ -475,19 +608,90 @@ export type APISchemas = {
      */
     bbox?: Array<number>;
   };
+
+  SearchRequest: {
+    text: string;
+
+    /* Format for point/rect/circle float */
+
+    "focus.point.lon"?: number;
+    "focus.point.lat"?: number;
+
+    "boundary.rect.min_lon"?: number;
+    "boundary.rect.min_lat"?: number;
+    "boundary.rect.max_lon"?: number;
+    "boundary.rect.max_lat"?: number;
+
+    "boundary.circle.lon"?: number;
+    "boundary.circle.lat"?: number;
+    "boundary.circle.radius"?: number;
+
+    /**
+     * Search within a parent administrative area
+     * doc: https://github.com/pelias/documentation/blob/master/search.md#search-within-a-parent-administrative-area
+     * example: "whosonfirst:region:85688585"
+     */
+    "boundary.gid"?: string;
+
+    /**
+     * Prioritize within a country
+     * a comma separated list of alpha-2 or alpha-3 ISO-3166 country code.
+     * iso-3166 reference : https://en.wikipedia.org/wiki/ISO_3166-1
+     * example: "FR"
+     */
+    "boundary.country"?: string;
+
+    /**
+     * Filter by data source
+     * The search examples so far have returned a mix of results from all the data
+     * sources available to Pelias. Here are the sources being searched
+     * use a comma separated list of sources
+     * default: all sources -> osm,oa,gn,wof
+     */
+    sources?: DataSource[];
+    /**
+     * use a comma separated list of type
+     * default: all layers: address,venue,neighbourhood,locality,borough,localadmin,county,macrocounty,region,macroregion,country,coarse,postalcode
+     */
+    layers?: DataType[];
+
+    /**
+     * Set the number of results returned
+     * default: 10
+     */
+    size?: number;
+  };
+
+  SearchResponse: {
+    geocoding: {
+      version: string;
+      attribution: string;
+      query: APISchemas["SearchRequest"];
+      warnings: string[];
+      engine: {
+        name: string;
+        author: string;
+        version: string;
+      };
+      timestamp: number;
+    };
+    type: "FeatureCollection";
+    features: Feature<Point, SearchProperties>[];
+    bbox: [number, number, number, number];
+  };
 };
 
 export type ORSProfile =
   | "driving-car"
-  | "driving-hgv"
+  // | "driving-hgv"
   | "cycling-regular"
-  | "cycling-road"
-  | "cycling-mountain"
-  | "cycling-electric"
-  | "foot-walking"
-  | "foot-hiking"
-  | "wheelchair"
-  | "public-transport";
+  // | "cycling-road"
+  // | "cycling-mountain"
+  // | "cycling-electric"
+  // | "foot-walking"
+  | "foot-hiking";
+// | "wheelchair"
+// | "public-transport";
 
 export type APIEndpoints = {
   "/v2/directions/{profile}/geojson": {
@@ -498,6 +702,15 @@ export type APIEndpoints = {
         profile: ORSProfile;
       };
       body: APISchemas["DirectionsRequest"];
+    };
+  };
+  "/geocode/search": {
+    requests: {
+      method?: "get";
+      query: APISchemas["SearchRequest"];
+    };
+    responses: {
+      get: APISchemas["SearchResponse"];
     };
   };
 };

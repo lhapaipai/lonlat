@@ -1,25 +1,14 @@
 import { DirectionOptions, GeoPointOption, RouteFeatureResponse, hashRoute } from "..";
 
-import {
-  ORSProfile,
-  APIPaths as OrsAPIPaths,
-  APIRequests as OrsAPIRequests,
-  APIResponse as OrsAPIResponse,
-} from "./api";
-import { fetchAPI } from "pentatrion-design";
-import { openRouteServiceUrl } from "./config";
+import { ORSProfile } from "./api";
+import { fetchOpenRouteServiceAPI, openRouteServiceUrl } from "./config";
 import { nanoid } from "nanoid";
-
-export function fetchOpenRouteServiceAPI<
-  Path extends OrsAPIPaths,
-  Options extends OrsAPIRequests<Path>,
->(path: Path, options?: Options): Promise<OrsAPIResponse<Path, Options["method"]>> {
-  return fetchAPI(path, options, openRouteServiceUrl);
-}
 
 export async function orsRoute(
   wayPoints: GeoPointOption[],
   options: DirectionOptions,
+  token?: string,
+  serviceUrl = openRouteServiceUrl,
 ): Promise<RouteFeatureResponse | null> {
   const { profile, optimization, constraints } = options;
 
@@ -42,25 +31,30 @@ export async function orsRoute(
     constraints.avoidTollways && avoidFeatures.push("tollways");
   }
 
-  const collection = await fetchOpenRouteServiceAPI("/v2/directions/{profile}/geojson", {
-    urlParams: {
-      profile: orsProfile,
-    },
-    method: "post",
-    body: {
-      id: nanoid(),
-      coordinates: wayPoints.map((wayPoint) => wayPoint.geometry.coordinates.slice(0, 2)),
-      preference: optimization,
-      units: "m",
-      geometry: true,
-      instructions: false,
-      elevation: true,
-      options: {
-        avoid_features: avoidFeatures,
-        avoid_borders: constraints.avoidBorders ? "none" : "all",
+  const collection = await fetchOpenRouteServiceAPI(
+    "/v2/directions/{profile}/geojson",
+    {
+      urlParams: {
+        profile: orsProfile,
+      },
+      method: "post",
+      body: {
+        id: nanoid(),
+        coordinates: wayPoints.map((wayPoint) => wayPoint.geometry.coordinates.slice(0, 2)),
+        preference: optimization,
+        units: "m",
+        geometry: true,
+        instructions: false,
+        elevation: true,
+        options: {
+          avoid_features: avoidFeatures,
+          avoid_borders: constraints.avoidBorders ? "none" : "all",
+        },
       },
     },
-  });
+    token,
+    serviceUrl,
+  );
 
   if (collection.features.length < 1) {
     return null;

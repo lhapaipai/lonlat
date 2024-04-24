@@ -1,4 +1,4 @@
-import { BBox, GeoJsonObject, Geometry, GeometryCollection, Point } from "geojson";
+import { BBox, Geometry, GeometryCollection, Point } from "geojson";
 import { GeoOption } from "pentatrion-design";
 
 export type LngLatObj = {

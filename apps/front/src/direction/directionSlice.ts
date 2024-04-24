@@ -7,6 +7,7 @@ import {
   reverseGeocodeLonLatFeaturePoint,
   hashRoute,
   DirectionOptions,
+  orsRoute,
 } from "pentatrion-geo";
 import {
   createAsyncThunk,
@@ -18,9 +19,9 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { NoDataOption } from "pentatrion-design";
-import { orsRoute } from "~/lib/api/openRouteService";
 import { errorAdded } from "pentatrion-design/redux";
 import { FeatureCollection, Point } from "geojson";
+import { openRouteServiceToken, openRouteServiceUrl } from "~/config/constants";
 
 type WayPoint = GeoPointOption | NoDataOption;
 
@@ -182,19 +183,16 @@ export const fetchRoute = createAsyncThunk("direction/fetchRoute", async (_, { g
   const { wayPoints, optimization, constraints, profile } = state.direction;
   const validWayPoints = filterDataFeatures(wayPoints);
 
-  // return await ignItineraire(
-  //   validWayPoints,
-  //   {
-  //     optimization,
-  //     profile,
-  //   },
-  //   constraints,
-  // );
-  return await orsRoute(validWayPoints, {
-    optimization,
-    profile,
-    constraints,
-  });
+  return await orsRoute(
+    validWayPoints,
+    {
+      optimization,
+      profile,
+      constraints,
+    },
+    openRouteServiceToken,
+    openRouteServiceUrl,
+  );
 });
 
 export const directionWayPointListenerMiddleware = createListenerMiddleware();

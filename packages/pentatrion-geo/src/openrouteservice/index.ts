@@ -1,4 +1,5 @@
 export * from "./direction";
+export * from "./geocodage";
 export * from "./config";
 export type {
   APIPaths as OrsAPIPaths,
