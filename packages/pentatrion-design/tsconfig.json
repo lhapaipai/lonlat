@@ -3,9 +3,8 @@
   "compilerOptions": {
     "types": ["react/experimental", "@testing-library/jest-dom"],
     "paths": {
+      "~design": ["."],
       "~design/*": ["./*"],
-      "pentatrion-design": ["."],
-      "pentatrion-design/*": ["./*"],
       "@storybook/react": ["../../apps/storybook/node_modules/@storybook/react"],
       "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
     }

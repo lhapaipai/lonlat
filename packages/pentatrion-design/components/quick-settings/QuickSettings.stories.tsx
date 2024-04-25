@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Button, Checkbox, Input, Select } from "pentatrion-design";
+import { Button, Checkbox, Input, Select } from "~design";
 import { useState } from "react";
 
 const meta = {

@@ -1,4 +1,4 @@
-import { Tabs } from "pentatrion-design";
+import { Tabs } from "~design";
 import { useState } from "react";
 
 export default {

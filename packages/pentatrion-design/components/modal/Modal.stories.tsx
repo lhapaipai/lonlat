@@ -1,11 +1,11 @@
-import { Modal, ModalTrigger, ModalContent } from "pentatrion-design";
+import { Modal, ModalTrigger, ModalContent } from "~design";
 import {
   ModalDescription,
   ModalHeader,
   ModalFooter,
-} from "pentatrion-design/components/modal/Components";
+} from "~design/components/modal/Components";
 import { Meta, StoryObj } from "@storybook/react";
-import { Button } from "pentatrion-design";
+import { Button } from "~design";
 import { useState } from "react";
 
 const meta = {

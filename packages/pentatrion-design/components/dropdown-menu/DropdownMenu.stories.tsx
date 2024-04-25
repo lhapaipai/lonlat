@@ -3,7 +3,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "pentatrion-design";
+} from "~design";
 import { Meta } from "@storybook/react";
 
 const meta = {

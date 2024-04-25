@@ -1,4 +1,4 @@
-import { parseError, MessageOptions } from "pentatrion-design";
+import { parseError, MessageOptions } from "~design";
 import { messageAdded } from "../notificationSlice";
 import { useDispatch } from "react-redux";
 

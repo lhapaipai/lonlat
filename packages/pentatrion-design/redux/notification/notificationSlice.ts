@@ -1,5 +1,5 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
-import { Message, MessageOptions, parseError } from "pentatrion-design";
+import { Message, MessageOptions, parseError } from "~design";
 
 type NotificationState = {
   messages: Message[];

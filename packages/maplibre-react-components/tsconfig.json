@@ -3,11 +3,10 @@
   "compilerOptions": {
     "types": ["react/experimental", "@testing-library/jest-dom"],
     "paths": {
-      "maplibre-react-components": ["."],
-      "maplibre-react-components/*": ["./*"],
+      "~mrc": ["./src"],
       "@storybook/react": ["../../apps/storybook/node_modules/@storybook/react"],
       "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "vite.config.ts"]
 }

@@ -4,7 +4,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const storybookDir = dirname(fileURLToPath(import.meta.url));
-const projectDir = resolve(storybookDir, "../..");
+const rootDir = resolve(storybookDir, "../..");
 
 export default defineConfig({
   build: {
@@ -16,13 +16,9 @@ export default defineConfig({
       "@storybook/react": resolve(storybookDir, "node_modules/@storybook/react"),
       "@storybook/addon-actions": resolve(storybookDir, "node_modules/@storybook/addon-actions"),
 
-      "~design": resolve(projectDir, "packages/pentatrion-design"),
-      "~geo": resolve(projectDir, "packages/pentatrion-geo"),
-      "maplibre-react-components": resolve(projectDir, "packages/maplibre-react-components"),
-
-      // deprecated
-      "pentatrion-design": resolve(projectDir, "packages/pentatrion-design"),
-      "pentatrion-geo": resolve(projectDir, "packages/pentatrion-geo"),
+      "~design": resolve(rootDir, "packages/pentatrion-design"),
+      "~geo": resolve(rootDir, "packages/pentatrion-geo"),
+      "~mrc": resolve(rootDir, "packages/maplibre-react-components"),
     },
   },
 });

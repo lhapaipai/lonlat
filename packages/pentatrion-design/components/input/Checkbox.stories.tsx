@@ -1,4 +1,4 @@
-import { Checkbox } from "pentatrion-design";
+import { Checkbox } from "~design";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 

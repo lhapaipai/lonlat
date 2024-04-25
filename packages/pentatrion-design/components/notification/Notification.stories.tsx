@@ -1,4 +1,4 @@
-import { NotificationsProvider, useNotifications, Button, useFetch } from "pentatrion-design";
+import { NotificationsProvider, useNotifications, Button, useFetch } from "~design";
 import { Meta } from "@storybook/react";
 import { useRef } from "react";
 const meta = {

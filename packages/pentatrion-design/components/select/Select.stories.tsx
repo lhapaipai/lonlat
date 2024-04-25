@@ -1,8 +1,8 @@
 import { Meta } from "@storybook/react";
-import { Select, useSelect } from "pentatrion-design";
+import { Select, useSelect } from "~design";
 import { useListItem } from "@floating-ui/react";
 import { useState } from "react";
-import { SelectSelectionProps } from "pentatrion-design/components/select/SelectSelection";
+import { SelectSelectionProps } from "~design/components/select/SelectSelection";
 import cn from "classnames";
 import { action } from "@storybook/addon-actions";
 import { SelectValue } from "./Select";

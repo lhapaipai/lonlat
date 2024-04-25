@@ -1,4 +1,4 @@
-import { Scroll } from "pentatrion-design";
+import { Scroll } from "~design";
 
 export default {
   component: Scroll,

@@ -1,4 +1,4 @@
-import { Loader } from "pentatrion-design";
+import { Loader } from "~design";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

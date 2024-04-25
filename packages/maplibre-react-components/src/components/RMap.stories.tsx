@@ -1,4 +1,4 @@
-import { RMap } from "maplibre-react-components";
+import RMap from "./RMap";
 import { Meta, StoryObj } from "@storybook/react";
 import "maplibre-gl/dist/maplibre-gl.css";
 

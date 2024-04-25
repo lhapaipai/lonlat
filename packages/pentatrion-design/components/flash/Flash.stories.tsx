@@ -1,4 +1,4 @@
-import { Flash } from "pentatrion-design";
+import { Flash } from "~design";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

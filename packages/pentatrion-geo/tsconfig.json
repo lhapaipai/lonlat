@@ -4,10 +4,8 @@
     "skipLibCheck": true,
     "types": ["google.maps", "react/experimental"],
     "paths": {
-      "~geo/*": ["./src/*"],
       "~geo": ["./src"],
-      "pentatrion-geo": ["."],
-      "pentatrion-geo/*": ["./*"],
+      "~geo/*": ["./src/*"],
       "@storybook/react": ["../../apps/storybook/node_modules/@storybook/react"],
       "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
     }

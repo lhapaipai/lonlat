@@ -5,7 +5,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-} from "pentatrion-design";
+} from "~design";
 
 export default {
   title: "Components/Tables",

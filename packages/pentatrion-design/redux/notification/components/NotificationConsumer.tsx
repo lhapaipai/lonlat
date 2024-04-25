@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { messageRemoved, selectMessages } from "../notificationSlice";
 import { nanoid } from "@reduxjs/toolkit";
-import { Message, Snack } from "pentatrion-design";
+import { Message, Snack } from "~design";
 
 interface Props {
   children: ReactNode;

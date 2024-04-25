@@ -1,4 +1,4 @@
-import { ThemeColor } from "pentatrion-design/types";
+import { ThemeColor } from "../types";
 
 export type MessageOptions = Partial<Omit<Message, "message" | "id">>;
 

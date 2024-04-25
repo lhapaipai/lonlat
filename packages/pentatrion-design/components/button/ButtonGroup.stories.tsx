@@ -1,4 +1,4 @@
-import { ButtonGroup, Button } from "pentatrion-design";
+import { ButtonGroup, Button } from "~design";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 

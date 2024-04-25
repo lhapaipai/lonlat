@@ -1,4 +1,4 @@
-import { Code } from "pentatrion-design";
+import { Code } from "~design";
 
 export default {
   title: "Styles",

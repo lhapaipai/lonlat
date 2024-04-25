@@ -1,5 +1,5 @@
-import { Popover, PopoverContent, PopoverTrigger } from "pentatrion-design";
-import { PopoverHeader, PopoverDescription } from "pentatrion-design/components/popover/Components";
+import { Popover, PopoverContent, PopoverTrigger } from "~design";
+import { PopoverHeader, PopoverDescription } from "~design/components/popover/Components";
 import { Meta, StoryObj } from "@storybook/react";
 
 /**

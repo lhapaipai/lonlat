@@ -1,10 +1,4 @@
-import {
-  SimpleAutocomplete,
-  Autocomplete,
-  NotificationsProvider,
-  Option,
-  Button,
-} from "pentatrion-design";
+import { SimpleAutocomplete, Autocomplete, NotificationsProvider, Option, Button } from "~design";
 
 import { Meta } from "@storybook/react";
 
