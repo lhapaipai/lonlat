@@ -1,10 +1,10 @@
 import { BBox, Geometry, GeometryCollection, Point } from "geojson";
 import { GeoOption } from "pentatrion-design";
 
-export type LngLatObj = {
+export interface LngLatObj {
   lng: number;
   lat: number;
-};
+}
 
 export type GeocodeType = AddressType | LonLatType;
 

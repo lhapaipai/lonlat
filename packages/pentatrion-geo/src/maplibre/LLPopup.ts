@@ -1,6 +1,5 @@
 import { Evented, LngLat, LngLatLike, Map, MapMouseEvent } from "maplibre-gl";
 import { extend } from "./core/util/util";
-import { Event } from "./core/util/evented";
 import { smartWrap } from "./core/util/smart_wrap";
 import { DOM } from "./core/util/dom";
 
@@ -23,6 +22,20 @@ import {
 import { type ThemeColor } from "pentatrion-design";
 import "pentatrion-design/components/dialog/Dialog.scss";
 import "pentatrion-design/components/button/Button.scss";
+
+/**
+ * from ./core/util/evented
+ * please do not export this event, it may conflict with
+ * maplibre-react-components Event interface
+ */
+class Event {
+  readonly type: string;
+
+  constructor(type: string, data: any = {}) {
+    extend(this, data);
+    this.type = type;
+  }
+}
 
 export interface LLPopupOptions {
   closeButton?: boolean;

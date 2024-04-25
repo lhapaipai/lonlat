@@ -10,7 +10,6 @@ import {
   mapReactiveOptionNames,
   mapHandlerNames,
 } from "./MapManager";
-import { LngLatObj } from "../types/env";
 
 type OtherOptions = Omit<
   MapOptions,
@@ -125,6 +124,11 @@ export function deepEqual(a: any, b: any): boolean {
     return true;
   }
   return false;
+}
+
+interface LngLatObj {
+  lng: number;
+  lat: number;
 }
 
 export function areLngLatClose(lngLat1?: LngLatObj, lngLat2?: LngLatObj): boolean {

@@ -1,4 +1,4 @@
-import { LngLatObj } from "maplibre-react-components";
+import { LngLatObj } from "~geo";
 import { getLngLatObj } from ".";
 
 const streetViewPanoramaDefaultOptions: google.maps.StreetViewPanoramaOptions = {

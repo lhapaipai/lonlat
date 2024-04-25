@@ -11,7 +11,7 @@ import {
   useRef,
 } from "react";
 import { createPortal } from "react-dom";
-import { Event } from "../types/env";
+import { Event } from "../types";
 import useMap from "../hooks/useMap";
 import {
   arePointsEqual,

@@ -1,4 +1,4 @@
-import { LngLatObj } from "maplibre-react-components/src/types/env";
+import { LngLatObj } from "~geo";
 
 export interface GoogleLatLng {
   lat(): number;
