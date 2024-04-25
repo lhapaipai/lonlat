@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+import { RootState } from "~/store";
 import { BaseLayerId, baseLayersById, OptionalLayerId } from "./layers";
 import { parseHashString } from "~/lib/hashUtil";
 

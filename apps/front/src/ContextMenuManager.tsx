@@ -1,8 +1,8 @@
 import { useAppSelector } from "./store";
 import { ContextMenuEventDispatcher } from "maplibre-react-components";
 import { selectTab } from "./store/mapSlice";
-import SearchContextMenu from "./search/SearchContextMenu";
-import DirectionContextMenu from "./direction/DirectionContextMenu";
+import SearchContextMenu from "~/features/search/SearchContextMenu";
+import DirectionContextMenu from "~/features/direction/DirectionContextMenu";
 import { ReactElement, memo } from "react";
 
 function ContextMenuManager() {

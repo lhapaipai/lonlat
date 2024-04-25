@@ -1,4 +1,4 @@
-import { baseLayerChanged } from "~/layer/layerSlice";
+import { baseLayerChanged } from "~/features/layer/layerSlice";
 import { viewStateChanged } from "./mapSlice";
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 import { RootState } from ".";

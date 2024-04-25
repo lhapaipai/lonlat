@@ -1,5 +1,5 @@
 import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "pentatrion-design";
-import { useAppDispatch } from "../store";
+import { useAppDispatch } from "~/store";
 import { searchFeatureChanged } from "./searchSlice";
 import { createLonLatFeaturePoint } from "pentatrion-geo";
 import { MaplibreContextmenuEventDetail } from "maplibre-react-components";

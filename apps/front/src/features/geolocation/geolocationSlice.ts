@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AppDispatch, RootState } from "../store";
+import { AppDispatch, RootState } from "~/store";
 
 type ErrorCode = number | 1 | 2 | 3 | null;
 

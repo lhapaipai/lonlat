@@ -1,16 +1,18 @@
-import { configureStore } from "@reduxjs/toolkit";
-import searchSlice, { searchFeatureListenerMiddleware } from "../search/searchSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+
+import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
+import { ViewStateListenerMiddleware } from "./stateStorage";
 import mapSlice from "./mapSlice";
+
+import searchSlice, { searchFeatureListenerMiddleware } from "~/features/search/searchSlice";
 import directionSlice, {
   directionWayPointListenerMiddleware,
   directionWayPointsListenerMiddleware,
-} from "../direction/directionSlice";
-import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
-import layerSlice from "../layer/layerSlice";
-import streetViewSlice from "../street-view/streetViewSlice";
-import { ViewStateListenerMiddleware } from "./stateStorage";
-import geolocationSlice from "~/geolocation/geolocationSlice";
+} from "~/features/direction/directionSlice";
+import layerSlice from "~/features/layer/layerSlice";
+import streetViewSlice from "~/features/street-view/streetViewSlice";
+import geolocationSlice from "~/features/geolocation/geolocationSlice";
 
 const store = configureStore({
   reducer: {

@@ -1,6 +1,6 @@
 import { ResizeArea } from "pentatrion-design";
 import { GApiWrapper, StreetView, googleLibraries } from "pentatrion-geo";
-import { googleMapsApiToken } from "../config/constants";
+import { googleMapsApiToken } from "~/config/constants";
 import {
   Pov,
   coordsChanged,
@@ -8,8 +8,8 @@ import {
   selectPegmanCoords,
   selectPegmanPov,
 } from "./streetViewSlice";
-import { useAppDispatch, useAppSelector } from "../store";
-import { streetViewToggled } from "../layer/layerSlice";
+import { useAppDispatch, useAppSelector } from "~/store";
+import { streetViewToggled } from "~/features/layer/layerSlice";
 
 export default function StreetViewWindow() {
   const coords = useAppSelector(selectPegmanCoords);

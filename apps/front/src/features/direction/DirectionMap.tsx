@@ -9,14 +9,14 @@ import {
   selectDirectionWayPointsGeojson,
 } from "./directionSlice";
 
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "~/store";
 
 import {
   roadLayerStyle,
   roadLayerCasingStyle,
   waypointsLayerStyle,
   roadArrowLayerStyle,
-} from "../config/mapStyles";
+} from "~/config/mapStyles";
 
 export default function DirectionMap() {
   const dispatch = useAppDispatch();

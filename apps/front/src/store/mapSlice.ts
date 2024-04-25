@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
 import { parseHashString } from "~/lib/hashUtil";
-import { france, marignier } from "~/layer/util";
+import { france, marignier } from "~/features/layer/util";
 import { debug } from "~/config/constants";
 
 export type ViewState = {

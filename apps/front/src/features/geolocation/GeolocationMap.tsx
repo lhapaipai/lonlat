@@ -1,7 +1,7 @@
 import { RLLMarker, isGeolocationGeoOption } from "pentatrion-geo";
-import { selectValidDirectionWayPoints } from "../direction/directionSlice";
-import { selectSearchFeature } from "../search/searchSlice";
-import { useAppDispatch, useAppSelector } from "../store";
+import { selectValidDirectionWayPoints } from "~/features/direction/directionSlice";
+import { selectSearchFeature } from "~/features/search/searchSlice";
+import { useAppDispatch, useAppSelector } from "~/store";
 import { activationChanged, selectGeolocation } from "./geolocationSlice";
 import { RMarker, useMap } from "maplibre-react-components";
 import { Map } from "maplibre-gl";

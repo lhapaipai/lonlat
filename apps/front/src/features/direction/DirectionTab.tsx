@@ -11,7 +11,7 @@ import {
   Checkbox,
   Select,
 } from "pentatrion-design";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "~/store";
 import {
   directionWayPointChanged,
   directionWayPointsChanged,
@@ -42,7 +42,7 @@ import {
   searchEngines,
   selectSearchEngine,
   selectViewState,
-} from "../store/mapSlice";
+} from "~/store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo, useState } from "react";

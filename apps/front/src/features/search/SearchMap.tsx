@@ -7,7 +7,7 @@ import {
 import { Event, RLayer, RSource } from "maplibre-react-components";
 
 import { searchFeatureChanged, selectIsochrone, selectSearchFeature } from "./searchSlice";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "~/store";
 import { isochroneFillLayerStyle, isochroneLineLayerStyle } from "~/config/mapStyles";
 
 export default function SearchMap() {

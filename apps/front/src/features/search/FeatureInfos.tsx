@@ -1,13 +1,13 @@
 import { Button, SimpleTooltip, useCopyToClipboard } from "pentatrion-design";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "~/store";
 import { selectSearchFeature } from "./searchSlice";
 import { getCoordsStr, stringifyGeoOption } from "pentatrion-geo";
-import { coordsUnitChanged, selectCoordsUnit, tabChanged } from "../store/mapSlice";
+import { coordsUnitChanged, selectCoordsUnit, tabChanged } from "~/store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import Isochrone from "./Isochrone";
 import { useCallback, useState } from "react";
-import { directionWayPointsAddedFromSearch } from "~/direction/directionSlice";
+import { directionWayPointsAddedFromSearch } from "~/features/direction/directionSlice";
 
 type Action = "isochrone" | "direction" | "raw";
 

@@ -1,4 +1,4 @@
-## 0.0.4
+## 0.0.4 (2024-04-24)
 
 - feature OpenRouteService searchEngine
 - feature dd/ddm/dms searchEngine

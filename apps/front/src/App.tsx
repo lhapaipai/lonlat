@@ -10,26 +10,26 @@ import ContextMenuManager from "./ContextMenuManager";
 
 import "./css/index.scss";
 import "./App.scss";
-import DirectionMap from "./direction/DirectionMap";
-import SearchMap from "./search/SearchMap";
+import DirectionMap from "~/features/direction/DirectionMap";
+import SearchMap from "~/features/search/SearchMap";
 import { DOM } from "pentatrion-geo/src/maplibre/core/util/dom";
-import LayerSwitcherControl from "./layer/LayerSwitcherControl";
+import LayerSwitcherControl from "~/features/layer/LayerSwitcherControl";
 
 import {
   selectBaseLayer,
   selectOptionalLayers,
   selectStreetView,
   selectTerrain,
-} from "./layer/layerSlice";
+} from "~/features/layer/layerSlice";
 import { useEffect, useState } from "react";
-import { prepareStyle } from "./layer/util";
-import StreetViewMap from "./street-view/StreetViewMap";
-import StreetViewWindow from "./street-view/StreetViewWindow";
+import { prepareStyle } from "~/features/layer/util";
+import StreetViewMap from "~/features/street-view/StreetViewMap";
+import StreetViewWindow from "~/features/street-view/StreetViewWindow";
 import TabsControl from "./TabsControl";
 import { RFrameRateControl } from "pentatrion-geo";
-import { debug } from "./config/constants";
-import { selectGeolocationEnabled } from "./geolocation/geolocationSlice";
-import GeolocationMap from "./geolocation/GeolocationMap";
+import { debug } from "~/config/constants";
+import { selectGeolocationEnabled } from "~/features/geolocation/geolocationSlice";
+import GeolocationMap from "~/features/geolocation/GeolocationMap";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {

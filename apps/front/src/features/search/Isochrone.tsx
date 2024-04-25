@@ -49,11 +49,6 @@ export default function Isochrone() {
     avoidTunnels,
   ]);
 
-  useEffect(() => {
-    dispatch(isochroneChanged(null));
-    return () => void dispatch(isochroneChanged(null));
-  }, [dispatch]);
-
   async function handleProcess() {
     if (!searchFeature || isGeolocationGeoOption(searchFeature)) {
       return;
@@ -62,30 +57,18 @@ export default function Isochrone() {
     isAbortedRef.current = false;
 
     // mock for development
-    // new Promise((resolve) => {
-    //   setTimeout(() => {
-    //     fetch("/api-mocks/isochrone-distance.json")
-    //       .then((res) => res.json())
-    //       .then(({ geometry, ...properties }) => {
-    //         resolve({
-    //           type: "Feature",
-    //           properties,
-    //           geometry,
-    //         } as IsochroneGeoJSON);
-    //       });
-    //   }, 500);
-    // })
-
-    ignIsochrone(searchFeature.geometry.coordinates, {
-      costType,
-      costValue,
-      profile,
-      direction,
-      constraints: {
-        avoidHighways,
-        avoidBridges,
-        avoidTunnels,
-      },
+    new Promise((resolve) => {
+      setTimeout(() => {
+        fetch("/api-mocks/isochrone-distance.json")
+          .then((res) => res.json())
+          .then(({ geometry, ...properties }) => {
+            resolve({
+              type: "Feature",
+              properties,
+              geometry,
+            } as IsochroneGeoJSON);
+          });
+      }, 500);
     })
       .then((isochroneFeature: IsochroneGeoJSON) => {
         if (!isAbortedRef.current) {
@@ -97,6 +80,28 @@ export default function Isochrone() {
         setLoading(false);
         isAbortedRef.current = false;
       });
+
+    // ignIsochrone(searchFeature.geometry.coordinates, {
+    //   costType,
+    //   costValue,
+    //   profile,
+    //   direction,
+    //   constraints: {
+    //     avoidHighways,
+    //     avoidBridges,
+    //     avoidTunnels,
+    //   },
+    // })
+    //   .then((isochroneFeature: IsochroneGeoJSON) => {
+    //     if (!isAbortedRef.current) {
+    //       dispatch(isochroneChanged(isochroneFeature));
+    //     }
+    //   })
+    //   .catch((err) => void notifyError(err))
+    //   .finally(() => {
+    //     setLoading(false);
+    //     isAbortedRef.current = false;
+    //   });
   }
 
   return (
@@ -242,7 +247,8 @@ export default function Isochrone() {
             isAbortedRef.current = true;
           }}
         >
-          {T("abort")}
+          <i className="fe-trash"></i>
+          <span>{T("reset")}</span>
         </Button>
         <Button disabled={loading} loading={loading} onClick={handleProcess}>
           {T("compute")}

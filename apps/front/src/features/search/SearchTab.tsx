@@ -1,5 +1,5 @@
 import { Button, LazyAutocomplete, Select } from "pentatrion-design";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "~/store";
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import {
   AppGeoOption,
@@ -16,7 +16,7 @@ import {
   searchEngines,
   selectSearchEngine,
   selectViewState,
-} from "../store/mapSlice";
+} from "~/store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo, useState } from "react";
@@ -24,9 +24,9 @@ import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/consta
 import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { iconBySearchEngine } from "~/components/search-engine/util";
-import { activationChanged } from "~/geolocation/geolocationSlice";
+import { activationChanged } from "~/features/geolocation/geolocationSlice";
 import FeatureInfos from "./FeatureInfos";
-import GeolocationInfos from "~/geolocation/GeolocationInfos";
+import GeolocationInfos from "~/features/geolocation/GeolocationInfos";
 import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
 
 export default function SearchTab() {
@@ -104,7 +104,6 @@ export default function SearchTab() {
                 collection = await orsSearch(searchValue, viewState.center, openRouteServiceToken);
               } else if (searchEngine === "coords") {
                 collection = coordsSearch(searchValue);
-                console.log("result", collection);
               } else {
                 collection = await ignSearch(searchValue, viewState.center);
               }

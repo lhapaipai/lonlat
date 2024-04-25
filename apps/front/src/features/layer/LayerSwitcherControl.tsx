@@ -7,7 +7,7 @@ import {
   baseLayersById,
   optionalLayersById,
 } from "./layers";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "~/store";
 import {
   baseLayerChanged,
   terrainToggled,
@@ -23,7 +23,7 @@ import { createPortal } from "react-dom";
 import { useMap, useRControl } from "maplibre-react-components";
 import { useEffect, useState } from "react";
 import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
-import { coordsChanged } from "../street-view/streetViewSlice";
+import { coordsChanged } from "~/features/street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/mapSlice";
 import "./LayerSwitcherControl.scss";
 import { useT } from "talkr";

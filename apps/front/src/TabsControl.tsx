@@ -1,8 +1,8 @@
 import { useRControl } from "maplibre-react-components";
 import { Button, Tabs } from "pentatrion-design";
 import { createPortal } from "react-dom";
-import SearchTab from "./search/SearchTab";
-import DirectionTab from "./direction/DirectionTab";
+import SearchTab from "~/features/search/SearchTab";
+import DirectionTab from "~/features/direction/DirectionTab";
 import { useAppDispatch, useAppSelector } from "./store";
 import {
   distractionFreeChanged,

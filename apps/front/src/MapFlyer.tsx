@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useAppSelector } from "./store";
-import { selectSearchFeature } from "./search/searchSlice";
+import { selectSearchFeature } from "~/features/search/searchSlice";
 import { selectTab } from "./store/mapSlice";
-import { selectValidDirectionWayPoints } from "./direction/directionSlice";
+import { selectValidDirectionWayPoints } from "~/features/direction/directionSlice";
 import { GeoPointOption, boundsContained, getBounds, isGeolocationGeoOption } from "pentatrion-geo";
 import { useMap } from "maplibre-react-components";
-import { selectBaseLayer } from "./layer/layerSlice";
-import { BaseLayers, countryBBoxes, layerCountry } from "./layer/layers";
+import { selectBaseLayer } from "~/features/layer/layerSlice";
+import { BaseLayers, countryBBoxes, layerCountry } from "~/features/layer/layers";
 import booleanContains from "@turf/boolean-contains";
 import { point } from "@turf/helpers";
-import { selectGeolocation } from "./geolocation/geolocationSlice";
+import { selectGeolocation } from "~/features/geolocation/geolocationSlice";
 import { LngLat, LngLatBounds } from "maplibre-gl";
 
 export default function MapFlyer() {
