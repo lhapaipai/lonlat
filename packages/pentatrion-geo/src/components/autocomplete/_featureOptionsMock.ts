@@ -1,4 +1,4 @@
-import { GeoOption } from "../..";
+import { GeoOption } from "~geo";
 
 export const featureOptions: GeoOption[] = [
   {

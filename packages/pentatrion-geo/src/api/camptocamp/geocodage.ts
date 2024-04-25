@@ -1,10 +1,9 @@
 import { fetchAPI } from "pentatrion-design";
 import { APIPaths, APIRequests, APIResponse, APISchemas, QualityType } from "./api";
 import { campToCampApiUrl } from "./url";
-import { MountainGeoOption } from "../../types";
+import { MountainGeoOption, epsg3857to4326 } from "~geo";
 import { nanoid } from "nanoid";
 import { Point } from "geojson";
-import { epsg3857to4326 } from "../../projection/reproject";
 
 export function fetchC2cGeodageAPI<Path extends APIPaths, Options extends APIRequests<Path>>(
   path: Path,

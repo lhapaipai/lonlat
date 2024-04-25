@@ -1,13 +1,7 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 import { createUnknownFeature, handleChangeSearchValue } from "../_mocks/town-api";
-import {
-  AutocompleteGeoOption,
-  GeoOption,
-  createNodataFeature,
-  isNoData,
-  updateId,
-} from "pentatrion-geo";
+import { AutocompleteGeoOption, GeoOption, createNodataFeature, isNoData, updateId } from "~geo";
 import {
   Button,
   LazyAutocomplete,

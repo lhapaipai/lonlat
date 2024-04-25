@@ -1,6 +1,6 @@
 /* eslint-disable no-empty */
 import { LngLat } from "maplibre-gl";
-import { LonLatGeoOption } from "../types";
+import { LonLatGeoOption } from "~geo";
 import { createLonLatFeaturePoint } from "./lonlat";
 import { ddmToDd, dmsToDd } from "./util";
 

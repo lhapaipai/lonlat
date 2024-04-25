@@ -1,5 +1,4 @@
-import { DirectionOptions, GeoPointOption, RouteFeatureResponse, hashRoute } from "../..";
-
+import { DirectionOptions, GeoPointOption, RouteFeatureResponse, hashRoute } from "~geo";
 import { ORSProfile } from "./api";
 import { fetchOpenRouteServiceAPI, openRouteServiceUrl } from "./config";
 import { nanoid } from "nanoid";

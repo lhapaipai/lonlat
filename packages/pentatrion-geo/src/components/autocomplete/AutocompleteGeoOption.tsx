@@ -1,7 +1,7 @@
 import { memo, useId } from "react";
 import { useListItem } from "@floating-ui/react";
 import cn from "classnames";
-import { GeoPointOption, getTypeLabel } from "../..";
+import { GeoPointOption, getTypeLabel } from "~geo";
 import { getOptionValue, useAutocomplete } from "pentatrion-design";
 
 type Props = GeoPointOption;

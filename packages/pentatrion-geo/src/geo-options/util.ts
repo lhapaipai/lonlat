@@ -1,5 +1,5 @@
 import { Position } from "geojson";
-import { GeoOption } from "../types";
+import { DirectionOptions, GeoOption, GeoPointOption } from "~geo";
 
 export function updateId<T extends { id: string }>(obj: T, id: string): T {
   return {
@@ -254,4 +254,19 @@ export function humanDuration(seconds: number) {
     return `${hours}h ${minutes}min`;
   }
   return `${minutes}min`;
+}
+
+export function hashRoute(features: GeoPointOption[], options: DirectionOptions) {
+  const { optimization, profile, constraints } = options;
+  const featuresStr = features
+    .map((feature) => {
+      const [lon, lat] = feature.geometry.coordinates;
+      return `${lon}-${lat}`;
+    })
+    .join("|");
+  const constraintsStr = Object.entries(constraints)
+    .filter(([, value]) => value)
+    .map(([key]) => key)
+    .join("|");
+  return `${featuresStr}-${optimization}-${profile}-${constraintsStr}`;
 }

@@ -82,3 +82,43 @@ export type AppGeoOption =
   | GeolocationGeoOption;
 
 export type GeoPointOption = GeoOption<Point>;
+
+export type RouteProperties = {
+  wayPoints: GeoPointOption[];
+  profile: "car" | "pedestrian" | "bike";
+  optimization: "shortest" | "fastest" | "recommended";
+  timeUnit?: "hour" | "minute" | "second";
+  distanceUnit?: "meter" | "kilometer";
+  distance: number;
+  duration: number;
+  ascent?: number;
+  descent?: number;
+  resource: string;
+  hash: string;
+};
+
+export type RouteFeatureResponse = Feature<LineString, RouteProperties>;
+
+export type IsochroneOptions = {
+  costType: "time" | "distance";
+  costValue: number;
+  direction: "departure" | "arrival";
+  profile: "car" | "pedestrian";
+  constraints: {
+    avoidHighways?: boolean;
+    avoidBridges?: boolean;
+    avoidTunnels?: boolean;
+  };
+};
+
+export type DirectionOptions = {
+  profile: RouteProperties["profile"];
+  optimization: RouteProperties["optimization"];
+  constraints: {
+    avoidHighways?: boolean;
+    avoidTollways?: boolean;
+    avoidBridges?: boolean;
+    avoidTunnels?: boolean;
+    avoidBorders?: boolean;
+  };
+};

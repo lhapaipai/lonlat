@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as maplibre from "maplibre-gl";
-import { LLPopup } from "pentatrion-geo";
+import { LLPopup } from "~geo";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 const meta = {

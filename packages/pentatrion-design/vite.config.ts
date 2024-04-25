@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      "~design": projectDir,
       "~pentatrion-fonts": resolve(projectDir, "fonts"),
     },
   },
