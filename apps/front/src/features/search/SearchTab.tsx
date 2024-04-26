@@ -81,7 +81,7 @@ export default function SearchTab() {
             searchFeature?.properties.type === "geolocation" &&
             (geolocation.status === "on" ? (
               <Button icon variant="ghost" onClick={() => setShowGeolocationInfos((s) => !s)}>
-                <i className="fe-sliders"></i>
+                <i className="fe-geolocation-cog"></i>
               </Button>
             ) : (
               <i className={geolocationIconClassName(geolocation)}></i>

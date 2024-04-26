@@ -9,9 +9,12 @@ import {
   swissOrthophotoURL,
   swissScan25URL,
 } from "pentatrion-geo";
-import { ignToken, mapTilerStreetsStyleUrl } from "~/config/constants";
+import { ignToken, maptilerToken } from "~/config/constants";
 import { LngLatBounds, StyleSpecification } from "maplibre-gl";
 import { polygon } from "@turf/helpers";
+
+const mapTilerStreetsStyleUrl = `https://api.maptiler.com/maps/streets/style.json?key=${maptilerToken}`;
+
 const terrariumTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
 
 const googleStreetViewURLTiles = [
