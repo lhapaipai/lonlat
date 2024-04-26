@@ -27,6 +27,7 @@ import {
   DirectionOptions,
   GeoPointOption,
   c2cWaypointSearch,
+  coordsSearch,
   createNodataFeature,
   getHours,
   getMinutes,
@@ -202,6 +203,8 @@ export default function DirectionTab() {
                         viewState.center,
                         openRouteServiceToken,
                       );
+                    } else if (searchEngine === "coords") {
+                      collection = coordsSearch(searchValue);
                     } else {
                       collection = await ignSearch(searchValue, viewState.center);
                     }

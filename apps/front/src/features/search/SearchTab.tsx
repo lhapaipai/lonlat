@@ -24,10 +24,15 @@ import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/consta
 import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { iconBySearchEngine } from "~/components/search-engine/util";
-import { activationChanged } from "~/features/geolocation/geolocationSlice";
+import {
+  GeolocationState,
+  activationChanged,
+  selectGeolocation,
+} from "~/features/geolocation/geolocationSlice";
 import FeatureInfos from "./FeatureInfos";
 import GeolocationInfos from "~/features/geolocation/GeolocationInfos";
 import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
+import { geolocationIconClassName } from "../geolocation/util";
 
 export default function SearchTab() {
   const searchFeature = useAppSelector(selectSearchFeature);
@@ -44,7 +49,7 @@ export default function SearchTab() {
       icon: iconBySearchEngine(s),
     }));
   }, [T]);
-
+  const geolocation = useAppSelector(selectGeolocation);
   return (
     <div className="ll-quick-settings">
       <div>
@@ -73,11 +78,14 @@ export default function SearchTab() {
             />
           }
           selectionSuffix={
-            searchFeature?.properties.type === "geolocation" && (
+            searchFeature?.properties.type === "geolocation" &&
+            (geolocation.status === "on" ? (
               <Button icon variant="ghost" onClick={() => setShowGeolocationInfos((s) => !s)}>
                 <i className="fe-sliders"></i>
               </Button>
-            )
+            ) : (
+              <i className={geolocationIconClassName(geolocation)}></i>
+            ))
           }
           noSearchSuffix={
             <Button

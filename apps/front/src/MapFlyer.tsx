@@ -19,9 +19,10 @@ export default function MapFlyer() {
   const {
     lockCamera,
     coords: geolocationCoords,
-    enabled: geolocationEnabled,
+    status: geolocationStatus,
     accuracy,
   } = geolocation;
+  const geolocationEnabled = geolocationStatus === "on";
 
   const searchFeature = useAppSelector(selectSearchFeature);
   const tab = useAppSelector(selectTab);

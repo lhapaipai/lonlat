@@ -1,3 +1,10 @@
+## 0.0.5
+
+- enhancement add locate-off icon when geolocation is not available
+- enhancement remove isochrone dependency with searchTab
+- refactor geolocation simplification with status/enabled properties
+- fix add dd/ddm/dms searchEngine for direction
+
 ## 0.0.4 (2024-04-24)
 
 - feature OpenRouteService searchEngine

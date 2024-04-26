@@ -30,7 +30,7 @@ export default function GeolocationMap() {
     showAccuracyCircle,
     accuracy,
     coords: geolocationCoords,
-    enabled: geolocationEnabled,
+    status: geolocationStatus,
   } = geolocation;
 
   const searchFeature = useAppSelector(selectSearchFeature);
@@ -48,7 +48,7 @@ export default function GeolocationMap() {
     }
   }, [showMarker, dispatch]);
 
-  if (!geolocationEnabled || !geolocationCoords) {
+  if (geolocationStatus !== "on" || !geolocationCoords) {
     return null;
   }
 

@@ -15,6 +15,20 @@
     }
 }
 
+@keyframes flash {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 
 
 @keyframes fade-in {
@@ -79,6 +93,10 @@
 
     &.fade-in-opacity {
         animation: fade-in-opacity 250ms ease both;
+    }
+
+    &.flash {
+        animation: flash 1000ms ease both infinite;
     }
 }
 
