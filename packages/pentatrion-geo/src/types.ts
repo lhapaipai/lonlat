@@ -1,5 +1,4 @@
-import { BBox, Geometry, GeometryCollection, Point } from "geojson";
-import { GeoOption } from "pentatrion-design";
+import { BBox, Feature, Geometry, GeometryCollection, LineString, Point } from "geojson";
 
 export interface LngLatObj {
   lng: number;

@@ -10,7 +10,7 @@ import { Meta } from "@storybook/react";
 
 import { useState } from "react";
 import { handleChangeSearchValue, createUnknownFeature } from "../_mocks/town-api";
-import { GeoOption } from "~geo";
+import { GeoPointOption } from "~geo";
 import AutocompleteGeoOption from "./AutocompleteGeoOption";
 import { featureOptions } from "./_featureOptionsMock";
 
@@ -28,7 +28,7 @@ const meta = {
 export default meta;
 
 export const SimpleFeature = () => {
-  const [selection, setSelection] = useState<GeoOption | null>(null);
+  const [selection, setSelection] = useState<GeoPointOption | null>(null);
 
   function handleClick(action: "random" | "unknown" | "unselect") {
     switch (action) {
@@ -46,7 +46,7 @@ export const SimpleFeature = () => {
 
   return (
     <>
-      <SimpleAutocomplete
+      <SimpleAutocomplete<GeoPointOption>
         options={featureOptions}
         selection={selection}
         onChangeSelection={setSelection}
@@ -67,7 +67,7 @@ export const SimpleFeature = () => {
 };
 
 export const Lazy = () => {
-  const [selection, setSelection] = useState<GeoOption | null>(null);
+  const [selection, setSelection] = useState<GeoPointOption | null>(null);
 
   function handleClick(action: "random" | "unknown" | "unselect") {
     switch (action) {
@@ -83,7 +83,7 @@ export const Lazy = () => {
 
   return (
     <>
-      <LazyAutocomplete<GeoOption>
+      <LazyAutocomplete<GeoPointOption>
         icon={false}
         selection={selection}
         onChangeSelection={setSelection}

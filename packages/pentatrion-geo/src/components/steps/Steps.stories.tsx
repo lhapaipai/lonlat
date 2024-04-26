@@ -1,10 +1,15 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 import { handleChangeSearchValue } from "../_mocks/town-api";
-import { AutocompleteGeoOption, createNodataFeature, isNoData, updateId } from "~geo";
+import {
+  AutocompleteGeoOption,
+  GeoPointOption,
+  createNodataFeature,
+  isNoData,
+  updateId,
+} from "~geo";
 import {
   Button,
-  GeoOption,
   LazyAutocomplete,
   NoDataOption,
   NotificationsProvider,
@@ -29,13 +34,13 @@ const meta = {
 export default meta;
 
 export const WithAutocompleteSortable = () => {
-  const [locations, setLocations] = useState<(GeoOption | NoDataOption)[]>([
+  const [locations, setLocations] = useState<(GeoPointOption | NoDataOption)[]>([
     createNodataFeature(),
     createNodataFeature(),
     createNodataFeature(),
   ]);
 
-  function handleChangeSelection(index: number, selection: GeoOption | null) {
+  function handleChangeSelection(index: number, selection: GeoPointOption | null) {
     const itemId = locations[index].id;
 
     const itemsCopy = [...locations];
@@ -70,7 +75,7 @@ export const WithAutocompleteSortable = () => {
               markerClassName="handle"
               contentClassName="flex"
             >
-              <LazyAutocomplete
+              <LazyAutocomplete<GeoPointOption>
                 placeholder="Search a location..."
                 icon={false}
                 selection={isNoData(location) ? null : location}

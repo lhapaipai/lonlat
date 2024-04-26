@@ -1,13 +1,16 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "declaration": true,
     "skipLibCheck": true,
     "types": ["google.maps", "react/experimental"],
     "paths": {
-      "~geo": ["./src"],
+      "~geo": ["./src/index.ts"],
       "~geo/*": ["./src/*"],
       "@storybook/react": ["../../apps/storybook/node_modules/@storybook/react"],
-      "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
+      "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"],
+      "@floating-ui/react-dom": ["./node_modules/@floating-ui/react-dom"],
+      "@storybook/types": ["./node_modules/@storybook/types"]
     }
   },
   "exclude": ["**/node_modules"],

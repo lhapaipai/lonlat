@@ -1,5 +1,6 @@
 import { Position } from "geojson";
-import { DirectionOptions, GeoOption, GeoPointOption } from "~geo";
+import { DirectionOptions, GeoOption, GeoPointOption } from "~geo/types";
+// import { DirectionOptions, GeoOption, GeoPointOption } from "~geo";
 
 export function updateId<T extends { id: string }>(obj: T, id: string): T {
   return {

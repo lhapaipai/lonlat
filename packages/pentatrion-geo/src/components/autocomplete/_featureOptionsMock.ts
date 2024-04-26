@@ -1,6 +1,6 @@
-import { GeoOption } from "~geo";
+import { GeoPointOption } from "~geo";
 
-export const featureOptions: GeoOption[] = [
+export const featureOptions: GeoPointOption[] = [
   {
     id: "74001",
     type: "Feature",

@@ -1,5 +1,5 @@
 import { LngLat, LngLatBounds } from "maplibre-gl";
-import { GeoOption } from "~geo";
+import { GeoOption, GeoPointOption } from "~geo";
 import Fuse from "fuse.js";
 import { NoDataOption } from "pentatrion-design";
 import { Position } from "geojson";
@@ -23,7 +23,7 @@ export function boundsContained(parentBound: LngLatBounds, childBound: LngLatBou
   );
 }
 
-export function filterFeature(towns: GeoOption[], search: string) {
+export function filterFeature(towns: GeoPointOption[], search: string) {
   const fuse = new Fuse(towns, {
     includeScore: true,
     includeMatches: true,

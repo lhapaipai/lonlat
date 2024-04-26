@@ -2,7 +2,7 @@ import "./fontello-geo-inline.css";
 
 export * from "./geo-options";
 
-export type * from "./types";
+export * from "./types";
 
 export * from "./maplibre";
 export * from "./components";

@@ -6,7 +6,6 @@ import { DOM } from "./core/util/dom";
 import Point from "@mapbox/point-geometry";
 import VirtualElement from "./lib/VirtualElement";
 
-import "./LLPopup.scss";
 import {
   OffsetOptions,
   Placement,
@@ -20,8 +19,8 @@ import {
   shift,
 } from "@floating-ui/dom";
 import { type ThemeColor } from "pentatrion-design";
-import "pentatrion-design/components/dialog/Dialog.scss";
-import "pentatrion-design/components/button/Button.scss";
+// import "pentatrion-design/components/dialog/Dialog.scss";
+// import "pentatrion-design/components/button/Button.scss";
 
 /**
  * from ./core/util/evented

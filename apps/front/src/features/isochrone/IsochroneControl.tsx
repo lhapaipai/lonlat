@@ -1,15 +1,24 @@
 import { Button, Checkbox, Input, Select, SimpleTooltip } from "pentatrion-design";
-import {
-  IsochroneGeoJSON,
-  IsochroneOptions,
-  ignIsochrone,
-  isGeolocationGeoOption,
-} from "pentatrion-geo";
-import { useEffect, useRef, useState } from "react";
+import { IsochroneGeoJSON, IsochroneOptions, ignIsochrone } from "pentatrion-geo";
+import { useRef, useState } from "react";
 import { useT } from "talkr";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { isochroneChanged, selectSearchFeature } from "./searchSlice";
+import {
+  constraintChanged,
+  costTypeChanged,
+  costValueChanged,
+  directionChanged,
+  featureChanged,
+  profileChanged,
+  referenceFeatureChanged,
+  selectIsochrone,
+} from "./isochroneSlice";
 import { useNotification } from "pentatrion-design/redux";
+import { useRControl } from "~mrc";
+import { createPortal } from "react-dom";
+import "./IsochroneControl.scss";
+import { selectDistractionFree } from "~/store/mapSlice";
+import cn from "classnames";
 
 const profileOptions = [
   { value: "car", label: "Voiture" },
@@ -21,80 +30,49 @@ const directionOptions = [
   { value: "arrival", label: "Arrivée" },
 ];
 
-export default function Isochrone() {
-  const [costType, setCostType] = useState<IsochroneOptions["costType"]>("time");
-  const [costValue, setCostValue] = useState(30);
-  const [profile, setProfile] = useState<IsochroneOptions["profile"]>("car");
-  const [direction, setDirection] = useState<IsochroneOptions["direction"]>("departure");
-  const [avoidHighways, setAvoidHighways] = useState(false);
-  const [avoidBridges, setAvoidBridges] = useState(false);
-  const [avoidTunnels, setAvoidTunnels] = useState(false);
+export default function IsochroneControl() {
+  const distractionFree = useAppSelector(selectDistractionFree);
+
+  const container = useRControl({
+    position: "top-right",
+    className: cn("maplibregl-ctrl maplibregl-ctrl-group", distractionFree && "distraction-free"),
+  });
+
   const { T } = useT();
-  const searchFeature = useAppSelector(selectSearchFeature);
+  const { referenceFeature, costType, costValue, direction, profile, constraints } =
+    useAppSelector(selectIsochrone);
+
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const isAbortedRef = useRef(false);
   const { notifyError } = useNotification();
 
-  useEffect(() => {
-    dispatch(isochroneChanged(null));
-  }, [
-    dispatch,
-    costType,
-    costValue,
-    profile,
-    direction,
-    avoidBridges,
-    avoidHighways,
-    avoidTunnels,
-  ]);
-
   async function handleProcess() {
-    if (!searchFeature || isGeolocationGeoOption(searchFeature)) {
+    if (!referenceFeature) {
       return;
     }
     setLoading(true);
     isAbortedRef.current = false;
 
     // mock for development
-    new Promise((resolve) => {
-      setTimeout(() => {
-        fetch("/api-mocks/isochrone-distance.json")
-          .then((res) => res.json())
-          .then(({ geometry, ...properties }) => {
-            resolve({
-              type: "Feature",
-              properties,
-              geometry,
-            } as IsochroneGeoJSON);
-          });
-      }, 500);
-    })
-      .then((isochroneFeature: IsochroneGeoJSON) => {
-        if (!isAbortedRef.current) {
-          dispatch(isochroneChanged(isochroneFeature));
-        }
-      })
-      .catch((err) => void notifyError(err))
-      .finally(() => {
-        setLoading(false);
-        isAbortedRef.current = false;
-      });
-
-    // ignIsochrone(searchFeature.geometry.coordinates, {
-    //   costType,
-    //   costValue,
-    //   profile,
-    //   direction,
-    //   constraints: {
-    //     avoidHighways,
-    //     avoidBridges,
-    //     avoidTunnels,
-    //   },
-    // })
+    // (
+    //   new Promise((resolve) => {
+    //     setTimeout(() => {
+    //       fetch("/api-mocks/isochrone-distance.json")
+    //         .then((res) => res.json())
+    //         .then(({ geometry, ...properties }) => {
+    //           resolve({
+    //             type: "Feature",
+    //             properties,
+    //             geometry,
+    //           } as IsochroneGeoJSON);
+    //         });
+    //     }, 500);
+    //   }) as Promise<IsochroneGeoJSON>
+    // )
     //   .then((isochroneFeature: IsochroneGeoJSON) => {
     //     if (!isAbortedRef.current) {
-    //       dispatch(isochroneChanged(isochroneFeature));
+    //       dispatch(featureChanged(isochroneFeature));
     //     }
     //   })
     //   .catch((err) => void notifyError(err))
@@ -102,10 +80,28 @@ export default function Isochrone() {
     //     setLoading(false);
     //     isAbortedRef.current = false;
     //   });
+
+    ignIsochrone(referenceFeature.geometry.coordinates, {
+      costType,
+      costValue,
+      profile,
+      direction,
+      constraints,
+    })
+      .then((isochroneFeature: IsochroneGeoJSON) => {
+        if (!isAbortedRef.current) {
+          dispatch(featureChanged(isochroneFeature));
+        }
+      })
+      .catch((err) => void notifyError(err))
+      .finally(() => {
+        setLoading(false);
+        isAbortedRef.current = false;
+      });
   }
 
-  return (
-    <>
+  return createPortal(
+    <div className="ll-quick-settings">
       <div className="actions">
         <Button
           disabled={loading}
@@ -113,12 +109,7 @@ export default function Isochrone() {
           color="weak"
           className="with-icon"
           selected={costType === "time"}
-          onClick={() => {
-            if (costType !== "time") {
-              setCostType("time");
-              setCostValue(30);
-            }
-          }}
+          onClick={() => dispatch(costTypeChanged("time"))}
         >
           <i className="fe-stopwatch"></i>
           {T("isochrone.isochrone")}
@@ -129,12 +120,7 @@ export default function Isochrone() {
           color="weak"
           className="with-icon"
           selected={costType === "distance"}
-          onClick={() => {
-            if (costType !== "distance") {
-              setCostType("distance");
-              setCostValue(10);
-            }
-          }}
+          onClick={() => dispatch(costTypeChanged("distance"))}
         >
           <i className="fe-ruler"></i>
           {T("isochrone.isodistance")}
@@ -163,7 +149,7 @@ export default function Isochrone() {
             onChange={(o) => {
               const value = (o.target.value || "car") as NonNullable<IsochroneOptions["profile"]>;
               if (["car", "pedestrian"].includes(value)) {
-                setProfile(value);
+                dispatch(profileChanged(value));
               }
             }}
           ></Select>
@@ -180,7 +166,7 @@ export default function Isochrone() {
           onChange={(o) => {
             const value = (o.target.value || "car") as NonNullable<IsochroneOptions["direction"]>;
             if (["departure", "arrival"].includes(value)) {
-              setDirection(value);
+              dispatch(directionChanged(value));
             }
           }}
         ></Select>
@@ -194,7 +180,7 @@ export default function Isochrone() {
             variant="ghost"
             suffix="min"
             value={costValue}
-            onChange={(e) => setCostValue(e.target.valueAsNumber)}
+            onChange={(e) => dispatch(costValueChanged(e.target.valueAsNumber))}
           />
         </div>
       ) : (
@@ -205,7 +191,7 @@ export default function Isochrone() {
             variant="ghost"
             suffix="km"
             value={costValue}
-            onChange={(e) => setCostValue(e.target.valueAsNumber)}
+            onChange={(e) => dispatch(costValueChanged(e.target.valueAsNumber))}
           />
         </div>
       )}
@@ -215,22 +201,28 @@ export default function Isochrone() {
         <div className="ll-input-checkbox-container placement-block">
           <Checkbox
             disabled={loading}
-            checked={avoidHighways}
-            onChange={(e) => setAvoidHighways(e.target.checked)}
+            checked={constraints.avoidHighways}
+            onChange={(e) =>
+              dispatch(constraintChanged({ key: "avoidHighways", value: e.target.checked }))
+            }
           >
             <span>{T("constraints.highways")}</span>
           </Checkbox>
           <Checkbox
             disabled={loading}
-            checked={avoidBridges}
-            onChange={(e) => setAvoidBridges(e.target.checked)}
+            checked={constraints.avoidBridges}
+            onChange={(e) =>
+              dispatch(constraintChanged({ key: "avoidBridges", value: e.target.checked }))
+            }
           >
             <span>{T("constraints.bridges")}</span>
           </Checkbox>
           <Checkbox
             disabled={loading}
-            checked={avoidTunnels}
-            onChange={(e) => setAvoidTunnels(e.target.checked)}
+            checked={constraints.avoidTunnels}
+            onChange={(e) =>
+              dispatch(constraintChanged({ key: "avoidTunnels", value: e.target.checked }))
+            }
           >
             <span>{T("constraints.tunnels")}</span>
           </Checkbox>
@@ -242,18 +234,20 @@ export default function Isochrone() {
           variant="light"
           color="weak"
           onClick={() => {
-            dispatch(isochroneChanged(null));
+            dispatch(referenceFeatureChanged(null));
+            dispatch(featureChanged(null));
             setLoading(false);
             isAbortedRef.current = true;
           }}
         >
-          <i className="fe-trash"></i>
-          <span>{T("reset")}</span>
+          <i className="fe-cancel"></i>
+          <span>{T("close")}</span>
         </Button>
         <Button disabled={loading} loading={loading} onClick={handleProcess}>
           {T("compute")}
         </Button>
       </div>
-    </>
+    </div>,
+    container,
   );
 }

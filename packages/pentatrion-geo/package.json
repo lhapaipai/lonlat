@@ -6,6 +6,8 @@
   "license": "ISC",
   "main": "src/index.ts",
   "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
     "tsc": "tsc",
     "test": "vitest"
   },
@@ -13,25 +15,29 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.3",
     "@floating-ui/react": "^0.26.10",
+    "@googlemaps/js-api-loader": "^1.16.6",
     "@mapbox/point-geometry": "^0.1.0",
-    "@types/geojson": "^7946.0.14",
     "fuse.js": "^7.0.0",
     "maplibre-gl": "^4.1.2",
     "maplibre-react-components": "workspace:*",
     "nanoid": "^5.0.6",
-    "pentatrion-design": "workspace:*"
+    "pentatrion-design": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@googlemaps/js-api-loader": "^1.16.6",
+    "@floating-ui/react-dom": "^2.0.8",
+    "@storybook/types": "^8.0.9",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
+    "@types/geojson": "^7946.0.14",
     "@types/google.maps": "^3.55.5",
     "@types/mapbox__point-geometry": "^0.1.4",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "jsdom": "^24.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "sass": "^1.74.1",
+    "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "vitest": "^1.4.0"
   },

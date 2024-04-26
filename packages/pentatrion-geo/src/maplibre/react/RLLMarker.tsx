@@ -1,5 +1,5 @@
 import { Marker } from "maplibre-gl";
-import { Ref, forwardRef, memo, useEffect, useImperativeHandle, useMemo, useRef } from "react";
+import { Ref, forwardRef, useEffect, useImperativeHandle, useMemo, useRef } from "react";
 import {
   prepareEventDep,
   transformPropsToOptions,
@@ -196,4 +196,6 @@ function RLLMarker(props: RLLMarkerProps, ref: Ref<Marker>) {
   return null;
 }
 
-export default memo(forwardRef(RLLMarker));
+// removed only for storybook
+// export default memo(forwardRef(RLLMarker));
+export default forwardRef(RLLMarker);

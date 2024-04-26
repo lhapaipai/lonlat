@@ -5,7 +5,6 @@ import {
   GeoPointOption,
   getFeaturePointAltitude,
   isGeolocationGeoOption,
-  IsochroneGeoJSON,
   reverseGeocodeLonLatFeaturePoint,
 } from "pentatrion-geo";
 import { Point } from "geojson";
@@ -15,12 +14,10 @@ export type SearchFeature = GeoPointOption | null;
 
 type SearchState = {
   feature: SearchFeature;
-  isochrone: IsochroneGeoJSON | null;
 };
 
 const initialState: SearchState = {
   feature: null,
-  isochrone: null,
 };
 
 const searchSlice = createSlice({
@@ -29,7 +26,6 @@ const searchSlice = createSlice({
   reducers: {
     searchFeatureChanged(state, action: PayloadAction<SearchFeature>) {
       state.feature = action.payload;
-      state.isochrone = null;
     },
     searchFeaturePropertiesChanged(state, action: PayloadAction<FeatureProperties>) {
       if (!state.feature) {
@@ -43,9 +39,6 @@ const searchSlice = createSlice({
       }
       state.feature.geometry = action.payload;
     },
-    isochroneChanged(state, action: PayloadAction<IsochroneGeoJSON | null>) {
-      state.isochrone = action.payload;
-    },
   },
 });
 
@@ -55,11 +48,9 @@ export const {
   searchFeatureChanged,
   searchFeaturePropertiesChanged,
   searchFeatureGeometryChanged,
-  isochroneChanged,
 } = searchSlice.actions;
 
 export const selectSearchFeature = (state: RootState) => state.search.feature;
-export const selectIsochrone = (state: RootState) => state.search.isochrone;
 
 export const searchFeatureListenerMiddleware = createListenerMiddleware();
 searchFeatureListenerMiddleware.startListening({

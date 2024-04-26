@@ -67,8 +67,6 @@
         }
     }
 
-
-
     &>.marker::before,
     &>.marker::after {
         position: absolute;
@@ -81,7 +79,7 @@
         transform: translateX(-50%);
 
         content: '';
-        background-image: url(./marker-shadow-centered.png);
+        background-image: url(./assets/maplibre/marker-shadow-centered.png);
         background-size: cover;
         pointer-events: none;
         width: var(--marker-size);
@@ -269,7 +267,7 @@
                 left: 50%;
 
                 content: '';
-                background-image: url(./marker-shadow-centered.png);
+                background-image: url(./assets/maplibre/marker-shadow-centered.png);
                 background-size: cover;
                 pointer-events: none;
                 width: var(--marker-size);
@@ -284,7 +282,7 @@
                 left: 0;
                 width: var(--marker-size);
                 height: var(--marker-size);
-                background-image: url(../assets/pegman/pegman-rotation-1x.png);
+                background-image: url(./assets/pegman/pegman-rotation-1x.png);
                 background-position: 0px 0px;
 
             }

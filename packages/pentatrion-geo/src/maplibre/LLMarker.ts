@@ -1,7 +1,6 @@
 import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions, Popup } from "maplibre-gl";
 import { DOM } from "./core/util/dom";
 
-import "./LLMarker.scss";
 import LLPopup, { arrowHeight } from "./LLPopup";
 
 export interface LLMarkerOptions extends MarkerOptions {

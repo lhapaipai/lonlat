@@ -8,6 +8,7 @@ import LLMarker from "../LLMarker";
 
 const onChangeLngLatAction = action("onChangeLngLatAction");
 
+// @ts-ignore issue with memoized RLLMarker
 const meta = {
   title: "pentatrion-geo/RLLMarker",
   component: RLLMarker,
@@ -71,13 +72,11 @@ const meta = {
   },
 
   decorators: [
-    (Story) => {
-      return (
-        <RMap style={{ height: "100vh" }}>
-          <Story />
-        </RMap>
-      );
-    },
+    (Story) => (
+      <RMap style={{ height: "100vh" }}>
+        <Story />
+      </RMap>
+    ),
   ],
 } satisfies Meta<typeof RLLMarker>;
 export default meta;

@@ -1,7 +1,13 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 import { createUnknownFeature, handleChangeSearchValue } from "../_mocks/town-api";
-import { AutocompleteGeoOption, GeoOption, createNodataFeature, isNoData, updateId } from "~geo";
+import {
+  AutocompleteGeoOption,
+  GeoPointOption,
+  createNodataFeature,
+  isNoData,
+  updateId,
+} from "~geo";
 import {
   Button,
   LazyAutocomplete,
@@ -24,12 +30,12 @@ const meta = {
 export default meta;
 
 export const WithAutocomplete = () => {
-  const [items, setItems] = useState<(GeoOption | NoDataOption)[]>([
+  const [items, setItems] = useState<(GeoPointOption | NoDataOption)[]>([
     createNodataFeature(),
     createNodataFeature(),
   ]);
 
-  function handleChangeSelection(index: number, selection: GeoOption | null) {
+  function handleChangeSelection(index: number, selection: GeoPointOption | null) {
     const itemId = items[index].id;
 
     const itemsCopy = [...items];
@@ -67,7 +73,7 @@ export const WithAutocomplete = () => {
             <Button icon variant="underline" className="handle">
               <i className="fe-braille"></i>
             </Button>
-            <LazyAutocomplete<GeoOption>
+            <LazyAutocomplete<GeoPointOption>
               selection={isNoData(item) ? null : item}
               onChangeSelection={(selection) => handleChangeSelection(index, selection)}
               onChangeSearchValueCallback={handleChangeSearchValue}

@@ -30,6 +30,8 @@ import { RFrameRateControl } from "pentatrion-geo";
 import { debug } from "~/config/constants";
 import { selectGeolocationEnabled } from "~/features/geolocation/geolocationSlice";
 import GeolocationMap from "~/features/geolocation/GeolocationMap";
+import IsochroneControl from "./features/isochrone/IsochroneControl";
+import { selectIsochroneReferenceFeature } from "./features/isochrone/isochroneSlice";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {
@@ -63,6 +65,7 @@ function App() {
   const streetView = useAppSelector(selectStreetView);
   const tab = useAppSelector(selectTab);
   const geolocationEnabled = useAppSelector(selectGeolocationEnabled);
+  const isochroneReferenceFeature = useAppSelector(selectIsochroneReferenceFeature);
 
   const [uncontrolledStyle, setUncontrolledStyle] = useState<StyleSpecification | string>({
     version: 8,
@@ -109,6 +112,7 @@ function App() {
           {tab === "search" && <SearchMap />}
           {geolocationEnabled && <GeolocationMap />}
           <ContextMenuManager />
+          {isochroneReferenceFeature && <IsochroneControl />}
         </RMap>
       </div>
       {streetView && <StreetViewWindow />}

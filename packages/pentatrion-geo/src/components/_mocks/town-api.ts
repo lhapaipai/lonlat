@@ -1,4 +1,4 @@
-import { GeoOption, filterFeature } from "../..";
+import { GeoOption, GeoPointOption, filterFeature } from "../..";
 import { Point } from "geojson";
 
 async function mockServerRequest(searchValue: string) {
@@ -6,11 +6,11 @@ async function mockServerRequest(searchValue: string) {
     setTimeout(resolve, Math.random() * 1000);
   });
   const res = await fetch(`/town-74.geojson`);
-  const features = (await res.json()).features as GeoOption[];
+  const features = (await res.json()).features as GeoPointOption[];
   return filterFeature(features, searchValue);
 }
 
-export const handleChangeSearchValue = async (searchValue: string): Promise<GeoOption[]> => {
+export const handleChangeSearchValue = async (searchValue: string): Promise<GeoPointOption[]> => {
   const results = await mockServerRequest(searchValue);
   return results;
 };

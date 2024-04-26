@@ -45,3 +45,39 @@ html {
     font-weight: 600;
     font-size: max(10px, var(--marker-size) * 0.3);
 }
+
+.maplibregl-ctrl-top-right {
+
+    .maplibregl-ctrl {
+        position: relative;
+        width: 380px;
+        transition: transform .3s ease;
+
+        &.distraction-free {
+            transform: translateX(calc(100% + .5rem));
+        }
+    }
+
+    .ll-quick-settings {
+        padding: var(--space-2);
+    }
+
+    @media (max-width: 700px) {
+        left: 0;
+
+        .maplibregl-ctrl {
+            &:first-child {
+                margin-top: 0;
+            }
+
+            margin-right: 0;
+            width: 100%;
+
+            &.distraction-free {
+                transform: translateX(100%);
+            }
+
+
+        }
+    }
+}

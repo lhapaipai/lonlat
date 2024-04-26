@@ -5,9 +5,9 @@ import { getCoordsStr, stringifyGeoOption } from "pentatrion-geo";
 import { coordsUnitChanged, selectCoordsUnit, tabChanged } from "~/store/mapSlice";
 import { useNotification } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import Isochrone from "./Isochrone";
 import { useCallback, useState } from "react";
 import { directionWayPointsAddedFromSearch } from "~/features/direction/directionSlice";
+import { referenceFeatureChanged } from "../isochrone/isochroneSlice";
 
 type Action = "isochrone" | "direction" | "raw";
 
@@ -112,7 +112,7 @@ export default function FeatureInfos() {
             variant="light"
             color="weak"
             selected={action === "isochrone"}
-            onClick={() => setOrToggleAction("isochrone")}
+            onClick={() => dispatch(referenceFeatureChanged(searchFeature))}
           >
             <i className="fe-isochrone"></i>
           </Button>
@@ -127,13 +127,6 @@ export default function FeatureInfos() {
             readOnly
             defaultValue={stringifyGeoOption(searchFeature)}
           />
-        </>
-      )}
-
-      {action === "isochrone" && (
-        <>
-          <div className="separator"></div>
-          <Isochrone />
         </>
       )}
     </>

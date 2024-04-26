@@ -8,6 +8,6 @@ export function createNodataFeature(id?: string): NoDataOption {
   };
 }
 
-export function isNoData(feature: GeoOption | NoDataOption): feature is NoDataOption {
+export function isNoData<T extends GeoOption>(feature: T | NoDataOption): feature is NoDataOption {
   return feature.type === "nodata";
 }

@@ -13,6 +13,7 @@ import directionSlice, {
 import layerSlice from "~/features/layer/layerSlice";
 import streetViewSlice from "~/features/street-view/streetViewSlice";
 import geolocationSlice from "~/features/geolocation/geolocationSlice";
+import isochroneSlice from "~/features/isochrone/isochroneSlice";
 
 const store = configureStore({
   reducer: {
@@ -23,6 +24,7 @@ const store = configureStore({
     direction: directionSlice,
     streetView: streetViewSlice,
     geolocation: geolocationSlice,
+    isochrone: isochroneSlice,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
