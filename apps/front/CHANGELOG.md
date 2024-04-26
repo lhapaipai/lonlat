@@ -1,4 +1,4 @@
-## 0.0.5
+## 0.0.5 (2024-04-25)
 
 - enhancement add locate-off icon when geolocation is not available
 - enhancement remove isochrone dependency with searchTab

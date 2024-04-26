@@ -24,11 +24,7 @@ import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/consta
 import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { iconBySearchEngine } from "~/components/search-engine/util";
-import {
-  GeolocationState,
-  activationChanged,
-  selectGeolocation,
-} from "~/features/geolocation/geolocationSlice";
+import { activationChanged, selectGeolocation } from "~/features/geolocation/geolocationSlice";
 import FeatureInfos from "./FeatureInfos";
 import GeolocationInfos from "~/features/geolocation/GeolocationInfos";
 import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";

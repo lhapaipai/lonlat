@@ -2,25 +2,45 @@
   <img width="128" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/logo/logo-shadow.svg" alt="Lonlat logo">
 </p>
 
-## Démo
+## Applications
+
+### [LonLat App](https://lonlat.org)
 
 <a href="https://lonlat.org">
 <img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/front.jpg" alt="Lonlat App" />
 </a>
 
-[LonLat App](https://lonlat.org)
+
+
+Copier le fichier `.env` vers `.env.local` et renseigner les variables d'environnements
+
+- mapTiler : pour la carte : Monde > Plan
+- googleMapsApi : pour le street view
+- openrouteservice : pour les itinéraires et la recherche mondiale.
+
+```bash
+cd apps/front
+cp .env .env.local
+pnpm dev
+```
+
+### [Storybook](https://storybook.lonlat.pentatrion.com)
 
 <a href="https://storybook.lonlat.pentatrion.com">
 <img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/storybook.jpg" alt="Lonlat Storybook" />
 </a>
 
-[Storybook](https://storybook.lonlat.pentatrion.com)
+```bash
+cd apps/storybook
+pnpm dev
+```
+
+### [Maplibre react sandbox](https://maplibre-react-sandbox.lonlat.pentatrion.com/)
 
 <a href="https://maplibre-react-sandbox.lonlat.pentatrion.com/">
 <img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/maplibre-react-sandbox.jpg" alt="Maplibre react sandbox" />
 </a>
 
-[Maplibre react sandbox](https://maplibre-react-sandbox.lonlat.pentatrion.com/)
 
 ## Installation
 
