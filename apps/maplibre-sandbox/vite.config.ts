@@ -4,6 +4,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectDir = dirname(fileURLToPath(import.meta.url));
+const rootDir = resolve(projectDir, "../..");
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,6 +29,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "~": resolve(projectDir, "src"),
+      "~design": resolve(rootDir, "packages/pentatrion-design"),
+      "~geo": resolve(rootDir, "packages/pentatrion-geo"),
+      "~mrc": resolve(rootDir, "packages/maplibre-react-components"),
     },
   },
 });

@@ -1,0 +1,54 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "scalerank": 2,
+        "adm1_code": "USA-3514",
+        "diss_me": 3514,
+        "adm1_cod_1": "USA-3514",
+        "iso_3166_2": "US-MN",
+        "wikipedia": "http://en.wikipedia.org/wiki/Minnesota",
+        "sr_sov_a3": "US1",
+        "sr_adm0_a3": "USA",
+        "iso_a2": "US",
+        "adm0_sr": 1,
+        "admin0_lab": 2,
+        "name": "Minnesota",
+        "name_alt": "MN|Minn.",
+        "name_local": null,
+        "type": "State",
+        "type_en": "State",
+        "code_local": "US32",
+        "code_hasc": "US.MN",
+        "note": null,
+        "hasc_maybe": null,
+        "region": "Midwest",
+        "region_cod": null,
+        "region_big": "West North Central",
+        "big_code": null,
+        "provnum_ne": 0,
+        "gadm_level": 1,
+        "check_me": 10,
+        "scaleran_1": 2,
+        "datarank": 1,
+        "abbrev": "Minn.",
+        "postal": "MN",
+        "area_sqkm": 0,
+        "sameascity": -99,
+        "labelrank": 0,
+        "featurec_1": "Admin-1 scale rank",
+        "admin": "United States of America",
+        "name_len": 9,
+        "mapcolor9": 1,
+        "mapcolor13": 1,
+        "featureclass": "Admin-1 scale rank"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 0
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.500239938608518,
+                    46.09073992765464,
+                    0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 3
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.484164022365197,
+                    46.08991681600315
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 6
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.495298331601315,
+                    46.1055034579157
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 9
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.477216200951651,
+                    46.10455903959864
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 12
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.450885129147275,
+                    46.107045347569446
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 15
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.447895294866742,
+                    46.11763535505727
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 18
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.447521263054613,
+                    46.13107338093279
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 21
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.4326302212355575,
+                    46.12173410402313
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 24
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.444418078363901,
+                    46.11048861851526
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 27
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.448232890511068,
+                    46.10038994675179
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 30
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.464123386344218,
+                    46.10108797063054
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "distance": 33
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.481958026292749,
+                    46.09154197739869
+                ]
+            }
+        }
+    ]
+}

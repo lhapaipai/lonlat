@@ -1,0 +1,16 @@
+{
+  "type": "Feature",
+  "properties": {},
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [6, 47],
+        [7, 47],
+        [7, 46],
+        [6, 46],
+        [6, 47]
+      ]
+    ]
+  }
+}

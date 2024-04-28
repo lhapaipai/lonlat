@@ -6,7 +6,5 @@ dist/
 .vscode/*
 !.vscode/extensions.json
 
-public/
 
 
-src/35-plugin-directions
