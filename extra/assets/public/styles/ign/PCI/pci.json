@@ -1,7 +1,6 @@
 {
   "version": 8,
   "name": "PCI",
-  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
   "sources": {
     "pci": {
       "type": "vector",
@@ -11,10 +10,8 @@
       "minzoom": 15
     }
   },
-  "transition": {
-    "duration": 300,
-    "delay": 0
-  },
+  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
+  "transition": {"duration": 300, "delay": 0},
   "layers": [
     {
       "id": "pci_parcelle_fill",
@@ -23,36 +20,27 @@
       "source-layer": "parcelle",
       "minzoom": 15,
       "maxzoom": 17,
-      "paint": {
-        "fill-color": "#ff8000",
-        "fill-opacity": 0.2
-      }
+      "paint": {"fill-color": "#ff8000", "fill-opacity": 0.2}
     },
     {
       "id": "pci_parcelle-limit",
       "type": "line",
       "source": "pci",
       "source-layer": "parcelle",
-      "paint": {
-        "line-color": "#ff8000",
-        "line-width": 1
-      },
-      "layout": { "line-join": "bevel" },
       "minzoom": 15,
-      "maxzoom": 17
+      "maxzoom": 17,
+      "layout": {"line-join": "bevel"},
+      "paint": {"line-color": "#ff8000", "line-width": 1}
     },
     {
       "id": "pci_parcelle",
       "type": "line",
       "source": "pci",
       "source-layer": "parcelle",
-      "paint": {
-        "line-color": "#ff8000",
-        "line-width": 3
-      },
-      "layout": { "line-join": "bevel" },
       "minzoom": 17,
-      "maxzoom": 21
+      "maxzoom": 21,
+      "layout": {"line-join": "bevel"},
+      "paint": {"line-color": "#ff8000", "line-width": 3}
     },
     {
       "id": "pci_batiment",
@@ -60,19 +48,16 @@
       "source": "pci",
       "source-layer": "batiment",
       "minzoom": 17,
-      "paint": {
-        "fill-color": "#dfccff",
-        "fill-opacity": 0.4
-      }
+      "paint": {"fill-color": "#dfccff", "fill-opacity": 0.4}
     },
     {
       "id": "pci_batiment_line",
       "type": "line",
       "source": "pci",
       "source-layer": "batiment",
-      "paint": { "line-color": "#b580ff" },
-      "layout": { "line-join": "bevel" },
-      "minzoom": 17
+      "minzoom": 17,
+      "layout": {"line-join": "bevel"},
+      "paint": {"line-color": "#b580ff"}
     },
     {
       "id": "pci_batiment-leger",
@@ -80,11 +65,8 @@
       "source": "pci",
       "source-layer": "batiment",
       "minzoom": 17,
-      "filter": ["==", "type", "Construction légère"],
-      "paint": {
-        "fill-color": "#DFCCFF",
-        "fill-opacity": 0.4
-      }
+      "filter": ["==", ["get", "type"], "Construction légère"],
+      "paint": {"fill-color": "#DFCCFF", "fill-opacity": 0.4}
     },
     {
       "id": "pci_batiment-dur",
@@ -92,19 +74,16 @@
       "source": "pci",
       "source-layer": "batiment",
       "minzoom": 17,
-      "paint": {
-        "fill-color": "#C17C74",
-        "fill-opacity": 0.4
-      },
-      "filter": ["==", "type", "Bâtiment en dur"]
+      "filter": ["==", ["get", "type"], "Bâtiment en dur"],
+      "paint": {"fill-color": "#C17C74", "fill-opacity": 0.4}
     },
     {
       "id": "pci_borne",
       "type": "circle",
       "source": "pci",
       "source-layer": "borne_limite_propriete",
-      "maxzoom": 24,
       "minzoom": 17,
+      "maxzoom": 24,
       "paint": {
         "circle-color": "#ff8000",
         "circle-stroke-color": "#000000",
@@ -116,24 +95,20 @@
       "type": "line",
       "source": "pci",
       "source-layer": "feuille",
-      "paint": {
-        "line-color": "#929292",
-        "line-width": 3
-      },
       "minzoom": 14,
       "maxzoom": 24,
-      "layout": {
-        "line-cap": "butt",
-        "line-join": "bevel"
-      }
+      "layout": {"line-cap": "butt", "line-join": "bevel"},
+      "paint": {"line-color": "#929292", "line-width": 3}
     },
     {
       "id": "pci_feuille_label",
       "type": "symbol",
       "source": "pci",
       "source-layer": "feuille",
+      "minzoom": 14,
+      "maxzoom": 17,
       "layout": {
-        "text-field": "{section}",
+        "text-field": ["to-string", ["get", "section"]],
         "text-font": ["Source Sans Pro Bold Italic"],
         "text-size": 14
       },
@@ -141,9 +116,7 @@
         "text-color": "#929292",
         "text-halo-color": "#ffffff",
         "text-halo-width": 2
-      },
-      "minzoom": 14,
-      "maxzoom": 17
+      }
     },
     {
       "id": "pci_localisant",
@@ -153,7 +126,7 @@
       "minzoom": 17,
       "maxzoom": 21,
       "layout": {
-        "text-field": "{numero}",
+        "text-field": ["to-string", ["get", "numero"]],
         "text-size": 14,
         "text-anchor": "center",
         "text-keep-upright": true,

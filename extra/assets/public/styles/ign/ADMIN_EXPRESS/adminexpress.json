@@ -1,7 +1,6 @@
 {
   "version": 8,
   "name": "ADMIN_EXPRESS",
-  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
   "sources": {
     "adminexpress": {
       "minzoom": 9,
@@ -9,7 +8,8 @@
       "tiles": ["https://data.geopf.fr/tms/1.0.0/ADMIN_EXPRESS/{z}/{x}/{y}.pbf"]
     }
   },
-  "transition": { "duration": 300, "delay": 0 },
+  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
+  "transition": {"duration": 300, "delay": 0},
   "layers": [
     {
       "id": "chef_lieu",
@@ -42,12 +42,7 @@
       "source-layer": "departement",
       "paint": {
         "line-color": "rgba(178, 175, 219, 0.4)",
-        "line-width": {
-          "stops": [
-            [9, 4],
-            [12, 6]
-          ]
-        }
+        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 4, 12, 6]
       }
     },
     {
@@ -57,12 +52,7 @@
       "source-layer": "region",
       "paint": {
         "line-color": "rgba(178, 175, 219, 0.4)",
-        "line-width": {
-          "stops": [
-            [9, 4],
-            [12, 6]
-          ]
-        }
+        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 4, 12, 6]
       }
     },
     {
@@ -72,9 +62,9 @@
       "source-layer": "commune",
       "minzoom": 6,
       "maxzoom": 11,
-      "filter": ["all", ["==", "statut", "Capitale d'état"]],
+      "filter": ["==", ["get", "statut"], "Capitale d'état"],
       "layout": {
-        "text-field": "{nom}",
+        "text-field": ["to-string", ["get", "nom"]],
         "text-allow-overlap": false,
         "text-offset": [0, -2],
         "icon-text-fit": "none",
@@ -94,9 +84,9 @@
       "source-layer": "commune",
       "minzoom": 6,
       "maxzoom": 11,
-      "filter": ["all", ["==", "statut", "Préfecture"]],
+      "filter": ["==", ["get", "statut"], "Préfecture"],
       "layout": {
-        "text-field": "{nom}",
+        "text-field": ["to-string", ["get", "nom"]],
         "text-allow-overlap": false,
         "text-offset": [0, -2],
         "icon-text-fit": "none",
@@ -116,7 +106,7 @@
       "source-layer": "chflieu_commune",
       "minzoom": 12,
       "layout": {
-        "text-field": "{nom}",
+        "text-field": ["to-string", ["get", "nom"]],
         "text-allow-overlap": false,
         "text-offset": [0, -2],
         "icon-text-fit": "none",
@@ -136,7 +126,7 @@
       "source-layer": "departement",
       "maxzoom": 10,
       "layout": {
-        "text-field": "{nom}",
+        "text-field": ["to-string", ["get", "nom"]],
         "icon-size": 1,
         "text-size": 12,
         "text-font": ["Source Sans Pro Bold"]
