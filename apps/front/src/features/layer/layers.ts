@@ -67,7 +67,8 @@ export const baseLayers: BaseLayers = {
     "ign-raster-default_scan",
     "ign-raster-scan_25",
     "ign-raster-orthophoto",
-    "ign-plan_ign-standard",
+    // "ign-plan_ign-standard",
+    "ign-plan_ign-standard-optimized",
   ],
   ch: ["swisstopo-raster-orthophoto", "swisstopo-raster-default", "swisstopo-raster-default_25"],
   world: [
@@ -174,7 +175,20 @@ export const baseLayersById = {
     ],
     country: "fr",
   } satisfies BaseLayerInfos,
-
+  "ign-plan_ign-standard-optimized": {
+    id: "ign-plan_ign-standard",
+    type: "base",
+    dataType: "vector",
+    label: "Plan",
+    description: "",
+    offsetY: -162,
+    style: "/assets/styles/ign/PLAN.IGN/standard-optimized.json",
+    optionalLayers: [
+      { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
+      { id: "ign-pci-pci", beforeId: "point coté" },
+    ],
+    country: "fr",
+  } satisfies BaseLayerInfos,
   "swisstopo-raster-orthophoto": {
     id: "swisstopo-raster-orthophoto",
     type: "base",

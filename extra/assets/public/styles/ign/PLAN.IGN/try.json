@@ -1,0 +1,50 @@
+{
+  {
+    "id": "orographie : relief",
+    "type": "fill",
+    "source": "plan_ign",
+    "source-layer": "oro_relief",
+    "minzoom": 0,
+    "filter": [
+      "match",
+      ["get", "symbo"],
+      [
+        "HYPSO_0",
+        "HYPSO_100",
+        "HYPSO_200",
+        "HYPSO_1000",
+        "HYPSO_3000",
+        "HYPSO_4000",
+        "HYPSO_5000",
+        "GLACIER"
+      ],
+      true,
+      false
+    ],
+    "layout": { "visibility": "visible" },
+    "paint": {
+      "fill-color": [
+        "match",
+        ["get", "symbo"],
+        "HYPSO_0",
+        "#D6E5BA",
+        "HYPSO_100",
+        "#F7F2DA",
+        "HYPSO_200",
+        "#EBDEBF",
+        "HYPSO_1000",
+        "#DABE97",
+        "HYPSO_3000",
+        "#B28773",
+        "HYPSO_4000",
+        "#9E6A54",
+        "HYPSO_5000",
+        "#773A2B",
+        "GLACIER",
+        "#FFFFFF",
+        "transparent"
+      ],
+      "fill-opacity": 1
+    }
+  },
+}
