@@ -67,7 +67,7 @@ export const baseLayers: BaseLayers = {
     "ign-raster-default_scan",
     "ign-raster-scan_25",
     "ign-raster-orthophoto",
-    // "ign-plan_ign-standard",
+    "ign-plan_ign-standard",
     "ign-plan_ign-standard-optimized",
   ],
   ch: ["swisstopo-raster-orthophoto", "swisstopo-raster-default", "swisstopo-raster-default_25"],
