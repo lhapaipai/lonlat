@@ -1,6 +1,7 @@
 ## 0.0.6 (2024-04-29)
 
-- add hillshade for base layers without terrain
+- feature add hillshade for base layers without terrain
+- fix layerSwitcher legend centered on mobile
 
 ## 0.0.5 (2024-04-25)
 
