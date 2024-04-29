@@ -28,10 +28,10 @@ export async function prepareStyle(
 
   let extraSources: StyleSpecification["sources"] = {};
 
-  const allOptionalLayersId: OptionalLayerId[] = [
-    ...(terrain ? (["terrain", "hillshade"] as const) : []),
-    ...optionalLayersId,
-  ];
+  const allOptionalLayersId: OptionalLayerId[] = Array.from(
+    new Set([...(terrain ? (["terrain", "hillshade"] as const) : []), ...optionalLayersId]),
+  );
+  console.log("allOptionalLayersId", allOptionalLayersId);
 
   for (const optionalLayerId of allOptionalLayersId) {
     let optionalLayerInfo: OptionalLayerInfo = {
@@ -39,7 +39,7 @@ export async function prepareStyle(
       beforeId: undefined,
     };
 
-    if (!["hillshade", "street-view", "terrain"].includes(optionalLayerId)) {
+    if (!["street-view", "terrain"].includes(optionalLayerId)) {
       // optionalLayersId contains filters from redux. It can be possible than some
       // filters are not compatible with baseLayer but are enabled by prevBaseLayer.
       const infos = baseLayer.optionalLayers.find((o) => o.id === optionalLayerId);

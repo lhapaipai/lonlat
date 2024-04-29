@@ -13,10 +13,7 @@ import {
   terrainToggled,
   optionalLayerToggled,
   streetViewToggled,
-  selectBaseLayer,
-  selectOptionalLayers,
-  selectTerrain,
-  selectStreetView,
+  selectLayer,
 } from "./layerSlice";
 import cn from "classnames";
 import { createPortal } from "react-dom";
@@ -57,10 +54,12 @@ export default function LayerSwitcherControl() {
 
   const map = useMap();
 
-  const currentBaseLayerId = useAppSelector(selectBaseLayer);
-  const currentOptionalLayers = useAppSelector(selectOptionalLayers);
-  const currentTerrain = useAppSelector(selectTerrain);
-  const currentStreetView = useAppSelector(selectStreetView);
+  const {
+    baseLayer: currentBaseLayerId,
+    optionalLayers: currentOptionalLayers,
+    terrain: currentTerrain,
+    streetView: currentStreetView,
+  } = useAppSelector(selectLayer);
 
   const currentLayer = baseLayersById[currentBaseLayerId];
 

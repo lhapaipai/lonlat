@@ -1,5 +1,5 @@
 {
-  {
+  "layer": {
     "id": "orographie : relief",
     "type": "fill",
     "source": "plan_ign",
@@ -46,5 +46,5 @@
       ],
       "fill-opacity": 1
     }
-  },
+  }
 }

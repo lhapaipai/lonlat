@@ -1,3 +1,7 @@
+## 0.0.6 (2024-04-29)
+
+- add hillshade for base layers without terrain
+
 ## 0.0.5 (2024-04-25)
 
 - enhancement add locate-off icon when geolocation is not available

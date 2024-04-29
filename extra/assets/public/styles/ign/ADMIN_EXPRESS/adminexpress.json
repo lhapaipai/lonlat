@@ -4,12 +4,13 @@
   "sources": {
     "adminexpress": {
       "minzoom": 9,
+      "maxzoom": 18,
       "type": "vector",
       "tiles": ["https://data.geopf.fr/tms/1.0.0/ADMIN_EXPRESS/{z}/{x}/{y}.pbf"]
     }
   },
-  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
-  "transition": {"duration": 300, "delay": 0},
+  "glyphs": "/assets/styles/ign/fonts/{fontstack}/{range}.pbf",
+  "transition": { "duration": 300, "delay": 0 },
   "layers": [
     {
       "id": "chef_lieu",

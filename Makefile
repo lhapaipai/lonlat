@@ -1,5 +1,6 @@
 local_path	:= $(PWD)
 front_path	:= $(local_path)/apps/front
+
 remote_test_host	:= lonlat.pentatrion.com
 remote_prod_host 	:= lonlat.org
 
@@ -8,6 +9,9 @@ maplibre_react_sandbox_host := maplibre-react-sandbox.lonlat.pentatrion.com
 
 storybook_path	:= $(local_path)/apps/storybook
 storybook_host	:= storybook.lonlat.pentatrion.com
+
+assets_path	:= $(local_path)/extra/assets/public
+assets_host := assets.lonlat.org
 
 
 .PHONY: help
@@ -53,3 +57,10 @@ deploy-storybook: ## Build and deploy examples
 		$(storybook_path)/storybook-static/ \
 		berlin:prod/$(storybook_host)
 	@echo "go : https://$(storybook_host)"
+
+.PHONY: deploy-assets
+deploy-assets: ## Build and deploy examples
+	rsync -av --delete \
+		$(assets_path)/ \
+		berlin:prod/$(assets_host)
+	@echo "go : https://$(assets_host)"

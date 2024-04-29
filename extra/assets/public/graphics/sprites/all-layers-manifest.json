@@ -1,88 +1,334 @@
 {
   "1x": {
-    "etalab-osm_bright": [0, 0],
-    "google-raster-orthophoto": [0, -54],
-    "google-raster-relief": [0, -108],
-    "google-raster-road": [0, -162],
-    "google-raster-street_view": [0, -216],
-    "hillshade": [0, -270],
-    "ign-admin_express-adminexpress": [0, -324],
-    "ign-bd_topo-bati": [0, -378],
-    "ign-bd_topo-bati_date": [0, -432],
-    "ign-bd_topo-bati_etages": [0, -486],
-    "ign-bd_topo-classique": [0, -540],
-    "ign-bd_topo-hydrographie": [0, -594],
-    "ign-bd_topo-routier": [0, -648],
-    "ign-isohypse-isohypse_monochrome_marron": [0, -702],
-    "ign-isohypse-isohypse_monochrome_orange": [0, -756],
-    "ign-isohypse-isohypse_multicolore": [0, -810],
-    "ign-pci-noir_et_blanc": [0, -864],
-    "ign-pci-pci": [0, -918],
-    "ign-plan_ign-accentue": [0, -972],
-    "ign-plan_ign-attenue": [0, -1026],
-    "ign-plan_ign-classique": [0, -1080],
-    "ign-plan_ign-epure": [0, -1134],
-    "ign-plan_ign-gris": [0, -1188],
-    "ign-plan_ign-sans_toponymes": [0, -1242],
-    "ign-plan_ign-standard": [0, -1296],
-    "ign-plan_ign-toponymes": [0, -1350],
-    "ign-raster-cadastre": [0, -1404],
-    "ign-raster-default_scan": [0, -1458],
-    "ign-raster-express": [0, -1512],
-    "ign-raster-orthophoto": [0, -1566],
-    "ign-raster-scan_25": [0, -1620],
-    "ign-raster-streets": [0, -1674],
-    "maptiler-streets": [0, -1728],
-    "osm-raster-default": [0, -1782],
-    "street-view": [0, -1836],
-    "swisstopo-raster-default": [0, -1890],
-    "swisstopo-raster-default_25": [0, -1944],
-    "swisstopo-raster-orthophoto": [0, -1998],
-    "terrain": [0, -2052],
-    "terrarium": [0, -2106],
-    "unknown": [0, -2160]
+    "etalab-osm_bright": [
+      0,
+      0
+    ],
+    "google-raster-orthophoto": [
+      0,
+      -54
+    ],
+    "google-raster-relief": [
+      0,
+      -108
+    ],
+    "google-raster-road": [
+      0,
+      -162
+    ],
+    "google-raster-street_view": [
+      0,
+      -216
+    ],
+    "hillshade": [
+      0,
+      -270
+    ],
+    "ign-admin_express-adminexpress": [
+      0,
+      -324
+    ],
+    "ign-bd_topo-bati": [
+      0,
+      -378
+    ],
+    "ign-bd_topo-bati_date": [
+      0,
+      -432
+    ],
+    "ign-bd_topo-bati_etages": [
+      0,
+      -486
+    ],
+    "ign-bd_topo-classique": [
+      0,
+      -540
+    ],
+    "ign-bd_topo-hydrographie": [
+      0,
+      -594
+    ],
+    "ign-bd_topo-routier": [
+      0,
+      -648
+    ],
+    "ign-isohypse-isohypse_monochrome_marron": [
+      0,
+      -702
+    ],
+    "ign-isohypse-isohypse_monochrome_orange": [
+      0,
+      -756
+    ],
+    "ign-isohypse-isohypse_multicolore": [
+      0,
+      -810
+    ],
+    "ign-pci-noir_et_blanc": [
+      0,
+      -864
+    ],
+    "ign-pci-pci": [
+      0,
+      -918
+    ],
+    "ign-plan_ign-accentue": [
+      0,
+      -972
+    ],
+    "ign-plan_ign-attenue": [
+      0,
+      -1026
+    ],
+    "ign-plan_ign-classique": [
+      0,
+      -1080
+    ],
+    "ign-plan_ign-epure": [
+      0,
+      -1134
+    ],
+    "ign-plan_ign-gris": [
+      0,
+      -1188
+    ],
+    "ign-plan_ign-sans_toponymes": [
+      0,
+      -1242
+    ],
+    "ign-plan_ign-standard": [
+      0,
+      -1296
+    ],
+    "ign-plan_ign-toponymes": [
+      0,
+      -1350
+    ],
+    "ign-raster-cadastre": [
+      0,
+      -1404
+    ],
+    "ign-raster-default_scan": [
+      0,
+      -1458
+    ],
+    "ign-raster-express": [
+      0,
+      -1512
+    ],
+    "ign-raster-orthophoto": [
+      0,
+      -1566
+    ],
+    "ign-raster-scan_25": [
+      0,
+      -1620
+    ],
+    "ign-raster-streets": [
+      0,
+      -1674
+    ],
+    "maptiler-streets": [
+      0,
+      -1728
+    ],
+    "osm-raster-default": [
+      0,
+      -1782
+    ],
+    "street-view": [
+      0,
+      -1836
+    ],
+    "swisstopo-raster-default": [
+      0,
+      -1890
+    ],
+    "swisstopo-raster-default_25": [
+      0,
+      -1944
+    ],
+    "swisstopo-raster-orthophoto": [
+      0,
+      -1998
+    ],
+    "terrain": [
+      0,
+      -2052
+    ],
+    "terrarium": [
+      0,
+      -2106
+    ],
+    "unknown": [
+      0,
+      -2160
+    ]
   },
   "2x": {
-    "etalab-osm_bright": [0, 0],
-    "google-raster-orthophoto": [0, -108],
-    "google-raster-relief": [0, -216],
-    "google-raster-road": [0, -324],
-    "google-raster-street_view": [0, -432],
-    "hillshade": [0, -540],
-    "ign-admin_express-adminexpress": [0, -648],
-    "ign-bd_topo-bati": [0, -756],
-    "ign-bd_topo-bati_date": [0, -864],
-    "ign-bd_topo-bati_etages": [0, -972],
-    "ign-bd_topo-classique": [0, -1080],
-    "ign-bd_topo-hydrographie": [0, -1188],
-    "ign-bd_topo-routier": [0, -1296],
-    "ign-isohypse-isohypse_monochrome_marron": [0, -1404],
-    "ign-isohypse-isohypse_monochrome_orange": [0, -1512],
-    "ign-isohypse-isohypse_multicolore": [0, -1620],
-    "ign-pci-noir_et_blanc": [0, -1728],
-    "ign-pci-pci": [0, -1836],
-    "ign-plan_ign-accentue": [0, -1944],
-    "ign-plan_ign-attenue": [0, -2052],
-    "ign-plan_ign-classique": [0, -2160],
-    "ign-plan_ign-epure": [0, -2268],
-    "ign-plan_ign-gris": [0, -2376],
-    "ign-plan_ign-sans_toponymes": [0, -2484],
-    "ign-plan_ign-standard": [0, -2592],
-    "ign-plan_ign-toponymes": [0, -2700],
-    "ign-raster-cadastre": [0, -2808],
-    "ign-raster-default_scan": [0, -2916],
-    "ign-raster-express": [0, -3024],
-    "ign-raster-orthophoto": [0, -3132],
-    "ign-raster-scan_25": [0, -3240],
-    "ign-raster-streets": [0, -3348],
-    "maptiler-streets": [0, -3456],
-    "osm-raster-default": [0, -3564],
-    "street-view": [0, -3672],
-    "swisstopo-raster-default": [0, -3780],
-    "swisstopo-raster-default_25": [0, -3888],
-    "swisstopo-raster-orthophoto": [0, -3996],
-    "terrain": [0, -4104],
-    "terrarium": [0, -4212],
-    "unknown": [0, -4320]
+    "etalab-osm_bright": [
+      0,
+      0
+    ],
+    "google-raster-orthophoto": [
+      0,
+      -108
+    ],
+    "google-raster-relief": [
+      0,
+      -216
+    ],
+    "google-raster-road": [
+      0,
+      -324
+    ],
+    "google-raster-street_view": [
+      0,
+      -432
+    ],
+    "hillshade": [
+      0,
+      -540
+    ],
+    "ign-admin_express-adminexpress": [
+      0,
+      -648
+    ],
+    "ign-bd_topo-bati": [
+      0,
+      -756
+    ],
+    "ign-bd_topo-bati_date": [
+      0,
+      -864
+    ],
+    "ign-bd_topo-bati_etages": [
+      0,
+      -972
+    ],
+    "ign-bd_topo-classique": [
+      0,
+      -1080
+    ],
+    "ign-bd_topo-hydrographie": [
+      0,
+      -1188
+    ],
+    "ign-bd_topo-routier": [
+      0,
+      -1296
+    ],
+    "ign-isohypse-isohypse_monochrome_marron": [
+      0,
+      -1404
+    ],
+    "ign-isohypse-isohypse_monochrome_orange": [
+      0,
+      -1512
+    ],
+    "ign-isohypse-isohypse_multicolore": [
+      0,
+      -1620
+    ],
+    "ign-pci-noir_et_blanc": [
+      0,
+      -1728
+    ],
+    "ign-pci-pci": [
+      0,
+      -1836
+    ],
+    "ign-plan_ign-accentue": [
+      0,
+      -1944
+    ],
+    "ign-plan_ign-attenue": [
+      0,
+      -2052
+    ],
+    "ign-plan_ign-classique": [
+      0,
+      -2160
+    ],
+    "ign-plan_ign-epure": [
+      0,
+      -2268
+    ],
+    "ign-plan_ign-gris": [
+      0,
+      -2376
+    ],
+    "ign-plan_ign-sans_toponymes": [
+      0,
+      -2484
+    ],
+    "ign-plan_ign-standard": [
+      0,
+      -2592
+    ],
+    "ign-plan_ign-toponymes": [
+      0,
+      -2700
+    ],
+    "ign-raster-cadastre": [
+      0,
+      -2808
+    ],
+    "ign-raster-default_scan": [
+      0,
+      -2916
+    ],
+    "ign-raster-express": [
+      0,
+      -3024
+    ],
+    "ign-raster-orthophoto": [
+      0,
+      -3132
+    ],
+    "ign-raster-scan_25": [
+      0,
+      -3240
+    ],
+    "ign-raster-streets": [
+      0,
+      -3348
+    ],
+    "maptiler-streets": [
+      0,
+      -3456
+    ],
+    "osm-raster-default": [
+      0,
+      -3564
+    ],
+    "street-view": [
+      0,
+      -3672
+    ],
+    "swisstopo-raster-default": [
+      0,
+      -3780
+    ],
+    "swisstopo-raster-default_25": [
+      0,
+      -3888
+    ],
+    "swisstopo-raster-orthophoto": [
+      0,
+      -3996
+    ],
+    "terrain": [
+      0,
+      -4104
+    ],
+    "terrarium": [
+      0,
+      -4212
+    ],
+    "unknown": [
+      0,
+      -4320
+    ]
   }
 }

@@ -53,7 +53,5 @@ export default layerSlice.reducer;
 export const { baseLayerChanged, optionalLayerToggled, terrainToggled, streetViewToggled } =
   layerSlice.actions;
 
+export const selectLayer = (state: RootState) => state.layer;
 export const selectBaseLayer = (state: RootState) => state.layer.baseLayer;
-export const selectOptionalLayers = (state: RootState) => state.layer.optionalLayers;
-export const selectTerrain = (state: RootState) => state.layer.terrain;
-export const selectStreetView = (state: RootState) => state.layer.streetView;

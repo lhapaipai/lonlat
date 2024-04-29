@@ -68,7 +68,7 @@ export const baseLayers: BaseLayers = {
     "ign-raster-scan_25",
     "ign-raster-orthophoto",
     "ign-plan_ign-standard",
-    "ign-plan_ign-standard-optimized",
+    // "ign-plan_ign-standard-non-optimized",
   ],
   ch: ["swisstopo-raster-orthophoto", "swisstopo-raster-default", "swisstopo-raster-default_25"],
   world: [
@@ -129,6 +129,7 @@ export const baseLayersById = {
     style: createRasterStyle(
       [getIgnDefaultScanURL(ignToken)],
       '© <a href="https://www.ign.fr/">IGN</a>',
+      18,
     ),
     optionalLayers: [{ id: "ign-admin_express-adminexpress" }, { id: "ign-pci-pci" }],
     country: "fr",
@@ -142,6 +143,7 @@ export const baseLayersById = {
     style: createRasterStyle(
       [getIgnScan25URL(ignToken)],
       `© <a href="https://www.ign.fr/">IGN</a>`,
+      16,
     ),
     optionalLayers: [{ id: "ign-admin_express-adminexpress" }, { id: "ign-pci-pci" }],
     country: "fr",
@@ -172,20 +174,22 @@ export const baseLayersById = {
     optionalLayers: [
       { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
       { id: "ign-pci-pci", beforeId: "point coté" },
+      { id: "hillshade", beforeId: "bati surfacique - zone batie" },
     ],
     country: "fr",
   } satisfies BaseLayerInfos,
-  "ign-plan_ign-standard-optimized": {
-    id: "ign-plan_ign-standard",
+  "ign-plan_ign-standard-non-optimized": {
+    id: "ign-plan_ign-non-standard",
     type: "base",
     dataType: "vector",
     label: "Plan",
     description: "",
     offsetY: -162,
-    style: "/assets/styles/ign/PLAN.IGN/standard-optimized.json",
+    style: "/assets/styles/ign/PLAN.IGN/standard-non-optimized.json",
     optionalLayers: [
       { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
       { id: "ign-pci-pci", beforeId: "point coté" },
+      { id: "hillshade" },
     ],
     country: "fr",
   } satisfies BaseLayerInfos,
@@ -199,7 +203,7 @@ export const baseLayersById = {
       swissOrthophotoURL,
       `© Données: <a href="https://www.swisstopo.admin.ch">swisstopo</a>`,
     ),
-    optionalLayers: [],
+    optionalLayers: [{ id: "hillshade" }],
     country: "ch",
   } satisfies BaseLayerInfos,
   "swisstopo-raster-default": {
@@ -243,6 +247,7 @@ export const baseLayersById = {
       { id: "ign-admin_express-adminexpress" },
       { id: "ign-pci-pci" },
       { id: "ign-isohypse-isohypse_monochrome_marron" },
+      { id: "hillshade" },
     ],
     country: "world",
   } satisfies BaseLayerInfos,
@@ -273,9 +278,11 @@ export const baseLayersById = {
     offsetY: -486,
     style: mapTilerStreetsStyleUrl,
     optionalLayers: [
-      { id: "ign-admin_express-adminexpress" },
-      { id: "ign-pci-pci" },
+      // not compatible because glyphs are differents
+      // { id: "ign-admin_express-adminexpress" },
+      // { id: "ign-pci-pci" },
       { id: "ign-isohypse-isohypse_monochrome_marron" },
+      { id: "hillshade" },
     ],
     country: "world",
   } satisfies BaseLayerInfos,
@@ -337,6 +344,7 @@ export const optionalLayersById = {
           tiles: terrariumTiles,
           tileSize: 256,
           encoding: "terrarium",
+          maxzoom: 15,
         },
       },
       layers: [
@@ -345,7 +353,7 @@ export const optionalLayersById = {
           type: "hillshade",
           source: "terrarium",
           paint: {
-            "hillshade-exaggeration": 0.25,
+            "hillshade-exaggeration": 0.2,
           },
         },
       ],
@@ -393,6 +401,7 @@ export const optionalLayersById = {
           tiles: terrariumTiles,
           tileSize: 256,
           encoding: "terrarium",
+          maxzoom: 15,
         },
       },
       layers: [],

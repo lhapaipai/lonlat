@@ -10,7 +10,7 @@
     }
   },
   "sprite": "https://data.geopf.fr/annexes/ressources/vectorTiles/styles/PLAN.IGN/sprite/PlanIgn",
-  "glyphs": "http://localhost:8888/assets/styles/ign/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
+  "glyphs": "/assets/styles/ign/fonts/{fontstack}/{range}.pbf",
   "transition": { "duration": 300, "delay": 0 },
   "layers": [
     {

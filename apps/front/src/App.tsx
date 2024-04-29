@@ -15,12 +15,7 @@ import SearchMap from "~/features/search/SearchMap";
 import { DOM } from "pentatrion-geo/src/maplibre/core/util/dom";
 import LayerSwitcherControl from "~/features/layer/LayerSwitcherControl";
 
-import {
-  selectBaseLayer,
-  selectOptionalLayers,
-  selectStreetView,
-  selectTerrain,
-} from "~/features/layer/layerSlice";
+import { selectLayer } from "~/features/layer/layerSlice";
 import { useEffect, useState } from "react";
 import { prepareStyle } from "~/features/layer/util";
 import StreetViewMap from "~/features/street-view/StreetViewMap";
@@ -59,10 +54,7 @@ function App() {
   const viewState = useAppSelector(selectViewState);
   const dispatch = useAppDispatch();
 
-  const baseLayerId = useAppSelector(selectBaseLayer);
-  const optionalLayersId = useAppSelector(selectOptionalLayers);
-  const terrain = useAppSelector(selectTerrain);
-  const streetView = useAppSelector(selectStreetView);
+  const { baseLayer, optionalLayers, terrain, streetView } = useAppSelector(selectLayer);
   const tab = useAppSelector(selectTab);
   const geolocationEnabled = useAppSelector(selectGeolocationStatus) === "on";
   const isochroneReferenceFeature = useAppSelector(selectIsochroneReferenceFeature);
@@ -86,10 +78,10 @@ function App() {
   }
 
   useEffect(() => {
-    prepareStyle(baseLayerId, optionalLayersId, terrain).then((nextStyle) =>
+    prepareStyle(baseLayer, optionalLayers, terrain).then((nextStyle) =>
       setUncontrolledStyle(nextStyle),
     );
-  }, [baseLayerId, optionalLayersId, terrain]);
+  }, [baseLayer, optionalLayers, terrain]);
 
   return (
     <div id="app">
