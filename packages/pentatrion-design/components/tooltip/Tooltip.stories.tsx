@@ -1,4 +1,4 @@
-import { Tooltip, SimpleTooltip, TooltipContent, TooltipTrigger } from "~design";
+import { Tooltip, SimpleTooltip } from "~design";
 import { HTMLProps, forwardRef } from "react";
 import { useDrag } from "@use-gesture/react";
 import { useSpring, animated } from "react-spring";
@@ -61,7 +61,7 @@ export const Basic = () => {
       </p>
 
       <div className="storybook-grid-cols">
-        <SimpleTooltip color="primary" open={true} placement="right-start" content="infos">
+        <SimpleTooltip color="yellow" open={true} placement="right-start" content="infos">
           <Box />
         </SimpleTooltip>
         <SimpleTooltip open={true} placement="right" content="infos">
@@ -70,25 +70,25 @@ export const Basic = () => {
         <SimpleTooltip open={true} placement="right-end" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip color="primary" open={true} placement="left-start" content="infos">
+        <SimpleTooltip color="yellow" open={true} placement="left-start" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip color="weak" open={true} placement="left" content="infos">
+        <SimpleTooltip color="gray" open={true} placement="left" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip color="warning" open={true} placement="left-end" content="infos">
+        <SimpleTooltip color="orange" open={true} placement="left-end" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip color="danger" open={true} placement="top-start" content="infos">
+        <SimpleTooltip color="red" open={true} placement="top-start" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip color="info" open={true} placement="top" content="infos">
+        <SimpleTooltip color="blue" open={true} placement="top" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip color="success" open={true} placement="top-end" content="infos">
+        <SimpleTooltip color="green" open={true} placement="top-end" content="infos">
           <Box />
         </SimpleTooltip>
-        <SimpleTooltip color="danger" open={true} placement="bottom-start" content="infos">
+        <SimpleTooltip color="red" open={true} placement="bottom-start" content="infos">
           <Box />
         </SimpleTooltip>
         <SimpleTooltip open={true} placement="bottom" content="infos">
@@ -110,7 +110,7 @@ export const Draggable = () => {
   });
   return (
     <div className="container">
-      <SimpleTooltip content="infos" placement="top" open={true} color="primary">
+      <SimpleTooltip content="infos" placement="top" open={true} color="yellow">
         <animated.div
           {...bind()}
           className="storybook-box-xs"

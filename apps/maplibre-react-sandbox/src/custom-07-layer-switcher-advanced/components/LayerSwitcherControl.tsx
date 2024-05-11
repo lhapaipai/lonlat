@@ -49,7 +49,7 @@ export default function LayerSwitcherControl() {
             key={countryId}
             className="text-sm"
             variant="text"
-            color="weak"
+            color="gray"
             selected={countryFilter === countryId}
             onClick={() => setCountryFilter(countryId)}
           >

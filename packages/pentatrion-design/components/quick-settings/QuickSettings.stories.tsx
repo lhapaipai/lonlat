@@ -43,30 +43,30 @@ export const Basic = () => {
         </div>
       </div>
       <div className="actions">
-        <Button variant="light" color="weak">
+        <Button variant="light" color="gray">
           <i className="fe-isochrone"></i>
         </Button>
-        <Button variant="light" color="weak">
+        <Button variant="light" color="gray">
           <i className="fe-route"></i>
         </Button>
-        <Button variant="light" color="weak">
+        <Button variant="light" color="gray">
           RAW
         </Button>
       </div>
 
       <div className="actions">
-        <Button variant="light" color="weak" className="with-icon">
+        <Button variant="light" color="gray" className="with-icon">
           <i className="fe-stopwatch"></i>
           isochrone
         </Button>
-        <Button variant="light" color="weak" className="with-icon">
+        <Button variant="light" color="gray" className="with-icon">
           <i className="fe-ruler"></i>
           isodistance
         </Button>
       </div>
 
       <div className="ll-steps-extra">
-        <Button variant="ghost" color="weak">
+        <Button variant="ghost" color="gray">
           <span
             className="ll-marker"
             style={{ "--marker-color": "#c0c0c0", "--marker-size": "34px" }}
@@ -80,7 +80,7 @@ export const Basic = () => {
           <span>Ajouter un point</span>
         </Button>
 
-        <Button icon variant="text" color="weak">
+        <Button icon variant="text" color="gray">
           <i className="fe-sliders"></i>
         </Button>
       </div>

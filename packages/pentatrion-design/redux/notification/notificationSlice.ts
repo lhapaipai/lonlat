@@ -23,7 +23,7 @@ const notificationSlice = createSlice({
           const [content, options] = errorMessage;
           const {
             expiration = 5000,
-            color = "danger",
+            color = "red",
             canClose = true,
             withLoader = false,
           } = options || {};
@@ -43,7 +43,7 @@ const notificationSlice = createSlice({
       prepare(content: string, options?: MessageOptions) {
         const {
           expiration = 5000,
-          color = "primary",
+          color = "yellow",
           canClose = true,
           withLoader = false,
         } = options || {};

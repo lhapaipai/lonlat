@@ -22,7 +22,7 @@ export function createNotificationsManager(setNotifications: Dispatch<SetStateAc
     content = "",
     {
       expiration = 5000,
-      color = "primary",
+      color = "yellow",
       canClose = true,
       withLoader = false,
     }: MessageOptions = {},

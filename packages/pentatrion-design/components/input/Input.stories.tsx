@@ -38,7 +38,7 @@ export const Context = () => {
         prefix={
           <>
             <i className="fe-search"></i>
-            <Loader size="medium" color="weak" />
+            <Loader size="medium" color="gray" />
           </>
         }
       />
@@ -55,14 +55,14 @@ export const Context = () => {
             <Button withRipple={false} icon variant="underline">
               <i className="fe-cancel"></i>
             </Button>
-            <Loader size="medium" color="weak" />
+            <Loader size="medium" color="gray" />
           </>
         }
       />
       <Input
         suffix={
           <>
-            <Loader size="medium" color="weak" />
+            <Loader size="medium" color="gray" />
           </>
         }
       />

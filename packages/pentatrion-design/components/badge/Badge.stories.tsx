@@ -13,7 +13,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: ["primary", "weak", "danger", "warning", "success", "info"],
+      options: ["yellow", "gray", "red", "orange", "green", "blue"],
     },
   },
 } satisfies Meta<typeof Badge>;
@@ -25,7 +25,7 @@ export const Playbook: Story = {
   args: {
     tooltip: "More infos...",
     url: "https://lonlat.org",
-    color: "primary",
+    color: "yellow",
     children: "Lonlat",
   },
 };
@@ -33,38 +33,38 @@ export const Playbook: Story = {
 export const Context = () => {
   return (
     <div className="flex flex-column gap-2">
-      <Badge color="primary">Primary</Badge>
-      <Badge color="warning">Warning</Badge>
-      <Badge color="success">Success</Badge>
-      <Badge color="danger">Danger</Badge>
-      <Badge color="info">Info</Badge>
-      <Badge color="weak">Weak</Badge>
-      <Badge color="primary" onClick={onClickAction}>
+      <Badge color="yellow">Primary</Badge>
+      <Badge color="orange">Warning</Badge>
+      <Badge color="green">Success</Badge>
+      <Badge color="red">Danger</Badge>
+      <Badge color="blue">Info</Badge>
+      <Badge color="gray">Weak</Badge>
+      <Badge color="yellow" onClick={onClickAction}>
         Primary clickable
       </Badge>
-      <Badge color="warning" onClick={onClickAction}>
+      <Badge color="orange" onClick={onClickAction}>
         Warning clickable
       </Badge>
-      <Badge color="success" onClick={onClickAction}>
+      <Badge color="green" onClick={onClickAction}>
         Success clickable
       </Badge>
-      <Badge color="danger" onClick={onClickAction}>
+      <Badge color="red" onClick={onClickAction}>
         Danger clickable
       </Badge>
-      <Badge color="info" onClick={onClickAction}>
+      <Badge color="blue" onClick={onClickAction}>
         Info clickable
       </Badge>
-      <Badge color="weak" onClick={onClickAction}>
+      <Badge color="gray" onClick={onClickAction}>
         Weak clickable
       </Badge>
-      <Badge color="primary" onRemove={onRemoveAction}>
+      <Badge color="yellow" onRemove={onRemoveAction}>
         Primary removable
       </Badge>
-      <Badge color="primary" onClick={onClickAction} onRemove={onRemoveAction}>
+      <Badge color="yellow" onClick={onClickAction} onRemove={onRemoveAction}>
         Primary clickable removable
       </Badge>
 
-      <Badge color="primary" tooltip="More infos...">
+      <Badge color="yellow" tooltip="More infos...">
         With tooltip !
       </Badge>
     </div>

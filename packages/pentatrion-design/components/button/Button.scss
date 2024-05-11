@@ -109,7 +109,7 @@
 
     &.not-cliquable {
         pointer-events: none;
-        color: var(--text-weak, inherit);
+        color: var(--text-gray, inherit);
 
         &[disabled] {
             opacity: .5;

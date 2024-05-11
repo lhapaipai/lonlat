@@ -1,12 +1,4 @@
-import {
-  Code,
-  Table,
-  TableBody,
-  TableCell,
-  TableHeader,
-  TableHeaderCell,
-  TableRow,
-} from "~design";
+import { Code, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "~design";
 
 export default {
   title: "Styles/Themes",
@@ -33,12 +25,12 @@ const TextColorsTable = () => (
       </TableRow>
       <TableRow>
         <TableCell>
-          <Code>.color-weak</Code>
+          <Code>.color-gray</Code>
           <br />
-          <Code>var(--text-weak)</Code>
+          <Code>var(--text-gray)</Code>
         </TableCell>
         <TableCell>
-          <span className="color-weak">Lorem ipsum</span>
+          <span className="color-gray">Lorem ipsum</span>
         </TableCell>
       </TableRow>
       <TableRow>

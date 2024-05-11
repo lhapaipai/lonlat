@@ -66,22 +66,22 @@ a {
     }
 
     &:hover {
-        box-shadow: 0 2px 0 var(--color-primary-500);
+        box-shadow: 0 2px 0 var(--color-yellow-500);
     }
 
     &:focus-visible {
-        outline: 2px solid var(--color-primary-1000);
+        outline: 2px solid var(--color-yellow-1000);
         border-radius: var(--border-radius-sm);
     }
 
     &:active {
-        color: var(--color-primary-1000);
+        color: var(--color-yellow-1000);
     }
 }
 
 .can-copy {
     color: var(--text-strong);
-    text-decoration: underline dashed var(--color-weak-300);
+    text-decoration: underline dashed var(--color-gray-300);
     cursor: copy;
 
     &:hover {
@@ -102,7 +102,7 @@ a.ghost {
 }
 
 mark {
-    background-color: var(--color-primary-100);
+    background-color: var(--color-yellow-100);
     color: var(--text-strong);
 }
 

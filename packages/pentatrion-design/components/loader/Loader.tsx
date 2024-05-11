@@ -7,7 +7,7 @@ interface Props extends ComponentPropsWithoutRef<"svg"> {
   size?: "small" | "medium" | "large";
   color?: ThemeColor;
 }
-export default function Loader({ size = "medium", color = "info", className, ...rest }: Props) {
+export default function Loader({ size = "medium", color = "blue", className, ...rest }: Props) {
   const id = useId();
   return (
     <svg

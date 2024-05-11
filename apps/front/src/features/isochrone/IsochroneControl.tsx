@@ -106,7 +106,7 @@ export default function IsochroneControl() {
         <Button
           disabled={loading}
           variant="light"
-          color="weak"
+          color="gray"
           className="with-icon"
           selected={costType === "time"}
           onClick={() => dispatch(costTypeChanged("time"))}
@@ -117,7 +117,7 @@ export default function IsochroneControl() {
         <Button
           disabled={loading}
           variant="light"
-          color="weak"
+          color="gray"
           className="with-icon"
           selected={costType === "distance"}
           onClick={() => dispatch(costTypeChanged("distance"))}
@@ -232,7 +232,7 @@ export default function IsochroneControl() {
         <Button
           className="mr-2"
           variant="light"
-          color="weak"
+          color="gray"
           onClick={() => {
             dispatch(referenceFeatureChanged(null));
             dispatch(featureChanged(null));

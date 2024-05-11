@@ -9,7 +9,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: ["primary", "weak", "danger", "warning", "success", "info"],
+      options: ["yellow", "gray", "red", "orange", "green", "blue"],
     },
   },
 } satisfies Meta<typeof Loader>;
@@ -20,7 +20,7 @@ type Story = StoryObj<typeof meta>;
 export const Playbook: Story = {
   args: {
     size: "medium",
-    color: "primary",
+    color: "yellow",
   },
 };
 
@@ -28,10 +28,10 @@ export const Context = () => (
   <div className="flex gap-2 flex-column">
     <Loader size="small" />
     <br />
-    <Loader size="medium" color="primary" />
+    <Loader size="medium" color="yellow" />
     <br />
-    <Loader size="large" color="danger" />
+    <Loader size="large" color="red" />
     <br />
-    <Loader size="medium" color="weak" />
+    <Loader size="medium" color="gray" />
   </div>
 );

@@ -170,7 +170,7 @@
         }
 
         &.active {
-            background-color: var(--background-weak);
+            background-color: var(--background-gray);
         }
 
         &.selected,
@@ -194,7 +194,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            outline: 2px solid var(--background-weak);
+            outline: 2px solid var(--background-gray);
             font-size: var(--font-size-2xs);
             border-radius: 50%;
             margin: 0 .75rem 0 3px;

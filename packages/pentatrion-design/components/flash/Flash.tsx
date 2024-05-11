@@ -8,6 +8,6 @@ interface Props {
   children?: ReactNode;
   className?: string;
 }
-export default function Alert({ color = "primary", children, className }: Props) {
+export default function Alert({ color = "yellow", children, className }: Props) {
   return <div className={cn("ll-flash", "p-2", `alert-${color}`, className)}>{children}</div>;
 }

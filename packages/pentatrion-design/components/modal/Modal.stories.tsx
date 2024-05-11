@@ -54,7 +54,7 @@ export const Context = () => {
             <Button variant="ghost" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button color="primary" onClick={() => setIsOpen(false)}>
+            <Button color="yellow" onClick={() => setIsOpen(false)}>
               Accept
             </Button>
           </div>
@@ -106,7 +106,7 @@ export const ScrollableModal = () => {
             <Button variant="ghost" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button color="primary" onClick={() => setIsOpen(false)}>
+            <Button color="yellow" onClick={() => setIsOpen(false)}>
               Accept
             </Button>
           </div>

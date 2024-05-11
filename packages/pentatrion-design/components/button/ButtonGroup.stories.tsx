@@ -25,13 +25,13 @@ export const Context = () => {
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Button color="info" selected={val === "one"} onClick={() => setVal("one")}>
+          <Button color="blue" selected={val === "one"} onClick={() => setVal("one")}>
             One
           </Button>
-          <Button color="info" selected={val === "two"} onClick={() => setVal("two")}>
+          <Button color="blue" selected={val === "two"} onClick={() => setVal("two")}>
             Two
           </Button>
-          <Button color="info" selected={val === "three"} onClick={() => setVal("three")}>
+          <Button color="blue" selected={val === "three"} onClick={() => setVal("three")}>
             Three
           </Button>
         </ButtonGroup>
@@ -50,7 +50,7 @@ export const Context = () => {
         <ButtonGroup>
           <Button
             variant="outline"
-            color="weak"
+            color="gray"
             selected={val === "one"}
             onClick={() => setVal("one")}
           >
@@ -58,7 +58,7 @@ export const Context = () => {
           </Button>
           <Button
             variant="outline"
-            color="weak"
+            color="gray"
             selected={val === "two"}
             onClick={() => setVal("two")}
           >
@@ -66,7 +66,7 @@ export const Context = () => {
           </Button>
           <Button
             variant="outline"
-            color="weak"
+            color="gray"
             selected={val === "three"}
             onClick={() => setVal("three")}
           >
@@ -88,7 +88,7 @@ export const Context = () => {
         <ButtonGroup>
           <Button
             variant="ghost"
-            color="danger"
+            color="red"
             selected={val === "one"}
             onClick={() => setVal("one")}
           >
@@ -96,7 +96,7 @@ export const Context = () => {
           </Button>
           <Button
             variant="ghost"
-            color="danger"
+            color="red"
             selected={val === "two"}
             onClick={() => setVal("two")}
           >
@@ -104,7 +104,7 @@ export const Context = () => {
           </Button>
           <Button
             variant="ghost"
-            color="danger"
+            color="red"
             selected={val === "three"}
             onClick={() => setVal("three")}
           >
@@ -128,7 +128,7 @@ export const Context = () => {
         <ButtonGroup direction="vertical">
           <Button
             variant="outline"
-            color="weak"
+            color="gray"
             selected={val === "one"}
             onClick={() => setVal("one")}
           >
@@ -136,7 +136,7 @@ export const Context = () => {
           </Button>
           <Button
             variant="outline"
-            color="weak"
+            color="gray"
             selected={val === "two"}
             onClick={() => setVal("two")}
           >
@@ -144,7 +144,7 @@ export const Context = () => {
           </Button>
           <Button
             variant="outline"
-            color="weak"
+            color="gray"
             selected={val === "three"}
             onClick={() => setVal("three")}
           >
@@ -153,15 +153,25 @@ export const Context = () => {
         </ButtonGroup>
 
         <ButtonGroup direction="vertical">
-          <Button variant="ghost" color="weak" selected={val === "one"} onClick={() => setVal("one")}>
+          <Button
+            variant="ghost"
+            color="gray"
+            selected={val === "one"}
+            onClick={() => setVal("one")}
+          >
             One
           </Button>
-          <Button variant="ghost" color="weak" selected={val === "two"} onClick={() => setVal("two")}>
+          <Button
+            variant="ghost"
+            color="gray"
+            selected={val === "two"}
+            onClick={() => setVal("two")}
+          >
             Two
           </Button>
           <Button
             variant="ghost"
-            color="weak"
+            color="gray"
             selected={val === "three"}
             onClick={() => setVal("three")}
           >

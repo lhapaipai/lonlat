@@ -3,7 +3,7 @@
 
     &.disabled {
         pointer-events: none;
-        color: var(--text-weak, inherit);
+        color: var(--text-gray, inherit);
         opacity: .5;
     }
 }
@@ -21,7 +21,7 @@
     display: inline-block;
     position: relative;
     margin: 0 0.25rem 0 0;
-    outline: $form-outline-width solid var(--color-weak-100);
+    outline: $form-outline-width solid var(--color-gray-100);
     background-color: var(--background-light);
     cursor: pointer;
     line-height: 18px;
@@ -30,27 +30,27 @@
     transition: border .3s ease, box-shadow .3s ease;
 
     &:hover {
-        outline-color: var(--color-weak-400);
+        outline-color: var(--color-gray-400);
 
         &::after {
-            outline: $form-outline-width solid var(--color-weak-400);
+            outline: $form-outline-width solid var(--color-gray-400);
         }
     }
 
 
-    &.warning {
-        outline-color: var(--color-warning-600);
+    &.orange {
+        outline-color: var(--color-orange-600);
 
         &::after {
-            outline-color: var(--color-warning-600);
+            outline-color: var(--color-orange-600);
         }
     }
 
     &.error {
-        outline-color: var(--color-danger-600);
+        outline-color: var(--color-red-600);
 
         &::after {
-            outline-color: var(--color-danger-600);
+            outline-color: var(--color-red-600);
         }
     }
 
@@ -68,19 +68,19 @@
         width: calc(18px - 6px);
         height: calc(18px - 6px);
         border-radius: 50%;
-        background-color: var(--color-weak-200);
+        background-color: var(--color-gray-200);
         transition: all 0.15s cubic-bezier(0.5, 0.1, 0.75, 1.35);
-        outline: 1px solid var(--color-weak-200);
+        outline: 1px solid var(--color-gray-200);
     }
 
     &:checked {
-        background-color: var(--color-primary-100);
-        outline-color: var(--color-primary-500);
+        background-color: var(--color-yellow-100);
+        outline-color: var(--color-yellow-500);
 
         &::after {
-            background-color: var(--color-primary-700);
+            background-color: var(--color-yellow-700);
             transform: translateX(12px);
-            outline: 1px solid var(--color-primary-700);
+            outline: 1px solid var(--color-yellow-700);
         }
     }
 }

@@ -24,7 +24,7 @@ export default function useTooltip({
   onOpen: setControlledOpen,
   openDelay = 500,
   closeDelay = 500,
-  color = "primary",
+  color = "yellow",
 }: TooltipOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 

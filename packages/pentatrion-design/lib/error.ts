@@ -23,7 +23,7 @@ export function isErrorLike(err: any): err is Error {
 
 export function parseError(err: any): [string, MessageOptions] | null {
   if (isErrorLike(err)) {
-    return [err.message || "An error occured", { color: "danger" }];
+    return [err.message || "An error occured", { color: "red" }];
   }
   return null;
 }

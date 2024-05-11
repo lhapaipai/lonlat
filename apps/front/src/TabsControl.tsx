@@ -49,7 +49,7 @@ function TabsControl() {
           onClick={() => dispatch(distractionFreeChanged(true))}
           icon
           variant="ghost"
-          color="weak"
+          color="gray"
         >
           <i className="fe-sidebar-collapse"></i>
         </Button>
@@ -59,7 +59,7 @@ function TabsControl() {
           <Button
             icon
             variant="ghost"
-            color="weak"
+            color="gray"
             onClick={() => dispatch(distractionFreeChanged(false))}
           >
             <img

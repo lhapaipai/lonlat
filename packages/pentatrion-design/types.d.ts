@@ -1,6 +1,6 @@
 import "react";
 
-export type ThemeColor = "primary" | "weak" | "danger" | "warning" | "success" | "info";
+export type ThemeColor = "yellow" | "gray" | "red" | "orange" | "green" | "blue";
 
 export interface Town {
   insee: number;

@@ -20,7 +20,7 @@ export default function Badge({
   onClick,
   tooltip,
   url,
-  color = "primary",
+  color = "yellow",
 }: Props) {
   const badge = (
     <span

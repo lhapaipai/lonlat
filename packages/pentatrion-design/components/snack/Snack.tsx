@@ -10,7 +10,7 @@ export type SnackProps = Partial<Message> & {
 export default function Snack({
   expiration = 5000,
   content = "",
-  color = "primary",
+  color = "yellow",
   withLoader = false,
   canClose = false,
   onRemove = () => {},
@@ -39,10 +39,10 @@ export default function Snack({
     >
       <div className="box">
         <span className="message">{content}</span>
-        {withLoader && <Loader size="small" color="weak" />}
+        {withLoader && <Loader size="small" color="gray" />}
 
         {canClose && (
-          <Button icon variant="ghost" color="weak" onClick={onRemove}>
+          <Button icon variant="ghost" color="gray" onClick={onRemove}>
             <i className="fe-cancel"></i>
           </Button>
         )}

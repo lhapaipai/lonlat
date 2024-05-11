@@ -11,14 +11,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Playbook: Story = {
   args: {
-    color: "primary",
+    color: "yellow",
     children:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quod consequatur exercitationem delectus ad quibusdam ipsa officia consectetur laboriosam perspiciatis beatae incidunt sequi, velit sint aspernatur? Aliquid eum culpa cum.",
     className: "",
   },
 };
 
-const colors = ["primary", "success", "info", "warning", "danger", "weak"] as const;
+const colors = ["yellow", "green", "blue", "orange", "red", "gray"] as const;
 
 export const Context = () => (
   <div className="flex flex-column gap-2">

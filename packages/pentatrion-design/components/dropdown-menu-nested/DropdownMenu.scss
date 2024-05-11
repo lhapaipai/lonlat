@@ -20,7 +20,7 @@
 
 
     .option[data-nested][data-open]:not([data-focus-inside]) {
-        background-color: var(--background-weak);
+        background-color: var(--background-gray);
     }
 
     .option[data-focus-inside][data-open] {

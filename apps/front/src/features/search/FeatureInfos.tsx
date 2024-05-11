@@ -45,7 +45,7 @@ export default function FeatureInfos() {
             <Button
               className="size-small text-hint"
               variant="ghost"
-              color="weak"
+              color="gray"
               onClick={() => dispatch(coordsUnitChanged())}
             >
               {T(`coordsUnit.${coordsUnit}`)}{" "}
@@ -89,7 +89,7 @@ export default function FeatureInfos() {
         <SimpleTooltip content={T("tooltip.direction")} placement="top-start">
           <Button
             variant="light"
-            color="weak"
+            color="gray"
             onClick={() => {
               dispatch(directionWayPointsAddedFromSearch(searchFeature));
               dispatch(tabChanged("direction"));
@@ -101,7 +101,7 @@ export default function FeatureInfos() {
         <SimpleTooltip content={T("tooltip.code")} placement="top">
           <Button
             variant="light"
-            color="weak"
+            color="gray"
             selected={action === "raw"}
             onClick={() => setOrToggleAction("raw")}
           >
@@ -111,7 +111,7 @@ export default function FeatureInfos() {
         <SimpleTooltip content={T("tooltip.isochrone")} placement="top-end">
           <Button
             variant="light"
-            color="weak"
+            color="gray"
             selected={action === "isochrone"}
             onClick={() => dispatch(referenceFeatureChanged(searchFeature))}
           >

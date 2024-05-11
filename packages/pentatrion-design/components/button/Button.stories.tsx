@@ -29,7 +29,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: ["primary", "weak", "danger", "warning", "success", "info"],
+      options: ["yellow", "gray", "red", "orange", "green", "blue"],
     },
   },
 } satisfies Meta<typeof Button>;
@@ -41,7 +41,7 @@ export const Basic: Story = {
   args: {
     variant: "solid",
     size: "medium",
-    color: "primary",
+    color: "yellow",
     children: "My button",
     loading: false,
     disabled: false,
@@ -78,22 +78,22 @@ export const States = () => (
 
 export const Icons = () => (
   <div className="flex gap-2" style={{ alignItems: "center" }}>
-    <Button icon variant="solid" color="weak">
+    <Button icon variant="solid" color="gray">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon variant="outline" color="weak">
+    <Button icon variant="outline" color="gray">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon variant="text" color="weak">
+    <Button icon variant="text" color="gray">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon variant="ghost" color="weak">
+    <Button icon variant="ghost" color="gray">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon variant="underline" color="weak">
+    <Button icon variant="underline" color="gray">
       <i className="fe-cancel"></i>
     </Button>
-    <Button variant="solid" color="weak" className="with-icon with-prefix">
+    <Button variant="solid" color="gray" className="with-icon with-prefix">
       <i className="fe-cancel"></i>
       Cancel
     </Button>
@@ -101,7 +101,7 @@ export const Icons = () => (
 );
 
 const variants = ["solid", "outline", "light", "text", "ghost", "underline"] as const;
-const colors = ["primary", "weak", "danger", "warning", "success", "info"] as const;
+const colors = ["yellow", "gray", "red", "orange", "green", "blue"] as const;
 
 export const Context = () => {
   return (
@@ -138,22 +138,22 @@ export const Context = () => {
       <h3>Icons</h3>
 
       <div className="flex gap-2" style={{ alignItems: "center" }}>
-        <Button icon variant="solid" color="weak">
+        <Button icon variant="solid" color="gray">
           <i className="fe-cancel"></i>
         </Button>
-        <Button icon variant="outline" color="weak">
+        <Button icon variant="outline" color="gray">
           <i className="fe-cancel"></i>
         </Button>
-        <Button icon variant="text" color="weak">
+        <Button icon variant="text" color="gray">
           <i className="fe-cancel"></i>
         </Button>
-        <Button icon variant="ghost" color="weak">
+        <Button icon variant="ghost" color="gray">
           <i className="fe-cancel"></i>
         </Button>
-        <Button icon variant="underline" color="weak">
+        <Button icon variant="underline" color="gray">
           <i className="fe-cancel"></i>
         </Button>
-        <Button variant="solid" color="weak" className="with-icon with-prefix">
+        <Button variant="solid" color="gray" className="with-icon with-prefix">
           <i className="fe-cancel"></i>
           Cancel
         </Button>

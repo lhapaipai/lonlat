@@ -1,4 +1,4 @@
-$color-names: "default", "weak", "hint", "disabled";
+$color-names: "default", "gray", "hint", "disabled";
 
 @each $color-name in $color-names {
     .color-#{$color-name} {
@@ -6,7 +6,7 @@ $color-names: "default", "weak", "hint", "disabled";
     }
 }
 
-$colors: "primary", "success", "info", "warning", "danger", "weak";
+$colors: "yellow", "green", "blue", "orange", "red", "gray";
 
 @each $color in $colors {
     .color-#{$color} {

@@ -74,28 +74,28 @@
 
         &.base {
             &:hover {
-                background-color: var(--color-primary);
+                background-color: var(--color-yellow);
             }
 
             &.active {
-                background-color: var(--color-primary);
+                background-color: var(--color-yellow);
 
                 &:hover {
-                    background-color: var(--color-primary-700);
+                    background-color: var(--color-yellow-700);
                 }
             }
         }
 
         &.optional {
             &:hover {
-                background-color: var(--color-primary-200);
+                background-color: var(--color-yellow-200);
             }
 
             &.active {
-                background-color: var(--color-primary-200);
+                background-color: var(--color-yellow-200);
 
                 &:hover {
-                    background-color: var(--color-primary-500);
+                    background-color: var(--color-yellow-500);
                 }
             }
         }

@@ -8,31 +8,31 @@
     display: flex;
 
     &.variant-normal {
-        outline-color: var(--color-weak-100);
+        outline-color: var(--color-gray-100);
     }
 
     &:hover {
-        outline-color: var(--color-weak-400);
+        outline-color: var(--color-gray-400);
     }
 
     &:focus-within,
     &.focus {
         box-shadow: var(--ring-shadow-light);
-        outline-color: var(--color-primary-600);
+        outline-color: var(--color-yellow-600);
         outline-width: 2px;
     }
 
-    &.warning {
-        outline-color: var(--color-warning-600);
+    &.orange {
+        outline-color: var(--color-orange-600);
     }
 
     &.error {
-        outline-color: var(--color-danger-600);
+        outline-color: var(--color-red-600);
     }
 
     &.disabled {
         pointer-events: none;
-        color: var(--text-weak, inherit);
+        color: var(--text-gray, inherit);
         opacity: .5;
     }
 }
@@ -63,7 +63,7 @@
     }
 
     .adornment {
-        color: var(--color-weak-600);
+        color: var(--color-gray-600);
         position: relative;
 
         &>[class^="fe-"] {

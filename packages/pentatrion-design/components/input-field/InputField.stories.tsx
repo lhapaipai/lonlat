@@ -14,7 +14,7 @@ export const Playbook = () => {
   const [hint, setHint] = useState("Any hint related to input field");
   const [placeholder, setPlaceholder] = useState("Ex: Fernando");
   const [help, setHelp] = useState("Help message into the bottom");
-  const [warning, setWarning] = useState("");
+  const [orange, setWarning] = useState("");
   const [error, setError] = useState("");
 
   return (
@@ -26,7 +26,7 @@ export const Playbook = () => {
           placeholder={placeholder}
           help={help}
           value={value}
-          warning={warning}
+          orange={orange}
           error={error}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         />
@@ -56,8 +56,8 @@ export const Playbook = () => {
         />
         <InputField
           label="Warning"
-          placeholder="warning message"
-          value={warning}
+          placeholder="orange message"
+          value={orange}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setWarning(e.target.value)}
         />
         <InputField
@@ -101,7 +101,7 @@ export const Context = () => {
         hint="Any hint related to input field"
         placeholder="Ex: Fernando"
         help="Help text for your input field"
-        warning="Only your firstname"
+        orange="Only your firstname"
         value={name}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
       />
@@ -145,7 +145,7 @@ export const Context = () => {
         label="What is your gender"
         hint="You don't have to answer"
         as={RadioGroup}
-        warning="Make your choice"
+        orange="Make your choice"
         options={[
           { label: "Male", value: "male" },
           { label: "Female", value: "female" },
@@ -167,7 +167,7 @@ export const Context = () => {
         onChange={(e: ChangeEvent<HTMLInputElement>) => setIsAgree(e.target.checked)}
         label="Gender"
         hint="One hint"
-        warning="Make your choice"
+        orange="Make your choice"
         as={Checkbox}
       >
         I agree
@@ -197,7 +197,7 @@ export const Context = () => {
         onChange={(e: ChangeEvent<HTMLInputElement>) => setIsEnabled(e.target.checked)}
         label="Label"
         hint="One hint"
-        warning="Make your choice"
+        orange="Make your choice"
         as={Toggle}
       >
         Enabled

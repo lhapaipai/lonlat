@@ -275,7 +275,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
           {showArrow && (
             <div className="arrow">
               <div className="ll-indicator"></div>
-              <Button color="weak" withRipple={false} icon variant="underline" focusable={false}>
+              <Button color="gray" withRipple={false} icon variant="underline" focusable={false}>
                 <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
               </Button>
             </div>

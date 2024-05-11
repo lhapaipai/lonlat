@@ -37,7 +37,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       withRipple = true,
       variant = "solid",
       loading = false,
-      color = "primary",
+      color = "yellow",
       size = "medium",
       focusable = true,
       fullWidth,

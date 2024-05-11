@@ -9,7 +9,7 @@ interface InputFieldOwnProps {
   hint?: ReactNode;
   help?: ReactNode;
   error?: ReactNode | boolean;
-  warning?: ReactNode | boolean;
+  orange?: ReactNode | boolean;
 }
 
 const defaultElement = Input;
@@ -17,7 +17,7 @@ const defaultElement = Input;
 type Props<E extends ElementType> = PolymorphicPropsWithRef<InputFieldOwnProps, E>;
 
 const InputFieldBase = <E extends ElementType = typeof defaultElement>(
-  { label, hint, help, error, warning, as, ...rest }: Props<E>,
+  { label, hint, help, error, orange, as, ...rest }: Props<E>,
   ref: ForwardedRef<Element>,
 ) => {
   const id = useId();
@@ -26,15 +26,15 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   const labelElement = label && <span className="text-bold">{label}</span>;
   const hintElement = hint && <span className="ml-auto text-hint">{hint}</span>;
   const errorElement = error && typeof error !== "boolean" && (
-    <span className={cn("color-danger", "text-semibold")}>
+    <span className={cn("color-red", "text-semibold")}>
       <i className="fe-circle-exclamation"></i>
       <span>{error}</span>
     </span>
   );
-  const warningElement = warning && typeof warning !== "boolean" && (
-    <span className={cn("color-warning", "text-semibold")}>
+  const orangeElement = orange && typeof orange !== "boolean" && (
+    <span className={cn("color-orange", "text-semibold")}>
       <i className="fe-circle-exclamation"></i>
-      <span>{warning}</span>
+      <span>{orange}</span>
     </span>
   );
 
@@ -48,9 +48,9 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
       ) : (
         <label htmlFor={id} className="hidden"></label>
       )}
-      <Element ref={ref} id={id} className={cn(warning && "warning", error && "error")} {...rest} />
+      <Element ref={ref} id={id} className={cn(orange && "orange", error && "error")} {...rest} />
       <div className={cn("context-section", "text-hint")}>
-        {errorElement || warningElement || help}
+        {errorElement || orangeElement || help}
       </div>
     </div>
   );

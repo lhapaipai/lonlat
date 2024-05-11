@@ -24,7 +24,7 @@ export const Basic = () => {
             <Button
               className="text-sm"
               variant="text"
-              color="weak"
+              color="gray"
               selected={val === "one"}
               onClick={() => setVal("one")}
             >
@@ -33,7 +33,7 @@ export const Basic = () => {
             <Button
               className="text-sm"
               variant="text"
-              color="weak"
+              color="gray"
               selected={val === "two"}
               onClick={() => setVal("two")}
             >
@@ -42,7 +42,7 @@ export const Basic = () => {
             <Button
               className="text-sm"
               variant="text"
-              color="weak"
+              color="gray"
               selected={val === "three"}
               onClick={() => setVal("three")}
             >

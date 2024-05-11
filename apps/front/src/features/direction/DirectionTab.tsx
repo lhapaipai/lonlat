@@ -120,7 +120,7 @@ export default function DirectionTab() {
       <div className="actions">
         <Button
           variant="light"
-          color="weak"
+          color="gray"
           className="with-icon"
           selected={profile === "car"}
           onClick={() => dispatch(profileChanged("car"))}
@@ -130,7 +130,7 @@ export default function DirectionTab() {
         </Button>
         <Button
           variant="light"
-          color="weak"
+          color="gray"
           className="with-icon"
           selected={profile === "bike"}
           onClick={() => dispatch(profileChanged("bike"))}
@@ -140,7 +140,7 @@ export default function DirectionTab() {
         </Button>
         <Button
           variant="light"
-          color="weak"
+          color="gray"
           className="with-icon"
           selected={profile === "pedestrian"}
           onClick={() => dispatch(profileChanged("pedestrian"))}
@@ -220,12 +220,12 @@ export default function DirectionTab() {
                   content="Supprimer le point"
                   closeDelay={0}
                   placement="top-end"
-                  color="primary"
+                  color="yellow"
                 >
                   <Button
                     icon
                     variant="ghost"
-                    color="weak"
+                    color="gray"
                     onClick={() => dispatch(directionWayPointRemoved(index))}
                   >
                     <i className="fe-cancel"></i>
@@ -237,7 +237,7 @@ export default function DirectionTab() {
         </Sortable>
       </Steps>
       <div className="ll-steps-extra">
-        <Button variant="ghost" color="weak" onClick={handleAppendItem}>
+        <Button variant="ghost" color="gray" onClick={handleAppendItem}>
           <span
             className="ll-marker"
             style={{ "--marker-color": "#c0c0c0", "--marker-size": "34px" }}
@@ -250,12 +250,12 @@ export default function DirectionTab() {
           </span>
           <span>{T("addPoint")}</span>
         </Button>
-        <Button variant="ghost" color="weak" onClick={handleReset}>
+        <Button variant="ghost" color="gray" onClick={handleReset}>
           <i className="fe-trash"></i>
           <span>{T("reset")}</span>
         </Button>
 
-        <Button icon variant="text" color="weak" onClick={() => setShowSettings((s) => !s)}>
+        <Button icon variant="text" color="gray" onClick={() => setShowSettings((s) => !s)}>
           <i className="fe-sliders"></i>
         </Button>
       </div>

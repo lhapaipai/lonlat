@@ -57,7 +57,7 @@ const defaultOptions = {
   closeOnMove: false,
   placement: "top",
   maxWidth: "240px",
-  borderColor: "primary",
+  borderColor: "yellow",
 };
 
 export const arrowHeight = 8;
@@ -411,7 +411,7 @@ export default class LLPopup extends Evented {
 
       this._closeButton = DOM.create(
         "button",
-        "ll-button icon variant-ghost-weak button-weak variant-ghost",
+        "ll-button icon variant-ghost-gray button-gray variant-ghost",
         actions,
       );
       this._closeButton.type = "button";

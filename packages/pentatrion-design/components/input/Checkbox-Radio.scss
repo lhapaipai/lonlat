@@ -4,7 +4,7 @@
 
     &.disabled {
         pointer-events: none;
-        color: var(--text-weak, inherit);
+        color: var(--text-gray, inherit);
         opacity: .5;
     }
 }
@@ -24,9 +24,9 @@
 
     height: 1.25rem;
     width: 1.25rem;
-    color: var(--color-primary);
+    color: var(--color-yellow);
     background-color: #fff;
-    outline: 1px solid var(--color-weak-100);
+    outline: 1px solid var(--color-gray-100);
 
     margin-top: 0;
     margin-bottom: 0;
@@ -39,7 +39,7 @@
     border: 0;
 
     &:hover {
-        outline-color: var(--color-weak-400);
+        outline-color: var(--color-gray-400);
     }
 
     &:checked,
@@ -48,7 +48,7 @@
         background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat;
-        outline-color: var(--color-weak-400);
+        outline-color: var(--color-gray-400);
         background-color: currentColor;
     }
 
@@ -56,16 +56,16 @@
 
     &:focus {
         box-shadow: var(--ring-shadow-light);
-        outline-color: var(--color-primary-700);
+        outline-color: var(--color-yellow-700);
         outline-width: 2px;
     }
 
-    &.warning {
-        outline-color: var(--color-warning-600);
+    &.orange {
+        outline-color: var(--color-orange-600);
     }
 
     &.error {
-        outline-color: var(--color-danger-600);
+        outline-color: var(--color-red-600);
     }
 
     &.indeterminate,

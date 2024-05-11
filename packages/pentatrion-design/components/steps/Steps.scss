@@ -32,7 +32,7 @@ $circleRadius: 18px;
             width: calc(var(--circle-radius) * 2);
             height: calc(var(--circle-radius) * 2);
             border-radius: 50%;
-            background-color: var(--background-weak);
+            background-color: var(--background-gray);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -53,7 +53,7 @@ $circleRadius: 18px;
             height: calc(var(--circle-radius));
             background-color: var(--background-default);
             border-radius: 50%;
-            outline: 2px solid var(--background-weak);
+            outline: 2px solid var(--background-gray);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -170,7 +170,7 @@ $circleRadius: 18px;
     &.steps-line {
         &::after {
             border-width: 2px;
-            border-color: var(--background-weak);
+            border-color: var(--background-gray);
         }
 
         &.status-done::after {
@@ -184,7 +184,7 @@ $circleRadius: 18px;
     .step-line &:not(:last-child) {
         &::after {
             border-width: 2px;
-            border-color: var(--background-weak);
+            border-color: var(--background-gray);
         }
 
         &.status-done::after {
@@ -204,7 +204,7 @@ $circleRadius: 18px;
         &.active {
             &:hover {
                 color: transparent;
-                background-color: var(--background-weak);
+                background-color: var(--background-gray);
             }
 
         }

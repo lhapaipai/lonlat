@@ -302,14 +302,14 @@ export class GeolocateControl extends Evented implements IControl {
         this._geolocateButton.classList.remove("maplibregl-ctrl-geolocate-active");
         this._geolocateButton.classList.add("maplibregl-ctrl-geolocate-active-error");
         this._geolocateButton.classList.add("maplibregl-ctrl-geolocate-waiting");
-        // turn marker grey
+        // turn marker gray
         break;
       case "BACKGROUND":
         this._watchState = "BACKGROUND_ERROR";
         this._geolocateButton.classList.remove("maplibregl-ctrl-geolocate-background");
         this._geolocateButton.classList.add("maplibregl-ctrl-geolocate-background-error");
         this._geolocateButton.classList.add("maplibregl-ctrl-geolocate-waiting");
-        // turn marker grey
+        // turn marker gray
         break;
       case "ACTIVE_ERROR":
         break;

@@ -202,7 +202,7 @@ function Autocomplete<O extends OptionLike = Option>(
         {icon !== false && (
           <div className="flex-center adornment">
             {icon === true ? <i className="fe-search"></i> : icon}
-            {loading && <Loader size="medium" color="weak" />}
+            {loading && <Loader size="medium" color="gray" />}
           </div>
         )}
         <input
@@ -258,7 +258,7 @@ function Autocomplete<O extends OptionLike = Option>(
               <i className="fe-cancel"></i>
             </Button>
           )}
-          {icon === false && loading && <Loader size="medium" color="weak" />}
+          {icon === false && loading && <Loader size="medium" color="gray" />}
           {!selection && searchValue === "" && noSearchSuffix}
         </div>
       </div>

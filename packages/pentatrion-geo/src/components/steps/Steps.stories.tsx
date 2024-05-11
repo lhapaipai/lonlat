@@ -84,7 +84,7 @@ export const WithAutocompleteSortable = () => {
                 autocompleteOptionComponent={AutocompleteGeoOption}
               />
               {locations.length > 2 && (
-                <Button icon variant="ghost" color="weak" onClick={() => handleRemoveItem(index)}>
+                <Button icon variant="ghost" color="gray" onClick={() => handleRemoveItem(index)}>
                   <i className="fe-cancel"></i>
                 </Button>
               )}
@@ -93,7 +93,7 @@ export const WithAutocompleteSortable = () => {
         </Sortable>
       </Steps>
       <div className="ll-steps-extra mt-4">
-        <Button variant="ghost" color="weak" onClick={handleAppendItem}>
+        <Button variant="ghost" color="gray" onClick={handleAppendItem}>
           <span
             className="ll-marker"
             style={{ "--marker-color": "#c0c0c0", "--marker-size": "34px" }}

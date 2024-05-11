@@ -1,6 +1,6 @@
 .ll-tabs {
     box-shadow: var(--shadow-light);
-    background: var(--background-weak);
+    background: var(--background-gray);
     overflow: hidden;
 
     .tabs-list {
@@ -32,7 +32,7 @@
         transition: .3s ease;
 
         &.selected {
-            border-top-color: var(--color-primary-500);
+            border-top-color: var(--color-yellow-500);
             background: var(--background-default);
         }
 

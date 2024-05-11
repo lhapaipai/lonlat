@@ -15,7 +15,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-top border-color-info"
+          className="ll-dialog placement-top border-color-blue"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -26,7 +26,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-bottom border-color-info"
+          className="ll-dialog placement-bottom border-color-blue"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -37,7 +37,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-left border-color-info"
+          className="ll-dialog placement-left border-color-blue"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -48,7 +48,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-right border-color-info"
+          className="ll-dialog placement-right border-color-blue"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -60,14 +60,14 @@ export const Basic = () => {
 
       <div>
         <div
-          className="ll-dialog placement-top border-color-info"
+          className="ll-dialog placement-top border-color-blue"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
         >
           <div className="bar-buttons">
             <button
-              className="ll-button icon variant-ghost-weak button-weak variant-ghost"
+              className="ll-button icon variant-ghost-gray button-gray variant-ghost"
               aria-busy="false"
               data-tabindex=""
             >
@@ -82,14 +82,14 @@ export const Basic = () => {
 
       <div>
         <div
-          className="ll-dialog placement-top border-color-primary"
+          className="ll-dialog placement-top border-color-yellow"
           style={{ width: 300 }}
           data-status="open"
           role="dialog"
         >
           <div className="bar-buttons">
             <button
-              className="ll-button icon variant-ghost-weak button-weak variant-ghost"
+              className="ll-button icon variant-ghost-gray button-gray variant-ghost"
               aria-busy="false"
               data-tabindex=""
             >
@@ -105,14 +105,14 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-top border-color-primary"
+          className="ll-dialog placement-top border-color-yellow"
           style={{ width: 300 }}
           data-status="open"
           role="dialog"
         >
           <div className="bar-buttons">
             <button
-              className="ll-button icon variant-ghost-weak button-weak variant-ghost"
+              className="ll-button icon variant-ghost-gray button-gray variant-ghost"
               aria-busy="false"
               data-tabindex=""
             >
@@ -126,14 +126,14 @@ export const Basic = () => {
           <footer className="footer">
             <div className="actions">
               <button
-                className="ll-button variant-outline-weak button-weak variant-outline"
+                className="ll-button variant-outline-gray button-gray variant-outline"
                 aria-busy="false"
                 data-tabindex=""
               >
                 Annuler
               </button>
               <button
-                className="ll-button variant-solid-primary button-primary variant-solid"
+                className="ll-button variant-solid-yellow button-yellow variant-solid"
                 aria-busy="false"
                 data-tabindex=""
               >

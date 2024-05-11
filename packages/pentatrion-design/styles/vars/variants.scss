@@ -1,4 +1,4 @@
-@each $colorType in (primary, weak, danger, warning, success, info) {
+@each $colorType in (yellow, gray, red, orange, green, blue) {
 
     .variant-solid-#{$colorType} {
         $solid-text-color: --color-#{$colorType}-text-invert;

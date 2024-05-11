@@ -10,12 +10,12 @@ export const Basic = () => {
   return (
     <div className="ll-notifications-container">
       <div className="notifications">
-        <Snack id={"a"} content="Hello world" expiration={-1} color="primary" canClose={true} />
+        <Snack id={"a"} content="Hello world" expiration={-1} color="yellow" canClose={true} />
         <Snack
           id={"b"}
           content="Basic notification"
           expiration={-1}
-          color="primary"
+          color="yellow"
           canClose={false}
           withLoader={true}
         />
