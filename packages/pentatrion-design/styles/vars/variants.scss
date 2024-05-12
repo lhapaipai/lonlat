@@ -1,51 +1,45 @@
 @each $colorType in ("yellow", "gray", "red", "orange", "green", "blue") {
 
     .variant-contained-#{$colorType} {
-        $contained-text-color: --color-#{$colorType}-text-invert;
-
-        --button-default-background-color: var(--color-#{$colorType}-500);
-        --button-hover-background-color: var(--color-#{$colorType}-600);
-        --button-active-background-color: var(--color-#{$colorType}-700);
-        --button-default-text-color: var(#{$contained-text-color});
-        --button-hover-text-color: var(#{$contained-text-color});
-        --button-active-text-color: var(#{$contained-text-color});
-        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
+        --button-default-background-color: rgb(var(--color-#{$colorType}-3));
+        --button-hover-background-color: rgb(var(--color-#{$colorType}-4));
+        --button-active-background-color: rgb(var(--color-#{$colorType}-5));
+        --button-default-text-color: rgb(var(--color-#{$colorType}-text));
+        --button-hover-text-color: rgb(var(--color-#{$colorType}-text));
+        --button-active-text-color: rgb(var(--color-#{$colorType}-text));
+        --button-focus-visible-border-color: rgb(var(--color-#{$colorType}-5));
     }
 
     .variant-outlined-#{$colorType} {
-        $outline-text-color: var(--color-#{$colorType}-text);
-
-        --button-default-background-color: var(--background-default);
-        --button-hover-background-color: var(--color-#{$colorType}-100);
-        --button-active-background-color: var(--color-#{$colorType}-200);
-        --button-default-border-color: var(--color-#{$colorType}-500);
-        --button-default-text-color: #{$outline-text-color};
-        --button-hover-text-color: #{$outline-text-color};
-        --button-active-text-color: #{$outline-text-color};
-        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
-    }
-
-    .variant-ghost-#{$colorType} {
-        $ghost-text-color: var(--text-hint);
-
-        --button-default-background-color: transparent;
-        --button-hover-background-color: transparent;
-        --button-active-background-color: var(--color-#{$colorType}-200);
-        --button-default-text-color: var(--color-#{$colorType}-500);
-        --button-hover-text-color: var(--color-#{$colorType}-700);
-        --button-active-text-color: var(--color-#{$colorType}-800);
-        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
+        --button-default-background-color: rgb(var(--color-gray-0));
+        --button-hover-background-color: rgb(var(--color-#{$colorType}-1));
+        --button-active-background-color: rgb(var(--color-#{$colorType}-2));
+        --button-default-border-color: rgb(var(--color-#{$colorType}-500));
+        --button-default-text-color: rgb(var(--color-text-1));
+        --button-hover-text-color: rgb(var(--color-text-1));
+        --button-active-text-color: rgb(var(--color-text-1));
+        --button-focus-visible-border-color: rgb(var(--color-#{$colorType}-3));
     }
 
     .variant-text-#{$colorType} {
-        $ghost-text-color: var(--color-#{$colorType}-text);
-
-        --button-default-background-color: var(--background-default);
-        --button-hover-background-color: var(--color-#{$colorType}-100);
-        --button-active-background-color: var(--color-#{$colorType}-200);
-        --button-default-text-color: #{$ghost-text-color};
-        --button-hover-text-color: #{$ghost-text-color};
-        --button-active-text-color: #{$ghost-text-color};
-        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
+        --button-default-background-color: rgb(var(--color-gray-0));
+        --button-hover-background-color: rgb(var(--color-#{$colorType}-1));
+        --button-active-background-color: rgb(var(--color-#{$colorType}-2));
+        --button-default-text-color: rgb(var(--color-#{$colorType}-2));
+        --button-hover-text-color: rgb(var(--color-#{$colorType}-5));
+        --button-active-text-color: rgb(var(--color-#{$colorType}-5));
+        --button-focus-visible-border-color: rgb(var(--color-#{$colorType}-5));
     }
+
+    .variant-ghost-#{$colorType} {
+        --button-default-background-color: transparent;
+        --button-hover-background-color: transparent;
+        --button-active-background-color: rgb(var(--color-#{$colorType}-2));
+        --button-default-text-color: rgb(var(--color-#{$colorType}-4));
+        --button-hover-text-color: rgb(var(--color-#{$colorType}-5));
+        --button-active-text-color: rgb(var(--color-#{$colorType}-5));
+        --button-focus-visible-border-color: rgb(var(--color-#{$colorType}-5));
+    }
+
+
 }

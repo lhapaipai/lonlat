@@ -2,7 +2,7 @@
     width: 100%;
 
     tr {
-        border-bottom: 1px solid var(--border-default);
+        border-bottom: 1px solid rgb(var(--color-gray-3));
     }
 
     th {
@@ -35,7 +35,7 @@
 
         tr {
             padding: var(--space-2);
-            border: 1px solid var(--border-default);
+            border: 1px solid rgb(var(--color-gray-3));
             border-radius: var(--border-radius-2xl);
 
             &:not(:last-child) {
@@ -47,7 +47,7 @@
             display: block;
             font-weight: var(--font-weight-medium);
             font-size: .9rem;
-            color: var(--text-gray);
+            color: rgb(var(--color-text-2));
         }
     }
 }

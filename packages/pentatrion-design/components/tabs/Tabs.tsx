@@ -43,7 +43,7 @@ export default function Tabs({
     <div className={cn("ll-tabs", "rounded-sm", className)}>
       <div
         role="tablist"
-        className={cn("tabs-list", fullWidth && "full-width", stickyTabs && "sticky-top")}
+        className={cn("tabs-list", fullWidth && "full-width", stickyTabs && "sticky z-[1] top-0")}
       >
         {tabs.map(({ title, id }) => {
           return (

@@ -32,15 +32,15 @@ $circleRadius: 18px;
             width: calc(var(--circle-radius) * 2);
             height: calc(var(--circle-radius) * 2);
             border-radius: 50%;
-            background-color: var(--background-gray);
+            background-color: rgb(var(--color-gray-2));
             display: inline-flex;
             align-items: center;
             justify-content: center;
             box-shadow: var(--shadow);
 
             &.active {
-                background-color: var(--background-invert);
-                color: var(--text-invert);
+                background-color: var(--color-gray-3);
+                color: rgb(var(--color-text-white));
             }
         }
     }
@@ -51,16 +51,16 @@ $circleRadius: 18px;
             margin-right: 0;
             width: calc(var(--circle-radius));
             height: calc(var(--circle-radius));
-            background-color: var(--background-default);
+            background-color: rgb(var(--color-gray-0));
             border-radius: 50%;
-            outline: 2px solid var(--background-gray);
+            outline: 2px solid rgb(var(--color-gray-2));
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: var(--font-size-xs);
 
             &.active {
-                outline-color: var(--background-invert);
+                outline-color: var(--color-gray-3);
             }
         }
     }
@@ -170,11 +170,11 @@ $circleRadius: 18px;
     &.steps-line {
         &::after {
             border-width: 2px;
-            border-color: var(--background-gray);
+            border-color: rgb(var(--color-gray-2));
         }
 
         &.status-done::after {
-            border-color: var(--background-invert);
+            border-color: var(--color-gray-3);
         }
     }
 }
@@ -184,11 +184,11 @@ $circleRadius: 18px;
     .step-line &:not(:last-child) {
         &::after {
             border-width: 2px;
-            border-color: var(--background-gray);
+            border-color: rgb(var(--color-gray-2));
         }
 
         &.status-done::after {
-            border-color: var(--background-invert);
+            border-color: var(--color-gray-3);
         }
     }
 
@@ -198,13 +198,13 @@ $circleRadius: 18px;
     }
 
     .handle {
-        color: var(--text-hint);
+        color: rgb(var(--color-text-2));
         transition: all ease .3s;
 
         &.active {
             &:hover {
                 color: transparent;
-                background-color: var(--background-gray);
+                background-color: rgb(var(--color-gray-2));
             }
 
         }

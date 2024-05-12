@@ -20,10 +20,10 @@
 
 
     .option[data-nested][data-open]:not([data-focus-inside]) {
-        background-color: var(--background-gray);
+        background-color: rgb(var(--color-gray-2));
     }
 
     .option[data-focus-inside][data-open] {
-        background: var(--background-light);
+        background: rgb(var(--color-gray-1));
     }
 }

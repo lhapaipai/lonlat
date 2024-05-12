@@ -6,7 +6,7 @@ const meta = {
 export default meta;
 
 export const Basic = () => {
-  return <div className="ll-card p-2 hover:p-4">Hello world</div>;
+  return <div className="ll-card bg-gray-light-1 p-2 hover:p-4">Hello world</div>;
 };
 
 export const Multiple = () => {

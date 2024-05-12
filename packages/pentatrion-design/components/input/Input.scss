@@ -8,25 +8,25 @@
     display: flex;
 
     &.variant-normal {
-        outline-color: var(--color-gray-100);
+        outline-color: rgb(var(--color-gray-1));
     }
 
     &:hover {
-        outline-color: var(--color-gray-400);
+        outline-color: var(--color-gray-1);
     }
 
     &:focus-within,
     &.focus {
-        outline-color: var(--color-yellow-600);
+        outline-color: rgb(var(--color-yellow-4));
         outline-width: 2px;
     }
 
     &.orange {
-        outline-color: var(--color-orange-600);
+        outline-color: rgb(var(--color-orange-4));
     }
 
     &.error {
-        outline-color: var(--color-red-600);
+        outline-color: rgb(var(--color-red-4));
     }
 
     &.disabled {
@@ -38,7 +38,7 @@
 
 .ll-textarea {
     &:read-only {
-        background-color: var(--background-light);
+        background-color: rgb(var(--color-gray-1));
     }
 }
 
@@ -62,7 +62,7 @@
     }
 
     .adornment {
-        color: var(--color-gray-600);
+        color: var(--color-gray-2);
         position: relative;
 
         &>[class^="fe-"] {

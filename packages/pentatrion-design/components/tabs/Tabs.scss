@@ -1,6 +1,6 @@
 .ll-tabs {
     box-shadow: var(--shadow);
-    background: var(--background-gray);
+    background: rgb(var(--color-gray-2));
     overflow: hidden;
 
     .tabs-list {
@@ -28,17 +28,17 @@
 
     .tabs-list-item {
         border-top: 4px solid transparent;
-        color: var(--text-hint);
+        color: rgb(var(--color-text-2));
         transition: .3s ease;
 
         &.selected {
             border-top-color: var(--color-yellow-500);
-            background: var(--background-default);
+            background: rgb(var(--color-gray-0));
         }
 
         &:hover,
         &.selected {
-            color: var(--text-default);
+            color: rgb(var(--color-text-1));
         }
 
         button {
@@ -51,7 +51,7 @@
 
     .tabs-content {
         padding: var(--space-2);
-        background: var(--background-default);
+        background: rgb(var(--color-gray-0));
         box-shadow: 0 0 10px #ccc;
     }
 }

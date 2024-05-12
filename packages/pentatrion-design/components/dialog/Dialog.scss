@@ -166,21 +166,21 @@
         cursor: pointer;
 
         &:hover {
-            background-color: var(--background-light);
+            background-color: rgb(var(--color-gray-1));
         }
 
         &.active {
-            background-color: var(--background-gray);
+            background-color: rgb(var(--color-gray-2));
         }
 
         &.selected,
         &:focus {
-            background-color: var(--background-strong);
+            background-color: rgb(var(--color-gray-2));
             color: var(--text-strong);
         }
 
         &[disabled] {
-            color: var(--text-disabled);
+            color: rgb(var(--color-text-2));
             pointer-events: none;
         }
 
@@ -194,14 +194,14 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            outline: 2px solid var(--background-gray);
+            outline: 2px solid rgb(var(--color-gray-2));
             font-size: var(--font-size-xs);
             border-radius: 50%;
             margin: 0 .75rem 0 3px;
         }
 
         &.discret {
-            color: var(--text-hint);
+            color: rgb(var(--color-text-2));
 
             .content {
                 font-size: .9rem;

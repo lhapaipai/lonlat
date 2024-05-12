@@ -1,10 +1,4 @@
-import {
-  Highlight,
-  HighlightLegacy,
-  InputField,
-  Toggle,
-  parseHighlightIndices,
-} from "~design";
+import { Highlight, HighlightLegacy, InputField, Toggle, parseHighlightIndices } from "~design";
 import { Meta } from "@storybook/react";
 import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
@@ -53,7 +47,7 @@ export const Playbook = () => {
         {matches.map(({ indices, value }, idx) => (
           <Highlight key={idx} value={value} indices={indices} minLength={minLength} />
         ))}
-        <div className="text-hint">score: {score}</div>
+        <div className="text-text-2 text-sm">score: {score}</div>
       </>
     );
   }

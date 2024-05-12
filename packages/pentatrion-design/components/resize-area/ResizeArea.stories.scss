@@ -28,13 +28,13 @@ body,
 }
 
 #menu-col {
-    border-right: 1px solid var(--background-strong);
+    border-right: 1px solid rgb(var(--color-gray-2));
     flex: 0 0 var(--sidebar-menu-width);
     position: relative;
 }
 
 #extra-row {
-    border-top: 1px solid var(--background-strong);
+    border-top: 1px solid rgb(var(--color-gray-2));
     flex: 0 0 var(--sidebar-extra-height);
     position: relative;
 }

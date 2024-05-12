@@ -17,7 +17,7 @@
     margin-top: 1rem;
 
     &>div {
-        border: 1px solid var(--color-gray-100);
+        border: 1px solid rgb(var(--color-gray-2));
         border-radius: var(--border-radius-2xl);
         display: flex;
         flex-direction: column;
@@ -61,7 +61,7 @@
     box-shadow: var(--shadow-lg);
     width: 100px;
     height: 100px;
-    background-color: var(--background-strong);
+    background-color: rgb(var(--color-gray-2));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,5 +77,5 @@
     margin: 1rem;
     padding: 1rem;
     font-size: .9rem;
-    color: var(--text-hint);
+    color: rgb(var(--color-text-2));
 }
