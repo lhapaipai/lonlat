@@ -23,16 +23,16 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   const id = useId();
   const Element: ElementType = as || defaultElement;
 
-  const labelElement = label && <span className="text-bold">{label}</span>;
+  const labelElement = label && <span className="font-bold">{label}</span>;
   const hintElement = hint && <span className="ml-auto text-hint">{hint}</span>;
   const errorElement = error && typeof error !== "boolean" && (
-    <span className={cn("color-red", "text-semibold")}>
+    <span className={cn("color-red", "font-medium")}>
       <i className="fe-circle-exclamation"></i>
       <span>{error}</span>
     </span>
   );
   const orangeElement = orange && typeof orange !== "boolean" && (
-    <span className={cn("color-orange", "text-semibold")}>
+    <span className={cn("color-orange", "font-medium")}>
       <i className="fe-circle-exclamation"></i>
       <span>{orange}</span>
     </span>

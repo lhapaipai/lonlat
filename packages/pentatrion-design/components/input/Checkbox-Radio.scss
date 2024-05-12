@@ -52,10 +52,7 @@
         background-color: currentColor;
     }
 
-
-
     &:focus {
-        box-shadow: var(--ring-shadow-light);
         outline-color: var(--color-yellow-700);
         outline-width: 2px;
     }

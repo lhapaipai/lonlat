@@ -17,7 +17,6 @@
 
     &:focus-within,
     &.focus {
-        box-shadow: var(--ring-shadow-light);
         outline-color: var(--color-yellow-600);
         outline-width: 2px;
     }
@@ -54,7 +53,7 @@
         filter: none; // Firefox autofill color
         border: 0;
         background: none;
-        width: 0;
+        min-width: 0;
         line-height: 1.25rem;
     }
 

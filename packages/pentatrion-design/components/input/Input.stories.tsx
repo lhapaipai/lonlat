@@ -44,7 +44,7 @@ export const Context = () => {
       />
       <Input
         suffix={
-          <Button withRipple={false} icon variant="outlined">
+          <Button withRipple={false} icon variant="ghost" color="gray">
             <i className="fe-cancel"></i>
           </Button>
         }
@@ -52,7 +52,7 @@ export const Context = () => {
       <Input
         suffix={
           <>
-            <Button withRipple={false} icon variant="outlined">
+            <Button withRipple={false} icon variant="ghost" color="gray">
               <i className="fe-cancel"></i>
             </Button>
             <Loader size="medium" color="gray" />
@@ -76,7 +76,7 @@ export const Context = () => {
         }}
       />
       <div className="flex gap-2 ">
-        <Input />
+        <Input className="flex-1" />
         <Button>Valider</Button>
       </div>
     </div>
