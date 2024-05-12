@@ -1,7 +1,7 @@
 .ll-badge {
     border-radius: var(--border-radius-2xl);
     width: fit-content;
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--shadow);
 
     color: var(--button-default-text-color);
     transition: all .3s ease, outline 0s;

@@ -36,7 +36,7 @@ $circleRadius: 18px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-light);
+            box-shadow: var(--shadow);
 
             &.active {
                 background-color: var(--background-invert);

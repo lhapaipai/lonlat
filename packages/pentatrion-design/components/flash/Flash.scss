@@ -1,5 +1,5 @@
 .ll-flash {
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--shadow);
 
     @each $color in ("yellow", "gray", "red", "orange", "green", "blue") {
 
