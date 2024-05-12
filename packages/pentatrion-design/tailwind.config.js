@@ -1,3 +1,5 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [`./components/**/*.{ts,tsx}`, `./hooks/**/*.{ts,tsx}`],
@@ -12,6 +14,11 @@ export default {
       "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.35)",
       inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.1)",
       none: "none",
+    },
+    fontFamily: {
+      sans: ["ui-sans-serif", "system-ui", "sans-serif"],
+      serif: defaultTheme.fontFamily.serif,
+      mono: defaultTheme.fontFamily.mono,
     },
     extend: {
       animation: {

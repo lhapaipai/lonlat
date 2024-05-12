@@ -57,7 +57,7 @@ $circleRadius: 18px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: var(--font-size-2xs);
+            font-size: var(--font-size-xs);
 
             &.active {
                 outline-color: var(--background-invert);
@@ -224,6 +224,6 @@ $circleRadius: 18px;
     }
 
     .desc {
-        font-size: var(--font-size-3xs);
+        font-size: var(--font-size-xs);
     }
 }

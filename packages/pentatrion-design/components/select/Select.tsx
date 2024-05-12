@@ -35,7 +35,6 @@ import SelectSelection, { SelectSelectionProps } from "./SelectSelection.tsx";
 
 import { Input, Button, useEventCallback } from "../..";
 import type { Option } from "./interface";
-
 import cn from "classnames";
 
 export type SelectValue = number | string | null;
@@ -274,7 +273,12 @@ const Select = forwardRef<HTMLDivElement, Props>(
           )}
           {showArrow && (
             <div className="arrow">
-              <div className="ll-indicator"></div>
+              <div
+                className={cn(
+                  "w-[1px] h-[24px] bg-[--border-default]",
+                  variant === "ghost" && "bg-transparent hover:bg-[--border-default",
+                )}
+              ></div>
               <Button color="gray" withRipple={false} icon variant="outlined" focusable={false}>
                 <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
               </Button>
