@@ -12,6 +12,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.10",
     "@floating-ui/utils": "^0.2.1",
+    "@react-spring/web": "^9.7.3",
     "@use-gesture/react": "^10.3.1",
     "fuse.js": "^7.0.0",
     "maplibre-gl": "^4.1.2",
@@ -20,7 +21,6 @@
     "pentatrion-geo": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-spring": "^9.7.3",
     "sass": "^1.74.1"
   },
   "devDependencies": {

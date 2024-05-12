@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.10",
+    "@react-spring/web": "^9.7.3",
     "@use-gesture/react": "^10.3.1",
     "classnames": "^2.5.1",
     "fuse.js": "^7.0.0",
@@ -57,7 +58,6 @@
     "react-dom": "^18.2.0",
     "react-polymorphic-types": "^2.0.0",
     "react-sortablejs": "^6.1.4",
-    "react-spring": "^9.7.3",
     "sass": "^1.74.1"
   }
 }
