@@ -1,5 +1,5 @@
 .ll-badge {
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-2xl);
     width: fit-content;
     box-shadow: var(--shadow-light);
 
@@ -28,8 +28,8 @@
 
 
     .remove {
-        border-top-right-radius: var(--border-radius-md);
-        border-bottom-right-radius: var(--border-radius-md);
+        border-top-right-radius: var(--border-radius-2xl);
+        border-bottom-right-radius: var(--border-radius-2xl);
         padding: 0 .25rem 0 .125rem;
         // margin-left: .25rem;
         background-color: var(--button-default-background-color);
