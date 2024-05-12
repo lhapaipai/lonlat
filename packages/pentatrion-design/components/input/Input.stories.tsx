@@ -30,7 +30,7 @@ export const Context = () => {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div className="flex gap-2 flex-column">
+    <div className="flex gap-2 flex-col">
       <Input />
       <Input placeholder="Your first name" />
       <Input prefix={<i className="fe-search"></i>} />

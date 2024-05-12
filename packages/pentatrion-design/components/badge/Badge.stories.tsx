@@ -32,7 +32,7 @@ export const Playbook: Story = {
 
 export const Context = () => {
   return (
-    <div className="flex flex-column gap-2">
+    <div className="flex flex-col gap-2">
       <Badge color="yellow">Primary</Badge>
       <Badge color="orange">Warning</Badge>
       <Badge color="green">Success</Badge>

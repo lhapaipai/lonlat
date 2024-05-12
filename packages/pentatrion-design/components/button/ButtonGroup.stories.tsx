@@ -12,7 +12,7 @@ export const Context = () => {
   const [val, setVal] = useState("one");
   return (
     <div className="storybook-gap">
-      <div className="flex flex-column gap-4">
+      <div className="flex flex-col gap-4">
         <ButtonGroup>
           <Button selected={val === "one"} onClick={() => setVal("one")}>
             One
@@ -112,7 +112,7 @@ export const Context = () => {
           </Button>
         </ButtonGroup>
       </div>
-      <div className="flex flex-column gap-4" style={{ maxWidth: "400px" }}>
+      <div className="flex flex-col gap-4" style={{ maxWidth: "400px" }}>
         <ButtonGroup direction="vertical">
           <Button selected={val === "one"} onClick={() => setVal("one")}>
             One

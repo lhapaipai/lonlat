@@ -25,7 +25,7 @@ export const Playbook: Story = {
 };
 
 export const Context = () => (
-  <div className="flex gap-2 flex-column">
+  <div className="flex gap-2 flex-col">
     <Loader size="small" />
     <br />
     <Loader size="medium" color="yellow" />

@@ -7,7 +7,7 @@ export default meta;
 
 export const Basic = () => {
   return (
-    <div className="flex gap-8 flex-column mb-4">
+    <div className="flex gap-8 flex-col mb-4">
       <div>
         <div className="ll-dialog">
           <div className="description">coucou</div>
@@ -150,7 +150,7 @@ export const Basic = () => {
 
 export const Options = () => {
   return (
-    <div className="flex gap-8 flex-column mb-4">
+    <div className="flex gap-8 flex-col mb-4">
       <div>
         <div className="ll-dialog">
           <div className="option">Default state 1</div>

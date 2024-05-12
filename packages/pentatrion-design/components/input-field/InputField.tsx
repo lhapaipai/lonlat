@@ -46,7 +46,7 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
           {hintElement}
         </label>
       ) : (
-        <label htmlFor={id} className="hidden"></label>
+        <label htmlFor={id} className="invisible"></label>
       )}
       <Element ref={ref} id={id} className={cn(orange && "orange", error && "error")} {...rest} />
       <div className={cn("context-section", "text-hint")}>

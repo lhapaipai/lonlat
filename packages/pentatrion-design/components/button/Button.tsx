@@ -63,7 +63,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "ll-button",
       className,
       icon && "icon",
-      fullWidth && "w100",
+      fullWidth && "w-full",
       size !== "medium" && `size-${size}`,
       selected && "selected",
       `variant-${variant}-${color}`,

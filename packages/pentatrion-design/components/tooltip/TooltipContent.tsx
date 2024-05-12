@@ -15,7 +15,7 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <div
           ref={ref}
-          className={cn("ll-tooltip", context.middlewareData.hide?.referenceHidden && "hidden")}
+          className={cn("ll-tooltip", context.middlewareData.hide?.referenceHidden && "invisible")}
           style={{ ...context.floatingStyles, ...style }}
           {...context.getFloatingProps(props)}
         >

@@ -160,7 +160,7 @@ export const Basic = () => {
         </div>
       </div>
 
-      <div className="align-right">
+      <div className="text-right">
         <Button>Calculer</Button>
       </div>
     </div>

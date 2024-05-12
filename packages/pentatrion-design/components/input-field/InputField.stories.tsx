@@ -78,7 +78,7 @@ export const Context = () => {
   const [isEnabled, setIsEnabled] = useState(true);
 
   return (
-    <div className="flex flex-column gap-4">
+    <div className="flex flex-col gap-4">
       <InputField
         label="What is your name"
         hint="Any hint related to input field"

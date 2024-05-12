@@ -26,7 +26,7 @@ const options = [
 export const Basic = () => {
   const [value, setValue] = useState<string | null>(null);
   return (
-    <div className="flex flex-column gap-4">
+    <div className="flex flex-col gap-4">
       <RadioGroup placement="inline" options={options} value={value} onChange={setValue} />
       <RadioGroup placement="inline-grid" options={options} value={value} onChange={setValue} />
       <RadioGroup options={options} value={value} onChange={setValue} />

@@ -52,7 +52,7 @@ export const Basic = () => {
   ];
   const [id, setId] = useState<string | number>("bulbasaur");
   return (
-    <div className="flex flex-column gap-2">
+    <div className="flex flex-col gap-2">
       <Tabs tabs={tabs} stickyTabs={true} value={id} onChange={setId} />
       <Tabs tabs={tabs} value={id} onChange={setId} />
       <Tabs tabs={tabs} fullWidth={true} value={id} onChange={setId} />

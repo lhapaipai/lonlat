@@ -21,7 +21,7 @@ export const Playbook: Story = {
 const colors = ["yellow", "green", "blue", "orange", "red", "gray"] as const;
 
 export const Context = () => (
-  <div className="flex flex-column gap-2">
+  <div className="flex flex-col gap-2">
     {colors.map((color) => (
       <Flash key={color} color={color}>
         There is a plant seed on its back right from the day this Pokémon is born. The seed slowly
