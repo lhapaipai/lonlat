@@ -1,7 +1,5 @@
 import type { Preview } from "@storybook/react";
-import "pentatrion-design/styles/default.scss";
 import "./storybook.scss";
-import "../tailwind.css";
 
 // https://storybook.js.org/docs/react/configure/overview#configure-story-rendering
 const preview: Preview = {

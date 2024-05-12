@@ -1,4 +1,0 @@
-{
-  "extends": "../../tsconfig.base.json",
-  "include": ["react.d.ts", ".storybook"]
-}

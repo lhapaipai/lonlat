@@ -9,5 +9,5 @@
       "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
     }
   },
-  "include": ["components", "hooks", "lib", "redux", "tests", "styles"]
+  "include": ["components", "hooks", "lib", "redux", "tests", "styles", ".storybook"]
 }

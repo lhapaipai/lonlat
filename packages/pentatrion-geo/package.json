@@ -9,7 +9,9 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "tsc": "tsc",
-    "test": "vitest"
+    "test": "vitest",
+    "storybook-dev": "storybook dev -p 6006",
+    "storybook-build": "storybook build"
   },
   "type": "module",
   "dependencies": {
@@ -27,6 +29,18 @@
   },
   "devDependencies": {
     "@floating-ui/react-dom": "^2.0.8",
+    "@storybook/addon-actions": "^8.0.10",
+    "@storybook/addon-docs": "^8.0.10",
+    "@storybook/addon-essentials": "^8.0.10",
+    "@storybook/addon-interactions": "^8.0.10",
+    "@storybook/addon-links": "^8.0.10",
+    "@storybook/addon-themes": "^8.0.10",
+    "@storybook/blocks": "^8.0.10",
+    "@storybook/manager-api": "^8.0.10",
+    "@storybook/react": "^8.0.10",
+    "@storybook/react-vite": "^8.0.10",
+    "@storybook/test": "^8.0.10",
+    "@storybook/theming": "^8.0.10",
     "@storybook/types": "^8.0.9",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
@@ -36,7 +50,10 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "jsdom": "^24.0.0",
+    "postcss": "^8.4.38",
+    "postcss-load-config": "^5.1.0",
     "sass": "^1.74.1",
+    "storybook": "^8.0.10",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "vitest": "^1.4.0"
