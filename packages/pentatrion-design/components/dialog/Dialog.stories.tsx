@@ -126,7 +126,7 @@ export const Basic = () => {
           <footer className="footer">
             <div className="actions">
               <button
-                className="ll-button variant-outline-gray button-gray variant-outline"
+                className="ll-button variant-outlined-gray button-gray variant-outlined"
                 aria-busy="false"
                 data-tabindex=""
               >

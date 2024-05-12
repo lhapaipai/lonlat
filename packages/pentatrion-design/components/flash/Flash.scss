@@ -1,7 +1,7 @@
 .ll-flash {
     box-shadow: var(--shadow-light);
 
-    @each $color in (yellow, blue, gray, orange, red, green, blue) {
+    @each $color in ("yellow", "gray", "red", "orange", "green", "blue") {
 
         &.alert-#{$color} {
             border-left: 4px solid var(--color-#{$color}-500);

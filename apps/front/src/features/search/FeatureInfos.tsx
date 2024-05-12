@@ -88,7 +88,7 @@ export default function FeatureInfos() {
       <div className="actions">
         <SimpleTooltip content={T("tooltip.direction")} placement="top-start">
           <Button
-            variant="light"
+            variant="text"
             color="gray"
             onClick={() => {
               dispatch(directionWayPointsAddedFromSearch(searchFeature));
@@ -100,7 +100,7 @@ export default function FeatureInfos() {
         </SimpleTooltip>
         <SimpleTooltip content={T("tooltip.code")} placement="top">
           <Button
-            variant="light"
+            variant="text"
             color="gray"
             selected={action === "raw"}
             onClick={() => setOrToggleAction("raw")}
@@ -110,7 +110,7 @@ export default function FeatureInfos() {
         </SimpleTooltip>
         <SimpleTooltip content={T("tooltip.isochrone")} placement="top-end">
           <Button
-            variant="light"
+            variant="text"
             color="gray"
             selected={action === "isochrone"}
             onClick={() => dispatch(referenceFeatureChanged(searchFeature))}

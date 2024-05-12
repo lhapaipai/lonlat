@@ -119,7 +119,7 @@ export default function DirectionTab() {
     <div className="ll-quick-settings">
       <div className="actions">
         <Button
-          variant="light"
+          variant="text"
           color="gray"
           className="with-icon"
           selected={profile === "car"}
@@ -129,7 +129,7 @@ export default function DirectionTab() {
           {T("profile.car")}
         </Button>
         <Button
-          variant="light"
+          variant="text"
           color="gray"
           className="with-icon"
           selected={profile === "bike"}
@@ -139,7 +139,7 @@ export default function DirectionTab() {
           {T("profile.bike")}
         </Button>
         <Button
-          variant="light"
+          variant="text"
           color="gray"
           className="with-icon"
           selected={profile === "pedestrian"}

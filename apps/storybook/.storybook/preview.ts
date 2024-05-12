@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/react";
-import 'pentatrion-design/styles/default.scss';
-import './storybook.scss';
+import "pentatrion-design/styles/default.scss";
+import "./storybook.scss";
+import "../tailwind.css";
 
 // https://storybook.js.org/docs/react/configure/overview#configure-story-rendering
 const preview: Preview = {
@@ -10,7 +11,7 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
-    }
+    },
   },
 };
 

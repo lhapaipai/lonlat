@@ -43,23 +43,23 @@ export const Basic = () => {
         </div>
       </div>
       <div className="actions">
-        <Button variant="light" color="gray">
+        <Button variant="text" color="gray">
           <i className="fe-isochrone"></i>
         </Button>
-        <Button variant="light" color="gray">
+        <Button variant="text" color="gray">
           <i className="fe-route"></i>
         </Button>
-        <Button variant="light" color="gray">
+        <Button variant="text" color="gray">
           RAW
         </Button>
       </div>
 
       <div className="actions">
-        <Button variant="light" color="gray" className="with-icon">
+        <Button variant="text" color="gray" className="with-icon">
           <i className="fe-stopwatch"></i>
           isochrone
         </Button>
-        <Button variant="light" color="gray" className="with-icon">
+        <Button variant="text" color="gray" className="with-icon">
           <i className="fe-ruler"></i>
           isodistance
         </Button>

@@ -2,32 +2,36 @@
   "root": true,
   "env": {
     "browser": true,
-    "es2020": true,
+    "es2020": true
   },
   "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module",
+    "sourceType": "module"
   },
-  "plugins": ["react-refresh"],
+  "plugins": [
+    "react-refresh"
+  ],
   "rules": {
     "react-refresh/only-export-components": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/ban-types": "off"
   },
   "overrides": [
     {
-      "files": ["*.cjs", "*.mjs"],
+      "files": [
+        "*.cjs",
+        "*.mjs"
+      ],
       "env": {
-        "node": true,
-      },
-    },
-  ],
+        "node": true
+      }
+    }
+  ]
 }

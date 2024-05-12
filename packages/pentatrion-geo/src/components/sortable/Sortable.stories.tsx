@@ -70,7 +70,7 @@ export const WithAutocomplete = () => {
       >
         {items.map((item, index) => (
           <div key={item.id} className="row-item">
-            <Button icon variant="underline" className="handle">
+            <Button icon variant="outlined" className="handle">
               <i className="fe-braille"></i>
             </Button>
             <LazyAutocomplete<GeoPointOption>

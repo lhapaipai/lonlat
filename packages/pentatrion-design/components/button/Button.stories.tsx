@@ -17,7 +17,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: ["solid", "outline", "text", "ghost", "underline"],
+      options: ["contained", "outlined", "text", "ghost"],
     },
     size: {
       control: {
@@ -39,7 +39,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
   args: {
-    variant: "solid",
+    variant: "contained",
     size: "medium",
     color: "yellow",
     children: "My button",
@@ -53,9 +53,8 @@ export const Basic: Story = {
 
 export const Variants = () => (
   <div className="flex gap-2">
-    <Button variant="solid">solid</Button>
-    <Button variant="outline">outline</Button>
-    <Button variant="underline">underline</Button>
+    <Button variant="contained">solid</Button>
+    <Button variant="outlined">outlined</Button>
     <Button variant="text">text</Button>
     <Button variant="ghost">ghost</Button>
   </div>
@@ -78,10 +77,10 @@ export const States = () => (
 
 export const Icons = () => (
   <div className="flex gap-2" style={{ alignItems: "center" }}>
-    <Button icon variant="solid" color="gray">
+    <Button icon variant="contained" color="gray">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon variant="outline" color="gray">
+    <Button icon variant="outlined" color="gray">
       <i className="fe-cancel"></i>
     </Button>
     <Button icon variant="text" color="gray">
@@ -90,17 +89,14 @@ export const Icons = () => (
     <Button icon variant="ghost" color="gray">
       <i className="fe-cancel"></i>
     </Button>
-    <Button icon variant="underline" color="gray">
-      <i className="fe-cancel"></i>
-    </Button>
-    <Button variant="solid" color="gray" className="with-icon with-prefix">
+    <Button variant="contained" color="gray" className="with-icon with-prefix">
       <i className="fe-cancel"></i>
       Cancel
     </Button>
   </div>
 );
 
-const variants = ["solid", "outline", "light", "text", "ghost", "underline"] as const;
+const variants = ["contained", "outlined", "text", "ghost"] as const;
 const colors = ["yellow", "gray", "red", "orange", "green", "blue"] as const;
 
 export const Context = () => {
@@ -138,10 +134,10 @@ export const Context = () => {
       <h3>Icons</h3>
 
       <div className="flex gap-2" style={{ alignItems: "center" }}>
-        <Button icon variant="solid" color="gray">
+        <Button icon variant="contained" color="gray">
           <i className="fe-cancel"></i>
         </Button>
-        <Button icon variant="outline" color="gray">
+        <Button icon variant="outlined" color="gray">
           <i className="fe-cancel"></i>
         </Button>
         <Button icon variant="text" color="gray">
@@ -150,20 +146,17 @@ export const Context = () => {
         <Button icon variant="ghost" color="gray">
           <i className="fe-cancel"></i>
         </Button>
-        <Button icon variant="underline" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button variant="solid" color="gray" className="with-icon with-prefix">
+        <Button variant="contained" color="gray" className="with-icon with-prefix">
           <i className="fe-cancel"></i>
           Cancel
         </Button>
       </div>
 
       <div className="flex gap-2" style={{ alignItems: "center" }}>
-        <Button icon variant="solid">
+        <Button icon variant="contained">
           <i className="fe-cancel"></i>
         </Button>
-        <Button icon variant="outline">
+        <Button icon variant="outlined">
           <i className="fe-cancel"></i>
         </Button>
         <Button icon variant="text">
@@ -172,10 +165,7 @@ export const Context = () => {
         <Button icon variant="ghost">
           <i className="fe-cancel"></i>
         </Button>
-        <Button icon variant="underline">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button variant="solid" className="with-icon with-prefix">
+        <Button variant="contained" className="with-icon with-prefix">
           <i className="fe-cancel"></i>
           Cancel
         </Button>

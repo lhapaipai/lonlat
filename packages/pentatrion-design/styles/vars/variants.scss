@@ -1,19 +1,18 @@
-@each $colorType in (yellow, gray, red, orange, green, blue) {
+@each $colorType in ("yellow", "gray", "red", "orange", "green", "blue") {
 
-    .variant-solid-#{$colorType} {
-        $solid-text-color: --color-#{$colorType}-text-invert;
+    .variant-contained-#{$colorType} {
+        $contained-text-color: --color-#{$colorType}-text-invert;
 
         --button-default-background-color: var(--color-#{$colorType}-500);
         --button-hover-background-color: var(--color-#{$colorType}-600);
         --button-active-background-color: var(--color-#{$colorType}-700);
-        --button-default-text-color: var(#{$solid-text-color});
-        --button-hover-text-color: var(#{$solid-text-color});
-        --button-active-text-color: var(#{$solid-text-color});
-        --button-focus-border-color: transparent;
+        --button-default-text-color: var(#{$contained-text-color});
+        --button-hover-text-color: var(#{$contained-text-color});
+        --button-active-text-color: var(#{$contained-text-color});
         --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
-    .variant-outline-#{$colorType} {
+    .variant-outlined-#{$colorType} {
         $outline-text-color: var(--color-#{$colorType}-text);
 
         --button-default-background-color: var(--background-default);
@@ -23,20 +22,6 @@
         --button-default-text-color: #{$outline-text-color};
         --button-hover-text-color: #{$outline-text-color};
         --button-active-text-color: #{$outline-text-color};
-        --button-focus-border-color: var(--color-#{$colorType}-900);
-        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
-    }
-
-    .variant-light-#{$colorType} {
-        $light-text-color: var(--color-#{$colorType}-text);
-
-        --button-default-background-color: var(--color-#{$colorType}-50);
-        --button-hover-background-color: var(--color-#{$colorType}-200);
-        --button-active-background-color: var(--color-#{$colorType}-500);
-        --button-default-text-color: #{$light-text-color};
-        --button-hover-text-color: #{$light-text-color};
-        --button-active-text-color: #{$light-text-color};
-        --button-focus-border-color: transparent;
         --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
@@ -46,10 +31,9 @@
         --button-default-background-color: transparent;
         --button-hover-background-color: transparent;
         --button-active-background-color: var(--color-#{$colorType}-200);
-        --button-default-text-color: var(--text-hint);
-        --button-hover-text-color: var(--text-default);
-        --button-active-text-color: var(--text-default);
-        --button-focus-border-color: transparent;
+        --button-default-text-color: var(--color-#{$colorType}-500);
+        --button-hover-text-color: var(--color-#{$colorType}-700);
+        --button-active-text-color: var(--color-#{$colorType}-800);
         --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 
@@ -62,21 +46,6 @@
         --button-default-text-color: #{$ghost-text-color};
         --button-hover-text-color: #{$ghost-text-color};
         --button-active-text-color: #{$ghost-text-color};
-        --button-focus-border-color: transparent;
-        --button-focus-visible-border-color: var(--color-#{$colorType}-900);
-    }
-
-    .variant-underline-#{$colorType} {
-        $underline-text-color: var(--color-#{$colorType}-700);
-
-        --button-default-background-color: var(--background-default);
-        --button-hover-background-color: var(--color-#{$colorType}-100);
-        --button-active-background-color: var(--color-#{$colorType}-200);
-        --button-default-text-color: var(--text-strong);
-        --button-default-border-color: var(--color-#{$colorType}-300);
-        --button-hover-text-color: var(--color-#{$colorType}-1000);
-        --button-active-text-color: var(--color-#{$colorType}-1000);
-        --button-hover-border-color: var(--color-#{$colorType}-500);
         --button-focus-visible-border-color: var(--color-#{$colorType}-900);
     }
 }

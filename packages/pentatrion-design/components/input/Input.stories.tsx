@@ -44,7 +44,7 @@ export const Context = () => {
       />
       <Input
         suffix={
-          <Button withRipple={false} icon variant="underline">
+          <Button withRipple={false} icon variant="outlined">
             <i className="fe-cancel"></i>
           </Button>
         }
@@ -52,7 +52,7 @@ export const Context = () => {
       <Input
         suffix={
           <>
-            <Button withRipple={false} icon variant="underline">
+            <Button withRipple={false} icon variant="outlined">
               <i className="fe-cancel"></i>
             </Button>
             <Loader size="medium" color="gray" />
