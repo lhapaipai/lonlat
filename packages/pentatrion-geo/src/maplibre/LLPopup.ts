@@ -292,7 +292,7 @@ export default class LLPopup extends Evented {
       this._dialog = DOM.create(
         "div",
         // we need placement-top because we need initial border to compute the real popup height
-        `ll-dialog ll-animate fade-in border-color-${this.options.borderColor} placement-top`,
+        `ll-dialog animate-fade-in border-color-${this.options.borderColor} placement-top`,
         this._container,
       );
 

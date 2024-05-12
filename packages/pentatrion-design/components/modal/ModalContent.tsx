@@ -20,18 +20,14 @@ const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
     return (
       <FloatingPortal>
-        <FloatingOverlay
-          className={cn(["ll-modal-overlay", "ll-animate", "fade-in-opacity"])}
-          lockScroll
-        >
+        <FloatingOverlay className={cn(["ll-modal-overlay", "animate-fade-in-opacity"])} lockScroll>
           <FloatingFocusManager context={floatingContext}>
             <div
               className={cn(
                 "ll-modal",
                 "ll-dialog",
                 `border-color-${context.color}`,
-                "ll-animate",
-                "fade-in",
+                "animate-fade-in",
               )}
               ref={ref}
               aria-labelledby={context.labelId}

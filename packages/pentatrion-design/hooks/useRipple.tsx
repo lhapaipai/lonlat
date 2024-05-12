@@ -63,6 +63,7 @@ export const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
       <span
         key={i}
         data-testid="ripple"
+        className="animate-ripple"
         style={{
           ...style,
           //should be absolutely positioned
@@ -70,8 +71,6 @@ export const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
           backgroundColor: "#FFFFFF",
           opacity: "25%",
           transform: "scale(0)",
-          // add ripple animation from styles.css
-          animation: "ripple 900ms linear",
           borderRadius: "50%",
         }}
       />

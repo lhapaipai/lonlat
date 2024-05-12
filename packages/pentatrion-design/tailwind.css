@@ -2,10 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .light {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+}
+
 @layer utilities {
   .flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space);
   }
 }

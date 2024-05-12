@@ -299,8 +299,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
                       "ll-dialog",
                       `placement-${context.placement}`,
                       "ll-select-dialog",
-                      "ll-animate",
-                      "fade-in-list",
+                      "animate-fade-in-list",
                     )}
                   >
                     {searchable && (

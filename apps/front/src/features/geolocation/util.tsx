@@ -6,7 +6,7 @@ export function geolocationIconClassName({
   errorCode: number | null;
 }) {
   if (status === "waiting" || (status === "error" && errorCode !== 1)) {
-    return "fe-geolocation ll-animate flash";
+    return "fe-geolocation animate-flash";
   } else if (status === "error") {
     return "fe-locate-off";
   }

@@ -282,8 +282,7 @@ function Autocomplete<O extends OptionLike = Option>(
                     "ll-dialog",
                     "ll-autocomplete-dialog",
                     `placement-${context.placement}`,
-                    "ll-animate",
-                    "fade-in-list",
+                    "animate-fade-in-list",
                   )}
                 >
                   <FloatingList elementsRef={listRef}>

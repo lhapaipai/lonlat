@@ -30,8 +30,7 @@ export default function Snack({
     <div
       className={cn(
         "ll-dialog",
-        "ll-animate",
-        "fade-in",
+        "animate-fade-in",
         "placement-top",
         "ll-snack",
         `border-color-${color}`,

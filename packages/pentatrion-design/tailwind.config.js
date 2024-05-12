@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [`./components/**/*.{ts,tsx}`],
+  content: [`./components/**/*.{ts,tsx}`, `./hooks/**/*.{ts,tsx}`],
   darkMode: ["class"],
   theme: {
     boxShadow: {
@@ -13,7 +13,73 @@ export default {
       inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.1)",
       none: "none",
     },
-    extend: {},
+    extend: {
+      animation: {
+        ripple: "ripple .9s linear",
+        "fade-in": "fade-in 250ms ease both",
+        "fade-in-list": "fade-in-list 150ms ease both",
+        "fade-out": "fade-out 250ms ease both",
+        "fade-in-opacity": "fade-in-opacity 250ms ease both",
+        flash: "flash 1000ms ease both infinite",
+      },
+      keyframes: {
+        ripple: {
+          to: {
+            transform: "scale(4)",
+            opacity: "0",
+          },
+        },
+        "fade-in": {
+          from: {
+            transform: "scale(.8)",
+            opacity: "0",
+          },
+          to: {
+            transform: "scale(1)",
+            opacity: "1",
+          },
+        },
+        "fade-in-list": {
+          from: {
+            transform: "scaleY(.8)",
+            opacity: "0",
+          },
+          to: {
+            transform: "scaleY(1)",
+            opacity: "1",
+          },
+        },
+        "fade-out": {
+          from: {
+            transform: "scale(1)",
+            opacity: "1",
+          },
+          to: {
+            transform: "scale(.8)",
+            opacity: "0",
+          },
+        },
+        "fade-in-opacity": {
+          from: {
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+          },
+        },
+        flash: {
+          "0%": {
+            opacity: "0",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+          },
+        },
+      },
+    },
   },
   plugins: [],
 };

@@ -1,5 +1,3 @@
-@import '../../styles/config';
-
 .ll-table {
     width: 100%;
 
@@ -25,7 +23,7 @@
 
     --bp-medium: 910px;
 
-    @media (max-width: $bp-medium) {
+    @media (max-width: 910px) {
         thead {
             display: none;
         }

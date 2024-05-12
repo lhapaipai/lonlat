@@ -15,7 +15,7 @@ export const Basic = () => {
         <Button onClick={() => setIsOpen((v) => !v)}>{isOpen ? "Masquer" : "Afficher"}</Button>
       </div>
       {isOpen && (
-        <div className="storybook-box ll-animate fade-in origin-top-left flex-center">Modal</div>
+        <div className="storybook-box animate-fade-in origin-top-left flex-center">Modal</div>
       )}
     </div>
   );
@@ -25,10 +25,9 @@ export const InOut = () => {
   const { isOpen, isClosing, setIsOpen } = useIsClosing(false);
   const classNames = cn([
     "storybook-box",
-    "ll-animate",
     "origin-top-left",
     "flex-center",
-    isClosing ? "fade-out" : "fade-in",
+    isClosing ? "animate-fade-out" : "animate-fade-in",
   ]);
 
   return (

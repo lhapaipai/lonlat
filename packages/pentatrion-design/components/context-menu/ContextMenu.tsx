@@ -156,8 +156,7 @@ export default function ContextMenu({
                 "ll-context-menu",
                 `placement-${context.placement}`,
                 "ll-select-dialog",
-                "ll-animate",
-                "fade-in-list",
+                "animate-fade-in-list",
                 compact && "compact",
               )}
             >
