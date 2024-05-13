@@ -51,13 +51,16 @@ export const Icons = () => {
           placeholder={`Search ${fontelloConfig.glyphs.length} icons by name`}
         />
       </div>
-      <div className="storybook-icon-grid">
+      <div className="grid grid-cols-repeat-fill-160 gap-4 mt-4">
         {iconResults.map((glyph) => (
-          <div className="" key={glyph.uid}>
+          <div
+            className="border border-gray-2 rounded-2xl flex-center p-2 flex-col"
+            key={glyph.uid}
+          >
             <div>
-              <i className={`fe-${glyph.css}`}></i>
+              <i className={`fe-${glyph.css} text-5xl`}></i>
             </div>
-            <pre>{`.fe-${glyph.css}`}</pre>
+            <pre className="text-xs">{`.fe-${glyph.css}`}</pre>
           </div>
         ))}
       </div>

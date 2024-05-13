@@ -51,6 +51,7 @@
     "@react-spring/web": "^9.7.3",
     "@use-gesture/react": "^10.3.1",
     "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
     "fuse.js": "^7.0.0",
     "pentatrion-design": "workspace:*",
     "pentatrion-fonts": "workspace:*",

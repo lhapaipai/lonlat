@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ReactNode, ComponentProps } from "react";
 
 interface Props extends ComponentProps<"td"> {
@@ -5,10 +6,10 @@ interface Props extends ComponentProps<"td"> {
   label?: ReactNode | string;
 }
 
-export default function Table({ children, label, ...props }: Props) {
+export default function Table({ children, className, label, ...props }: Props) {
   return (
-    <td {...props}>
-      {label && <p className="cell-label">{label}</p>}
+    <td className={clsx("p-2 block lg:table-cell", className)} {...props}>
+      {label && <p className="font-medium text-sm text-neutral-2 lg:hidden">{label}</p>}
       {children}
     </td>
   );
