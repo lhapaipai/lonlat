@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { ThemeColor } from "../../types";
 import clsx from "clsx";
+import { colorVariants } from "~design/lib/tailwindVariants";
 
 interface Props {
   color?: ThemeColor;
@@ -8,18 +9,15 @@ interface Props {
   className?: string;
 }
 
-const config = {
-  yellow: "border-yellow-3",
-  gray: "border-gray-3",
-  red: "border-red-3",
-  orange: "border-orange-3",
-  green: "border-green-3",
-  blue: "border-blue-3",
-};
-
 export default function Alert({ color = "yellow", children, className }: Props) {
   return (
-    <div className={clsx("p-2 shadow border-l-4 dark:shadow-dark", config[color], className)}>
+    <div
+      className={clsx(
+        "p-2 shadow border-l-4 dark:shadow-dark",
+        colorVariants[color].border,
+        className,
+      )}
+    >
       {children}
     </div>
   );

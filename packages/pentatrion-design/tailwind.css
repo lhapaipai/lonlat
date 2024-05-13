@@ -49,7 +49,7 @@
   }
 
   mark {
-    @apply text-neutral-0 bg-yellow-2;
+    @apply text-neutral-0 bg-yellow-1;
   }
 
   :root {

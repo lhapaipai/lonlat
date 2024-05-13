@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import "./Highlight.scss";
 import { RangeTuple } from "fuse.js";
 interface Props {
   value: string | undefined;
@@ -27,5 +26,5 @@ export default function Hightlight({ value, indices, minLength = 2 }: Props) {
   if (lastIndex <= value.length) {
     content.push(value.substring(lastIndex));
   }
-  return <span className="ll-highlight">{content}</span>;
+  return <span className="text-neutral-2">{content}</span>;
 }

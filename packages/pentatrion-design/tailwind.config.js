@@ -2,7 +2,12 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [`./components/**/*.{ts,tsx}`, `./hooks/**/*.{ts,tsx}`, `./styles/**/*.{ts,tsx}`],
+  content: [
+    `./components/**/*.{ts,tsx}`,
+    `./hooks/**/*.{ts,tsx}`,
+    `./lib/**/*.{ts,tsx}`,
+    `./styles/**/*.{ts,tsx}`,
+  ],
   darkMode: ["class"],
 
   theme: {
@@ -102,6 +107,7 @@ export default {
         "fade-out": "fade-out 250ms ease both",
         "fade-in-opacity": "fade-in-opacity 250ms ease both",
         flash: "flash 1000ms ease both infinite",
+        "loader-stroke": "loader-stroke 1s linear infinite",
       },
       keyframes: {
         ripple: {
@@ -157,6 +163,16 @@ export default {
           },
           "100%": {
             opacity: "0",
+          },
+        },
+        "loader-stroke": {
+          from: {
+            // check : packages/pentatrion-design/components/loader/Loader.tsx
+            // for dashoffset value
+            "stroke-dashoffset": 43.699,
+          },
+          to: {
+            "stroke-dashoffset": 0,
           },
         },
       },
