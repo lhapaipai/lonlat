@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 import { usePopoverContext } from ".";
-import cn from "classnames";
+import clsx from "clsx";
 import { Button } from "../..";
 
 interface PopoverHeaderProps extends ComponentProps<"h2"> {
@@ -22,7 +22,7 @@ export function PopoverHeader({
           </Button>
         </div>
       )}
-      <header className={cn("header", className)} {...props}>
+      <header className={clsx("header", className)} {...props}>
         <h4>{children}</h4>
       </header>
     </>
@@ -30,7 +30,7 @@ export function PopoverHeader({
 }
 export function PopoverDescription({ children, className, ...props }: ComponentProps<"div">) {
   return (
-    <div className={cn("description", className)} {...props}>
+    <div className={clsx("description", className)} {...props}>
       {children}
     </div>
   );
@@ -38,7 +38,7 @@ export function PopoverDescription({ children, className, ...props }: ComponentP
 
 export function PopoverFooter({ children, className, ...props }: ComponentProps<"footer">) {
   return (
-    <footer className={cn("footer", className)} {...props}>
+    <footer className={clsx("footer", className)} {...props}>
       {children}
     </footer>
   );

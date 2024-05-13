@@ -1,5 +1,5 @@
 import "./Snack.scss";
-import cn from "classnames";
+import clsx from "clsx";
 import { Button, Loader, Message, useEventCallback } from "../..";
 import { useEffect } from "react";
 
@@ -28,7 +28,7 @@ export default function Snack({
 
   return (
     <div
-      className={cn(
+      className={clsx(
         "ll-dialog",
         "animate-fade-in",
         "placement-top",

@@ -1,4 +1,4 @@
-import cn from "classnames";
+import clsx from "clsx";
 import { ComponentProps, ReactNode } from "react";
 
 interface Props extends ComponentProps<"tr"> {
@@ -7,7 +7,7 @@ interface Props extends ComponentProps<"tr"> {
 
 export default function Table({ children, className, ...props }: Props) {
   return (
-    <tr className={cn("border-b border-gray-3 block lg:table-row", className)} {...props}>
+    <tr className={clsx("border-b border-gray-3 block lg:table-row", className)} {...props}>
       {children}
     </tr>
   );

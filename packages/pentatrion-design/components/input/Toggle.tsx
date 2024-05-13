@@ -1,7 +1,7 @@
 import { ComponentPropsWithRef, forwardRef, useRef } from "react";
 import { useCombinedRefs } from "../..";
 import "./Toggle.scss";
-import cn from "classnames";
+import clsx from "clsx";
 
 interface Props extends ComponentPropsWithRef<"input"> {
   disabled?: boolean;
@@ -12,12 +12,12 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
     const inputRef = useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     return (
-      <label className={cn("ll-toggle-container", disabled && "disabled")}>
+      <label className={clsx("ll-toggle-container", disabled && "disabled")}>
         <input
           ref={combinedRef}
           disabled={disabled}
           type="checkbox"
-          className={cn("ll-toggle", className)}
+          className={clsx("ll-toggle", className)}
           checked={checked}
           {...rest}
         />

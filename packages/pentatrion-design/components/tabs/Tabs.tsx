@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 
 import "./Tabs.scss";
 
@@ -40,14 +40,14 @@ export default function Tabs({
 }: Props) {
   const content = tabs.find((t) => t.id === value)?.content;
   return (
-    <div className={cn("ll-tabs", "rounded-sm", className)}>
+    <div className={clsx("ll-tabs", "rounded-sm", className)}>
       <div
         role="tablist"
-        className={cn("tabs-list", fullWidth && "full-width", stickyTabs && "sticky z-[1] top-0")}
+        className={clsx("tabs-list", fullWidth && "full-width", stickyTabs && "sticky z-[1] top-0")}
       >
         {tabs.map(({ title, id }) => {
           return (
-            <div key={id} className={cn("tabs-list-item", value === id && "selected")}>
+            <div key={id} className={clsx("tabs-list-item", value === id && "selected")}>
               <button
                 className="variant-solid-yellow"
                 onClick={(event) => {

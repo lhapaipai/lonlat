@@ -25,7 +25,7 @@ import {
 import { FocusEvent, forwardRef, useContext, useEffect, useRef, useState } from "react";
 import { MenuContext } from "./MenuContext";
 import { Button, type ButtonProps } from "../..";
-import cn from "classnames";
+import clsx from "clsx";
 
 export interface Props extends ButtonProps {
   label?: string;
@@ -144,7 +144,7 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
                 },
               }),
             )}
-            className={cn(
+            className={clsx(
               isNested && "option",
               !isNested && !TriggerComponent && "ll-dropdown-menu-trigger",
             )}
@@ -170,7 +170,7 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
                 },
               }),
             )}
-            className={cn(
+            className={clsx(
               isNested && "option",
               !isNested && !TriggerComponent && "ll-dropdown-menu-trigger",
             )}
@@ -193,7 +193,7 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
                 <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
                   <div
                     ref={refs.setFloating}
-                    className={cn("ll-dialog", "ll-dropdown-menu-nested")}
+                    className={clsx("ll-dialog", "ll-dropdown-menu-nested")}
                     style={floatingStyles}
                   >
                     <div className="box" {...getFloatingProps()}>

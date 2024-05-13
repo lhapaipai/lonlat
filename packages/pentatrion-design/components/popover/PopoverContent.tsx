@@ -1,7 +1,7 @@
 import { ComponentProps, forwardRef } from "react";
 import { usePopoverContext } from ".";
 import { FloatingFocusManager, FloatingPortal, useMergeRefs } from "@floating-ui/react";
-import cn from "classnames";
+import clsx from "clsx";
 import { computeArrowStyle } from "../dialog/util";
 
 const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
@@ -25,7 +25,7 @@ const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
             {...context.getFloatingProps(props)}
           >
             <div
-              className={cn(
+              className={clsx(
                 "ll-dialog",
                 `placement-${context.placement}`,
                 `border-${context.color}-2`,

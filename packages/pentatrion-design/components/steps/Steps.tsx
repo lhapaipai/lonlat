@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 import "./Steps.scss";
 
 interface Props extends ComponentPropsWithoutRef<"ul"> {
@@ -29,7 +29,7 @@ export default function Steps({
   return (
     <ul
       {...rest}
-      className={cn([
+      className={clsx([
         "ll-steps",
         `direction-${direction}`,
         `border-${lineStyle}`,

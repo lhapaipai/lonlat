@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, useIsClosing } from "..";
-import cn from "classnames";
+import clsx from "clsx";
 
 export default {
   title: "Styles/Animation",
@@ -25,7 +25,7 @@ export const Basic = () => {
 
 export const InOut = () => {
   const { isOpen, isClosing, setIsOpen } = useIsClosing(false);
-  const classNames = cn([
+  const classNames = clsx([
     "shadow-xl w-[300px] h-[300px]",
     "origin-top-left",
     "flex-center",

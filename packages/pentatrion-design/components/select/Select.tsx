@@ -35,7 +35,7 @@ import SelectSelection, { SelectSelectionProps } from "./SelectSelection.tsx";
 
 import { Input, Button, useEventCallback } from "../..";
 import type { Option } from "./interface";
-import cn from "classnames";
+import clsx from "clsx";
 
 export type SelectValue = number | string | null;
 type ChangeEventLike = {
@@ -232,9 +232,9 @@ const Select = forwardRef<HTMLDivElement, Props>(
     );
 
     return (
-      <div className={cn("ll-select")}>
+      <div className={clsx("ll-select")}>
         <div
-          className={cn(
+          className={clsx(
             "selection",
             `variant-${variant}`,
             selectionClassName,
@@ -274,7 +274,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
           {showArrow && (
             <div className="arrow">
               <div
-                className={cn(
+                className={clsx(
                   "w-[1px] h-[24px] bg-[--color-gray-3]",
                   variant === "ghost" && "bg-transparent hover:bg-[--color-gray-3]",
                 )}
@@ -290,7 +290,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
             {isOpen && (
               <FloatingFocusManager context={context} modal={false}>
                 <div
-                  className={cn("ll-portail-dialog")}
+                  className={clsx("ll-portail-dialog")}
                   ref={refs.setFloating}
                   style={{
                     ...floatingStyles,
@@ -299,7 +299,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
                   {...getFloatingProps()}
                 >
                   <div
-                    className={cn(
+                    className={clsx(
                       "ll-dialog",
                       `placement-${context.placement}`,
                       "ll-select-dialog",
@@ -332,7 +332,11 @@ const Select = forwardRef<HTMLDivElement, Props>(
                         return (
                           <button
                             key={option.value}
-                            className={cn("option", isSelected && "selected", isActive && "active")}
+                            className={clsx(
+                              "option",
+                              isSelected && "selected",
+                              isActive && "active",
+                            )}
                             role="option"
                             aria-selected={isActive && isSelected}
                             tabIndex={isActive ? 0 : -1}

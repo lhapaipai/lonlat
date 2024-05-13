@@ -2,7 +2,7 @@ import { memo, useId } from "react";
 import { OptionLike } from "../..";
 import { useListItem } from "@floating-ui/react";
 import useAutocomplete from "./useAutocompleteContext";
-import cn from "classnames";
+import clsx from "clsx";
 import { getOptionLabel, getOptionValue } from "./util";
 
 export type AutocompleteOptionProps<O extends OptionLike> = O;
@@ -18,7 +18,7 @@ function AutocompleteOption<O extends OptionLike>(props: AutocompleteOptionProps
 
   return (
     <div
-      className={cn("option", isSelected && "selected", isActive && "active")}
+      className={clsx("option", isSelected && "selected", isActive && "active")}
       ref={ref}
       role="option"
       id={id}

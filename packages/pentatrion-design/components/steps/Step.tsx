@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 interface Props extends ComponentPropsWithoutRef<"li"> {
   icon?: ReactNode;
   status?: "done" | "current" | "todo";
@@ -22,10 +22,10 @@ export default function Step({
   ...rest
 }: Props) {
   return (
-    <li className={cn(["ll-step", `status-${status}`, `align-${align}`, className])} {...rest}>
+    <li className={clsx(["ll-step", `status-${status}`, `align-${align}`, className])} {...rest}>
       <div className="marker-container">
         <div
-          className={cn([
+          className={clsx([
             "marker",
             ["done", "current"].includes(status) && "active",
             markerClassName,
@@ -34,7 +34,7 @@ export default function Step({
           {icon}
         </div>
       </div>
-      <div className={cn(["content", contentClassName])}>{children}</div>
+      <div className={clsx(["content", contentClassName])}>{children}</div>
     </li>
   );
 }

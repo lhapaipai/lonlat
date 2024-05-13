@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import "./Badge.scss";
 import { ThemeColor } from "../../types";
-import cn from "classnames";
+import clsx from "clsx";
 import { Href, Tooltip, TooltipContent, TooltipTrigger } from "../..";
 interface Props {
   children: ReactNode;
@@ -24,7 +24,13 @@ export default function Badge({
 }: Props) {
   const badge = (
     <span
-      className={cn("ll-badge", "text-xs", `variant-solid-${color}`, `text-${color}-4`, className)}
+      className={clsx(
+        "ll-badge",
+        "text-xs",
+        `variant-solid-${color}`,
+        `text-${color}-4`,
+        className,
+      )}
     >
       {onClick ? (
         <button className="inner" onClick={onClick}>

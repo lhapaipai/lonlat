@@ -1,7 +1,7 @@
 import { ComponentProps, forwardRef } from "react";
 import useTooltipContext from "./useTooltipContext";
 import { FloatingPortal, useMergeRefs } from "@floating-ui/react";
-import cn from "classnames";
+import clsx from "clsx";
 import { computeArrowStyle } from "../dialog/util";
 
 const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
@@ -15,12 +15,15 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <div
           ref={ref}
-          className={cn("ll-tooltip", context.middlewareData.hide?.referenceHidden && "invisible")}
+          className={clsx(
+            "ll-tooltip",
+            context.middlewareData.hide?.referenceHidden && "invisible",
+          )}
           style={{ ...context.floatingStyles, ...style }}
           {...context.getFloatingProps(props)}
         >
           <div
-            className={cn(
+            className={clsx(
               "animate-fade-in",
               "ll-dialog",
               `placement-${context.placement}`,

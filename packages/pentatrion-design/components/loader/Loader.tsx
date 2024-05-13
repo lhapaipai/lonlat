@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, useId } from "react";
 import { ThemeColor } from "../../types";
-import cn from "classnames";
+import clsx from "clsx";
 import "./Loader.scss";
 
 interface Props extends ComponentPropsWithoutRef<"svg"> {
@@ -12,7 +12,7 @@ export default function Loader({ size = "medium", color = "blue", className, ...
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("ll-loader", `size-${size}`, `text-${color}-4`, className)}
+      className={clsx("ll-loader", `size-${size}`, `text-${color}-4`, className)}
       style={{
         color: `var(--color-${color}-5)`,
       }}

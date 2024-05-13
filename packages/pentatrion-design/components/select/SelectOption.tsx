@@ -1,6 +1,6 @@
 import { useListItem } from "@floating-ui/react";
 import { useSelect } from ".";
-import cn from "classnames";
+import clsx from "clsx";
 import { Option } from "./interface";
 
 type Props<O extends Option> = O;
@@ -14,7 +14,7 @@ export default function SelectOption<O extends Option>({ label }: Props<O>) {
 
   return (
     <button
-      className={cn("option", isSelected && "selected", isActive && "active")}
+      className={clsx("option", isSelected && "selected", isActive && "active")}
       ref={ref}
       role="option"
       aria-selected={isActive && isSelected}

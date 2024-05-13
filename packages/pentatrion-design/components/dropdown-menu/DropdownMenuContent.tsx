@@ -6,7 +6,7 @@ import {
   FloatingPortal,
   useMergeRefs,
 } from "@floating-ui/react";
-import cn from "classnames";
+import clsx from "clsx";
 
 const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, children, ...props }, propRef) => {
@@ -21,14 +21,14 @@ const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
-            className={cn("ll-dropdown-menu")}
+            className={clsx("ll-dropdown-menu")}
             ref={ref}
             style={{ ...context.floatingStyles, ...style }}
             data-status={context.transitionStatus.status}
             {...context.getFloatingProps(props)}
           >
             <div
-              className={cn(
+              className={clsx(
                 "ll-dialog",
                 `placement-${context.placement}`,
                 `border-${context.color}-2`,

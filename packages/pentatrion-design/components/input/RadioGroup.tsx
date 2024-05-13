@@ -1,7 +1,7 @@
 import { ComponentPropsWithRef, forwardRef, useId, useRef } from "react";
 import { useCombinedRefs } from "../..";
 import "./Checkbox-Radio.scss";
-import cn from "classnames";
+import clsx from "clsx";
 
 interface RadioProps extends ComponentPropsWithRef<"input"> {
   disabled?: boolean;
@@ -11,12 +11,12 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     const inputRef = useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     return (
-      <label className={cn("ll-input-radio-container", disabled && "disabled")}>
+      <label className={clsx("ll-input-radio-container", disabled && "disabled")}>
         <input
           ref={combinedRef}
           disabled={disabled}
           type="radio"
-          className={cn("ll-input-radio", className)}
+          className={clsx("ll-input-radio", className)}
           checked={checked}
           name={name}
           {...rest}
@@ -50,7 +50,7 @@ export default function RadioGroup({
 }: Props) {
   const id = useId();
   return (
-    <div className={cn("ll-input-radio-container", `placement-${placement}`)}>
+    <div className={clsx("ll-input-radio-container", `placement-${placement}`)}>
       {options.map((option) => (
         <Radio
           disabled={disabled}

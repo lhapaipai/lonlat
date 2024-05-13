@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 import { useModalContext } from ".";
-import cn from "classnames";
+import clsx from "clsx";
 import { Button, Scroll } from "../..";
 
 interface ModalHeaderProps extends ComponentProps<"h2"> {
@@ -23,7 +23,7 @@ export function ModalHeader({
           </Button>
         </div>
       )}
-      <header className={cn("header", className)} {...props}>
+      <header className={clsx("header", className)} {...props}>
         <h4>{children}</h4>
       </header>
     </>
@@ -36,13 +36,13 @@ interface ModalDescriptionProps extends ComponentProps<"div"> {
 export function ModalDescription({ children, className, height, ...props }: ModalDescriptionProps) {
   if (!height) {
     return (
-      <div className={cn("description", className)} {...props}>
+      <div className={clsx("description", className)} {...props}>
         {children}
       </div>
     );
   }
   return (
-    <div className={cn("description", "scrollable", className)} {...props}>
+    <div className={clsx("description", "scrollable", className)} {...props}>
       <Scroll style={{ height: `${height}px` }}>{children}</Scroll>
     </div>
   );
@@ -50,7 +50,7 @@ export function ModalDescription({ children, className, height, ...props }: Moda
 
 export function ModalFooter({ children, className, ...props }: ComponentProps<"footer">) {
   return (
-    <footer className={cn("footer", className)} {...props}>
+    <footer className={clsx("footer", className)} {...props}>
       {children}
     </footer>
   );

@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 
 import "./Input.scss";
 
@@ -13,10 +13,10 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ variant = "normal", disabled = false, prefix, suffix, className, ...rest }, ref) => {
     return (
-      <div className={cn("ll-input", disabled && "disabled", `variant-${variant}`, className)}>
+      <div className={clsx("ll-input", disabled && "disabled", `variant-${variant}`, className)}>
         {prefix && (
           <div
-            className={cn([
+            className={clsx([
               "flex-center",
               "adornment",
               "prefix",
@@ -26,10 +26,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {prefix}
           </div>
         )}
-        <input ref={ref} className={cn("input-element")} {...rest} disabled={disabled} />
+        <input ref={ref} className={clsx("input-element")} {...rest} disabled={disabled} />
         {suffix && (
           <div
-            className={cn([
+            className={clsx([
               "flex-center",
               "adornment",
               "suffix",

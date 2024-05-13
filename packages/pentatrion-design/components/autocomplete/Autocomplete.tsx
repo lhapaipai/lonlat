@@ -29,7 +29,7 @@ import {
 import { AutocompleteContext } from "./useAutocompleteContext.ts";
 import "./Autocomplete.scss";
 import "../button/Button.scss";
-import cn from "classnames";
+import clsx from "clsx";
 import { Button, Loader, useEventCallback } from "../..";
 import { getOptionLabel, getOptionValue } from "./util.ts";
 
@@ -198,7 +198,7 @@ function Autocomplete<O extends OptionLike = Option>(
 
   return (
     <div className="ll-autocomplete">
-      <div className={cn("ll-input", "variant-normal")} ref={refs.setReference}>
+      <div className={clsx("ll-input", "variant-normal")} ref={refs.setReference}>
         {icon !== false && (
           <div className="flex-center adornment">
             {icon === true ? <i className="fe-search"></i> : icon}
@@ -207,7 +207,7 @@ function Autocomplete<O extends OptionLike = Option>(
         )}
         <input
           spellCheck="false"
-          className={cn("input-element")}
+          className={clsx("input-element")}
           ref={inputRef}
           type="search"
           value={searchValue}
@@ -272,13 +272,13 @@ function Autocomplete<O extends OptionLike = Option>(
               visuallyHiddenDismiss
             >
               <div
-                className={cn("ll-portail-dialog")}
+                className={clsx("ll-portail-dialog")}
                 ref={refs.setFloating}
                 style={floatingStyles}
                 {...getFloatingProps()}
               >
                 <div
-                  className={cn(
+                  className={clsx(
                     "ll-dialog",
                     "ll-autocomplete-dialog",
                     `placement-${context.placement}`,

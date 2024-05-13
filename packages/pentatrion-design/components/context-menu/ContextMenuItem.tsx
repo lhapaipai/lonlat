@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 
 export type ContextMenuItemMouseEvent =
   | React.MouseEvent<HTMLButtonElement>
@@ -19,7 +19,7 @@ const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProps>(
     return (
       <button
         {...props}
-        className={cn(["option", className])}
+        className={clsx(["option", className])}
         ref={ref}
         role="menuitem"
         disabled={disabled}

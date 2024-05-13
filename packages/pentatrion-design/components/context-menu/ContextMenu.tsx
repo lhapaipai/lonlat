@@ -29,7 +29,7 @@ import "../select/Select.scss";
 
 import "./ContextMenu.scss";
 import { ContextMenuItemProps } from "./ContextMenuItem";
-import cn from "classnames";
+import clsx from "clsx";
 import { useEventCallback, useRefDebounce } from "../..";
 
 interface Props extends ComponentPropsWithRef<"div"> {
@@ -151,7 +151,7 @@ export default function ContextMenu({
             {...getFloatingProps()}
           >
             <div
-              className={cn(
+              className={clsx(
                 "ll-dialog",
                 "ll-context-menu",
                 `placement-${context.placement}`,

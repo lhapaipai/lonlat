@@ -6,7 +6,7 @@ import {
 } from "@floating-ui/react";
 import { ComponentProps, forwardRef } from "react";
 import { useModalContext } from ".";
-import cn from "classnames";
+import clsx from "clsx";
 
 const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, children, ...props }, propRef) => {
@@ -20,10 +20,13 @@ const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
     return (
       <FloatingPortal>
-        <FloatingOverlay className={cn(["ll-modal-overlay", "animate-fade-in-opacity"])} lockScroll>
+        <FloatingOverlay
+          className={clsx(["ll-modal-overlay", "animate-fade-in-opacity"])}
+          lockScroll
+        >
           <FloatingFocusManager context={floatingContext}>
             <div
-              className={cn(
+              className={clsx(
                 "ll-modal",
                 "ll-dialog",
                 `border-${context.color}-2`,

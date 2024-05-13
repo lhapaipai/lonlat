@@ -1,5 +1,5 @@
 import { useListItem } from "@floating-ui/react";
-import cn from "classnames";
+import clsx from "clsx";
 import { useDropdownMenuContext } from ".";
 import { ComponentProps, MouseEvent, ReactNode } from "react";
 
@@ -14,7 +14,7 @@ export default function DropdownMenuItem({ children, onClick, ...rest }: Props) 
   const isActive = activeIndex === index;
   return (
     <button
-      className={cn("option", isActive && "active")}
+      className={clsx("option", isActive && "active")}
       ref={ref}
       role="option"
       aria-selected={isActive}

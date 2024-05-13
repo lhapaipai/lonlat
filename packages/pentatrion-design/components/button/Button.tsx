@@ -1,6 +1,6 @@
 import "./Button.scss";
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 import { ThemeColor } from "../../types";
 import { Loader, useRipple } from "../..";
 
@@ -59,7 +59,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const notClickable = loading || disabled;
 
-    const classNames = cn(
+    const classNames = clsx(
       "ll-button",
       className,
       icon && "icon",

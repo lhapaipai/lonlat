@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 import "./Scroll.scss";
 
 const TOLERANCE = 5;
@@ -62,11 +62,11 @@ export default function Scroll({ horizontal = false, className, children, ...res
 
   return (
     <div
-      className={cn("ll-scroll-zone", horizontal ? "horizontal" : "vertical", className)}
+      className={clsx("ll-scroll-zone", horizontal ? "horizontal" : "vertical", className)}
       {...rest}
     >
-      <div className={cn("scroll-shadow", "start", showStartShadow && "visible")}></div>
-      <div className={cn("scroll-shadow", "end", showEndShadow && "visible")}></div>
+      <div className={clsx("scroll-shadow", "start", showStartShadow && "visible")}></div>
+      <div className={clsx("scroll-shadow", "end", showEndShadow && "visible")}></div>
       <div className="scroll-inner" ref={scrollContainerRef} onScroll={handleScroll}>
         <div className="scroll-child" ref={scrollChildRef}>
           {children}
