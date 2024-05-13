@@ -82,6 +82,7 @@ export default {
       xl: "0 20px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.15)",
       "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.35)",
       inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.1)",
+      dark: "0 0 0 1px rgb(var(--color-gray-2))",
       none: "none",
     },
     fontFamily: {

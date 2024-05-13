@@ -27,8 +27,8 @@ export const Shadow = () => {
       {shadows.map((s) => (
         <div
           key={s}
+          className={`${s} dark:shadow-dark`}
           style={{
-            boxShadow: `var(--${s})`,
             height: "200px",
             display: "flex",
             justifyContent: "center",
