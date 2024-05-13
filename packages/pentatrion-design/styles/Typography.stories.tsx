@@ -1,5 +1,6 @@
 import {
   Code,
+  Href,
   Table,
   TableBody,
   TableCell,
@@ -29,7 +30,6 @@ export const Headers = () => (
           <TableRow key={level}>
             <TableCell label="Usage">
               <Code>{`h${level}`}</Code>
-              <Code>{`.h${level}`}</Code>
             </TableCell>
             <TableCell label="Example">
               <HeaderTag>Lorem ipsum</HeaderTag>
@@ -50,14 +50,24 @@ export const TextSizes = () => (
       </TableRow>
     </TableHeader>
     <TableBody>
-      {["2xl", "xl", "lg", "rg", "sm", "xs", "2xs"].map((size) => {
+      {[
+        "text-5xl",
+        "text-4xl",
+        "text-3xl",
+        "text-2xl",
+        "text-xl",
+        "text-lg",
+        "text-base",
+        "text-sm",
+        "text-xs",
+      ].map((sizeClass) => {
         return (
-          <TableRow key={size}>
+          <TableRow key={sizeClass}>
             <TableCell label="Usage">
-              <Code>{`.text-${size}`}</Code>
+              <Code>{`.${sizeClass}`}</Code>
             </TableCell>
             <TableCell label="Example">
-              <span className={`text-${size}`}>Lorem ipsum</span>
+              <span className={sizeClass}>Lorem ipsum</span>
             </TableCell>
           </TableRow>
         );
@@ -79,9 +89,9 @@ export const Content = () => (
     </p>
     <p>
       There is a{" "}
-      <a href="#" className="ll-href ghost">
+      <Href ghost={true} href="#">
         ghost
-      </a>{" "}
+      </Href>{" "}
       link.
     </p>
     <p>

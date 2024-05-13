@@ -54,8 +54,8 @@ export const Playbook = () => {
 
   return (
     <>
-      <div className="storybook-preview">{PreviewElement}</div>
-      <div className="two-cols">
+      <div className="shadow-md rounded-2xl p-12 mb-12">{PreviewElement}</div>
+      <div className="grid grid-cols-2 gap-4">
         <InputField
           label="Search string"
           value={search}

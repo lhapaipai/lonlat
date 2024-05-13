@@ -11,7 +11,7 @@ export default {
 const Box = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, ref) => (
   <div
     ref={ref}
-    className="storybook-box-xs"
+    className="shadow-lg w-[100px] h-[100px] bg-gray-2 flex-center"
     style={{
       margin: "100px",
     }}
@@ -60,7 +60,7 @@ export const Basic = () => {
         Eveniet ut quam voluptatum accusantium aspernatur?
       </p>
 
-      <div className="storybook-grid-cols">
+      <div className="grid grid-cols-repeat-fill-300 gap-8">
         <SimpleTooltip color="yellow" open={true} placement="right-start" content="infos">
           <Box />
         </SimpleTooltip>
@@ -113,7 +113,7 @@ export const Draggable = () => {
       <SimpleTooltip content="infos" placement="top" open={true} color="yellow">
         <animated.div
           {...bind()}
-          className="storybook-box-xs"
+          className="shadow-lg w-[100px] h-[100px] bg-gray-2 flex-center"
           style={{
             x,
             y,

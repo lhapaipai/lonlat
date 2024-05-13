@@ -8,8 +8,7 @@
     line-height: 24px;
   }
   body {
-    @apply font-sans bg-gray-0;
-    color: var(--text-default);
+    @apply font-sans bg-gray-0 text-neutral-1;
   }
   .light {
     color-scheme: light;
@@ -45,51 +44,12 @@
     @apply text-base;
   }
 
-  a {
-    color: var(--text-strong);
-    transition:
-      box-shadow 0.05s ease,
-      color 0.05s ease;
-
-    box-shadow: 0 1px 0 var(--text-strong);
-  }
-  a:visited {
-    color: var(--text-strong);
-  }
-  a:hover {
-    box-shadow: 0 2px 0 var(--color-yellow-500);
-  }
-  a:focus-visible {
-    outline: 2px solid var(--color-yellow-3000);
-    border-radius: var(--border-radius);
-  }
-  a:active {
-    color: var(--color-yellow-3000);
-  }
-
-  .can-copy {
-    color: var(--text-strong);
-    text-decoration: underline dashed var(--color-gray-3);
-    cursor: copy;
-  }
-  .can-copy:hover {
-    text-decoration-color: var(--text-default);
-  }
-
-  a.ghost {
-    color: var(--text-default);
-    box-shadow: none;
-  }
-
-  a.ghost,
-  a.ghost:hover {
-    text-decoration: none;
-    box-shadow: none;
+  a:not(.ghost-link) {
+    @apply decoration-neutral-0 underline text-neutral-0 visited:text-neutral-0 active:text-yellow-5 hover:decoration-2 hover:decoration-yellow-5 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-2 focus-visible:outline-yellow-5 focus-visible:rounded;
   }
 
   mark {
-    background-color: var(--color-yellow-300);
-    color: var(--text-strong);
+    @apply text-neutral-0 bg-yellow-2;
   }
 
   :root {
@@ -97,7 +57,7 @@
     --color-black: 0 0 0;
 
     --color-neutral-0: 0 0 0; /* rgb(0, 0, 0); */
-    --color-neutral-1: 68 68 68; /* rgb(68, 68, 68); */
+    --color-neutral-1: 50 50 50; /* rgb(50, 50, 50); */
     /* text-hint text-disabled */
     --color-neutral-2: 100 100 100; /* rgb(100, 100, 100); */
 
@@ -148,10 +108,10 @@
     --color-gray-5: 140 140 140; /* rgb(140, 140, 140); */
   }
   .dark {
-    --color-neutral-0: 0 0 0; /* rgb(0, 0, 0); */
-    --color-neutral-1: 68 68 68; /* rgb(68, 68, 68); */
+    --color-neutral-0: 255 255 255; /* rgb(255, 255, 255); */
+    --color-neutral-1: 210 210 210; /* rgb(210, 210, 210); */
     /* text-hint text-disabled */
-    --color-neutral-2: 100 100 100; /* rgb(100, 100, 100); */
+    --color-neutral-2: 160 160 160; /* rgb(160, 160, 160); */
 
     --color-yellow-5: 255 250 199; /* rgb(255, 250, 199); */
     --color-yellow-4: 255 245 142; /* rgb(255, 245, 142); */
@@ -183,25 +143,23 @@
     --color-red-2: 230 62 62; /* rgb(230, 62, 62); */
     --color-red-1: 179 38 38; /* rgb(179, 38, 38); */
 
-    --color-gray-5: 242 242 242; /* rgb(242, 242, 242); */
-    --color-gray-4: 228 228 228; /* rgb(228, 228, 228); */
-    --color-gray-3: 204 204 204; /* rgb(204, 204, 204); */
-    --color-gray-2: 180 180 180; /* rgb(180, 180, 180); */
-    --color-gray-1: 140 140 140; /* rgb(140, 140, 140); */
-    --color-gray-0: 15 18 18; /* 15 18 18; */
+    --color-gray-5: 140 140 140; /* rgb(140, 140, 140); */
+    --color-gray-4: 100 100 100; /* rgb(100, 100, 100); */
+    --color-gray-3: 75 75 75; /* rgb(75, 75, 75); */
+    --color-gray-2: 50 50 50; /* rgb(50, 50, 50); */
+    --color-gray-1: 35 35 35; /* rgb(35, 35, 35); */
+    --color-gray-0: 15 18 18; /* rgb(15, 18, 18); */
   }
 }
 
 @layer utilities {
   .flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @apply flex items-center justify-center;
   }
+}
 
-  .two-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space);
+@layer components {
+  .can-copy {
+    @apply underline decoration-dashed decoration-gray-3 cursor-copy hover:decoration-neutral-1;
   }
 }

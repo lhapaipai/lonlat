@@ -11,7 +11,7 @@ export default meta;
 export const Context = () => {
   const [val, setVal] = useState("one");
   return (
-    <div className="storybook-gap">
+    <div className="grid grid-cols-1 gap-8">
       <div className="flex flex-col gap-4">
         <ButtonGroup>
           <Button selected={val === "one"} onClick={() => setVal("one")}>

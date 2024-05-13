@@ -1,6 +1,5 @@
 import type { Preview } from "@storybook/react";
 import { withThemeByClassName } from "@storybook/addon-themes";
-import "./storybook.scss";
 import "../tailwind.css";
 import "../styles/default.scss";
 

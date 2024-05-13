@@ -2,8 +2,9 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [`./components/**/*.{ts,tsx}`, `./hooks/**/*.{ts,tsx}`],
+  content: [`./components/**/*.{ts,tsx}`, `./hooks/**/*.{ts,tsx}`, `./styles/**/*.{ts,tsx}`],
   darkMode: ["class"],
+
   theme: {
     colors: {
       transparent: "transparent",
@@ -89,6 +90,10 @@ export default {
       mono: defaultTheme.fontFamily.mono,
     },
     extend: {
+      gridTemplateColumns: {
+        "repeat-fill-300": "repeat(auto-fill, minmax(300px, 1fr))",
+        "repeat-fill-160": "repeat(auto-fill, minmax(160px, 1fr))",
+      },
       animation: {
         ripple: "ripple .9s linear",
         "fade-in": "fade-in 250ms ease both",

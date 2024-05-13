@@ -8,7 +8,7 @@ interface Props extends ComponentPropsWithRef<"a"> {
 const Href = forwardRef<HTMLAnchorElement, Props>(
   ({ href = "#", ghost = false, children, className, ...rest }, ref) => {
     return (
-      <a ref={ref} href={href} className={cn("ll-href", ghost && "ghost", className)} {...rest}>
+      <a ref={ref} href={href} className={cn(ghost && "ghost-link", className)} {...rest}>
         {children}
       </a>
     );

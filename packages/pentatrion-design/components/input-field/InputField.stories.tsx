@@ -19,7 +19,7 @@ export const Playbook = () => {
 
   return (
     <>
-      <div className="storybook-preview">
+      <div className="shadow-md rounded-2xl p-12 mb-12">
         <InputField
           label={label}
           hint={hint}
@@ -31,7 +31,7 @@ export const Playbook = () => {
           onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         />
       </div>
-      <div className="two-cols">
+      <div className="grid grid-cols-2 gap-4">
         <InputField
           label="Label"
           placeholder="What is your name ?"

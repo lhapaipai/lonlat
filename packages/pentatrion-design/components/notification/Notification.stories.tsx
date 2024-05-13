@@ -38,7 +38,7 @@ export const Context = () => {
   }
 
   return (
-    <div className="storybook-gap">
+    <div className="grid grid-cols-1 gap-8">
       <Button onClick={handleClick}>Show info notification</Button>
       <Button onClick={throwError}>Throw custom error</Button>
       <Button onClick={handle404Error}>Throw 404 fetch error</Button>

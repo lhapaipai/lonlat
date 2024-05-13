@@ -14,7 +14,7 @@ export default meta;
 
 export const Context = () => {
   return (
-    <div className="storybook-gap">
+    <div className="grid grid-cols-1 gap-8">
       <Steps direction="horizontal" lineStyle="dotted">
         <Step icon="A" status="done">
           <h4 className="title">Step 1</h4>

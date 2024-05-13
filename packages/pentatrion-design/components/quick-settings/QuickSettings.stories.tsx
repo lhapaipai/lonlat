@@ -5,7 +5,7 @@ import { useState } from "react";
 const meta = {
   title: "Components/QuickSettings",
   decorators: (Story) => (
-    <div className="storybook-gap" style={{ width: "350px" }}>
+    <div className="grid grid-cols-1 gap-8" style={{ width: "350px" }}>
       <Story />
     </div>
   ),
