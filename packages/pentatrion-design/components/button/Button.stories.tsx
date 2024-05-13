@@ -89,9 +89,9 @@ export const Icons = () => (
     <Button icon variant="ghost" color="gray">
       <i className="fe-cancel"></i>
     </Button>
-    <Button variant="contained" color="gray" className="with-icon with-prefix">
+    <Button icon variant="contained" color="gray">
       <i className="fe-cancel"></i>
-      Cancel
+      <span>Cancel</span>
     </Button>
   </div>
 );
@@ -101,7 +101,9 @@ const colors = ["yellow", "gray", "red", "orange", "green", "blue"] as const;
 
 export const Context = () => {
   return (
-    <div style={{ backgroundColor: "transparent" }}>
+    <div>
+      <h3 className="mt-8">Default state</h3>
+
       <Table>
         <TableHeader>
           <TableRow>
@@ -131,47 +133,7 @@ export const Context = () => {
         </TableBody>
       </Table>
 
-      <h3>Icons</h3>
-
-      <div className="flex gap-2" style={{ alignItems: "center" }}>
-        <Button icon variant="contained" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="outlined" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="text" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="ghost" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button variant="contained" color="gray" className="with-icon with-prefix">
-          <i className="fe-cancel"></i>
-          Cancel
-        </Button>
-      </div>
-
-      <div className="flex gap-2" style={{ alignItems: "center" }}>
-        <Button icon variant="contained">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="outlined">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="text">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="ghost">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button variant="contained" className="with-icon with-prefix">
-          <i className="fe-cancel"></i>
-          Cancel
-        </Button>
-      </div>
-
-      <h3>Selected</h3>
+      <h3 className="mt-8">Only Selected state</h3>
 
       <Table>
         <TableHeader>
@@ -201,6 +163,46 @@ export const Context = () => {
           ))}
         </TableBody>
       </Table>
+
+      <h3 className="mt-8">Icons</h3>
+
+      <div className="flex items-center gap-4 mb-4">
+        <Button icon variant="contained" color="gray">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="outlined" color="gray">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="text" color="gray">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="ghost" color="gray">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button variant="contained" color="gray" icon>
+          <i className="fe-cancel"></i>
+          <span>Cancel</span>
+        </Button>
+      </div>
+
+      <div className="flex items-center gap-4 mb-4">
+        <Button icon variant="contained">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="outlined">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="text">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="ghost">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button variant="contained" icon>
+          <i className="fe-cancel"></i>
+          <span>Cancel</span>
+        </Button>
+      </div>
     </div>
   );
 };

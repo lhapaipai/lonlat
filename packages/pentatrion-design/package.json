@@ -59,6 +59,7 @@
     "react-dom": "^18.2.0",
     "react-polymorphic-types": "^2.0.0",
     "react-sortablejs": "^6.1.4",
-    "sass": "^1.74.1"
+    "sass": "^1.74.1",
+    "tailwind-merge": "^2.3.0"
   }
 }

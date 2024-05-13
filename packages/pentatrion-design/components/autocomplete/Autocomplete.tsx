@@ -28,7 +28,6 @@ import {
 } from "@floating-ui/react";
 import { AutocompleteContext } from "./useAutocompleteContext.ts";
 import "./Autocomplete.scss";
-import "../button/Button.scss";
 import clsx from "clsx";
 import { Button, Loader, useEventCallback } from "../..";
 import { getOptionLabel, getOptionValue } from "./util.ts";
