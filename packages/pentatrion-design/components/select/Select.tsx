@@ -276,7 +276,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
               <div
                 className={cn(
                   "w-[1px] h-[24px] bg-[--color-gray-3]",
-                  variant === "ghost" && "bg-transparent hover:bg-[--color-gray-3",
+                  variant === "ghost" && "bg-transparent hover:bg-[--color-gray-3]",
                 )}
               ></div>
               <Button color="gray" withRipple={false} icon variant="outlined" focusable={false}>

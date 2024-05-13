@@ -8,16 +8,17 @@ export default {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      black: "#000000",
-      white: "#ffffff",
+      black: "rgb(var(--color-black) / <alpha-value>)",
+      white: "rgb(var(--color-white) / <alpha-value>)",
+
       yellow: {
         1: "rgb(var(--color-yellow-1) / <alpha-value>)",
         2: "rgb(var(--color-yellow-2) / <alpha-value>)",
         3: "rgb(var(--color-yellow-3) / <alpha-value>)",
         4: "rgb(var(--color-yellow-4) / <alpha-value>)",
         5: "rgb(var(--color-yellow-5) / <alpha-value>)",
-        // color of the text when bg is yellow
-        text: "rgb(var(--color-yellow-text) / <alpha-value>)",
+        // color of the text when bg is yellow 3
+        text: "rgb(var(--color-neutral-1) / <alpha-value>)",
       },
       green: {
         1: "rgb(var(--color-green-1) / <alpha-value>)",
@@ -26,7 +27,7 @@ export default {
         4: "rgb(var(--color-green-4) / <alpha-value>)",
         5: "rgb(var(--color-green-5) / <alpha-value>)",
         // color of the text when bg is green
-        text: "rgb(var(--color-green-text) / <alpha-value>)",
+        text: "rgb(var(--color-white) / <alpha-value>)",
       },
       blue: {
         1: "rgb(var(--color-blue-1) / <alpha-value>)",
@@ -35,7 +36,7 @@ export default {
         4: "rgb(var(--color-blue-4) / <alpha-value>)",
         5: "rgb(var(--color-blue-5) / <alpha-value>)",
         // color of the text when bg is blue
-        text: "rgb(var(--color-blue-text) / <alpha-value>)",
+        text: "rgb(var(--color-white) / <alpha-value>)",
       },
       orange: {
         1: "rgb(var(--color-orange-1) / <alpha-value>)",
@@ -44,7 +45,7 @@ export default {
         4: "rgb(var(--color-orange-4) / <alpha-value>)",
         5: "rgb(var(--color-orange-5) / <alpha-value>)",
         // color of the text when bg is orange
-        text: "rgb(var(--color-orange-text) / <alpha-value>)",
+        text: "rgb(var(--color-white) / <alpha-value>)",
       },
       red: {
         1: "rgb(var(--color-red-1) / <alpha-value>)",
@@ -53,7 +54,7 @@ export default {
         4: "rgb(var(--color-red-4) / <alpha-value>)",
         5: "rgb(var(--color-red-5) / <alpha-value>)",
         // color of the text when bg is red
-        text: "rgb(var(--color-red-text) / <alpha-value>)",
+        text: "rgb(var(--color-white) / <alpha-value>)",
       },
       gray: {
         0: "rgb(var(--color-gray-0) / <alpha-value>)",
@@ -63,14 +64,13 @@ export default {
         4: "rgb(var(--color-gray-4) / <alpha-value>)",
         5: "rgb(var(--color-gray-5) / <alpha-value>)",
         // color of the text when bg is gray
-        text: "rgb(var(--color-gray-text) / <alpha-value>)",
+        text: "rgb(var(--color-neutral-1) / <alpha-value>)",
       },
 
-      text: {
-        0: "rgb(var(--color-text-0) / <alpha-value>)",
-        1: "rgb(var(--color-text-1) / <alpha-value>)",
-        2: "rgb(var(--color-text-2) / <alpha-value>)",
-        white: "rgb(var(--color-text-white) / <alpha-value>)",
+      neutral: {
+        0: "rgb(var(--color-neutral-0) / <alpha-value>)",
+        1: "rgb(var(--color-neutral-1) / <alpha-value>)",
+        2: "rgb(var(--color-neutral-2) / <alpha-value>)",
       },
     },
     boxShadow: {

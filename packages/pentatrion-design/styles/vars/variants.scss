@@ -14,10 +14,10 @@
         --button-default-background-color: rgb(var(--color-gray-0));
         --button-hover-background-color: rgb(var(--color-#{$colorType}-1));
         --button-active-background-color: rgb(var(--color-#{$colorType}-2));
-        --button-default-border-color: rgb(var(--color-#{$colorType}-500));
-        --button-default-text-color: rgb(var(--color-text-1));
-        --button-hover-text-color: rgb(var(--color-text-1));
-        --button-active-text-color: rgb(var(--color-text-1));
+        --button-default-border-color: rgb(var(--color-#{$colorType}-5));
+        --button-default-text-color: rgb(var(--color-neutral-1));
+        --button-hover-text-color: rgb(var(--color-neutral-1));
+        --button-active-text-color: rgb(var(--color-neutral-1));
         --button-focus-visible-border-color: rgb(var(--color-#{$colorType}-3));
     }
 
@@ -40,6 +40,4 @@
         --button-active-text-color: rgb(var(--color-#{$colorType}-5));
         --button-focus-visible-border-color: rgb(var(--color-#{$colorType}-5));
     }
-
-
 }

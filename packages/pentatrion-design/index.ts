@@ -1,4 +1,5 @@
 export * from "./components/table";
+export * from "./components/card";
 export { default as Code } from "./components/code/Code";
 export { default as Tabs } from "./components/tabs/Tabs";
 export { default as Flash } from "./components/flash/Flash";
@@ -12,7 +13,6 @@ export { default as InputField } from "./components/input-field/InputField";
 export { default as ResizeArea } from "./components/resize-area/ResizeArea";
 export { default as Snack } from "./components/snack/Snack";
 export { default as Href } from "./components/href/Href";
-export { Card } from "./components/card/Card";
 
 export * from "./components/autocomplete";
 export * from "./components/button";

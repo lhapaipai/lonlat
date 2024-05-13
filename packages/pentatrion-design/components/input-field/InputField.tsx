@@ -24,15 +24,15 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   const Element: ElementType = as || defaultElement;
 
   const labelElement = label && <span className="font-bold">{label}</span>;
-  const hintElement = hint && <span className="ml-auto text-text-2 text-sm">{hint}</span>;
+  const hintElement = hint && <span className="ml-auto text-neutral-2 text-sm">{hint}</span>;
   const errorElement = error && typeof error !== "boolean" && (
-    <span className={cn("color-red", "font-medium")}>
+    <span className={cn("text-red-4", "font-medium")}>
       <i className="fe-circle-exclamation"></i>
       <span>{error}</span>
     </span>
   );
   const orangeElement = orange && typeof orange !== "boolean" && (
-    <span className={cn("color-orange", "font-medium")}>
+    <span className={cn("text-orange-4", "font-medium")}>
       <i className="fe-circle-exclamation"></i>
       <span>{orange}</span>
     </span>
@@ -49,7 +49,7 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
         <label htmlFor={id} className="invisible"></label>
       )}
       <Element ref={ref} id={id} className={cn(orange && "orange", error && "error")} {...rest} />
-      <div className={cn("context-section", "text-text-2 text-sm")}>
+      <div className={cn("context-section", "text-neutral-2 text-sm")}>
         {errorElement || orangeElement || help}
       </div>
     </div>

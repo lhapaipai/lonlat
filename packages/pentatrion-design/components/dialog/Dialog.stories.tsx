@@ -15,7 +15,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-top border-color-blue"
+          className="ll-dialog placement-top border-blue-1"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -26,7 +26,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-bottom border-color-blue"
+          className="ll-dialog placement-bottom border-blue-1"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -37,7 +37,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-left border-color-blue"
+          className="ll-dialog placement-left border-blue-1"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -48,7 +48,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-right border-color-blue"
+          className="ll-dialog placement-right border-blue-1"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -60,7 +60,7 @@ export const Basic = () => {
 
       <div>
         <div
-          className="ll-dialog placement-top border-color-blue"
+          className="ll-dialog placement-top border-blue-1"
           data-status="open"
           role="tooltip"
           style={{ width: 300 }}
@@ -82,7 +82,7 @@ export const Basic = () => {
 
       <div>
         <div
-          className="ll-dialog placement-top border-color-yellow"
+          className="ll-dialog placement-top border-yellow-2"
           style={{ width: 300 }}
           data-status="open"
           role="dialog"
@@ -105,7 +105,7 @@ export const Basic = () => {
       </div>
       <div>
         <div
-          className="ll-dialog placement-top border-color-yellow"
+          className="ll-dialog placement-top border-yellow-2"
           style={{ width: 300 }}
           data-status="open"
           role="dialog"

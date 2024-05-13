@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, useIsClosing } from "../..";
+import { Button, useIsClosing } from "..";
 import cn from "classnames";
 
 export default {

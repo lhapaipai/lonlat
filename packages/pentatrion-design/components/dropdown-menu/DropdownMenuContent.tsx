@@ -31,7 +31,7 @@ const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
               className={cn(
                 "ll-dialog",
                 `placement-${context.placement}`,
-                `border-color-${context.color}`,
+                `border-${context.color}-2`,
               )}
             >
               <div className="box">

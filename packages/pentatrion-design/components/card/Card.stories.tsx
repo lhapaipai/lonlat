@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/react";
+import { cardConfig } from "./config";
 
 const meta = {
   title: "Components/Card",
@@ -6,15 +7,15 @@ const meta = {
 export default meta;
 
 export const Basic = () => {
-  return <div className="ll-card bg-gray-light-1 p-2 hover:p-4">Hello world</div>;
+  return <div className={cardConfig.item}>Hello world</div>;
 };
 
 export const Multiple = () => {
   return (
-    <div className="ll-card-group">
-      <div className="ll-card">Card 1</div>
-      <div className="ll-card">Card 2</div>
-      <div className="ll-card">Card 3</div>
+    <div className={cardConfig.group}>
+      <div className={cardConfig.item}>Card 1</div>
+      <div className={cardConfig.item}>Card 2</div>
+      <div className={cardConfig.item}>Card 3</div>
     </div>
   );
 };

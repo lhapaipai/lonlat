@@ -33,7 +33,7 @@ export default function Snack({
         "animate-fade-in",
         "placement-top",
         "ll-snack",
-        `border-color-${color}`,
+        `border-${color}-2`,
       )}
     >
       <div className="box">

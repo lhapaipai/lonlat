@@ -180,7 +180,7 @@
         }
 
         &[disabled] {
-            color: rgb(var(--color-text-2));
+            color: rgb(var(--color-neutral-2));
             pointer-events: none;
         }
 
@@ -201,7 +201,7 @@
         }
 
         &.discret {
-            color: rgb(var(--color-text-2));
+            color: rgb(var(--color-neutral-2));
 
             .content {
                 font-size: .9rem;

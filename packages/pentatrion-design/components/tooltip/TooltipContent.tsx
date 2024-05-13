@@ -24,7 +24,7 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
               "animate-fade-in",
               "ll-dialog",
               `placement-${context.placement}`,
-              `border-color-${context.color}`,
+              `border-${context.color}-2`,
               className,
             )}
           >
