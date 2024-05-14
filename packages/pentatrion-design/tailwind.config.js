@@ -12,6 +12,20 @@ export default {
   darkMode: ["class"],
 
   theme: {
+    zIndex: {
+      auto: "auto",
+      0: "0",
+      10: "10",
+      20: "20",
+      30: "30",
+      40: "40",
+      50: "50",
+      dialog: "100",
+      overlay: "100",
+      tooltip: "100",
+      "context-menu": "90",
+      notification: "80",
+    },
     transitionDuration: {
       ...defaultTheme.transitionDuration,
       DEFAULT: "300ms",
@@ -99,6 +113,9 @@ export default {
     },
     extend: {
       // https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js
+      dropShadow: {
+        arrow: "0 1px 3px rgb(var(--color-gray-3))",
+      },
       transitionProperty: {
         "color-shadow":
           "color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow",

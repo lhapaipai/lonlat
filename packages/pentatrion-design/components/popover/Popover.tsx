@@ -2,9 +2,6 @@ import { ReactNode } from "react";
 import { PopoverOptions } from "./interface";
 import { PopoverContext, usePopover } from ".";
 
-import "../dialog/Dialog.scss";
-import "./Popover.scss";
-
 interface Props extends PopoverOptions {
   children: ReactNode;
 }

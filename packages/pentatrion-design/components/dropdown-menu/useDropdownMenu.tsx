@@ -11,7 +11,6 @@ import {
   useInteractions,
   useListNavigation,
   useRole,
-  useTransitionStatus,
   useTypeahead,
 } from "@floating-ui/react";
 
@@ -88,10 +87,6 @@ export default function useDropdownMenu({
 
   const interactions = useInteractions([click, dismiss, role, listNav, typeahead]);
 
-  const transitionStatus = useTransitionStatus(context, {
-    duration: 250,
-  });
-
   return useMemo(
     () => ({
       open,
@@ -100,7 +95,6 @@ export default function useDropdownMenu({
       ...data,
       elementsRef,
       labelsRef,
-      transitionStatus,
       color,
       modal,
       activeIndex,
@@ -111,7 +105,6 @@ export default function useDropdownMenu({
       setOpen,
       interactions,
       data,
-      transitionStatus,
       color,
       modal,
       activeIndex,

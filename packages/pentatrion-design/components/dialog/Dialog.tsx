@@ -4,20 +4,40 @@ import { ComponentProps, ReactNode } from "react";
 import { ThemeColor } from "~design/types";
 
 interface Props extends ComponentProps<"div"> {
-  status?: "open" | "close";
   color?: ThemeColor;
   placement?: Placement;
   children: ReactNode;
 }
 
-export default function Dialog({ placement, color, status, children, className, ...rest }: Props) {
+const dialogVariants = {
+  color(color?: ThemeColor) {
+    if (!color) {
+      return "bg-gray-0";
+    }
+    return clsx(
+      "border-t-4",
+      {
+        yellow: "border-t-yellow-3 bg-gray-0",
+        gray: "border-t-gray-3 bg-gray-0",
+        red: "border-t-red-3 bg-red-1",
+        blue: "border-t-blue-3 bg-blue-1",
+        green: "border-t-green-3 bg-green-1",
+        orange: "border-t-orange-3 bg-orange-1",
+      }[color],
+    );
+  },
+};
+
+export default function Dialog({ placement, color, children, className, ...rest }: Props) {
   return (
     <div
       className={clsx(
-        "ll-dialog rounded-2xl relative bg-gray-0 shadow dark:shadow-dark",
+        "ll-dialog rounded-2xl relative shadow dark:shadow-dark",
+        dialogVariants.color(color),
         className,
       )}
       data-placement={placement}
+      data-color={color}
       {...rest}
     >
       {children}

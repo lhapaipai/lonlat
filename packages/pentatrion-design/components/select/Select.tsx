@@ -10,7 +10,6 @@ import {
   useRef,
   useState,
 } from "react";
-import "../dialog/Dialog.scss";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -282,7 +281,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
             {isOpen && (
               <FloatingFocusManager context={context} modal={false}>
                 <div
-                  className={clsx("ll-portail-dialog")}
+                  className="z-dialog"
                   ref={refs.setFloating}
                   style={{
                     ...floatingStyles,
@@ -292,7 +291,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
                 >
                   <Dialog
                     placement={context.placement}
-                    className="ll-select-dialog animate-fade-in-list"
+                    className="animate-fade-in-list max-h-80 overflow-auto"
                   >
                     {searchable && (
                       <div className="p-2">
@@ -321,7 +320,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
                           <button
                             key={option.value}
                             className={clsx(
-                              "dialog-option",
+                              "option",
                               isSelected && "bg-gray-2",
                               isActive && "bg-gray-1",
                             )}

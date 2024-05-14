@@ -24,24 +24,14 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 
-import "../dialog/Dialog.scss";
-
-import "./ContextMenu.scss";
 import { ContextMenuItemProps } from "./ContextMenuItem";
-import clsx from "clsx";
-import { useEventCallback, useRefDebounce } from "../..";
+import { Dialog, useEventCallback, useRefDebounce } from "../..";
 
 interface Props extends ComponentPropsWithRef<"div"> {
-  compact?: boolean;
   children: ReactElement[] | ReactElement;
   eventName?: "contextmenu" | "maplibre-contextmenu";
 }
-export default function ContextMenu({
-  children,
-  style,
-  compact = false,
-  eventName = "contextmenu",
-}: Props) {
+export default function ContextMenu({ children, style, eventName = "contextmenu" }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const isOpenDebounceRef = useRefDebounce(isOpen, 500);
@@ -144,20 +134,14 @@ export default function ContextMenu({
       {isOpen && (
         <FloatingFocusManager context={context} initialFocus={refs.floating}>
           <div
-            className="ll-portail-dialog"
+            className="z-dialog"
             ref={refs.setFloating}
             style={{ ...floatingStyles, ...style }}
             {...getFloatingProps()}
           >
-            <div
-              className={clsx(
-                "ll-dialog",
-                "ll-context-menu",
-                `placement-${context.placement}`,
-                "ll-select-dialog",
-                "animate-fade-in-list",
-                compact && "compact",
-              )}
+            <Dialog
+              placement={context.placement}
+              className="animate-fade-in-list z-context-menu max-h-80 overflow-auto"
             >
               {Children.map(
                 children,
@@ -181,7 +165,7 @@ export default function ContextMenu({
                     }),
                   ),
               )}
-            </div>
+            </Dialog>
           </div>
         </FloatingFocusManager>
       )}

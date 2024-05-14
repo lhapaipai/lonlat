@@ -3,6 +3,7 @@ import useTooltipContext from "./useTooltipContext";
 import { FloatingPortal, useMergeRefs } from "@floating-ui/react";
 import clsx from "clsx";
 import { computeArrowStyle } from "../dialog/util";
+import { Dialog } from "../dialog";
 
 const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, children, className, ...props }, propRef) => {
@@ -22,18 +23,18 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
           style={{ ...context.floatingStyles, ...style }}
           {...context.getFloatingProps(props)}
         >
-          <div
-            className={clsx(
-              "animate-fade-in",
-              "ll-dialog",
-              `placement-${context.placement}`,
-              `border-${context.color}-2`,
-              className,
-            )}
+          <Dialog
+            placement={context.placement}
+            className={clsx("animate-fade-in", className)}
+            color={context.color}
           >
             {children}
-            <div ref={context.arrowRef} style={computeArrowStyle(context)} className="arrow"></div>
-          </div>
+            <div
+              ref={context.arrowRef}
+              style={computeArrowStyle(context)}
+              className="p8n-arrow"
+            ></div>
+          </Dialog>
         </div>
       </FloatingPortal>
     );

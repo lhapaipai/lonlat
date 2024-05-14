@@ -27,9 +27,8 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { AutocompleteContext } from "./useAutocompleteContext.ts";
-import "./Autocomplete.scss";
 import clsx from "clsx";
-import { Button, Loader, useEventCallback } from "../..";
+import { Button, Dialog, Loader, inputConfig, useEventCallback } from "../..";
 import { getOptionLabel, getOptionValue } from "./util.ts";
 
 export interface AutocompleteProps<O extends OptionLike = Option> {
@@ -196,17 +195,23 @@ function Autocomplete<O extends OptionLike = Option>(
   );
 
   return (
-    <div className="ll-autocomplete">
-      <div className={clsx("ll-input", "variant-normal")} ref={refs.setReference}>
+    <div>
+      <div className={clsx(inputConfig.container)} ref={refs.setReference}>
         {icon !== false && (
-          <div className="flex-center adornment">
-            {icon === true ? <i className="fe-search"></i> : icon}
+          <div className="flex-center relative">
             {loading && <Loader size="medium" color="gray" />}
+            {icon === true ? (
+              <span className="w-8 h-8 flex-center">
+                <i className="fe-search"></i>
+              </span>
+            ) : (
+              icon
+            )}
           </div>
         )}
         <input
           spellCheck="false"
-          className={clsx("input-element")}
+          className={clsx(inputConfig.input)}
           ref={inputRef}
           type="search"
           value={searchValue}
@@ -240,13 +245,14 @@ function Autocomplete<O extends OptionLike = Option>(
             },
           })}
         />
-        <div className="flex-center adornment suffix">
+        <div className="flex-center relative">
           {selection && selectionSuffix}
           {clearSearchButton && (searchValue.trim() !== "" || selection !== null) && (
             <Button
               withRipple={false}
               icon
-              variant="ghost"
+              color="gray"
+              variant="text"
               onClick={() => {
                 setIsOpen(false);
                 onChangeSelectionStable(null);
@@ -271,25 +277,21 @@ function Autocomplete<O extends OptionLike = Option>(
               visuallyHiddenDismiss
             >
               <div
-                className={clsx("ll-portail-dialog")}
+                className="z-dialog"
                 ref={refs.setFloating}
                 style={floatingStyles}
                 {...getFloatingProps()}
               >
-                <div
-                  className={clsx(
-                    "ll-dialog",
-                    "ll-autocomplete-dialog",
-                    `placement-${context.placement}`,
-                    "animate-fade-in-list",
-                  )}
+                <Dialog
+                  placement={context.placement}
+                  className="animate-fade-in-list max-h-80 overflow-auto"
                 >
                   <FloatingList elementsRef={listRef}>
                     {options.map((option) => {
                       return <OptionComponent {...option} key={getOptionValue(option)} />;
                     })}
                   </FloatingList>
-                </div>
+                </Dialog>
               </div>
             </FloatingFocusManager>
           )}

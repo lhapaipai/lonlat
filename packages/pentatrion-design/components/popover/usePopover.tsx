@@ -20,7 +20,7 @@ export default function usePopover({
   placement = "bottom",
   open: controlledOpen,
   onOpen: setControlledOpen,
-  color = "default",
+  color,
   modal = false,
 }: PopoverOptions) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);

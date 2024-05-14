@@ -18,7 +18,7 @@ function AutocompleteOption<O extends OptionLike>(props: AutocompleteOptionProps
 
   return (
     <div
-      className={clsx("option", isSelected && "selected", isActive && "active")}
+      className={clsx("option", isSelected && "bg-gray-2", isActive && "bg-gray-1")}
       ref={ref}
       role="option"
       id={id}

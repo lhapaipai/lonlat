@@ -14,7 +14,7 @@ export default function DropdownMenuItem({ children, onClick, ...rest }: Props) 
   const isActive = activeIndex === index;
   return (
     <button
-      className={clsx("option", isActive && "active")}
+      className={clsx("option", isActive && "bg-gray-1")}
       ref={ref}
       role="option"
       aria-selected={isActive}

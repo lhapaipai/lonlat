@@ -1,75 +1,103 @@
-.ll-dialog[data-placement^="top"] {
+[data-placement^="top"] {
   @apply origin-bottom;
   /* border-top-width: 4px; */
 
-  & .arrow {
-    @apply w-0 h-0 absolute border-x-8 border-t-8 border-x-transparent border-t-gray-0 top-full;
+  & .p8n-arrow {
+    @apply w-0 h-0 absolute border-x-8 border-t-8 border-x-transparent border-t-current top-full drop-shadow-arrow dark:drop-shadow-[0_1px_0_rgb(var(--color-gray-2))];
     clip: rect(0px, 16px, 12px, 0px);
-    filter: drop-shadow(0 1px 3px #c9c9c9);
   }
 }
 
-.ll-dialog[data-placement="top-start"] {
+[data-placement="top-start"] {
   @apply origin-bottom-left;
 }
 
-.ll-dialog[data-placement="top-end"] {
+[data-placement="top-end"] {
   @apply origin-bottom-right;
 }
 
-.ll-dialog[data-placement^="bottom"] {
+[data-placement^="bottom"] {
   @apply origin-top;
   /* border-bottom-width: 4px; */
 
-  & .arrow {
-    @apply w-0 h-0 absolute border-x-8 border-b-8 border-x-transparent border-b-gray-0 bottom-full;
+  & .p8n-arrow {
+    @apply w-0 h-0 absolute border-x-8 border-b-8 border-x-transparent border-b-current bottom-full drop-shadow-arrow dark:drop-shadow-[0_-1px_0_rgb(var(--color-gray-2))];
     clip: rect(-4px, 16px, 8px, 0px);
-    filter: drop-shadow(0 1px 3px #c9c9c9);
   }
 }
 
-.ll-dialog[data-placement="bottom-start"] {
+[data-placement="bottom-start"] {
   @apply origin-top-left;
 }
 
-.ll-dialog[data-placement="bottom-end"] {
+[data-placement="bottom-end"] {
   @apply origin-top-right;
 }
 
-.ll-dialog[data-placement^="left"] {
+[data-placement^="left"] {
   @apply origin-right;
   /* border-left-width: 4px; */
 
-  & .arrow {
-    @apply w-0 h-0 absolute border-y-8 border-l-8 border-y-transparent border-l-gray-0 left-full;
+  & .p8n-arrow {
+    @apply w-0 h-0 absolute border-y-8 border-l-8 border-y-transparent border-l-current left-full drop-shadow-arrow dark:drop-shadow-[1px_0_0_rgb(var(--color-gray-2))];
     clip: rect(0px, 12px, 16px, 0px);
-    filter: drop-shadow(0 1px 3px #c9c9c9);
   }
 }
 
-.ll-dialog[data-placement="left-start"] {
+[data-placement="left-start"] {
   @apply origin-top-right;
 }
 
-.ll-dialog[data-placement="left-end"] {
+[data-placement="left-end"] {
   @apply origin-bottom-right;
 }
 
-.ll-dialog[data-placement^="right"] {
+[data-placement^="right"] {
   /* border-right-width: 4px; */
   @apply origin-left;
 
-  & .arrow {
-    @apply w-0 h-0 absolute border-y-8 border-r-8 border-y-transparent border-r-gray-0 right-full;
+  & .p8n-arrow {
+    @apply w-0 h-0 absolute border-y-8 border-r-8 border-y-transparent border-r-current right-full drop-shadow-arrow dark:drop-shadow-[-1px_0_0_rgb(var(--color-gray-2))];
     clip: rect(0px, 8px, 16px, -4px);
-    filter: drop-shadow(0 1px 3px #c9c9c9);
   }
 }
 
-.ll-dialog[data-placement="right-start"] {
+[data-placement="right-start"] {
   @apply origin-top-left;
 }
 
-.ll-dialog[data-placement="right-end"] {
+[data-placement="right-end"] {
   @apply origin-bottom-left;
+}
+
+[data-placement][data-color="yellow"] .p8n-arrow {
+  @apply text-gray-0;
+}
+
+[data-placement][data-color="gray"] .p8n-arrow {
+  @apply text-gray-0;
+}
+
+[data-placement][data-color="red"] .p8n-arrow {
+  @apply text-red-1;
+}
+
+[data-placement][data-color="orange"] .p8n-arrow {
+  @apply text-orange-1;
+}
+
+[data-placement][data-color="blue"] .p8n-arrow {
+  @apply text-blue-1;
+}
+
+[data-placement][data-color="green"] .p8n-arrow {
+  @apply text-green-1;
+}
+
+.option[data-nested][data-open]:not([data-focus-inside]) {
+  @apply bg-gray-2;
+}
+
+.option[data-focus-inside][data-open] {
+  @apply bg-gray-1;
 }

@@ -1,6 +1,6 @@
 import "./Snack.scss";
 import clsx from "clsx";
-import { Button, Loader, Message, useEventCallback } from "../..";
+import { Button, Dialog, Loader, Message, useEventCallback } from "../..";
 import { useEffect } from "react";
 
 export type SnackProps = Partial<Message> & {
@@ -27,14 +27,9 @@ export default function Snack({
   }, [onRemoveStable, expiration]);
 
   return (
-    <div
-      className={clsx(
-        "ll-dialog",
-        "animate-fade-in",
-        "placement-top",
-        "ll-snack",
-        `border-${color}-2`,
-      )}
+    <Dialog
+      className={clsx("ll-dialog", "animate-fade-in", "ll-snack", `border-${color}-2`)}
+      placement="top"
     >
       <div className="box">
         <span className="message">{content}</span>
@@ -46,6 +41,6 @@ export default function Snack({
           </Button>
         )}
       </div>
-    </div>
+    </Dialog>
   );
 }

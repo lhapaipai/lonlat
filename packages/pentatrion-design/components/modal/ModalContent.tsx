@@ -7,6 +7,7 @@ import {
 import { ComponentProps, forwardRef } from "react";
 import { useModalContext } from ".";
 import clsx from "clsx";
+import { Dialog } from "../dialog";
 
 const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, children, ...props }, propRef) => {
@@ -21,17 +22,12 @@ const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
     return (
       <FloatingPortal>
         <FloatingOverlay
-          className={clsx(["ll-modal-overlay", "animate-fade-in-opacity"])}
+          className={clsx(["flex-center bg-gray-7/40 z-overlay", "animate-fade-in-opacity"])}
           lockScroll
         >
           <FloatingFocusManager context={floatingContext}>
-            <div
-              className={clsx(
-                "ll-modal",
-                "ll-dialog",
-                `border-${context.color}-2`,
-                "animate-fade-in",
-              )}
+            <Dialog
+              className={clsx("w-96 max-w-full", `border-${context.color}-2`, "animate-fade-in")}
               ref={ref}
               aria-labelledby={context.labelId}
               aria-describedby={context.descriptionId}
@@ -39,7 +35,7 @@ const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
               {...context.getFloatingProps(props)}
             >
               {children}
-            </div>
+            </Dialog>
           </FloatingFocusManager>
         </FloatingOverlay>
       </FloatingPortal>

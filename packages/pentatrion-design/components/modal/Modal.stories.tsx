@@ -1,9 +1,5 @@
 import { Modal, ModalTrigger, ModalContent } from "~design";
-import {
-  ModalDescription,
-  ModalHeader,
-  ModalFooter,
-} from "~design/components/modal/Components";
+import { ModalDescription, ModalHeader, ModalFooter } from "~design/components/modal/Components";
 import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "~design";
 import { useState } from "react";
@@ -50,8 +46,8 @@ export const Context = () => {
         <ModalHeader>Header</ModalHeader>
         <ModalDescription>Content</ModalDescription>
         <ModalFooter>
-          <div className="actions">
-            <Button variant="ghost" onClick={() => setIsOpen(false)}>
+          <div className="flex justify-between">
+            <Button variant="text" color="gray" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button color="yellow" onClick={() => setIsOpen(false)}>
@@ -102,8 +98,8 @@ export const ScrollableModal = () => {
           </div>
         </ModalDescription>
         <ModalFooter>
-          <div className="actions">
-            <Button variant="ghost" onClick={() => setIsOpen(false)}>
+          <div className="flex justify-between">
+            <Button variant="text" color="gray" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button color="yellow" onClick={() => setIsOpen(false)}>

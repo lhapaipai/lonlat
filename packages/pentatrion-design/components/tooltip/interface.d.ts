@@ -8,6 +8,6 @@ export interface TooltipOptions {
   onOpen?: (open: boolean) => void;
   openDelay?: number;
   closeDelay?: number;
-  color?: ThemeColor | "default";
+  color?: ThemeColor;
   contentClassName?: string;
 }

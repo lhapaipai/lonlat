@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import MenuItemWithChildren from "./MenuItemWithChildren";
 import { FloatingTree } from "@floating-ui/react";
-import "./DropdownMenu.scss";
 import { Button, type ButtonProps } from "../..";
+
 export interface Props extends ButtonProps {
   label: string;
   triggerComponent: typeof Button;

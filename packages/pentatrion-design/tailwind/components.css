@@ -8,16 +8,12 @@
   @apply opacity-50;
 }
 
-.dialog-option {
+.option {
   @apply flex w-full px-2 h-8 items-center text-left relative cursor-pointer first:rounded-t-2xl last:rounded-b-2xl hover:bg-gray-1 focus-full:text-gray-8 outline-none;
 
   &[disabled] {
     color: rgb(var(--color-gray-6));
     pointer-events: none;
-  }
-
-  i {
-    margin-right: 0.5rem;
   }
 
   .bullet {

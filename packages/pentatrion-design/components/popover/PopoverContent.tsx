@@ -3,9 +3,10 @@ import { usePopoverContext } from ".";
 import { FloatingFocusManager, FloatingPortal, useMergeRefs } from "@floating-ui/react";
 import clsx from "clsx";
 import { computeArrowStyle } from "../dialog/util";
+import { Dialog } from "../dialog";
 
 const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ style, children, ...props }, propRef) => {
+  ({ style, children, className, ...props }, propRef) => {
     const context = usePopoverContext();
     const floatingContext = context.context;
 
@@ -17,28 +18,24 @@ const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
-            className="ll-popover"
             ref={ref}
             style={{ ...context.floatingStyles, ...style }}
             aria-labelledby={context.labelId}
             aria-describedby={context.descriptionId}
             {...context.getFloatingProps(props)}
           >
-            <div
-              className={clsx(
-                "ll-dialog",
-                `placement-${context.placement}`,
-                `border-${context.color}-2`,
-                "animate-fade-in",
-              )}
+            <Dialog
+              placement={context.placement}
+              color={context.color}
+              className={clsx("animate-fade-in-list", className)}
             >
               {children}
               <div
                 ref={context.arrowRef}
                 style={computeArrowStyle(context)}
-                className="arrow"
+                className="p8n-arrow"
               ></div>
-            </div>
+            </Dialog>
           </div>
         </FloatingFocusManager>
       </FloatingPortal>

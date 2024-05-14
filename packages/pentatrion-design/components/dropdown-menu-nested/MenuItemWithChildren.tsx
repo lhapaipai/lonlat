@@ -24,7 +24,7 @@ import {
 } from "@floating-ui/react";
 import { FocusEvent, forwardRef, useContext, useEffect, useRef, useState } from "react";
 import { MenuContext } from "./MenuContext";
-import { Button, type ButtonProps } from "../..";
+import { Button, Dialog, type ButtonProps } from "../..";
 import clsx from "clsx";
 
 export interface Props extends ButtonProps {
@@ -55,7 +55,7 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
       onOpenChange: setIsOpen,
       placement: isNested ? "right-start" : "bottom-start",
       middleware: [
-        offset({ mainAxis: isNested ? -1 : 10, alignmentAxis: isNested ? 0 : 0 }),
+        offset({ mainAxis: isNested ? -8 : 10, alignmentAxis: isNested ? 0 : 0 }),
         flip(),
         shift(),
       ],
@@ -144,15 +144,11 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
                 },
               }),
             )}
-            className={clsx(
-              isNested && "option",
-              !isNested && !TriggerComponent && "ll-dropdown-menu-trigger",
-            )}
+            className={clsx(isNested && "option")}
           >
             <span>{label}</span>
-
-            <span className="next-icon ml-auto">
-              <i className="fe-angle-right" aria-hidden></i>
+            <span className="ml-auto">
+              <i className="fe-angle-right mr-0" aria-hidden></i>
             </span>
           </button>
         ) : (
@@ -191,14 +187,8 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
                 returnFocus={!isNested}
               >
                 <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-                  <div
-                    ref={refs.setFloating}
-                    className={clsx("ll-dialog", "ll-dropdown-menu-nested")}
-                    style={floatingStyles}
-                  >
-                    <div className="box" {...getFloatingProps()}>
-                      {children}
-                    </div>
+                  <div ref={refs.setFloating} style={floatingStyles} className="outline-none">
+                    <Dialog {...getFloatingProps()}>{children}</Dialog>
                   </div>
                 </FloatingList>
               </FloatingFocusManager>

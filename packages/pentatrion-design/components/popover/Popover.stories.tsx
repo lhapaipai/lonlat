@@ -34,7 +34,7 @@ export const Basic: Story = {
   args: {
     initialOpen: false,
     placement: "bottom",
-    color: "default",
+    color: "yellow",
     modal: false,
     children: "",
   },
