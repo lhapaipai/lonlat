@@ -124,7 +124,7 @@ export const Basic = () => {
       </div>
       <div className="setting">
         <div>Passages autorisés</div>
-        <div className="ll-input-checkbox-container placement-inline">
+        <div className="">
           <Checkbox checked={true}>Péages</Checkbox>
           <Checkbox checked={false}>Ponts</Checkbox>
         </div>
@@ -132,7 +132,7 @@ export const Basic = () => {
 
       <div className="setting multiple">
         <div>Éviter</div>
-        <div className="ll-input-checkbox-container placement-block">
+        <div className="">
           <Checkbox checked={true}>
             <span>Sections à péage</span>
           </Checkbox>

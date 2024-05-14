@@ -1,5 +1,5 @@
 import { Checkbox } from "~design";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { useState } from "react";
 
 const meta = {
@@ -8,15 +8,16 @@ const meta = {
 } satisfies Meta<typeof Checkbox>;
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
-export const Basic: Story = {
-  args: {
-    disabled: false,
-    children: "I agree",
-    indeterminate: false,
-  },
-};
+export const Basic = () => (
+  <div>
+    <Checkbox>I agree</Checkbox>
+    <Checkbox color="gray">I agree</Checkbox>
+    <Checkbox color="red">I agree</Checkbox>
+    <Checkbox color="orange">I agree</Checkbox>
+    <Checkbox color="blue">I agree</Checkbox>
+    <Checkbox color="green">I agree</Checkbox>
+  </div>
+);
 
 export const Controlled = () => {
   const [checked, setChecked] = useState(false);

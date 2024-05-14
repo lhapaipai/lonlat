@@ -112,6 +112,9 @@ export default {
       mono: defaultTheme.fontFamily.mono,
     },
     extend: {
+      backgroundSize: {
+        full: "100%",
+      },
       // https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js
       dropShadow: {
         arrow: "0 1px 3px rgb(var(--color-gray-3))",

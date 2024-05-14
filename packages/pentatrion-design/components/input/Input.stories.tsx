@@ -32,6 +32,11 @@ export const Context = () => {
   return (
     <div className="flex gap-2 flex-col">
       <Input />
+      <Input color="gray" />
+      <Input color="red" />
+      <Input color="orange" />
+      <Input color="green" />
+      <Input color="blue" />
       <Input placeholder="Your first name" />
       <Input
         prefix={

@@ -1,25 +1,29 @@
 import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import clsx from "clsx";
 
-import "./Input.scss";
+import { ThemeColor } from "~design/types";
 
 export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix"> {
   variant?: "normal" | "ghost";
   disabled?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
+  color?: ThemeColor;
 }
 
 export const inputConfig = {
-  container:
-    "rounded-2xl outline outline-1 outline-offset-[-1px] outline-gray-1 hover:outline-gray-2 flex focus-full:outline-yellow-4 focus-full:outline-2",
+  container: "p8n-input-text rounded-2xl outline-offset-[-1px] flex ",
   input: "h-8 flex-1 appearance-none outline-none filter-none min-w-0 bg-transparent",
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ variant = "normal", disabled = false, prefix, suffix, className, ...rest }, ref) => {
+  (
+    { variant = "normal", color = "yellow", disabled = false, prefix, suffix, className, ...rest },
+    ref,
+  ) => {
     return (
       <div
+        data-color={color}
         className={clsx(
           inputConfig.container,
           disabled && "disabled",

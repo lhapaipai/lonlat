@@ -98,7 +98,7 @@ export const Options = () => {
   return (
     <div className="flex gap-8 flex-col mb-4">
       <div>
-        <Dialog placement="bottom" color="blue" style={{ width: 300 }}>
+        <Dialog placement="bottom" style={{ width: 300 }}>
           <div className="option">Default state 1</div>
           <div className="option active">Active state 2 (keyboard navigation)</div>
           <div className="option">Default state 3</div>
@@ -109,7 +109,7 @@ export const Options = () => {
       </div>
 
       <div>
-        <Dialog placement="bottom" color="blue" style={{ width: 300 }}>
+        <Dialog placement="bottom" style={{ width: 300 }}>
           <div className="option">
             <i className="fe-star mr-2"></i>
             <span>Default state 1</span>
@@ -122,7 +122,7 @@ export const Options = () => {
       </div>
 
       <div>
-        <Dialog placement="bottom" color="blue" style={{ width: 300 }}>
+        <Dialog placement="bottom" style={{ width: 300 }}>
           <div className="option">
             <span className="bullet">A</span>
             <span>Itinéraire depuis ce point</span>
@@ -143,7 +143,7 @@ export const Options = () => {
       </div>
 
       <div>
-        <Dialog placement="bottom" color="blue" style={{ width: 300 }}>
+        <Dialog placement="bottom" style={{ width: 300 }}>
           <div className="option">
             <span className="bullet">A</span>
             <span>Itinéraire depuis ce point</span>
@@ -180,7 +180,7 @@ export const Options = () => {
       </div>
 
       <div>
-        <Dialog placement="bottom" color="blue" style={{ width: 300 }}>
+        <Dialog placement="bottom" style={{ width: 300 }}>
           <div className="overflow-auto max-h-56">
             <div className="option">
               <span className="bullet">A</span>

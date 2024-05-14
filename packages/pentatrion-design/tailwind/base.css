@@ -47,6 +47,10 @@ a:not(.ghost-link) {
   @apply outline outline-offset-2 outline-2 outline-yellow-5 rounded;
 }
 
+textarea:read-only {
+  @apply bg-gray-1;
+}
+
 mark {
   @apply text-gray-8 bg-yellow-1;
 }
