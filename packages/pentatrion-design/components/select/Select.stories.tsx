@@ -129,8 +129,8 @@ export const Searchable = () => {
 //   );
 // };
 
-function isDepartment(department: string | null): department is "38" | "73" | "74" {
-  return department !== null && ["38", "73", "74"].indexOf(department) !== -1;
+function isDepartment(department: number | string | null): department is "38" | "73" | "74" {
+  return department !== null && ["38", "73", "74"].indexOf(department.toString()) !== -1;
 }
 
 export const Dynamic = () => {
@@ -186,7 +186,7 @@ function SelectOptionComponent({ icon, label }: StarOption) {
 
   return (
     <button
-      className={clsx("option", isSelected && "selected", isActive && "active")}
+      className={clsx("dialog-option", isSelected && "selected", isActive && "active")}
       ref={ref}
       role="option"
       aria-selected={isActive && isSelected}

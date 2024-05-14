@@ -49,7 +49,7 @@ export const buttonVariants = {
   variant: {
     contained(color: ThemeColor) {
       return clsx(
-        "shadow hover:shadow-md focus:shadow-md active-full:shadow-lg",
+        "shadow hover:shadow-md focus:shadow-md active-full:shadow-lg outline-offset-0",
         {
           yellow:
             "text-yellow-text bg-yellow-3 hover:bg-yellow-4 active-full:bg-yellow-5 focus-visible:outline-yellow-5",
@@ -81,7 +81,7 @@ export const buttonVariants = {
     },
     text(color: ThemeColor) {
       return clsx(
-        "bg-transparent active-full:shadow-sm",
+        "bg-transparent active-full:shadow-sm outline-offset-0",
         {
           yellow:
             "hover:bg-yellow-1/50 active-full:bg-yellow-2/25 text-yellow-4 hover:text-yellow-5",
@@ -96,7 +96,7 @@ export const buttonVariants = {
     },
     ghost(color: ThemeColor) {
       return clsx(
-        "bg-transparent",
+        "bg-transparent outline-offset-0",
         {
           yellow: "text-yellow-4 hover:text-yellow-5",
           gray: "text-gray-5 hover:text-gray-6 active-full:text-gray-7",
@@ -155,7 +155,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           fullWidth && "w-full",
           selected && "active",
           `button-variant-${variant}`,
-          notClickable && "not-cliquable",
+          notClickable && "disabled",
         )}
         disabled={disabled}
         aria-busy={loading}

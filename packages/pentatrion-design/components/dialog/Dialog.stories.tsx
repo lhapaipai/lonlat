@@ -1,4 +1,6 @@
 import { Meta } from "@storybook/react";
+import Dialog, { dialogVariants } from "./Dialog";
+import { Button } from "../button";
 
 const meta = {
   title: "Components/Dialog",
@@ -9,115 +11,75 @@ export const Basic = () => {
   return (
     <div className="flex gap-8 flex-col mb-4">
       <div>
-        <div className="ll-dialog">
+        <Dialog>
           <div className="description">coucou</div>
-        </div>
+        </Dialog>
       </div>
       <div>
-        <div
-          className="ll-dialog placement-top border-blue-1"
-          data-status="open"
-          role="tooltip"
-          style={{ width: 300 }}
-        >
+        <Dialog placement="top" color="blue" style={{ width: 300 }}>
           <div className="description">infos</div>
-          <div style={{ left: "18px" }} className="arrow"></div>
-        </div>
+          <div style={{ left: "18px" }} className={dialogVariants.arrow("top")}></div>
+        </Dialog>
       </div>
       <div>
-        <div
-          className="ll-dialog placement-bottom border-blue-1"
-          data-status="open"
-          role="tooltip"
-          style={{ width: 300 }}
-        >
+        <Dialog placement="bottom" color="blue" style={{ width: 300 }} status="open">
           <div className="description">infos</div>
-          <div style={{ left: "18px" }} className="arrow"></div>
-        </div>
+          <div style={{ left: "18px" }} className={dialogVariants.arrow("bottom")}></div>
+        </Dialog>
       </div>
       <div>
-        <div
-          className="ll-dialog placement-left border-blue-1"
-          data-status="open"
-          role="tooltip"
-          style={{ width: 300 }}
-        >
+        <Dialog placement="left" color="blue" style={{ width: 300 }} status="open">
           <div className="description">infos</div>
-          <div style={{ top: "18px" }} className="arrow"></div>
-        </div>
+          <div style={{ top: "12px" }} className={dialogVariants.arrow("left")}></div>
+        </Dialog>
       </div>
       <div>
-        <div
-          className="ll-dialog placement-right border-blue-1"
-          data-status="open"
-          role="tooltip"
-          style={{ width: 300 }}
-        >
+        <Dialog placement="right" color="blue" style={{ width: 300 }} status="open">
           <div className="description">infos</div>
-          <div style={{ top: "18px" }} className="arrow"></div>
-        </div>
+          <div style={{ top: "12px" }} className={dialogVariants.arrow("right")}></div>
+        </Dialog>
       </div>
 
       <div>
-        <div
-          className="ll-dialog placement-top border-blue-1"
-          data-status="open"
-          role="tooltip"
-          style={{ width: 300 }}
-        >
+        <Dialog placement="top" color="blue" style={{ width: 300 }} status="open">
           <div className="bar-buttons">
-            <button
-              className="ll-button icon variant-ghost-gray button-gray variant-ghost"
-              aria-busy="false"
-              data-tabindex=""
-            >
+            <Button icon variant="ghost" color="gray">
               <i className="fe-cancel"></i>
-            </button>
+            </Button>
           </div>
 
           <div className="description">infos</div>
-          <div style={{ left: "18px", bottom: "-8px" }} className="arrow"></div>
-        </div>
+          <div
+            style={{ left: "18px", bottom: "-8px" }}
+            className={dialogVariants.arrow("top")}
+          ></div>
+        </Dialog>
       </div>
 
       <div>
-        <div
-          className="ll-dialog placement-top border-yellow-2"
-          style={{ width: 300 }}
-          data-status="open"
-          role="dialog"
-        >
+        <Dialog placement="top" color="blue" style={{ width: 300 }} status="open">
           <div className="bar-buttons">
-            <button
-              className="ll-button icon variant-ghost-gray button-gray variant-ghost"
-              aria-busy="false"
-              data-tabindex=""
-            >
+            <Button icon variant="ghost" color="gray">
               <i className="fe-cancel"></i>
-            </button>
+            </Button>
           </div>
           <header className="header">
             <h4>Heading</h4>
           </header>
           <div className="description">description</div>
-          <div style={{ left: "18px", bottom: "-8px" }} className="arrow"></div>
-        </div>
+          <div
+            style={{ left: "18px", bottom: "-8px" }}
+            className={dialogVariants.arrow("top")}
+          ></div>
+        </Dialog>
       </div>
+
       <div>
-        <div
-          className="ll-dialog placement-top border-yellow-2"
-          style={{ width: 300 }}
-          data-status="open"
-          role="dialog"
-        >
+        <Dialog placement="top" color="yellow" style={{ width: 300 }} status="open">
           <div className="bar-buttons">
-            <button
-              className="ll-button icon variant-ghost-gray button-gray variant-ghost"
-              aria-busy="false"
-              data-tabindex=""
-            >
+            <Button icon variant="ghost" color="gray">
               <i className="fe-cancel"></i>
-            </button>
+            </Button>
           </div>
           <header className="header">
             <h4>Heading</h4>
@@ -125,24 +87,17 @@ export const Basic = () => {
           <div className="description">description</div>
           <footer className="footer">
             <div className="actions">
-              <button
-                className="ll-button variant-outlined-gray button-gray variant-outlined"
-                aria-busy="false"
-                data-tabindex=""
-              >
+              <Button variant="outlined" color="gray">
                 Annuler
-              </button>
-              <button
-                className="ll-button variant-solid-yellow button-yellow variant-solid"
-                aria-busy="false"
-                data-tabindex=""
-              >
-                Valider
-              </button>
+              </Button>
+              <Button color="yellow">Valider</Button>
             </div>
           </footer>
-          <div style={{ left: "18px", bottom: "-8px" }} className="arrow"></div>
-        </div>
+          <div
+            style={{ left: "18px", bottom: "-8px" }}
+            className={dialogVariants.arrow("top")}
+          ></div>
+        </Dialog>
       </div>
     </div>
   );
@@ -152,172 +107,184 @@ export const Options = () => {
   return (
     <div className="flex gap-8 flex-col mb-4">
       <div>
-        <div className="ll-dialog">
-          <div className="option">Default state 1</div>
-          <div className="option active">Active state 2 (keyboard navigation)</div>
-          <div className="option">Default state 3</div>
-          <div className="option selected">Selected state 4</div>
-          <div className="option">Default state 5</div>
-          <div className="option">Default state 6</div>
-        </div>
+        <Dialog placement="bottom" color="blue" style={{ width: 300 }} status="open">
+          <div className="dialog-option">Default state 1</div>
+          <div className="dialog-option active">Active state 2 (keyboard navigation)</div>
+          <div className="dialog-option">Default state 3</div>
+          <div className="dialog-option selected">Selected state 4</div>
+          <div className="dialog-option">Default state 5</div>
+          <div className="dialog-option">Default state 6</div>
+        </Dialog>
       </div>
 
       <div>
-        <div className="ll-dialog">
-          <div className="option">
+        <Dialog placement="bottom" color="blue" style={{ width: 300 }} status="open">
+          <div className="dialog-option">
             <i className="fe-star"></i>
-            <span className="content">Default state 1</span>
+            <span>Default state 1</span>
           </div>
-          <div className="option">
+          <div className="dialog-option">
             <i className="fe-marker"></i>
-            <span className="content">State 2</span>
+            <span>State 2</span>
           </div>
-        </div>
+        </Dialog>
       </div>
 
       <div>
-        <div className="ll-dialog compact">
-          <div className="option">
+        <Dialog
+          placement="bottom"
+          className="compact"
+          color="blue"
+          style={{ width: 300 }}
+          status="open"
+        >
+          <div className="dialog-option">
             <span className="bullet">A</span>
-            <span className="content">Itinéraire depuis ce point</span>
+            <span>Itinéraire depuis ce point</span>
           </div>
-          <div className="option discret">
-            <i className="fe-point-inter"></i>
-            <span className="content">Ajouter un point</span>
+          <div className="dialog-option text-gray-6">
+            <i className="fe-point-inter mr-2"></i>
+            <span>Ajouter un point</span>
           </div>
-          <div className="option">
+          <div className="dialog-option">
             <span className="bullet">B</span>
-            <span className="content">Itinéraire vers ce point</span>
+            <span>Itinéraire vers ce point</span>
           </div>
-          <div className="option">
-            <i className="fe-plus"></i>
-            <span className="content">Prolonger l'itinéraire jusqu'ici</span>
+          <div className="dialog-option">
+            <i className="fe-plus mr-2"></i>
+            <span>Prolonger l'itinéraire jusqu'ici</span>
           </div>
-        </div>
+        </Dialog>
       </div>
 
       <div>
-        <div className="ll-dialog compact">
-          <div className="option">
+        <Dialog
+          placement="bottom"
+          className="compact"
+          color="blue"
+          style={{ width: 300 }}
+          status="open"
+        >
+          <div className="dialog-option">
             <span className="bullet">A</span>
-            <span className="content">Itinéraire depuis ce point</span>
+            <span>Itinéraire depuis ce point</span>
           </div>
-          <div className="option discret">
-            <i className="fe-point-inter"></i>
-            <span className="content">point intermédiaire</span>
+          <div className="dialog-option text-gray-6">
+            <i className="fe-point-inter mr-2"></i>
+            <span className="text-sm">point intermédiaire</span>
           </div>
-          <div className="option">
+          <div className="dialog-option">
             <span className="bullet">B</span>
-            <span className="content">Déplacer ce point</span>
+            <span>Déplacer ce point</span>
           </div>
-          <div className="option discret">
-            <i className="fe-point-inter"></i>
-            <span className="content">point intermédiaire</span>
+          <div className="dialog-option text-gray-6">
+            <i className="fe-point-inter mr-2"></i>
+            <span className="text-sm">point intermédiaire</span>
           </div>
-          <div className="option">
+          <div className="dialog-option">
             <span className="bullet">C</span>
-            <span className="content">Déplacer ce point</span>
+            <span>Déplacer ce point</span>
           </div>
-          <div className="option discret">
-            <i className="fe-point-inter"></i>
-            <span className="content">point intermédiaire</span>
+          <div className="dialog-option text-gray-6">
+            <i className="fe-point-inter mr-2"></i>
+            <span className="text-sm">point intermédiaire</span>
           </div>
-          <div className="option">
+          <div className="dialog-option">
             <span className="bullet">D</span>
-            <span className="content">Itinéraire vers ce point</span>
+            <span>Itinéraire vers ce point</span>
           </div>
-          <div className="option">
-            <i className="fe-plus"></i>
-            <span className="content">Prolonger l'itinéraire jusqu'ici</span>
+          <div className="dialog-option">
+            <i className="fe-plus mr-2"></i>
+            <span>Prolonger l'itinéraire jusqu'ici</span>
           </div>
-        </div>
+        </Dialog>
       </div>
 
       <div>
-        <div className="ll-dialog compact">
-          <div className="options-container">
-            <div className="option">
+        <Dialog placement="bottom" color="blue" style={{ width: 300 }} status="open">
+          <div className="dialog-options-container">
+            <div className="dialog-option">
               <span className="bullet">A</span>
-              <span className="content">Itinéraire depuis ce point</span>
+              <span>Itinéraire depuis ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">B</span>
-              <span className="content">Déplacer ce point</span>
+              <span>Déplacer ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">C</span>
-              <span className="content">Déplacer ce point</span>
+              <span>Déplacer ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">D</span>
-              <span className="content">Itinéraire vers ce point</span>
+              <span>Itinéraire vers ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">E</span>
-              <span className="content">Itinéraire vers ce point</span>
+              <span>Itinéraire vers ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">F</span>
-              <span className="content">Itinéraire vers ce point</span>
+              <span>Itinéraire vers ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">G</span>
-              <span className="content">Itinéraire vers ce point</span>
+              <span>Itinéraire vers ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">H</span>
-              <span className="content">Itinéraire vers ce point</span>
+              <span>Itinéraire vers ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">I</span>
-              <span className="content">Itinéraire vers ce point</span>
+              <span>Itinéraire vers ce point</span>
             </div>
-            <div className="option discret">
-              <i className="fe-point-inter"></i>
-              <span className="content">point intermédiaire</span>
+            <div className="dialog-option text-gray-6">
+              <i className="fe-point-inter mr-2"></i>
+              <span className="text-sm">point intermédiaire</span>
             </div>
-            <div className="option">
+            <div className="dialog-option">
               <span className="bullet">J</span>
-              <span className="content">Itinéraire vers ce point</span>
+              <span>Itinéraire vers ce point</span>
             </div>
           </div>
-          <div className="option">
+          <div className="dialog-option">
             <i className="fe-plus"></i>
-            <span className="content">Prolonger l'itinéraire jusqu'ici</span>
+            <span>Prolonger l'itinéraire jusqu'ici</span>
           </div>
-        </div>
+        </Dialog>
       </div>
     </div>
   );

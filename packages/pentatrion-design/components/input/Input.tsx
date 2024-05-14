@@ -13,27 +13,39 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ variant = "normal", disabled = false, prefix, suffix, className, ...rest }, ref) => {
     return (
-      <div className={clsx("ll-input", disabled && "disabled", `variant-${variant}`, className)}>
+      <div
+        className={clsx(
+          "rounded-2xl outline outline-1 outline-offset-[-1px] outline-gray-1 hover:outline-gray-2 flex focus-full:outline-yellow-4 focus-full:outline-2",
+          disabled && "disabled",
+          `variant-${variant}`,
+          className,
+        )}
+      >
         {prefix && (
           <div
             className={clsx([
-              "flex-center",
-              "adornment",
-              "prefix",
-              typeof prefix === "string" && "ml-2",
+              "flex-center relative",
+              typeof prefix === "string" && "mx-2 select-none text-gray-6",
             ])}
           >
             {prefix}
           </div>
         )}
-        <input ref={ref} className={clsx("input-element")} {...rest} disabled={disabled} />
+        <input
+          ref={ref}
+          className={clsx(
+            "h-8 flex-1 appearance-none outline-none filter-none min-w-0 bg-transparent",
+            !prefix && "pl-4",
+            !suffix && "pr-4",
+          )}
+          {...rest}
+          disabled={disabled}
+        />
         {suffix && (
           <div
             className={clsx([
-              "flex-center",
-              "adornment",
-              "suffix",
-              typeof suffix === "string" && "mr-2",
+              "flex-center relative",
+              typeof suffix === "string" && "mx-2 select-none text-gray-6",
             ])}
           >
             {suffix}

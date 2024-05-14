@@ -25,7 +25,6 @@ import {
 } from "@floating-ui/react";
 
 import "../dialog/Dialog.scss";
-import "../select/Select.scss";
 
 import "./ContextMenu.scss";
 import { ContextMenuItemProps } from "./ContextMenuItem";

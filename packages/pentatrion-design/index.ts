@@ -16,6 +16,7 @@ export { default as Href } from "./components/href/Href";
 export * from "./components/autocomplete";
 export * from "./components/button";
 export * from "./components/context-menu";
+export * from "./components/dialog";
 export * from "./components/dropdown-menu";
 export * from "./components/dropdown-menu-nested";
 export * from "./components/input";

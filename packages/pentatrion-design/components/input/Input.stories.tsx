@@ -33,12 +33,20 @@ export const Context = () => {
     <div className="flex gap-2 flex-col">
       <Input />
       <Input placeholder="Your first name" />
-      <Input prefix={<i className="fe-search"></i>} />
+      <Input
+        prefix={
+          <span className="w-8 h-8 flex-center">
+            <i className="fe-search"></i>
+          </span>
+        }
+      />
       <Input
         prefix={
           <>
-            <i className="fe-search"></i>
             <Loader size="medium" color="gray" />
+            <span className="w-8 h-8 flex-center -ml-8">
+              <i className="fe-search"></i>
+            </span>
           </>
         }
       />

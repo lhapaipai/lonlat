@@ -11,7 +11,6 @@ import {
   useState,
 } from "react";
 import "../dialog/Dialog.scss";
-import "./Select.scss";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -33,7 +32,7 @@ import {
 import { SelectContext } from "./useSelectContext.ts";
 import SelectSelection, { SelectSelectionProps } from "./SelectSelection.tsx";
 
-import { Input, Button, useEventCallback } from "../..";
+import { Input, Button, useEventCallback, Dialog } from "../..";
 import type { Option } from "./interface";
 import clsx from "clsx";
 
@@ -46,7 +45,6 @@ type ChangeEventLike = {
 
 type Props<O extends Option = Option> = {
   disabled?: boolean;
-  variant?: "normal" | "ghost";
   showArrow?: boolean;
   selectionClassName?: string;
   width?: number | string;
@@ -72,7 +70,6 @@ const Select = forwardRef<HTMLDivElement, Props>(
   (
     {
       disabled = false,
-      variant = "normal",
       showArrow = true,
       selectionClassName,
       width = "100%",
@@ -231,12 +228,14 @@ const Select = forwardRef<HTMLDivElement, Props>(
       [activeIndex, selectedIndex, getItemProps, handleSelect],
     );
 
+    const showCancelButton = !required && selectedIndex !== null;
+
     return (
-      <div className={clsx("ll-select")}>
+      <div>
         <div
           className={clsx(
-            "selection",
-            `variant-${variant}`,
+            // "selection",
+            "rounded-2xl outline outline-1 outline-offset-[-1px] outline-gray-1 hover:outline-gray-2 flex focus-full:outline-yellow-4 focus-full:outline-2",
             selectionClassName,
             isOpen && "focus",
             disabled && "disabled",
@@ -248,18 +247,19 @@ const Select = forwardRef<HTMLDivElement, Props>(
           }}
           {...getReferenceProps()}
         >
-          <span className="input-element">
+          <span className={clsx("h-8 flex-1 flex items-center px-2")}>
             {selectedIndex !== null ? (
               <SelectSelectionComponent {...filteredOptions[selectedIndex]} key={selectedIndex} />
             ) : (
               placeholder
             )}
           </span>
-          {!required && selectedIndex !== null && (
+          {showCancelButton && (
             <Button
               withRipple={false}
               icon
-              variant="ghost"
+              variant="text"
+              color="gray"
               onMouseDown={(e) => {
                 // we don't want dropdown to open
                 e.stopPropagation();
@@ -271,18 +271,10 @@ const Select = forwardRef<HTMLDivElement, Props>(
               <i className="fe-cancel"></i>
             </Button>
           )}
-          {showArrow && (
-            <div className="arrow">
-              <div
-                className={clsx(
-                  "w-[1px] h-[24px] bg-[--color-gray-3]",
-                  variant === "ghost" && "bg-transparent hover:bg-[--color-gray-3]",
-                )}
-              ></div>
-              <Button color="gray" withRipple={false} icon variant="outlined" focusable={false}>
-                <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
-              </Button>
-            </div>
+          {!showCancelButton && showArrow && (
+            <Button color="gray" withRipple={false} icon variant="text" focusable={false}>
+              <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
+            </Button>
           )}
         </div>
         <FloatingPortal>
@@ -298,16 +290,12 @@ const Select = forwardRef<HTMLDivElement, Props>(
                   }}
                   {...getFloatingProps()}
                 >
-                  <div
-                    className={clsx(
-                      "ll-dialog",
-                      `placement-${context.placement}`,
-                      "ll-select-dialog",
-                      "animate-fade-in-list",
-                    )}
+                  <Dialog
+                    placement={context.placement}
+                    className="ll-select-dialog animate-fade-in-list"
                   >
                     {searchable && (
-                      <div className="search-container">
+                      <div className="p-2">
                         <Input
                           placeholder="Search"
                           tabIndex={selectedIndex === null ? 0 : -1}
@@ -333,9 +321,9 @@ const Select = forwardRef<HTMLDivElement, Props>(
                           <button
                             key={option.value}
                             className={clsx(
-                              "option",
-                              isSelected && "selected",
-                              isActive && "active",
+                              "dialog-option",
+                              isSelected && "bg-gray-2",
+                              isActive && "bg-gray-1",
                             )}
                             role="option"
                             aria-selected={isActive && isSelected}
@@ -352,7 +340,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
                         );
                       })
                     )}
-                  </div>
+                  </Dialog>
                 </div>
               </FloatingFocusManager>
             )}

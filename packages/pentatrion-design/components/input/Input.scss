@@ -1,25 +1,24 @@
 .ll-input,
 .ll-textarea,
 .ll-select .selection {
-    border-radius: var(--border-radius-2xl);
-    transition: all .3s ease;
-    transition: outline-width 0s ease;
-    outline: solid 1px transparent;
-    display: flex;
+    // transition: all .3s ease;
+    // transition: outline-width 0s ease;
+    // outline: solid 1px transparent;
+    // display: flex;
 
-    &.variant-normal {
-        outline-color: rgb(var(--color-gray-1));
-    }
+    // &.variant-normal {
+    //     outline-color: rgb(var(--color-gray-1));
+    // }
 
-    &:hover {
-        outline-color: var(--color-gray-1);
-    }
+    // &:hover {
+    //     outline-color: var(--color-gray-1);
+    // }
 
-    &:focus-within,
-    &.focus {
-        outline-color: rgb(var(--color-yellow-4));
-        outline-width: 2px;
-    }
+    // &:focus-within,
+    // &.focus {
+    //     outline-color: rgb(var(--color-yellow-4));
+    //     outline-width: 2px;
+    // }
 
     &.orange {
         outline-color: rgb(var(--color-orange-4));
@@ -29,11 +28,11 @@
         outline-color: rgb(var(--color-red-4));
     }
 
-    &.disabled {
-        pointer-events: none;
-        color: var(--text-gray, inherit);
-        opacity: .5;
-    }
+    // &.disabled {
+    //     pointer-events: none;
+    //     color: var(--text-gray, inherit);
+    //     opacity: .5;
+    // }
 }
 
 .ll-textarea {
@@ -45,48 +44,53 @@
 .ll-input,
 .ll-select .selection {
 
+    // &:has(input:focus) {
+    //     background-color: red;
+    // }
+
     .input-element {
-        padding: .375rem .5rem;
-        flex: 1;
-        appearance: none;
-        outline: none;
-        filter: none; // Firefox autofill color
-        border: 0;
-        background: none;
-        min-width: 0;
-        line-height: 1.25rem;
+        // padding: .375rem .5rem;
+        // flex: 1;
+        // border: 0;
+        // background: none;
+        // line-height: 1.25rem;
+
+        // min-width: 0;
+        // appearance: none;
+        // outline: none;
+        // filter: none; // Firefox autofill color
     }
 
-    .adornment+.input-element {
-        padding-left: 2px;
-    }
+    // .adornment+.input-element {
+    //     padding-left: 2px;
+    // }
 
-    .adornment {
-        color: var(--color-gray-2);
-        position: relative;
+    // .adornment {
+    //     color: var(--color-gray-2);
+    //     position: relative;
 
-        &>[class^="fe-"] {
-            margin: 0 .5rem;
-        }
+    //     &>[class^="fe-"] {
+    //         margin: 0 .5rem;
+    //     }
 
-        svg {
-            pointer-events: none;
-        }
-    }
+    //     svg {
+    //         pointer-events: none;
+    //     }
+    // }
 
-    .ll-button {
-        margin: 1px;
-    }
+    // .ll-button {
+    //     margin: 1px;
+    // }
 
-    .ll-loader {
-        position: absolute;
-    }
+    // .ll-loader {
+    //     position: absolute;
+    // }
 
-    .prefix .ll-loader {
-        left: 2px;
-    }
+    // .prefix .ll-loader {
+    //     left: 2px;
+    // }
 
-    .suffix .ll-loader {
-        right: 2px;
-    }
+    // .suffix .ll-loader {
+    //     right: 2px;
+    // }
 }

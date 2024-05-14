@@ -12,6 +12,10 @@ export default {
   darkMode: ["class"],
 
   theme: {
+    transitionDuration: {
+      ...defaultTheme.transitionDuration,
+      DEFAULT: "300ms",
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",
@@ -185,6 +189,8 @@ export default {
   plugins: [
     plugin(function ({ addVariant }) {
       addVariant("active-full", ["&:active", "&.active"]);
+      // addVariant("focus-full", ["&:focus-within", "&.focus", "&:focus"]);
+      addVariant("focus-full", ["&:has(input:focus)", "&.focus", "&:focus"]);
     }),
   ],
 };
