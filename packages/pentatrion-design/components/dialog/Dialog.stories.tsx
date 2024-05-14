@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import Dialog, { dialogVariants } from "./Dialog";
+import Dialog from "./Dialog";
 import { Button } from "../button";
 
 const meta = {
@@ -18,25 +18,25 @@ export const Basic = () => {
       <div>
         <Dialog placement="top" color="blue" style={{ width: 300 }}>
           <div className="description">infos</div>
-          <div style={{ left: "18px" }} className={dialogVariants.arrow("top")}></div>
+          <div style={{ left: "18px" }} className="arrow"></div>
         </Dialog>
       </div>
       <div>
         <Dialog placement="bottom" color="blue" style={{ width: 300 }} status="open">
           <div className="description">infos</div>
-          <div style={{ left: "18px" }} className={dialogVariants.arrow("bottom")}></div>
+          <div style={{ left: "18px" }} className="arrow"></div>
         </Dialog>
       </div>
       <div>
         <Dialog placement="left" color="blue" style={{ width: 300 }} status="open">
           <div className="description">infos</div>
-          <div style={{ top: "12px" }} className={dialogVariants.arrow("left")}></div>
+          <div style={{ top: "12px" }} className="arrow"></div>
         </Dialog>
       </div>
       <div>
         <Dialog placement="right" color="blue" style={{ width: 300 }} status="open">
           <div className="description">infos</div>
-          <div style={{ top: "12px" }} className={dialogVariants.arrow("right")}></div>
+          <div style={{ top: "12px" }} className="arrow"></div>
         </Dialog>
       </div>
 
@@ -49,10 +49,7 @@ export const Basic = () => {
           </div>
 
           <div className="description">infos</div>
-          <div
-            style={{ left: "18px", bottom: "-8px" }}
-            className={dialogVariants.arrow("top")}
-          ></div>
+          <div style={{ left: "18px", bottom: "-8px" }} className="arrow"></div>
         </Dialog>
       </div>
 
@@ -67,10 +64,7 @@ export const Basic = () => {
             <h4>Heading</h4>
           </header>
           <div className="description">description</div>
-          <div
-            style={{ left: "18px", bottom: "-8px" }}
-            className={dialogVariants.arrow("top")}
-          ></div>
+          <div style={{ left: "18px", bottom: "-8px" }} className="arrow"></div>
         </Dialog>
       </div>
 
@@ -93,10 +87,7 @@ export const Basic = () => {
               <Button color="yellow">Valider</Button>
             </div>
           </footer>
-          <div
-            style={{ left: "18px", bottom: "-8px" }}
-            className={dialogVariants.arrow("top")}
-          ></div>
+          <div style={{ left: "18px", bottom: "-8px" }} className="arrow"></div>
         </Dialog>
       </div>
     </div>
