@@ -31,14 +31,14 @@ export const Basic = () => {
         <div className="setting">
           <div>Coordonnées</div>
           <div>
-            <span className="text-neutral-2 text-sm">lon/lat </span>
+            <span className="text-gray-6 text-sm">lon/lat </span>
             6.497886, 46.091857
           </div>
         </div>
         <div className="setting">
           <div>Altitude</div>
           <div>
-            500 <span className="text-neutral-2 text-sm">m</span>
+            500 <span className="text-gray-6 text-sm">m</span>
           </div>
         </div>
       </div>
@@ -151,7 +151,7 @@ export const Basic = () => {
         <div className="setting">
           <div>Distance</div>
           <div>
-            325 <span className="text-neutral-2 text-sm">km</span>
+            325 <span className="text-gray-6 text-sm">km</span>
           </div>
         </div>
         <div className="setting">

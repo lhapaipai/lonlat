@@ -9,7 +9,7 @@ interface Props extends ComponentPropsWithoutRef<"svg"> {
 }
 
 const sizeConfig = {
-  small: "w-4 h-4 text-base",
+  small: "w-6 h-6 text-base",
   medium: "w-8 h-8 text-[2rem]",
   large: "w-12 h-12 text-[3rem]",
 };

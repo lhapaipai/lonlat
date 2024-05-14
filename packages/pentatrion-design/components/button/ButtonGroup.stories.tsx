@@ -1,4 +1,4 @@
-import { ButtonGroup, Button } from "~design";
+import { ButtonGroup, Button, ThemeColor } from "~design";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 
@@ -8,177 +8,37 @@ const meta = {
 } satisfies Meta<typeof ButtonGroup>;
 export default meta;
 
+const buttonLabels = ["one", "two", "three"];
+const colors: ThemeColor[] = ["yellow", "gray", "blue", "red"];
+const variants = ["contained", "outlined", "text"] as const;
+const directions = ["horizontal", "vertical"] as const;
 export const Context = () => {
   const [val, setVal] = useState("one");
   return (
     <div className="grid grid-cols-1 gap-8">
-      <div className="flex flex-col gap-4">
-        <ButtonGroup>
-          <Button selected={val === "one"} onClick={() => setVal("one")}>
-            One
-          </Button>
-          <Button selected={val === "two"} onClick={() => setVal("two")}>
-            Two
-          </Button>
-          <Button selected={val === "three"} onClick={() => setVal("three")}>
-            Three
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button color="blue" selected={val === "one"} onClick={() => setVal("one")}>
-            One
-          </Button>
-          <Button color="blue" selected={val === "two"} onClick={() => setVal("two")}>
-            Two
-          </Button>
-          <Button color="blue" selected={val === "three"} onClick={() => setVal("three")}>
-            Three
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button variant="outlined" selected={val === "one"} onClick={() => setVal("one")}>
-            One
-          </Button>
-          <Button variant="outlined" selected={val === "two"} onClick={() => setVal("two")}>
-            Two
-          </Button>
-          <Button variant="outlined" selected={val === "three"} onClick={() => setVal("three")}>
-            Three
-          </Button>
-        </ButtonGroup>
-
-        <ButtonGroup>
-          <Button
-            variant="outlined"
-            color="gray"
-            selected={val === "one"}
-            onClick={() => setVal("one")}
-          >
-            One
-          </Button>
-          <Button
-            variant="outlined"
-            color="gray"
-            selected={val === "two"}
-            onClick={() => setVal("two")}
-          >
-            Two
-          </Button>
-          <Button
-            variant="outlined"
-            color="gray"
-            selected={val === "three"}
-            onClick={() => setVal("three")}
-          >
-            Three
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button variant="ghost" selected={val === "one"} onClick={() => setVal("one")}>
-            One
-          </Button>
-          <Button variant="ghost" selected={val === "two"} onClick={() => setVal("two")}>
-            Two
-          </Button>
-          <Button variant="ghost" selected={val === "three"} onClick={() => setVal("three")}>
-            Three
-          </Button>
-        </ButtonGroup>
-
-        <ButtonGroup>
-          <Button
-            variant="ghost"
-            color="red"
-            selected={val === "one"}
-            onClick={() => setVal("one")}
-          >
-            One
-          </Button>
-          <Button
-            variant="ghost"
-            color="red"
-            selected={val === "two"}
-            onClick={() => setVal("two")}
-          >
-            Two
-          </Button>
-          <Button
-            variant="ghost"
-            color="red"
-            selected={val === "three"}
-            onClick={() => setVal("three")}
-          >
-            Three
-          </Button>
-        </ButtonGroup>
-      </div>
-      <div className="flex flex-col gap-4" style={{ maxWidth: "400px" }}>
-        <ButtonGroup direction="vertical">
-          <Button selected={val === "one"} onClick={() => setVal("one")}>
-            One
-          </Button>
-          <Button selected={val === "two"} onClick={() => setVal("two")}>
-            Two
-          </Button>
-          <Button selected={val === "three"} onClick={() => setVal("three")}>
-            Three
-          </Button>
-        </ButtonGroup>
-
-        <ButtonGroup direction="vertical">
-          <Button
-            variant="outlined"
-            color="gray"
-            selected={val === "one"}
-            onClick={() => setVal("one")}
-          >
-            One
-          </Button>
-          <Button
-            variant="outlined"
-            color="gray"
-            selected={val === "two"}
-            onClick={() => setVal("two")}
-          >
-            Two
-          </Button>
-          <Button
-            variant="outlined"
-            color="gray"
-            selected={val === "three"}
-            onClick={() => setVal("three")}
-          >
-            Three
-          </Button>
-        </ButtonGroup>
-
-        <ButtonGroup direction="vertical">
-          <Button
-            variant="ghost"
-            color="gray"
-            selected={val === "one"}
-            onClick={() => setVal("one")}
-          >
-            One
-          </Button>
-          <Button
-            variant="ghost"
-            color="gray"
-            selected={val === "two"}
-            onClick={() => setVal("two")}
-          >
-            Two
-          </Button>
-          <Button
-            variant="ghost"
-            color="gray"
-            selected={val === "three"}
-            onClick={() => setVal("three")}
-          >
-            Three
-          </Button>
-        </ButtonGroup>
-      </div>
+      {directions.map((direction) => (
+        <div className="flex flex-col gap-4">
+          {variants.map((variant) => (
+            <div key={variant} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+              {colors.map((color) => (
+                <ButtonGroup key={color} direction={direction}>
+                  {buttonLabels.map((label) => (
+                    <Button
+                      variant={variant}
+                      color={color}
+                      key={label}
+                      selected={val === label}
+                      onClick={() => setVal(label)}
+                    >
+                      {label}
+                    </Button>
+                  ))}
+                </ButtonGroup>
+              ))}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

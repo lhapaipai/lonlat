@@ -28,7 +28,7 @@
 
     .tabs-list-item {
         border-top: 4px solid transparent;
-        color: rgb(var(--color-neutral-2));
+        color: rgb(var(--color-gray-6));
         transition: .3s ease;
 
         &.selected {
@@ -38,7 +38,7 @@
 
         &:hover,
         &.selected {
-            color: rgb(var(--color-neutral-1));
+            color: rgb(var(--color-gray-7));
         }
 
         button {

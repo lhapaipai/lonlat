@@ -26,5 +26,5 @@ export default function Hightlight({ value, indices, minLength = 2 }: Props) {
   if (lastIndex <= value.length) {
     content.push(value.substring(lastIndex));
   }
-  return <span className="text-neutral-2">{content}</span>;
+  return <span className="text-gray-6">{content}</span>;
 }

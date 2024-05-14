@@ -8,7 +8,7 @@
     line-height: 24px;
   }
   body {
-    @apply font-sans bg-gray-0 text-neutral-1;
+    @apply font-sans bg-gray-0 text-gray-7;
   }
   .light {
     color-scheme: light;
@@ -45,21 +45,16 @@
   }
 
   a:not(.ghost-link) {
-    @apply decoration-neutral-0 underline text-neutral-0 visited:text-neutral-0 active:text-yellow-5 hover:decoration-2 hover:decoration-yellow-5 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-2 focus-visible:outline-yellow-5 focus-visible:rounded;
+    @apply decoration-gray-8 underline text-gray-8 visited:text-gray-8 active:text-yellow-5 hover:decoration-2 hover:decoration-yellow-5 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-2 focus-visible:outline-yellow-5 focus-visible:rounded;
   }
 
   mark {
-    @apply text-neutral-0 bg-yellow-1;
+    @apply text-gray-8 bg-yellow-1;
   }
 
   :root {
     --color-white: 255 255 255;
     --color-black: 0 0 0;
-
-    --color-neutral-0: 0 0 0; /* rgb(0, 0, 0); */
-    --color-neutral-1: 50 50 50; /* rgb(50, 50, 50); */
-    /* text-hint text-disabled */
-    --color-neutral-2: 100 100 100; /* rgb(100, 100, 100); */
 
     /* bg outlined color */
     --color-yellow-1: 255 250 199; /* rgb(255, 250, 199); */
@@ -75,35 +70,35 @@
 
     /* text hover color, button active bgcolor */
     --color-yellow-5: 219 167 38; /* rgb(219, 167, 38); */
-    --color-yellow-text: var(--color-neutral-1);
+    --color-yellow-text: var(--color-gray-7);
 
     --color-green-1: 232 245 212; /* rgb(232, 245, 212); */
     --color-green-2: 209 235 170; /* rgb(209, 235, 170); */
     --color-green-3: 162 215 87; /* rgb(162, 215, 87); */
     --color-green-4: 138 200 66; /* rgb(138, 200, 66); */
     --color-green-5: 79 158 35; /* rgb(79, 158, 35); */
-    --color-green-text: var(--color-neutral-1);
+    --color-green-text: var(--color-gray-7);
 
     --color-blue-1: 237 247 255; /* rgb(237, 247, 255); */
     --color-blue-2: 203 232 255; /* rgb(203, 232, 255); */
     --color-blue-3: 131 203 255; /* rgb(131, 203, 255);*/
     --color-blue-4: 75 167 230; /* rgb(75, 167, 230);*/
     --color-blue-5: 37 126 158; /* rgb(37, 126, 158);*/
-    --color-blue-text: var(--color-neutral-1);
+    --color-blue-text: var(--color-gray-7);
 
     --color-orange-1: 255 244 219; /* rgb(255, 244, 219); */
     --color-orange-2: 255 221 179; /* rgb(255, 221, 179); */
     --color-orange-3: 255 176 100; /* rgb(255, 176, 100); */
     --color-orange-4: 230 140 53; /* rgb(230, 140, 53); */
     --color-orange-5: 179 91 38; /* rgb(179, 91, 38); */
-    --color-orange-text: var(--color-neutral-1);
+    --color-orange-text: var(--color-gray-7);
 
     --color-red-1: 255 219 219; /* rgb(255, 219, 219); */
     --color-red-2: 255 183 183; /* rgb(255, 183, 183); */
     --color-red-3: 255 111 111; /* rgb(255, 111, 111); */
     --color-red-4: 230 62 62; /* rgb(230, 62, 62); */
     --color-red-5: 179 38 38; /* rgb(179, 38, 38); */
-    --color-red-text: var(--color-neutral-1);
+    --color-red-text: var(--color-gray-7);
 
     --color-gray-0: 255 255 255; /* rgb(255, 255, 255); */
     --color-gray-1: 242 242 242; /* rgb(242, 242, 242); */
@@ -111,14 +106,13 @@
     --color-gray-3: 204 204 204; /* rgb(204, 204, 204); */
     --color-gray-4: 180 180 180; /* rgb(180, 180, 180); */
     --color-gray-5: 140 140 140; /* rgb(140, 140, 140); */
-    --color-gray-text: var(--color-neutral-1);
+    /* text-hint text-disabled */
+    --color-gray-6: 90 90 90; /* rgb(90, 90, 90); */
+    --color-gray-7: 50 50 50; /* rgb(50, 50, 50); */
+    --color-gray-8: 0 0 0; /* rgb(0, 0, 0); */
+    --color-gray-text: var(--color-gray-7);
   }
   .dark {
-    --color-neutral-0: 255 255 255; /* rgb(255, 255, 255); */
-    --color-neutral-1: 210 210 210; /* rgb(210, 210, 210); */
-    /* text-hint text-disabled */
-    --color-neutral-2: 160 160 160; /* rgb(160, 160, 160); */
-
     /* text hover color, button active bgcolor */
     --color-yellow-5: 255 250 199; /* rgb(255, 250, 199); */
     /* text color, button hover bgcolor */
@@ -160,13 +154,17 @@
     --color-red-1: 179 38 38; /* rgb(179, 38, 38); */
     --color-red-text: var(--color-gray-0);
 
+    --color-gray-8: 255 255 255; /* rgb(255, 255, 255); */
+    --color-gray-7: 220 220 220; /* rgb(220, 220, 220); */
+    /* text-hint text-disabled */
+    --color-gray-6: 180 180 180; /* rgb(180, 180, 180); */
     --color-gray-5: 140 140 140; /* rgb(140, 140, 140); */
     --color-gray-4: 100 100 100; /* rgb(100, 100, 100); */
     --color-gray-3: 75 75 75; /* rgb(75, 75, 75); */
     --color-gray-2: 50 50 50; /* rgb(50, 50, 50); */
     --color-gray-1: 35 35 35; /* rgb(35, 35, 35); */
     --color-gray-0: 15 18 18; /* rgb(15, 18, 18); */
-    --color-gray-text: var(--color-neutral-0);
+    --color-gray-text: var(--color-gray-8);
   }
 }
 
@@ -178,10 +176,10 @@
 
 @layer components {
   .can-copy {
-    @apply underline decoration-dashed decoration-gray-3 cursor-copy hover:decoration-neutral-1;
+    @apply underline decoration-dashed decoration-gray-3 cursor-copy hover:decoration-gray-7;
   }
   .not-cliquable {
-    @apply pointer-events-none text-neutral-2;
+    @apply pointer-events-none text-gray-6;
   }
   .not-cliquable[disabled] {
     @apply opacity-50;

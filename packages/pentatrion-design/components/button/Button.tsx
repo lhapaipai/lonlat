@@ -14,6 +14,11 @@ export interface ButtonProps extends ComponentPropsWithRef<"button"> {
 
   children?: React.ReactNode;
 
+  /**
+   * undefined: hidden
+   * false: invisible
+   * true: visible
+   */
   loading?: boolean;
 
   disabled?: boolean;
@@ -30,15 +35,15 @@ export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   icon?: boolean;
 }
 
-const variants = {
+export const buttonVariants = {
   size(icon: boolean, size: "small" | "medium" | "large") {
     switch (size) {
       case "small":
-        return clsx(!icon && "py-0.5 px-2", "text-sm h-6");
+        return clsx(!icon && "px-2", "text-sm h-6");
       case "medium":
-        return !icon && "py-1.5 px-4";
+        return !icon && "px-4 h-8";
       case "large":
-        return !icon && "py-4 px-8";
+        return !icon && "px-8 h-12";
     }
   },
   variant: {
@@ -60,14 +65,17 @@ const variants = {
     },
     outlined(color: ThemeColor) {
       return clsx(
-        "bg-gray-0 text-neutral-1 outline outline-2 focus-visible:outline-[3px] active-full:shadow-md",
+        "bg-gray-0 text-gray-7 outline outline-2 outline-offset-[-2px] focus-visible:ring-2 active-full:shadow-md",
         {
-          yellow: "hover:bg-yellow-1/50 active-full:bg-yellow-2/50 outline-yellow-5",
-          gray: "hover:bg-gray-1 active-full:bg-gray-2 outline-gray-5",
-          red: "hover:bg-red-1/50 active-full:bg-red-2/50 outline-red-5",
-          orange: "hover:bg-orange-1/50 active-full:bg-orange-2/50 outline-orange-5",
-          green: "hover:bg-green-1/50 active-full:bg-green-2/50 outline-green-5",
-          blue: "hover:bg-blue-1/50 active-full:bg-blue-2/50 outline-blue-5",
+          yellow:
+            "hover:bg-yellow-1/50 active-full:bg-yellow-2/50 outline-yellow-5 focus-visible:ring-yellow-4",
+          gray: "hover:bg-gray-1 active-full:bg-gray-2 outline-gray-5 focus-visible:ring-gray-4",
+          red: "hover:bg-red-1/50 active-full:bg-red-2/50 outline-red-5 focus-visible:ring-red-4",
+          orange:
+            "hover:bg-orange-1/50 active-full:bg-orange-2/50 outline-orange-5 focus-visible:ring-orange-4",
+          green:
+            "hover:bg-green-1/50 active-full:bg-green-2/50 outline-green-5 focus-visible:ring-green-4",
+          blue: "hover:bg-blue-1/50 active-full:bg-blue-2/50 outline-blue-5 focus-visible:ring-blue-4",
         }[color],
       );
     },
@@ -75,12 +83,14 @@ const variants = {
       return clsx(
         "bg-transparent active-full:shadow-sm",
         {
-          yellow: "hover:bg-yellow-1/50 active:bg-yellow-2/50 text-yellow-4 hover:text-yellow-5",
-          gray: "hover:bg-gray-1 active:bg-gray-2 text-gray-4 hover:text-gray-5",
-          red: "hover:bg-red-1/50 active:bg-red-2/50 text-red-4 hover:text-red-5",
-          orange: "hover:bg-orange-1/50 active:bg-orange-2/50 text-orange-4 hover:text-orange-5",
-          green: "hover:bg-green-1/50 active:bg-green-2/50 text-green-4 hover:text-green-5",
-          blue: "hover:bg-blue-1/50 active:bg-blue-2/50 text-blue-4 hover:text-blue-5",
+          yellow:
+            "hover:bg-yellow-1/50 active-full:bg-yellow-2/25 text-yellow-4 hover:text-yellow-5",
+          gray: "hover:bg-gray-1 active-full:bg-gray-2 text-gray-5 hover:text-gray-6 active-full:text-gray-7",
+          red: "hover:bg-red-1/50 active-full:bg-red-2/50 text-red-4 hover:text-red-5",
+          orange:
+            "hover:bg-orange-1/50 active-full:bg-orange-2/50 text-orange-4 hover:text-orange-5",
+          green: "hover:bg-green-1/50 active-full:bg-green-2/50 text-green-4 hover:text-green-5",
+          blue: "hover:bg-blue-1/50 active-full:bg-blue-2/50 text-blue-4 hover:text-blue-5",
         }[color],
       );
     },
@@ -89,7 +99,7 @@ const variants = {
         "bg-transparent",
         {
           yellow: "text-yellow-4 hover:text-yellow-5",
-          gray: "text-gray-4 hover:text-gray-5",
+          gray: "text-gray-5 hover:text-gray-6 active-full:text-gray-7",
           red: "text-red-4 hover:text-red-5",
           orange: "text-orange-4 hover:text-orange-5",
           green: "text-green-4 hover:text-green-5",
@@ -105,7 +115,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       withRipple = true,
       variant = "contained",
-      loading = false,
+      loading,
       color = "yellow",
       size = "medium",
       focusable = true,
@@ -137,16 +147,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         role="button"
         ref={inputRef}
         className={clsx(
-          "ll-button rounded-2xl cursor-pointer relative overflow-clip focus-visible:outline focus-visible:outline-2 no-underline border-0 inline-block transition-color-shadow duration-300 leading-5",
+          "rounded-2xl cursor-pointer relative overflow-clip focus-visible:outline focus-visible:outline-2 no-underline border-0 inline-flex items-center transition-color-shadow duration-300 leading-5",
           className,
-          variants.size(icon, size),
-          variants.variant[variant](color),
-          icon &&
-            "inline-flex items-center justify-center min-w-8 h-8 [&_i]:w-8 [&_:last-child:not(i)]:pr-4",
+          buttonVariants.size(icon, size),
+          buttonVariants.variant[variant](color),
+          icon && "justify-center min-w-8 h-8 [&_i]:w-8 [&_:last-child:not(i)]:pr-4",
           fullWidth && "w-full",
           selected && "active",
-          `variant-${variant}-${color}`,
-          `variant-${variant}`,
+          `button-variant-${variant}`,
           notClickable && "not-cliquable",
         )}
         disabled={disabled}
@@ -155,7 +163,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {!notClickable && withRipple && ripples}
         {children}
-        {loading && <Loader color={color} size="small" className="ml-2" />}
+        {loading !== undefined && (
+          <span className="">
+            <Loader
+              color={color}
+              size="small"
+              className={clsx("ml-2 -mr-2", !loading && "invisible")}
+            />
+          </span>
+        )}
       </button>
     );
   },

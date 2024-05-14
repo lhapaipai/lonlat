@@ -43,7 +43,7 @@ export const Basic: Story = {
     size: "medium",
     color: "yellow",
     children: "My button",
-    loading: false,
+    loading: undefined,
     disabled: false,
     fullWidth: false,
     selected: false,
@@ -51,59 +51,38 @@ export const Basic: Story = {
   },
 };
 
-export const Variants = () => (
-  <div className="flex gap-2">
-    <Button variant="contained">solid</Button>
-    <Button variant="outlined">outlined</Button>
-    <Button variant="text">text</Button>
-    <Button variant="ghost">ghost</Button>
-  </div>
-);
-
-export const Sizes = () => (
-  <div className="flex gap-2" style={{ alignItems: "center" }}>
-    <Button size="small">small</Button>
-    <Button size="medium">medium</Button>
-    <Button size="large">large</Button>
-  </div>
-);
-
-export const States = () => (
-  <div className="flex gap-2" style={{ alignItems: "center" }}>
-    <Button disabled={true}>disabled</Button>
-    <Button loading={true}>isLoading</Button>
-  </div>
-);
-
-export const Icons = () => (
-  <div className="flex gap-2" style={{ alignItems: "center" }}>
-    <Button icon variant="contained" color="gray">
-      <i className="fe-cancel"></i>
-    </Button>
-    <Button icon variant="outlined" color="gray">
-      <i className="fe-cancel"></i>
-    </Button>
-    <Button icon variant="text" color="gray">
-      <i className="fe-cancel"></i>
-    </Button>
-    <Button icon variant="ghost" color="gray">
-      <i className="fe-cancel"></i>
-    </Button>
-    <Button icon variant="contained" color="gray">
-      <i className="fe-cancel"></i>
-      <span>Cancel</span>
-    </Button>
-  </div>
-);
-
 const variants = ["contained", "outlined", "text", "ghost"] as const;
 const colors = ["yellow", "gray", "red", "orange", "green", "blue"] as const;
 
 export const Context = () => {
   return (
     <div>
+      hello
+      <a href="#">link</a>
+      world
+      <button>normal button</button>
+      <span tabIndex={0}>tab</span>
+      index
+      <h3 className="mt-8">Sizes</h3>
+      <div className="flex gap-2 items-center">
+        <Button size="small">small</Button>
+        <Button size="medium">medium</Button>
+        <Button size="large">large</Button>
+      </div>
+      <h3 className="mt-8">Variants</h3>
+      <div className="flex gap-2">
+        <Button variant="contained">solid</Button>
+        <Button variant="outlined">outlined</Button>
+        <Button variant="text">text</Button>
+        <Button variant="ghost">ghost</Button>
+      </div>
+      <h3 className="mt-8">States</h3>
+      <div className="flex gap-2 items-center">
+        <Button disabled={true}>disabled</Button>
+        <Button loading={false}>isLoading false</Button>
+        <Button loading={true}>isLoading true</Button>
+      </div>
       <h3 className="mt-8">Default state</h3>
-
       <Table>
         <TableHeader>
           <TableRow>
@@ -132,9 +111,7 @@ export const Context = () => {
           ))}
         </TableBody>
       </Table>
-
       <h3 className="mt-8">Only Selected state</h3>
-
       <Table>
         <TableHeader>
           <TableRow>
@@ -163,9 +140,7 @@ export const Context = () => {
           ))}
         </TableBody>
       </Table>
-
       <h3 className="mt-8">Icons</h3>
-
       <div className="flex items-center gap-4 mb-4">
         <Button icon variant="contained" color="gray">
           <i className="fe-cancel"></i>
@@ -184,7 +159,6 @@ export const Context = () => {
           <span>Cancel</span>
         </Button>
       </div>
-
       <div className="flex items-center gap-4 mb-4">
         <Button icon variant="contained">
           <i className="fe-cancel"></i>

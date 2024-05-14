@@ -70,14 +70,11 @@ export default {
         3: "rgb(var(--color-gray-3) / <alpha-value>)",
         4: "rgb(var(--color-gray-4) / <alpha-value>)",
         5: "rgb(var(--color-gray-5) / <alpha-value>)",
+        6: "rgb(var(--color-gray-6) / <alpha-value>)",
+        7: "rgb(var(--color-gray-7) / <alpha-value>)",
+        8: "rgb(var(--color-gray-8) / <alpha-value>)",
         // color of the text when bg is gray
         text: "rgb(var(--color-gray-text) / <alpha-value>)",
-      },
-
-      neutral: {
-        0: "rgb(var(--color-neutral-0) / <alpha-value>)",
-        1: "rgb(var(--color-neutral-1) / <alpha-value>)",
-        2: "rgb(var(--color-neutral-2) / <alpha-value>)",
       },
     },
     boxShadow: {

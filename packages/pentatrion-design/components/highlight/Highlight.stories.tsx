@@ -47,7 +47,7 @@ export const Playbook = () => {
         {matches.map(({ indices, value }, idx) => (
           <Highlight key={idx} value={value} indices={indices} minLength={minLength} />
         ))}
-        <div className="text-neutral-2 text-sm">score: {score}</div>
+        <div className="text-gray-6 text-sm">score: {score}</div>
       </>
     );
   }
