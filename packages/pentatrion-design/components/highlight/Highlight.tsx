@@ -1,11 +1,10 @@
 import { ReactNode } from "react";
-import { RangeTuple } from "fuse.js";
+
 interface Props {
   value: string | undefined;
-  indices: readonly RangeTuple[];
+  indices: [number, number][]; // readonly RangeTuple[]; from "fuse.js"
   minLength?: number;
 }
-
 export default function Hightlight({ value, indices, minLength = 2 }: Props) {
   // !indices -> empty array or undefined
   if (!indices || !value) {

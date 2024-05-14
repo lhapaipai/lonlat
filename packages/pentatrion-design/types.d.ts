@@ -2,21 +2,6 @@ import "react";
 
 export type ThemeColor = "yellow" | "gray" | "red" | "orange" | "green" | "blue";
 
-export interface Town {
-  insee: number;
-  code_postal: number;
-  latitude: number;
-  longitude: number;
-  nom_commune: string;
-  code_departement: number;
-  nom_departement: string;
-  code_region: number;
-  nom_region: string;
-  context: string;
-  population: number;
-  icon: string;
-}
-
 type Merge<T, U> = Omit<T, keyof U> & U;
 type PropsWithAs<P, T extends React.ElementType> = P & { as?: T };
 export type PolymorphicPropsWithRef<P, T extends React.ElementType> = Merge<
