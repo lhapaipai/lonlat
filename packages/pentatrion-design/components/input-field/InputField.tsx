@@ -1,15 +1,13 @@
 import { ElementType, ForwardedRef, ReactNode, forwardRef, useId } from "react";
 import { Input } from "../input";
-import { PolymorphicPropsWithRef } from "../..";
-import clsx from "clsx";
-import "./InputField.scss";
+import { PolymorphicPropsWithRef, ThemeColor } from "../..";
 
 interface InputFieldOwnProps {
   label?: ReactNode;
   hint?: ReactNode;
   help?: ReactNode;
   error?: ReactNode | boolean;
-  orange?: ReactNode | boolean;
+  warning?: ReactNode | boolean;
 }
 
 const defaultElement = Input;
@@ -17,7 +15,7 @@ const defaultElement = Input;
 type Props<E extends ElementType> = PolymorphicPropsWithRef<InputFieldOwnProps, E>;
 
 const InputFieldBase = <E extends ElementType = typeof defaultElement>(
-  { label, hint, help, error, orange, as, ...rest }: Props<E>,
+  { label, hint, help, error, warning, as, ...rest }: Props<E>,
   ref: ForwardedRef<Element>,
 ) => {
   const id = useId();
@@ -26,32 +24,32 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   const labelElement = label && <span className="font-bold">{label}</span>;
   const hintElement = hint && <span className="ml-auto text-gray-6 text-sm">{hint}</span>;
   const errorElement = error && typeof error !== "boolean" && (
-    <span className={clsx("text-red-4", "font-medium")}>
+    <span className="text-red-4 font-medium">
       <i className="fe-circle-exclamation"></i>
       <span>{error}</span>
     </span>
   );
-  const orangeElement = orange && typeof orange !== "boolean" && (
-    <span className={clsx("text-orange-4", "font-medium")}>
+  const warningElement = warning && typeof warning !== "boolean" && (
+    <span className="text-orange-4 font-medium">
       <i className="fe-circle-exclamation"></i>
-      <span>{orange}</span>
+      <span>{warning}</span>
     </span>
   );
 
+  const color: ThemeColor = error ? "red" : warning ? "orange" : "yellow";
+
   return (
-    <div className={clsx("ll-input-field")}>
+    <div>
       {label || hint ? (
-        <label className={clsx("label-section")} htmlFor={id}>
+        <label className="flex items-end mb-1" htmlFor={id}>
           {labelElement}
           {hintElement}
         </label>
       ) : (
         <label htmlFor={id} className="invisible"></label>
       )}
-      <Element ref={ref} id={id} className={clsx(orange && "orange", error && "error")} {...rest} />
-      <div className={clsx("context-section", "text-gray-6 text-sm")}>
-        {errorElement || orangeElement || help}
-      </div>
+      <Element ref={ref} id={id} color={color} {...rest} />
+      <div className="text-gray-6 text-sm mt-1">{errorElement || warningElement || help}</div>
     </div>
   );
 };

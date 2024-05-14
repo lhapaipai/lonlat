@@ -1,5 +1,5 @@
 import { Toggle } from "~design";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { useState } from "react";
 
 const meta = {
@@ -8,14 +8,16 @@ const meta = {
 } satisfies Meta<typeof Toggle>;
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
-export const Basic: Story = {
-  args: {
-    disabled: false,
-    children: "I agree",
-  },
-};
+export const Basic = () => (
+  <div>
+    <Toggle>I agree</Toggle>
+    <Toggle color="gray">I agree</Toggle>
+    <Toggle color="red">I agree</Toggle>
+    <Toggle color="orange">I agree</Toggle>
+    <Toggle color="green">I agree</Toggle>
+    <Toggle color="blue">I agree</Toggle>
+  </div>
+);
 
 export const Controlled = () => {
   const [checked, setChecked] = useState(false);
