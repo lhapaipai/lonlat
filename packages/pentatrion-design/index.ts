@@ -1,3 +1,6 @@
+// issue: https://github.com/floating-ui/floating-ui/issues/2507
+import type {} from "@floating-ui/react-dom";
+
 export * from "./components/table";
 export * from "./components/card";
 export { default as Code } from "./components/code/Code";
@@ -30,5 +33,7 @@ export * from "./components/sortable";
 
 export * from "./lib";
 export * from "./hooks";
+
+export { default as pentatrionTw } from "./tailwind/pentatrionTw";
 
 export type * from "./types";

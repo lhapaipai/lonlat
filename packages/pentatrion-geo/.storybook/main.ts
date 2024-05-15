@@ -2,6 +2,8 @@ import type { StorybookConfig } from "@storybook/react-vite";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import type {} from "@storybook/types";
+
 const projectDir = resolve(fileURLToPath(new URL("..", import.meta.url)));
 
 const config: StorybookConfig = {

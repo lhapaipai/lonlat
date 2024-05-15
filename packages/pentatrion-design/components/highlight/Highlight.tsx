@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface Props {
   value: string | undefined;
-  indices: [number, number][]; // readonly RangeTuple[]; from "fuse.js"
+  indices: readonly [number, number][]; // readonly RangeTuple[]; from "fuse.js"
   minLength?: number;
 }
 export default function Hightlight({ value, indices, minLength = 2 }: Props) {

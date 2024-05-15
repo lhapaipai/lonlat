@@ -22,9 +22,9 @@ const directionOptions = [
   { value: "arrival", label: "Arrivée" },
 ];
 
-const quicksettingConfig = {
-  setting: "flex items-center justify-between first:text-gray-6 first:text-sm",
-};
+// const quicksettingConfig = {
+//   setting: "flex items-center justify-between first:text-gray-6 first:text-sm",
+// };
 
 export const Basic = () => {
   const [profile, setProfile] = useState<string | null>("car");

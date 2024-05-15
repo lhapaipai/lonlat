@@ -44,6 +44,7 @@ type ChangeEventLike = {
 
 type Props<O extends Option = Option> = {
   disabled?: boolean;
+  variant?: "normal" | "ghost";
   showArrow?: boolean;
   selectionClassName?: string;
   width?: number | string;

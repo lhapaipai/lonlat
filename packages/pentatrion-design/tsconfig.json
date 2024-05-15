@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "declaration": true,
     "types": ["react/experimental", "@testing-library/jest-dom"],
     "paths": {
       "~design": ["."],
@@ -9,5 +10,15 @@
       "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
     }
   },
-  "include": ["components", "hooks", "lib", "redux", "tests", "styles", ".storybook", "types.d.ts"]
+  "include": [
+    "components",
+    "hooks",
+    "lib",
+    "redux",
+    "tests",
+    "styles",
+    ".storybook",
+    "types.d.ts",
+    "tailwind"
+  ]
 }

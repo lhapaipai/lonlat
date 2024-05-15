@@ -14,19 +14,6 @@
     "storybook-build": "storybook build"
   },
   "type": "module",
-  "dependencies": {
-    "@floating-ui/dom": "^1.6.5",
-    "@floating-ui/react": "^0.26.14",
-    "@googlemaps/js-api-loader": "^1.16.6",
-    "@mapbox/point-geometry": "^0.1.0",
-    "fuse.js": "^7.0.0",
-    "maplibre-gl": "^4.2.0",
-    "maplibre-react-components": "workspace:*",
-    "nanoid": "^5.0.7",
-    "pentatrion-design": "workspace:*",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
   "devDependencies": {
     "@floating-ui/react-dom": "^2.0.9",
     "@storybook/addon-actions": "^8.1.0",
@@ -50,17 +37,30 @@
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "jsdom": "^24.0.0",
+    "pentatrion-fonts": "workspace:^",
     "postcss": "^8.4.38",
     "postcss-load-config": "^5.1.0",
     "sass": "^1.77.1",
     "storybook": "^8.1.0",
+    "tailwindcss": "^3.4.3",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
   },
-  "peerDependencies": {
+  "dependencies": {
+    "@floating-ui/dom": "^1.6.5",
+    "@floating-ui/react": "^0.26.14",
     "@googlemaps/js-api-loader": "^1.16.6",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "@mapbox/point-geometry": "^0.1.0",
+    "fuse.js": "^7.0.0",
+    "maplibre-gl": "^4.2.0",
+    "maplibre-react-components": "workspace:*",
+    "nanoid": "^5.0.7",
+    "pentatrion-design": "workspace:*",
+    "react": "^18.0",
+    "react-dom": "^18.0"
+  },
+  "peerDependencies": {
+    "@googlemaps/js-api-loader": "^1.16.6"
   }
 }
