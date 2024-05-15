@@ -14,13 +14,12 @@ interface Props {
 
 export default function NotificationsProvider({ children }: Props) {
   const [notifications, setNotifications] = useState<Message[]>([]);
-
   const container = useRef<HTMLDivElement>(null!);
   if (!container.current) {
     container.current = document.createElement("div");
     container.current.id = Math.floor(Math.random() * 100000).toString();
     /* .ll-snack-bar */
-    container.current.classList.add("fixed bottom-0 left-0 right-0 z-notification");
+    container.current.classList.add("fixed", "bottom-0", "left-0", "right-0", "z-notification");
     document.body.append(container.current);
   }
 

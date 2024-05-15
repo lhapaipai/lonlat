@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import "./Badge.scss";
 import { ThemeColor } from "../../types";
 import clsx from "clsx";
 import { Href, Tooltip, TooltipContent, TooltipTrigger } from "../..";
+import { buttonVariants } from "../button/Button";
 interface Props {
   children: ReactNode;
   className?: string;
@@ -26,21 +26,23 @@ export default function Badge({
     <span
       className={clsx(
         "ll-badge",
-        "text-xs",
-        `variant-solid-${color}`,
-        `text-${color}-4`,
+        "text-xs rounded-full w-fit shadow overflow-hidden inline-flex items-stretch",
+        buttonVariants.variant.contained(color),
+        // badgeVariants.color[color],
+        // `variant-solid-${color}`,
+        // `text-${color}-4`,
         className,
       )}
     >
       {onClick ? (
-        <button className="inner" onClick={onClick}>
+        <button className="px-2" onClick={onClick}>
           {children}
         </button>
       ) : (
-        <span className="inner">{children}</span>
+        <span className="px-2">{children}</span>
       )}
       {onRemove && (
-        <button className="remove" onClick={onRemove}>
+        <button className="remove rounded-r-full pr-1 pl-0.5" onClick={onRemove}>
           <i className="fe-cancel"></i>
         </button>
       )}

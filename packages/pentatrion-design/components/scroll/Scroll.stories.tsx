@@ -8,7 +8,7 @@ export default {
 export const Basic = () => {
   return (
     <div className="flex flex-col gap-2">
-      <Scroll className="with-border" style={{ height: "160px", width: "400px" }}>
+      <Scroll className="border border-gray-2" style={{ height: "160px", width: "400px" }}>
         <div className="px-4 text-justify">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
@@ -32,7 +32,7 @@ export const Basic = () => {
           </p>
         </div>
       </Scroll>
-      <Scroll horizontal className="with-border">
+      <Scroll horizontal className="border border-gray-2">
         <div className="p-4 flex flex-nowrap">
           <p className="pr-7" style={{ minWidth: 400 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
