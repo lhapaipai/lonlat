@@ -1,6 +1,5 @@
 import { ComponentPropsWithoutRef } from "react";
 import clsx from "clsx";
-import "./Steps.scss";
 
 interface Props extends ComponentPropsWithoutRef<"ul"> {
   direction?: "horizontal" | "vertical";
@@ -17,6 +16,13 @@ interface Props extends ComponentPropsWithoutRef<"ul"> {
    */
   associateLineWithStep?: boolean;
 }
+
+export const stepsVariants = {
+  direction: {
+    horizontal: "",
+    vertical: "",
+  },
+};
 
 export default function Steps({
   direction = "vertical",

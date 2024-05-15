@@ -1,0 +1,212 @@
+.ll-steps-extra {
+  .ll-button:first-child {
+    padding: calc(var(--step-circle-radius) / 2) calc(var(--step-circle-radius) / 2)
+      calc(var(--step-circle-radius) / 2) calc(var(--step-circle-radius) * 1.5 + 1rem);
+  }
+
+  .ll-marker {
+    transform: translate(calc(var(--step-circle-radius) / 3));
+  }
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.ll-steps {
+  position: relative;
+
+  &.step-line {
+    --line-space: 4px;
+  }
+
+  &.steps-line {
+    --line-space: 0px;
+  }
+
+  &.marker-circle {
+    .marker {
+      width: calc(var(--step-circle-radius) * 2);
+      height: calc(var(--step-circle-radius) * 2);
+      border-radius: 50%;
+      background-color: rgb(var(--color-gray-2));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+
+      &.active {
+        background-color: var(--color-gray-3);
+        color: rgb(var(--color-text-white));
+      }
+    }
+  }
+
+  &.marker-bullet {
+    .marker {
+      margin: calc(var(--step-circle-radius) / 2);
+      margin-right: 0;
+      width: calc(var(--step-circle-radius));
+      height: calc(var(--step-circle-radius));
+      background-color: rgb(var(--color-gray-0));
+      border-radius: 50%;
+      outline: 2px solid rgb(var(--color-gray-2));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-xs);
+
+      &.active {
+        outline-color: var(--color-gray-3);
+      }
+    }
+  }
+
+  &.direction-horizontal {
+    &.marker-circle {
+      --line-width: calc(100% - var(--step-circle-radius) * 2 - var(--line-space) * 2);
+      --line-left: calc(50% + var(--step-circle-radius) + var(--line-space));
+    }
+
+    &.marker-bullet {
+      --line-width: calc(100% - var(--step-circle-radius) - var(--line-space) * 2);
+      --line-left: calc(50% + var(--step-circle-radius) / 2 + var(--line-space));
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+
+    .ll-step {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      text-align: center;
+
+      .content {
+        margin-top: 0.5rem;
+      }
+    }
+
+    &.step-line .ll-step:not(:last-child)::after {
+      content: "";
+      border-style: none;
+      border-bottom-style: var(--border-style);
+      width: var(--line-width);
+      margin-top: -2px;
+      order: -1;
+      position: relative;
+      top: calc(var(--step-circle-radius) + 1px);
+      left: var(--line-left);
+    }
+
+    .marker-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &.direction-vertical {
+    &.marker-circle {
+      --line-top: calc(var(--step-circle-radius) * 2 + var(--line-space));
+      --line-bottom: var(--line-space);
+    }
+
+    &.marker-bullet {
+      --line-top: calc(var(--step-circle-radius) * 1.5 + var(--line-space));
+      --line-bottom: calc(-0.5 * var(--step-circle-radius) + var(--line-space));
+    }
+
+    .ll-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+
+      &:not(:last-child) {
+        padding-bottom: 0.5rem;
+      }
+
+      &.text-center {
+        align-items: center;
+      }
+    }
+
+    &.step-line .ll-step:not(:last-child)::after {
+      border-style: none;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: var(--line-top);
+      bottom: var(--line-bottom);
+      transform: translateX(calc(var(--step-circle-radius) - 1px));
+      width: 0px;
+      border-left-style: var(--border-style);
+    }
+
+    &.steps-line::after {
+      border-style: none;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: var(--line-top);
+      bottom: var(--line-top);
+      transform: translateX(calc(var(--step-circle-radius) - 1px));
+      width: 0px;
+      border-left-style: var(--border-style);
+      z-index: 0;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .title {
+      line-height: 1rem;
+    }
+  }
+
+  &.steps-line {
+    &::after {
+      border-width: 2px;
+      border-color: rgb(var(--color-gray-2));
+    }
+
+    &.status-done::after {
+      border-color: var(--color-gray-3);
+    }
+  }
+}
+
+.ll-step {
+  .step-line &:not(:last-child) {
+    &::after {
+      border-width: 2px;
+      border-color: rgb(var(--color-gray-2));
+    }
+
+    &.status-done::after {
+      border-color: var(--color-gray-3);
+    }
+  }
+
+  .handle {
+    color: rgb(var(--color-gray-6));
+    transition: all ease 0.3s;
+
+    &.active {
+      &:hover {
+        color: transparent;
+        background-color: rgb(var(--color-gray-2));
+      }
+    }
+  }
+
+  .ll-autocomplete {
+    @apply flex-1;
+    flex: 1;
+  }
+
+  .ll-button {
+    @apply my-[2px] ml-2;
+  }
+}

@@ -121,6 +121,8 @@ abbr {
 
   --resize-grip: 10px;
   --resize-indicator: 2px;
+
+  --step-circle-radius: 18px;
 }
 .dark {
   /* text hover color, button active bgcolor */
