@@ -1,4 +1,4 @@
-import { Tabs } from "~design";
+import { Button, Tabs } from "~design";
 import { useState } from "react";
 
 export default {
@@ -53,7 +53,11 @@ export const Basic = () => {
   const [id, setId] = useState<string | number>("bulbasaur");
   return (
     <div className="flex flex-col gap-2">
-      <Tabs tabs={tabs} stickyTabs={true} value={id} onChange={setId} />
+      <Tabs tabs={tabs} stickyTabs={true} value={id} onChange={setId}>
+        <Button icon variant="text" color="gray">
+          <i className="fe-sidebar-collapse"></i>
+        </Button>
+      </Tabs>
       <Tabs tabs={tabs} value={id} onChange={setId} />
       <Tabs tabs={tabs} fullWidth={true} value={id} onChange={setId} />
     </div>
