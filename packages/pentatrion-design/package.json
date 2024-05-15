@@ -6,7 +6,8 @@
   "keywords": [],
   "author": "Hugues Tavernier",
   "license": "ISC",
-  "main": "index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",

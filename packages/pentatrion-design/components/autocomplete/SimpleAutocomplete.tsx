@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from ".";
-import { useEventCallback, Option, OptionLike } from "../..";
+import { Option, OptionLike } from "../select";
+import { useEventCallback } from "../../hooks";
 import { getOptionLabel } from "./util";
 
 interface Props<O extends OptionLike = Option>

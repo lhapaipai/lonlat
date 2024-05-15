@@ -1,6 +1,6 @@
 import { ElementType, ForwardedRef, ReactNode, forwardRef, useId } from "react";
 import { Input } from "../input";
-import { PolymorphicPropsWithRef, ThemeColor } from "../..";
+import { type ThemeColor, type PolymorphicPropsWithRef } from "../../types";
 
 interface InputFieldOwnProps {
   label?: ReactNode;

@@ -2,14 +2,14 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "declaration": true,
+    "skipLibCheck": true,
     "types": ["react/experimental", "@testing-library/jest-dom"],
     "paths": {
       "~design": ["."],
-      "~design/*": ["./*"],
-      "@storybook/react": ["../../apps/storybook/node_modules/@storybook/react"],
-      "@storybook/addon-actions": ["../../apps/storybook/node_modules/@storybook/addon-actions"]
+      "~design/*": ["./*"]
     }
   },
+  "exclude": ["**/node_modules", "dist"],
   "include": [
     "components",
     "hooks",

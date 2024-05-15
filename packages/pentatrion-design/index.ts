@@ -36,4 +36,4 @@ export * from "./hooks";
 
 export { default as pentatrionTw } from "./tailwind/pentatrionTw";
 
-export type * from "./types";
+export type { ThemeColor } from "./types";

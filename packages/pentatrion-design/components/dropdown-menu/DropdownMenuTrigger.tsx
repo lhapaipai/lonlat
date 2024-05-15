@@ -1,7 +1,7 @@
 import { HTMLProps, cloneElement, forwardRef, isValidElement } from "react";
 import { useDropdownMenuContext } from ".";
 import { useMergeRefs } from "@floating-ui/react";
-import { Button } from "../..";
+import { Button } from "../button";
 
 interface Props extends HTMLProps<HTMLElement> {
   asChild?: boolean;

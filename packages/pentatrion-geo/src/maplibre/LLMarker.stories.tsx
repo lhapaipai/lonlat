@@ -8,9 +8,12 @@ const meta = {
 };
 export default meta;
 
+const iconGrid =
+  "grid grid-cols-repeat-fill-160 gap-4 mt-4 *:border *:border-gray-1 *:flex *:flex-col *:items-center *:justify-center *:p-2 [&_i]:text-[2.5rem] [&_.ll-marker]:relative [&_pre]:text-xs";
+
 export const Graphics = () => (
   <div>
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div
           className="ll-marker"
@@ -39,7 +42,7 @@ export const Graphics = () => (
         <pre>--ovale-color-hover</pre>
       </div>
     </div>
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div
           className="ll-marker"
@@ -75,7 +78,7 @@ export const Graphics = () => (
       </div>
     </div>
 
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div className="ll-marker">
           {/* i is wrapped so we can apply transform when active */}
@@ -88,7 +91,7 @@ export const Graphics = () => (
       </div>
     </div>
 
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div className="ll-marker">
           <div className="marker">
@@ -120,7 +123,7 @@ export const Graphics = () => (
       </div>
     </div>
 
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div className="ll-marker">
           <div className="marker">
@@ -177,7 +180,7 @@ export const Graphics = () => (
       </div>
     </div>
 
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div className="ll-marker">
           <div className="marker">
@@ -216,7 +219,7 @@ export const Graphics = () => (
       </div>
     </div>
 
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div className="ll-marker disabled">
           <div className="marker">
@@ -250,7 +253,7 @@ export const Graphics = () => (
       </div>
     </div>
 
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div className="ll-marker" style={{ "--marker-size": "30px" }}>
           <div className="marker">
@@ -293,7 +296,7 @@ export const Graphics = () => (
       </div>
     </div>
 
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div className="ll-marker small-text" style={{ "--marker-size": "30px" }}>
           <div className="marker">
@@ -336,7 +339,7 @@ export const Graphics = () => (
       </div>
     </div>
 
-    <div className="storybook-icon-grid">
+    <div className={iconGrid}>
       <div>
         <div className="ll-marker pegman zone-0">
           <div className="image"></div>

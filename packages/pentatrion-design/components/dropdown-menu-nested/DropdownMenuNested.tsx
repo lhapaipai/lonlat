@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import MenuItemWithChildren from "./MenuItemWithChildren";
 import { FloatingTree } from "@floating-ui/react";
-import { Button, type ButtonProps } from "../..";
+import { Button, type ButtonProps } from "../button";
 
 export interface Props extends ButtonProps {
   label: string;

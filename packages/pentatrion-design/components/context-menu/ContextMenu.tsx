@@ -25,7 +25,8 @@ import {
 } from "@floating-ui/react";
 
 import { ContextMenuItemProps } from "./ContextMenuItem";
-import { Dialog, useEventCallback, useRefDebounce } from "../..";
+import { Dialog } from "../dialog";
+import { useEventCallback, useRefDebounce } from "../../hooks";
 
 interface Props extends ComponentPropsWithRef<"div"> {
   children: ReactElement[] | ReactElement;

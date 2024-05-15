@@ -1,7 +1,8 @@
 import { ComponentProps } from "react";
 import { useModalContext } from ".";
 import clsx from "clsx";
-import { Button, Scroll } from "../..";
+import { Button } from "../button";
+import Scroll from "../scroll/Scroll";
 
 interface ModalHeaderProps extends ComponentProps<"h2"> {
   closeButton?: boolean;

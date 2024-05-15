@@ -1,7 +1,9 @@
 import { useCallback } from "react";
-import { CustomFetchOptions, fetchAPI, useNotifications } from "..";
+import { CustomFetchOptions, fetchAPI } from "../lib";
+import { useNotifications } from "./useNotifications";
 
 export const useFetch = () => {
+  // is it the good useNotifications ? from redux or not ??
   const notificationManager = useNotifications();
 
   const appFetch = useCallback(

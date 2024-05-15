@@ -1,4 +1,4 @@
-import { arrayEquals } from "../..";
+import { arrayEquals } from "../../lib";
 import { useMemo } from "react";
 import {
   ItemInterface,

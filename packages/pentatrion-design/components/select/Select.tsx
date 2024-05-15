@@ -31,9 +31,12 @@ import {
 import { SelectContext } from "./useSelectContext.ts";
 import SelectSelection, { SelectSelectionProps } from "./SelectSelection.tsx";
 
-import { Input, Button, useEventCallback, Dialog } from "../..";
 import type { Option } from "./interface";
 import clsx from "clsx";
+import { Input } from "../input";
+import { Button } from "../button";
+import { useEventCallback } from "../../hooks";
+import { Dialog } from "../dialog";
 
 export type SelectValue = number | string | null;
 type ChangeEventLike = {

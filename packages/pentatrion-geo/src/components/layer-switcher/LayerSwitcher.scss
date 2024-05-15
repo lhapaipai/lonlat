@@ -1,47 +1,47 @@
 .ll-layer-switcher {
-    display: flex;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    position: relative;
-    z-index: 1;
-    user-select: none;
-    width: fit-content;
-    max-width: 100%;
-    pointer-events: auto;
-    gap: .5rem;
-    padding: 2px .5rem .5rem .5rem;
+    // display: flex;
+    // overflow-x: auto;
+    // flex-wrap: nowrap;
+    // position: relative;
+    // z-index: 1;
+    // user-select: none;
+    // width: fit-content;
+    // max-width: 100%;
+    // pointer-events: auto;
+    // gap: .5rem;
+    // padding: 2px .5rem .5rem .5rem;
 
     .ll-modal-overlay {
         z-index: auto;
     }
 
     .separator {
-        width: .25rem;
-        flex: 0 0 .25rem;
-        margin: 1rem 0;
-        background-color: var(--background-default);
-        border-radius: 3px;
-        position: relative;
+        // width: .25rem;
+        // flex: 0 0 .25rem;
+        // margin: 1rem 0;
+        // background-color: var(--background-default);
+        // border-radius: 3px;
+        // position: relative;
     }
 
-    .filters {
+    // .filters {
 
-        .ll-button {
-            padding: .25rem .5rem;
-            flex: 1;
-        }
-    }
+    //     .ll-button {
+    //         padding: .25rem .5rem;
+    //         flex: 1;
+    //     }
+    // }
 
     .ll-button.layer {
-        width: calc(90px + .5rem);
-        flex: 0 0 calc(90px + .5rem);
-        border-radius: var(--border-radius-sm);
-        display: flex;
-        flex-direction: column;
-        padding: .25rem .25rem 0;
-        background-color: var(--background-default);
-        position: relative;
-        color: var(--text-default);
+        // width: calc(90px + .5rem);
+        // flex: 0 0 calc(90px + .5rem);
+        // border-radius: var(--border-radius-sm);
+        // display: flex;
+        // flex-direction: column;
+        // padding: .25rem .25rem 0;
+        // background-color: var(--background-default);
+        // position: relative;
+        // color: var(--text-default);
 
         .preview-container {
             width: 100%;

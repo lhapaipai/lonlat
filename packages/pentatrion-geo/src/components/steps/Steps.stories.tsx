@@ -107,7 +107,7 @@ export const WithAutocompleteSortable = () => {
           <span>Ajouter un point</span>
         </Button>
       </div>
-      <div className="storybook-result">
+      <div className="m-4 p-4 text-sm text-gray-6">
         <div>Sélections :</div>
         <ul>
           {locations.map((i) => (

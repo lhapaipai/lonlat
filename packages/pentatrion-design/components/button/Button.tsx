@@ -1,14 +1,15 @@
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
 import { ThemeColor } from "../../types";
-import { Loader, useRipple } from "../..";
+import Loader from "../loader/Loader";
+import { useRipple } from "../../hooks";
 
 export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   withRipple?: boolean;
 
   variant?: "contained" | "outlined" | "text" | "ghost";
 
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large" | "custom";
 
   color?: ThemeColor;
 
@@ -36,7 +37,10 @@ export interface ButtonProps extends ComponentPropsWithRef<"button"> {
 }
 
 export const buttonVariants = {
-  size(icon: boolean, size: "small" | "medium" | "large") {
+  size(icon: boolean, size: "small" | "medium" | "large" | "custom") {
+    if (size === "custom") {
+      return false;
+    }
     switch (size) {
       case "small":
         return clsx(!icon && "px-2", "text-sm h-6");
@@ -154,7 +158,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           icon && "justify-center min-w-8 h-8 [&_i]:w-8 [&_:last-child:not(i)]:pr-4",
           fullWidth && "w-full",
           selected && "active",
-          `button-variant-${variant}`,
           notClickable && "disabled",
         )}
         disabled={disabled}

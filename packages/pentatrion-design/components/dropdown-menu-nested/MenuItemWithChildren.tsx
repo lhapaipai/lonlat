@@ -24,8 +24,9 @@ import {
 } from "@floating-ui/react";
 import { FocusEvent, forwardRef, useContext, useEffect, useRef, useState } from "react";
 import { MenuContext } from "./MenuContext";
-import { Button, Dialog, type ButtonProps } from "../..";
 import clsx from "clsx";
+import { Button, type ButtonProps } from "../button";
+import { Dialog } from "../dialog";
 
 export interface Props extends ButtonProps {
   label?: string;

@@ -1,6 +1,11 @@
 import clsx from "clsx";
-import { Button, Dialog, Loader, Message, useEventCallback } from "../..";
 import { useEffect } from "react";
+
+import { Button } from "../button";
+import { useEventCallback } from "../../hooks";
+import { Dialog } from "../dialog";
+import Loader from "../loader/Loader";
+import { Message } from "../../lib";
 
 export type SnackProps = Partial<Message> & {
   onRemove?: () => void;

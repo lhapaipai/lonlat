@@ -9,7 +9,7 @@ import {
   ForwardedRef,
   ReactNode,
 } from "react";
-import type { OptionLike, Option } from "../..";
+import type { OptionLike, Option } from "../select";
 import AutocompleteOption, { AutocompleteOptionProps } from "./AutocompleteOption.tsx";
 import {
   FloatingFocusManager,
@@ -28,8 +28,13 @@ import {
 } from "@floating-ui/react";
 import { AutocompleteContext } from "./useAutocompleteContext.ts";
 import clsx from "clsx";
-import { Button, Dialog, Loader, inputConfig, useEventCallback } from "../..";
+import { useEventCallback } from "../../hooks";
+
 import { getOptionLabel, getOptionValue } from "./util.ts";
+import { Button } from "../button";
+import { Dialog } from "../dialog";
+import Loader from "../loader/Loader";
+import { inputConfig } from "../input/Input.tsx";
 
 export interface AutocompleteProps<O extends OptionLike = Option> {
   icon?: boolean | ReactNode;

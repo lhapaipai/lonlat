@@ -1,5 +1,6 @@
 import { ComponentPropsWithRef, forwardRef, useRef } from "react";
-import { ThemeColor, useCombinedRefs } from "../..";
+import { type ThemeColor } from "../../types";
+import { useCombinedRefs } from "../../hooks";
 import clsx from "clsx";
 
 interface Props extends ComponentPropsWithRef<"input"> {

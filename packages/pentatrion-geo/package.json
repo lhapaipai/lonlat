@@ -52,6 +52,7 @@
     "@floating-ui/react": "^0.26.14",
     "@googlemaps/js-api-loader": "^1.16.6",
     "@mapbox/point-geometry": "^0.1.0",
+    "clsx": "^2.1.0",
     "fuse.js": "^7.0.0",
     "maplibre-gl": "^4.2.0",
     "maplibre-react-components": "workspace:*",
@@ -61,6 +62,7 @@
     "react-dom": "^18.0"
   },
   "peerDependencies": {
-    "@googlemaps/js-api-loader": "^1.16.6"
+    "@googlemaps/js-api-loader": "^1.16.6",
+    "tailwindcss": "*"
   }
 }

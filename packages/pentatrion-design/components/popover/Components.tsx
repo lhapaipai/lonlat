@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import { usePopoverContext } from ".";
 import clsx from "clsx";
-import { Button } from "../..";
+import { Button } from "../button";
 
 interface PopoverHeaderProps extends ComponentProps<"h2"> {
   closeButton?: boolean;

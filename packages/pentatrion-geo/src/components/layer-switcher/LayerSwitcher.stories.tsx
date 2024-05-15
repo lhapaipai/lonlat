@@ -3,27 +3,34 @@ import { Meta } from "@storybook/react";
 import "./LayerSwitcher.scss";
 import { useState } from "react";
 import { Button, ButtonGroup } from "pentatrion-design";
+import clsx from "clsx";
 
 const meta = {
   title: "pentatrion-geo/LayerSwitcher",
   decorators: (Story) => (
-    <div className="storybook-gap">
+    <div className="grid gap-8 grid-cols-1">
       <Story />
     </div>
   ),
 } satisfies Meta;
 export default meta;
 
+const config = {
+  separator: "w-1 flex-[0_0_0.25rem] my-4 bg-gray-1 rounded-full relative",
+  layerBtn:
+    "flex-[0_0_calc(90px+0.5rem)] min-w-0 rounded-sm flex flex-col pt-1 px-1 bg-gray-0 relative text-gray-7",
+};
+
 export const Basic = () => {
   const [val, setVal] = useState("one");
   return (
     <>
-      <div className="storybook-map-bg" style={{ padding: "5rem .5rem .5rem .5rem" }}>
-        <div className="ll-layer-switcher">
+      <div className="bg-cover pt-20 pb-2 px-2 bg-[url('/bg-map.jpg')]">
+        <div className="ll-layer-switcher flex overflow-x-auto flex-nowrap relative z-[1] select-none w-fit max-w-full pointer-events-auto gap-2 pt-0.5 pb-2 px-2">
           <ButtonGroup direction="vertical" className="filters">
             <Button
               className="text-sm"
-              variant="text"
+              variant="contained"
               color="gray"
               selected={val === "one"}
               onClick={() => setVal("one")}
@@ -32,7 +39,7 @@ export const Basic = () => {
             </Button>
             <Button
               className="text-sm"
-              variant="text"
+              variant="contained"
               color="gray"
               selected={val === "two"}
               onClick={() => setVal("two")}
@@ -41,7 +48,7 @@ export const Basic = () => {
             </Button>
             <Button
               className="text-sm"
-              variant="text"
+              variant="contained"
               color="gray"
               selected={val === "three"}
               onClick={() => setVal("three")}
@@ -50,7 +57,7 @@ export const Basic = () => {
             </Button>
           </ButtonGroup>
 
-          <Button className="layer base">
+          <button className={clsx("layer base", config.layerBtn)}>
             <div className="type">
               <i className="fe-raster"></i>
             </div>
@@ -60,8 +67,8 @@ export const Basic = () => {
               style={{ objectPosition: `0px 0px` }}
             />
             <div className="legend text-sm">IGN Scan</div>
-          </Button>
-          <Button className="layer base">
+          </button>
+          <Button size="custom" className="layer base">
             <div className="type">
               <i className="fe-raster"></i>
             </div>
@@ -72,7 +79,7 @@ export const Basic = () => {
             />
             <div className="legend text-sm">IGN Scan 1/25</div>
           </Button>
-          <Button className="layer base active">
+          <Button size="custom" className="layer base active">
             <div className="type">
               <i className="fe-raster"></i>
             </div>
@@ -83,7 +90,7 @@ export const Basic = () => {
             />
             <div className="legend text-sm">Satellite</div>
           </Button>
-          <Button className="layer base">
+          <Button size="custom" className="layer base">
             <div className="type">
               <i className="fe-vector"></i>
             </div>
@@ -95,9 +102,9 @@ export const Basic = () => {
             <div className="legend text-sm">Plan</div>
           </Button>
 
-          <div className="separator"></div>
+          <div className={config.separator}></div>
 
-          <Button className="layer optional active">
+          <Button size="custom" className="layer optional active">
             <div className="type">
               <i className="fe-plus"></i>
             </div>
@@ -108,7 +115,7 @@ export const Basic = () => {
             />
             <div className="legend text-sm">Relief</div>
           </Button>
-          <Button className="layer optional">
+          <Button size="custom" className="layer optional">
             <div className="type">
               <i className="fe-plus"></i>
             </div>
@@ -119,7 +126,7 @@ export const Basic = () => {
             />
             <div className="legend text-sm">Ombrage</div>
           </Button>
-          <Button className="layer optional active">
+          <Button size="custom" className="layer optional active">
             <div className="type">
               <i className="fe-plus"></i>
             </div>
@@ -130,7 +137,7 @@ export const Basic = () => {
             />
             <div className="legend text-sm">Lignes niveau</div>
           </Button>
-          <Button className="layer optional">
+          <Button size="custom" className="layer optional">
             <div className="type">
               <i className="fe-plus"></i>
             </div>
@@ -141,7 +148,7 @@ export const Basic = () => {
             />
             <div className="legend text-sm">Cadastre</div>
           </Button>
-          <Button className="layer optional">
+          <Button size="custom" className="layer optional">
             <div className="type">
               <i className="fe-plus"></i>
             </div>
@@ -152,7 +159,7 @@ export const Basic = () => {
             />
             <div className="legend text-sm">Libellés</div>
           </Button>
-          <Button className="layer optional">
+          <Button size="custom" className="layer optional">
             <div className="type">
               <i className="fe-plus"></i>
             </div>
@@ -164,8 +171,8 @@ export const Basic = () => {
             <div className="legend text-sm">Frontières</div>
           </Button>
 
-          <div className="separator"></div>
-          <Button className="layer base active">
+          <div className={config.separator}></div>
+          <Button size="custom" className="layer base active">
             <img
               className="preview"
               src="/assets/graphics/sprites/layers-2x.jpg"
@@ -175,9 +182,9 @@ export const Basic = () => {
           </Button>
         </div>
       </div>
-      <div className="storybook-map-bg" style={{ padding: "5rem .5rem .5rem .5rem" }}>
+      <div className="bg-cover pt-20 pb-2 px-2 bg-[url('/bg-map.jpg')]">
         <div className="ll-layer-switcher">
-          <Button className="layer base">
+          <Button size="custom" className="layer base">
             <div className="type">
               <i className="fe-raster"></i>
             </div>

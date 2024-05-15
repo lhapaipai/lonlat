@@ -38,5 +38,6 @@
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "tailwindCSS.experimental.configFile": "./packages/pentatrion-geo/tailwind.config.js"
 }

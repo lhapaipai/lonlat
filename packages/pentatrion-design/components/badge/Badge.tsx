@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
 import { ThemeColor } from "../../types";
 import clsx from "clsx";
-import { Href, Tooltip, TooltipContent, TooltipTrigger } from "../..";
 import { buttonVariants } from "../button/Button";
+import Href from "../href/Href";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../tooltip";
 interface Props {
   children: ReactNode;
   className?: string;
