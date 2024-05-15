@@ -12,3 +12,4 @@
 @import "pentatrion-design/tailwind/utilities-dialog.css" layer(utilities);
 
 @import "pentatrion-fonts/fontello-lonlat";
+@import "./src/fontello-geo-inline.css";

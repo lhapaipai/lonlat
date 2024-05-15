@@ -1,5 +1,3 @@
-import "./fontello-geo-inline.css";
-
 export * from "./geo-options";
 
 export * from "./types";

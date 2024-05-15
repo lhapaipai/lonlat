@@ -74,28 +74,28 @@
 
         &.base {
             &:hover {
-                background-color: var(--color-yellow);
+                background-color: rgb(var(--color-yellow));
             }
 
             &.active {
-                background-color: var(--color-yellow);
+                background-color: rgb(var(--color-yellow));
 
                 &:hover {
-                    background-color: var(--color-yellow-700);
+                    background-color: rgb(var(--color-yellow-5));
                 }
             }
         }
 
         &.optional {
             &:hover {
-                background-color: var(--color-yellow-200);
+                background-color: rgb(var(--color-yellow-1));
             }
 
             &.active {
-                background-color: var(--color-yellow-200);
+                background-color: rgb(var(--color-yellow-1));
 
                 &:hover {
-                    background-color: var(--color-yellow-500);
+                    background-color: rgb(var(--color-yellow-3));
                 }
             }
         }

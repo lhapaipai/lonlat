@@ -4,7 +4,7 @@
     --marker-width: calc(var(--marker-size) * 0.7);
     --marker-background-position-hovered: calc(var(--marker-size)* -.3);
 
-    --marker-color: var(--color-yellow-500);
+    --marker-color: rgb(var(--color-yellow-3));
     --marker-color-dark: color-mix(in srgb, var(--marker-color), black 40%);
     --ovale-color-hover: color-mix(in srgb, var(--marker-color), white 50%);
     --ovale-color-active: color-mix(in srgb, var(--marker-color), white 1%);
@@ -35,7 +35,7 @@
     .target {
         width: calc(var(--marker-width) * .2);
         height: calc(var(--marker-width) * .1);
-        background-color: var(--color-gray-600);
+        background-color: var(--color-gray-4);
         position: absolute;
         left: calc(50% - var(--marker-width) * .1);
         top: calc(100% - var(--marker-width) * .05);
@@ -205,7 +205,7 @@
             z-index: 4;
             font-size: calc(var(--marker-size) / 2) !important;
             content: '\e81f';
-            color: var(--color-red-500);
+            color: var(--color-red-3);
         }
     }
 
@@ -248,7 +248,7 @@
         &>.marker::after {
             /* fe-marker */
             content: '\e81c';
-            color: var(--color-gray-200);
+            color: var(--color-gray-1);
         }
     }
 

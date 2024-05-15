@@ -2,6 +2,7 @@ import type { Preview } from "@storybook/react";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import "./storybook.scss";
 import "../index.css";
+import "../src/default.scss";
 
 // https://storybook.js.org/docs/react/configure/overview#configure-story-rendering
 const preview: Preview = {
