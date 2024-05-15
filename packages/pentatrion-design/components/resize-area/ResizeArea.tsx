@@ -1,6 +1,5 @@
 import { useCallback, useEffect } from "react";
 import clsx from "clsx";
-import "./ResizeArea.scss";
 
 interface Props {
   name: string;
@@ -67,7 +66,7 @@ export default function ResizeArea({ name, position, initialValue }: Props) {
   }
 
   return (
-    <div className={clsx(["ll-resize-area-container", position])}>
+    <div className={clsx(["p8n-resize-area", position])}>
       <button className="area-button" type="button" onPointerDown={handlePointerDown}></button>
     </div>
   );

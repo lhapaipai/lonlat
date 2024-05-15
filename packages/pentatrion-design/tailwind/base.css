@@ -114,6 +114,9 @@ mark {
   --color-gray-7: 50 50 50; /* rgb(50, 50, 50); */
   --color-gray-8: 0 0 0; /* rgb(0, 0, 0); */
   --color-gray-text: var(--color-gray-7);
+
+  --resize-grip: 10px;
+  --resize-indicator: 2px;
 }
 .dark {
   /* text hover color, button active bgcolor */

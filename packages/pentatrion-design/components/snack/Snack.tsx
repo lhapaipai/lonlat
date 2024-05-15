@@ -1,4 +1,3 @@
-import "./Snack.scss";
 import clsx from "clsx";
 import { Button, Dialog, Loader, Message, useEventCallback } from "../..";
 import { useEffect } from "react";
@@ -27,16 +26,13 @@ export default function Snack({
   }, [onRemoveStable, expiration]);
 
   return (
-    <Dialog
-      className={clsx("ll-dialog", "animate-fade-in", "ll-snack", `border-${color}-2`)}
-      placement="top"
-    >
-      <div className="box">
-        <span className="message">{content}</span>
+    <Dialog className={clsx("animate-fade-in", "ll-snack")} placement="top" color={color}>
+      <div className="w-fit min-w-60 px-2 py-1 flex items-center">
+        <span className="pr-4 flex-1">{content}</span>
         {withLoader && <Loader size="small" color="gray" />}
 
         {canClose && (
-          <Button icon variant="ghost" color="gray" onClick={onRemove}>
+          <Button icon variant="text" color="gray" onClick={onRemove}>
             <i className="fe-cancel"></i>
           </Button>
         )}
