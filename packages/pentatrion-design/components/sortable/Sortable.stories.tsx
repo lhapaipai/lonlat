@@ -39,6 +39,10 @@ const data: Item[] = [
   },
 ];
 
+const twClasses = {
+  item: "row-item rounded-2xl p-2 flex items-center [&.sortable-chosen]:shadow",
+};
+
 /**
  * ReactSortable mutate state, it can't be used with redux.
  * see: https://github.com/SortableJS/react-sortablejs/issues/237
@@ -55,8 +59,8 @@ export const BasicOriginal = () => {
       handle=".handle"
     >
       {items.map((item) => (
-        <div key={item.id} className="row-item">
-          <Button icon variant="outlined" className="handle">
+        <div key={item.id} className={twClasses.item}>
+          <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
             <i className="fe-braille"></i>
           </Button>
           {item.name}
@@ -78,8 +82,8 @@ export const Basic = () => {
       handle=".handle"
     >
       {items.map((item) => (
-        <div key={item.id} className="row-item">
-          <Button icon variant="outlined" className="handle">
+        <div key={item.id} className={twClasses.item}>
+          <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
             <i className="fe-braille"></i>
           </Button>
           {item.name}
@@ -100,11 +104,11 @@ export const WithInputs = () => {
       handle=".handle"
     >
       {items.map((item) => (
-        <div key={item.id} className="row-item">
-          <Button icon variant="outlined" className="handle">
+        <div key={item.id} className={twClasses.item}>
+          <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
             <i className="fe-braille"></i>
           </Button>
-          <Input className="ll-input" defaultValue={item.name} />
+          <Input className="flex-1" defaultValue={item.name} />
         </div>
       ))}
     </Sortable>
