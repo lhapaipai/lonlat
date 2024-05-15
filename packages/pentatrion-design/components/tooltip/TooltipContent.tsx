@@ -16,16 +16,13 @@ const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <div
           ref={ref}
-          className={clsx(
-            "ll-tooltip",
-            context.middlewareData.hide?.referenceHidden && "invisible",
-          )}
+          className={clsx("z-tooltip", context.middlewareData.hide?.referenceHidden && "invisible")}
           style={{ ...context.floatingStyles, ...style }}
           {...context.getFloatingProps(props)}
         >
           <Dialog
             placement={context.placement}
-            className={clsx("animate-fade-in", className)}
+            className={clsx("animate-fade-in px-2 py-1 max-w-80 text-sm", className)}
             color={context.color}
           >
             {children}

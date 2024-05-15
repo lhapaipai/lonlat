@@ -3,8 +3,6 @@ import { TooltipOptions } from "./interface";
 import useTooltip from "./useTooltip";
 import { TooltipContext } from "./useTooltipContext";
 
-import "./Tooltip.scss";
-
 interface Props extends TooltipOptions {
   children: ReactNode;
 }

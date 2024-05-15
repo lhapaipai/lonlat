@@ -1,7 +1,6 @@
 import { HTMLProps, cloneElement, forwardRef, isValidElement } from "react";
 import useTooltipContext from "./useTooltipContext";
 import { useMergeRefs } from "@floating-ui/react";
-import { Button } from "../..";
 
 interface Props extends HTMLProps<HTMLElement> {
   /* allows the user to pass any element as the anchor instead of <button> */
@@ -27,14 +26,9 @@ const TooltipTrigger = forwardRef<HTMLElement, Props>(
     }
 
     return (
-      <Button
-        variant="outlined"
-        ref={ref}
-        data-state={context.open ? "open" : "closed"}
-        {...context.getReferenceProps(props)}
-      >
+      <abbr ref={ref} {...context.getReferenceProps(props)}>
         {children}
-      </Button>
+      </abbr>
     );
   },
 );

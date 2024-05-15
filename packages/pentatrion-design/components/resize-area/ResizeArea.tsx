@@ -54,6 +54,7 @@ export default function ResizeArea({ name, position, initialValue }: Props) {
   const handlePointerUp = useCallback(() => {
     const handler = handlePointerMove;
     document.removeEventListener("pointermove", handler);
+    document.documentElement.classList.remove("cursor-row-resize", "cursor-col-resize");
 
     return () => {
       document.removeEventListener("pointermove", handler);
@@ -63,6 +64,11 @@ export default function ResizeArea({ name, position, initialValue }: Props) {
   function handlePointerDown() {
     document.addEventListener("pointerup", handlePointerUp, { once: true });
     document.addEventListener("pointermove", handlePointerMove);
+    if (["top", "bottom"].includes(position)) {
+      document.documentElement.classList.add(`cursor-row-resize`);
+    } else {
+      document.documentElement.classList.add(`cursor-col-resize`);
+    }
   }
 
   return (

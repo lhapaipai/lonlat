@@ -17,7 +17,7 @@
   transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .p8n-resize-area .area-button:hover::before {
-  background-color: var(--color-gray-5);
+  background-color: rgb(var(--color-gray-5));
 }
 .p8n-resize-area:where(.top, .bottom) {
   height: 0;

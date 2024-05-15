@@ -48,7 +48,7 @@ export default function useTooltip({
       shift({ padding: 5 }),
       arrow({
         element: arrowRef,
-        padding: 8,
+        padding: 12,
       }),
       hide({
         padding: 20,

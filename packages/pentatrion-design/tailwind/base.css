@@ -55,6 +55,10 @@ mark {
   @apply text-gray-8 bg-yellow-1;
 }
 
+abbr {
+  @apply underline decoration-dashed cursor-help;
+}
+
 :root {
   --color-white: 255 255 255;
   --color-black: 0 0 0;
