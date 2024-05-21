@@ -1,6 +1,6 @@
-import { Checkbox } from "~design";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
+import Checkbox from "./Checkbox";
 
 const meta = {
   title: "Components/Checkbox",

@@ -1,5 +1,6 @@
-import { Href, Button } from "~design";
+import Href from "./Href";
 import { Meta, StoryObj } from "@storybook/react";
+import { Button } from "../button";
 
 const meta = {
   component: Href,

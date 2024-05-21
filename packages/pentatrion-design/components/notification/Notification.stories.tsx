@@ -1,6 +1,10 @@
-import { NotificationsProvider, useNotifications, Button, useFetch } from "~design";
-import { Meta } from "@storybook/react";
+import { Meta, ReactRenderer } from "@storybook/react";
+import { PartialStoryFn } from "@storybook/types";
 import { useRef } from "react";
+import NotificationsProvider from "./NotificationsProvider";
+import { useFetch, useNotifications } from "../../hooks";
+import { Button } from "../button";
+
 const meta = {
   title: "Components/NotificationsProvider",
   component: NotificationsProvider,
@@ -10,7 +14,7 @@ const meta = {
         <Story />
       </NotificationsProvider>
     ),
-  ],
+  ] as ((story: PartialStoryFn<ReactRenderer, any>) => JSX.Element)[],
 } satisfies Meta<typeof NotificationsProvider>;
 export default meta;
 

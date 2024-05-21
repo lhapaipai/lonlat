@@ -74,3 +74,5 @@ export type NotificationsManager = ReturnType<typeof createNotificationsManager>
 export const NotificationsContext = createContext<NotificationsManager>(
   null as unknown as NotificationsManager,
 );
+
+export type { Message };

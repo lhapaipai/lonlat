@@ -1,8 +1,8 @@
-import { Modal, ModalTrigger, ModalContent } from "~design";
-import { ModalDescription, ModalHeader, ModalFooter } from "~design/components/modal/Components";
 import { Meta, StoryObj } from "@storybook/react";
-import { Button } from "~design";
 import { useState } from "react";
+import { Button } from "../button";
+
+import { Modal, ModalTrigger, ModalContent, ModalDescription, ModalHeader, ModalFooter } from ".";
 
 const meta = {
   title: "Components/Modal",

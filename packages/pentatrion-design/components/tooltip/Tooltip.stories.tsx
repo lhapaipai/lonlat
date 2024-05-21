@@ -1,7 +1,8 @@
-import { Tooltip, SimpleTooltip } from "~design";
 import { HTMLProps, forwardRef } from "react";
 import { useDrag } from "@use-gesture/react";
 import { useSpring, animated } from "@react-spring/web";
+import Tooltip from "./Tooltip";
+import SimpleTooltip from "./SimpleTooltip";
 
 export default {
   title: "Components/Tooltip",

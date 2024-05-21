@@ -1,4 +1,4 @@
-import { Scroll } from "~design";
+import Scroll from "./Scroll";
 
 export default {
   component: Scroll,

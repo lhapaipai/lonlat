@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta, ReactRenderer } from "@storybook/react";
 
 import { useState } from "react";
 import Autocomplete from "./Autocomplete";
@@ -6,7 +6,7 @@ import { NotificationsProvider } from "../notification";
 import { Button } from "../button";
 import SimpleAutocomplete from "./SimpleAutocomplete";
 import { Option } from "../select";
-
+import { PartialStoryFn } from "@storybook/types";
 const meta = {
   title: "Components/Autocomplete",
   component: Autocomplete,
@@ -16,7 +16,7 @@ const meta = {
         <Story />
       </NotificationsProvider>
     ),
-  ],
+  ] as ((story: PartialStoryFn<ReactRenderer, any>) => JSX.Element)[],
 } satisfies Meta<typeof Autocomplete>;
 export default meta;
 

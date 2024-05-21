@@ -9,3 +9,5 @@ export interface DropdownMenuOptions {
   color?: ThemeColor | "default";
   modal?: boolean;
 }
+
+export { ThemeColor };

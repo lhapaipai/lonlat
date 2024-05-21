@@ -1,5 +1,5 @@
-import { Flash } from "~design";
 import { Meta, StoryObj } from "@storybook/react";
+import Flash from "./Flash";
 
 const meta = {
   title: "Components/Flash",

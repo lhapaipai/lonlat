@@ -1,5 +1,5 @@
 import { Placement } from "@floating-ui/react";
-import { ThemeColor } from "../..";
+import { ThemeColor } from "../../types";
 
 export interface TooltipOptions {
   initialOpen?: boolean;
@@ -11,3 +11,5 @@ export interface TooltipOptions {
   color?: ThemeColor;
   contentClassName?: string;
 }
+
+export { ThemeColor };

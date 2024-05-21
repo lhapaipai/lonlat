@@ -1,6 +1,6 @@
-import { RadioGroup } from "~design";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
+import RadioGroup from "./RadioGroup";
 
 const meta = {
   title: "Components/RadioGroup",

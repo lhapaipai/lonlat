@@ -1,6 +1,6 @@
-import { Toggle } from "~design";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
+import Toggle from "./Toggle";
 
 const meta = {
   title: "Components/Toggle",

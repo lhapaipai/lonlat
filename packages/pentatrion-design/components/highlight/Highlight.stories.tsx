@@ -1,7 +1,9 @@
-import { Highlight, InputField, Toggle } from "~design";
 import { Meta } from "@storybook/react";
 import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
+import { Toggle } from "../input";
+import Hightlight from "./Highlight";
+import InputField from "../input-field/InputField";
 
 const meta = {
   title: "Components/Highlight",

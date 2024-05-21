@@ -1,13 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHeader,
-  TableHeaderCell,
-  TableRow,
-  Button,
-} from "~design";
+import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "../table";
+
+import { Button } from "../button";
 
 const meta = {
   title: "Components/Button",

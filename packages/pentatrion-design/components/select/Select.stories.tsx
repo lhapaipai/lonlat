@@ -1,12 +1,13 @@
 import { Meta } from "@storybook/react";
-import { Select, useSelect } from "~design";
+
 import { useListItem } from "@floating-ui/react";
 import { useState } from "react";
-import { SelectSelectionProps } from "~design/components/select/SelectSelection";
+
 import clsx from "clsx";
 import { action } from "@storybook/addon-actions";
+
 import { SelectValue } from "./Select";
-import { Option } from "./interface";
+import { useSelect, Select, SelectSelectionProps, Option } from ".";
 
 const onChangeAction = action("onChange");
 

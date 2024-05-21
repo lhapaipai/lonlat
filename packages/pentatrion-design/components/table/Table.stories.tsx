@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHeader,
-  TableHeaderCell,
-  TableRow,
-} from "~design";
+import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from ".";
 
 export default {
   title: "Components/Tables",

@@ -1,6 +1,6 @@
 import { Action, Middleware } from "@reduxjs/toolkit";
 import { messageAdded } from "./notificationSlice";
-import { parseError } from "../..";
+import { parseError } from "../../lib";
 
 export const errorCatcherMiddleware: Middleware =
   ({ dispatch }) =>

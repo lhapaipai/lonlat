@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from "react";
-import type { DropdownMenuOptions } from "./interface.d.ts";
+import type { DropdownMenuOptions } from "./interface";
 import {
   autoUpdate,
   flip,

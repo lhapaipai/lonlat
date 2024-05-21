@@ -1,6 +1,7 @@
-import { Checkbox, InputField, RadioGroup, Toggle } from "~design";
 import { Meta } from "@storybook/react";
 import { ChangeEvent, useState } from "react";
+import InputField from "./InputField";
+import { Toggle, Checkbox, RadioGroup } from "../input";
 
 const meta = {
   title: "Components/InputField",

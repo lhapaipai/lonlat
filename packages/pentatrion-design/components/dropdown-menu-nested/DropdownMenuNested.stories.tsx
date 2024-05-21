@@ -1,4 +1,6 @@
-import { DropdownMenuNested, MenuItem, MenuItemWithChildren, Button } from "~design";
+import { DropdownMenuNested, MenuItem, MenuItemWithChildren } from ".";
+import { Button } from "../button";
+
 import { Meta } from "@storybook/react";
 
 const meta = {

@@ -1,10 +1,5 @@
-import { Popover, PopoverContent, PopoverTrigger } from "~design";
-import { PopoverHeader, PopoverDescription } from "~design/components/popover/Components";
 import { Meta, StoryObj } from "@storybook/react";
-
-/**
- *
- */
+import { Popover, PopoverContent, PopoverTrigger, PopoverHeader, PopoverDescription } from ".";
 
 const meta = {
   title: "Components/Popover",

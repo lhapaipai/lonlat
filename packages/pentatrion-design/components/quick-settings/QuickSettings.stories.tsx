@@ -1,6 +1,8 @@
 import { Meta } from "@storybook/react";
-import { Button, Checkbox, Input, Select } from "~design";
 import { useState } from "react";
+import { Button } from "../button";
+import { Checkbox, Input } from "../input";
+import { Select } from "../select";
 
 const meta = {
   title: "Components/QuickSettings",

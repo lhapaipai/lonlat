@@ -9,3 +9,5 @@ export interface PopoverOptions {
   color?: ThemeColor;
   modal?: boolean;
 }
+
+export { ThemeColor };

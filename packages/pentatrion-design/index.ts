@@ -1,6 +1,8 @@
 // issue: https://github.com/floating-ui/floating-ui/issues/2507
 import type {} from "@floating-ui/react-dom";
 
+export type { ThemeColor } from "./types";
+
 export * from "./components/table";
 export * from "./components/card";
 export { default as Code } from "./components/code/Code";
@@ -35,5 +37,3 @@ export * from "./lib";
 export * from "./hooks";
 
 export { default as pentatrionTw } from "./tailwind/pentatrionTw";
-
-export type { ThemeColor } from "./types";

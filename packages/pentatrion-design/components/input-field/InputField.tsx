@@ -53,6 +53,7 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
     </div>
   );
 };
+InputFieldBase.displayName = "InputField";
 
 const InputField: <E extends ElementType = typeof defaultElement>(props: Props<E>) => ReactNode =
   forwardRef(InputFieldBase);

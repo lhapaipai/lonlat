@@ -6,3 +6,5 @@ export interface ModalOptions {
   onOpen?: (open: boolean) => void;
   color?: ThemeColor | "default";
 }
+
+export { ThemeColor };
