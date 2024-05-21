@@ -7,6 +7,7 @@ import { getOptionLabel } from "./util";
 interface Props<O extends OptionLike = Option>
   extends Pick<
     AutocompleteProps<O>,
+    | "className"
     | "icon"
     | "color"
     | "placement"

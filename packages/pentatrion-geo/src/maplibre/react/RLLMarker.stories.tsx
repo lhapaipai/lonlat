@@ -1,12 +1,12 @@
 import { Event, RMap } from "maplibre-react-components";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { action } from "@storybook/addon-actions";
+// import { action } from "@storybook/addon-actions";
 import "maplibre-gl/dist/maplibre-gl.css";
 import RLLMarker from "./RLLMarker";
 import LLMarker from "../LLMarker";
 
-const onChangeLngLatAction = action("onChangeLngLatAction");
+// const onChangeLngLatAction = action("onChangeLngLatAction");
 
 // @ts-ignore issue with memoized RLLMarker
 const meta = {
@@ -104,7 +104,7 @@ export const Basic: Story = {
 export const Draggable = () => {
   const [coords, setCoords] = useState({ lng: 5, lat: 45 });
   function handleDragEnd(e: Event<LLMarker>) {
-    onChangeLngLatAction(e);
+    console.log("on DragEnd");
     setCoords(e.target.getLngLat());
   }
   return (

@@ -27,7 +27,7 @@ export default function Step({
         <div
           className={clsx([
             "marker",
-            "relative z-[1]",
+            "relative z-[1] inline-flex items-center justify-center rounded-full ",
             ["done", "current"].includes(status) && "active",
             markerClassName,
           ])}

@@ -38,6 +38,8 @@ import { inputConfig } from "../input/Input.tsx";
 import { ThemeColor } from "../../types";
 
 export interface AutocompleteProps<O extends OptionLike = Option> {
+  className?: string;
+
   icon?: boolean | ReactNode;
 
   color?: ThemeColor;
@@ -84,6 +86,7 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
 
 function Autocomplete<O extends OptionLike = Option>(
   {
+    className,
     icon = true,
     color = "yellow",
     selectionSuffix,
@@ -204,11 +207,11 @@ function Autocomplete<O extends OptionLike = Option>(
   );
 
   return (
-    <div>
+    <div className={className}>
       <div className={clsx(inputConfig.container)} ref={refs.setReference} data-color={color}>
         {icon !== false && (
           <div className="flex-center relative">
-            {loading && <Loader size="medium" color="gray" />}
+            {loading && <Loader size="medium" color="gray" className="absolute top-0 left-0" />}
             {icon === true ? (
               <span className="w-8 h-8 flex-center">
                 <i className="fe-search"></i>

@@ -51,13 +51,7 @@ export const BasicOriginal = () => {
   const [items, setItems] = useState(data);
 
   return (
-    <ReactSortable
-      list={items}
-      setList={setItems}
-      animation={200}
-      className="ll-card-group ll-sortable"
-      handle=".handle"
-    >
+    <ReactSortable list={items} setList={setItems} animation={200} handle=".handle">
       {items.map((item) => (
         <div key={item.id} className={twClasses.item}>
           <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
@@ -74,13 +68,7 @@ export const Basic = () => {
   const [items, setItems] = useState(data);
 
   return (
-    <Sortable
-      list={items}
-      setList={setItems}
-      animation={200}
-      className="ll-card-group ll-sortable"
-      handle=".handle"
-    >
+    <Sortable list={items} setList={setItems} animation={200} handle=".handle">
       {items.map((item) => (
         <div key={item.id} className={twClasses.item}>
           <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
@@ -96,13 +84,7 @@ export const Basic = () => {
 export const WithInputs = () => {
   const [items, setItems] = useState(data);
   return (
-    <Sortable
-      list={items}
-      setList={setItems}
-      animation={200}
-      className="ll-sortable"
-      handle=".handle"
-    >
+    <Sortable list={items} setList={setItems} animation={200} handle=".handle">
       {items.map((item) => (
         <div key={item.id} className={twClasses.item}>
           <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">

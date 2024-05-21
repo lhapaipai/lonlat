@@ -77,6 +77,7 @@ export const WithAutocompleteSortable = () => {
             >
               <LazyAutocomplete<GeoPointOption>
                 placeholder="Search a location..."
+                className="flex-1"
                 icon={false}
                 selection={isNoData(location) ? null : location}
                 onChangeSelection={(selection) => handleChangeSelection(index, selection)}
@@ -84,7 +85,13 @@ export const WithAutocompleteSortable = () => {
                 autocompleteOptionComponent={AutocompleteGeoOption}
               />
               {locations.length > 2 && (
-                <Button icon variant="ghost" color="gray" onClick={() => handleRemoveItem(index)}>
+                <Button
+                  icon
+                  variant="text"
+                  className="ml-2"
+                  color="gray"
+                  onClick={() => handleRemoveItem(index)}
+                >
                   <i className="fe-cancel"></i>
                 </Button>
               )}

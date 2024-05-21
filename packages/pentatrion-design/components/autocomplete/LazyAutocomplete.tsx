@@ -8,6 +8,7 @@ interface Props<O extends OptionLike = Option>
   // Omit "searchValue" | "onChangeSearchValue" | "options"
   extends Pick<
     AutocompleteProps<O>,
+    | "className"
     | "icon"
     | "color"
     | "selectionSuffix"

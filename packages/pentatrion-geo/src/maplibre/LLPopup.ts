@@ -18,7 +18,8 @@ import {
   offset,
   shift,
 } from "@floating-ui/dom";
-import { type ThemeColor } from "pentatrion-design";
+import { buttonVariants, dialogVariants, type ThemeColor } from "pentatrion-design";
+import clsx from "clsx";
 // import "pentatrion-design/components/dialog/Dialog.scss";
 // import "pentatrion-design/components/button/Button.scss";
 
@@ -193,7 +194,7 @@ export default class LLPopup extends Evented {
   }
 
   setHTML(html: string, title?: string): this {
-    const description = DOM.create("div", "description");
+    const description = DOM.create("div", "p-2");
     const temp = document.createElement("body");
     let child;
     temp.innerHTML = html;
@@ -226,9 +227,10 @@ export default class LLPopup extends Evented {
         }
       }
     } else {
-      this._content = DOM.create("div", "content");
+      this._content = DOM.create("div");
     }
 
+    this._createActions();
     this._createHeader(title);
 
     this._content.appendChild(htmlNode);
@@ -285,16 +287,21 @@ export default class LLPopup extends Evented {
       this._container = DOM.create(
         "div",
         // we need placement-top because we need initial border to compute the real popup height
-        `ll-popup`,
+        "absolute top-0 left-0 w-max min-w-[150px] [&[data-track-pointer='true']]:select-none [&[data-track-pointer='true']]:pointer-events-none",
         this._map.getContainer(),
       );
 
       this._dialog = DOM.create(
         "div",
         // we need placement-top because we need initial border to compute the real popup height
-        `ll-dialog animate-fade-in border-color-${this.options.borderColor} placement-top`,
+        clsx(
+          "animate-fade-in rounded-2xl relative shadow dark:shadow-dark",
+          dialogVariants.color("yellow"),
+        ),
         this._container,
       );
+      this._dialog.dataset.placement = "top";
+      this._dialog.dataset.color = "yellow";
 
       if (this.options.className) {
         for (const name of this.options.className.split(" ")) {
@@ -302,7 +309,7 @@ export default class LLPopup extends Evented {
         }
       }
       this._dialog.appendChild(this._content);
-      this._tip = DOM.create("div", "arrow", this._dialog);
+      this._tip = DOM.create("div", "p8n-arrow", this._dialog);
     }
 
     if (this.options.maxWidth && this._dialog.style.maxWidth !== this.options.maxWidth) {
@@ -315,6 +322,8 @@ export default class LLPopup extends Evented {
     } else {
       this._lngLat = this._lngLat?.wrap();
     }
+
+    this._container.dataset.trackPointer = this._trackPointer.toString();
 
     if (this._trackPointer && !cursorPosition) return;
 
@@ -353,7 +362,7 @@ export default class LLPopup extends Evented {
         }),
         arrow({
           element: this._tip!,
-          padding: 8,
+          padding: 12,
         }),
         hide({
           padding: -400,
@@ -376,10 +385,10 @@ export default class LLPopup extends Evented {
       const { x: arrowX, y: arrowY } = middlewareData.arrow!;
 
       const currentSide = placement.split("-")[0] as Side;
-      ["top", "right", "bottom", "left"].forEach((side) =>
-        this._dialog?.classList.remove(`placement-${side}`),
-      );
-      this._dialog?.classList.add(`placement-${currentSide}`);
+
+      if (this._dialog) {
+        this._dialog.dataset.placement = currentSide;
+      }
 
       // arrow
       const staticSide: "bottom" | "left" | "top" | "right" = (
@@ -402,16 +411,17 @@ export default class LLPopup extends Evented {
     });
   };
 
-  _createHeader(title?: string) {
-    if (!this._content) {
-      throw new Error("_createHeader must be called after setDOMContent");
-    }
+  _createActions() {
     if (this.options.closeButton) {
-      const actions = DOM.create("div", "bar-buttons", this._content);
+      const actions = DOM.create("div", "p-1 float-right", this._content);
 
       this._closeButton = DOM.create(
         "button",
-        "ll-button icon variant-ghost-gray button-gray variant-ghost",
+        clsx(
+          "rounded-2xl cursor-pointer relative overflow-clip focus-visible:outline focus-visible:outline-2 no-underline border-0 inline-flex items-center transition-color-shadow duration-300 leading-5",
+          "justify-center min-w-8 h-8 [&_i]:w-8 [&_:last-child:not(i)]:pr-4", // icon
+          buttonVariants.variant.text("gray"),
+        ),
         actions,
       );
       this._closeButton.type = "button";
@@ -419,8 +429,11 @@ export default class LLPopup extends Evented {
       DOM.create("i", "fe-cancel", this._closeButton);
       this._closeButton.addEventListener("click", this._onClose);
     }
+  }
+
+  _createHeader(title?: string) {
     if (title) {
-      const header = DOM.create("header", "header", this._content);
+      const header = DOM.create("header", "flex items-center px-2 pt-2", this._content);
       const h4 = DOM.create("h4", undefined, header);
       h4.innerText = title;
     }

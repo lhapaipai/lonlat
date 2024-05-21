@@ -9,7 +9,7 @@ interface Props extends ComponentProps<"div"> {
   children: ReactNode;
 }
 
-const dialogVariants = {
+export const dialogVariants = {
   color(color?: ThemeColor) {
     if (!color) {
       return "bg-gray-0";
@@ -32,7 +32,7 @@ export default function Dialog({ placement, color, children, className, ...rest 
   return (
     <div
       className={clsx(
-        "ll-dialog rounded-2xl relative shadow dark:shadow-dark",
+        "rounded-2xl relative shadow dark:shadow-dark",
         dialogVariants.color(color),
         className,
       )}

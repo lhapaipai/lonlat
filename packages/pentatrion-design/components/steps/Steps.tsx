@@ -35,16 +35,14 @@ export default function Steps({
   return (
     <ul
       {...rest}
-      className={clsx([
-        "ll-steps",
-        `direction-${direction}`,
-        `border-${lineStyle}`,
-        `marker-${markerType}`,
-        associateLineWithStep ? `step-line` : `steps-line`,
-        className,
-      ])}
+      className={clsx(["ll-steps", className])}
+      data-global-line={(!associateLineWithStep).toString()}
+      data-direction={direction}
+      data-marker={markerType}
       style={{
-        "--border-style": lineStyle,
+        "--line-style": lineStyle,
+        "--line-space": associateLineWithStep ? "4px" : "0px",
+        // "--step-circle-radius": markerType === "circle" ? "18px" : "9px",
       }}
     />
   );

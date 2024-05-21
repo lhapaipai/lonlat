@@ -29,6 +29,10 @@ const meta = {
 } satisfies Meta;
 export default meta;
 
+const twClasses = {
+  item: "row-item rounded-2xl p-2 flex items-center [&.sortable-chosen]:shadow",
+};
+
 export const WithAutocomplete = () => {
   const [items, setItems] = useState<(GeoPointOption | NoDataOption)[]>([
     createNodataFeature(),
@@ -61,19 +65,14 @@ export const WithAutocomplete = () => {
 
   return (
     <>
-      <Sortable
-        list={items}
-        setList={setItems}
-        animation={200}
-        className="ll-sortable"
-        handle=".handle"
-      >
+      <Sortable list={items} setList={setItems} animation={200} handle=".handle">
         {items.map((item, index) => (
-          <div key={item.id} className="row-item">
-            <Button icon variant="outlined" className="handle">
+          <div key={item.id} className={twClasses.item}>
+            <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
               <i className="fe-braille"></i>
             </Button>
             <LazyAutocomplete<GeoPointOption>
+              className="flex-1"
               selection={isNoData(item) ? null : item}
               onChangeSelection={(selection) => handleChangeSelection(index, selection)}
               onChangeSearchValueCallback={handleChangeSearchValue}

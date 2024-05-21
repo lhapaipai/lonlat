@@ -122,7 +122,7 @@ abbr {
   --resize-grip: 10px;
   --resize-indicator: 2px;
 
-  --step-circle-radius: 18px;
+  --step-circle-radius: 16px;
 }
 .dark {
   /* text hover color, button active bgcolor */
