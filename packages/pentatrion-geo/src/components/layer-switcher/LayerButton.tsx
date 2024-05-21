@@ -6,6 +6,7 @@ interface Props extends ComponentProps<"button"> {
   disabled?: boolean;
   selected?: boolean;
   image: string;
+  srcSet?: string;
   imagePositionY: number;
   label: string;
   variant?: "base" | "optional" | "principal";
@@ -15,6 +16,7 @@ export default function LayerButton({
   disabled,
   className,
   image,
+  srcSet,
   imagePositionY,
   label,
   selected = false,
@@ -47,6 +49,7 @@ export default function LayerButton({
       <div className={clsx("overflow-hidden h-full", variant === "principal" && "w-full")}>
         <img
           src={image}
+          srcSet={srcSet}
           className={clsx(
             "object-cover w-[90px] h-[54px] max-w-none",
             variant === "principal" ? "" : "",

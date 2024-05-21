@@ -1,0 +1,46 @@
+@import "tailwindcss/base";
+@import "pentatrion-design/tailwind/base.css" layer(base);
+
+@import "tailwindcss/components";
+@import "pentatrion-design/tailwind/components.css" layer(components);
+@import "pentatrion-design/tailwind/components-input-outline.css" layer(components);
+@import "pentatrion-design/tailwind/components-resize-area.css" layer(components);
+@import "pentatrion-design/tailwind/components-step.css" layer(components);
+
+@import "tailwindcss/utilities";
+@import "pentatrion-design/tailwind/utilities.css" layer(utilities);
+@import "pentatrion-design/tailwind/utilities-dialog.css" layer(utilities);
+
+@import "pentatrion-fonts/fontello-lonlat.css";
+@import "pentatrion-geo/src/fontello-geo-inline.css";
+@import "pentatrion-geo/src/maplibre/LLMarker.css";
+@import "./maplibregl-css/index.css";
+
+html {
+  --sidebar-extra-width: 50%;
+  --sidebar-extra-height: 50%;
+}
+
+.ll-marker .marker .text {
+  font-weight: 600;
+  font-size: max(10px, var(--marker-size) * 0.3);
+}
+
+/* .maplibregl-ctrl-top-right {
+  & .ll-quick-settings {
+    padding: var(--space-2);
+  }
+
+  @media (max-width: 700px) {
+    left: 0;
+
+    & .maplibregl-ctrl {
+
+
+
+      &.distraction-free {
+        transform: translateX(100%);
+      }
+    }
+  }
+} */

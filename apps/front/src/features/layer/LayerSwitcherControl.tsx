@@ -20,9 +20,9 @@ import { createPortal } from "react-dom";
 import { useMap, useRControl } from "maplibre-react-components";
 import { useEffect, useState } from "react";
 import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
+import { LayerButton } from "pentatrion-geo";
 import { coordsChanged } from "~/features/street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/mapSlice";
-import "./LayerSwitcherControl.scss";
 import { useT } from "talkr";
 
 export default function LayerSwitcherControl() {
@@ -32,7 +32,10 @@ export default function LayerSwitcherControl() {
 
   const container = useRControl({
     position: "bottom",
-    className: cn("ll-layer-switcher", distractionFree && "distraction-free"),
+    className: cn(
+      "ll-layer-switcher flex overflow-x-auto flex-nowrap relative z-[1] select-none max-w-full pointer-events-auto gap-2 pt-0.5 pb-2 px-2",
+      distractionFree && "distraction-free",
+    ),
   });
 
   function handleClickOutside() {
@@ -65,32 +68,23 @@ export default function LayerSwitcherControl() {
 
   return createPortal(
     collapsed ? (
-      <Button
-        className={cn("layer", "base", "principal")}
+      <LayerButton
+        image="/assets/graphics/sprites/layers-1x.jpg"
+        srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+        imagePositionY={currentLayer.offsetY}
+        label={currentLayer.label}
+        variant="principal"
         key="current-layer"
         onClick={() => setCollapsed(false)}
-      >
-        <div className="type">
-          <i className={`fe-${currentLayer.type}`}></i>
-        </div>
-        <div className="preview-container">
-          <img
-            className="preview"
-            src="/assets/graphics/sprites/layers-1x.jpg"
-            srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-            style={{ objectPosition: `0px ${currentLayer.offsetY}px` }}
-          />
-        </div>
-        <div className="legend text-sm">{currentLayer.label}</div>
-      </Button>
+      />
     ) : (
       <>
-        <ButtonGroup direction="vertical" className="filters">
+        <ButtonGroup direction="vertical">
           {(Object.keys(baseLayers) as (keyof BaseLayers)[]).map((countryId) => (
             <Button
               key={countryId}
-              className="text-sm"
-              variant="text"
+              className="text-sm flex-1"
+              variant="light"
               color="gray"
               selected={countryFilter === countryId}
               onClick={() => setCountryFilter(countryId)}
@@ -104,26 +98,19 @@ export default function LayerSwitcherControl() {
           const layerId = id as BaseLayerId;
           const layer = baseLayersById[layerId];
           return (
-            <Button
+            <LayerButton
               className={cn("layer", "base", layerId === currentBaseLayerId && "active")}
+              image="/assets/graphics/sprites/layers-1x.jpg"
+              srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
               key={layerId}
               onClick={() => dispatch(baseLayerChanged(layerId))}
-            >
-              <div className="type">
-                <i className={`fe-${layer.type}`}></i>
-              </div>
-              <img
-                className="preview"
-                src="/assets/graphics/sprites/layers-1x.jpg"
-                srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-                style={{ objectPosition: `0px ${layer.offsetY}px` }}
-              />
-              <div className="legend text-sm">{layer.label}</div>
-            </Button>
+              imagePositionY={layer.offsetY}
+              label={layer.label}
+            />
           );
         })}
 
-        <div className="separator"></div>
+        <div className="w-1 flex-[0_0_0.25rem] my-4 bg-gray-1 rounded-full relative"></div>
 
         {currentBaseLayerId &&
           (baseLayersById[currentBaseLayerId] as BaseLayerInfos).optionalLayers.map(({ id }) => {
@@ -131,61 +118,47 @@ export default function LayerSwitcherControl() {
             const layer = optionalLayersById[layerId];
 
             return (
-              <Button
+              <LayerButton
                 className={cn(
                   "layer",
                   "optional",
                   currentOptionalLayers.includes(layerId) && "active",
                 )}
+                variant="optional"
+                image="/assets/graphics/sprites/layers-1x.jpg"
+                srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
                 key={layerId}
                 onClick={() => dispatch(optionalLayerToggled(layerId))}
-              >
-                <div className="type">
-                  <i className={`fe-${layer.type}`}></i>
-                </div>
-                <img
-                  className="preview"
-                  src="/assets/graphics/sprites/layers-1x.jpg"
-                  srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-                  style={{ objectPosition: `0px ${layer.offsetY}px` }}
-                />
-                <div className="legend text-sm">{layer.label}</div>
-              </Button>
+                imagePositionY={layer.offsetY}
+                label={layer.label}
+              />
             );
           })}
 
-        <div className="separator"></div>
+        <div className="w-1 flex-[0_0_0.25rem] my-4 bg-gray-1 rounded-full relative"></div>
 
-        <Button
+        <LayerButton
           className={cn("layer", "base", currentTerrain && "active")}
           key="terrain"
           onClick={() => dispatch(terrainToggled())}
-        >
-          <img
-            className="preview"
-            src="/assets/graphics/sprites/layers-1x.jpg"
-            srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-            style={{ objectPosition: `0px ${optionalLayersById["terrain"].offsetY}px` }}
-          />
-          <div className="legend text-sm">Relief</div>
-        </Button>
+          image="/assets/graphics/sprites/layers-1x.jpg"
+          srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+          imagePositionY={optionalLayersById["terrain"].offsetY}
+          label={optionalLayersById["terrain"].label}
+        />
 
-        <Button
+        <LayerButton
           className={cn("layer", "base", currentStreetView && "active")}
           key="street-view"
           onClick={() => {
             dispatch(coordsChanged(map.getCenter().toArray()));
             dispatch(streetViewToggled());
           }}
-        >
-          <img
-            className="preview"
-            src="/assets/graphics/sprites/layers-1x.jpg"
-            srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
-            style={{ objectPosition: `0px ${optionalLayersById["street-view"].offsetY}px` }}
-          />
-          <div className="legend text-sm">Street View</div>
-        </Button>
+          image="/assets/graphics/sprites/layers-1x.jpg"
+          srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+          imagePositionY={optionalLayersById["street-view"].offsetY}
+          label={optionalLayersById["street-view"].label}
+        />
       </>
     ),
     container,

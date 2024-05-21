@@ -12,7 +12,6 @@ import {
 } from "./store/mapSlice";
 import { memo } from "react";
 import cn from "classnames";
-import "./TabsControl.scss";
 import HelpTab from "./components/HelpTab";
 
 function TabsControl() {
@@ -27,24 +26,42 @@ function TabsControl() {
   const tabs = [
     {
       id: "search",
-      title: <i className="fe-search"></i>,
+      title: (
+        <span className="px-6 inline-block">
+          <i className="fe-search"></i>
+        </span>
+      ),
       content: <SearchTab />,
     },
     {
       id: "direction",
-      title: <i className="fe-route"></i>,
+      title: (
+        <span className="px-6 inline-block">
+          <i className="fe-route"></i>
+        </span>
+      ),
       content: <DirectionTab />,
     },
     {
       id: "help",
-      title: <i className="fe-info"></i>,
+      title: (
+        <span className="px-6 inline-block">
+          <i className="fe-info"></i>
+        </span>
+      ),
       content: <HelpTab />,
     },
   ];
 
   return createPortal(
     <>
-      <Tabs fullWidth={false} tabs={tabs} value={tab} onChange={(e) => dispatch(tabChanged(e))}>
+      <Tabs
+        fullWidth={false}
+        tabs={tabs}
+        value={tab}
+        onChange={(e) => dispatch(tabChanged(e))}
+        contentClassName="overflow-auto max-h-[calc(100vh-36px-1rem)]"
+      >
         <Button
           onClick={() => dispatch(distractionFreeChanged(true))}
           icon
@@ -55,7 +72,7 @@ function TabsControl() {
         </Button>
       </Tabs>
       {distractionFree && (
-        <div className="expand-all">
+        <div className="expand-all absolute top-2 right-[calc(100%+1rem)] md:top-0 md:right-[calc(100%+0.5rem)]">
           <Button
             icon
             variant="ghost"
@@ -68,7 +85,7 @@ function TabsControl() {
               src="/logo-1x.png"
               srcSet="/logo-1x.png 1x, /logo-2x.png 2x"
               alt="LonLat logo"
-              className="logo"
+              className="w-8 h-8 max-w-none"
             />
           </Button>
         </div>

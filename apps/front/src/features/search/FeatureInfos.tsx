@@ -124,7 +124,7 @@ export default function FeatureInfos() {
         <>
           <div className="separator"></div>
           <textarea
-            className="ll-textarea text-sm raw"
+            className="ll-textarea text-sm min-h-60"
             readOnly
             defaultValue={stringifyGeoOption(searchFeature)}
           />

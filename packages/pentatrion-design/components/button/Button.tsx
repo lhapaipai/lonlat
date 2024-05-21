@@ -171,7 +171,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className,
           buttonVariants.size(icon, size),
           buttonVariants.variant[variant](color),
-          icon && "justify-center min-w-8 h-8 [&_i]:w-8 [&_:last-child:not(i)]:pr-4",
+          icon && "justify-center min-w-8 h-8 [&_i]:w-8 [&_:last-child:not(i,img)]:pr-4",
           fullWidth && "w-full",
           selected && "active",
           notClickable && "disabled",

@@ -30,7 +30,10 @@ export default function StreetViewWindow() {
 
   return (
     coords && (
-      <div id="extra">
+      <div
+        id="extra"
+        className="relative border-l-0 border-t-[1px] border-gray-4 flex-[0_0_clamp(25vw,var(--sidebar-extra-height),60vw)] md:border-t-0 md:border-l-[1px] md:flex-[0_0_clamp(25vw,var(--sidebar-extra-width),calc(100vw-400px-1rem))]"
+      >
         <ResizeArea name="extra" position="left" />
         <ResizeArea name="extra" position="top" />
         <GApiWrapper apiKey={googleMapsApiToken} version="weekly" libraries={googleLibraries}>

@@ -27,6 +27,7 @@
     "maplibre-react-components": "workspace:*",
     "nanoid": "^5.0.7",
     "pentatrion-design": "workspace:*",
+    "pentatrion-fonts": "workspace:*",
     "pentatrion-geo": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -44,6 +45,9 @@
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
+    "postcss": "^8.4.38",
+    "postcss-load-config": "^5.1.0",
+    "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
     "unplugin-inject-preload": "^2.0.3",
     "vite": "^5.2.11"

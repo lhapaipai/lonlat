@@ -8,8 +8,6 @@ import MapFlyer from "./MapFlyer";
 
 import ContextMenuManager from "./ContextMenuManager";
 
-import "./css/index.scss";
-import "./App.scss";
 import DirectionMap from "~/features/direction/DirectionMap";
 import SearchMap from "~/features/search/SearchMap";
 import { DOM } from "pentatrion-geo/src/maplibre/core/util/dom";
@@ -84,8 +82,8 @@ function App() {
   }, [baseLayer, optionalLayers, terrain]);
 
   return (
-    <div id="app">
-      <div id="principal">
+    <div id="app" className="w-full h-full flex flex-col md:flex-row">
+      <div id="principal" className="flex-1">
         <RMap
           onMoveEnd={handleMoveEnd}
           initialCenter={viewState.center}

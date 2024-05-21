@@ -25,10 +25,14 @@ interface Props {
   children?: ReactNode;
 
   className?: string;
+  contentClassName?: string;
+  listClassName?: string;
 }
 
 export default function Tabs({
   className,
+  listClassName,
+  contentClassName,
   tabs = [],
   value,
   onChange,
@@ -38,8 +42,11 @@ export default function Tabs({
 }: Props) {
   const content = tabs.find((t) => t.id === value)?.content;
   return (
-    <div className={clsx("ll-tabs rounded-sm shadow bg-gray-2 overflow-hidden", className)}>
-      <div role="tablist" className={clsx("tabs-list flex", stickyTabs && "sticky z-[1] top-0")}>
+    <div className={clsx("ll-tabs  md:rounded-sm shadow bg-gray-2 overflow-hidden", className)}>
+      <div
+        role="tablist"
+        className={clsx("tabs-list flex", stickyTabs && "sticky z-[1] top-0", listClassName)}
+      >
         {tabs.map(({ title, id }) => {
           return (
             <div
@@ -53,7 +60,7 @@ export default function Tabs({
               )}
             >
               <button
-                className="p-2 focus-visible:outline-offset-0 w-full"
+                className="px-2 py-1 focus-visible:outline-offset-0 w-full"
                 onClick={(event) => {
                   event.stopPropagation();
                   event.preventDefault();
@@ -67,7 +74,7 @@ export default function Tabs({
         })}
         {children && <div className="extra ml-auto mr-2 flex items-center">{children}</div>}
       </div>
-      <div className="p-2 bg-gray-0 shadow">{content}</div>
+      <div className={clsx("p-2 bg-gray-0 shadow", contentClassName)}>{content}</div>
     </div>
   );
 }

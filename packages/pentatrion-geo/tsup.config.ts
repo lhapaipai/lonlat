@@ -17,6 +17,7 @@ export default defineConfig({
       "pentatrion-design",
       "react",
       "react-dom",
+      "react-sortablejs",
     ];
   },
   shims: true,

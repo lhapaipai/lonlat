@@ -28,7 +28,7 @@
 
   &[data-marker="bullet"] {
     .marker {
-      @apply text-xs bg-gray-0 outline outline-2 outline-gray-2;
+      @apply text-2xs bg-gray-0 outline outline-2 outline-gray-2;
       margin: calc(var(--step-circle-radius) / 2);
       width: calc(var(--step-circle-radius));
       height: calc(var(--step-circle-radius));
