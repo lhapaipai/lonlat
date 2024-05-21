@@ -8,6 +8,7 @@ interface Props<O extends OptionLike = Option>
   extends Pick<
     AutocompleteProps<O>,
     | "icon"
+    | "color"
     | "placement"
     | "placeholder"
     | "selection"

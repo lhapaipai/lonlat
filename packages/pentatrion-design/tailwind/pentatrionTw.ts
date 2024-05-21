@@ -136,6 +136,9 @@ export default plugin(
           flash: "flash 1000ms ease both infinite",
           "loader-stroke": "loader-stroke 1s linear infinite",
         },
+        fontSize: {
+          "2xs": ["0.688rem", { lineHeight: "1rem" }],
+        },
         keyframes,
       },
     },

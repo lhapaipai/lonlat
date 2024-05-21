@@ -1,8 +1,11 @@
-import { SimpleAutocomplete, Autocomplete, NotificationsProvider, Option, Button } from "~design";
-
 import { Meta } from "@storybook/react";
 
 import { useState } from "react";
+import Autocomplete from "./Autocomplete";
+import { NotificationsProvider } from "../notification";
+import { Button } from "../button";
+import SimpleAutocomplete from "./SimpleAutocomplete";
+import { Option } from "../select";
 
 const meta = {
   title: "Components/Autocomplete",

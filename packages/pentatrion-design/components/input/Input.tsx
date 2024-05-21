@@ -23,12 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div
         data-color={color}
-        className={clsx(
-          inputConfig.container,
-          disabled && "disabled",
-          `variant-${variant}`,
-          className,
-        )}
+        className={clsx(inputConfig.container, disabled && "disabled", className)}
       >
         {prefix && (
           <div

@@ -35,9 +35,12 @@ import { Button } from "../button";
 import { Dialog } from "../dialog";
 import Loader from "../loader/Loader";
 import { inputConfig } from "../input/Input.tsx";
+import { ThemeColor } from "../../types";
 
 export interface AutocompleteProps<O extends OptionLike = Option> {
   icon?: boolean | ReactNode;
+
+  color?: ThemeColor;
 
   /**
    * render suffix only if selection
@@ -82,6 +85,7 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
 function Autocomplete<O extends OptionLike = Option>(
   {
     icon = true,
+    color = "yellow",
     selectionSuffix,
     noSearchSuffix,
     placement = "bottom",
@@ -201,7 +205,7 @@ function Autocomplete<O extends OptionLike = Option>(
 
   return (
     <div>
-      <div className={clsx(inputConfig.container)} ref={refs.setReference}>
+      <div className={clsx(inputConfig.container)} ref={refs.setReference} data-color={color}>
         {icon !== false && (
           <div className="flex-center relative">
             {loading && <Loader size="medium" color="gray" />}
@@ -216,7 +220,7 @@ function Autocomplete<O extends OptionLike = Option>(
         )}
         <input
           spellCheck="false"
-          className={clsx(inputConfig.input)}
+          className={clsx(inputConfig.input, icon === false && "pl-4")}
           ref={inputRef}
           type="search"
           value={searchValue}

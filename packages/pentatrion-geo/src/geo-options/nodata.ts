@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
-import { GeoOption, NoDataOption } from "pentatrion-design";
+import { NoDataOption } from "pentatrion-design";
+import { GeoOption } from "../types";
 
 export function createNodataFeature(id?: string): NoDataOption {
   return {
