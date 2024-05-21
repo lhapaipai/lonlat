@@ -1,4 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj, ReactRenderer } from "@storybook/react";
+import { PartialStoryFn } from "@storybook/types";
+
 import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "../table";
 
 import { Button } from "../button";
@@ -11,7 +13,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: ["contained", "outlined", "text", "ghost"],
+      options: ["contained", "light", "outlined", "text", "ghost"],
     },
     size: {
       control: {
@@ -26,6 +28,16 @@ const meta = {
       options: ["yellow", "gray", "red", "orange", "green", "blue"],
     },
   },
+  parameters: {
+    layout: "fullscreen",
+  },
+  decorators: [
+    (Story) => (
+      <div className="bg-gray-1 p-4">
+        <Story />
+      </div>
+    ),
+  ] as ((story: PartialStoryFn<ReactRenderer, any>) => JSX.Element)[],
 } satisfies Meta<typeof Button>;
 export default meta;
 
@@ -45,7 +57,7 @@ export const Basic: Story = {
   },
 };
 
-const variants = ["contained", "outlined", "text", "ghost"] as const;
+const variants = ["contained", "light", "outlined", "text", "ghost"] as const;
 const colors = ["yellow", "gray", "red", "orange", "green", "blue"] as const;
 
 export const Context = () => {
@@ -66,6 +78,7 @@ export const Context = () => {
       <h3 className="mt-8">Variants</h3>
       <div className="flex gap-2">
         <Button variant="contained">solid</Button>
+        <Button variant="light">light</Button>
         <Button variant="outlined">outlined</Button>
         <Button variant="text">text</Button>
         <Button variant="ghost">ghost</Button>

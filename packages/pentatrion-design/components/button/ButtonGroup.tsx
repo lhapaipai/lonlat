@@ -8,9 +8,9 @@ interface Props extends ComponentProps<"div"> {
 
 const buttonGroupVariants = {
   horizontal:
-    "[&_:not(:first-child)]:rounded-bl-none [&_:not(:last-child)]:rounded-tr-none [&_.button-variant-outlined]:-mx-[1px]",
+    "[&_:not(:first-child)]:rounded-bl-none [&_:not(:last-child)]:rounded-tr-none [&_[data-variant='outlined']]:-mx-[1px]",
   vertical:
-    "flex flex-col [&_:not(:first-child)]:rounded-tr-none [&_:not(:last-child)]:rounded-bl-none [&_.button-variant-outlined]:-my-[1px]",
+    "flex flex-col [&_:not(:first-child)]:rounded-tr-none [&_:not(:last-child)]:rounded-bl-none [&_[data-variant='outlined']]:-my-[1px]",
 };
 
 export default function ButtonGroup({ children, className, direction = "horizontal" }: Props) {

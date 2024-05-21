@@ -7,7 +7,7 @@ import { useRipple } from "../../hooks";
 export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   withRipple?: boolean;
 
-  variant?: "contained" | "outlined" | "text" | "ghost";
+  variant?: "contained" | "light" | "outlined" | "text" | "ghost";
 
   size?: "small" | "medium" | "large" | "custom";
 
@@ -64,6 +64,22 @@ export const buttonVariants = {
           green:
             "text-green-text bg-green-3 hover:bg-green-4 active-full:bg-green-5 focus-visible:outline-green-5",
           blue: "text-blue-text bg-blue-3 hover:bg-blue-4 active-full:bg-blue-5 focus-visible:outline-blue-5",
+        }[color],
+      );
+    },
+    light(color: ThemeColor) {
+      return clsx(
+        "shadow hover:shadow-md focus:shadow-md active-full:shadow-lg outline-offset-0 bg-gray-0",
+        {
+          yellow:
+            "text-yellow-text hover:bg-yellow-3 active-full:bg-yellow-4 focus-visible:outline-yellow-4",
+          gray: "text-gray-text hover:bg-gray-3 active-full:bg-gray-4 focus-visible:outline-gray-4",
+          red: "text-red-text hover:bg-red-3 active-full:bg-red-4 focus-visible:outline-red-4",
+          orange:
+            "text-orange-text hover:bg-orange-3 active-full:bg-orange-4 focus-visible:outline-orange-4",
+          green:
+            "text-green-text hover:bg-green-3 active-full:bg-green-4 focus-visible:outline-green-4",
+          blue: "text-blue-text hover:bg-blue-3 active-full:bg-blue-4 focus-visible:outline-blue-4",
         }[color],
       );
     },
@@ -160,6 +176,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           selected && "active",
           notClickable && "disabled",
         )}
+        data-variant={variant}
         disabled={disabled}
         aria-busy={loading}
         {...props}

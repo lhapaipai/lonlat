@@ -12,7 +12,7 @@ export default meta;
 
 const buttonLabels = ["one", "two", "three"];
 const colors: ThemeColor[] = ["yellow", "gray", "blue", "red"];
-const variants = ["contained", "outlined", "text"] as const;
+const variants = ["contained", "light", "outlined", "text"] as const;
 const directions = ["horizontal", "vertical"] as const;
 export const Context = () => {
   const [val, setVal] = useState("one");
