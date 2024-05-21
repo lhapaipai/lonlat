@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { GeoPointOption, GeolocationGeoOption } from "~geo";
+import { GeolocationGeoOption, GeoPointOption } from "../types";
 
 export function isGeolocationGeoOption(option: GeoPointOption): option is GeolocationGeoOption {
   return option.properties.type === "geolocation";

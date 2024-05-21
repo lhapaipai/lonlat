@@ -1,14 +1,14 @@
 import { fetchAPI } from "pentatrion-design";
 import { IsochroneGeoJSON, APIPaths, APIRequests, APIResponse } from "./navigation-api";
 import {
-  dataGeoserviceUrl,
   DirectionOptions,
   RouteFeatureResponse,
-  hashRoute,
   GeoPointOption,
   IsochroneOptions,
-} from "~geo";
+} from "../../../types";
 import { LineString, Position } from "geojson";
+import { dataGeoserviceUrl } from "../url";
+import { hashRoute } from "../../../geo-options";
 
 export function fetchIGNNavigationAPI<Path extends APIPaths, Options extends APIRequests<Path>>(
   path: Path,

@@ -1,8 +1,10 @@
 import { fetchAPI } from "pentatrion-design";
-import { getDepartmentName, AddressGeoOption, LngLatObj, dataGeoserviceUrl } from "~geo";
+import { AddressGeoOption, LngLatObj } from "../../../types";
+import { getDepartmentName } from "../../../geo-options";
 import { APIPaths, APIRequests, APIResponse, APISchemas } from "./geocodage-api";
 import { Feature, FeatureCollection, Point, Position } from "geojson";
 import { nanoid } from "nanoid";
+import { dataGeoserviceUrl } from "../url";
 
 type AddressProperties = APISchemas["AddressProperties"];
 type AddressReverseProperties = APISchemas["AddressReverseProperties"];

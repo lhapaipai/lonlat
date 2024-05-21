@@ -13,3 +13,4 @@
 
 @import "pentatrion-fonts/fontello-lonlat";
 @import "./src/fontello-geo-inline.css";
+@import "./src/maplibre/LLMarker.css";

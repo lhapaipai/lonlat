@@ -2,7 +2,7 @@ import { useEventCallback } from "pentatrion-design";
 import GManager from "./GManager";
 import { CSSProperties, useEffect, useRef } from "react";
 import { areLngLatClose } from "maplibre-react-components";
-import { LngLatObj } from "~geo";
+import { LngLatObj } from "../../types";
 
 import { LngLat } from "maplibre-gl";
 

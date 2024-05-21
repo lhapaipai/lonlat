@@ -1,7 +1,9 @@
 import { fetchAPI } from "pentatrion-design";
 import { APIPaths, APIRequests, APIResponse, APISchemas, QualityType } from "./api";
 import { campToCampApiUrl } from "./url";
-import { MountainGeoOption, epsg3857to4326 } from "~geo";
+import { MountainGeoOption } from "../../types";
+import { epsg3857to4326 } from "../../projection/reproject";
+
 import { nanoid } from "nanoid";
 import { Point } from "geojson";
 

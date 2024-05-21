@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as maplibre from "maplibre-gl";
-import { LLMarker } from "~geo";
 import "maplibre-gl/dist/maplibre-gl.css";
+import LLMarker from "./LLMarker";
 
 const meta = {
   title: "pentatrion-geo/LLMarker",

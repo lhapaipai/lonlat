@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { AddressGeoOption, AddressType } from "~geo";
+import { AddressGeoOption, AddressType } from "../../types";
 import { SearchProperties } from "./api";
 import { fetchOpenRouteServiceAPI, openRouteServiceUrl } from "./config";
 import { Feature, Point } from "geojson";

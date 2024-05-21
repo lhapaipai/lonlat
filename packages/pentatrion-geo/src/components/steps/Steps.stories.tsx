@@ -1,13 +1,5 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
-import { handleChangeSearchValue } from "../_mocks/town-api";
-import {
-  AutocompleteGeoOption,
-  GeoPointOption,
-  createNodataFeature,
-  isNoData,
-  updateId,
-} from "~geo";
 import {
   Button,
   LazyAutocomplete,
@@ -18,6 +10,12 @@ import {
   Steps,
   getIndexLetter,
 } from "pentatrion-design";
+
+import { handleChangeSearchValue } from "../_mocks/town-api";
+import { GeoPointOption } from "../../types";
+
+import { isNoData, updateId, createNodataFeature } from "../../geo-options";
+import AutocompleteGeoOption from "../autocomplete/AutocompleteGeoOption";
 
 const meta = {
   title: "pentatrion-geo/Components/Steps",

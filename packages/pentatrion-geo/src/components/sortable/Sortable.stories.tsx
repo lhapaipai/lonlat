@@ -2,19 +2,17 @@ import { Meta } from "@storybook/react";
 import { useState } from "react";
 import { createUnknownFeature, handleChangeSearchValue } from "../_mocks/town-api";
 import {
-  AutocompleteGeoOption,
-  GeoPointOption,
-  createNodataFeature,
-  isNoData,
-  updateId,
-} from "~geo";
-import {
   Button,
   LazyAutocomplete,
   NoDataOption,
   NotificationsProvider,
   Sortable,
 } from "pentatrion-design";
+
+import { GeoPointOption } from "../../types";
+
+import { isNoData, updateId, createNodataFeature } from "../../geo-options";
+import AutocompleteGeoOption from "../autocomplete/AutocompleteGeoOption";
 
 const meta = {
   title: "pentatrion-geo/Components/Sortable",

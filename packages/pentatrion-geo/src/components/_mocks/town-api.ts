@@ -1,4 +1,5 @@
-import { GeoOption, GeoPointOption, filterFeature } from "../..";
+import { GeoOption, GeoPointOption } from "../../types";
+import { filterFeature } from "../../geo-options";
 import { Point } from "geojson";
 
 async function mockServerRequest(searchValue: string) {

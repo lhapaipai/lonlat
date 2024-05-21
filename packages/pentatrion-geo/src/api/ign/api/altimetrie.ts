@@ -5,8 +5,9 @@ import {
   APIResponse as ElevationAPIResponse,
   APISchemas as ElevationAPISchemas,
 } from "./altimetrie-api";
-import { dataGeoserviceUrl } from "~geo";
+
 import { Position } from "geojson";
+import { dataGeoserviceUrl } from "../url";
 
 export const noDataElevationValue = -99999;
 
