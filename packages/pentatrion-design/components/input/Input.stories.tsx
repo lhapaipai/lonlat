@@ -39,6 +39,10 @@ export const Context = () => {
       <Input color="orange" />
       <Input color="green" />
       <Input color="blue" />
+      <Input variant="ghost" />
+      <Input color="gray" variant="ghost" />
+      <Input color="blue" variant="ghost" />
+
       <Input placeholder="Your first name" />
       <Input
         prefix={

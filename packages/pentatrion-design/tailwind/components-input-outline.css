@@ -21,6 +21,9 @@
 :is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-color="green"]) {
   @apply outline-green-2 hover:outline-green-3 focus-full:outline-green-4;
 }
+:is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-variant="ghost"]) {
+  @apply outline-transparent;
+}
 
 /* bg for checkbox and radio */
 :is(.p8n-input-checkbox, .p8n-input-radio):where([data-color="yellow"]) {

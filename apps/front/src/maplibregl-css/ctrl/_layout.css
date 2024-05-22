@@ -15,11 +15,11 @@
 }
 
 .maplibregl-ctrl-top-left {
-  @apply bg-red-3 md:left-2 md:top-2 md:right-auto;
+  @apply md:left-2 md:top-2 md:right-auto;
 }
 
 .maplibregl-ctrl-top-right {
-  @apply bg-green-3 md:right-2 md:top-2 md:left-auto;
+  @apply md:right-2 md:top-2 md:left-auto;
 
   & .maplibregl-ctrl {
     @apply w-full md:w-96;
@@ -31,11 +31,11 @@
 }
 
 .maplibregl-ctrl-bottom-left {
-  @apply bg-orange-3 md:bottom-[calc(100%+0.5rem)] md:left-2 md:right-auto;
+  @apply md:bottom-[calc(100%+0.5rem)] md:left-2 md:right-auto;
 }
 
 .maplibregl-ctrl-bottom-right {
-  @apply bg-blue-3 md:bottom-[calc(100%+0.5rem)] md:right-2 md:left-auto;
+  @apply md:bottom-[calc(100%+0.5rem)] md:right-2 md:left-auto;
 }
 
 .maplibregl-ctrl-bottom-container {

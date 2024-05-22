@@ -28,7 +28,7 @@
     }
 
     .maplibregl-ctrl-group button+button {
-        border-top: 1px solid ButtonText
+        border-top: 1px solid black;
     }
 }
 

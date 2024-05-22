@@ -72,6 +72,7 @@ function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
 const Select = forwardRef<HTMLDivElement, Props>(
   (
     {
+      variant = "normal",
       disabled = false,
       showArrow = true,
       selectionClassName,
@@ -238,7 +239,8 @@ const Select = forwardRef<HTMLDivElement, Props>(
         <div
           className={clsx(
             // "selection",
-            "rounded-2xl outline outline-1 outline-offset-[-1px] outline-gray-1 hover:outline-gray-2 flex focus-full:outline-yellow-4 focus-full:outline-2",
+            "rounded-2xl outline outline-1 outline-offset-[-1px] hover:outline-gray-3 flex focus-full:outline-yellow-4 focus-full:outline-2",
+            variant === "normal" ? "outline-gray-2" : "outline-transparent",
             selectionClassName,
             isOpen && "focus",
             disabled && "disabled",
@@ -285,7 +287,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
             {isOpen && (
               <FloatingFocusManager context={context} modal={false}>
                 <div
-                  className="z-dialog"
+                  className="z-dialog outline-none"
                   ref={refs.setFloating}
                   style={{
                     ...floatingStyles,

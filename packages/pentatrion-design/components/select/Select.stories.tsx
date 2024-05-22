@@ -69,16 +69,29 @@ const options = [
 export const Basic = () => {
   const [value, setValue] = useState<SelectValue>(null);
   return (
-    <Select
-      searchable={false}
-      placeholder="Select your town..."
-      options={options}
-      value={value}
-      onChange={(o) => {
-        onChangeAction(o);
-        setValue(o.target.value);
-      }}
-    ></Select>
+    <div className="grid gap-2 grid-cols-1">
+      <Select
+        searchable={false}
+        placeholder="Select your town..."
+        options={options}
+        value={value}
+        onChange={(o) => {
+          onChangeAction(o);
+          setValue(o.target.value);
+        }}
+      ></Select>
+      <Select
+        variant="ghost"
+        searchable={false}
+        placeholder="Select your town..."
+        options={options}
+        value={value}
+        onChange={(o) => {
+          onChangeAction(o);
+          setValue(o.target.value);
+        }}
+      ></Select>
+    </div>
   );
 };
 
