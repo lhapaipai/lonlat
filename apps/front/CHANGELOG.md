@@ -1,6 +1,7 @@
 ## 0.1.0 (2024-05-22)
 
 - TailwindCSS migration
+- Dark mode
 
 ## 0.0.6 (2024-04-29)
 

@@ -1,10 +1,9 @@
+import clsx from "clsx";
 import { Map } from "maplibre-gl";
+import { buttonVariants } from "~design";
 
 interface FrameRateControlOptions {
-  background: string;
   barWidth: number;
-  color: string;
-  font: string;
   graphHeight: number;
   graphWidth: number;
   graphTop: number;
@@ -28,10 +27,7 @@ class FrameRateControl {
   constructor(options?: Partial<FrameRateControlOptions>) {
     const dpr = window.devicePixelRatio;
     const defaultOptions = {
-      background: "rgba(0,0,0,0.9)",
       barWidth: 4 * dpr,
-      color: "#ffe64b",
-      font: "Monaco, Consolas, Courier, monospace",
       graphHeight: 60 * dpr,
       graphWidth: 90 * dpr,
       graphTop: 0,
@@ -50,20 +46,13 @@ class FrameRateControl {
     this.map = map;
 
     const dpr = window.devicePixelRatio;
-    const { width, graphHeight, color, background, font } = this.options;
+    const { width, graphHeight } = this.options;
 
     const el = (this.container = document.createElement("div"));
-    el.className = "maplibregl-ctrl maplibregl-ctrl-fps";
-
-    el.style.backgroundColor = background;
-    el.style.borderRadius = "6px";
+    el.className = "maplibregl-ctrl maplibregl-ctrl-group grid gap-2 grid-cols-1";
 
     this.readOutput = document.createElement("div");
-    this.readOutput.style.color = color;
-    this.readOutput.style.fontFamily = font;
-    this.readOutput.style.padding = "0 5px 5px";
-    this.readOutput.style.fontSize = "9px";
-    this.readOutput.style.fontWeight = "bold";
+    this.readOutput.classList.add("text-xs");
     this.readOutput.textContent = "Waiting…";
 
     this.canvas = document.createElement("canvas");
@@ -73,12 +62,10 @@ class FrameRateControl {
     this.canvas.style.cssText = `width: ${width / dpr}px; height: ${graphHeight / dpr}px;`;
 
     this.button = document.createElement("button");
-    this.button.style.display = "block";
-    this.button.style.color = color;
-    this.button.style.fontFamily = font;
-    this.button.style.padding = "0 5px 5px";
-    this.button.style.fontSize = "9px";
-    this.button.style.fontWeight = "bold";
+    this.button.className = clsx(
+      "text-xs px-2 rounded-2xl cursor-pointer relative overflow-clip focus-visible:outline focus-visible:outline-2 no-underline border-0 inline-flex items-center justify-center transition-color-shadow duration-300 leading-5",
+      buttonVariants.variant.contained("yellow"),
+    );
     this.button.innerText = "Enable";
 
     this.button.addEventListener("click", this.toggle);
@@ -133,8 +120,7 @@ class FrameRateControl {
   };
 
   updateGraph = (fpsNow: number) => {
-    const { barWidth, graphRight, graphTop, graphWidth, graphHeight, background, color } =
-      this.options;
+    const { barWidth, graphRight, graphTop, graphWidth, graphHeight } = this.options;
 
     const context = this.canvas.getContext("2d");
     if (!context) {
@@ -143,10 +129,10 @@ class FrameRateControl {
     const fps = Math.round((1e3 * this.totalFrames) / this.totalTime) || 0;
     const rect = barWidth;
 
-    context.fillStyle = background;
+    context.fillStyle = "white";
     context.globalAlpha = 1;
     context.fillRect(0, 0, graphWidth, graphTop);
-    context.fillStyle = color;
+    context.fillStyle = "#ffe822";
 
     this.readOutput.textContent = `${fpsNow} FPS (${fps} Avg)`;
     context.drawImage(
@@ -161,7 +147,7 @@ class FrameRateControl {
       graphHeight,
     );
     context.fillRect(graphRight + graphWidth - rect, graphTop, rect, graphHeight);
-    context.fillStyle = background;
+    context.fillStyle = "white";
     context.globalAlpha = 0.75;
     context.fillRect(
       graphRight + graphWidth - rect,

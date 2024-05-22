@@ -6,10 +6,11 @@ export default defineConfig({
   format: ["esm"],
   esbuildOptions(options) {
     options.external = [
-      "@googlemaps/js-api-loader",
       "@floating-ui/dom",
       "@floating-ui/react",
+      "@googlemaps/js-api-loader",
       "@mapbox/point-geometry",
+      "clsx",
       "fuse.js",
       "maplibre-gl",
       "maplibre-react-components",

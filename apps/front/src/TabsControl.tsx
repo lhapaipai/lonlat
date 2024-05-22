@@ -6,7 +6,9 @@ import DirectionTab from "~/features/direction/DirectionTab";
 import { useAppDispatch, useAppSelector } from "./store";
 import {
   distractionFreeChanged,
+  modeChangedAction,
   selectDistractionFree,
+  selectMode,
   selectTab,
   tabChanged,
 } from "./store/mapSlice";
@@ -16,6 +18,8 @@ import HelpTab from "./components/HelpTab";
 
 function TabsControl() {
   const distractionFree = useAppSelector(selectDistractionFree);
+  const mode = useAppSelector(selectMode);
+
   const container = useRControl({
     position: "top-right",
     className: clsx("maplibregl-ctrl maplibregl-ctrl-tabs", distractionFree && "distraction-free"),
@@ -62,6 +66,14 @@ function TabsControl() {
         onChange={(e) => dispatch(tabChanged(e))}
         contentClassName="overflow-auto max-h-[calc(100vh-36px-1rem)]"
       >
+        <Button
+          icon
+          variant="ghost"
+          color="gray"
+          onClick={() => dispatch(modeChangedAction(mode === "light" ? "dark" : "light"))}
+        >
+          <i className={mode === "light" ? "fe-dark" : "fe-light"}></i>
+        </Button>
         <Button
           onClick={() => dispatch(distractionFreeChanged(true))}
           icon

@@ -13,8 +13,9 @@ export default function SearchContextMenu() {
     dispatch(searchFeatureChanged(lonlatFeature));
   }
 
+  //  compact={false}
   return (
-    <ContextMenu eventName="maplibre-contextmenu" compact={false}>
+    <ContextMenu eventName="maplibre-contextmenu">
       <ContextMenuItem
         key="search-infos"
         label="Plus d'infos sur cet endroit"

@@ -59,10 +59,10 @@
     "nanoid": "^5.0.7",
     "pentatrion-design": "workspace:*",
     "react": "^18.0",
-    "react-dom": "^18.0"
+    "react-dom": "^18.0",
+    "react-sortablejs": "^6.1.4"
   },
   "peerDependencies": {
-    "@googlemaps/js-api-loader": "^1.16.6",
     "tailwindcss": "*"
   }
 }

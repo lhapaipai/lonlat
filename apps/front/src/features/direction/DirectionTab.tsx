@@ -237,7 +237,7 @@ export default function DirectionTab() {
         </Sortable>
       </Steps>
       <div className="ll-steps-extra">
-        <Button variant="ghost" color="gray" onClick={handleAppendItem}>
+        <Button variant="text" color="gray" onClick={handleAppendItem}>
           <span
             className="ll-marker"
             style={{ "--marker-color": "#c0c0c0", "--marker-size": "34px" }}
@@ -250,7 +250,7 @@ export default function DirectionTab() {
           </span>
           <span>{T("addPoint")}</span>
         </Button>
-        <Button variant="ghost" color="gray" onClick={handleReset}>
+        <Button variant="text" color="gray" onClick={handleReset}>
           <i className="fe-trash"></i>
           <span>{T("reset")}</span>
         </Button>

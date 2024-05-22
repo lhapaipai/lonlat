@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from ".";
+import { AppDispatch, RootState } from ".";
 import { parseHashString } from "~/lib/hashUtil";
 import { france, marignier } from "~/features/layer/util";
 import { debug } from "~/config/constants";
+import { getColorScheme } from "~/lib/util";
 
 export type ViewState = {
   center: [number, number];
@@ -23,6 +24,7 @@ type MapState = {
   searchEngine: SearchEngine;
   coordsUnit: CoordsUnit;
   distractionFree: boolean;
+  mode: "dark" | "light";
 };
 
 const hashInfos = parseHashString();
@@ -40,6 +42,7 @@ const initialState: MapState = {
   searchEngine: "ign-address",
   coordsUnit: "lonlat",
   distractionFree: false,
+  mode: getColorScheme(true),
 };
 
 const mapSlice = createSlice({
@@ -66,6 +69,9 @@ const mapSlice = createSlice({
     distractionFreeChanged(state, action: PayloadAction<boolean>) {
       state.distractionFree = action.payload;
     },
+    modeChanged(state, action: PayloadAction<"light" | "dark">) {
+      state.mode = action.payload;
+    },
   },
 });
 
@@ -76,6 +82,7 @@ export const {
   tabChanged,
   searchEngineChanged,
   coordsUnitChanged,
+  modeChanged,
 } = mapSlice.actions;
 
 export const selectViewState = (state: RootState) => state.map.viewState;
@@ -83,3 +90,11 @@ export const selectTab = (state: RootState) => state.map.tab;
 export const selectSearchEngine = (state: RootState) => state.map.searchEngine;
 export const selectCoordsUnit = (state: RootState) => state.map.coordsUnit;
 export const selectDistractionFree = (state: RootState) => state.map.distractionFree;
+export const selectMode = (state: RootState) => state.map.mode;
+
+export const modeChangedAction = (mode: "light" | "dark") => (dispatch: AppDispatch) => {
+  document.documentElement.classList.remove("light", "dark");
+  document.documentElement.classList.add(mode);
+
+  dispatch(modeChanged(mode));
+};

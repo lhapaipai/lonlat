@@ -47,7 +47,7 @@ export default function LayerButton({
       {...props}
     >
       {ripples}
-      <div className={clsx("overflow-hidden h-full", variant === "principal" && "w-full")}>
+      <div className={clsx("overflow-hidden", variant === "principal" && "w-full h-full")}>
         <img
           src={image}
           srcSet={srcSet}

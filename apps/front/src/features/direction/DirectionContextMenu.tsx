@@ -83,9 +83,7 @@ export default function DirectionContextMenu() {
       onClick={(e) => handleAppendDirection(e)}
     />,
   );
-  return (
-    <ContextMenu eventName="maplibre-contextmenu" compact={contextItems.length > 5 ? true : false}>
-      {contextItems}
-    </ContextMenu>
-  );
+
+  // compact={contextItems.length > 5 ? true : false}
+  return <ContextMenu eventName="maplibre-contextmenu">{contextItems}</ContextMenu>;
 }

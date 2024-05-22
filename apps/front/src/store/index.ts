@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
 import { ViewStateListenerMiddleware } from "./stateStorage";
-import mapSlice from "./mapSlice";
+import mapSlice, { modeChangedAction } from "./mapSlice";
 
 import searchSlice, { searchFeatureListenerMiddleware } from "~/features/search/searchSlice";
 import directionSlice, {
@@ -43,3 +43,9 @@ export type AppDispatch = typeof store.dispatch;
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch: () => AppDispatch = useDispatch;
+
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+  console.log("color scheme changed !", e);
+  const mode = e.matches ? "dark" : "light";
+  store.dispatch(modeChangedAction(mode));
+});

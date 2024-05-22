@@ -152,7 +152,7 @@ importers:
         version: 2.0.3
       vite:
         specifier: ^5.2.11
-        version: 5.2.11
+        version: 5.2.11(@types/node@20.12.12)(sass@1.77.1)
 
   apps/maplibre-react-sandbox:
     dependencies:
@@ -707,6 +707,9 @@ importers:
       react-dom:
         specifier: ^18.0
         version: 18.3.1(react@18.3.1)
+      react-sortablejs:
+        specifier: ^6.1.4
+        version: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1)(react@18.3.1)(sortablejs@1.15.2)
     devDependencies:
       '@floating-ui/react-dom':
         specifier: ^2.0.9
@@ -6543,7 +6546,7 @@ packages:
       vite: ^4 || ^5
     dependencies:
       '@swc/core': 1.5.5
-      vite: 5.2.11
+      vite: 5.2.11(@types/node@20.12.12)(sass@1.77.1)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -12883,41 +12886,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
-
-  /vite@5.2.11:
-    resolution: {integrity: sha512-HndV31LWW05i1BLPMUCE1B9E9GFbOu1MbenhS58FuK6owSO5qHm7GiCotrNY1YE5rMeQSFBGmT5ZaLEjFizgiQ==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.20.2
-      postcss: 8.4.38
-      rollup: 4.17.2
-    optionalDependencies:
-      fsevents: 2.3.3
     dev: true
 
   /vite@5.2.11(@types/node@20.12.12)(sass@1.77.1):

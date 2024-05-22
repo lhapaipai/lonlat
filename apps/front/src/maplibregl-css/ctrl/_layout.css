@@ -4,6 +4,9 @@
 .maplibregl-ctrl-top-right {
   @apply md:absolute md:z-[2] pointer-events-none grid gap-2 grid-cols-1;
 }
+.maplibregl-ctrl-bottom {
+  @apply relative;
+}
 
 .maplibregl-ctrl {
   @apply relative clear-both pointer-events-auto transition-transform;

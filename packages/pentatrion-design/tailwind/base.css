@@ -1,6 +1,7 @@
 html {
   font-size: 16px;
   line-height: 24px;
+  color-scheme: normal;
 }
 body {
   @apply font-sans bg-gray-0 text-gray-7;
@@ -175,6 +176,8 @@ abbr {
   --color-gray-3: 75 75 75; /* rgb(75, 75, 75); */
   --color-gray-2: 50 50 50; /* rgb(50, 50, 50); */
   --color-gray-1: 35 35 35; /* rgb(35, 35, 35); */
-  --color-gray-0: 15 18 18; /* rgb(15, 18, 18); */
+  --color-gray-0: 21 29 29; /* rgb(21, 29, 29); */
   --color-gray-text: var(--color-gray-8);
+
+  --a: rgb(21, 29, 29);
 }

@@ -107,6 +107,7 @@ export default plugin(
       },
       fontFamily: {
         sans: ["ui-sans-serif", "system-ui", "sans-serif"],
+        fontello: ["fontello"],
         serif: defaultTheme.fontFamily.serif,
         mono: defaultTheme.fontFamily.mono,
       },

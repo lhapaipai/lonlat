@@ -853,6 +853,18 @@
       ]
     },
     {
+      "uid": "f8e120c48c070f8afd2d072651b4fb9f",
+      "css": "light",
+      "code": 59458,
+      "src": "entypo"
+    },
+    {
+      "uid": "c2152732d525871cf35345955854f711",
+      "css": "dark",
+      "code": 59459,
+      "src": "iconic"
+    },
+    {
       "uid": "24b7643d8401ffb5bd0872b14261d9ee",
       "css": "climbing-outdoor",
       "code": 59402,
