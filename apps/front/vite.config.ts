@@ -17,8 +17,6 @@ export default defineConfig({
     alias: {
       "~": resolve(projectDir, "src"),
 
-      "~design": resolve(rootDir, "packages/pentatrion-design"),
-      "~geo": resolve(rootDir, "packages/pentatrion-geo"),
       "~mrc": resolve(rootDir, "packages/maplibre-react-components"),
     },
   },

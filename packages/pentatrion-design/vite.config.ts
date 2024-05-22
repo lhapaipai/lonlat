@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "~design": projectDir,
+      "~": projectDir,
     },
   },
   test: {

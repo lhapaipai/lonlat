@@ -5,8 +5,8 @@
     "skipLibCheck": true,
     "types": ["react/experimental", "@testing-library/jest-dom"],
     "paths": {
-      "~design": ["."],
-      "~design/*": ["./*"]
+      "~": ["."],
+      "~/*": ["./*"]
     }
   },
   "exclude": ["**/node_modules", "./dist"],

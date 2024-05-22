@@ -4,10 +4,6 @@
     "types": ["react/experimental", "google.maps"],
     "paths": {
       "~/*": ["./src/*"],
-      "~design": ["../../packages/pentatrion-design"],
-      "~design/*": ["../../packages/pentatrion-design/*"],
-      "~geo": ["../../packages/pentatrion-geo/src"],
-      "~geo/*": ["../../packages/pentatrion-geo/src/*"],
       "~mrc": ["../../packages/maplibre-react-components/src"],
       "~mrc/*": ["../../packages/maplibre-react-components/src/*"]
     }

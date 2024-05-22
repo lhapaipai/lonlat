@@ -239,7 +239,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
         <div
           className={clsx(
             // "selection",
-            "rounded-2xl outline outline-1 outline-offset-[-1px] hover:outline-gray-3 flex focus-full:outline-yellow-4 focus-full:outline-2",
+            "rounded-2xl outline outline-1 outline-offset-[-1px] hover:outline-gray-3 flex focus-full:outline-yellow-4 focus-full:outline-2 cursor-pointer",
             variant === "normal" ? "outline-gray-2" : "outline-transparent",
             selectionClassName,
             isOpen && "focus",

@@ -1,13 +1,13 @@
+import Href from "../components/href/Href";
+import Code from "../components/code/Code";
 import {
-  Code,
-  Href,
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableHeaderCell,
   TableRow,
-} from "~design";
+} from "../components/table";
 
 export default {
   title: "Styles/Typography",
