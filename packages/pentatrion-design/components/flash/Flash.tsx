@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
-import { ThemeColor } from "../../types";
+import { ThemeColor } from "~/types.d";
 import clsx from "clsx";
-import { colorVariants } from "../../lib/tailwindVariants";
+import { colorVariants } from "~/lib/tailwindVariants";
 
 interface Props {
   color?: ThemeColor;

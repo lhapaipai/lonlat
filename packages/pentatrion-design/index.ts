@@ -1,7 +1,7 @@
 // issue: https://github.com/floating-ui/floating-ui/issues/2507
 import type {} from "@floating-ui/react-dom";
 
-export type { ThemeColor } from "./types";
+export type { ThemeColor } from "./types.d";
 
 export * from "./components/table";
 export * from "./components/card";

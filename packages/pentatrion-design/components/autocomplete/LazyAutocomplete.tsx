@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { Autocomplete, AutocompleteProps } from ".";
 import { OptionLike, Option } from "../select";
 import { getOptionLabel } from "./util";
-import { useStateDebounce, useEventCallback } from "../../hooks";
+import { useStateDebounce, useEventCallback } from "~/hooks";
 
 interface Props<O extends OptionLike = Option>
   // Omit "searchValue" | "onChangeSearchValue" | "options"

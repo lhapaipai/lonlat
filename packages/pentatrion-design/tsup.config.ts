@@ -15,6 +15,7 @@ export default defineConfig({
       "tailwindcss",
     ];
   },
+  splitting: false,
   shims: true,
   clean: true,
 });

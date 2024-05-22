@@ -26,7 +26,7 @@ import {
 
 import { ContextMenuItemProps } from "./ContextMenuItem";
 import { Dialog } from "../dialog";
-import { useEventCallback, useRefDebounce } from "../../hooks";
+import { useEventCallback, useRefDebounce } from "~/hooks";
 
 interface Props extends ComponentPropsWithRef<"div"> {
   children: ReactElement[] | ReactElement;

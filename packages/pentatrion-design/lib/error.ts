@@ -1,4 +1,4 @@
-import { ThemeColor } from "../types";
+import { ThemeColor } from "../types.d";
 
 export type MessageOptions = Partial<Omit<Message, "message" | "id">>;
 

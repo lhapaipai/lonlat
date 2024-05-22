@@ -1,7 +1,7 @@
 import { Placement } from "@floating-ui/react";
 import clsx from "clsx";
 import { ComponentProps, ReactNode } from "react";
-import type { ThemeColor } from "../../types";
+import type { ThemeColor } from "~/types.d";
 
 interface Props extends ComponentProps<"div"> {
   color?: ThemeColor;

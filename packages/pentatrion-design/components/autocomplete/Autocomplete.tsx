@@ -28,14 +28,14 @@ import {
 } from "@floating-ui/react";
 import { AutocompleteContext } from "./useAutocompleteContext.ts";
 import clsx from "clsx";
-import { useEventCallback } from "../../hooks";
+import { useEventCallback } from "~/hooks";
 
 import { getOptionLabel, getOptionValue } from "./util.ts";
 import { Button } from "../button";
 import { Dialog } from "../dialog";
 import Loader from "../loader/Loader";
 import { inputConfig } from "../input/Input.tsx";
-import { ThemeColor } from "../../types";
+import { ThemeColor } from "~/types.d";
 
 export interface AutocompleteProps<O extends OptionLike = Option> {
   className?: string;

@@ -1,4 +1,4 @@
-import { MessageOptions, parseError } from "../../../lib";
+import { MessageOptions, parseError } from "~/lib";
 
 import { messageAdded } from "../notificationSlice";
 import { useDispatch } from "react-redux";

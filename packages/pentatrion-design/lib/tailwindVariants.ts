@@ -1,4 +1,4 @@
-import { ThemeColor } from "../types";
+import { ThemeColor } from "../types.d";
 
 type Variant = {
   border: string;

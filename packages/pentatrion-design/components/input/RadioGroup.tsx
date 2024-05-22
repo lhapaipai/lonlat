@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, forwardRef, useId, useRef } from "react";
-import { type ThemeColor } from "../../types";
-import { useCombinedRefs } from "../../hooks";
+import { type ThemeColor } from "~/types.d";
+import { useCombinedRefs } from "~/hooks";
 import clsx from "clsx";
 
 interface RadioProps extends ComponentPropsWithRef<"input"> {

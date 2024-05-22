@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import clsx from "clsx";
-import type { ThemeColor } from "../../types";
+import type { ThemeColor } from "~/types.d";
 
 export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix"> {
   variant?: "normal" | "ghost";

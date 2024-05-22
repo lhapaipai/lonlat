@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ThemeColor } from "../../types";
+import { ThemeColor } from "~/types.d";
 import clsx from "clsx";
 import { buttonVariants } from "../button/Button";
 import Href from "../href/Href";

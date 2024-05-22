@@ -4,6 +4,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "types": ["react/experimental", "@testing-library/jest-dom"],
+    "baseUrl": ".",
     "paths": {
       "~": ["."],
       "~/*": ["./*"]
@@ -18,7 +19,7 @@
     "tests",
     "styles",
     ".storybook",
-    "types.ts",
+    "types.d.ts",
     "tailwind"
   ]
 }

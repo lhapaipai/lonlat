@@ -1,4 +1,4 @@
-import { type ThemeColor } from "../../types";
+import { type ThemeColor } from "~/types.d";
 
 export interface ModalOptions {
   initialOpen?: boolean;

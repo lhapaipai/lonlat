@@ -2,7 +2,7 @@ import { Meta, ReactRenderer } from "@storybook/react";
 import { PartialStoryFn } from "@storybook/types";
 import { useRef } from "react";
 import NotificationsProvider from "./NotificationsProvider";
-import { useFetch, useNotifications } from "../../hooks";
+import { useFetch, useNotifications } from "~/hooks";
 import { Button } from "../button";
 
 const meta = {

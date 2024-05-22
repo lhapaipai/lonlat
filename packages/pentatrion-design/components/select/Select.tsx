@@ -35,7 +35,7 @@ import type { Option } from "./interface";
 import clsx from "clsx";
 import { Input } from "../input";
 import { Button } from "../button";
-import { useEventCallback } from "../../hooks";
+import { useEventCallback } from "~/hooks";
 import { Dialog } from "../dialog";
 
 export type SelectValue = number | string | null;
