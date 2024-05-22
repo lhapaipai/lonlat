@@ -16,9 +16,8 @@ import {
 import { useNotification } from "pentatrion-design/redux";
 import { useRControl } from "~mrc";
 import { createPortal } from "react-dom";
-import "./IsochroneControl.scss";
 import { selectDistractionFree } from "~/store/mapSlice";
-import cn from "classnames";
+import clsx from "clsx";
 
 const profileOptions = [
   { value: "car", label: "Voiture" },
@@ -35,7 +34,7 @@ export default function IsochroneControl() {
 
   const container = useRControl({
     position: "top-right",
-    className: cn("maplibregl-ctrl maplibregl-ctrl-group", distractionFree && "distraction-free"),
+    className: clsx("maplibregl-ctrl maplibregl-ctrl-group", distractionFree && "distraction-free"),
   });
 
   const { T } = useT();
@@ -101,13 +100,13 @@ export default function IsochroneControl() {
   }
 
   return createPortal(
-    <div className="ll-quick-settings">
-      <div className="actions">
+    <div className="grid grid-cols-1 gap-2">
+      <div className="flex gap-2">
         <Button
           disabled={loading}
           variant="text"
           color="gray"
-          className="with-icon"
+          className="min-w-0 flex-1 justify-center"
           selected={costType === "time"}
           onClick={() => dispatch(costTypeChanged("time"))}
         >
@@ -118,29 +117,29 @@ export default function IsochroneControl() {
           disabled={loading}
           variant="text"
           color="gray"
-          className="with-icon"
+          className="min-w-0 flex-1 justify-center"
           selected={costType === "distance"}
           onClick={() => dispatch(costTypeChanged("distance"))}
         >
           <i className="fe-ruler"></i>
           {T("isochrone.isodistance")}
         </Button>
-        <div className="help">
+        <div>
           <SimpleTooltip
             contentClassName="description"
             content={T("isochrone.description")}
             placement="bottom-end"
           >
-            <div>
+            <div className="h-8 flex-center cursor-help">
               <i className="fe-help"></i>
             </div>
           </SimpleTooltip>
         </div>
       </div>
 
-      <div className="setting">
+      <div className="p8n-setting">
         <div>{T("isochrone.profile")}</div>
-        <div>
+        <div className="min-w-40">
           <Select
             disabled={loading}
             variant="ghost"
@@ -156,26 +155,29 @@ export default function IsochroneControl() {
         </div>
       </div>
 
-      <div className="setting">
+      <div className="p8n-setting">
         <div>{T("isochrone.direction")}</div>
-        <Select
-          disabled={loading}
-          variant="ghost"
-          options={directionOptions}
-          value={direction}
-          onChange={(o) => {
-            const value = (o.target.value || "car") as NonNullable<IsochroneOptions["direction"]>;
-            if (["departure", "arrival"].includes(value)) {
-              dispatch(directionChanged(value));
-            }
-          }}
-        ></Select>
+        <div className="min-w-40">
+          <Select
+            disabled={loading}
+            variant="ghost"
+            options={directionOptions}
+            value={direction}
+            onChange={(o) => {
+              const value = (o.target.value || "car") as NonNullable<IsochroneOptions["direction"]>;
+              if (["departure", "arrival"].includes(value)) {
+                dispatch(directionChanged(value));
+              }
+            }}
+          ></Select>
+        </div>
       </div>
 
       {costType === "time" ? (
-        <div className="setting">
+        <div className="p8n-setting">
           <div>{T("time")}</div>
           <Input
+            className="max-w-40"
             disabled={loading}
             variant="ghost"
             suffix="min"
@@ -184,9 +186,10 @@ export default function IsochroneControl() {
           />
         </div>
       ) : (
-        <div className="setting">
+        <div className="p8n-setting">
           <div>{T("distance")}</div>
           <Input
+            className="max-w-40"
             disabled={loading}
             variant="ghost"
             suffix="km"
@@ -196,9 +199,9 @@ export default function IsochroneControl() {
         </div>
       )}
 
-      <div className="setting multiple">
+      <div className="p8n-setting multiple">
         <div>{T("constraints.avoid")}</div>
-        <div className="ll-input-checkbox-container placement-block">
+        <div className="min-w-40">
           <Checkbox
             disabled={loading}
             checked={constraints.avoidHighways}
@@ -228,7 +231,7 @@ export default function IsochroneControl() {
           </Checkbox>
         </div>
       </div>
-      <div className="actions">
+      <div className="flex gap-2 justify-between">
         <Button
           className="mr-2"
           variant="text"

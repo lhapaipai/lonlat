@@ -1,6 +1,6 @@
 import { useListItem } from "@floating-ui/react";
 import { Option, useSelect } from "pentatrion-design";
-import cn from "classnames";
+import clsx from "clsx";
 
 export type StarOption = Option & {
   icon: string;
@@ -15,7 +15,7 @@ export function SearchEngineOption({ icon, label }: StarOption) {
 
   return (
     <button
-      className={cn("option", isSelected && "selected", isActive && "active")}
+      className={clsx("option", isSelected && "selected", isActive && "active")}
       ref={ref}
       role="option"
       aria-selected={isActive && isSelected}

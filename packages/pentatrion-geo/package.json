@@ -11,7 +11,7 @@
     "build": "tsup",
     "tsc": "tsc",
     "test": "vitest",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6008",
     "storybook-build": "storybook build"
   },
   "type": "module",

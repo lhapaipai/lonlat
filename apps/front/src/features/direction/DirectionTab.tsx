@@ -3,7 +3,6 @@ import {
   LazyAutocomplete,
   Step,
   Sortable,
-  GeoOption,
   NoDataOption,
   Button,
   getIndexLetter,
@@ -30,6 +29,7 @@ import {
   coordsSearch,
   createNodataFeature,
   getHours,
+  GeoOption,
   getMinutes,
   ignSearch,
   isNoData,
@@ -116,12 +116,12 @@ export default function DirectionTab() {
   }, [T]);
 
   return (
-    <div className="ll-quick-settings">
-      <div className="actions">
+    <div className="grid grid-cols-1 gap-2">
+      <div className="flex gap-2">
         <Button
           variant="text"
           color="gray"
-          className="with-icon"
+          className="flex-1 min-w-0"
           selected={profile === "car"}
           onClick={() => dispatch(profileChanged("car"))}
         >
@@ -131,7 +131,7 @@ export default function DirectionTab() {
         <Button
           variant="text"
           color="gray"
-          className="with-icon"
+          className="flex-1 min-w-0"
           selected={profile === "bike"}
           onClick={() => dispatch(profileChanged("bike"))}
         >
@@ -141,7 +141,7 @@ export default function DirectionTab() {
         <Button
           variant="text"
           color="gray"
-          className="with-icon"
+          className="flex-1 min-w-0"
           selected={profile === "pedestrian"}
           onClick={() => dispatch(profileChanged("pedestrian"))}
         >
@@ -167,6 +167,7 @@ export default function DirectionTab() {
               contentClassName="flex"
             >
               <LazyAutocomplete
+                className="flex-1"
                 placeholder={placeholderByIndex(index, wayPoints.length)}
                 icon={
                   <Select
@@ -262,9 +263,9 @@ export default function DirectionTab() {
 
       {showSettings && (
         <>
-          <div className="setting">
+          <div className="p8n-setting">
             <div>{T("optimization.title")}</div>
-            <div>
+            <div className="min-w-40">
               <Select
                 variant="ghost"
                 options={optimizationOptions}
@@ -279,9 +280,9 @@ export default function DirectionTab() {
             </div>
           </div>
 
-          <div className="setting multiple">
+          <div className="p8n-setting multiple">
             <div>{T("constraints.avoid")}</div>
-            <div className="ll-input-checkbox-container placement-block">
+            <div className="min-w-40">
               {profile === "car" && (
                 <>
                   <Checkbox
@@ -317,44 +318,44 @@ export default function DirectionTab() {
       )}
       {route && (
         <>
-          <div className="separator"></div>
+          <div className="p8n-separator"></div>
 
           <div>
-            <div className="two-cols">
-              <div className="setting">
+            <div className="grid grid-cols-2 gap-2">
+              <div className="p8n-setting">
                 <div>{T("distance")}</div>
                 <div>
-                  {m2km(route.properties.distance)} <span className="text-hint">km</span>
+                  {m2km(route.properties.distance)} <span className="text-gray-6">km</span>
                 </div>
               </div>
-              <div className="setting">
+              <div className="p8n-setting">
                 <div>{T("duration")}</div>
                 <div>
                   {route.properties.duration > 3600 && (
                     <span>
-                      {getHours(route.properties.duration)} <span className="text-hint">h</span>
+                      {getHours(route.properties.duration)} <span className="text-gray-6">h</span>
                     </span>
                   )}
                   <span>
-                    {getMinutes(route.properties.duration)} <span className="text-hint">min</span>
+                    {getMinutes(route.properties.duration)} <span className="text-gray-6">min</span>
                   </span>
                 </div>
               </div>
             </div>
-            <div className="two-cols">
+            <div className="grid grid-cols-2 gap-2">
               {route.properties.ascent && (
-                <div className="setting">
+                <div className="p8n-setting">
                   <div>{T("ascent")}</div>
                   <div>
-                    {route.properties.ascent} <span className="text-hint">m</span>
+                    {route.properties.ascent} <span className="text-gray-6">m</span>
                   </div>
                 </div>
               )}
               {route.properties.descent && (
-                <div className="setting">
+                <div className="p8n-setting">
                   <div>{T("descent")}</div>
                   <div>
-                    {route.properties.descent} <span className="text-hint">m</span>
+                    {route.properties.descent} <span className="text-gray-6">m</span>
                   </div>
                 </div>
               )}

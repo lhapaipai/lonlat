@@ -15,7 +15,7 @@ import {
   streetViewToggled,
   selectLayer,
 } from "./layerSlice";
-import cn from "classnames";
+import clsx from "clsx";
 import { createPortal } from "react-dom";
 import { useMap, useRControl } from "maplibre-react-components";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ export default function LayerSwitcherControl() {
 
   const container = useRControl({
     position: "bottom",
-    className: cn(
+    className: clsx(
       "ll-layer-switcher flex overflow-x-auto flex-nowrap relative z-[1] select-none max-w-full pointer-events-auto gap-2 pt-0.5 pb-2 px-2",
       distractionFree && "distraction-free",
     ),
@@ -99,7 +99,7 @@ export default function LayerSwitcherControl() {
           const layer = baseLayersById[layerId];
           return (
             <LayerButton
-              className={cn("layer", "base", layerId === currentBaseLayerId && "active")}
+              className={clsx("layer", "base", layerId === currentBaseLayerId && "active")}
               image="/assets/graphics/sprites/layers-1x.jpg"
               srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
               key={layerId}
@@ -119,7 +119,7 @@ export default function LayerSwitcherControl() {
 
             return (
               <LayerButton
-                className={cn(
+                className={clsx(
                   "layer",
                   "optional",
                   currentOptionalLayers.includes(layerId) && "active",
@@ -138,7 +138,7 @@ export default function LayerSwitcherControl() {
         <div className="w-1 flex-[0_0_0.25rem] my-4 bg-gray-1 rounded-full relative"></div>
 
         <LayerButton
-          className={cn("layer", "base", currentTerrain && "active")}
+          className={clsx("layer", "base", currentTerrain && "active")}
           key="terrain"
           onClick={() => dispatch(terrainToggled())}
           image="/assets/graphics/sprites/layers-1x.jpg"
@@ -148,7 +148,7 @@ export default function LayerSwitcherControl() {
         />
 
         <LayerButton
-          className={cn("layer", "base", currentStreetView && "active")}
+          className={clsx("layer", "base", currentStreetView && "active")}
           key="street-view"
           onClick={() => {
             dispatch(coordsChanged(map.getCenter().toArray()));

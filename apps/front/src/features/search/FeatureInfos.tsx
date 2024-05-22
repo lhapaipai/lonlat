@@ -39,11 +39,11 @@ export default function FeatureInfos() {
   return (
     <>
       <div>
-        <div className="setting">
-          <div className="text-hint">{T("coordinates")}</div>
+        <div className="p8n-setting">
+          <div>{T("coordinates")}</div>
           <div>
             <Button
-              className="size-small text-hint"
+              className="text-sm text-gray-6"
               variant="ghost"
               color="gray"
               onClick={() => dispatch(coordsUnitChanged())}
@@ -63,13 +63,13 @@ export default function FeatureInfos() {
             </span>
           </div>
         </div>
-        <div className="setting">
-          <div className="text-hint">{T("elevation")}</div>
+        <div className="p8n-setting">
+          <div>{T("elevation")}</div>
           <div>
             {searchFeature.properties.originalProperties?.elevation ??
               searchFeature.geometry.coordinates[2] ??
               "-"}
-            <span className="text-hint"> m</span>
+            <span className="text-gray-6"> m</span>
           </div>
         </div>
         {["city", "postcode"].map((key) => {
@@ -78,16 +78,17 @@ export default function FeatureInfos() {
             return null;
           }
           return (
-            <div className="setting" key={key}>
-              <div className="text-hint">{T(`property.${key}`)}</div>
+            <div className="p8n-setting" key={key}>
+              <div>{T(`property.${key}`)}</div>
               <div>{value}</div>
             </div>
           );
         })}
       </div>
-      <div className="actions">
+      <div className="flex gap-2">
         <SimpleTooltip content={T("tooltip.direction")} placement="top-start">
           <Button
+            className="flex-1 min-w-0 justify-center"
             variant="text"
             color="gray"
             onClick={() => {
@@ -100,6 +101,7 @@ export default function FeatureInfos() {
         </SimpleTooltip>
         <SimpleTooltip content={T("tooltip.code")} placement="top">
           <Button
+            className="flex-1 min-w-0 justify-center"
             variant="text"
             color="gray"
             selected={action === "raw"}
@@ -110,6 +112,7 @@ export default function FeatureInfos() {
         </SimpleTooltip>
         <SimpleTooltip content={T("tooltip.isochrone")} placement="top-end">
           <Button
+            className="flex-1 min-w-0 justify-center"
             variant="text"
             color="gray"
             selected={action === "isochrone"}

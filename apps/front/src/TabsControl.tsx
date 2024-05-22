@@ -11,14 +11,14 @@ import {
   tabChanged,
 } from "./store/mapSlice";
 import { memo } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 import HelpTab from "./components/HelpTab";
 
 function TabsControl() {
   const distractionFree = useAppSelector(selectDistractionFree);
   const container = useRControl({
     position: "top-right",
-    className: cn("maplibregl-ctrl maplibregl-ctrl-tabs", distractionFree && "distraction-free"),
+    className: clsx("maplibregl-ctrl maplibregl-ctrl-tabs", distractionFree && "distraction-free"),
   });
   const tab = useAppSelector(selectTab);
   const dispatch = useAppDispatch();

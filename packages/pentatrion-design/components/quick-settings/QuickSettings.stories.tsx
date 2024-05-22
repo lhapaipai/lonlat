@@ -32,7 +32,7 @@ export const Basic = () => {
   const [profile, setProfile] = useState<string | null>("car");
   const [direction, setDirection] = useState<string | null>("departure");
   return (
-    <div className="ll-quick-settings grid grid-cols-1 gap-2">
+    <div className="grid grid-cols-1 gap-2">
       <div>
         <div className="p8n-setting">
           <div>Coordonnées</div>
@@ -136,7 +136,7 @@ export const Basic = () => {
           }}
         ></Select>
       </div>
-      <div className="p8n-setting">
+      <div className="p8n-setting multiple">
         <div>Passages autorisés</div>
         <div className="">
           <Checkbox checked={true}>Péages</Checkbox>

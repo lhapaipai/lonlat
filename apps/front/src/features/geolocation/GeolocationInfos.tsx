@@ -15,16 +15,16 @@ export default function GeolocationInfos() {
   const { T } = useT();
   return (
     <>
-      <div className="setting">
+      <div className="p8n-setting">
         <div>{T("accuracy")}</div>
         <div>
           {geolocation.accuracy ? m2km(geolocation.accuracy) : "-"}{" "}
-          <span className="text-hint">km</span>
+          <span className="text-gray-6">km</span>
         </div>
       </div>
-      <div className="setting multiple">
+      <div className="p8n-setting multiple">
         <div>{T("options")}</div>
-        <div className="ll-input-checkbox-container placement-block">
+        <div>
           <Checkbox
             checked={geolocation.lockCamera}
             onChange={(e) => dispatch(lockCameraChanged(e.target.checked))}

@@ -47,7 +47,7 @@ export default function SearchTab() {
   }, [T]);
   const geolocation = useAppSelector(selectGeolocation);
   return (
-    <div className="ll-quick-settings">
+    <div className="grid grid-cols-1 gap-2">
       <div>
         <LazyAutocomplete<GeoPointOption>
           autocompleteOptionComponent={AutocompleteGeoOption}

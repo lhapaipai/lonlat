@@ -1,6 +1,6 @@
 import { memo, useId } from "react";
 import { useListItem } from "@floating-ui/react";
-import cn from "classnames";
+import clsx from "clsx";
 import { getOptionValue, useAutocomplete } from "pentatrion-design";
 import { useT } from "talkr";
 import { GeoPointOption } from "pentatrion-geo";
@@ -16,7 +16,7 @@ function AutocompleteGeoOption({ properties: { label, id, type, name, context } 
   const isSelected = selection ? getOptionValue(selection) === id : false;
   return (
     <div
-      className={cn("option", "search", isSelected && "selected", isActive && "active")}
+      className={clsx("option", "search", isSelected && "selected", isActive && "active")}
       ref={ref}
       role="option"
       id={uniqId}

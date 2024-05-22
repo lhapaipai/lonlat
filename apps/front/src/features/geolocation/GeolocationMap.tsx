@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from "~/store";
 import { activationChanged, selectGeolocation } from "./geolocationSlice";
 import { RMarker, useMap } from "maplibre-react-components";
 import { Map } from "maplibre-gl";
-import "./Geolocation.scss";
 import { useEffect } from "react";
 
 function getCircleDiameter(map: Map, accuracy: number | null) {
@@ -63,7 +62,10 @@ export default function GeolocationMap() {
           className="geolocation-accuracy"
           opacity="0.2"
         >
-          <div className="content" style={{ width: circleDiameter, height: circleDiameter }}></div>
+          <div
+            className="rounded-full bg-yellow-1 border-4 border-gray-6"
+            style={{ width: circleDiameter, height: circleDiameter }}
+          ></div>
         </RMarker>
       )}
       {showMarker && (
