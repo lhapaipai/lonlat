@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Map } from "maplibre-gl";
-import { buttonVariants } from "~design";
+import { buttonVariants } from "pentatrion-design";
 
 interface FrameRateControlOptions {
   barWidth: number;

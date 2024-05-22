@@ -1,6 +1,6 @@
 import { fetchAPI } from "pentatrion-design";
-import { AddressGeoOption, LngLatObj } from "../../../types";
-import { getDepartmentName } from "../../../geo-options";
+import { AddressGeoOption, LngLatObj } from "~/types.d";
+import { getDepartmentName } from "~/geo-options";
 import { APIPaths, APIRequests, APIResponse, APISchemas } from "./geocodage-api";
 import { Feature, FeatureCollection, Point, Position } from "geojson";
 import { nanoid } from "nanoid";

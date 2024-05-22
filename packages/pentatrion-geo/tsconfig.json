@@ -4,13 +4,9 @@
     "declaration": true,
     "skipLibCheck": true,
     "types": ["google.maps", "react/experimental"],
+    "baseUrl": ".",
     "paths": {
-      "~geo": ["./src/index.ts"],
-      "~geo/*": ["./src/*"],
-      "~design": ["../pentatrion-design/index.ts"],
-      "~design/*": ["../pentatrion-design/*"],
-      "@floating-ui/react-dom": ["./node_modules/@floating-ui/react-dom"],
-      "@storybook/types": ["./node_modules/@storybook/types"]
+      "~/*": ["./src/*"]
     }
   },
   "exclude": ["**/node_modules", "dist"],

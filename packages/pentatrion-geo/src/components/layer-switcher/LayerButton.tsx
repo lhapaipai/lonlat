@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { ComponentProps, useRef } from "react";
-import { buttonVariants, useRipple } from "~design";
+import { buttonVariants, useRipple } from "pentatrion-design";
 
 interface Props extends ComponentProps<"button"> {
   disabled?: boolean;

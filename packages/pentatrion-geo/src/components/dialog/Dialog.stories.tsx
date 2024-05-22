@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Dialog } from "~design";
+import { Dialog } from "pentatrion-design";
 
 const meta = {
   title: "pentatrion-geo/Components/Dialog",

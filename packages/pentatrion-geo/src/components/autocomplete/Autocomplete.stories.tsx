@@ -10,7 +10,7 @@ import { Meta } from "@storybook/react";
 
 import { useState } from "react";
 import { handleChangeSearchValue, createUnknownFeature } from "../_mocks/town-api";
-import { GeoPointOption } from "../../types";
+import { GeoPointOption } from "~/types.d";
 import AutocompleteGeoOption from "./AutocompleteGeoOption";
 import { featureOptions } from "./_featureOptionsMock";
 

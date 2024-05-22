@@ -1,4 +1,4 @@
-import { LngLatObj } from "../../types";
+import { LngLatObj } from "~/types.d";
 
 export interface GoogleLatLng {
   lat(): number;

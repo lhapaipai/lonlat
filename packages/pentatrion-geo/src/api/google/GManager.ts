@@ -1,4 +1,4 @@
-import { LngLatObj } from "../../types";
+import { LngLatObj } from "~/types.d";
 import { getLngLatObj } from ".";
 
 const streetViewPanoramaDefaultOptions: google.maps.StreetViewPanoramaOptions = {

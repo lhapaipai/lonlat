@@ -9,9 +9,9 @@ import {
   Sortable,
 } from "pentatrion-design";
 
-import { GeoPointOption } from "../../types";
+import { GeoPointOption } from "~/types.d";
 
-import { isNoData, updateId, createNodataFeature } from "../../geo-options";
+import { isNoData, updateId, createNodataFeature } from "~/geo-options";
 import AutocompleteGeoOption from "../autocomplete/AutocompleteGeoOption";
 
 const meta = {

@@ -1,7 +1,5 @@
 export * from "./geo-options";
 
-export * from "./types";
-
 export * from "./maplibre";
 export * from "./components";
 
@@ -15,3 +13,5 @@ export * from "./api/camptocamp";
 export * from "./api/openrouteservice";
 
 export * from "./projection/reproject";
+
+export * from "./types.d";

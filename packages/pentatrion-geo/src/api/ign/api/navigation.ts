@@ -5,10 +5,10 @@ import {
   RouteFeatureResponse,
   GeoPointOption,
   IsochroneOptions,
-} from "../../../types";
+} from "~/types.d";
 import { LineString, Position } from "geojson";
 import { dataGeoserviceUrl } from "../url";
-import { hashRoute } from "../../../geo-options";
+import { hashRoute } from "~/geo-options";
 
 export function fetchIGNNavigationAPI<Path extends APIPaths, Options extends APIRequests<Path>>(
   path: Path,
