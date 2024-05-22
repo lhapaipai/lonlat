@@ -24,7 +24,8 @@ export function SearchEngineOption({ icon, label }: StarOption) {
         onClick: () => handleSelect(index),
       })}
     >
-      <i className={icon}></i> {label}
+      <i className={clsx(icon, "mr-2")}></i>
+      {label}
     </button>
   );
 }

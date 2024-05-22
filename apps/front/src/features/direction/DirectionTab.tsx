@@ -173,7 +173,6 @@ export default function DirectionTab() {
                   <Select
                     variant="ghost"
                     showArrow={false}
-                    selectionClassName="ml-auto search-engine-selector"
                     width={37}
                     floatingMinWidth={220}
                     placement="bottom-start"

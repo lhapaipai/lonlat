@@ -58,7 +58,7 @@ export default function SearchTab() {
             <Select
               variant="ghost"
               showArrow={false}
-              selectionClassName="ml-auto search-engine-selector"
+              selectionClassName=""
               width={37}
               floatingMinWidth={220}
               placement="bottom-start"
@@ -76,7 +76,12 @@ export default function SearchTab() {
           selectionSuffix={
             searchFeature?.properties.type === "geolocation" &&
             (geolocation.status === "on" ? (
-              <Button icon variant="ghost" onClick={() => setShowGeolocationInfos((s) => !s)}>
+              <Button
+                icon
+                variant="ghost"
+                color="gray"
+                onClick={() => setShowGeolocationInfos((s) => !s)}
+              >
                 <i className="fe-geolocation-cog"></i>
               </Button>
             ) : (
@@ -87,6 +92,7 @@ export default function SearchTab() {
             <Button
               icon
               variant="ghost"
+              color="gray"
               onClick={() => {
                 dispatch(searchFeatureChanged(createGeolocationGeoOption(T("myGeolocation"))));
                 dispatch(activationChanged(true));

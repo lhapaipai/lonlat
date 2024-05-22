@@ -35,7 +35,8 @@ export default function LayerButton({
         "min-w-0 rounded cursor-pointer relative overflow-clip focus-visible:outline focus-visible:outline-2 no-underline border-0 inline-flex flex-col items-center transition-color-shadow duration-300 leading-5 ",
         variant === "principal"
           ? "p-1 w-14 h-14 overflow-hidden "
-          : "flex-[0_0_calc(90px+0.5rem)] py-1 pt-1",
+          : // we need w-[calc(90px+0.5rem)] for layer-switcher container : "width: fit-content;"
+            "flex-[0_0_calc(90px+0.5rem)] w-[calc(90px+0.5rem)] py-1 pt-1",
         className,
         buttonVariants.variant.light("yellow"),
         selected && "active",

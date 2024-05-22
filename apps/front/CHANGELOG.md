@@ -1,3 +1,7 @@
+## 0.1.0 (2024-05-22)
+
+- TailwindCSS migration
+
 ## 0.0.6 (2024-04-29)
 
 - feature add hillshade for base layers without terrain
