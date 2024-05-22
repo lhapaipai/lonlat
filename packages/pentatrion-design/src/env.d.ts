@@ -1,7 +1,5 @@
 import "react";
 
-export type ThemeColor = "yellow" | "gray" | "red" | "orange" | "green" | "blue";
-
 type Merge<T, U> = Omit<T, keyof U> & U;
 type PropsWithAs<P, T extends React.ElementType> = P & { as?: T };
 export type PolymorphicPropsWithRef<P, T extends React.ElementType> = Merge<

@@ -1,5 +1,6 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
-import { Message, MessageOptions, parseError } from "~/lib";
+import { parseError } from "~/lib";
+import { Message, MessageOptions } from "~/types.d";
 
 type NotificationState = {
   messages: Message[];

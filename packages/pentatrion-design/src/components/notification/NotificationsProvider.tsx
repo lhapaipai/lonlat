@@ -6,7 +6,7 @@ import {
   type NotificationsManager,
 } from "./NotificationsContext";
 import Snack from "../snack/Snack";
-import { Message } from "~/lib";
+import { Message } from "~/types.d";
 
 interface Props {
   children: ReactNode;

@@ -5,7 +5,7 @@ import { Button } from "../button";
 import { useEventCallback } from "~/hooks";
 import { Dialog } from "../dialog";
 import Loader from "../loader/Loader";
-import { Message } from "~/lib";
+import { Message } from "~/types.d";
 
 export type SnackProps = Partial<Message> & {
   onRemove?: () => void;

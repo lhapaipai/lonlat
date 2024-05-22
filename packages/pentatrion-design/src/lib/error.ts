@@ -1,15 +1,4 @@
-import { ThemeColor } from "../types.d";
-
-export type MessageOptions = Partial<Omit<Message, "message" | "id">>;
-
-export interface Message {
-  id: string;
-  content: string;
-  expiration: number; // in ms. if -1 never expire
-  color: ThemeColor;
-  canClose: boolean;
-  withLoader: boolean;
-}
+import { MessageOptions } from "~/types.d";
 
 export function isErrorLike(err: any): err is Error {
   if (err instanceof Error) {

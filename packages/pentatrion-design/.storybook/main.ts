@@ -8,8 +8,8 @@ const projectDir = resolve(fileURLToPath(new URL("..", import.meta.url)));
 
 const config: StorybookConfig = {
   stories: [
-    `${projectDir}/styles/**/*.stories.@(ts|tsx)`,
-    `${projectDir}/components/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/src/styles/**/*.stories.@(ts|tsx)`,
+    `${projectDir}/src/components/**/*.stories.@(ts|tsx)`,
   ],
   addons: [
     "@storybook/addon-links",
