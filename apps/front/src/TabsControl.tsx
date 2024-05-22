@@ -72,7 +72,7 @@ function TabsControl() {
         </Button>
       </Tabs>
       {distractionFree && (
-        <div className="expand-all absolute top-2 right-[calc(100%+1rem)] md:top-0 md:right-[calc(100%+0.5rem)]">
+        <div className="absolute top-2 right-[calc(100%+1rem)] md:top-0 md:right-[calc(100%+0.5rem)]">
           <Button
             icon
             variant="ghost"

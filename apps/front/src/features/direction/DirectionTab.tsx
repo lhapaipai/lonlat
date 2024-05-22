@@ -121,7 +121,7 @@ export default function DirectionTab() {
         <Button
           variant="text"
           color="gray"
-          className="flex-1 min-w-0"
+          className="flex-1 min-w-0 justify-center"
           selected={profile === "car"}
           onClick={() => dispatch(profileChanged("car"))}
         >
@@ -131,7 +131,7 @@ export default function DirectionTab() {
         <Button
           variant="text"
           color="gray"
-          className="flex-1 min-w-0"
+          className="flex-1 min-w-0 justify-center"
           selected={profile === "bike"}
           onClick={() => dispatch(profileChanged("bike"))}
         >
@@ -141,7 +141,7 @@ export default function DirectionTab() {
         <Button
           variant="text"
           color="gray"
-          className="flex-1 min-w-0"
+          className="flex-1 min-w-0 justify-center"
           selected={profile === "pedestrian"}
           onClick={() => dispatch(profileChanged("pedestrian"))}
         >

@@ -2,43 +2,11 @@
 .maplibregl-ctrl-bottom-right,
 .maplibregl-ctrl-top-left,
 .maplibregl-ctrl-top-right {
-  pointer-events: none;
-  position: absolute;
-  z-index: 2;
+  @apply md:absolute md:z-[2] pointer-events-none grid gap-2 grid-cols-1;
 }
-
-.maplibregl-ctrl-top-left {
-  left: 0;
-  top: 0;
-}
-
-.maplibregl-ctrl-top-right {
-  right: 0;
-  top: 0;
-}
-
-@media (max-width: 768px) {
-  .maplibregl-ctrl-top-right {
-    left: 0;
-  }
-}
-
-/* .maplibregl-ctrl-bottom-left {
-	bottom: 0;
-	left: 0
-}
-
-.maplibregl-ctrl-bottom-right {
-	bottom: 0;
-	right: 0
-} */
 
 .maplibregl-ctrl {
-  position: relative;
-  clear: both;
-  pointer-events: auto;
-  transform: translate(0);
-  transition: transform 0.3s ease;
+  @apply relative clear-both pointer-events-auto transition-transform;
 }
 
 /* styled maplibre-ctrl */
@@ -46,57 +14,30 @@
   @apply bg-gray-0 shadow rounded p-2;
 }
 
-.maplibregl-ctrl-top-left .maplibregl-ctrl {
-  float: left;
-  margin: 0.5rem 0 0 0.5rem;
+.maplibregl-ctrl-top-left {
+  @apply bg-red-3 md:left-2 md:top-2 md:right-auto;
 }
 
-.maplibregl-ctrl-top-right .maplibregl-ctrl {
-  width: 380px;
-  float: right;
-  margin: 0.5rem 0.5rem 0 0;
-}
+.maplibregl-ctrl-top-right {
+  @apply bg-green-3 md:right-2 md:top-2 md:left-auto;
 
-@media (max-width: 768px) {
-  .maplibregl-ctrl-top-right .maplibregl-ctrl:first-child {
-    margin-top: 0;
-  }
+  & .maplibregl-ctrl {
+    @apply w-full md:w-96;
 
-  .maplibregl-ctrl-top-right .maplibregl-ctrl {
-    margin-right: 0;
-    width: 100%;
+    &.distraction-free {
+      transform: translateX(calc(100% + 0.5rem));
+    }
   }
 }
 
-.maplibregl-ctrl-top-right .maplibregl-ctrl.distraction-free {
-  transform: translateX(calc(100% + 0.5rem));
+.maplibregl-ctrl-bottom-left {
+  @apply bg-orange-3 md:bottom-[calc(100%+0.5rem)] md:left-2 md:right-auto;
 }
 
-.maplibregl-ctrl-bottom-left .maplibregl-ctrl {
-  float: left;
-  margin: 0 0 0.5rem 0.5rem;
-}
-
-.maplibregl-ctrl-bottom-right .maplibregl-ctrl {
-  float: right;
-  margin: 0 0.5rem 0.5rem 0;
+.maplibregl-ctrl-bottom-right {
+  @apply bg-blue-3 md:bottom-[calc(100%+0.5rem)] md:right-2 md:left-auto;
 }
 
 .maplibregl-ctrl-bottom-container {
-  pointer-events: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0 0 0 0;
-
-  .maplibregl-ctrl-bottom-left {
-    bottom: 100%;
-    left: 0;
-  }
-
-  .maplibregl-ctrl-bottom-right {
-    right: 0;
-    bottom: 100%;
-  }
+  @apply pointer-events-none absolute bottom-0 left-0 right-0;
 }
