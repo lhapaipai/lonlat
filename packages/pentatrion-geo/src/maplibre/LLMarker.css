@@ -6,7 +6,7 @@
 
   --marker-color: rgb(var(--color-yellow-3));
   --marker-color-dark: color-mix(in srgb, var(--marker-color), black 40%);
-  --ovale-color-hover: color-mix(in srgb, var(--marker-color), white 50%);
+  --ovale-color-hover: color-mix(in srgb, var(--marker-color), white 10%);
   --ovale-color-active: color-mix(in srgb, var(--marker-color), white 1%);
   --marker-color-gradient: linear-gradient(120deg, var(--marker-color), var(--marker-color-dark));
 
@@ -159,7 +159,7 @@
   .ovale {
     z-index: 2;
     border-radius: 50%;
-    background-color: white;
+    background-color: rgb(var(--color-gray-0));
     transition: background-color 0.3s ease;
   }
 

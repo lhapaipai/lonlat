@@ -130,7 +130,7 @@ function Autocomplete<O extends OptionLike = Option>(
           });
           const firstChild = elements.floating.firstElementChild as HTMLElement;
           if (firstChild) {
-            firstChild.style.maxHeight = `${Math.min(availableHeight, 300)}px`;
+            firstChild.style.maxHeight = `${Math.min(availableHeight, 288)}px`;
           }
         },
         padding: 10,
@@ -296,7 +296,7 @@ function Autocomplete<O extends OptionLike = Option>(
               >
                 <Dialog
                   placement={context.placement}
-                  className="animate-fade-in-list max-h-80 overflow-auto"
+                  className="animate-fade-in-list overflow-auto"
                 >
                   <FloatingList elementsRef={listRef}>
                     {options.map((option) => {
