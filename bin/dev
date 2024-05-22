@@ -5,5 +5,5 @@ PROJECT_DIR="$( dirname "$SCRIPT_DIR")"
 
 cd $PROJECT_DIR
 
-pnpm run -r --parallel --filter pentatrion-design --filter pentatrion-geo dev
+pnpm run -r --parallel --filter pentatrion-design --filter pentatrion-geo --filter maplibre-react-components dev
 

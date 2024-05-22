@@ -14,13 +14,14 @@
   },
   "homepage": "https://github.com/lhapaipai/lonlat/tree/main/packages/maplibre-react-components",
   "type": "module",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6009",
     "storybook-build": "storybook build"
   },
   "files": [
@@ -47,22 +48,19 @@
     "@vitejs/plugin-react-swc": "^3.6.0",
     "@vitest/ui": "^1.6.0",
     "jsdom": "^24.0.0",
-    "maplibre-gl": "^4.2.0",
     "pentatrion-design": "workspace:*",
     "postcss": "^8.4.38",
     "postcss-load-config": "^5.1.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "storybook": "^8.1.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
     "vitest": "^1.6.0"
   },
-  "peerDependencies": {
-    "maplibre-gl": ">=2.0.0",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+  "dependencies": {
+    "maplibre-gl": "^4.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "peerDependenciesMeta": {
     "maplibre-gl": {

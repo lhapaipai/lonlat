@@ -16,6 +16,6 @@ export { default as useControl } from "./hooks/useControl";
 
 export * from "./lib/util";
 
-export { type Event } from "./types";
+export { type Event } from "./types.d";
 
 export { mapLibreContext, type MapLibreContext } from "./context";

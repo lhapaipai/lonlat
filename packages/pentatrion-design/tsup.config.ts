@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["./src/index.ts"],
+  entry: ["./src/index.ts", "./src/redux/index.ts"],
   dts: true,
   format: ["esm"],
   esbuildOptions(options) {
@@ -13,6 +13,8 @@ export default defineConfig({
       "react-polymorphic-types",
       "react-sortablejs",
       "tailwindcss",
+      "react-redux",
+      "@reduxjs/toolkit",
     ];
   },
   splitting: false,
