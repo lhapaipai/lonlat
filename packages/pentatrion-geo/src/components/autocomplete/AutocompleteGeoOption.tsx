@@ -1,9 +1,9 @@
 import { memo, useId } from "react";
 import { useListItem } from "@floating-ui/react";
-import cn from "classnames";
 import { getOptionValue, useAutocomplete } from "pentatrion-design";
 import { GeoPointOption } from "~/types.d";
 import { getTypeLabel } from "~/geo-options";
+import clsx from "clsx";
 
 type Props = GeoPointOption;
 
@@ -16,7 +16,11 @@ function AutocompleteGeoOption({ properties: { label, id, type, name, context } 
 
   return (
     <div
-      className={cn("option", "h-12 flex px-0", isSelected ? "bg-gray-2" : isActive && "bg-gray-1")}
+      className={clsx(
+        "option",
+        "h-12 flex px-0",
+        isSelected ? "bg-gray-2" : isActive && "bg-gray-1",
+      )}
       ref={ref}
       role="option"
       id={uniqId}

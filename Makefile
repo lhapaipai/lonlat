@@ -7,11 +7,11 @@ remote_prod_host 	:= lonlat.org
 maplibre_react_sandbox_path	:= $(local_path)/apps/maplibre-react-sandbox
 maplibre_react_sandbox_host := maplibre-react-sandbox.lonlat.pentatrion.com
 
-storybook_path	:= $(local_path)/apps/storybook
-storybook_host	:= storybook.lonlat.pentatrion.com
+design_path	:= $(local_path)/packages/pentatrion-design
+design_host	:= design.pentatrion.com
 
-assets_path	:= $(local_path)/extra/assets/public
-assets_host := assets.lonlat.org
+mrc_doc_path := $(local_path)/apps/mrc-doc
+mrc_doc_host := maplibre-react-components.pentatrion.com
 
 
 .PHONY: help
@@ -34,14 +34,6 @@ deploy-front: ## Build and deploy examples
 		berlin:prod/$(remote_prod_host)
 	@echo "go : https://$(remote_prod_host)"
 
-.PHONY: deploy-front-with-errors
-deploy-front-with-errors: ## Build and deploy examples
-	cd $(front_path) && pnpm build-with-errors
-	rsync -av --delete \
-		$(front_path)/dist/ \
-		berlin:prod/$(remote_prod_host)
-	@echo "go : https://$(remote_prod_host)"
-
 .PHONY: deploy-maplibre-react-sandbox
 deploy-maplibre-react-sandbox: ## Build and deploy examples
 	cd $(maplibre_react_sandbox_path) && pnpm build
@@ -50,17 +42,18 @@ deploy-maplibre-react-sandbox: ## Build and deploy examples
 		berlin:prod/$(maplibre_react_sandbox_host)
 	@echo "go : https://$(maplibre_react_sandbox_host)"
 
-.PHONY: deploy-storybook
-deploy-storybook: ## Build and deploy examples
-	cd $(storybook_path) && pnpm build
+.PHONY: deploy-design-storybook
+deploy-design-storybook: ## Build and deploy examples
+	cd $(design_path) && pnpm storybook-build
 	rsync -av --delete \
-		$(storybook_path)/storybook-static/ \
-		berlin:prod/$(storybook_host)
-	@echo "go : https://$(storybook_host)"
+		$(design_path)/storybook-static/ \
+		berlin:prod/$(design_host)
+	@echo "go : https://$(design_host)"
 
-.PHONY: deploy-assets
-deploy-assets: ## Build and deploy examples
+.PHONY: deploy-mrc-doc
+deploy-mrc-doc:
+	cd $(mrc_doc_path) && pnpm build
 	rsync -av --delete \
-		$(assets_path)/ \
-		berlin:prod/$(assets_host)
-	@echo "go : https://$(assets_host)"
+		$(mrc_doc_path)/out/ \
+		berlin:prod/$(mrc_doc_host)
+	@echo "go : https://$(mrc_doc_host)"

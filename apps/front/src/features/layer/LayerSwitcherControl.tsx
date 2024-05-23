@@ -18,14 +18,14 @@ import {
 import clsx from "clsx";
 import { createPortal } from "react-dom";
 import { useMap, useRControl } from "maplibre-react-components";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
 import { LayerButton } from "pentatrion-geo";
 import { coordsChanged } from "~/features/street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/mapSlice";
 import { useT } from "talkr";
 
-export default function LayerSwitcherControl() {
+function LayerSwitcherControl() {
   const [collapsed, setCollapsed] = useState(true);
   const distractionFree = useAppSelector(selectDistractionFree);
   const { T } = useT();
@@ -164,3 +164,5 @@ export default function LayerSwitcherControl() {
     container,
   );
 }
+
+export default memo(LayerSwitcherControl);

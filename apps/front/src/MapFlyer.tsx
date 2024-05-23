@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useAppSelector } from "./store";
 import { selectSearchFeature } from "~/features/search/searchSlice";
 import { selectTab } from "./store/mapSlice";
@@ -12,7 +12,7 @@ import { point } from "@turf/helpers";
 import { selectGeolocation } from "~/features/geolocation/geolocationSlice";
 import { LngLat, LngLatBounds } from "maplibre-gl";
 
-export default function MapFlyer() {
+function MapFlyer() {
   const map = useMap();
 
   const geolocation = useAppSelector(selectGeolocation);
@@ -126,3 +126,5 @@ export default function MapFlyer() {
 
   return null;
 }
+
+export default memo(MapFlyer);

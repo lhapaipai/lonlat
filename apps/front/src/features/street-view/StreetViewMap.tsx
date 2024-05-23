@@ -3,14 +3,14 @@ import { LLPegman, RPegman, googleStreetViewURLTiles } from "pentatrion-geo";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { coordsChanged, selectPegmanCoords, selectPegmanPov } from "./streetViewSlice";
 import { Map, MapMouseEvent } from "maplibre-gl";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 
 function getRealBearing(map: Map, streetViewHeading: number) {
   const bearing = map.getBearing();
   return (streetViewHeading - bearing) % 360;
 }
 
-export default function StreetViewMap() {
+function StreetViewMap() {
   const coords = useAppSelector(selectPegmanCoords);
   const { heading } = useAppSelector(selectPegmanPov);
   const dispatch = useAppDispatch();
@@ -51,3 +51,5 @@ export default function StreetViewMap() {
     </>
   );
 }
+
+export default memo(StreetViewMap);

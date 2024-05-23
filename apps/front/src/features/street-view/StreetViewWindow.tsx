@@ -10,8 +10,9 @@ import {
 } from "./streetViewSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { streetViewToggled } from "~/features/layer/layerSlice";
+import { memo } from "react";
 
-export default function StreetViewWindow() {
+function StreetViewWindow() {
   const coords = useAppSelector(selectPegmanCoords);
   const { heading, pitch } = useAppSelector(selectPegmanPov);
   const dispatch = useAppDispatch();
@@ -50,3 +51,5 @@ export default function StreetViewWindow() {
     )
   );
 }
+
+export default memo(StreetViewWindow);
