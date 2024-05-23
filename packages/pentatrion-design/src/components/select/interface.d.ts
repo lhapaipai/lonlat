@@ -4,9 +4,8 @@ export type OptionLike = Option | GeoOption;
 
 export type Option = {
   type?: "Option";
-  value: string;
+  value: string | number;
   label: string;
-  sourceId?: string | number;
 };
 
 export type NoDataOption = {

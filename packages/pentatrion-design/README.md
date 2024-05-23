@@ -76,7 +76,7 @@ Mettre à jour la configuration de tailwind.
 
 ```diff
 // tailwind.config.js
-+ import pentatrionTw from "pentatrion-design";
++ import { pentatrionTw } from "pentatrion-design";
 
 /** @type {import('tailwindcss').Config} */
 export default {

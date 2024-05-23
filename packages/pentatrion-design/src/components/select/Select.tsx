@@ -61,7 +61,7 @@ type Props<O extends Option = Option> = {
   selectOptionComponent?: (props: O) => ReactNode;
   selectSelectionComponent?: (props: SelectSelectionProps<O>) => ReactNode;
   value?: SelectValue;
-  onChange?: ((e: ChangeEventLike) => void) | null;
+  onChange: ((e: ChangeEventLike) => void) | null;
   zIndex?: number;
 };
 
@@ -82,7 +82,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
       searchable = false,
       required = true,
       value = null,
-      onChange = null,
+      onChange,
       placeholder = "Select ...",
       getSearchableValue,
       selectSelectionComponent: SelectSelectionCustomComponent,
@@ -92,11 +92,8 @@ const Select = forwardRef<HTMLDivElement, Props>(
     },
     propRef,
   ) => {
-    const isControlled = onChange !== null;
-
     const onChangeStable = useEventCallback(onChange);
 
-    const [uncontrolledSelectedIndex, setUncontrolledSelectedIndex] = useState<number | null>(null);
     const [search, setSearch] = useState("");
 
     const filteredOptions = useMemo(
@@ -113,15 +110,12 @@ const Select = forwardRef<HTMLDivElement, Props>(
     );
 
     let selectedIndex: number | null = null;
-    if (isControlled) {
-      if (value !== null) {
-        const pos = filteredOptions.findIndex((o) => o.value === value);
-        if (pos !== -1) {
-          selectedIndex = pos;
-        }
+
+    if (value !== null) {
+      const pos = filteredOptions.findIndex((o) => o.value === value);
+      if (pos !== -1) {
+        selectedIndex = pos;
       }
-    } else {
-      selectedIndex = uncontrolledSelectedIndex;
     }
 
     const [isOpen, setIsOpen] = useState(false);
@@ -208,18 +202,15 @@ const Select = forwardRef<HTMLDivElement, Props>(
       (index: number | null) => {
         setIsOpen(false);
         setSearch("");
-        if (isControlled) {
-          const event: ChangeEventLike = {
-            target: {
-              value: index === null ? null : filteredOptions[index].value,
-            },
-          };
-          onChangeStable(event);
-        } else {
-          setUncontrolledSelectedIndex(index);
-        }
+
+        const event: ChangeEventLike = {
+          target: {
+            value: index === null ? null : filteredOptions[index].value,
+          },
+        };
+        onChangeStable(event);
       },
-      [isControlled, onChangeStable, filteredOptions],
+      [onChangeStable, filteredOptions],
     );
 
     const selectContext = useMemo(
@@ -288,6 +279,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
               <FloatingFocusManager context={context} modal={false}>
                 <div
                   className="z-dialog outline-none"
+                  data-testid="select-list"
                   ref={refs.setFloating}
                   style={{
                     ...floatingStyles,
@@ -302,6 +294,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
                     {searchable && (
                       <div className="p-2">
                         <Input
+                          color="gray"
                           placeholder="Search"
                           tabIndex={selectedIndex === null ? 0 : -1}
                           value={search}
@@ -327,8 +320,7 @@ const Select = forwardRef<HTMLDivElement, Props>(
                             key={option.value}
                             className={clsx(
                               "option",
-                              isSelected && "bg-gray-2",
-                              isActive && "bg-gray-1",
+                              isSelected ? "bg-gray-2" : isActive && "bg-gray-1",
                             )}
                             role="option"
                             aria-selected={isActive && isSelected}

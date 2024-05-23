@@ -540,9 +540,6 @@ importers:
       '@floating-ui/react':
         specifier: ^0.26.14
         version: 0.26.14(react-dom@18.3.1)(react@18.3.1)
-      '@floating-ui/react-dom':
-        specifier: ^2.0.9
-        version: 2.0.9(react-dom@18.3.1)(react@18.3.1)
       clsx:
         specifier: ^2.1.0
         version: 2.1.1
@@ -559,6 +556,9 @@ importers:
         specifier: ^6.1.4
         version: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1)(react@18.3.1)(sortablejs@1.15.2)
     devDependencies:
+      '@floating-ui/react-dom':
+        specifier: ^2.0.9
+        version: 2.0.9(react-dom@18.3.1)(react@18.3.1)
       '@react-spring/web':
         specifier: ^9.7.3
         version: 9.7.3(react-dom@18.3.1)(react@18.3.1)
@@ -610,6 +610,9 @@ importers:
       '@testing-library/react':
         specifier: ^14.3.1
         version: 14.3.1(react-dom@18.3.1)(react@18.3.1)
+      '@testing-library/user-event':
+        specifier: ^14.5.2
+        version: 14.5.2(@testing-library/dom@9.3.4)
       '@types/geojson':
         specifier: ^7946.0.14
         version: 7946.0.14
