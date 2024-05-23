@@ -1,6 +1,6 @@
 import { Button, LazyAutocomplete, Select } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
+import { SearchFeature, searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import {
   AppGeoOption,
   GeoPointOption,
@@ -104,6 +104,7 @@ export default function SearchTab() {
           selection={searchFeature}
           onChangeSelection={(e) => dispatch(searchFeatureChanged(e))}
           onChangeSearchValueCallback={async (searchValue) => {
+            console.log("onChangeSearchValueCallback", searchValue);
             let collection: AppGeoOption[] = [];
             try {
               if (searchEngine === "c2c") {

@@ -16,7 +16,7 @@ function AutocompleteGeoOption({ properties: { label, id, type, name, context } 
 
   return (
     <div
-      className={cn("option", "h-12 flex px-0", isSelected && "bg-gray-2", isActive && "bg-gray-1")}
+      className={cn("option", "h-12 flex px-0", isSelected ? "bg-gray-2" : isActive && "bg-gray-1")}
       ref={ref}
       role="option"
       id={uniqId}

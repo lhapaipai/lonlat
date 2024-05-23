@@ -31,7 +31,6 @@ export async function prepareStyle(
   const allOptionalLayersId: OptionalLayerId[] = Array.from(
     new Set([...(terrain ? (["terrain", "hillshade"] as const) : []), ...optionalLayersId]),
   );
-  console.log("allOptionalLayersId", allOptionalLayersId);
 
   for (const optionalLayerId of allOptionalLayersId) {
     let optionalLayerInfo: OptionalLayerInfo = {

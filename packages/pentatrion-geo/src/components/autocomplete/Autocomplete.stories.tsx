@@ -6,7 +6,8 @@ import {
   Button,
 } from "pentatrion-design";
 
-import { Meta } from "@storybook/react";
+import { Meta, ReactRenderer } from "@storybook/react";
+import { PartialStoryFn } from "@storybook/types";
 
 import { useState } from "react";
 import { handleChangeSearchValue, createUnknownFeature } from "../_mocks/town-api";
@@ -23,7 +24,7 @@ const meta = {
         <Story />
       </NotificationsProvider>
     ),
-  ],
+  ] as ((story: PartialStoryFn<ReactRenderer, any>) => JSX.Element)[],
 } satisfies Meta<typeof Autocomplete>;
 export default meta;
 
@@ -84,7 +85,8 @@ export const Lazy = () => {
   return (
     <>
       <LazyAutocomplete<GeoPointOption>
-        icon={false}
+        clearSearchButton={true}
+        icon={true}
         selection={selection}
         onChangeSelection={setSelection}
         onChangeSearchValueCallback={handleChangeSearchValue}

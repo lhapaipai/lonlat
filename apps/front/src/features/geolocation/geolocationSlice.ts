@@ -53,7 +53,6 @@ const geolocationSlice = createSlice({
     },
     positionUpdated(state, action: PayloadAction<{ coords: [number, number]; accuracy: number }>) {
       const { coords, accuracy } = action.payload;
-      console.log("positionUpdated", coords, accuracy);
 
       state.status = "on";
       state.coords = coords;
@@ -61,8 +60,6 @@ const geolocationSlice = createSlice({
       state.errorCode = null;
     },
     positionErrored(state, action: PayloadAction<ErrorCode>) {
-      console.log("positionErrored", action.payload);
-
       state.status = "error";
       state.coords = null;
       state.accuracy = null;

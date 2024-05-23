@@ -27,17 +27,19 @@ interface Props<O extends OptionLike = Option>
 
 export default function LazyAutocomplete<O extends OptionLike = Option>({
   onChangeSearchValueCallback,
-  debounce = 500,
+  debounce = 5000,
   selection = null,
   onChangeSelection,
   ...rest
 }: Props<O>) {
   const onChangeSelectionStable = useEventCallback(onChangeSelection);
+  const onChangeSearchValueCallbackStable = useEventCallback(onChangeSearchValueCallback);
 
   const [searchValue, searchValueDebounced, setSearchValue] = useStateDebounce(
     selection ? getOptionLabel(selection) : "",
     debounce,
   );
+  console.log(searchValue, searchValueDebounced);
 
   const searchValueRef = useRef(searchValue);
   searchValueRef.current = searchValue;
@@ -63,7 +65,7 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
   useLayoutEffect(() => {
     if (selection === null) {
       if (document.activeElement !== inputRef.current) {
-        setSearchValue("");
+        setSearchValue("", true);
       }
       return;
     }
@@ -95,8 +97,8 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
 
     setLoading(true);
 
-    onChangeSearchValueCallback(searchValueDebounced)
-      .then((newOptions) => {
+    onChangeSearchValueCallbackStable(searchValueDebounced)
+      ?.then((newOptions) => {
         setLoading(false);
 
         if (!abort) {
@@ -111,7 +113,7 @@ export default function LazyAutocomplete<O extends OptionLike = Option>({
       setLoading(false);
       abort = true;
     };
-  }, [selection, searchValueDebounced, onChangeSearchValueCallback]);
+  }, [selection, searchValueDebounced, onChangeSearchValueCallbackStable]);
 
   return (
     <Autocomplete

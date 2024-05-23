@@ -45,7 +45,6 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-  console.log("color scheme changed !", e);
   const mode = e.matches ? "dark" : "light";
   store.dispatch(modeChangedAction(mode));
 });
