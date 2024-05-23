@@ -44,7 +44,7 @@ import {
   selectSearchEngine,
   selectViewState,
 } from "~/store/mapSlice";
-import { useNotification } from "pentatrion-design/redux";
+import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo, useState } from "react";
 import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/constants";
@@ -66,7 +66,7 @@ export default function DirectionTab() {
   const direction = useAppSelector(selectDirection);
   const { wayPoints, optimization, constraints, profile, route } = direction;
   const dispatch = useAppDispatch();
-  const { notifyError } = useNotification();
+  const { notifyError } = useReduxNotifications();
   const { T } = useT();
   const [showSettings, setShowSettings] = useState(false);
   const searchEngine = useAppSelector(selectSearchEngine);

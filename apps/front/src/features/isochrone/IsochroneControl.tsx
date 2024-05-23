@@ -13,7 +13,7 @@ import {
   referenceFeatureChanged,
   selectIsochrone,
 } from "./isochroneSlice";
-import { useNotification } from "pentatrion-design/redux";
+import { useReduxNotifications } from "pentatrion-design/redux";
 import { useRControl } from "~mrc";
 import { createPortal } from "react-dom";
 import { selectDistractionFree } from "~/store/mapSlice";
@@ -44,7 +44,7 @@ export default function IsochroneControl() {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const isAbortedRef = useRef(false);
-  const { notifyError } = useNotification();
+  const { notifyError } = useReduxNotifications();
 
   async function handleProcess() {
     if (!referenceFeature) {

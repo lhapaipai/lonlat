@@ -15,7 +15,7 @@ export default function NotificationConsumer({ children }: Props) {
   if (!container.current) {
     container.current = document.createElement("div");
     container.current.id = nanoid();
-    container.current.classList.add("ll-snack-bar");
+    container.current.classList.add("fixed", "bottom-0", "left-0", "right-0", "z-notification");
     document.body.append(container.current);
   }
 
@@ -36,7 +36,7 @@ export default function NotificationConsumer({ children }: Props) {
     <>
       {children}
       {createPortal(
-        <div className="snack-bar-inner">
+        <div className="mb-4 flex flex-col gap-4 items-center">
           {messages.map((message) => (
             <Snack
               key={message.id}

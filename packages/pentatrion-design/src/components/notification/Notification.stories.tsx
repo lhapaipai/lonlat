@@ -2,8 +2,9 @@ import { Meta, ReactRenderer } from "@storybook/react";
 import { PartialStoryFn } from "@storybook/types";
 import { useRef } from "react";
 import NotificationsProvider from "./NotificationsProvider";
-import { useFetch, useNotifications } from "~/hooks";
+import { useFetch } from "~/hooks";
 import { Button } from "../button";
+import { useContextNotifications } from "./useContextNotifications";
 
 const meta = {
   title: "Components/NotificationsProvider",
@@ -20,7 +21,7 @@ export default meta;
 
 export const Context = () => {
   const counter = useRef(0);
-  const { addNotification, notifyError } = useNotifications();
+  const { addNotification, notifyError } = useContextNotifications();
   const fetch = useFetch();
   function handleClick() {
     counter.current += 1;

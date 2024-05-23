@@ -17,7 +17,7 @@ import {
   selectSearchEngine,
   selectViewState,
 } from "~/store/mapSlice";
-import { useNotification } from "pentatrion-design/redux";
+import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo, useState } from "react";
 import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/constants";
@@ -34,7 +34,7 @@ export default function SearchTab() {
   const searchFeature = useAppSelector(selectSearchFeature);
   const dispatch = useAppDispatch();
   const viewState = useAppSelector(selectViewState);
-  const { notifyError } = useNotification();
+  const { notifyError } = useReduxNotifications();
   const searchEngine = useAppSelector(selectSearchEngine);
   const { T } = useT();
   const [showGeolocationInfos, setShowGeolocationInfos] = useState(false);

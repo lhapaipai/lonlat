@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "~/store";
 import { selectSearchFeature } from "./searchSlice";
 import { getCoordsStr, stringifyGeoOption } from "pentatrion-geo";
 import { coordsUnitChanged, selectCoordsUnit, tabChanged } from "~/store/mapSlice";
-import { useNotification } from "pentatrion-design/redux";
+import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useCallback, useState } from "react";
 
@@ -16,7 +16,7 @@ export default function FeatureInfos() {
   const searchFeature = useAppSelector(selectSearchFeature);
   const dispatch = useAppDispatch();
   const [, copy] = useCopyToClipboard();
-  const { notify } = useNotification();
+  const { notify } = useReduxNotifications();
   const coordsUnit = useAppSelector(selectCoordsUnit);
   const { T } = useT();
 
@@ -56,7 +56,9 @@ export default function FeatureInfos() {
               onClick={() => {
                 const value = getCoordsStr(searchFeature.geometry.coordinates, coordsUnit);
                 copy(value);
-                notify(`${T("copiedIntoClipboard")} : ${value}`);
+                notify(`${T("copiedIntoClipboard")} : ${value}`, {
+                  expiration: 500000,
+                });
               }}
             >
               {getCoordsStr(searchFeature.geometry.coordinates, coordsUnit)}

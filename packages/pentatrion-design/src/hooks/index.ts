@@ -1,4 +1,3 @@
-export { useNotifications } from "./useNotifications";
 export { useRipple } from "./useRipple";
 export { useIsMounted } from "./useIsMounted";
 export { useFetch } from "./useFetch";

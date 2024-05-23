@@ -1,6 +1,6 @@
 export type ThemeColor = "yellow" | "gray" | "red" | "orange" | "green" | "blue";
 
-export type MessageOptions = Partial<Omit<Message, "message" | "id">>;
+export type MessageOptions = Partial<Omit<Message, "content" | "id">>;
 
 export interface Message {
   id: string;

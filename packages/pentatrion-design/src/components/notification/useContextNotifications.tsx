@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import { NotificationsContext } from "../components/notification/NotificationsContext";
+import { NotificationsContext } from "./NotificationsContext";
 
-export const useNotifications = () => {
+export const useContextNotifications = () => {
   const manager = useContext(NotificationsContext);
 
   if (!manager) {
