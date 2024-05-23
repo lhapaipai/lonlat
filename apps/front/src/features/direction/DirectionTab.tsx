@@ -125,7 +125,7 @@ export default function DirectionTab() {
           selected={profile === "car"}
           onClick={() => dispatch(profileChanged("car"))}
         >
-          <i className="fe-car"></i>
+          <i className="fe-car mr-1"></i>
           {T("profile.car")}
         </Button>
         <Button
@@ -135,7 +135,7 @@ export default function DirectionTab() {
           selected={profile === "bike"}
           onClick={() => dispatch(profileChanged("bike"))}
         >
-          <i className="fe-person-biking"></i>
+          <i className="fe-person-biking mr-1"></i>
           {T("profile.bike")}
         </Button>
         <Button
@@ -145,7 +145,7 @@ export default function DirectionTab() {
           selected={profile === "pedestrian"}
           onClick={() => dispatch(profileChanged("pedestrian"))}
         >
-          <i className="fe-person-walking"></i>
+          <i className="fe-person-walking mr-1"></i>
           {T("profile.pedestrian")}
         </Button>
       </div>
