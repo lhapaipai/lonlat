@@ -70,7 +70,7 @@
     }
 
     .marker-container {
-      @apply flex-center;
+      @apply flex items-center justify-center;
     }
   }
 

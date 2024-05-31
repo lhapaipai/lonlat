@@ -1,0 +1,169 @@
+export const metadata = {
+  title: 'RMap',
+  description: 'Base component'
+}
+import Example from "./Example";
+
+# RMap
+
+Base component
+
+## Usage
+
+```tsx
+import { RMap } from "maplibre-react-components";
+
+const home = { lng: 6, lat: 46 };
+
+export default function App() {
+
+  return (
+    <RMap
+      initialCenter={home}
+      style={{ width: "100%", height: "100%" }}
+      mapStyle="https://demotiles.maplibre.org/style.json"
+    />
+  );
+}
+```
+
+<Example />
+
+## Reference
+
+```ts
+type RMapProps = {
+  /* Map Reactive Options */
+  maxBounds?: LngLatBoundsLike;
+  minZoom?: number | null;
+  maxZoom?: number | null;
+  minPitch?: number | null;
+  maxPitch?: number | null;
+  renderWorldCopies?: boolean;
+  pixelRatio?: number;
+
+  /* Map Non-Reactive Options */
+  initialHash?: boolean | string;
+  initialInteractive?: boolean;
+  initialBearingSnap?: number;
+  initialAttributionControl?: false | AttributionControlOptions;
+  initialMaplibreLogo?: boolean;
+  initialLogoPosition?: ControlPosition;
+  initialFailIfMajorPerformanceCaveat?: boolean;
+  initialPreserveDrawingBuffer?: boolean;
+  initialAntialias?: boolean;
+  initialRefreshExpiredTiles?: boolean;
+  initialTrackResize?: boolean;
+  initialMaxTileCacheSize?: number;
+  initialMaxTileCacheZoomLevels?: number;
+  initialTransformRequest?: RequestTransformFunction;
+  initialTransformCameraUpdate?: CameraUpdateTransformFunction;
+  initialLocale?: any;
+  initialFadeDuration?: number;
+  initialCrossSourceCollisions?: boolean;
+  initialCollectResourceTiming?: boolean;
+  initialClickTolerance?: number;
+  initialValidateStyle?: boolean;
+  initialMaxCanvasSize?: [
+		number,
+		number
+	];
+  initialCenter?: LngLatLike;
+  initialZoom?: number;
+  initialBearing?: number;
+  initialPitch?: number;
+  initialBounds?: LngLatBoundsLike;
+  initialFitBoundsOptions?: FitBoundsOptions;
+  initialLocalIdeographFontFamily?: string | false;
+  initialPitchWithRotate?: boolean;
+
+
+  /* map Handlers*/
+  scrollZoom?: boolean | AroundCenterOptions;
+  boxZoom?: boolean;
+  dragRotate?: boolean;
+  dragPan?: boolean | DragPanOptions;
+  keyboard?: boolean;
+  doubleClickZoom?: boolean;
+  touchZoomRotate?: boolean | AroundCenterOptions;
+  touchPitch?: boolean | AroundCenterOptions;
+  cooperativeGestures?: GestureOptions;
+
+  /* map listeners */
+  /** Compatible with `layerId` */
+  onMouseDown?: (e: MapLayerMouseEvent) => void;
+  onMouseUp?: (e: MapLayerMouseEvent) => void;
+  onMouseOver?: (e: MapLayerMouseEvent) => void;
+  onMouseOut?: (e: MapLayerMouseEvent) => void;
+  onMouseMove?: (e: MapLayerMouseEvent) => void;
+  onMouseEnter?: (e: MapLayerMouseEvent) => void;
+  onMouseLeave?: (e: MapLayerMouseEvent) => void;
+  onClick?: (e: MapLayerMouseEvent) => void;
+  onDblClick?: (e: MapLayerMouseEvent) => void;
+  onContextMenu?: (e: MapLayerMouseEvent) => void;
+  onTouchStart?: (e: MapLayerTouchEvent) => void;
+  onTouchEnd?: (e: MapLayerTouchEvent) => void;
+  onTouchCancel?: (e: MapLayerTouchEvent) => void;
+  onTouchMove?: (e: MapLayerTouchEvent) => void;
+
+  /** Not compatible with `layerId` */
+  onWheel?: (e: MapWheelEvent) => void;
+  onResize?: (e: MapLibreEvent) => void;
+  onRemove?: (e: MapLibreEvent) => void;
+
+  onMoveStart?: (e: MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>) => void;
+  onMove?: (e: MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>) => void;
+  onMoveEnd?: (e: MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>) => void;
+  onDragStart?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+  onDrag?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+  onDragEnd?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+  onZoomStart?: (e: MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>) => void;
+  onZoom?: (e: MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>) => void;
+  onZoomEnd?: (e: MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>) => void;
+  onRotateStart?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+  onRotate?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+  onRotateEnd?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+  onPitchStart?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+  onPitch?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+  onPitchEnd?: (e: MapLibreEvent<MouseEvent | TouchEvent | undefined>) => void;
+
+  onBoxZoomStart?: (e: MapLibreZoomEvent) => void;
+  onBoxZoomEnd?: (e: MapLibreZoomEvent) => void;
+  onBoxZoomCancel?: (e: MapLibreZoomEvent) => void;
+  onWebglContextLost?: (e: MapContextEvent) => void;
+  onWebglContextRestored?: (e: MapContextEvent) => void;
+  onLoad?: (e: MapLibreEvent) => void;
+  onRender?: (e: MapLibreEvent) => void;
+  onIdle?: (e: MapLibreEvent) => void;
+  onError?: (e: ErrorEvent) => void;
+  onData?: (e: MapDataEvent) => void;
+  onStyleData?: (e: MapStyleDataEvent) => void;
+  onSourceData?: (e: MapSourceDataEvent) => void;
+  onDataLoading?: (e: MapDataEvent) => void;
+  onStyleDataLoading?: (e: MapStyleDataEvent) => void;
+  onSourceDataLoading?: (e: MapSourceDataEvent) => void;
+  onTileDataLoading?: (e: MapDataEvent) => void;
+  onStyleImageMissing?: (e: MapStyleImageMissingEvent) => void;
+  onDataAbort?: (e: MapDataEvent) => void;
+  onSourceDataAbort?: (e: MapSourceDataEvent) => void;
+  onTerrain?: (e: MapTerrainEvent) => void;
+
+
+  mapStyle?: StyleSpecification | string;
+  styleDiffing?: boolean;
+  padding?: PaddingOptions;
+
+  /* ??? */
+	cancelPendingTileRequestsWhileZooming?: boolean;
+
+};
+```
+
+# Documentation for RMap
+
+```js
+console.log("hello world");
+```
+
+
+[home](/)
