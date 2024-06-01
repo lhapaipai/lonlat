@@ -13,5 +13,5 @@
 @import "pentatrion-design/tailwind/utilities.css" layer(utilities);
 
 @import "pentatrion-fonts/fontello-lonlat.css";
-/* @import "pentatrion-geo/src/fontello-geo-inline.css";
-@import "pentatrion-geo/src/maplibre/LLMarker.css"; */
+@import "pentatrion-geo/fontello-geo-inline.css";
+@import "pentatrion-geo/maplibre/LLMarker.css";

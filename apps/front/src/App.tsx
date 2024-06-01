@@ -10,7 +10,7 @@ import ContextMenuManager from "./ContextMenuManager";
 
 import DirectionMap from "~/features/direction/DirectionMap";
 import SearchMap from "~/features/search/SearchMap";
-import { DOM } from "pentatrion-geo/src/maplibre/core/util/dom";
+import { DOM } from "pentatrion-geo/maplibre/core/util/dom";
 import LayerSwitcherControl from "~/features/layer/LayerSwitcherControl";
 
 import { selectLayer } from "~/features/layer/layerSlice";

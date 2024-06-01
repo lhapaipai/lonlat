@@ -4,8 +4,7 @@
   "description": "Extra tools and MapLibre components for geo",
   "author": "Hugues Tavernier",
   "license": "ISC",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./index.ts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",

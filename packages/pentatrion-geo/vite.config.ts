@@ -7,13 +7,11 @@ const projectDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   resolve: {
-    alias: {
-      "~": resolve(projectDir, "src"),
-    },
+    alias: {},
   },
   test: {
     environment: "jsdom",
-    setupFiles: ["./src/test-setup.ts"],
+    setupFiles: ["./tests.config.ts"],
     include: ["src/**/*.test.ts?(x)"],
     watch: false,
   },

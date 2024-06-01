@@ -5,10 +5,17 @@
     "skipLibCheck": true,
     "types": ["google.maps", "react/experimental"],
     "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "paths": {}
   },
   "exclude": ["**/node_modules", "dist"],
-  "include": ["src", ".storybook"]
+  "include": [
+    ".storybook",
+    "api",
+    "components",
+    "geo-options",
+    "maplibre",
+    "projection",
+    "url",
+    "*.ts"
+  ]
 }

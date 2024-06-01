@@ -95,4 +95,4 @@ retiré les références à GetCapabilities. génération du fichier `./export/a
 pnpm run generate-ign-geocodage
 ```
 
-ce fichier est ensuite nettoyé manuellement et réinjecté dans `packages/pentatrion-geo/src/ign/api-geocodage.d.ts`
+ce fichier est ensuite nettoyé manuellement et réinjecté dans `packages/pentatrion-geo/ign/api-geocodage.d.ts`
