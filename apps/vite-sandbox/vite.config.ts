@@ -5,6 +5,9 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectDir = dirname(fileURLToPath(import.meta.url));
+function examplePath(dirname: string) {
+  return resolve(projectDir, "src", dirname, "index.html");
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,4 +17,11 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      input: {
+        deps: examplePath("deps"),
+      },
+    },
+  },
 });

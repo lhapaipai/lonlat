@@ -5,10 +5,8 @@
     "skipLibCheck": true,
     "types": ["react/experimental", "@testing-library/jest-dom"],
     "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "paths": {}
   },
   "exclude": ["**/node_modules", "./dist"],
-  "include": ["src", "tests", ".storybook"]
+  "include": ["components", "hooks", "lib", "redux", "styles", "*.ts", ".storybook"]
 }

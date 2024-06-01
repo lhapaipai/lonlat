@@ -1,8 +1,6 @@
 import { createRoot } from "react-dom/client";
-import "./main.scss";
+import "./main.css";
 import App from "./App";
-import "pentatrion-design/styles/default.scss";
-import "pentatrion-design/components/dialog/Dialog.scss";
 
 createRoot(document.getElementById("app")!).render(<App />);
 

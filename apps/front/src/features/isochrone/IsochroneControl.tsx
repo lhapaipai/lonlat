@@ -14,7 +14,7 @@ import {
   selectIsochrone,
 } from "./isochroneSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
-import { useRControl } from "~mrc";
+import { useRControl } from "maplibre-react-components";
 import { createPortal } from "react-dom";
 import { selectDistractionFree } from "~/store/mapSlice";
 import clsx from "clsx";

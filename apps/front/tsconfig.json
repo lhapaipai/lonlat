@@ -3,9 +3,7 @@
   "compilerOptions": {
     "types": ["react/experimental", "google.maps"],
     "paths": {
-      "~/*": ["./src/*"],
-      "~mrc": ["../../packages/maplibre-react-components/src"],
-      "~mrc/*": ["../../packages/maplibre-react-components/src/*"]
+      "~/*": ["./src/*"]
     }
   },
   "include": ["src"]

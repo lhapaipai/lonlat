@@ -5,13 +5,7 @@
   "keywords": [],
   "author": "Hugues Tavernier",
   "license": "ISC",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": "./dist/index.js",
-    "./redux": "./dist/redux/index.js",
-    "./src/*": "./src/*"
-  },
+  "main": "./index.ts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -23,7 +17,7 @@
   },
   "files": [
     "dist/",
-    "src/tailwind"
+    "src/"
   ],
   "type": "module",
   "devDependencies": {

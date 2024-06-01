@@ -13,7 +13,13 @@ export interface Town {
   icon: string;
 }
 
+export type TownOption = Option & {
+  label: string;
+  value: string;
+};
+
 import Fuse, { FuseResult } from "fuse.js";
+import { Option } from "pentatrion-design";
 
 export type FormattedItem<T> = T & {
   _formatted?: {

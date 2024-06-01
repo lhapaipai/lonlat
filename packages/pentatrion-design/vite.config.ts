@@ -9,13 +9,13 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "~": resolve(projectDir, "src"),
+      "~design": resolve(projectDir, "src"),
     },
   },
   test: {
     // globals: true
     environment: "jsdom",
-    setupFiles: ["./tests/setup.ts"],
+    setupFiles: ["./tests.config.ts"],
 
     // you might want to disable it, if you don't have tests that rely on CSS
     // since parsing CSS is slow

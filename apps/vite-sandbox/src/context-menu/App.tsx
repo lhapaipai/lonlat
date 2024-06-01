@@ -1,5 +1,4 @@
-import { ContextMenu, ContextMenuItem } from "pentatrion-design/index";
-import "pentatrion-design/styles/default.scss";
+import { ContextMenu, ContextMenuItem } from "pentatrion-design";
 import { useEffect } from "react";
 
 function App() {

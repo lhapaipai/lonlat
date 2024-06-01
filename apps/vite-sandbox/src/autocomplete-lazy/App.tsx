@@ -1,12 +1,7 @@
-import {
-  AutocompleteGeoOption,
-  LazyAutocomplete,
-  NotificationsProvider,
-  Town,
-  TownOption,
-  prepareTownsResult,
-} from "pentatrion-design/index";
+import { LazyAutocomplete, NotificationsProvider } from "pentatrion-design";
+import { AutocompleteGeoOption } from "pentatrion-geo";
 import { useCallback, useState } from "react";
+import { Town, prepareTownsResult, TownOption } from "./fuseUtil";
 
 async function mockServerRequest() {
   await new Promise((resolve) => {

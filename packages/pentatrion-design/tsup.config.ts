@@ -1,7 +1,10 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["./src/index.ts", "./src/redux/index.ts"],
+  entry: [
+    "./index.ts",
+    // "./redux/index.ts"
+  ],
   dts: true,
   format: ["esm"],
   esbuildOptions(options) {
