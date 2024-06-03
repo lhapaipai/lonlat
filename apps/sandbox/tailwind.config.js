@@ -4,7 +4,7 @@ import { pentatrionTw } from "pentatrion-design/tailwind";
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{ts,tsx}",
+    "./src/**/*.{html,ts,tsx}",
 
     "./node_modules/pentatrion-design/components/**/*.{ts,tsx}",
     "./node_modules/pentatrion-design/hooks/**/*.{ts,tsx}",

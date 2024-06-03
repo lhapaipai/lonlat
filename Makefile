@@ -13,6 +13,9 @@ design_host	:= design.pentatrion.com
 mrc_doc_path := $(local_path)/apps/mrc-doc
 mrc_doc_host := maplibre-react-components.pentatrion.com
 
+assets_path	:= $(local_path)/extra/assets/public
+assets_host := assets.lonlat.org
+
 
 .PHONY: help
 help:
@@ -57,3 +60,10 @@ deploy-mrc-doc:
 		$(mrc_doc_path)/out/ \
 		berlin:prod/$(mrc_doc_host)
 	@echo "go : https://$(mrc_doc_host)"
+
+.PHONY: deploy-assets
+deploy-assets: ## Build and deploy examples
+	rsync -av --delete \
+		$(assets_path)/ \
+		berlin:prod/$(assets_host)
+	@echo "go : https://$(assets_host)"

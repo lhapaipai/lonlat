@@ -14,8 +14,7 @@
   },
   "homepage": "https://github.com/lhapaipai/lonlat/tree/main/packages/maplibre-react-components",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
