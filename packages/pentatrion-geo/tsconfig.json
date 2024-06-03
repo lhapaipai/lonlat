@@ -4,8 +4,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "types": ["google.maps", "react/experimental"],
-    "baseUrl": ".",
-    "paths": {}
+    "baseUrl": "."
   },
   "exclude": ["**/node_modules", "dist"],
   "include": [

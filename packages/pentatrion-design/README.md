@@ -76,14 +76,16 @@ Mettre à jour la configuration de tailwind.
 
 ```diff
 // tailwind.config.js
-+ import { pentatrionTw } from "pentatrion-design";
++ import { pentatrionTw } from "pentatrion-design/tailwind";
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-+    "./node_modules/pentatrion-design/dist/*.js",
++   "./node_modules/pentatrion-design/components/**/*.{ts,tsx}",
++   "./node_modules/pentatrion-design/hooks/**/*.{ts,tsx}",
++   "./node_modules/pentatrion-design/redux/**/*.{ts,tsx}",
   ],
   darkMode: ["class"],
 +  plugins: [pentatrionTw],
@@ -92,12 +94,14 @@ export default {
 
 La dépendance `pentatrion-fonts` est optionnelle.
 
-
-
-
-Update your `src/App.tsx`
+Mettre à jour `src/App.tsx`
 ```tsx
-import { Button } from "pentatrion-design"
+// import global
+import { Button } from "pentatrion-design";
+
+// import minimal
+import { Button } from "pentatrion-design/components/button";
+
 import { useState } from "react"
 
 function App() {
@@ -115,26 +119,38 @@ function App() {
 export default App
 ```
 
-Update your `src/index.css`
+L'import minimal `import { Button } from "pentatrion-design/components/button";` est plus contraignant et n'est pas nécessaire si votre projet utilise toutes les dépendances de `pentatrion-design`. si par contre votre projet n'utilise que certains composants et n'utilise pas certains dépendances comme `react-sortablejs` il vaut mieux utiliser l'import `pentatrion-design/components/button`. Cela allégera le build (que notre compilateur fasse du tree shaking ou non).
+
+Mettre à jour `src/index.css`
 ```diff
 /* index.css */
 @import "tailwindcss/base";
-+ @import "pentatrion-design/src/tailwind/base.css" layer(base);
++ @import "pentatrion-design/tailwind/base.css" layer(base);
 
 @import "tailwindcss/components";
-+ @import "pentatrion-design/src/tailwind/components.css" layer(components);
-+ @import "pentatrion-design/src/tailwind/components-input-outline.css" layer(components);
-+ @import "pentatrion-design/src/tailwind/components-resize-area.css" layer(components);
-+ @import "pentatrion-design/src/tailwind/components-step.css" layer(components);
++ @import "pentatrion-design/tailwind/components.css" layer(components);
++ @import "pentatrion-design/tailwind/components-input-outline.css" layer(components);
++ @import "pentatrion-design/tailwind/components-resize-area.css" layer(components);
++ @import "pentatrion-design/tailwind/components-step.css" layer(components);
 
 @import "tailwindcss/utilities";
-+ @import "pentatrion-design/src/tailwind/utilities.css" layer(utilities);
-+ @import "pentatrion-design/src/tailwind/utilities-dialog.css" layer(utilities);
++ @import "pentatrion-design/tailwind/utilities.css" layer(utilities);
++ @import "pentatrion-design/tailwind/utilities-dialog.css" layer(utilities);
 
 /* Optionel */
 + @import "pentatrion-fonts/fontello-lonlat";
 ```
 
+
+## projet sans TypeScript
+
+pour faciliter l'expérience de développement, `pentatrion-design` fait référence par défaut aux fichiers TypeScript non compilés. Si votre projet n'utilise pas TypeScript il faudra faire référence au dossier `dist`
+
+```js
+import { Button } from "pentatrion-design/dist";
+```
+
+## VsCode
 
 
 Create a `.vscode/settings.json` file
