@@ -1,5 +1,3 @@
-"use client";
-
 import { RMap } from "maplibre-react-components";
 
 const home = { lng: 6, lat: 46 };

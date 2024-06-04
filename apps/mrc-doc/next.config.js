@@ -4,6 +4,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 const nextConfig = {
   output: "export",
   pageExtensions: ["mdx", "ts", "tsx"],
+  // reactStrictMode: false,
   webpack(config, options) {
     config.resolve.alias["next-mdx-import-source-file"] = [
       "private-next-root-dir/src/mdx-components",

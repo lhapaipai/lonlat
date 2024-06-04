@@ -4,15 +4,11 @@ import App from "./App.tsx";
 
 import "../../main.css";
 import React from "react";
-
-const strict = false;
+/*
+ */
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  strict ? (
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  ) : (
+  <React.StrictMode>
     <App />
-  ),
+  </React.StrictMode>,
 );

@@ -1,3 +1,5 @@
+"use client";
+
 import { Map } from "maplibre-gl";
 import {
   CSSProperties,
@@ -5,7 +7,6 @@ import {
   Ref,
   forwardRef,
   useImperativeHandle,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -13,6 +14,7 @@ import {
 
 import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
 import { MapLibreContext, mapLibreContext } from "../context";
+import { useIsomorphicLayoutEffect } from "../hooks/useIsomorphicLayoutEffect";
 
 type RMapProps = MapProps &
   ManagerOptions & {
@@ -45,43 +47,43 @@ function RMap(
   const containerRef = useRef<HTMLDivElement>(null!);
 
   const maplibreRef = useRef<MapLibreContext>({
-    map: null!,
+    mapManager: null!,
     controlledSources: [],
     controlledLayers: [],
     controlledTerrain: false,
   });
-  // we need to init maplibreRef.current.map before useImperativeHandle call
+  // we need to init maplibreRef.current.mapManager before useImperativeHandle call
   // so necessary inside useLayoutEffect
   // (useLayoutEffect and useImperativeHandle are called in same priority)
   // parent component will have access to reference in useLayoutEffect / useEffect hooks
-  useLayoutEffect(() => {
-    const mapManagerInstance = new MapManager(
+  useIsomorphicLayoutEffect(() => {
+    const mapManager = new MapManager(
       { mapStyle, styleDiffing, padding },
       mapProps,
       containerRef.current,
     );
 
-    maplibreRef.current.map = mapManagerInstance.map;
+    maplibreRef.current.mapManager = mapManager;
 
-    afterInstanciation && afterInstanciation(mapManagerInstance.map);
+    afterInstanciation && afterInstanciation(mapManager.map);
 
-    setMapManager(mapManagerInstance);
+    setMapManager(mapManager);
 
     return () => {
-      mapManagerInstance.destroy();
+      mapManager.destroy();
     };
     // map reactivity is managed inside useLayoutEffect setProps (below)
     // we don't want to destroy/re-instanciate a MapManager instance in each render
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (mapManager) {
       mapManager.setProps({ mapStyle, styleDiffing, padding }, mapProps, maplibreRef.current);
     }
   });
 
-  useImperativeHandle(ref, () => maplibreRef.current.map, []);
+  useImperativeHandle(ref, () => maplibreRef.current.mapManager.map, []);
 
   const completeStyle: CSSProperties = useMemo(
     () => ({

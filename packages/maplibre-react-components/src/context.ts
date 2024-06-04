@@ -1,15 +1,15 @@
-import { Map } from "maplibre-gl";
 import { createContext } from "react";
+import MapManager from "./lib/MapManager";
 
 export type MapLibreContext = {
-  map: Map;
+  mapManager: MapManager;
   controlledSources: string[];
   controlledLayers: string[];
   controlledTerrain: boolean;
 };
 
 export const mapLibreContext = createContext<MapLibreContext>({
-  map: null!,
+  mapManager: null!,
   controlledSources: [],
   controlledLayers: [],
   controlledTerrain: false,

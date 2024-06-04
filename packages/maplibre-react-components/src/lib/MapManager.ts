@@ -293,6 +293,8 @@ export default class MapManager {
 
     const map = new Map(mapOptions);
 
+    map.style.on("error", this._onStyleError);
+
     if (padding) {
       map.setPadding(padding);
     }
@@ -327,7 +329,7 @@ export default class MapManager {
       this._map.setStyle(nextStyle, {
         diff: styleDiffing,
         transformStyle(prevStyle, nextStyle) {
-          // console.log("merge controlled sources/layers", context.controlledSources);
+          console.log("merge controlled sources/layers", context.controlledSources);
 
           const prevControlledSources = prevStyle
             ? Object.fromEntries(
@@ -416,14 +418,18 @@ export default class MapManager {
     }
   }
 
+  _onStyleError = (event: ErrorEvent) => {
+    if (event.error.name !== "AbortError") {
+      console.error(event.error);
+    }
+  };
+
   _onMapEvent = (e: MapEvent) => {
     const eventType = e.type as keyof typeof eventNameToCallback;
     const callbackName = eventNameToCallback[eventType];
     if (this.callbacks[callbackName]) {
       // @ts-ignore
       this.callbacks[callbackName]?.(e);
-    } else if (e.type === "error") {
-      console.error(e);
     } else {
       console.info("not managed RMap event", eventType, e);
     }
