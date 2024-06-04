@@ -9,7 +9,6 @@ import {
   useImperativeHandle,
   useMemo,
   useRef,
-  useState,
 } from "react";
 
 import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
@@ -22,7 +21,7 @@ type RMapProps = MapProps &
     style?: CSSProperties;
     id?: string;
     className?: string;
-    afterInstanciation?: (map: Map) => void;
+    onMounted?: (map: Map) => void;
   };
 
 const childContainerStyle = {
@@ -35,7 +34,7 @@ function RMap(
     style,
     id,
     className,
-    afterInstanciation,
+    onMounted,
     mapStyle,
     styleDiffing,
     padding,
@@ -43,8 +42,9 @@ function RMap(
   }: RMapProps,
   ref: Ref<Map>,
 ) {
-  const [mapManager, setMapManager] = useState<MapManager | null>(null);
+  console.log("render RMap");
   const containerRef = useRef<HTMLDivElement>(null!);
+  const mapHasOriginalProps = useRef(true);
 
   const maplibreRef = useRef<MapLibreContext>({
     mapManager: null!,
@@ -57,17 +57,16 @@ function RMap(
   // (useLayoutEffect and useImperativeHandle are called in same priority)
   // parent component will have access to reference in useLayoutEffect / useEffect hooks
   useIsomorphicLayoutEffect(() => {
+    console.log("useIsomorphicLayoutEffect init");
     const mapManager = new MapManager(
       { mapStyle, styleDiffing, padding },
       mapProps,
       containerRef.current,
     );
-
+    mapHasOriginalProps.current = true;
     maplibreRef.current.mapManager = mapManager;
 
-    afterInstanciation && afterInstanciation(mapManager.map);
-
-    setMapManager(mapManager);
+    onMounted && onMounted(mapManager.map);
 
     return () => {
       mapManager.destroy();
@@ -78,8 +77,17 @@ function RMap(
   }, []);
 
   useIsomorphicLayoutEffect(() => {
-    if (mapManager) {
-      mapManager.setProps({ mapStyle, styleDiffing, padding }, mapProps, maplibreRef.current);
+    if (maplibreRef.current.mapManager) {
+      if (mapHasOriginalProps.current) {
+        mapHasOriginalProps.current = false;
+      } else {
+        console.log("useIsomorphicLayoutEffect setProps");
+        maplibreRef.current.mapManager.setProps(
+          { mapStyle, styleDiffing, padding },
+          mapProps,
+          maplibreRef.current,
+        );
+      }
     }
   });
 
@@ -97,7 +105,7 @@ function RMap(
 
   return (
     <div ref={containerRef} id={id} className={className} style={completeStyle}>
-      {mapManager && (
+      {maplibreRef.current.mapManager && (
         <mapLibreContext.Provider value={maplibreRef.current}>
           <div className="maplibregl-children" style={childContainerStyle}>
             {children}

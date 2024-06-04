@@ -10,13 +10,13 @@ import {
 import { LLMarker } from "..";
 import { LLMarkerOptions } from "../LLMarker";
 
-const eventNameToCallback = {
+const eventNameToCallbackName = {
   dragstart: "onDragStart",
   drag: "onDrag",
   dragend: "onDragEnd",
   click: "onClick",
 } as const;
-export type LLMarkerEventName = keyof typeof eventNameToCallback;
+export type LLMarkerEventName = keyof typeof eventNameToCallbackName;
 
 type LLMarkerEvent = Event<Marker> | MouseEvent;
 
@@ -89,11 +89,11 @@ function RLLMarker(props: RLLMarkerProps, ref: Ref<Marker>) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const eventDepStr = prepareEventDep(eventNameToCallback, markerCallbacks).join("-");
+  const eventDepStr = prepareEventDep(eventNameToCallbackName, markerCallbacks).join("-");
   useEffect(() => {
     function onMarkerEvent(e: LLMarkerEvent) {
       const eventType = e.type as LLMarkerEventName;
-      const callbackName = eventNameToCallback[eventType];
+      const callbackName = eventNameToCallbackName[eventType];
       if (currCallbacksRef.current?.[callbackName]) {
         // @ts-ignore
         // the type of event depends on its nature and

@@ -7,7 +7,7 @@ import { ignPlanStyleUrl } from "../shared/constants";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
-function afterInstanciation(map: Map) {
+function onMounted(map: Map) {
   const ctrl = new GeolocateControl({
     showUserLocation: true,
   });
@@ -26,7 +26,7 @@ function App() {
         ref={mapRef}
         initialCenter={marignier}
         initialZoom={8}
-        afterInstanciation={afterInstanciation}
+        onMounted={onMounted}
         mapStyle={ignPlanStyleUrl}
       >
         <RMarker longitude={marignier.lng} latitude={marignier.lat} />

@@ -63,7 +63,7 @@ function App() {
         initialCenter={marignier}
         initialZoom={14}
         mapStyle={mapStyle}
-        afterInstanciation={handleAfterInstanciation}
+        onMounted={handleAfterInstanciation}
       >
         <RFrameRateControl />
         <RNavigationControl />

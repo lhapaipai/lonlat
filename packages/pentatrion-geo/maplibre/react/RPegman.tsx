@@ -9,13 +9,13 @@ import {
 } from "maplibre-react-components";
 import { LLPegman } from "..";
 
-const eventNameToCallback = {
+const eventNameToCallbackName = {
   dragstart: "onDragStart",
   drag: "onDrag",
   dragend: "onDragEnd",
   click: "onClick",
 } as const;
-export type MarkerEventName = keyof typeof eventNameToCallback;
+export type MarkerEventName = keyof typeof eventNameToCallbackName;
 
 type PegmanEvent = Event<LLPegman> | MouseEvent;
 
@@ -89,11 +89,11 @@ function RPegman(props: RPegmanProps, ref: Ref<LLPegman>) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const eventDepStr = prepareEventDep(eventNameToCallback, markerCallbacks).join("-");
+  const eventDepStr = prepareEventDep(eventNameToCallbackName, markerCallbacks).join("-");
   useEffect(() => {
     function onMarkerEvent(e: PegmanEvent) {
       const eventType = e.type as MarkerEventName;
-      const callbackName = eventNameToCallback[eventType];
+      const callbackName = eventNameToCallbackName[eventType];
       if (currCallbacksRef.current?.[callbackName]) {
         // @ts-ignore
         // the type of event depends on its nature and

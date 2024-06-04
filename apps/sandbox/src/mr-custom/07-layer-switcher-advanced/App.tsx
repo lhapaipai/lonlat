@@ -60,7 +60,7 @@ function App() {
         initialCenter={marignier}
         initialZoom={14}
         mapStyle={uncontrolledStyle}
-        afterInstanciation={handleAfterMapInstanciation}
+        onMounted={handleAfterMapInstanciation}
       >
         <RNavigationControl />
         <LayerSwitcherControl />

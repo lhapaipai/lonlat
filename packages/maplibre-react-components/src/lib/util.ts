@@ -25,7 +25,6 @@ export function filterMapProps(options: MapProps) {
   const callbacks = {};
   const mapHandlerOptions = {};
   const mapReactiveOptions = {};
-  const otherOptions = {};
   for (const key in options) {
     if (key.startsWith("on")) {
       // @ts-ignore
@@ -38,7 +37,7 @@ export function filterMapProps(options: MapProps) {
       mapReactiveOptions[key] = options[key];
     } else if (!key.startsWith("initial") && key !== "container" && key !== "style") {
       // @ts-ignore
-      otherOptions[key] = options[key];
+      console.error(`unknown map option key ${key}`, options[key]);
     }
   }
 
@@ -46,34 +45,33 @@ export function filterMapProps(options: MapProps) {
     mapReactiveOptions as MapReactiveOptions,
     callbacks as MapCallbacks,
     mapHandlerOptions as MapHandlerOptions,
-    otherOptions as OtherOptions, // vérifier
   ] as const;
 }
 
-export function transformPropsToOptions(options: { [k: string]: unknown }) {
+export function transformPropsToOptions(props: { [k: string]: unknown }) {
   const callbacks = {};
-  const mapOptions = {};
-  for (const key in options) {
+  const options = {};
+  for (const key in props) {
     if (key.startsWith("initial")) {
       // @ts-ignore
-      mapOptions[key[7].toLowerCase() + key.substring(8)] = options[key];
+      options[key[7].toLowerCase() + key.substring(8)] = props[key];
     } else if (key.startsWith("on")) {
       // @ts-ignore
-      callbacks[key] = options[key];
+      callbacks[key] = props[key];
     } else {
       // @ts-ignore
-      mapOptions[key] = options[key];
+      options[key] = props[key];
     }
   }
-  return [mapOptions, callbacks] as const;
+  return [options, callbacks] as const;
 }
 
 export function prepareEventDep(
-  eventNameToCallback: { [k: string]: string },
+  eventNameToCallbackName: { [k: string]: string },
   callbacks: { [eventName: string]: unknown },
 ) {
-  const activeEvents = Object.keys(eventNameToCallback).filter(
-    (eventName) => eventNameToCallback[eventName] in callbacks,
+  const activeEvents = Object.keys(eventNameToCallbackName).filter(
+    (eventName) => eventNameToCallbackName[eventName] in callbacks,
   );
 
   return activeEvents.sort();

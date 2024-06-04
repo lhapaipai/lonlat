@@ -5,7 +5,7 @@ import App from "./App.tsx";
 import "../../main.css";
 import React from "react";
 
-const strict = false;
+const strict = true;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   strict ? (

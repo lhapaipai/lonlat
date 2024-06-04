@@ -145,7 +145,7 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
   // console.log("Render RLayer");
 
   const context = useContext(mapLibreContext);
-  const map = context.map;
+  const map = context.mapManager.map;
 
   const prevPropsRef = useRef(props);
 

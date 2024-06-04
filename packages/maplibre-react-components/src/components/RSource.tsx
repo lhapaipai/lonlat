@@ -122,7 +122,7 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   // console.log("Render RSource");
 
   const context = useContext(mapLibreContext);
-  const map = context.map;
+  const map = context.mapManager.map;
 
   // we don't want sourceId to change during the RSource lifecycle
   // eslint-disable-next-line react-hooks/exhaustive-deps

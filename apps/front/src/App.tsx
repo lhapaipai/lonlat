@@ -90,7 +90,7 @@ function App() {
           initialZoom={viewState.zoom}
           initialAttributionControl={false}
           mapStyle={uncontrolledStyle}
-          afterInstanciation={handleAfterMapInstanciation}
+          onMounted={handleAfterMapInstanciation}
           onZoomEnd={(e) => console.log(e.target.getZoom())}
         >
           {debug && <RFrameRateControl />}

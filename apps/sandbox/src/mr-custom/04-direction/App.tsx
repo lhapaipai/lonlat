@@ -63,7 +63,7 @@ function App() {
         initialCenter={viewState.center}
         initialZoom={viewState.zoom}
         mapStyle="/assets/styles/ign/PLAN.IGN/standard.json"
-        afterInstanciation={handleAfterMapInstanciation}
+        onMounted={handleAfterMapInstanciation}
       >
         <MapFlyer />
         {tab === "direction" && <DirectionMap />}

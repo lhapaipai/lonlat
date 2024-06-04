@@ -25,7 +25,7 @@ import {
 
 import { MapLibreContext } from "../context";
 
-const eventNameToCallback = {
+const eventNameToCallbackName = {
   mousedown: "onMouseDown",
   mouseup: "onMouseUp",
   mouseover: "onMouseOver",
@@ -262,7 +262,7 @@ export default class MapManager {
   reactiveOptions: MapReactiveOptions = {};
   handlerOptions: MapHandlerOptions = {};
 
-  eventDeps: string[] = [];
+  eventNames: string[] = [];
   callbacks: MapCallbacks;
 
   private _map: Map;
@@ -384,19 +384,19 @@ export default class MapManager {
   _updateCallbacks(callbacks: MapCallbacks = {}) {
     this.callbacks = callbacks;
 
-    const nextEventDeps = prepareEventDep(eventNameToCallback, callbacks);
-    if (this.eventDeps.join("-") === nextEventDeps.join("-")) {
+    const nextEventNames = prepareEventDep(eventNameToCallbackName, callbacks);
+    if (this.eventNames.join("-") === nextEventNames.join("-")) {
       return;
     }
 
     updateListeners(
-      this.eventDeps,
-      nextEventDeps,
+      this.eventNames,
+      nextEventNames,
       (eventName) => this._map.on(eventName, this._onMapEvent),
       (eventName) => this._map.off(eventName, this._onMapEvent),
     );
 
-    this.eventDeps = nextEventDeps;
+    this.eventNames = nextEventNames;
   }
 
   _updateHandlers(nextHandlers: MapHandlerOptions) {
@@ -404,6 +404,7 @@ export default class MapManager {
     this.handlerOptions = nextHandlers;
 
     for (const propName of mapHandlerNames) {
+      // handlers are enabled by default.
       const nextValue = nextHandlers[propName] ?? true;
       const currValue = currHandlers[propName] ?? true;
       if (!deepEqual(nextValue, currValue)) {
@@ -425,8 +426,8 @@ export default class MapManager {
   };
 
   _onMapEvent = (e: MapEvent) => {
-    const eventType = e.type as keyof typeof eventNameToCallback;
-    const callbackName = eventNameToCallback[eventType];
+    const eventType = e.type as keyof typeof eventNameToCallbackName;
+    const callbackName = eventNameToCallbackName[eventType];
     if (this.callbacks[callbackName]) {
       // @ts-ignore
       this.callbacks[callbackName]?.(e);

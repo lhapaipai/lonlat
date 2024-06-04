@@ -79,6 +79,7 @@ type RMapProps = {
 
 
   /* map Handlers*/
+  /* les handlers sont réactifs */
   scrollZoom?: boolean | AroundCenterOptions;
   boxZoom?: boolean;
   dragRotate?: boolean;
@@ -148,7 +149,7 @@ type RMapProps = {
   onSourceDataAbort?: (e: MapSourceDataEvent) => void;
   onTerrain?: (e: MapTerrainEvent) => void;
 
-
+  /* si l'on propose un objet attention à donner un objet stable pour des raisons de performances la vérification se fait avec un === et non un deepEqual */
   mapStyle?: StyleSpecification | string;
   styleDiffing?: boolean;
   padding?: PaddingOptions;

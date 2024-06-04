@@ -39,7 +39,7 @@ function App() {
           ref={mapRef}
           initialCenter={marignier}
           initialZoom={4}
-          afterInstanciation={handleAfterInstanciation}
+          onMounted={handleAfterInstanciation}
         >
           {showCtrl && <RNavigationControl />}
           <RMarker

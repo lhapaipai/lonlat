@@ -8,7 +8,7 @@ function RTerrain(props: RTerrainProps) {
   const { ...terrainOptions } = props;
 
   const context = useContext(mapLibreContext);
-  const map = context.map;
+  const map = context.mapManager.map;
 
   const prevPropsRef = useRef(props);
 
