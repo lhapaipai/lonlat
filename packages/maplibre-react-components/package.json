@@ -42,11 +42,13 @@
     "@storybook/theming": "^8.1.5",
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^16.0.0",
+    "@types/offscreencanvas": "^2019.7.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
     "@vitest/ui": "^1.6.0",
-    "jsdom": "^24.1.0",
+    "canvas": "~2.10",
+    "jsdom": "^22.1.0",
     "pentatrion-design": "workspace:*",
     "postcss": "^8.4.38",
     "postcss-load-config": "^5.1.0",
@@ -54,7 +56,8 @@
     "tsup": "^8.1.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.12",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.0",
+    "vitest-webgl-canvas-mock": "^1.1.0"
   },
   "dependencies": {
     "maplibre-gl": "^4.3.2",

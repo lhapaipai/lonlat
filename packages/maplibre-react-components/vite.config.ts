@@ -13,7 +13,11 @@ export default defineConfig({
   },
   test: {
     environment: "jsdom",
-    setupFiles: ["./src/tests.config.ts"],
+    setupFiles: [
+      "vitest-webgl-canvas-mock",
+      "./src/tests/vitest-setup.ts",
+      "./src/tests/mocks/web-worker.ts",
+    ],
     include: ["src/**/*.test.ts?(x)"],
     watch: false,
   },

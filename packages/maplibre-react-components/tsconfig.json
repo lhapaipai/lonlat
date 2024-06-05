@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["react/experimental", "@testing-library/jest-dom"],
+    "types": ["react/experimental", "@testing-library/jest-dom", "offscreencanvas"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]

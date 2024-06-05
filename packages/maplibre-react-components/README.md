@@ -3,3 +3,14 @@
 </p>
 
 # MapLibre React Components
+
+
+# Tests
+
+on utilise jsdom@^22 et canvas@~2.10.0
+
+car les versions supérieures de jsdom requièrent canvas 2.11.4 qui entraine une erreur pnpm
+
+```console
+ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command was killed with SIGBUS (Bus error due to misaligned, non-existing address or paging error): vitest src/components/RMap.test.ts
+```
