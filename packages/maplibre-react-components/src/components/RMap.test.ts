@@ -18,6 +18,7 @@ describe("RMap", () => {
         | MapReactiveOptionName
         | "container"
         | "style"
+        | "cancelPendingTileRequestsWhileZooming"
       >
     >(Object);
   });
