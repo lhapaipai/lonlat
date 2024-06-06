@@ -1,0 +1,120 @@
+export const metadata = {
+  title: 'RMarker',
+  description: 'wrapper for the marker object'
+};
+
+# RMarker
+
+## Usage
+
+```tsx
+import { RMap, RMarker} from "maplibre-react-components";
+
+function App() {
+
+  const [markerCoords, setMarkerCoords] = useState<[number, number]>([6.037, 46.175])
+
+  const handleDragEnd = useCallback((e: Event<Marker>) => {
+    setMarkerCoords(e.target.getLngLat().toArray())
+  }, []);
+
+  return (
+    <RMap>
+      <RMarker longitude={6} latitude={46} />
+
+      {/* reactive controlled marker */}
+      <RMarker
+        longitude={markerCoords[0]}
+        latitude={markerCoords[1]}
+        draggable={true}
+        onDragEnd={handleDragEnd}
+      />
+
+      {/* with custom Element */}
+      <RMarker longitude={6} latitude={46}>
+        <MemoPin />
+      </RMarker>
+    </RMap>
+  );
+}
+
+const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3
+  c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9
+  C20.1,15.8,20.2,15.8,20.2,15.7z`;
+
+const pinStyle = {
+  cursor: "pointer",
+  fill: "#d00",
+  stroke: "none",
+};
+
+function Pin() {
+  return (
+    <svg height={20} viewBox="0 0 24 24" style={pinStyle}>
+      <path d={ICON} />
+    </svg>
+  );
+}
+const MemoPin = memo(Pin)
+```
+
+## Reference
+
+```ts
+type RMarkerProps =
+  {
+    longitude: number;
+    latitude: number;
+    /**
+     * for custom element
+     */
+    children?: ReactNode;
+  } &
+
+  /**
+   * Non reactive marker options that are only used when instantiating a marker object
+   * they have the same name as in MarkerOptions with first letter uppercase
+   * and prefixed with "initial"
+   */
+  MarkerInitialOptions &
+  /**
+   * Reactive marker options. Update during the RMarker lifecycle causes them to be
+   * updated on the marker instance
+   * they have the same name as in MarkerOptions
+   */
+  MarkerReactiveOptions &
+
+  /**
+   * Listenners for marker events
+   * they have the same name as in MarkerOptions with first letter uppercase and prefixed
+   * with "on"
+   */
+  MarkerCallbacks;
+
+type MarkerInitialOptions = {
+  initialAnchor?: PositionAnchor;
+  initialColor?: string;
+  initialScale?: number;
+};
+
+type MarkerReactiveOptions = {
+  className?: string;
+  offset?: PointLike;
+  draggable?: boolean;
+  clickTolerance?: number;
+  rotation?: number;
+  rotationAlignment?: Alignment;
+  pitchAlignment?: Alignment;
+  opacity?: string;
+  opacityWhenCovered?: string;
+};
+
+type MarkerCallbacks = {
+  onDragStart?: (e: Event<Marker>) => void;
+  onDrag?: (e: Event<Marker>) => void;
+  onDragEnd?: (e: Event<Marker>) => void;
+
+  // native DOM event
+  onClick?: (e: MouseEvent) => void;
+}
+```

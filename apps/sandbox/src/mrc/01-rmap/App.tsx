@@ -10,6 +10,8 @@ const marignier = { lng: 6.498, lat: 46.089 };
 function App() {
   const [visible, setVisible] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [listeners, setListeners] = useState(true);
+
   useLayoutEffect(() => {
     // console.log("map ref", map);
   });
@@ -20,17 +22,35 @@ function App() {
 
   return (
     <>
-      <div className="absolute top-2 left-2 z-10">
-        <button onClick={() => setVisible((v) => !v)}>
-          show map {visible ? "visible" : "hidden"}
-        </button>
-        <button onClick={() => setCounter((c) => c + 1)}>App counter {counter}</button>
+      <div className="absolute top-2 left-2 z-10 bg-white">
+        <div>
+          <button onClick={() => setVisible((v) => !v)}>
+            show map {visible ? "visible" : "hidden"}
+          </button>
+        </div>
+        <div>
+          <button onClick={() => setCounter((c) => c + 1)}>App counter {counter}</button>
+        </div>
+        <div>
+          <button onClick={() => setListeners((l) => !l)}>change listeners</button>
+        </div>
       </div>
       {visible && (
         <RMap
           onStyleData={handleStyleData}
           initialCenter={marignier}
           mapStyle="/assets/styles/ign/PLAN.IGN/standard.json"
+          {...(listeners
+            ? {
+                onClick: (e) => {
+                  console.log("onClick on the map", e.lngLat, e);
+                },
+              }
+            : {
+                onMove: (e) => {
+                  console.log("onMove on the map", e);
+                },
+              })}
         ></RMap>
       )}
     </>

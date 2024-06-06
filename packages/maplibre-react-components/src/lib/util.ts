@@ -1,25 +1,12 @@
-import { LngLat, LngLatLike, MapOptions, Offset, PointLike } from "maplibre-gl";
+import { LngLat, LngLatLike, Offset, PointLike } from "maplibre-gl";
 import {
   type MapCallbacks,
-  type MapHandlerOptionName,
   type MapHandlerOptions,
-  type MapInitialOptionName,
-  type MapReactiveOptionName,
   type MapReactiveOptions,
   type MapProps,
   mapReactiveOptionNames,
   mapHandlerNames,
 } from "./MapManager";
-
-type OtherOptions = Omit<
-  MapOptions,
-  | MapReactiveOptionName
-  | keyof MapCallbacks
-  | MapInitialOptionName
-  | MapHandlerOptionName
-  | "container"
-  | "style"
->;
 
 export function filterMapProps(options: MapProps) {
   const callbacks = {};
