@@ -1,7 +1,8 @@
 {
   "name": "maplibre-react-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React components for MapLibre GL JS",
+  "private": true,
   "keywords": [
     "maplibre",
     "react"
@@ -17,7 +18,7 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "tsup && node generate-public-package",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6009",
@@ -53,6 +54,7 @@
     "postcss": "^8.4.38",
     "postcss-load-config": "^5.1.0",
     "storybook": "^8.1.5",
+    "ts-node": "^10.9.2",
     "tsup": "^8.1.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.12",
