@@ -1,31 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
-</head>
-
-<body>
-  <div id="root">
-    <div id="map"></div>
-    <div class="map-overlay top">
-      <button type="button" id="action-1">action 1 add utm-trace-1 source .ts</button><br />
-      <button type="button" id="action-2">action 2 add utm-trace-2 source fetch .json</button><br />
-      <button type="button" id="action-3">action 3 add utm-trace-1 style</button><br />
-      <button type="button" id="action-4">action 4 add elevation source</button><br />
-      <button type="button" id="action-5">action 5 set terrain</button><br />
-      <button type="button" id="action-6">action 6 set styleBase diff: true</button><br />
-      <button type="button" id="action-7">action 7 set styleBase diff: false</button><br />
-      <button type="button" id="action-8">action 8 add raster dem source</button><br />
-      <button type="button" id="action-9">action 9 set terrain</button><br />
-      <button type="button" id="action-10">action 10 set light</button><br />
-      <pre id="infos"></pre>
+  <body>
+    <div id="root">
+      <div id="map"></div>
+      <div class="map-overlay top">
+        <button type="button" id="action-1">action 1 add utm-trace-1 source .ts</button><br />
+        <button type="button" id="action-2">action 2 add utm-trace-2 source fetch .json</button
+        ><br />
+        <button type="button" id="action-3">
+          action 3 add utm-trace-line style with utm-trace-1 source</button
+        ><br />
+        <button type="button" id="action-3-bis">
+          action 3 bis add utm-trace-line-bis style with utm-trace-1 source</button
+        ><br />
+        <button type="button" id="action-4">action 4 add elevation source</button><br />
+        <button type="button" id="action-5">action 5 set terrain</button><br />
+        <button type="button" id="action-6">action 6 set styleBase diff: true</button><br />
+        <button type="button" id="action-7">action 7 set styleBase diff: false</button><br />
+        <button type="button" id="action-8">action 8 add raster dem source</button><br />
+        <button type="button" id="action-9">action 9 set terrain</button><br />
+        <button type="button" id="action-10">action 10 set light</button><br />
+        <button type="button" id="action-11">action 11 remove utm-trace-1 source</button><br />
+        <pre id="infos"></pre>
+      </div>
     </div>
-  </div>
-  <script type="module" src="./main.ts"></script>
-</body>
-
+    <script type="module" src="./main.ts"></script>
+  </body>
 </html>

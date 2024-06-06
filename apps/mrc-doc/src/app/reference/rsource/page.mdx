@@ -1,0 +1,95 @@
+export const metadata = {
+  title: 'RSource',
+  description: 'wrapper for the source object'
+}
+
+# RSource
+
+
+## Usage
+
+```tsx
+import { RMap, RSource } from "maplibre-react-components";
+
+import { Coordinates } from "maplibre-gl";
+/* always use stable object (outside App component) */
+const orthoCoordinates: Coordinates = [
+  [6.44, 46.12],
+  [6.54, 46.12],
+  [6.54, 46.05],
+  [6.44, 46.05],
+];
+
+export default function App() {
+  return (
+    <RMap>
+      <RSource
+        id="city"
+        type="geojson"
+        data="/data/city.geojson"
+      />
+
+      <RSource
+        id="ortho"
+        type="image"
+        url="/data/ortho.jpg"
+        coordinates={orthoCoordinates}
+      />
+
+      <RSource
+        id="raster-tile"
+        type="raster"
+        tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        tileSize={256}
+      />
+    </RMap>
+  );
+};
+```
+
+## Reference
+
+```ts
+import {
+  VectorSourceSpecification,
+  RasterSourceSpecification,
+  RasterDEMSourceSpecification,
+  GeoJSONSourceSpecification,
+  VideoSourceSpecification,
+  ImageSourceSpecification,
+} from "maplibre-gl";
+
+type SourceSpecification =
+  | VectorSourceSpecification
+  | RasterSourceSpecification
+  | RasterDEMSourceSpecification
+  | GeoJSONSourceSpecification
+  | VideoSourceSpecification
+  | ImageSourceSpecification;
+
+type RSourceProps = SourceSpecification & {
+  readonly id: string;
+  children?: ReactElement | ReactElement[];
+};
+```
+
+## Reactivity
+
+Some props are responsive, it depends on the source type
+
+### `image` type
+
+`url` and `coordinates` props are reactive.
+
+
+### `video` type
+
+`coordinates` prop is reactive.
+
+### `geojson` type
+
+`data`, `cluster`, `clusterMaxZoom`, `clusterRadius` props are reactive.
+
+### `raster`, `raster-dem` and `vector` types
+
+`url` and `tiles` props are reactive.

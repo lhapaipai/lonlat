@@ -20,7 +20,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <nav className="flex gap-2">
           <Link href="/">Home</Link>
-          <Link href="/reference/rmap">Rmap</Link>
+          <Link href="/reference/rmap">RMap</Link>
+          <Link href="/reference/rsource">RSource</Link>
           <Link href="/reference/learn">Learn</Link>
         </nav>
         {children}

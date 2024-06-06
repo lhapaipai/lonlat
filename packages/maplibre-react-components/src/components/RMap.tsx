@@ -9,20 +9,22 @@ import {
   useImperativeHandle,
   useMemo,
   useRef,
+  useState,
 } from "react";
 
 import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
 import { MapLibreContext, mapLibreContext } from "../context";
 import { useIsomorphicLayoutEffect } from "../hooks/useIsomorphicLayoutEffect";
 
-type RMapProps = MapProps &
-  ManagerOptions & {
-    children?: ReactNode;
-    style?: CSSProperties;
-    id?: string;
-    className?: string;
-    onMounted?: (map: Map) => void;
-  };
+type RMapComponentProps = {
+  children?: ReactNode;
+  style?: CSSProperties;
+  id?: string;
+  className?: string;
+  onMounted?: (map: Map) => void;
+};
+
+type RMapProps = MapProps & ManagerOptions & RMapComponentProps;
 
 const childContainerStyle = {
   height: "100%",
@@ -30,68 +32,75 @@ const childContainerStyle = {
 
 function RMap(
   {
+    /* RMapProps */
     children,
     style,
     id,
     className,
     onMounted,
+
+    /* ManagerOptions */
     mapStyle,
     styleDiffing,
+    styleTransformStyle,
     padding,
+
+    /* MapProps */
     ...mapProps
   }: RMapProps,
-  ref: Ref<Map>,
+  ref: Ref<Map | undefined>,
 ) {
   console.log("render RMap");
   const containerRef = useRef<HTMLDivElement>(null!);
-  const mapHasOriginalProps = useRef(true);
 
   const maplibreRef = useRef<MapLibreContext>({
-    mapManager: null!,
+    mapManager: undefined,
     controlledSources: [],
     controlledLayers: [],
     controlledTerrain: false,
   });
-  // we need to init maplibreRef.current.mapManager before useImperativeHandle call
-  // so necessary inside useLayoutEffect
-  // (useLayoutEffect and useImperativeHandle are called in same priority)
-  // parent component will have access to reference in useLayoutEffect / useEffect hooks
+
+  const [, reRender] = useState(0);
+
+  /**
+   * we need to init maplibreRef.current.mapManager before useImperativeHandle call
+   * so necessary inside useLayoutEffect
+   * (useLayoutEffect and useImperativeHandle are called in same priority)
+   * parent component will have access to reference in useLayoutEffect / useEffect hooks
+   */
   useIsomorphicLayoutEffect(() => {
-    console.log("useIsomorphicLayoutEffect init");
-    const mapManager = new MapManager(
-      { mapStyle, styleDiffing, padding },
-      mapProps,
-      containerRef.current,
-    );
-    mapHasOriginalProps.current = true;
-    maplibreRef.current.mapManager = mapManager;
+    if (!maplibreRef.current.mapManager) {
+      console.log("mapManager instanciation");
+      maplibreRef.current.mapManager = new MapManager(
+        { mapStyle, styleDiffing, padding },
+        mapProps,
+        containerRef.current,
+      );
 
-    onMounted && onMounted(mapManager.map);
+      onMounted && onMounted(maplibreRef.current.mapManager.map);
 
-    return () => {
-      mapManager.destroy();
-    };
-    // map reactivity is managed inside useLayoutEffect setProps (below)
-    // we don't want to destroy/re-instanciate a MapManager instance in each render
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useIsomorphicLayoutEffect(() => {
-    if (maplibreRef.current.mapManager) {
-      if (mapHasOriginalProps.current) {
-        mapHasOriginalProps.current = false;
-      } else {
-        console.log("useIsomorphicLayoutEffect setProps");
-        maplibreRef.current.mapManager.setProps(
-          { mapStyle, styleDiffing, padding },
-          mapProps,
-          maplibreRef.current,
-        );
-      }
+      reRender((v) => v + 1);
+    } else {
+      console.log("mapManager setProps if defined");
+      maplibreRef.current.mapManager?.setProps(
+        { mapStyle, padding, styleDiffing, styleTransformStyle },
+        mapProps,
+        maplibreRef.current,
+      );
     }
   });
 
-  useImperativeHandle(ref, () => maplibreRef.current.mapManager.map, []);
+  useIsomorphicLayoutEffect(() => {
+    return () => {
+      console.log("destroy mapManager");
+      if (maplibreRef.current.mapManager) {
+        maplibreRef.current.mapManager.destroy();
+        maplibreRef.current.mapManager = undefined;
+      }
+    };
+  }, []);
+
+  useImperativeHandle(ref, () => maplibreRef.current.mapManager?.map, []);
 
   const completeStyle: CSSProperties = useMemo(
     () => ({

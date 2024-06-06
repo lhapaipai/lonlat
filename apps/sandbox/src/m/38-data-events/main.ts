@@ -28,6 +28,9 @@ const map = new Map({
 //   exaggeration: 1,
 // });
 
+const unknownSource = map.getSource("unknown");
+console.log("unknownSource", unknownSource);
+
 console.log(map.style._loaded, map.getTerrain());
 
 document.getElementById("infos")!.innerHTML = "hello";
@@ -97,9 +100,12 @@ document.getElementById("action-1")?.addEventListener("click", () => {
   });
 });
 
+document.getElementById("action-11")?.addEventListener("click", () => {
+  map.removeSource("utm-trace-1");
+});
+
 document.getElementById("action-2")?.addEventListener("click", () => {
   map._lazyInitEmptyStyle();
-  debugger;
   map.style.addSource(
     "utm-trace-2",
     {
@@ -118,6 +124,14 @@ document.getElementById("action-3")?.addEventListener("click", () => {
   map.addLayer({
     source: "utm-trace-1",
     id: "utm-trace-line",
+    type: "line",
+  });
+});
+
+document.getElementById("action-3-bis")?.addEventListener("click", () => {
+  map.addLayer({
+    source: "utm-trace-1",
+    id: "utm-trace-line-bis",
     type: "line",
   });
 });

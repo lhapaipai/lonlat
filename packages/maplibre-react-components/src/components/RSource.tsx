@@ -1,4 +1,5 @@
 import {
+  CustomLayerInterface,
   GeoJSONSource,
   GeoJSONSourceSpecification,
   ImageSource,
@@ -17,7 +18,6 @@ import {
   cloneElement,
   forwardRef,
   useEffect,
-  useMemo,
   useRef,
   useState,
   Ref,
@@ -28,21 +28,15 @@ import {
 import { mapLibreContext } from "../context";
 
 export type RSourceProps = SourceSpecification & {
-  id?: string;
+  readonly id: string;
   children?: ReactElement | ReactElement[];
 };
 
-let id = 1;
-
-function uniqueId(): number {
-  return id++;
-}
-
-function createSource(map: Map, sourceId: string, sourceOptions: SourceSpecification) {
-  if (map.style && map.style._loaded) {
-    // console.log("createSource", sourceId);
-    map.addSource(sourceId, sourceOptions);
-    return map.getSource(sourceId);
+function createSource(map: Map, id: string, sourceOptions: SourceSpecification) {
+  if (map.style?._loaded) {
+    console.log("createSource", id);
+    map.addSource(id, sourceOptions);
+    return map.getSource(id);
   }
   return undefined;
 }
@@ -64,7 +58,8 @@ function updateSource(
           url: nextO.url,
           coordinates: nextO.coordinates,
         });
-      } else if (prevO.coordinates !== nextO.coordinates) {
+      }
+      if (prevO.coordinates !== nextO.coordinates) {
         (source as ImageSource).setCoordinates(nextO.coordinates);
       }
 
@@ -89,6 +84,7 @@ function updateSource(
       if (prevO.data !== nextO.data) {
         (source as GeoJSONSource).setData(nextO.data);
       }
+
       if (
         prevO.cluster !== nextO.cluster ||
         prevO.clusterMaxZoom !== nextO.clusterMaxZoom ||
@@ -112,6 +108,11 @@ function updateSource(
       if (prevO.tiles !== nextO.tiles && nextO.tiles) {
         (source as RasterTileSource).setTiles(nextO.tiles);
       }
+
+      if (prevO.url !== nextO.url && nextO.url) {
+        (source as RasterTileSource).setUrl(nextO.url);
+      }
+
       break;
     }
   }
@@ -119,20 +120,20 @@ function updateSource(
 
 function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   const { id, children, ...sourceOptions } = props;
-  // console.log("Render RSource");
+  console.log("Render RSource");
 
   const context = useContext(mapLibreContext);
-  const map = context.mapManager.map;
+  const map = context.mapManager?.map;
 
-  // we don't want sourceId to change during the RSource lifecycle
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const sourceId = useMemo(() => id || `inline-source-${uniqueId()}`, []);
+  if (!map) {
+    throw new Error("use <RSource /> component inside <RMap />");
+  }
 
   const prevOptionsRef = useRef(sourceOptions);
-  const initialSourceId = useRef(sourceId);
+  const initialId = useRef(id);
 
-  if (sourceId !== initialSourceId.current) {
-    throw new Error(`RSource id should not change. "${sourceId}" "${initialSourceId.current}"`);
+  if (id !== initialId.current) {
+    throw new Error(`RSource id should not change. "${id}" "${initialId.current}"`);
   }
   if (sourceOptions.type !== prevOptionsRef.current.type) {
     throw new Error(
@@ -143,9 +144,17 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   const [, setVersion] = useState(0);
 
   useEffect(() => {
+    console.log("RSource useEffect", map.style._loaded);
+
     // https://github.com/maplibre/maplibre-gl-js/issues/1835#issuecomment-1310741571
     // explain why setTimeout
-    const reRender = () => setTimeout(() => setVersion((v) => v + 1), 0);
+    const reRender = () => void setTimeout(() => setVersion((v) => v + 1), 0);
+
+    /**
+     * fired when
+     *  - new source added/removed
+     *  - new layer added/removed
+     */
     map.on("styledata", reRender);
 
     if (map.style._loaded) {
@@ -157,34 +166,39 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
 
     return () => {
       map.off("styledata", reRender);
-      if (map.style && map.style._loaded && map.getSource(sourceId)) {
+      if (map.style && map.getSource(id)) {
+        // before removing source, remove all layers using this source
         const layers = map.getStyle()?.layers;
         if (layers) {
           for (const layer of layers) {
             // BackgroundLayerSpecification / CustomLayerInterface has not "source"
             // see below: <RSource /> throw error if <RLayer type="background/custom" />
             // inserted as child. so the case cannot happen
-            if (layer.type !== "background" && layer.source === sourceId) {
+            if (
+              layer.type !== "background" &&
+              (layer as unknown as CustomLayerInterface).type !== "custom" &&
+              layer.source === id
+            ) {
               map.removeLayer(layer.id);
               context.controlledLayers = context.controlledLayers.filter((id) => id !== layer.id);
             }
           }
         }
-        map.removeSource(sourceId);
-        context.controlledSources = context.controlledSources.filter((id) => id !== sourceId);
+        map.removeSource(id);
+        context.controlledSources = context.controlledSources.filter((sourceId) => id !== sourceId);
       }
     };
-  }, [map, sourceId, context]);
+  }, [map, id, context]);
 
-  let source = map.style && map.getSource(sourceId);
+  let source = map.style && map.getSource(id);
 
   if (source) {
-    // console.log("updateSource", sourceId);
+    // console.log("updateSource", id);
     updateSource(source, sourceOptions, prevOptionsRef.current);
   } else {
-    source = createSource(map, sourceId, sourceOptions);
-    if (source && !context.controlledSources.includes(sourceId)) {
-      context.controlledSources.push(sourceId);
+    source = createSource(map, id, sourceOptions);
+    if (source && !context.controlledSources.includes(id)) {
+      context.controlledSources.push(id);
     }
   }
 
@@ -200,7 +214,7 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
             "<RLayer /> type background/custom has no source and should not be wrapped into <RSource /> (issue when unmount <RSource />)",
           );
         }
-        return child && cloneElement(child, { source: sourceId });
+        return child && cloneElement(child, { source: id });
       })) ||
     null
   );

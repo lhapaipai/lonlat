@@ -14,6 +14,8 @@ import {
   type MapStyleImageMissingEvent,
   type MapTerrainEvent,
   type MapWheelEvent,
+  TransformStyleFunction,
+  StyleSwapOptions,
 } from "maplibre-gl";
 import {
   deepEqual,
@@ -203,6 +205,8 @@ export const mapNonReactiveOptionNames = [
 
   "localIdeographFontFamily",
   "pitchWithRotate", // option for dragRotate handler (activate or not MousePitchHandler)
+
+  "cancelPendingTileRequestsWhileZooming",
 ] as const;
 export type MapNonReactiveOptionName = (typeof mapNonReactiveOptionNames)[number];
 export type MapInitialOptionName = `initial${Capitalize<MapNonReactiveOptionName>}`;
@@ -247,9 +251,10 @@ export type MapHandlerOptions = {
 
 export type ManagerOptions = {
   mapStyle?: StyleSpecification | string;
-  styleDiffing?: boolean;
   padding?: PaddingOptions;
 
+  styleDiffing?: boolean;
+  styleTransformStyle?: TransformStyleFunction;
   // terrain?: StyleSpecification["terrain"];
   // interactiveLayerIds?: string[];
 };
@@ -305,29 +310,32 @@ export default class MapManager {
   }
 
   setProps(
-    { mapStyle = DEFAULT_STYLE, styleDiffing = true, padding }: ManagerOptions,
+    { mapStyle = DEFAULT_STYLE, styleDiffing = true, styleTransformStyle, padding }: ManagerOptions,
     mapProps: MapProps,
     context: MapLibreContext,
   ) {
     const [reactiveOptions, callbacks, handlerOptions] = filterMapProps(mapProps);
 
     this._updateCallbacks(callbacks);
-    this._updateStyle(mapStyle, styleDiffing, context);
+    this._updateStyle(mapStyle, context, {
+      diff: styleDiffing,
+      transformStyle: styleTransformStyle,
+    });
     this._updateReactiveOptions(reactiveOptions, { padding });
     this._updateHandlers(handlerOptions);
   }
 
   _updateStyle(
     nextStyle: StyleSpecification | string,
-    styleDiffing: boolean,
     context: MapLibreContext,
+    options: StyleSwapOptions,
   ) {
     const curStyle = this.mapStyle;
 
     if (nextStyle !== curStyle) {
       this.mapStyle = nextStyle;
       this._map.setStyle(nextStyle, {
-        diff: styleDiffing,
+        diff: options.diff,
         transformStyle(prevStyle, nextStyle) {
           console.log("merge controlled sources/layers", context.controlledSources);
 
@@ -343,7 +351,7 @@ export default class MapManager {
             ? prevStyle.layers.filter((layer) => context.controlledLayers.includes(layer.id))
             : [];
 
-          return {
+          const result = {
             ...nextStyle,
             sources: {
               ...nextStyle.sources,
@@ -352,6 +360,8 @@ export default class MapManager {
             layers: [...nextStyle.layers, ...prevControlledLayers],
             terrain: context.controlledTerrain ? prevStyle?.terrain : nextStyle.terrain,
           };
+
+          return options.transformStyle ? options.transformStyle(prevStyle, result) : result;
         },
       });
     }

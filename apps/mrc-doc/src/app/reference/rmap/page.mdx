@@ -32,8 +32,71 @@ export default function App() {
 ## Reference
 
 ```ts
-type RMapProps = {
-  /* Map Reactive Options */
+type RMapProps =
+  /**
+   * options for the class that controls the map instance, including
+   * behavior when changing styles
+   */
+  ManagerOptions &
+
+  /**
+   * props of the <div> wrapper component
+   */
+  RMapComponentProps &
+
+  /* props mapped to maplibre MapOptions*/
+  MapProps;
+
+
+type ManagerOptions = {
+  /* si l'on propose un objet attention à donner un objet stable pour des raisons de performances la vérification se fait avec un === et non un deepEqual */
+  mapStyle?: StyleSpecification | string;
+  styleDiffing?: boolean;
+  /* idem proposer un objet stable */
+  styleTransformStyle?: TransformStyleFunction;
+  padding?: PaddingOptions;
+}
+
+type RMapComponentProps = {
+  children?: ReactNode;
+  style?: CSSProperties;
+  id?: string;
+  className?: string;
+  onMounted?: (map: Map) => void;
+}
+
+
+type MapProps =
+  /**
+   * Reactive map options. Update during the RMap lifecycle causes them to be
+   * updated on the map instance
+   * they have the same name as in MapOptions
+   */
+  MapReactiveOptions &
+
+  /**
+   * Reactive map handler options. Update during the RMap lifecycle causes handler
+   * to be enabled/disabled
+   * they have the same name as in MapOptions
+   */
+  MapHandlerOptions &
+
+  /**
+   * Listenners for map events
+   * they have the same name as in MapOptions with first letter uppercase and prefixed
+   * with "on"
+   */
+  MapCallbacks &
+
+  /**
+   * Non reactive map options that are only used when instantiating a map object
+   * they have the same name as in MapOptions with first letter uppercase
+   * and prefixed with "initial"
+   */
+  MapInitialOptions;
+
+
+type MapReactiveOptions = {
   maxBounds?: LngLatBoundsLike;
   minZoom?: number | null;
   maxZoom?: number | null;
@@ -41,45 +104,9 @@ type RMapProps = {
   maxPitch?: number | null;
   renderWorldCopies?: boolean;
   pixelRatio?: number;
+}
 
-  /* Map Non-Reactive Options */
-  initialHash?: boolean | string;
-  initialInteractive?: boolean;
-  initialBearingSnap?: number;
-  initialAttributionControl?: false | AttributionControlOptions;
-  initialMaplibreLogo?: boolean;
-  initialLogoPosition?: ControlPosition;
-  initialFailIfMajorPerformanceCaveat?: boolean;
-  initialPreserveDrawingBuffer?: boolean;
-  initialAntialias?: boolean;
-  initialRefreshExpiredTiles?: boolean;
-  initialTrackResize?: boolean;
-  initialMaxTileCacheSize?: number;
-  initialMaxTileCacheZoomLevels?: number;
-  initialTransformRequest?: RequestTransformFunction;
-  initialTransformCameraUpdate?: CameraUpdateTransformFunction;
-  initialLocale?: any;
-  initialFadeDuration?: number;
-  initialCrossSourceCollisions?: boolean;
-  initialCollectResourceTiming?: boolean;
-  initialClickTolerance?: number;
-  initialValidateStyle?: boolean;
-  initialMaxCanvasSize?: [
-		number,
-		number
-	];
-  initialCenter?: LngLatLike;
-  initialZoom?: number;
-  initialBearing?: number;
-  initialPitch?: number;
-  initialBounds?: LngLatBoundsLike;
-  initialFitBoundsOptions?: FitBoundsOptions;
-  initialLocalIdeographFontFamily?: string | false;
-  initialPitchWithRotate?: boolean;
-
-
-  /* map Handlers*/
-  /* les handlers sont réactifs */
+type MapHandlerOptions = {
   scrollZoom?: boolean | AroundCenterOptions;
   boxZoom?: boolean;
   dragRotate?: boolean;
@@ -89,8 +116,9 @@ type RMapProps = {
   touchZoomRotate?: boolean | AroundCenterOptions;
   touchPitch?: boolean | AroundCenterOptions;
   cooperativeGestures?: GestureOptions;
+}
 
-  /* map listeners */
+type MapCallbacks = {
   /** Compatible with `layerId` */
   onMouseDown?: (e: MapLayerMouseEvent) => void;
   onMouseUp?: (e: MapLayerMouseEvent) => void;
@@ -148,16 +176,45 @@ type RMapProps = {
   onDataAbort?: (e: MapDataEvent) => void;
   onSourceDataAbort?: (e: MapSourceDataEvent) => void;
   onTerrain?: (e: MapTerrainEvent) => void;
-
-  /* si l'on propose un objet attention à donner un objet stable pour des raisons de performances la vérification se fait avec un === et non un deepEqual */
-  mapStyle?: StyleSpecification | string;
-  styleDiffing?: boolean;
-  padding?: PaddingOptions;
-
-  /* ??? */
-	cancelPendingTileRequestsWhileZooming?: boolean;
-
 };
+
+type MapInitialOptions = {
+  initialHash?: boolean | string;
+  initialInteractive?: boolean;
+  initialBearingSnap?: number;
+  initialAttributionControl?: false | AttributionControlOptions;
+  initialMaplibreLogo?: boolean;
+  initialLogoPosition?: ControlPosition;
+  initialFailIfMajorPerformanceCaveat?: boolean;
+  initialPreserveDrawingBuffer?: boolean;
+  initialAntialias?: boolean;
+  initialRefreshExpiredTiles?: boolean;
+  initialTrackResize?: boolean;
+  initialMaxTileCacheSize?: number;
+  initialMaxTileCacheZoomLevels?: number;
+  initialTransformRequest?: RequestTransformFunction;
+  initialTransformCameraUpdate?: CameraUpdateTransformFunction;
+  initialLocale?: any;
+  initialFadeDuration?: number;
+  initialCrossSourceCollisions?: boolean;
+  initialCollectResourceTiming?: boolean;
+  initialClickTolerance?: number;
+  initialValidateStyle?: boolean;
+  initialMaxCanvasSize?: [
+		number,
+		number
+	];
+	initialCancelPendingTileRequestsWhileZooming?: boolean;
+
+  initialCenter?: LngLatLike;
+  initialZoom?: number;
+  initialBearing?: number;
+  initialPitch?: number;
+  initialBounds?: LngLatBoundsLike;
+  initialFitBoundsOptions?: FitBoundsOptions;
+  initialLocalIdeographFontFamily?: string | false;
+  initialPitchWithRotate?: boolean;
+}
 ```
 
 # Documentation for RMap
