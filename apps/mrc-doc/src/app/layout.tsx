@@ -22,6 +22,8 @@ export default function RootLayout({
           <Link href="/">Home</Link>
           <Link href="/reference/rmap">RMap</Link>
           <Link href="/reference/rsource">RSource</Link>
+          <Link href="/reference/rlayer">RLayer</Link>
+          <Link href="/faq">faq</Link>
           <Link href="/reference/learn">Learn</Link>
         </nav>
         {children}

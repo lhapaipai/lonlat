@@ -1,16 +1,4 @@
-import {
-  BackgroundLayerSpecification,
-  CircleLayerSpecification,
-  FillExtrusionLayerSpecification,
-  FillLayerSpecification,
-  HeatmapLayerSpecification,
-  HillshadeLayerSpecification,
-  CustomLayerInterface,
-  LineLayerSpecification,
-  Map,
-  RasterLayerSpecification,
-  SymbolLayerSpecification,
-} from "maplibre-gl";
+import { FillLayerSpecification, CustomLayerInterface, Map, LayerSpecification } from "maplibre-gl";
 import {
   Ref,
   forwardRef,
@@ -23,19 +11,7 @@ import {
 } from "react";
 import { mapLibreContext } from "../context";
 
-type OptionalSource<T> = Omit<T, "source"> & { source?: string };
-
-export type LayerOptions =
-  | OptionalSource<FillLayerSpecification>
-  | OptionalSource<LineLayerSpecification>
-  | OptionalSource<SymbolLayerSpecification>
-  | OptionalSource<CircleLayerSpecification>
-  | OptionalSource<HeatmapLayerSpecification>
-  | OptionalSource<FillExtrusionLayerSpecification>
-  | OptionalSource<RasterLayerSpecification>
-  | OptionalSource<HillshadeLayerSpecification>
-  | BackgroundLayerSpecification // BackgroundLayerSpecification has no source
-  | CustomLayerInterface;
+export type LayerOptions = LayerSpecification | CustomLayerInterface;
 
 type RLayerProps = LayerOptions & {
   beforeId?: string;
@@ -46,21 +22,18 @@ type RLayerProps = LayerOptions & {
 type StyleLayer = unknown;
 
 function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
-  if (map.style && map.style._loaded) {
+  // layer can't be added if style is not loaded
+  if (map.style?._loaded) {
     if (
+      // BackgroundLayerSpecification and CustomLayerInterface has no source
       layerOptions.type === "background" ||
       layerOptions.type === "custom" ||
       // source exists for LayerSpecification who need one
       (layerOptions.source && map.getSource(layerOptions.source))
     ) {
-      // console.log("createLayer", layerOptions.id);
-      if (beforeId && map.getLayer(beforeId)) {
-        // @ts-ignore optional source checked above
-        map.addLayer(layerOptions, beforeId);
-      } else {
-        // @ts-ignore optional source checked above
-        map.addLayer(layerOptions);
-      }
+      console.log("createLayer", layerOptions.id);
+      map.addLayer(layerOptions, beforeId && map.getLayer(beforeId) ? beforeId : undefined);
+
       return map.getLayer(layerOptions.id);
     }
   }
@@ -77,22 +50,27 @@ function updateLayer(
   if (prevOptions.type === "custom" || nextOptions.type === "custom") {
     return;
   }
-  // console.log("updateLayer", nextOptions.id);
+  console.log("updateLayer", nextOptions.id);
 
   if (prevBeforeId !== nextBeforeId) {
     map.moveLayer(nextOptions.id, nextBeforeId);
   }
 
+  /**
+   * we take random LayerSpecification to simulate same specification.
+   * here FillLayerSpecification
+   */
+
   // type is not "background" nor "custom", he has a filter property
   if (
     nextOptions.type !== "background" &&
+    (nextOptions as unknown as CustomLayerInterface).type !== "custom" &&
     (prevOptions as FillLayerSpecification).filter !==
       (nextOptions as FillLayerSpecification).filter
   ) {
     map.setFilter(nextOptions.id, (nextOptions as FillLayerSpecification).filter);
   }
 
-  // we take random LayerSpecification to simulate same specification.
   const prevO = prevOptions as FillLayerSpecification;
   const nextO = nextOptions as FillLayerSpecification;
 
@@ -141,21 +119,28 @@ function updateLayer(
 }
 
 function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
+  console.time("rlayer");
   const { beforeId, ...layerOptions } = props;
-  // console.log("Render RLayer");
+  console.log("Render RLayer", layerOptions.id);
 
   const context = useContext(mapLibreContext);
-  const map = context.mapManager.map;
+  const map = context.mapManager?.map;
+
+  if (!map) {
+    throw new Error("use <RLayer /> component inside <RMap />");
+  }
 
   const prevPropsRef = useRef(props);
 
   const [, setVersion] = useState(0);
 
-  const layerId = layerOptions.id;
-  const initialLayerId = useRef(layerId);
+  const id = layerOptions.id;
+  const initialLayerId = useRef(id);
 
-  if (layerId !== initialLayerId.current) {
-    throw new Error(`RLayer id should not change. "${layerId}" "${initialLayerId.current}"`);
+  if (id !== initialLayerId.current) {
+    throw new Error(
+      `RLayer id should not change. "${id}" "${initialLayerId.current}". If you defined id as const string add a "key" prop to your RLayer component`,
+    );
   }
   if (props.type !== prevPropsRef.current.type) {
     throw new Error(
@@ -175,27 +160,28 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
 
     return () => {
       map.off("styledata", reRender);
-      if (map.style && map.style._loaded && map.getLayer(layerId)) {
-        map.removeLayer(layerId);
-        context.controlledLayers = context.controlledLayers.filter((id) => id !== layerId);
+      if (map.style && map.style._loaded && map.getLayer(id)) {
+        map.removeLayer(id);
+        context.controlledLayers = context.controlledLayers.filter((layerId) => layerId !== id);
       }
     };
-  }, [map, layerId, context]);
+  }, [map, id, context]);
 
-  let layer = map.style && map.getLayer(layerId);
+  let layer = map.style?._loaded && map.getLayer(id);
 
   if (layer) {
     updateLayer(map, props, prevPropsRef.current);
   } else {
     layer = createLayer(map, layerOptions, beforeId);
-    if (layer && !context.controlledLayers.includes(layerId)) {
-      context.controlledLayers.push(layerId);
+    if (layer && !context.controlledLayers.includes(id)) {
+      context.controlledLayers.push(id);
     }
   }
 
   useImperativeHandle(ref, () => layer, [layer]);
 
   prevPropsRef.current = props;
+  console.timeEnd("rlayer");
 
   return null;
 }

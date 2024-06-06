@@ -2,7 +2,7 @@ import { FillLayerSpecification } from "maplibre-gl";
 
 export const countiesLayer: FillLayerSpecification = {
   id: "counties",
-  source: "",
+  source: "counties",
   "source-layer": "commune",
   type: "fill",
   paint: {

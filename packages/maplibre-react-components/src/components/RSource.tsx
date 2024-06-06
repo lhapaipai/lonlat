@@ -13,9 +13,6 @@ import {
   VideoSourceSpecification,
 } from "maplibre-gl";
 import {
-  Children,
-  ReactElement,
-  cloneElement,
   forwardRef,
   useEffect,
   useRef,
@@ -29,15 +26,16 @@ import { mapLibreContext } from "../context";
 
 export type RSourceProps = SourceSpecification & {
   readonly id: string;
-  children?: ReactElement | ReactElement[];
 };
 
 function createSource(map: Map, id: string, sourceOptions: SourceSpecification) {
+  // source can't be added if style is not loaded
   if (map.style?._loaded) {
     console.log("createSource", id);
     map.addSource(id, sourceOptions);
     return map.getSource(id);
   }
+
   return undefined;
 }
 
@@ -46,6 +44,7 @@ function updateSource(
   nextOptions: SourceSpecification,
   prevOptions: SourceSpecification,
 ) {
+  console.log("updateSource", source.id);
   // verbose but exhaustive
   switch (nextOptions.type) {
     case "image": {
@@ -119,8 +118,9 @@ function updateSource(
 }
 
 function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
-  const { id, children, ...sourceOptions } = props;
-  console.log("Render RSource");
+  console.time("rsource");
+  const { id, ...sourceOptions } = props;
+  console.log("Render RSource", id);
 
   const context = useContext(mapLibreContext);
   const map = context.mapManager?.map;
@@ -133,7 +133,9 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   const initialId = useRef(id);
 
   if (id !== initialId.current) {
-    throw new Error(`RSource id should not change. "${id}" "${initialId.current}"`);
+    throw new Error(
+      `RSource id should not change. "${id}" "${initialId.current}". If you defined id as const string add a "key" prop to your RSource component`,
+    );
   }
   if (sourceOptions.type !== prevOptionsRef.current.type) {
     throw new Error(
@@ -154,6 +156,7 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
      * fired when
      *  - new source added/removed
      *  - new layer added/removed
+     *  when event is fired map.style._loaded is always true
      */
     map.on("styledata", reRender);
 
@@ -190,7 +193,7 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
     };
   }, [map, id, context]);
 
-  let source = map.style && map.getSource(id);
+  let source = map.style?._loaded && map.getSource(id);
 
   if (source) {
     // console.log("updateSource", id);
@@ -205,19 +208,9 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
   useImperativeHandle(ref, () => source, [source]);
 
   prevOptionsRef.current = sourceOptions;
+  console.timeEnd("rsource");
 
-  return (
-    (source &&
-      Children.map(children, (child) => {
-        if (child?.props.type === "background" || child?.props.type === "custom") {
-          throw new Error(
-            "<RLayer /> type background/custom has no source and should not be wrapped into <RSource /> (issue when unmount <RSource />)",
-          );
-        }
-        return child && cloneElement(child, { source: id });
-      })) ||
-    null
-  );
+  return null;
 }
 
 export default memo(forwardRef(RSource));

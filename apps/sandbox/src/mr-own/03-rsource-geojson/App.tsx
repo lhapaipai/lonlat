@@ -23,7 +23,7 @@ function App() {
   const mapRef = useRef<Map>(null);
   const [counter, setCounter] = useState(0);
   const [show, setShow] = useState(true);
-  const [showAnotherSource, setShowAnotherSource] = useState(false);
+  const [showAnotherSource, setShowAnotherSource] = useState(true);
   const [sourceData, setSourceData] = useState("marignier");
 
   const [baseStyle, setBaseStyle] = useState<BaseStyle>("standard");
@@ -33,11 +33,11 @@ function App() {
   }, []);
 
   function handleStyleData(e: MapStyleDataEvent) {
-    console.log("styledata", e);
+    console.log("<App /> map.on -> styledata", e);
   }
 
   function handleLoad() {
-    console.log("loaded");
+    // console.log("loaded");
   }
 
   return (
@@ -61,13 +61,19 @@ function App() {
             }}
           ></RMarker>
           {showAnotherSource && (
-            <RSource key="thyez" id="thyez" type="geojson" data="/data/thyez.geojson">
-              <RLayer key="thyez-fill" id="thyez-fill" type="fill" paint={townPaintStyle} />
-            </RSource>
+            <>
+              <RSource key="thyez" id="thyez" type="geojson" data="/data/thyez.geojson" />
+              <RLayer
+                source="thyez"
+                key="thyez-fill"
+                id="thyez-fill"
+                type="fill"
+                paint={townPaintStyle}
+              />
+            </>
           )}
-          <RSource key="town" id="town" type="geojson" data={`/data/${sourceData}.geojson`}>
-            <RLayer key="town-fill" id="town-fill" type="fill" paint={townPaintStyle} />
-          </RSource>
+          <RSource key="town" id="town" type="geojson" data={`/data/${sourceData}.geojson`} />
+          <RLayer source="town" key="town-fill" id="town-fill" type="fill" paint={townPaintStyle} />
         </RMap>
       )}
       <div className="sidebar">

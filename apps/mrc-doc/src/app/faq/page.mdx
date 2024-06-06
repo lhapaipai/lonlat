@@ -1,0 +1,66 @@
+## why `RLayer` is not a `RSource` child
+
+With `RLayer` used as `RSource` child each button click causes `App` to rerender.
+Even if the props of `RSource` have not changed, the `RSource` `children` prop will have changed, which will cause an unnecessary re-rendering of `RSource`
+
+```tsx
+const townPaintStyle = {
+  "fill-outline-color": "rgba(0,0,0,0.1)",
+  "fill-color": "rgba(255,0,0,0.3)",
+};
+
+function App() {
+  const [showMarker, setShowMarker] = useState(true);
+
+  return (
+    <>
+      <RMap>
+        {showMarker && <RMarker longitude={marignier.lng} latitude={marignier.lat} />}
+
+        <RSource key="town" id="town" type="geojson" data="/data/town.geojson">
+          <RLayer key="town-fill" id="town-fill" type="fill" paint={townPaintStyle} />
+        </RSource>
+      </RMap>
+      <div className="sidebar">
+        <div>
+          <button onClick={() => setShowMarker((s) => !s)}>
+            {showMarker ? "hide Marker" : "show Marker"}
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+With `RSource` declared outside `RLayer` each button click causes `App` to rerender.
+In this case the props of `RSource` have not changed, which will not cause an unnecessary re-rendering of `RSource`.
+
+```tsx
+const townPaintStyle = {
+  "fill-outline-color": "rgba(0,0,0,0.1)",
+  "fill-color": "rgba(255,0,0,0.3)",
+};
+
+function App() {
+  const [showMarker, setShowMarker] = useState(true);
+
+  return (
+    <>
+      <RMap>
+        {showMarker && <RMarker longitude={marignier.lng} latitude={marignier.lat} />}
+
+        <RSource key="town" id="town" type="geojson" data="/data/town.geojson" />
+        <RLayer source="town" key="town-fill" id="town-fill" type="fill" paint={townPaintStyle} />
+      </RMap>
+      <div className="sidebar">
+        <div>
+          <button onClick={() => setShowMarker((s) => !s)}>
+            {showMarker ? "hide Marker" : "show Marker"}
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
+```

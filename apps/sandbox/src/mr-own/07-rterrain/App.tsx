@@ -4,10 +4,6 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { RMap, RMarker, RSource, RTerrain } from "maplibre-react-components";
 import { useRef, useState } from "react";
 
-
-
-
-
 const marignier = { lng: 6.498, lat: 46.089 };
 
 const rasterDemTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
@@ -28,15 +24,16 @@ function App() {
         >
           <RMarker longitude={marignier.lng} latitude={marignier.lat} />
           {showTerrain && (
-            <RSource
-              type="raster-dem"
-              id="terrarium"
-              tiles={rasterDemTiles}
-              encoding="terrarium"
-              tileSize={256}
-            >
+            <>
+              <RSource
+                type="raster-dem"
+                id="terrarium"
+                tiles={rasterDemTiles}
+                encoding="terrarium"
+                tileSize={256}
+              />
               <RTerrain source="terrarium" exaggeration={1.3} />
-            </RSource>
+            </>
           )}
         </RMap>
       )}

@@ -53,10 +53,9 @@ function App() {
         onMouseMove={onHover}
         interactiveLayerIds={["counties"]}
       >
-        <RSource type="vector" url="http://0.0.0.0:3000/commune">
-          <RLayer {...countiesLayer} />
-          <RLayer {...highlightLayer} filter={filter} />
-        </RSource>
+        <RSource id="counties" type="vector" url="http://0.0.0.0:3000/commune" />
+        <RLayer {...countiesLayer} />
+        <RLayer {...highlightLayer} filter={filter} />
         {selectedCounty && hoverInfo && (
           <RPopup
             longitude={hoverInfo.longitude}

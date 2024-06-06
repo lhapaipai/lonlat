@@ -50,7 +50,7 @@ function RMap(
   }: RMapProps,
   ref: Ref<Map | undefined>,
 ) {
-  console.log("render RMap");
+  // console.log("render RMap");
   const containerRef = useRef<HTMLDivElement>(null!);
 
   const maplibreRef = useRef<MapLibreContext>({
@@ -59,6 +59,8 @@ function RMap(
     controlledLayers: [],
     controlledTerrain: false,
   });
+
+  const needPropsUpdate = useRef(true);
 
   const [, reRender] = useState(0);
 
@@ -78,15 +80,19 @@ function RMap(
       );
 
       onMounted && onMounted(maplibreRef.current.mapManager.map);
-
       reRender((v) => v + 1);
+      needPropsUpdate.current = false;
     } else {
-      console.log("mapManager setProps if defined");
-      maplibreRef.current.mapManager?.setProps(
-        { mapStyle, padding, styleDiffing, styleTransformStyle },
-        mapProps,
-        maplibreRef.current,
-      );
+      if (needPropsUpdate.current) {
+        console.log("mapManager setProps");
+        maplibreRef.current.mapManager.setProps(
+          { mapStyle, padding, styleDiffing, styleTransformStyle },
+          mapProps,
+          maplibreRef.current,
+        );
+      } else {
+        needPropsUpdate.current = true;
+      }
     }
   });
 

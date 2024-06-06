@@ -2,7 +2,7 @@ import "../../main.css";
 import "./style.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { LngLatLike, Map, MapDataEvent, MapSourceDataEvent, MapStyleDataEvent } from "maplibre-gl";
-import { styleBase, utm } from "./style";
+import { emptyStyle, styleBase, utm } from "./style";
 
 const $map = document.getElementById("map")!;
 
@@ -14,6 +14,7 @@ const map = new Map({
   zoom: 14,
   // style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
   style: styleBase,
+  // style: emptyStyle,
 });
 
 // map.addSource("terrarium", {
@@ -28,10 +29,7 @@ const map = new Map({
 //   exaggeration: 1,
 // });
 
-const unknownSource = map.getSource("unknown");
-console.log("unknownSource", unknownSource);
-
-console.log(map.style._loaded, map.getTerrain());
+// console.log("after instanciation", map.style._loaded, map.getTerrain());
 
 document.getElementById("infos")!.innerHTML = "hello";
 
@@ -45,7 +43,7 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
     case "sourcedata": {
       const event = e as MapSourceDataEvent;
       if (event.sourceDataType) {
-        console.log(event.type, event.sourceDataType);
+        console.log(event.type, map.style._loaded, event.sourceDataType);
       } else if (event.coord) {
         if (!skipTileSource) {
           const coord = event.coord.canonical;
@@ -57,7 +55,7 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
       break;
     }
     case "styledata": {
-      console.log(e.type, e);
+      console.log(e.type, map.style._loaded, e);
 
       const event = e as MapStyleDataEvent;
       const newContent = JSON.stringify(event.style.serialize(), undefined, 2);
@@ -73,11 +71,17 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
       break;
     }
 
+    case "load": {
+      console.log(e.type, map.style._loaded, e);
+      break;
+    }
+
     default:
-      console.log(e.type, e);
+      console.log(e.type, map.style._loaded, e);
   }
 }
 
+map.on("load", handleEvent);
 // map.on("terrain", handleEvent);
 // setTimeout(() => {
 //   map.on("load", handleEvent);

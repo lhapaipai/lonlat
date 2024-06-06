@@ -66,9 +66,8 @@ function App() {
             type="raster"
             tiles={rasterTiles[tileName]}
             tileSize={256}
-          >
-            <RLayer key="raster-fill" id="raster-fill" type="raster" />
-          </RSource>
+          />
+          <RLayer source="raster-tile" key="raster-fill" id="raster-fill" type="raster" />
         </RMap>
       )}
       <div className="sidebar">

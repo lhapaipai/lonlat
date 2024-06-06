@@ -58,14 +58,14 @@ function App() {
             type="image"
             url="/data/marignier-ortho.jpg"
             coordinates={orthoCoordinates}
-          >
-            <RLayer
-              id="marignier-ortho"
-              key="marignier-ortho"
-              type="raster"
-              paint={rasterPaintStyle}
-            />
-          </RSource>
+          />
+          <RLayer
+            source="marignier-ortho"
+            id="marignier-ortho"
+            key="marignier-ortho"
+            type="raster"
+            paint={rasterPaintStyle}
+          />
         </RMap>
       )}
       <div className="sidebar">

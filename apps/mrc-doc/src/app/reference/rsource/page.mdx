@@ -93,3 +93,47 @@ Some props are responsive, it depends on the source type
 ### `raster`, `raster-dem` and `vector` types
 
 `url` and `tiles` props are reactive.
+
+
+## `key` vs `id`
+
+When you have conditional renderers within your `RMap` component you will need to set the prop `key` for your `RSource` to help React maintain its association with the correct component.
+
+Consider `id` for `maplibre` mapping and `key` for React mapping.
+
+Note: if `maplibre-react-components` detects a mapping error it will throw an exception.
+
+```tsx
+export default function App() {
+  const [showCity, setShowCity] = useState(false);
+
+  return (
+    <>
+      <RMap>
+        {showCity && (<RSource
+          key="city"
+          id="city"
+          type="geojson"
+          data="/data/city.geojson"
+        />)}
+
+        <RSource
+          key="raster-tile"
+          id="raster-tile"
+          type="raster"
+          tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          tileSize={256}
+        />
+      </RMap>
+      <div className="sidebar">
+        <div>
+          <button onClick={() => setShowCity((s) => !s)}>
+            {showCity ? "hide city source" : "show city source"}
+          </button>
+        </div>
+      </div>
+    </>
+
+  );
+};
+```

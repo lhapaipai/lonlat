@@ -39,7 +39,7 @@ export function LazyAutocomplete<O extends OptionLike = Option>({
     selection ? getOptionLabel(selection) : "",
     debounce,
   );
-  console.log(searchValue, searchValueDebounced);
+  // console.log(searchValue, searchValueDebounced);
 
   const searchValueRef = useRef(searchValue);
   searchValueRef.current = searchValue;
