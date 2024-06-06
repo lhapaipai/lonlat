@@ -21,6 +21,7 @@ import {
   useImperativeHandle,
   useContext,
   memo,
+  useCallback,
 } from "react";
 import { mapLibreContext } from "../context";
 
@@ -145,12 +146,16 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
 
   const [, setVersion] = useState(0);
 
+  // https://github.com/maplibre/maplibre-gl-js/issues/1835#issuecomment-1310741571
+  // explain why setTimeout
+  const reRender = useCallback(() => void setTimeout(() => setVersion((v) => v + 1), 0), []);
+
   useEffect(() => {
     console.log("RSource useEffect", map.style._loaded);
 
     // https://github.com/maplibre/maplibre-gl-js/issues/1835#issuecomment-1310741571
     // explain why setTimeout
-    const reRender = () => void setTimeout(() => setVersion((v) => v + 1), 0);
+    // const reRender = () => void setTimeout(() => setVersion((v) => v + 1), 0);
 
     /**
      * fired when
@@ -191,7 +196,7 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
         context.controlledSources = context.controlledSources.filter((sourceId) => id !== sourceId);
       }
     };
-  }, [map, id, context]);
+  }, [map, id, context, reRender]);
 
   let source = map.style?._loaded && map.getSource(id);
 
@@ -203,6 +208,7 @@ function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
     if (source && !context.controlledSources.includes(id)) {
       context.controlledSources.push(id);
     }
+    map.off("styledata", reRender);
   }
 
   useImperativeHandle(ref, () => source, [source]);

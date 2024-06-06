@@ -8,7 +8,11 @@ function RTerrain(props: RTerrainProps) {
   const { ...terrainOptions } = props;
 
   const context = useContext(mapLibreContext);
-  const map = context.mapManager.map;
+  const map = context.mapManager?.map;
+
+  if (!map) {
+    throw new Error("use <RTerrain /> component inside <RMap />");
+  }
 
   const prevPropsRef = useRef(props);
 

@@ -2,7 +2,7 @@ import { Map, MapStyleDataEvent } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
@@ -13,8 +13,8 @@ const townPaintStyle = {
 
 const baseStyles = {
   standard: "/assets/styles/ign/PLAN.IGN/standard.json",
-  classique: "/assets/styles/ign/PLAN.IGN/classique.json",
-  accentue: "/assets/styles/ign/PLAN.IGN/accentue.json",
+  classique: "/assets/styles-original/ign/PLAN.IGN/classique.json",
+  accentue: "/assets/styles-original/ign/PLAN.IGN/accentue.json",
 };
 
 type BaseStyle = keyof typeof baseStyles;
@@ -25,6 +25,7 @@ function App() {
   const [show, setShow] = useState(true);
   const [showAnotherSource, setShowAnotherSource] = useState(true);
   const [sourceData, setSourceData] = useState("marignier");
+  const [red, setRed] = useState(false);
 
   const [baseStyle, setBaseStyle] = useState<BaseStyle>("standard");
 
@@ -39,6 +40,14 @@ function App() {
   function handleLoad() {
     // console.log("loaded");
   }
+
+  const townPaintStyle = useMemo(
+    () => ({
+      "fill-outline-color": "rgba(0,0,0,0.1)",
+      "fill-color": red ? "rgba(255,0,0,0.3)" : "rgba(0,0,0,0.3)",
+    }),
+    [red],
+  );
 
   return (
     <>
@@ -106,6 +115,9 @@ function App() {
             <option value="classique">IGN classique</option>
             <option value="accentue">IGN accentue</option>
           </select>
+        </div>
+        <div>
+          <button onClick={() => setRed((r) => !r)}>{red ? "set gray" : "set red"}</button>
         </div>
       </div>
     </>

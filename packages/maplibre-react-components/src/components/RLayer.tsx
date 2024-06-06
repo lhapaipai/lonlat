@@ -3,6 +3,7 @@ import {
   Ref,
   forwardRef,
   memo,
+  useCallback,
   useContext,
   useEffect,
   useImperativeHandle,
@@ -133,7 +134,7 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
   const prevPropsRef = useRef(props);
 
   const [, setVersion] = useState(0);
-
+  const reRender = useCallback(() => setVersion((v) => v + 1), []);
   const id = layerOptions.id;
   const initialLayerId = useRef(id);
 
@@ -149,7 +150,6 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
   }
 
   useEffect(() => {
-    const reRender = () => setVersion((v) => v + 1);
     map.on("styledata", reRender);
 
     if (map.style._loaded) {
@@ -165,7 +165,7 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
         context.controlledLayers = context.controlledLayers.filter((layerId) => layerId !== id);
       }
     };
-  }, [map, id, context]);
+  }, [map, id, context, reRender]);
 
   let layer = map.style?._loaded && map.getLayer(id);
 
@@ -176,6 +176,7 @@ function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
     if (layer && !context.controlledLayers.includes(id)) {
       context.controlledLayers.push(id);
     }
+    map.off("styledata", reRender);
   }
 
   useImperativeHandle(ref, () => layer, [layer]);
