@@ -1,6 +1,5 @@
 import { FillLayerSpecification, CustomLayerInterface, Map, LayerSpecification } from "maplibre-gl";
 import {
-  Ref,
   forwardRef,
   memo,
   useCallback,
@@ -119,72 +118,72 @@ function updateLayer(
   }
 }
 
-function RLayer(props: RLayerProps, ref: Ref<StyleLayer | undefined>) {
-  console.time("rlayer");
-  const { beforeId, ...layerOptions } = props;
-  console.log("Render RLayer", layerOptions.id);
+export const RLayer = memo(
+  forwardRef<StyleLayer | undefined, RLayerProps>(function RLayer(props, ref) {
+    console.time("rlayer");
+    const { beforeId, ...layerOptions } = props;
+    console.log("Render RLayer", layerOptions.id);
 
-  const context = useContext(mapLibreContext);
-  const map = context.mapManager?.map;
+    const context = useContext(mapLibreContext);
+    const map = context.mapManager?.map;
 
-  if (!map) {
-    throw new Error("use <RLayer /> component inside <RMap />");
-  }
-
-  const prevPropsRef = useRef(props);
-
-  const [, setVersion] = useState(0);
-  const reRender = useCallback(() => setVersion((v) => v + 1), []);
-  const id = layerOptions.id;
-  const initialLayerId = useRef(id);
-
-  if (id !== initialLayerId.current) {
-    throw new Error(
-      `RLayer id should not change. "${id}" "${initialLayerId.current}". If you defined id as const string add a "key" prop to your RLayer component`,
-    );
-  }
-  if (props.type !== prevPropsRef.current.type) {
-    throw new Error(
-      `RLayer type should not change. "${props.type}" "${prevPropsRef.current.type}"`,
-    );
-  }
-
-  useEffect(() => {
-    map.on("styledata", reRender);
-
-    if (map.style._loaded) {
-      // in case layer is loaded between first render and useEffect call
-      // like RSource
-      reRender();
+    if (!map) {
+      throw new Error("use <RLayer /> component inside <RMap />");
     }
 
-    return () => {
-      map.off("styledata", reRender);
-      if (map.style && map.style._loaded && map.getLayer(id)) {
-        map.removeLayer(id);
-        context.controlledLayers = context.controlledLayers.filter((layerId) => layerId !== id);
+    const prevPropsRef = useRef(props);
+
+    const [, setVersion] = useState(0);
+    const reRender = useCallback(() => setVersion((v) => v + 1), []);
+    const id = layerOptions.id;
+    const initialLayerId = useRef(id);
+
+    if (id !== initialLayerId.current) {
+      throw new Error(
+        `RLayer id should not change. "${id}" "${initialLayerId.current}". If you defined id as const string add a "key" prop to your RLayer component`,
+      );
+    }
+    if (props.type !== prevPropsRef.current.type) {
+      throw new Error(
+        `RLayer type should not change. "${props.type}" "${prevPropsRef.current.type}"`,
+      );
+    }
+
+    useEffect(() => {
+      map.on("styledata", reRender);
+
+      if (map.style._loaded) {
+        // in case layer is loaded between first render and useEffect call
+        // like RSource
+        reRender();
       }
-    };
-  }, [map, id, context, reRender]);
 
-  let layer = map.style?._loaded && map.getLayer(id);
+      return () => {
+        map.off("styledata", reRender);
+        if (map.style && map.style._loaded && map.getLayer(id)) {
+          map.removeLayer(id);
+          context.controlledLayers = context.controlledLayers.filter((layerId) => layerId !== id);
+        }
+      };
+    }, [map, id, context, reRender]);
 
-  if (layer) {
-    updateLayer(map, props, prevPropsRef.current);
-  } else {
-    layer = createLayer(map, layerOptions, beforeId);
-    if (layer && !context.controlledLayers.includes(id)) {
-      context.controlledLayers.push(id);
+    let layer = map.style?._loaded && map.getLayer(id);
+
+    if (layer) {
+      updateLayer(map, props, prevPropsRef.current);
+    } else {
+      layer = createLayer(map, layerOptions, beforeId);
+      if (layer && !context.controlledLayers.includes(id)) {
+        context.controlledLayers.push(id);
+      }
+      map.off("styledata", reRender);
     }
-    map.off("styledata", reRender);
-  }
 
-  useImperativeHandle(ref, () => layer, [layer]);
+    useImperativeHandle(ref, () => layer, [layer]);
 
-  prevPropsRef.current = props;
-  console.timeEnd("rlayer");
+    prevPropsRef.current = props;
+    console.timeEnd("rlayer");
 
-  return null;
-}
-
-export default memo(forwardRef(RLayer));
+    return null;
+  }),
+);

@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { RMap, RMarker, markerPopupOffset } from "..";
-import RPopup from "./RPopup";
+import { RMap } from "./RMap";
+import { RMarker } from "./RMarker";
+import { markerPopupOffset } from "../lib/util";
+import { RPopup } from "./RPopup";
 import { useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 

@@ -1,6 +1,6 @@
 import { LngLat, type Map, MapMouseEvent } from "maplibre-gl";
 import { ReactElement, useEffect } from "react";
-import { useMap } from "..";
+import { useMap } from "../hooks/useMap";
 
 type Point = ReturnType<InstanceType<typeof Map>["project"]>;
 

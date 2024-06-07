@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { mapLibreContext } from "..";
+import { mapLibreContext } from "../context";
 import { TerrainSpecification } from "maplibre-gl";
 
 type RTerrainProps = TerrainSpecification;
 
-function RTerrain(props: RTerrainProps) {
+export const RTerrain = (props: RTerrainProps) => {
   const { ...terrainOptions } = props;
 
   const context = useContext(mapLibreContext);
@@ -61,6 +61,4 @@ function RTerrain(props: RTerrainProps) {
   prevPropsRef.current = props;
 
   return null;
-}
-
-export default RTerrain;
+};

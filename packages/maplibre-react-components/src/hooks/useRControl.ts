@@ -1,33 +1,32 @@
 import { ControlPosition } from "maplibre-gl";
 import { useEffect, useRef } from "react";
-import { updateClassNames, useMap } from "..";
+import { updateClassNames } from "../lib/util";
+import { useMap } from "../hooks/useMap";
 
 type RControlHookOptions<T extends string = ControlPosition> = {
   position: T;
   className?: string;
 };
 
-export default function useRControl<T extends string = ControlPosition>({
+export function useRControl<T extends string = ControlPosition>({
   position,
   className = "maplibregl-ctrl maplibregl-ctrl-group",
 }: RControlHookOptions<T>) {
   const map = useMap();
-  const controlElementRef = useRef<HTMLDivElement>();
+  const containerRef = useRef<HTMLDivElement>();
 
   const prevOptionsRef = useRef<{ className: string }>({
     className,
   });
 
-  if (!controlElementRef.current) {
+  if (!containerRef.current) {
     const ctrl = document.createElement("div");
-    className.split(" ").forEach((name) => {
-      name !== "" && ctrl.classList.add(name);
-    });
+    ctrl.className = className;
 
-    controlElementRef.current = ctrl;
+    containerRef.current = ctrl;
   }
   useEffect(() => {
-    const ctrl = controlElementRef.current;
+    const ctrl = containerRef.current;
 
     if (ctrl && !ctrl.parentElement) {
       const positionContainer = map._controlPositions[position];
@@ -42,13 +41,13 @@ export default function useRControl<T extends string = ControlPosition>({
     }
 
     return () => {
-      controlElementRef.current && controlElementRef.current.remove();
+      containerRef.current && containerRef.current.remove();
     };
   }, [map, position]);
 
   if (prevOptionsRef.current.className !== className) {
     updateClassNames(
-      controlElementRef.current,
+      containerRef.current,
       prevOptionsRef.current.className?.split(" ") || [],
       className?.split(" ") || [],
     );
@@ -58,5 +57,7 @@ export default function useRControl<T extends string = ControlPosition>({
     className,
   };
 
-  return controlElementRef.current;
+  return {
+    container: containerRef.current,
+  };
 }

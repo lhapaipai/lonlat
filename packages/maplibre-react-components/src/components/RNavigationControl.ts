@@ -1,10 +1,8 @@
 import { memo } from "react";
-import { useControl } from "..";
+import { useControl } from "../hooks/useControl";
 import { NavigationControl } from "maplibre-gl";
 
-function RNavigationControl() {
+export const RNavigationControl = memo(function RNavigationControl() {
   useControl("top-right", () => new NavigationControl());
   return null;
-}
-
-export default memo(RNavigationControl);
+});

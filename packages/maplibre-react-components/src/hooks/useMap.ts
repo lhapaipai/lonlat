@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { mapLibreContext } from "../context";
 
-export default function useMap() {
+export function useMap() {
   const context = useContext(mapLibreContext);
 
   if (!context.mapManager) {

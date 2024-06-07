@@ -1,9 +1,9 @@
 import { ControlPosition, IControl, Map } from "maplibre-gl";
-import { useMap } from "..";
+import { useMap } from "../hooks/useMap";
 import { useEffect, useMemo } from "react";
 import { useEventCallback } from "./useEventCallback";
 
-export default function useControl(
+export function useControl(
   position: ControlPosition,
   factory: (map: Map) => IControl,
   onRemove?: (map: Map) => void,

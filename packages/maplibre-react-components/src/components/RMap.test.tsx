@@ -8,7 +8,7 @@ import {
   MapNonReactiveOptionName,
   MapHandlerOptionName,
 } from "../lib/MapManager";
-import RMap from "./RMap";
+import { RMap } from "./RMap";
 import { beforeMapTest } from "../tests/util";
 
 afterEach(() => {

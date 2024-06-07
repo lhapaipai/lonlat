@@ -4,7 +4,6 @@ import { Map } from "maplibre-gl";
 import {
   CSSProperties,
   ReactNode,
-  Ref,
   forwardRef,
   useImperativeHandle,
   useMemo,
@@ -30,7 +29,7 @@ const childContainerStyle = {
   height: "100%",
 };
 
-function RMap(
+export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
   {
     /* RMapProps */
     children,
@@ -47,8 +46,8 @@ function RMap(
 
     /* MapProps */
     ...mapProps
-  }: RMapProps,
-  ref: Ref<Map | undefined>,
+  },
+  ref,
 ) {
   // console.log("render RMap");
   const containerRef = useRef<HTMLDivElement>(null!);
@@ -129,6 +128,4 @@ function RMap(
       )}
     </div>
   );
-}
-
-export default forwardRef(RMap);
+});

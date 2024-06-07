@@ -17,7 +17,6 @@ import {
   useEffect,
   useRef,
   useState,
-  Ref,
   useImperativeHandle,
   useContext,
   memo,
@@ -118,105 +117,109 @@ function updateSource(
   }
 }
 
-function RSource(props: RSourceProps, ref: Ref<Source | undefined>) {
-  console.time("rsource");
-  const { id, ...sourceOptions } = props;
-  console.log("Render RSource", id);
+// export default memo(forwardRef(RSource));
 
-  const context = useContext(mapLibreContext);
-  const map = context.mapManager?.map;
+export const RSource = memo(
+  forwardRef<Source | undefined, RSourceProps>(function RSource(props, ref) {
+    console.time("rsource");
+    const { id, ...sourceOptions } = props;
+    console.log("Render RSource", id);
 
-  if (!map) {
-    throw new Error("use <RSource /> component inside <RMap />");
-  }
+    const context = useContext(mapLibreContext);
+    const map = context.mapManager?.map;
 
-  const prevOptionsRef = useRef(sourceOptions);
-  const initialId = useRef(id);
+    if (!map) {
+      throw new Error("use <RSource /> component inside <RMap />");
+    }
 
-  if (id !== initialId.current) {
-    throw new Error(
-      `RSource id should not change. "${id}" "${initialId.current}". If you defined id as const string add a "key" prop to your RSource component`,
-    );
-  }
-  if (sourceOptions.type !== prevOptionsRef.current.type) {
-    throw new Error(
-      `RSource type should not change. "${sourceOptions.type}" "${prevOptionsRef.current.type}"`,
-    );
-  }
+    const prevOptionsRef = useRef(sourceOptions);
+    const initialId = useRef(id);
 
-  const [, setVersion] = useState(0);
+    if (id !== initialId.current) {
+      throw new Error(
+        `RSource id should not change. "${id}" "${initialId.current}". If you defined id as const string add a "key" prop to your RSource component`,
+      );
+    }
+    if (sourceOptions.type !== prevOptionsRef.current.type) {
+      throw new Error(
+        `RSource type should not change. "${sourceOptions.type}" "${prevOptionsRef.current.type}"`,
+      );
+    }
 
-  // https://github.com/maplibre/maplibre-gl-js/issues/1835#issuecomment-1310741571
-  // explain why setTimeout
-  const reRender = useCallback(() => void setTimeout(() => setVersion((v) => v + 1), 0), []);
-
-  useEffect(() => {
-    console.log("RSource useEffect", map.style._loaded);
+    const [, setVersion] = useState(0);
 
     // https://github.com/maplibre/maplibre-gl-js/issues/1835#issuecomment-1310741571
     // explain why setTimeout
-    // const reRender = () => void setTimeout(() => setVersion((v) => v + 1), 0);
+    const reRender = useCallback(() => void setTimeout(() => setVersion((v) => v + 1), 0), []);
 
-    /**
-     * fired when
-     *  - new source added/removed
-     *  - new layer added/removed
-     *  when event is fired map.style._loaded is always true
-     */
-    map.on("styledata", reRender);
+    useEffect(() => {
+      console.log("RSource useEffect", map.style._loaded);
 
-    if (map.style._loaded) {
-      // in case style is loaded between first render and useEffect call
-      // our styledata listener arrives too late we have to force a new
-      // render to add our source
-      reRender();
-    }
+      // https://github.com/maplibre/maplibre-gl-js/issues/1835#issuecomment-1310741571
+      // explain why setTimeout
+      // const reRender = () => void setTimeout(() => setVersion((v) => v + 1), 0);
 
-    return () => {
-      map.off("styledata", reRender);
-      if (map.style && map.getSource(id)) {
-        // before removing source, remove all layers using this source
-        const layers = map.getStyle()?.layers;
-        if (layers) {
-          for (const layer of layers) {
-            // BackgroundLayerSpecification / CustomLayerInterface has not "source"
-            // see below: <RSource /> throw error if <RLayer type="background/custom" />
-            // inserted as child. so the case cannot happen
-            if (
-              layer.type !== "background" &&
-              (layer as unknown as CustomLayerInterface).type !== "custom" &&
-              layer.source === id
-            ) {
-              map.removeLayer(layer.id);
-              context.controlledLayers = context.controlledLayers.filter((id) => id !== layer.id);
+      /**
+       * fired when
+       *  - new source added/removed
+       *  - new layer added/removed
+       *  when event is fired map.style._loaded is always true
+       */
+      map.on("styledata", reRender);
+
+      if (map.style._loaded) {
+        // in case style is loaded between first render and useEffect call
+        // our styledata listener arrives too late we have to force a new
+        // render to add our source
+        reRender();
+      }
+
+      return () => {
+        map.off("styledata", reRender);
+        if (map.style && map.getSource(id)) {
+          // before removing source, remove all layers using this source
+          const layers = map.getStyle()?.layers;
+          if (layers) {
+            for (const layer of layers) {
+              // BackgroundLayerSpecification / CustomLayerInterface has not "source"
+              // see below: <RSource /> throw error if <RLayer type="background/custom" />
+              // inserted as child. so the case cannot happen
+              if (
+                layer.type !== "background" &&
+                (layer as unknown as CustomLayerInterface).type !== "custom" &&
+                layer.source === id
+              ) {
+                map.removeLayer(layer.id);
+                context.controlledLayers = context.controlledLayers.filter((id) => id !== layer.id);
+              }
             }
           }
+          map.removeSource(id);
+          context.controlledSources = context.controlledSources.filter(
+            (sourceId) => id !== sourceId,
+          );
         }
-        map.removeSource(id);
-        context.controlledSources = context.controlledSources.filter((sourceId) => id !== sourceId);
+      };
+    }, [map, id, context, reRender]);
+
+    let source = map.style?._loaded && map.getSource(id);
+
+    if (source) {
+      // console.log("updateSource", id);
+      updateSource(source, sourceOptions, prevOptionsRef.current);
+    } else {
+      source = createSource(map, id, sourceOptions);
+      if (source && !context.controlledSources.includes(id)) {
+        context.controlledSources.push(id);
       }
-    };
-  }, [map, id, context, reRender]);
-
-  let source = map.style?._loaded && map.getSource(id);
-
-  if (source) {
-    // console.log("updateSource", id);
-    updateSource(source, sourceOptions, prevOptionsRef.current);
-  } else {
-    source = createSource(map, id, sourceOptions);
-    if (source && !context.controlledSources.includes(id)) {
-      context.controlledSources.push(id);
+      map.off("styledata", reRender);
     }
-    map.off("styledata", reRender);
-  }
 
-  useImperativeHandle(ref, () => source, [source]);
+    useImperativeHandle(ref, () => source, [source]);
 
-  prevOptionsRef.current = sourceOptions;
-  console.timeEnd("rsource");
+    prevOptionsRef.current = sourceOptions;
+    console.timeEnd("rsource");
 
-  return null;
-}
-
-export default memo(forwardRef(RSource));
+    return null;
+  }),
+);
