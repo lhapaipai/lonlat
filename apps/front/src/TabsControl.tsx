@@ -20,7 +20,7 @@ function TabsControl() {
   const distractionFree = useAppSelector(selectDistractionFree);
   const mode = useAppSelector(selectMode);
 
-  const container = useRControl({
+  const { container } = useRControl({
     position: "top-right",
     className: clsx("maplibregl-ctrl maplibregl-ctrl-tabs", distractionFree && "distraction-free"),
   });

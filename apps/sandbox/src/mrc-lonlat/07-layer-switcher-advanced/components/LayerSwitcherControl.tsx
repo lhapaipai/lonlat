@@ -28,7 +28,7 @@ import { useState } from "react";
 import { Button, ButtonGroup } from "pentatrion-design";
 
 export default function LayerSwitcherControl() {
-  const container = useRControl({
+  const { container } = useRControl({
     position: "bottom",
     className: "ll-layer-switcher",
   });

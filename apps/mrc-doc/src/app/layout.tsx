@@ -24,6 +24,7 @@ export default function RootLayout({
           <Link href="/reference/rsource">RSource</Link>
           <Link href="/reference/rlayer">RLayer</Link>
           <Link href="/reference/rmarker">RMarker</Link>
+          <Link href="/reference/usercontrol">useRControl</Link>
           <Link href="/faq">faq</Link>
           <Link href="/reference/learn">Learn</Link>
         </nav>

@@ -32,7 +32,7 @@ const directionOptions = [
 export default function IsochroneControl() {
   const distractionFree = useAppSelector(selectDistractionFree);
 
-  const container = useRControl({
+  const { container } = useRControl({
     position: "top-right",
     className: clsx("maplibregl-ctrl maplibregl-ctrl-group", distractionFree && "distraction-free"),
   });

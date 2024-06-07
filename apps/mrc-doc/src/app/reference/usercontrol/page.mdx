@@ -1,0 +1,53 @@
+export const metadata = {
+  title: 'useRControl',
+  description: 'hook to add React Control inside MapLibre'
+};
+
+# useRControl
+
+Hook to add React Control inside MapLibre
+
+## Usage
+
+```tsx
+import { RMap, useRControl } from "maplibre-react-components";
+
+function CustomControl() {
+  const { container } = useRControl({
+    position: "bottom-left"
+  });
+
+  return createPortal(
+    <>
+      <h3>Custom control</h3>
+      <div>add your content</div>
+    </>,
+    container
+  );
+}
+
+function App() {
+  return (
+    <RMap>
+      <CustomControl />
+    </RMap>
+  );
+}
+```
+
+## Reference
+
+```ts
+type RControlHookOptions = {
+  position: ControlPosition;
+  /**
+   * default: "maplibregl-ctrl maplibregl-ctrl-group"
+   * if you define another value it will overwrite default className.
+   */
+  className?: string;
+}
+
+type RControlHookReturn = {
+  container: HTMLDivElement;
+};
+```

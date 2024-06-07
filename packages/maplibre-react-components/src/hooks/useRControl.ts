@@ -8,10 +8,14 @@ type RControlHookOptions<T extends string = ControlPosition> = {
   className?: string;
 };
 
+type RControlHookReturn = {
+  container: HTMLDivElement;
+};
+
 export function useRControl<T extends string = ControlPosition>({
   position,
   className = "maplibregl-ctrl maplibregl-ctrl-group",
-}: RControlHookOptions<T>) {
+}: RControlHookOptions<T>): RControlHookReturn {
   const map = useMap();
   const containerRef = useRef<HTMLDivElement>();
 

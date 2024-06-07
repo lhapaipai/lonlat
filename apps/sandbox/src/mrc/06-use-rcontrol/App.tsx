@@ -8,7 +8,7 @@ import { createPortal } from "react-dom";
 const marignier = { lng: 6.498, lat: 46.089 };
 
 function LayoutControl() {
-  const container = useRControl({
+  const { container } = useRControl({
     position: "bottom-left",
   });
   return createPortal(
