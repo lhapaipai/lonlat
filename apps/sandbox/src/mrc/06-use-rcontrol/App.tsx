@@ -10,10 +10,9 @@ import {
   RMarker,
   RNavigationControl,
   RScaleControl,
-  RTerrainControl,
   useRControl,
 } from "maplibre-react-components";
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const marignier = { lng: 6.498, lat: 46.089 };
@@ -35,9 +34,6 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [showMap, setShowMap] = useState(true);
   const [showCtrl, setShowCtrl] = useState(true);
-  useLayoutEffect(() => {
-    console.log(mapRef);
-  });
 
   const handleAfterInstanciation = useCallback((map: Map) => {
     map.addControl(new NavigationControl());
@@ -52,6 +48,7 @@ function App() {
           initialZoom={4}
           onMounted={handleAfterInstanciation}
         >
+          <RNavigationControl />
           {showCtrl && <RFullscreenControl position="bottom-right" />}
           <RScaleControl />
           <RLogoControl />

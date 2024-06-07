@@ -11,7 +11,10 @@ export const RGeolocateControl = memo(
     { position = "top-right", ...controlOptions },
     ref,
   ) {
-    const control = useControl(position, () => new GeolocateControl(controlOptions));
+    const control = useControl({
+      position,
+      factory: () => new GeolocateControl(controlOptions),
+    });
     useImperativeHandle(ref, () => control);
     return null;
   }),

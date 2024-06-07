@@ -16,7 +16,10 @@ export const RAttributionControl = memo(
     { position = "bottom-right", ...controlOptions },
     ref,
   ) {
-    const control = useControl(position, () => new AttributionControl(controlOptions));
+    const control = useControl({
+      position,
+      factory: () => new AttributionControl(controlOptions),
+    });
     useImperativeHandle(ref, () => control);
     return null;
   }),

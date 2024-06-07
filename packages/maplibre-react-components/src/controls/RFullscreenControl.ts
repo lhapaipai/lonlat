@@ -16,7 +16,10 @@ export const RFullscreenControl = memo(
     { position = "top-right", ...controlOptions },
     ref,
   ) {
-    const control = useControl(position, () => new FullscreenControl(controlOptions));
+    const control = useControl({
+      position,
+      factory: () => new FullscreenControl(controlOptions),
+    });
     useImperativeHandle(ref, () => control);
     return null;
   }),

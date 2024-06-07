@@ -11,7 +11,10 @@ export const RLogoControl = memo(
     { position = "bottom-left", ...controlOptions },
     ref,
   ) {
-    const control = useControl(position, () => new LogoControl(controlOptions));
+    const control = useControl({
+      position,
+      factory: () => new LogoControl(controlOptions),
+    });
     useImperativeHandle(ref, () => control);
     return null;
   }),

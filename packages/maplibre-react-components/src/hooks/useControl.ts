@@ -3,11 +3,19 @@ import { useMap } from "../hooks/useMap";
 import { useEffect, useMemo } from "react";
 import { useEventCallback } from "./useEventCallback";
 
-export function useControl(
-  position: ControlPosition,
-  factory: (map: Map) => IControl,
-  onRemove?: (map: Map) => void,
-) {
+type ControlHookOptions = {
+  position: ControlPosition;
+  factory: (map: Map) => IControl;
+  onRemove?: (map: Map) => void;
+};
+
+type ControlHookReturn = IControl;
+
+export function useControl({
+  position = "top-right",
+  factory,
+  onRemove,
+}: ControlHookOptions): ControlHookReturn {
   const map = useMap();
   // we don't want to re-instanciate new control if factory change
   // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -11,7 +11,10 @@ export const RScaleControl = memo(
     { position = "bottom-left", ...controlOptions },
     ref,
   ) {
-    const control = useControl(position, () => new ScaleControl(controlOptions));
+    const control = useControl({
+      position,
+      factory: () => new ScaleControl(controlOptions),
+    });
     useImperativeHandle(ref, () => control);
     return null;
   }),

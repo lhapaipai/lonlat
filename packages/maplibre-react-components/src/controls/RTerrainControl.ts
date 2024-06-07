@@ -11,7 +11,10 @@ export const RTerrainControl = memo(
     { position = "top-right", ...controlOptions },
     ref,
   ) {
-    const control = useControl(position, () => new TerrainControl(controlOptions));
+    const control = useControl({
+      position,
+      factory: () => new TerrainControl(controlOptions),
+    });
     useImperativeHandle(ref, () => control);
     return null;
   }),

@@ -1,0 +1,49 @@
+export const metadata = {
+  title: 'useControl',
+  description: 'Hook to add Vanilla MapLibre Control inside RMap'
+};
+
+# useControl
+
+Hook to add Vanilla MapLibre Control inside RMap.
+
+## Usage
+
+```tsx
+import { ControlPosition, IControl, LogoControl, LogoControlOptions } from "maplibre-gl";
+import { memo } from "react";
+import { useControl } from "maplibre-react-components";
+
+type RLogoControlProps = LogoControlOptions & {
+  position?: ControlPosition;
+};
+
+const RLogoControl = memo(function RLogoControl({ position = "bottom-left", ...controlOptions }: RLogoControlProps) {
+  const control = useControl({
+    position,
+    factory: () => new LogoControl(controlOptions),
+  });
+  return null;
+})
+
+
+function App() {
+  return (
+    <RMap>
+      <RLogoControl position="top-left" />
+    </RMap>
+  )
+}
+```
+
+## Reference
+
+```ts
+type ControlHookOptions = {
+  position: ControlPosition;
+  factory: (map: Map) => IControl;
+  onRemove?: (map: Map) => void;
+};
+
+type ControlHookReturn = IControl;
+```

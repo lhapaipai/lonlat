@@ -16,7 +16,10 @@ export const RNavigationControl = memo(
     { position = "top-right", ...controlOptions },
     ref,
   ) {
-    const control = useControl(position, () => new NavigationControl(controlOptions));
+    const control = useControl({
+      position,
+      factory: () => new NavigationControl(controlOptions),
+    });
 
     useImperativeHandle(ref, () => control);
 
