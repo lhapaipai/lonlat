@@ -1,0 +1,18 @@
+import { ControlPosition, IControl, LogoControl, LogoControlOptions } from "maplibre-gl";
+import { memo, forwardRef, useImperativeHandle } from "react";
+import { useControl } from "..";
+
+type RLogoControlProps = LogoControlOptions & {
+  position?: ControlPosition;
+};
+
+export const RLogoControl = memo(
+  forwardRef<IControl, RLogoControlProps>(function RLogoControl(
+    { position = "bottom-left", ...controlOptions },
+    ref,
+  ) {
+    const control = useControl(position, () => new LogoControl(controlOptions));
+    useImperativeHandle(ref, () => control);
+    return null;
+  }),
+);

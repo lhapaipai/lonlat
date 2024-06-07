@@ -1,0 +1,18 @@
+import { ControlPosition, IControl, ScaleControl, ScaleControlOptions } from "maplibre-gl";
+import { memo, forwardRef, useImperativeHandle } from "react";
+import { useControl } from "..";
+
+type RScaleControlProps = ScaleControlOptions & {
+  position?: ControlPosition;
+};
+
+export const RScaleControl = memo(
+  forwardRef<IControl, RScaleControlProps>(function RScaleControl(
+    { position = "bottom-left", ...controlOptions },
+    ref,
+  ) {
+    const control = useControl(position, () => new ScaleControl(controlOptions));
+    useImperativeHandle(ref, () => control);
+    return null;
+  }),
+);

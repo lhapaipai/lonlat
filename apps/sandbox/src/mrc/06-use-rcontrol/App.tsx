@@ -1,7 +1,18 @@
 import { Map, NavigationControl } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { RMap, RMarker, RNavigationControl, useRControl } from "maplibre-react-components";
+import {
+  RAttributionControl,
+  RFullscreenControl,
+  RGeolocateControl,
+  RLogoControl,
+  RMap,
+  RMarker,
+  RNavigationControl,
+  RScaleControl,
+  RTerrainControl,
+  useRControl,
+} from "maplibre-react-components";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -41,7 +52,11 @@ function App() {
           initialZoom={4}
           onMounted={handleAfterInstanciation}
         >
-          {showCtrl && <RNavigationControl />}
+          {showCtrl && <RFullscreenControl position="bottom-right" />}
+          <RScaleControl />
+          <RLogoControl />
+          <RGeolocateControl />
+          <RAttributionControl />
           <RMarker
             longitude={marignier.lng}
             latitude={marignier.lat}
