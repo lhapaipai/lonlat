@@ -1,5 +1,5 @@
 import { LngLat, type Map, MapMouseEvent } from "maplibre-gl";
-import { ReactElement, useEffect } from "react";
+import { useEffect } from "react";
 import { useMap } from "../hooks/useMap";
 
 type Point = ReturnType<InstanceType<typeof Map>["project"]>;
@@ -8,13 +8,17 @@ export interface MaplibreContextmenuEventDetail {
   originalEvent: MouseEvent;
   point: Point;
   lngLat: LngLat;
+  emulated: boolean;
 }
 
 interface Props {
-  children: ReactElement;
+  customEventName?: string;
   enabled?: boolean;
 }
-export function ContextMenuEventDispatcher({ children, enabled = true }: Props) {
+export function ContextMenuEventDispatcher({
+  customEventName = "contextmenu-maplibre",
+  enabled = true,
+}: Props) {
   const map = useMap();
 
   useEffect(() => {
@@ -22,24 +26,30 @@ export function ContextMenuEventDispatcher({ children, enabled = true }: Props) 
       return;
     }
 
+    /**
+     * related issue: contextmenu not managed by Touch devices
+     * https://github.com/maplibre/maplibre-gl-js/issues/373
+     */
+    const eventName = window.matchMedia("(pointer: coarse)").matches ? "click" : "contextmenu";
+
     function handleContextMenu({ originalEvent, point, lngLat }: MapMouseEvent) {
-      document.dispatchEvent(
-        new CustomEvent<MaplibreContextmenuEventDetail>("maplibre-contextmenu", {
+      map.getCanvasContainer().dispatchEvent(
+        new CustomEvent<MaplibreContextmenuEventDetail>(customEventName, {
           detail: {
             originalEvent,
             point,
             lngLat,
+            emulated: eventName !== "contextmenu",
           },
         }),
       );
     }
 
-    const eventName = window.matchMedia("(pointer: coarse)").matches ? "click" : "contextmenu";
     map.on(eventName, handleContextMenu);
     return () => {
       map.off(eventName, handleContextMenu);
     };
-  }, [map, enabled]);
+  }, [map, enabled, customEventName]);
 
-  return children;
+  return null;
 }

@@ -117,8 +117,6 @@ function updateSource(
   }
 }
 
-// export default memo(forwardRef(RSource));
-
 export const RSource = memo(
   forwardRef<Source | undefined, RSourceProps>(function RSource(props, ref) {
     console.time("rsource");
@@ -155,10 +153,6 @@ export const RSource = memo(
     useEffect(() => {
       console.log("RSource useEffect", map.style._loaded);
 
-      // https://github.com/maplibre/maplibre-gl-js/issues/1835#issuecomment-1310741571
-      // explain why setTimeout
-      // const reRender = () => void setTimeout(() => setVersion((v) => v + 1), 0);
-
       /**
        * fired when
        *  - new source added/removed
@@ -182,8 +176,6 @@ export const RSource = memo(
           if (layers) {
             for (const layer of layers) {
               // BackgroundLayerSpecification / CustomLayerInterface has not "source"
-              // see below: <RSource /> throw error if <RLayer type="background/custom" />
-              // inserted as child. so the case cannot happen
               if (
                 layer.type !== "background" &&
                 (layer as unknown as CustomLayerInterface).type !== "custom" &&

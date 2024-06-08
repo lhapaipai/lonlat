@@ -14,7 +14,7 @@ export default function SearchContextMenu() {
   }
 
   return (
-    <ContextMenu eventName="maplibre-contextmenu">
+    <ContextMenu eventName="contextmenu-custom">
       <ContextMenuItem
         key="search-infos"
         label="Plus d'infos sur cet endroit"

@@ -1,5 +1,4 @@
-import Href from "../components/href/Href";
-import Code from "../components/code/Code";
+import { Code } from "../components/code/Code";
 import {
   Table,
   TableBody,
@@ -8,6 +7,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from "../components/table";
+import { Content } from "./Content";
 
 export default {
   title: "Styles/Typography",
@@ -76,26 +76,13 @@ export const TextSizes = () => (
   </Table>
 );
 
-export const Content = () => (
+export const Typography = () => (
   <div>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-      been the industry's standard <a href="#">dummy text</a> ever since the 1500s, when an unknown
-      printer took a galley of type and scrambled it to make a type specimen book. It has survived.
-      Visit the Lonlat website, not only five centuries, but also the leap into electronic
-      typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
-      of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-      software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
-    <p>
-      There is a{" "}
-      <Href ghost={true} href="#">
-        ghost
-      </Href>{" "}
-      link.
-    </p>
-    <p>
-      Click <span className="can-copy">HERE</span> to copy to clipboard
-    </p>
+    <h1>Without TailwindCSS Typography</h1>
+    <Content />
+    <h1>With TailwinCSS Typography</h1>
+    <div className="prose">
+      <Content />
+    </div>
   </div>
 );

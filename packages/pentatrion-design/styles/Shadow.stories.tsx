@@ -1,4 +1,4 @@
-import Code from "../components/code/Code";
+import { Code } from "../components/code/Code";
 
 export default {
   title: "Styles",

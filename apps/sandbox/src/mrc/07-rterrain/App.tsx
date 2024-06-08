@@ -1,7 +1,7 @@
 import { Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { RMap, RMarker, RSource, RTerrain } from "maplibre-react-components";
+import { RMap, RMarker, RSource, RTerrain, RTerrainControl } from "maplibre-react-components";
 import { useRef, useState } from "react";
 
 const marignier = { lng: 6.498, lat: 46.089 };
@@ -23,15 +23,17 @@ function App() {
           initialZoom={13}
         >
           <RMarker longitude={marignier.lng} latitude={marignier.lat} />
+          <RSource
+            type="raster-dem"
+            id="terrarium"
+            tiles={rasterDemTiles}
+            encoding="terrarium"
+            tileSize={256}
+          />
+
+          <RTerrainControl source="terrarium" />
           {showTerrain && (
             <>
-              <RSource
-                type="raster-dem"
-                id="terrarium"
-                tiles={rasterDemTiles}
-                encoding="terrarium"
-                tileSize={256}
-              />
               <RTerrain source="terrarium" exaggeration={1.3} />
             </>
           )}

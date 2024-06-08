@@ -2,6 +2,7 @@ import {
   Children,
   ComponentPropsWithRef,
   ReactElement,
+  RefObject,
   cloneElement,
   isValidElement,
   useEffect,
@@ -28,14 +29,18 @@ import { ContextMenuItemProps } from "./ContextMenuItem";
 import { Dialog } from "../dialog";
 import { useEventCallback, useRefDebounce } from "../../hooks";
 
+type CustomContextEvent = CustomEvent<{ emulated: boolean; originalEvent: Event }>;
+
 interface Props extends ComponentPropsWithRef<"div"> {
+  target?: RefObject<HTMLElement | unknown>;
   children: ReactElement[] | ReactElement;
-  eventName?: "contextmenu" | "maplibre-contextmenu";
+  eventName?: "contextmenu" | string;
+  debounceOpenning?: number;
 }
-export function ContextMenu({ children, style, eventName = "contextmenu" }: Props) {
+export function ContextMenu({ target, children, style, eventName = "contextmenu" }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const isOpenDebounceRef = useRefDebounce(isOpen, 500);
+  const isOpenDebounceRef = useRefDebounce(isOpen, 200);
   const contextEvent = useRef<MouseEvent | CustomEvent | null>(null);
   const listItemsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const listContentRef = useRef(
@@ -91,15 +96,24 @@ export function ContextMenu({ children, style, eventName = "contextmenu" }: Prop
     typeahead,
   ]);
 
-  const onContextMenuStable = useEventCallback(function onContextMenu(e: MouseEvent | CustomEvent) {
+  const onContextMenuStable = useEventCallback(function onContextMenu(
+    e: MouseEvent | CustomContextEvent,
+  ) {
+    e.preventDefault();
     /**
-     * if the context menu has just been closed we probably do not want a click to immediately
-     * reopen a new context menu
+     * in certain cases (maplibre-gl) we will not be able to use the
+     * native "contextmenu" event for touch screens and we will emulate this
+     * with a simple "click" event
+     *
+     * with emulated event if the context menu has just been closed we probably
+     * do not want a click to immediately reopen a new context menu
      */
-    if (isOpenDebounceRef.current) {
+    const isEmulatedContextMenu =
+      e.type !== "contextmenu" && (e as CustomContextEvent).detail.emulated;
+
+    if (isEmulatedContextMenu && isOpenDebounceRef.current) {
       return;
     }
-    e.preventDefault();
 
     const originalEvent = e instanceof MouseEvent ? e : (e.detail.originalEvent as MouseEvent);
     contextEvent.current = e;
@@ -124,18 +138,32 @@ export function ContextMenu({ children, style, eventName = "contextmenu" }: Prop
   });
 
   useEffect(() => {
-    document.addEventListener(eventName, onContextMenuStable);
+    let stableTarget = document.documentElement;
+    if (target) {
+      stableTarget =
+        target.current instanceof HTMLElement
+          ? target.current
+          : // usage when target is RefObject<Map> with Map from "maplibre-gl"
+            (
+              target.current as {
+                getCanvasContainer: () => HTMLElement;
+              }
+            ).getCanvasContainer();
+    }
+    console.log("add contextmenu", target);
+    stableTarget.addEventListener(eventName as "contextmenu", onContextMenuStable);
     return () => {
-      document.removeEventListener(eventName, onContextMenuStable);
+      console.log("remove contextmenu", target);
+      stableTarget.removeEventListener(eventName as "contextmenu", onContextMenuStable);
     };
-  }, [eventName, onContextMenuStable]);
+  }, [eventName, onContextMenuStable, target]);
 
   return (
     <FloatingPortal>
       {isOpen && (
         <FloatingFocusManager context={context} initialFocus={refs.floating}>
           <div
-            className="z-dialog"
+            className="z-dialog outline-none"
             ref={refs.setFloating}
             style={{ ...floatingStyles, ...style }}
             {...getFloatingProps()}
@@ -154,10 +182,6 @@ export function ContextMenu({ children, style, eventName = "contextmenu" }: Prop
                       tabIndex: activeIndex === index ? 0 : -1,
                       ref(node: HTMLButtonElement) {
                         listItemsRef.current[index] = node;
-                      },
-                      onClick() {
-                        child.props.onClick?.(contextEvent.current);
-                        setIsOpen(false);
                       },
                       onMouseUp() {
                         child.props.onClick?.(contextEvent.current);

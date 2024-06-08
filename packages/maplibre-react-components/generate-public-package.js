@@ -7,6 +7,7 @@ const pkgInfos = JSON.parse(readFileSync(resolve(projectDir, "package.json"), "u
 delete pkgInfos.private;
 delete pkgInfos.devDependencies;
 delete pkgInfos.files;
+delete pkgInfos.scripts;
 
 pkgInfos.main = "index.js";
 pkgInfos.types = "index.d.ts";

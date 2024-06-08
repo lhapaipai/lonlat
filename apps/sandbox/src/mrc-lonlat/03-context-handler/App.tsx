@@ -8,7 +8,7 @@ import {
   MaplibreContextmenuEventDetail,
   RMap,
 } from "maplibre-react-components";
-import { ignPlanStyleUrl, marignier } from "../shared/constants";
+import { ignPlanStyleUrl, marignier } from "../../shared/constants";
 
 function App() {
   const mapRef = useRef<Map>(null!);
@@ -25,13 +25,12 @@ function App() {
   return (
     <>
       <RMap ref={mapRef} initialCenter={marignier} initialZoom={16} mapStyle={ignPlanStyleUrl}>
-        <ContextMenuEventDispatcher>
-          <ContextMenu eventName="maplibre-contextmenu">
-            <ContextMenuItem label="Add marker" onClick={handleClickBack} />
-            <ContextMenuItem label="Do nothing" />
-            <ContextMenuItem label="Disabled" disabled />
-          </ContextMenu>
-        </ContextMenuEventDispatcher>
+        <ContextMenuEventDispatcher />
+        <ContextMenu target={mapRef} eventName="contextmenu-maplibre">
+          <ContextMenuItem label="Add marker" onClick={handleClickBack} />
+          <ContextMenuItem label="Do nothing" />
+          <ContextMenuItem label="Disabled" disabled />
+        </ContextMenu>
       </RMap>
     </>
   );

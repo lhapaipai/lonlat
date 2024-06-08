@@ -16,7 +16,10 @@ export const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <div
           ref={ref}
-          className={clsx("z-tooltip", context.middlewareData.hide?.referenceHidden && "invisible")}
+          className={clsx(
+            "z-tooltip outline-none",
+            context.middlewareData.hide?.referenceHidden && "invisible",
+          )}
           style={{ ...context.floatingStyles, ...style }}
           {...context.getFloatingProps(props)}
         >

@@ -85,5 +85,5 @@ export default function DirectionContextMenu() {
   );
 
   // compact={contextItems.length > 5 ? true : false}
-  return <ContextMenu eventName="maplibre-contextmenu">{contextItems}</ContextMenu>;
+  return <ContextMenu eventName="contextmenu-custom">{contextItems}</ContextMenu>;
 }

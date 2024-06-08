@@ -289,7 +289,7 @@ function Autocomplete<O extends OptionLike = Option>(
               visuallyHiddenDismiss
             >
               <div
-                className="z-dialog"
+                className="z-dialog outline-none"
                 ref={refs.setFloating}
                 style={floatingStyles}
                 {...getFloatingProps()}

@@ -40,7 +40,7 @@ export const Basic = () => {
     <RMap ref={mapRef}>
       {markerCoords && <RMarker longitude={markerCoords[0]} latitude={markerCoords[1]} />}
       <ContextMenuEventDispatcher>
-        <ContextMenu eventName="maplibre-contextmenu">
+        <ContextMenu eventName="contextmenu-custom">
           <ContextMenuItem label="Add marker" onClick={handleClickBack} />
         </ContextMenu>
       </ContextMenuEventDispatcher>

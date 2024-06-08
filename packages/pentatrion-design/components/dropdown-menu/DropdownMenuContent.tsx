@@ -23,6 +23,7 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"di
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
             ref={ref}
+            className="outline-none"
             style={{ ...context.floatingStyles, ...style }}
             {...context.getFloatingProps(props)}
           >
