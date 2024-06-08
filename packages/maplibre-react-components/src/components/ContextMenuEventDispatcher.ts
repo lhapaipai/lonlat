@@ -15,6 +15,7 @@ interface Props {
   customEventName?: string;
   enabled?: boolean;
 }
+
 export function ContextMenuEventDispatcher({
   customEventName = "contextmenu-maplibre",
   enabled = true,

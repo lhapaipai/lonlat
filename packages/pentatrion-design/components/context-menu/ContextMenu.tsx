@@ -32,12 +32,12 @@ import { useEventCallback, useRefDebounce } from "../../hooks";
 type CustomContextEvent = CustomEvent<{ emulated: boolean; originalEvent: Event }>;
 
 interface Props extends ComponentPropsWithRef<"div"> {
-  target?: RefObject<HTMLElement | unknown>;
+  targetRef?: RefObject<HTMLElement>;
   children: ReactElement[] | ReactElement;
   eventName?: "contextmenu" | string;
   debounceOpenning?: number;
 }
-export function ContextMenu({ target, children, style, eventName = "contextmenu" }: Props) {
+export function ContextMenu({ targetRef, children, style, eventName = "contextmenu" }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const isOpenDebounceRef = useRefDebounce(isOpen, 200);
@@ -138,25 +138,14 @@ export function ContextMenu({ target, children, style, eventName = "contextmenu"
   });
 
   useEffect(() => {
-    let stableTarget = document.documentElement;
-    if (target) {
-      stableTarget =
-        target.current instanceof HTMLElement
-          ? target.current
-          : // usage when target is RefObject<Map> with Map from "maplibre-gl"
-            (
-              target.current as {
-                getCanvasContainer: () => HTMLElement;
-              }
-            ).getCanvasContainer();
-    }
-    console.log("add contextmenu", target);
+    const stableTarget = targetRef?.current ?? document.documentElement;
+    console.log("add contextmenu", targetRef);
     stableTarget.addEventListener(eventName as "contextmenu", onContextMenuStable);
     return () => {
-      console.log("remove contextmenu", target);
+      console.log("remove contextmenu", targetRef);
       stableTarget.removeEventListener(eventName as "contextmenu", onContextMenuStable);
     };
-  }, [eventName, onContextMenuStable, target]);
+  }, [eventName, onContextMenuStable, targetRef]);
 
   return (
     <FloatingPortal>

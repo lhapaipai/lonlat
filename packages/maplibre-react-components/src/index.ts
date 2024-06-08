@@ -22,6 +22,7 @@ export { RTerrainControl } from "./controls/RTerrainControl";
 export { useMap } from "./hooks/useMap";
 export { useRControl } from "./hooks/useRControl";
 export { useControl } from "./hooks/useControl";
+export { useMapAndCanvasRefs } from "./hooks/useMapAndCanvasRefs";
 
 export * from "./lib/util";
 
