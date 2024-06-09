@@ -1,7 +1,7 @@
-import { afterEach, assertType, describe, expect, test, vi } from "vitest";
+import { afterEach, assertType, describe, test, vi, expect, beforeEach } from "vitest";
 import { Map, type MapOptions } from "maplibre-gl";
 
-import { cleanup, render, waitFor } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 
 import {
   MapReactiveOptionName,
@@ -10,10 +10,14 @@ import {
 } from "../lib/MapManager";
 import { RMap } from "./RMap";
 import { beforeMapTest } from "../tests/util";
+import { emptyStyle } from "../lib/util";
+import { MutableRefObject } from "react";
 
+beforeEach(() => {
+  beforeMapTest();
+});
 afterEach(() => {
   cleanup();
-  beforeMapTest();
 });
 
 describe("RMap", () => {
@@ -30,19 +34,11 @@ describe("RMap", () => {
     >(Object);
   });
 
-  const defaultStyle = "https://demotiles.maplibre.org/style.json";
-
-  test("Render identically than vanilla Maplibre", async () => {
-    const marignier = { lng: 6.498, lat: 46.089 };
-
+  test("Render identically than vanilla Maplibre", async ({ expect }) => {
     const { container } = render(
-      <RMap
-        initialCenter={marignier}
-        mapStyle={defaultStyle}
-        initialAttributionControl={false}
-      ></RMap>,
+      <RMap mapStyle={emptyStyle} initialAttributionControl={false}></RMap>,
     );
-
+    screen.debug();
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div
@@ -89,10 +85,8 @@ describe("RMap", () => {
 
   test("call onMounted only at the first render", async ({ expect }) => {
     const onMounted = vi.fn();
-    const { rerender, unmount } = render(
-      <RMap mapStyle={defaultStyle} onMounted={onMounted}></RMap>,
-    );
-    rerender(<RMap mapStyle={defaultStyle} onMounted={onMounted}></RMap>);
+    const { rerender, unmount } = render(<RMap mapStyle={emptyStyle} onMounted={onMounted}></RMap>);
+    rerender(<RMap mapStyle={emptyStyle} onMounted={onMounted}></RMap>);
     unmount();
 
     expect(onMounted).toBeCalledTimes(1);
@@ -101,12 +95,27 @@ describe("RMap", () => {
   test("RMap forward map ref", async ({ expect }) => {
     const ref = { current: undefined };
 
-    render(<RMap ref={ref} mapStyle={defaultStyle}></RMap>);
+    render(<RMap ref={ref} mapStyle={emptyStyle} />);
 
-    await waitFor(() => {
-      expect(ref.current).toBeDefined();
-    });
-
+    expect(ref.current).toBeDefined();
     expect(ref.current).toBeInstanceOf(Map);
+  });
+
+  test.only("RMap update reactive options", async () => {
+    const ref: MutableRefObject<Map | null> = { current: null };
+    const { rerender } = render(<RMap ref={ref} minZoom={10} maxZoom={14} pixelRatio={1} />);
+
+    const map1 = ref.current!;
+    expect(map1.getMinZoom()).toBe(10);
+    expect(map1.getMaxZoom()).toBe(14);
+
+    rerender(<RMap ref={ref} minZoom={11} maxZoom={13} pixelRatio={1} />);
+
+    const map2 = ref.current!;
+
+    screen.debug();
+    expect(map1).toBe(map2);
+    expect(map2.getMinZoom()).toBe(11);
+    expect(map2.getMaxZoom()).toBe(13);
   });
 });

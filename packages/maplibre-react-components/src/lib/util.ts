@@ -1,4 +1,4 @@
-import { LngLat, LngLatLike, Offset, PointLike } from "maplibre-gl";
+import { LngLat, LngLatLike, Offset, PointLike, StyleSpecification } from "maplibre-gl";
 import {
   type MapCallbacks,
   type MapHandlerOptions,
@@ -16,15 +16,14 @@ export function filterMapProps(options: MapProps) {
     if (key.startsWith("on")) {
       // @ts-ignore
       callbacks[key] = options[key];
-    } else if (key in mapHandlerNames) {
+    } else if (mapHandlerNames.includes(key as any)) {
       // @ts-ignore
       mapHandlerOptions[key] = options[key];
-    } else if (key in mapReactiveOptionNames) {
+    } else if (mapReactiveOptionNames.includes(key as any)) {
       // @ts-ignore
       mapReactiveOptions[key] = options[key];
     } else if (!key.startsWith("initial") && key !== "container" && key !== "style") {
-      // @ts-ignore
-      console.error(`unknown map option key ${key}`, options[key]);
+      throw Error(`unknown map option key ${key}`);
     }
   }
 
@@ -36,18 +35,21 @@ export function filterMapProps(options: MapProps) {
 }
 
 export function transformPropsToOptions(props: { [k: string]: unknown }) {
-  const callbacks = {};
-  const options = {};
+  const callbacks: { [k: string]: unknown } = {};
+  const options: { [k: string]: unknown } = {};
   for (const key in props) {
-    if (key.startsWith("initial")) {
-      // @ts-ignore
-      options[key[7].toLowerCase() + key.substring(8)] = props[key];
-    } else if (key.startsWith("on")) {
-      // @ts-ignore
+    if (key.startsWith("on")) {
       callbacks[key] = props[key];
     } else {
-      // @ts-ignore
-      options[key] = props[key];
+      const definitiveKey = key.startsWith("initial")
+        ? key[7].toLowerCase() + key.substring(8)
+        : key;
+
+      if (options[definitiveKey]) {
+        throw new Error(`duplicate key ${definitiveKey}`);
+      } else {
+        options[definitiveKey] = props[key];
+      }
     }
   }
   return [options, callbacks] as const;
@@ -166,13 +168,20 @@ export function updateClassNames(
   nextClassNames: string[],
 ) {
   prevClassNames.forEach((name) => {
-    if (name !== "" && nextClassNames.indexOf(name) === -1) {
+    if (name === "") {
+      return;
+    }
+    if (nextClassNames.indexOf(name) === -1) {
       elt.classList.remove(name);
     }
   });
 
   nextClassNames.forEach((name) => {
-    if (name !== "" && prevClassNames.indexOf(name) === -1) {
+    if (name === "") {
+      return;
+    }
+
+    if (prevClassNames.indexOf(name) === -1 || !elt.classList.contains(name)) {
       elt.classList.add(name);
     }
   });
@@ -213,3 +222,10 @@ export const markerPopupOffset = {
   left: [markerRadius, (markerHeight - markerRadius) * -1],
   right: [-markerRadius, (markerHeight - markerRadius) * -1],
 } as Offset;
+
+export const emptyStyle: StyleSpecification = {
+  version: 8,
+  name: "Empty",
+  sources: {},
+  layers: [],
+};
