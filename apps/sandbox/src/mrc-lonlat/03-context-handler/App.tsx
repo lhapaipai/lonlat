@@ -1,17 +1,17 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.scss";
 import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "pentatrion-design/index";
-import { useRef } from "react";
-import { Map, Marker } from "maplibre-gl";
+import { Marker } from "maplibre-gl";
 import {
   ContextMenuEventDispatcher,
   MaplibreContextmenuEventDetail,
   RMap,
+  useMapAndCanvasRefs,
 } from "maplibre-react-components";
 import { ignPlanStyleUrl, marignier } from "../../shared/constants";
 
 function App() {
-  const mapRef = useRef<Map>(null!);
+  const { mapRef, canvasRef, setMapAndCanvasRef } = useMapAndCanvasRefs();
 
   function handleClickBack(e: ContextMenuItemMouseEvent) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
@@ -24,9 +24,14 @@ function App() {
 
   return (
     <>
-      <RMap ref={mapRef} initialCenter={marignier} initialZoom={16} mapStyle={ignPlanStyleUrl}>
+      <RMap
+        ref={setMapAndCanvasRef}
+        initialCenter={marignier}
+        initialZoom={16}
+        mapStyle={ignPlanStyleUrl}
+      >
         <ContextMenuEventDispatcher />
-        <ContextMenu target={mapRef} eventName="contextmenu-maplibre">
+        <ContextMenu targetRef={canvasRef} eventName="contextmenu-maplibre">
           <ContextMenuItem label="Add marker" onClick={handleClickBack} />
           <ContextMenuItem label="Do nothing" />
           <ContextMenuItem label="Disabled" disabled />
