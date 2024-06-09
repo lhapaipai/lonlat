@@ -1,14 +1,5 @@
-@import "tailwindcss/base";
-@import "./tailwind/base.css" layer(base);
+@import "./fontello";
 
-@import "tailwindcss/components";
-@import "./tailwind/components.css" layer(components);
-@import "./tailwind/components-input-outline.css" layer(components);
-@import "./tailwind/components-resize-area.css" layer(components);
-@import "./tailwind/components-step.css" layer(components);
-
-@import "tailwindcss/utilities";
-@import "./tailwind/utilities.css" layer(utilities);
-@import "./tailwind/utilities-dialog.css" layer(utilities);
-
-@import "pentatrion-fonts/fontello-lonlat";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

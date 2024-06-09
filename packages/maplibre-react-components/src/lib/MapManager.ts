@@ -268,7 +268,6 @@ const DEFAULT_STYLE = "https://demotiles.maplibre.org/style.json";
 export default class MapManager {
   reactiveOptions: MapReactiveOptions = {};
   handlerOptions: MapHandlerOptions = {};
-
   eventNames: string[] = [];
   callbacks: MapCallbacks;
 

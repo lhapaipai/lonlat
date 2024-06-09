@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
-import { pentatrionTw } from "pentatrion-design/tailwind";
+import { pentatrionTw, pentatrionTypographyExtend } from "pentatrion-design/tailwind";
+import typography from "@tailwindcss/typography";
 
 const config: Config = {
   content: [
@@ -11,7 +12,11 @@ const config: Config = {
     "./node_modules/pentatrion-design/redux/**/*.{ts,tsx}",
   ],
   darkMode: ["class"],
-  theme: {},
-  plugins: [pentatrionTw],
+  theme: {
+    extend: {
+      typography: pentatrionTypographyExtend,
+    },
+  },
+  plugins: [pentatrionTw, typography],
 };
 export default config;

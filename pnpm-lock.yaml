@@ -152,7 +152,7 @@ importers:
         version: 2.0.3
       vite:
         specifier: ^5.2.12
-        version: 5.2.12(sass@1.77.4)
+        version: 5.2.12(@types/node@20.14.2)
 
   apps/mrc-doc:
     dependencies:
@@ -187,6 +187,9 @@ importers:
       '@mdx-js/react':
         specifier: ^3.0.1
         version: 3.0.1(@types/react@18.3.3)(react@18.3.1)
+      '@tailwindcss/typography':
+        specifier: ^0.5.13
+        version: 0.5.13(tailwindcss@3.4.3)
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -369,7 +372,7 @@ importers:
         version: 5.4.5
       vite:
         specifier: ^5.0.7
-        version: 5.2.12(sass@1.77.4)
+        version: 5.2.12(@types/node@20.14.2)
 
   packages/maplibre-react-components:
     dependencies:
@@ -611,7 +614,7 @@ importers:
         version: 5.4.5
       vite:
         specifier: ^5.2.12
-        version: 5.2.12(sass@1.77.4)
+        version: 5.2.12(@types/node@20.14.2)
       vitest:
         specifier: ^1.6.0
         version: 1.6.0(@vitest/ui@1.6.0)(jsdom@24.1.0)
@@ -15582,7 +15585,7 @@ packages:
       debug: 4.3.5
       pathe: 1.1.2
       picocolors: 1.0.1
-      vite: 5.2.12(sass@1.77.4)
+      vite: 5.2.12(@types/node@20.14.2)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -15775,7 +15778,7 @@ packages:
       strip-literal: 2.1.0
       tinybench: 2.8.0
       tinypool: 0.8.4
-      vite: 5.2.12(sass@1.77.4)
+      vite: 5.2.12(@types/node@20.14.2)
       vite-node: 1.6.0
       why-is-node-running: 2.2.2
     transitivePeerDependencies:

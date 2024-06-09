@@ -1,4 +1,4 @@
-import { pentatrionTw } from "./tailwind";
+import { pentatrionTw, pentatrionTypographyExtend } from "./tailwind";
 import typography from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
@@ -12,8 +12,10 @@ export default {
   ],
   darkMode: ["class"],
   theme: {
-    extend: {},
+    extend: {
+      typography: pentatrionTypographyExtend,
+    },
   },
   safelist: ["light", "dark"],
-  plugins: [pentatrionTw, typography],
+  plugins: [pentatrionTw(), typography],
 };

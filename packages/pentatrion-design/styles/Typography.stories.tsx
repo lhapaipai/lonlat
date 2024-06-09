@@ -78,11 +78,12 @@ export const TextSizes = () => (
 
 export const Typography = () => (
   <div>
-    <h1>Without TailwindCSS Typography</h1>
-    <Content />
-    <h1>With TailwinCSS Typography</h1>
-    <div className="prose">
+    <h1 className="text-3xl">With TailwinCSS Typography</h1>
+    <div className="prose prose-neutral dark:prose-invert">
       <Content />
     </div>
+    <hr />
+    <h1 className="text-3xl">Without TailwindCSS Typography</h1>
+    <Content />
   </div>
 );

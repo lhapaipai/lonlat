@@ -28,7 +28,7 @@ export default function RootLayout({
           <Link href="/faq">faq</Link>
           <Link href="/reference/learn">Learn</Link>
         </nav>
-        {children}
+        <div className="prose prose-neutral">{children}</div>
       </body>
     </html>
   );

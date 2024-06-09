@@ -53,16 +53,16 @@ function App() {
             }}
           ></RMarker>
           <RSource
-            key="marignier-ortho"
+            key="marignier-ortho-source"
             id="marignier-ortho"
             type="image"
             url="/data/marignier-ortho.jpg"
             coordinates={orthoCoordinates}
           />
           <RLayer
+            key="marignier-ortho-layer"
             source="marignier-ortho"
             id="marignier-ortho"
-            key="marignier-ortho"
             type="raster"
             paint={rasterPaintStyle}
           />

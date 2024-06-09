@@ -1,11 +1,19 @@
 .can-copy {
-  @apply underline decoration-dashed decoration-gray-3 cursor-copy hover:decoration-gray-7;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: rgb(var(--color-gray-3) / 1);
+  cursor: copy;
+
+  &:hover {
+    text-decoration-color: rgb(var(--color-gray-7) / 1);
+  }
 }
 .disabled {
-  @apply pointer-events-none text-gray-6;
+  pointer-events: none;
+  color: rgb(var(--color-gray-6) / 1);
 }
 .disabled[disabled] {
-  @apply opacity-50;
+  opacity: 0.5;
 }
 
 .option {

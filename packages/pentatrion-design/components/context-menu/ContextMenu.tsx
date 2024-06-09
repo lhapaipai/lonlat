@@ -157,10 +157,7 @@ export function ContextMenu({ targetRef, children, style, eventName = "contextme
             style={{ ...floatingStyles, ...style }}
             {...getFloatingProps()}
           >
-            <Dialog
-              placement={context.placement}
-              className="animate-fade-in-list z-context-menu max-h-80 overflow-auto"
-            >
+            <Dialog placement={context.placement} className="z-context-menu max-h-80 overflow-auto">
               {Children.map(
                 children,
                 (child, index) =>

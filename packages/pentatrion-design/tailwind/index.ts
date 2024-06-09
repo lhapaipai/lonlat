@@ -1,2 +1,2 @@
 export { keyframes } from "./keyframes";
-export { pentatrionTw } from "./pentatrionTw";
+export { pentatrionTw, pentatrionTypographyExtend } from "./pentatrionTw";
