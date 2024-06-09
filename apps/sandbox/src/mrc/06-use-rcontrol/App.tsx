@@ -59,15 +59,18 @@ function App() {
             <div>
               <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
             </div>
+
             <div>
-              <button onClick={() => setShowMap((s) => !s)}>
-                {showMap ? "masquer carte" : "afficher carte"}
-              </button>
+              <label>
+                afficher carte
+                <input type="checkbox" onChange={() => setShowMap((s) => !s)} checked={showMap} />
+              </label>
             </div>
             <div>
-              <button onClick={() => setShowCtrl((s) => !s)}>
-                {showCtrl ? "masquer controle" : "afficher controle"}
-              </button>
+              <label>
+                afficher controle
+                <input type="checkbox" onChange={() => setShowCtrl((s) => !s)} checked={showCtrl} />
+              </label>
             </div>
           </div>
         </RMap>

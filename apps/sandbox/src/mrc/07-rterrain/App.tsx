@@ -47,14 +47,20 @@ function App() {
           <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
         </div>
         <div>
-          <button onClick={() => setShowMap((s) => !s)}>
-            {showMap ? "masquer carte" : "afficher carte"}
-          </button>
+          <label>
+            afficher carte
+            <input type="checkbox" onChange={() => setShowMap((s) => !s)} checked={showMap} />
+          </label>
         </div>
         <div>
-          <button onClick={() => setShowTerrain((t) => !t)}>
-            {showTerrain ? "masquer terrain" : "afficher terrain"}
-          </button>
+          <label>
+            afficher terrain
+            <input
+              type="checkbox"
+              onChange={() => setShowTerrain((s) => !s)}
+              checked={showTerrain}
+            />
+          </label>
         </div>
       </div>
     </>

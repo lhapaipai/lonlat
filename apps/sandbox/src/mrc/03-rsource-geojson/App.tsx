@@ -6,11 +6,6 @@ import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
-const townPaintStyle = {
-  "fill-outline-color": "rgba(0,0,0,0.1)",
-  "fill-color": "rgba(255,0,0,0.3)",
-};
-
 const baseStyles = {
   standard: "/assets/styles/ign/PLAN.IGN/standard.json",
   classique: "/assets/styles-original/ign/PLAN.IGN/classique.json",
@@ -93,10 +88,12 @@ function App() {
           <button onClick={() => setCounter((c) => c + 1)}>reRender App {counter}</button>
         </div>
         <div>
-          <button onClick={() => setShow((s) => !s)}>
-            {show ? "masquer carte" : "afficher carte"}
-          </button>
+          <label>
+            afficher carte
+            <input type="checkbox" onChange={() => setShow((s) => !s)} checked={show} />
+          </label>
         </div>
+
         <div>
           <button
             onClick={() => setSourceData((s) => (s === "marignier" ? "cluses" : "marignier"))}
@@ -104,10 +101,16 @@ function App() {
             {sourceData === "marignier" ? "afficher cluses" : "afficher marignier"}
           </button>
         </div>
+
         <div>
-          <button onClick={() => setShowAnotherSource((s) => !s)}>
-            {showAnotherSource ? "masquer Thyez" : "afficher Thyez"}
-          </button>
+          <label>
+            afficher Thyez
+            <input
+              type="checkbox"
+              onChange={() => setShowAnotherSource((s) => !s)}
+              checked={showAnotherSource}
+            />
+          </label>
         </div>
         <div>
           <select onChange={(e) => setBaseStyle(e.target.value as BaseStyle)}>

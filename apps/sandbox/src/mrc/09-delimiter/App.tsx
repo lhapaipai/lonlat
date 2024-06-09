@@ -27,10 +27,12 @@ function App() {
                 <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
               </div>
               <div>
-                <button onClick={() => setShowMap((s) => !s)}>
-                  {showMap ? "masquer carte" : "afficher carte"}
-                </button>
+                <label>
+                  afficher carte
+                  <input type="checkbox" onChange={() => setShowMap((s) => !s)} checked={showMap} />
+                </label>
               </div>
+
               <div>
                 <button onClick={() => setShowExtra((s) => !s)}>
                   {showExtra ? "masquer extra" : "afficher extra"}
@@ -46,14 +48,20 @@ function App() {
           <div id="extra-content"></div>
           <div className="sidebar">
             <div>
-              <button onClick={() => setShowMap((s) => !s)}>
-                {showMap ? "masquer carte" : "afficher carte"}
-              </button>
-            </div>
+              <label>
+                afficher carte
+                <input type="checkbox" onChange={() => setShowMap((s) => !s)} checked={showMap} />
+              </label>
+            </div>{" "}
             <div>
-              <button onClick={() => setShowExtra((s) => !s)}>
-                {showExtra ? "masquer extra" : "afficher extra"}
-              </button>
+              <label>
+                afficher extra
+                <input
+                  type="checkbox"
+                  onChange={() => setShowExtra((s) => !s)}
+                  checked={showExtra}
+                />
+              </label>
             </div>
           </div>
         </div>

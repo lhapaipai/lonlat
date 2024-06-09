@@ -124,13 +124,13 @@ export const RSource = memo(
     console.log("Render RSource", id);
 
     const context = useContext(mapLibreContext);
-    const map = context.mapManager?.map;
 
-    if (!map) {
+    if (!context.mapManager) {
       throw new Error("use <RSource /> component inside <RMap />");
     }
 
-    const prevOptionsRef = useRef(sourceOptions);
+    const map = context.mapManager.map;
+
     const initialId = useRef(id);
 
     if (id !== initialId.current) {
@@ -138,9 +138,12 @@ export const RSource = memo(
         `RSource id should not change. "${id}" "${initialId.current}". If you defined id as const string add a "key" prop to your RSource component`,
       );
     }
-    if (sourceOptions.type !== prevOptionsRef.current.type) {
+
+    const { id: _, ...prevOptions } = context.mapManager.getControlledSource(id) ?? props;
+
+    if (sourceOptions.type !== prevOptions.type) {
       throw new Error(
-        `RSource type should not change. "${sourceOptions.type}" "${prevOptionsRef.current.type}"`,
+        `RSource type should not change. "${sourceOptions.type}" "${prevOptions.type}"`,
       );
     }
 
@@ -182,15 +185,12 @@ export const RSource = memo(
                 layer.source === id
               ) {
                 map.removeLayer(layer.id);
-                context.controlledLayers = context.controlledLayers.filter((id) => id !== layer.id);
               }
             }
           }
           map.removeSource(id);
-          context.controlledSources = context.controlledSources.filter(
-            (sourceId) => id !== sourceId,
-          );
         }
+        context.mapManager?.setControlledSource(id, null);
       };
     }, [map, id, context, reRender]);
 
@@ -198,18 +198,16 @@ export const RSource = memo(
 
     if (source) {
       // console.log("updateSource", id);
-      updateSource(source, sourceOptions, prevOptionsRef.current);
+      updateSource(source, sourceOptions, prevOptions);
     } else {
       source = createSource(map, id, sourceOptions);
-      if (source && !context.controlledSources.includes(id)) {
-        context.controlledSources.push(id);
-      }
       map.off("styledata", reRender);
     }
 
     useImperativeHandle(ref, () => source, [source]);
 
-    prevOptionsRef.current = sourceOptions;
+    context.mapManager.setControlledSource(id, props);
+
     console.timeEnd("rsource");
 
     return null;

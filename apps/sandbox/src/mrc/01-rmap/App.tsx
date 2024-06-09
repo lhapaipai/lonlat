@@ -24,10 +24,12 @@ function App() {
     <>
       <div className="absolute top-2 left-2 z-10 bg-white">
         <div>
-          <button onClick={() => setVisible((v) => !v)}>
-            show map {visible ? "visible" : "hidden"}
-          </button>
+          <label>
+            afficher carte
+            <input type="checkbox" onChange={() => setVisible((v) => !v)} checked={visible} />
+          </label>
         </div>
+
         <div>
           <button onClick={() => setCounter((c) => c + 1)}>App counter {counter}</button>
         </div>

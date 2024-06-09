@@ -1,20 +1,21 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { mapLibreContext } from "../context";
 import { TerrainSpecification } from "maplibre-gl";
 
-type RTerrainProps = TerrainSpecification;
+export type RTerrainProps = TerrainSpecification;
 
 export const RTerrain = (props: RTerrainProps) => {
   const terrainOptions = props;
 
   const context = useContext(mapLibreContext);
-  const map = context.mapManager?.map;
 
-  if (!map) {
+  if (!context.mapManager) {
     throw new Error("use <RTerrain /> component inside <RMap />");
   }
 
-  const prevPropsRef = useRef(props);
+  const map = context.mapManager.map;
+
+  const prevOptions = context.mapManager.getControlledTerrain() ?? props;
 
   const [, setVersion] = useState(0);
 
@@ -31,7 +32,8 @@ export const RTerrain = (props: RTerrainProps) => {
       if (map.style?._loaded && map.getTerrain()) {
         map.setTerrain(null);
       }
-      context.controlledTerrain = false;
+
+      context.mapManager?.setControlledTerrain(null);
     };
   }, [map, context]);
 
@@ -40,7 +42,6 @@ export const RTerrain = (props: RTerrainProps) => {
   const terrain = map.style?._loaded && map.getSource(terrainOptions.source) && map.getTerrain();
 
   if (terrain) {
-    const prevOptions = prevPropsRef.current;
     if (
       prevOptions.exaggeration !== terrainOptions.exaggeration ||
       prevOptions.source !== terrainOptions.source
@@ -57,7 +58,7 @@ export const RTerrain = (props: RTerrainProps) => {
     }
   }
 
-  prevPropsRef.current = props;
+  context.mapManager.setControlledTerrain(props);
 
   return null;
 };

@@ -13,7 +13,7 @@ import { mapLibreContext } from "../context";
 
 export type LayerOptions = LayerSpecification | CustomLayerInterface;
 
-type RLayerProps = LayerOptions & {
+export type RLayerProps = LayerOptions & {
   beforeId?: string;
 };
 
@@ -122,20 +122,18 @@ export const RLayer = memo(
   forwardRef<StyleLayer | undefined, RLayerProps>(function RLayer(props, ref) {
     console.time("rlayer");
     const { beforeId, ...layerOptions } = props;
-    console.log("Render RLayer", layerOptions.id);
+    const id = layerOptions.id;
+
+    console.log("Render RLayer", id);
 
     const context = useContext(mapLibreContext);
-    const map = context.mapManager?.map;
 
-    if (!map) {
+    if (!context.mapManager) {
       throw new Error("use <RLayer /> component inside <RMap />");
     }
 
-    const prevPropsRef = useRef(props);
+    const map = context.mapManager.map;
 
-    const [, setVersion] = useState(0);
-    const reRender = useCallback(() => setVersion((v) => v + 1), []);
-    const id = layerOptions.id;
     const initialLayerId = useRef(id);
 
     if (id !== initialLayerId.current) {
@@ -143,10 +141,14 @@ export const RLayer = memo(
         `RLayer id should not change. "${id}" "${initialLayerId.current}". If you defined id as const string add a "key" prop to your RLayer component`,
       );
     }
-    if (props.type !== prevPropsRef.current.type) {
-      throw new Error(
-        `RLayer type should not change. "${props.type}" "${prevPropsRef.current.type}"`,
-      );
+
+    const prevProps = context.mapManager.getControlledLayer(id) ?? props;
+
+    const [, setVersion] = useState(0);
+    const reRender = useCallback(() => setVersion((v) => v + 1), []);
+
+    if (props.type !== prevProps.type) {
+      throw new Error(`RLayer type should not change. "${props.type}" "${prevProps.type}"`);
     }
 
     useEffect(() => {
@@ -160,28 +162,28 @@ export const RLayer = memo(
 
       return () => {
         map.off("styledata", reRender);
+
         if (map.style && map.style._loaded && map.getLayer(id)) {
           map.removeLayer(id);
-          context.controlledLayers = context.controlledLayers.filter((layerId) => layerId !== id);
         }
+
+        context.mapManager?.setControlledLayer(id, null);
       };
     }, [map, id, context, reRender]);
 
     let layer = map.style?._loaded && map.getLayer(id);
 
     if (layer) {
-      updateLayer(map, props, prevPropsRef.current);
+      updateLayer(map, props, prevProps);
     } else {
       layer = createLayer(map, layerOptions, beforeId);
-      if (layer && !context.controlledLayers.includes(id)) {
-        context.controlledLayers.push(id);
-      }
       map.off("styledata", reRender);
     }
 
     useImperativeHandle(ref, () => layer, [layer]);
 
-    prevPropsRef.current = props;
+    context.mapManager.setControlledLayer(id, props);
+
     console.timeEnd("rlayer");
 
     return null;

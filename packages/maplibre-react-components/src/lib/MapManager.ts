@@ -25,7 +25,9 @@ import {
   updateListeners,
 } from "./util";
 
-import { MapLibreContext } from "../context";
+import { RTerrainProps } from "../components/RTerrain";
+import { RLayerProps } from "../components/RLayer";
+import { RSourceProps } from "../components/RSource";
 
 const eventNameToCallbackName = {
   mousedown: "onMouseDown",
@@ -275,6 +277,14 @@ export default class MapManager {
   padding?: PaddingOptions;
   mapStyle: string | StyleSpecification;
 
+  controlledSources: {
+    [key: string]: RSourceProps;
+  } = {};
+  controlledLayers: {
+    [key: string]: RLayerProps;
+  } = {};
+  controlledTerrain: RTerrainProps | null = null;
+
   constructor(
     { mapStyle = DEFAULT_STYLE, padding }: ManagerOptions,
     mapProps: MapProps,
@@ -312,12 +322,11 @@ export default class MapManager {
   setProps(
     { mapStyle = DEFAULT_STYLE, styleDiffing = true, styleTransformStyle, padding }: ManagerOptions,
     mapProps: MapProps,
-    context: MapLibreContext,
   ) {
     const [reactiveOptions, callbacks, handlerOptions] = filterMapProps(mapProps);
 
     this._updateCallbacks(callbacks);
-    this._updateStyle(mapStyle, context, {
+    this._updateStyle(mapStyle, {
       diff: styleDiffing,
       transformStyle: styleTransformStyle,
     });
@@ -325,30 +334,59 @@ export default class MapManager {
     this._updateHandlers(handlerOptions);
   }
 
-  _updateStyle(
-    nextStyle: StyleSpecification | string,
-    context: MapLibreContext,
-    options: StyleSwapOptions,
-  ) {
+  getControlledTerrain(): RTerrainProps | null {
+    return this.controlledTerrain;
+  }
+  setControlledTerrain(terrainProps: RTerrainProps | null): void {
+    this.controlledTerrain = terrainProps;
+  }
+
+  getControlledLayer(id: string): RLayerProps | null {
+    return this.controlledLayers[id] ?? null;
+  }
+  setControlledLayer(id: string, layerProps: RLayerProps | null) {
+    if (!layerProps) {
+      delete this.controlledLayers[id];
+    } else {
+      this.controlledLayers[id] = layerProps;
+    }
+  }
+
+  getControlledSource(id: string): RSourceProps | null {
+    return this.controlledSources[id] ?? null;
+  }
+  setControlledSource(id: string, layerProps: RSourceProps | null) {
+    if (!layerProps) {
+      delete this.controlledSources[id];
+    } else {
+      this.controlledSources[id] = layerProps;
+    }
+  }
+
+  _updateStyle(nextStyle: StyleSpecification | string, options: StyleSwapOptions) {
     const curStyle = this.mapStyle;
 
     if (nextStyle !== curStyle) {
       this.mapStyle = nextStyle;
       this._map.setStyle(nextStyle, {
         diff: options.diff,
-        transformStyle(prevStyle, nextStyle) {
-          console.log("merge controlled sources/layers", context.controlledSources);
+        transformStyle: (prevStyle, nextStyle) => {
+          console.log(
+            "merge controlled sources/layers",
+            this.controlledSources,
+            this.controlledLayers,
+          );
 
           const prevControlledSources = prevStyle
             ? Object.fromEntries(
-                Object.entries(prevStyle?.sources).filter(([sourceId]) =>
-                  context.controlledSources.includes(sourceId),
+                Object.entries(prevStyle?.sources).filter(
+                  ([sourceId]) => sourceId in this.controlledSources,
                 ),
               )
             : {};
 
           const prevControlledLayers = prevStyle
-            ? prevStyle.layers.filter((layer) => context.controlledLayers.includes(layer.id))
+            ? prevStyle.layers.filter((layer) => layer.id in this.controlledLayers)
             : [];
 
           const result = {
@@ -358,7 +396,7 @@ export default class MapManager {
               ...prevControlledSources,
             },
             layers: [...nextStyle.layers, ...prevControlledLayers],
-            terrain: context.controlledTerrain ? prevStyle?.terrain : nextStyle.terrain,
+            terrain: this.controlledTerrain ? prevStyle?.terrain : nextStyle.terrain,
           };
 
           return options.transformStyle ? options.transformStyle(prevStyle, result) : result;

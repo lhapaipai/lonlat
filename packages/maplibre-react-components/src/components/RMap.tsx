@@ -54,9 +54,6 @@ export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
 
   const maplibreRef = useRef<MapLibreContext>({
     mapManager: undefined,
-    controlledSources: [],
-    controlledLayers: [],
-    controlledTerrain: false,
   });
 
   const needPropsUpdate = useRef(true);
@@ -87,7 +84,6 @@ export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
         maplibreRef.current.mapManager.setProps(
           { mapStyle, padding, styleDiffing, styleTransformStyle },
           mapProps,
-          maplibreRef.current,
         );
       } else {
         needPropsUpdate.current = true;
