@@ -12,13 +12,14 @@ import { createPortal } from "react-dom";
 import { useMap } from "../hooks/useMap";
 import { deepEqual, prepareEventDep, transformPropsToOptions, updateClassNames } from "../lib/util";
 
-const mapEventNameToCallback = {
-  click: "onMapClick",
-  move: "onMapMove",
+const eventNameToCallbackName = {
+  map_click: "onMapClick",
+  map_move: "onMapMove",
 } as const;
-export type MapEventName = keyof typeof mapEventNameToCallback;
+export type PopupEventName = keyof typeof eventNameToCallbackName;
+type PopupCallbackName = (typeof eventNameToCallbackName)[PopupEventName];
 
-type MapEvent =
+type PopupEvent =
   | MapLayerMouseEvent
   | MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>;
 
@@ -46,14 +47,9 @@ export type PopupInitialOptions = {
 
 export type PopupProps = PopupInitialOptions & PopupReactiveOptions & PopupCallbacks;
 
-// il faudra couvrir l'option element
-
 type RPopupProps = PopupProps & {
-  longitude: number;
-  latitude: number;
-
-  // popup?: Popup;
-
+  longitude?: number;
+  latitude?: number;
   children?: ReactNode;
 };
 
@@ -67,8 +63,8 @@ export const RPopup = memo(
       PopupCallbacks,
     ];
 
+    const popupRef = useRef<Popup>(null!);
     const prevOptionsRef = useRef<PopupOptions>(options);
-
     const currCallbacksRef = useRef<PopupCallbacks>();
     currCallbacksRef.current = callbacks;
 
@@ -76,65 +72,84 @@ export const RPopup = memo(
       return document.createElement("div");
     }, []);
 
-    const popup = useMemo(() => {
-      const pp = new Popup({
+    if (!popupRef.current) {
+      popupRef.current = new Popup({
         ...options,
         closeButton: false,
         closeOnClick: false,
         closeOnMove: false,
       });
-      pp.setLngLat([longitude, latitude]);
+      if (longitude !== undefined && latitude !== undefined) {
+        popupRef.current.setLngLat([longitude, latitude]);
+      }
+    }
 
-      return pp;
-    }, []);
-
-    const mapEventDepStr = prepareEventDep(mapEventNameToCallback, callbacks).join("-");
+    const nextEventsStr = prepareEventDep(eventNameToCallbackName, callbacks).join("-");
     useEffect(() => {
-      function onMapEvent(e: MapEvent) {
-        const eventType = e.type as MapEventName;
-        const callbackName = mapEventNameToCallback[eventType];
+      function onPopupEvent(e: PopupEvent) {
+        const eventType = e.type;
+        // @ts-ignore
+        const callbackName = (eventNameToCallbackName[eventType] ||
+          // @ts-ignore
+          eventNameToCallbackName[`map_${eventType}`]) as PopupCallbackName;
         if (currCallbacksRef.current?.[callbackName]) {
           // @ts-ignore
           currCallbacksRef.current[callbackName]?.(e);
         } else {
-          console.info("not managed RPopup map event", eventType, e);
+          console.info("not managed RPopup event", eventType, e);
         }
       }
 
-      if (mapEventDepStr === "") {
+      if (nextEventsStr === "") {
         return;
       }
 
-      const eventNames = mapEventDepStr.split("-") as MapEventName[];
+      const eventNames = nextEventsStr.split("-") as PopupEventName[];
+      const popupStable = popupRef.current;
 
       eventNames.forEach((eventName) => {
-        map.on(eventName, onMapEvent);
+        if (eventName.startsWith("map_")) {
+          map.on(eventName.substring(4), onPopupEvent);
+        } else {
+          popupStable.on(eventName, onPopupEvent);
+        }
       });
 
       return () => {
         eventNames.forEach((eventName) => {
-          map.off(eventName, onMapEvent);
+          if (eventName.startsWith("map_")) {
+            map.off(eventName.substring(4), onPopupEvent);
+          } else {
+            popupStable.off(eventName, onPopupEvent);
+          }
         });
       };
-    }, [mapEventDepStr, map]);
+    }, [nextEventsStr, map]);
 
     useEffect(() => {
-      popup.setDOMContent(container).addTo(map);
+      popupRef.current.setDOMContent(container).addTo(map);
 
-      return () => void popup.remove();
-    }, []);
+      return () => void popupRef.current.remove();
+    }, [container, map]);
 
     const { offset, maxWidth = "240px", className } = options;
 
-    useImperativeHandle(ref, () => popup, [popup]);
+    useImperativeHandle(ref, () => popupRef.current, [popupRef]);
 
-    if (popup.isOpen()) {
-      if (popup.getLngLat().lng !== longitude || popup.getLngLat().lat !== latitude) {
-        popup.setLngLat([longitude, latitude]);
+    if (popupRef.current.isOpen()) {
+      if (
+        longitude !== undefined &&
+        latitude !== undefined &&
+        (popupRef.current.getLngLat().lng !== longitude ||
+          popupRef.current.getLngLat().lat !== latitude)
+      ) {
+        popupRef.current.setLngLat([longitude, latitude]);
       }
-      if (offset && !deepEqual(popup.options.offset, offset)) {
-        popup.setOffset(offset);
+
+      if (offset && !deepEqual(popupRef.current.options.offset, offset)) {
+        popupRef.current.setOffset(offset);
       }
+
       if (prevOptionsRef.current.className !== className) {
         updateClassNames(
           container,
@@ -142,8 +157,8 @@ export const RPopup = memo(
           className?.split(" ") || [],
         );
       }
-      if (popup.getMaxWidth() !== maxWidth) {
-        popup.setMaxWidth(maxWidth);
+      if (popupRef.current.getMaxWidth() !== maxWidth) {
+        popupRef.current.setMaxWidth(maxWidth);
       }
     }
 

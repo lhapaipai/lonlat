@@ -4,8 +4,7 @@ import { PopupOptions } from "maplibre-gl";
 import { PopupNonReactiveOptionName, PopupReactiveOptionName } from "./RPopup";
 
 describe("RPopup", () => {
-  test("PopupOptions exhaustivity", () => {
-    // test if we cover all PopupOptions
+  test("if RPopup cover all PopupOptions", () => {
     assertType<
       Omit<
         PopupOptions,

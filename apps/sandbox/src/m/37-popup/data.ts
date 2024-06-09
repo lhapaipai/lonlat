@@ -1,6 +1,9 @@
 // style: "/assets/styles/ign/PLAN.IGN/standard.json",
+
+import { StyleSpecification } from "maplibre-gl";
+
 // style: "/assets/styles/ign/elevation.json",
-export const terrainStyle = {
+export const terrainStyle: StyleSpecification = {
   version: 8,
   sources: {
     osm: {

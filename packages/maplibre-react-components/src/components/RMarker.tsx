@@ -159,7 +159,7 @@ export const RMarker = memo(
       opacityWhenCovered,
     } = options;
 
-    useImperativeHandle(ref, () => marker as Marker, [marker]);
+    useImperativeHandle(ref, () => marker, [marker]);
 
     if (prevOptionsRef.current.className !== className) {
       updateClassNames(

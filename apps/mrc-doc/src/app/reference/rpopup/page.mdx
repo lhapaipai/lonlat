@@ -1,0 +1,117 @@
+export const metadata = {
+  title: 'RPopup',
+  description: 'wrapper for the popup object'
+};
+
+# RPopup
+
+## Usage
+
+```tsx
+import { RMap, RPopup, RMarker, markerPopupOffset } from "maplibre-react-components";
+
+const town = { lng: 6, lat: 46 };
+
+function App() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  return (
+    <RMap initialCenter={town} initialZoom={8}>
+      <RPopup longitude={town.lng} latitude={town.lat}>
+        Hello world !
+      </RPopup>
+
+      {/* closable Popup */}
+      {showPopup && (
+        <RPopup
+          longitude={town.lng}
+          latitude={town.lat}
+          onMapMove={() => setShowPopup(false)}
+          onMapClick={() => setShowPopup(false)}
+        >
+          Hello world !
+        </RPopup>
+      )}
+
+      {/* marker with his popup */}
+      <RMarker
+        longitude={town.lng}
+        latitude={town.lat}
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowPopup((s) => !s);
+        }}
+      />
+      {showPopup && (
+        <RPopup
+          longitude={town.lng}
+          latitude={town.lat}
+          onMapClick={() => setShowPopup(false)}
+          onMapMove={() => setShowPopup(false)}
+          offset={markerPopupOffset}
+        >
+          Hello world !
+        </RPopup>
+      )}
+    </RMap>
+
+  )
+}
+```
+
+## Reference
+
+For compatibility some popup options are disabled : `closeButton`, `closeOnClick`, `closeOnMove`. Without these deactivations, this could result map's state to deviate from its props.
+
+As an alternative, you can listen to events `onMapClick`, `onMapMove`
+
+
+```ts
+type RPopupProps =
+  {
+    longitude: number;
+    latitude: number;
+    /**
+     * for popup element
+     */
+    children?: ReactNode;
+  } &
+
+  /**
+   * Non reactive marker options that are only used when instantiating a marker object
+   * they have the same name as in MarkerOptions with first letter uppercase
+   * and prefixed with "initial"
+   */
+  PopupInitialOptions &
+  /**
+   * Reactive marker options. Update during the RMarker lifecycle causes them to be
+   * updated on the marker instance
+   * they have the same name as in MarkerOptions
+   */
+  PopupReactiveOptions &
+
+  /**
+   * Listenners for marker events
+   * they have the same name as in MarkerOptions with first letter uppercase and prefixed
+   * with "on"
+   */
+  PopupCallbacks;
+
+
+type PopupInitialOptions = {
+  initialFocusAfterOpen?: boolean;
+  initialAnchor?: PositionAnchor;
+  initialSubpixelPositioning?: boolean;
+};
+
+type PopupReactiveOptions = {
+  className?: string;
+  offset?: PointLike;
+  maxWidth?: string;
+};
+
+type PopupCallbacks = {
+  onMapClick?: (e: MapLayerMouseEvent) => void;
+  onMapMove?: (e: MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined>) => void;
+}
+```
