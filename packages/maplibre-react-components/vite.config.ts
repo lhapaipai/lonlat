@@ -19,6 +19,5 @@ export default defineConfig({
       "./src/tests/mocks/web-worker.ts",
     ],
     include: ["src/**/*.test.ts?(x)"],
-    // watch: false,
   },
 });
