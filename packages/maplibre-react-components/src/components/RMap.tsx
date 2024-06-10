@@ -29,7 +29,7 @@ const childContainerStyle = {
   height: "100%",
 };
 
-export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
+export const RMap = forwardRef<Map | null, RMapProps>(function RMap(
   {
     /* RMapProps */
     children,
@@ -98,7 +98,8 @@ export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
     };
   }, []);
 
-  useImperativeHandle(ref, () => maplibreRef.current.mapManager?.map, []);
+  // @ts-ignore
+  useImperativeHandle(ref, () => maplibreRef.current.mapManager?.map || null, []);
 
   const completeStyle: CSSProperties = useMemo(
     () => ({

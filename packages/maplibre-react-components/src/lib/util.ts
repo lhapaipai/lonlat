@@ -195,14 +195,14 @@ export function updateListeners(
 ) {
   prevEventTypes.forEach((eventName) => {
     if (eventName !== "" && nextEventTypes.indexOf(eventName) === -1) {
-      console.log("unregister event listener on", eventName);
+      // console.log("unregister event listener on", eventName);
       onUnsubscribe(eventName);
     }
   });
 
   nextEventTypes.forEach((eventName) => {
     if (eventName !== "" && prevEventTypes.indexOf(eventName) === -1) {
-      console.log("register event listener on", eventName);
+      // console.log("register event listener on", eventName);
       onSubscribe(eventName);
     }
   });

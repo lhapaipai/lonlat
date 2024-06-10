@@ -11,7 +11,7 @@ import {
 import { RMap } from "./RMap";
 import { beforeMapTest } from "../tests/util";
 import { emptyStyle } from "../lib/util";
-import { MutableRefObject } from "react";
+import { RefObject } from "react";
 
 beforeEach(() => {
   beforeMapTest();
@@ -92,8 +92,8 @@ describe("RMap", () => {
     expect(onMounted).toBeCalledTimes(1);
   });
 
-  test("RMap forward map ref", async ({ expect }) => {
-    const ref = { current: undefined };
+  test("RMap forward map ref", () => {
+    const ref = { current: null };
 
     render(<RMap ref={ref} mapStyle={emptyStyle} />);
 
@@ -102,12 +102,21 @@ describe("RMap", () => {
   });
 
   test("RMap keep same reference between render", () => {
-    const ref: MutableRefObject<Map | null> = { current: null };
+    const ref: RefObject<Map> = { current: null };
     const { rerender } = render(<RMap ref={ref} minZoom={10} />);
 
     const map1 = ref.current!;
 
-    rerender(<RMap mapStyle={emptyStyle} ref={ref} minZoom={11} maxZoom={13} pixelRatio={1} />);
+    rerender(
+      <RMap
+        mapStyle={emptyStyle}
+        styleDiffing={false}
+        ref={ref}
+        minZoom={11}
+        maxZoom={13}
+        pixelRatio={1}
+      />,
+    );
 
     const map2 = ref.current!;
 
@@ -115,7 +124,7 @@ describe("RMap", () => {
   });
 
   test("RMap update reactive options", () => {
-    const ref: MutableRefObject<Map | null> = { current: null };
+    const ref: RefObject<Map> = { current: null };
     const { rerender } = render(
       <RMap mapStyle={emptyStyle} ref={ref} minZoom={10} maxZoom={14} pixelRatio={1} />,
     );
@@ -131,7 +140,7 @@ describe("RMap", () => {
   });
 
   test("RMap not updating initial options", () => {
-    const ref: MutableRefObject<Map | null> = { current: null };
+    const ref: RefObject<Map> = { current: null };
     const { rerender } = render(<RMap mapStyle={emptyStyle} ref={ref} initialCenter={[1, 2]} />);
     const map = ref.current!;
 
@@ -143,7 +152,7 @@ describe("RMap", () => {
   });
 
   test("RMap handle events", () => {
-    const ref: MutableRefObject<Map | null> = { current: null };
+    const ref: RefObject<Map> = { current: null };
     const handler1 = vi.fn();
     const handler2 = vi.fn();
 
@@ -172,8 +181,8 @@ describe("RMap", () => {
     expect(handler2).toBeCalledTimes(1);
   });
 
-  test.only("RMap listen to mapStyle updates", async () => {
-    const ref: MutableRefObject<Map | null> = { current: null };
+  test("RMap listen to mapStyle updates", async () => {
+    const ref: RefObject<Map> = { current: null };
     const styleDataHandler = vi.fn();
 
     const style1: StyleSpecification = {

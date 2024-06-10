@@ -1,7 +1,7 @@
 import { RMap } from "maplibre-react-components";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { MapStyleDataEvent } from "maplibre-gl";
 
 //"https://demotiles.maplibre.org/style.json"
@@ -12,6 +12,8 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [listeners, setListeners] = useState(true);
 
+  const divRef = useRef<HTMLDivElement>(null);
+
   useLayoutEffect(() => {
     // console.log("map ref", map);
   });
@@ -20,9 +22,14 @@ function App() {
     console.log("styledata", e);
   }
 
+  console.log("divRef", divRef.current);
+  useEffect(() => {
+    console.log("divRef", divRef.current);
+  });
+
   return (
     <>
-      <div className="absolute top-2 left-2 z-10 bg-white">
+      <div ref={divRef} className="absolute top-2 left-2 z-10 bg-white">
         <div>
           <label>
             afficher carte

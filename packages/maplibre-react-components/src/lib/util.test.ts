@@ -227,7 +227,7 @@ describe("util", () => {
     expect(div4.className).toBe("base class-2");
   });
 
-  test.only("updateListeners : basic 1", () => {
+  test("updateListeners : basic 1", () => {
     const onSubscribe = vi.fn();
     const onUnsubscribe = vi.fn();
 
@@ -239,7 +239,7 @@ describe("util", () => {
     expect(onSubscribe).toHaveBeenNthCalledWith(2, "load");
   });
 
-  test.only("updateListeners : basic 2", () => {
+  test("updateListeners : basic 2", () => {
     const onSubscribe = vi.fn();
     const onUnsubscribe = vi.fn();
 

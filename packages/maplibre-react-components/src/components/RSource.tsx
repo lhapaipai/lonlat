@@ -31,7 +31,6 @@ export type RSourceProps = SourceSpecification & {
 function createSource(map: Map, id: string, sourceOptions: SourceSpecification) {
   // source can't be added if style is not loaded
   if (map.style?._loaded) {
-    console.log("createSource", id);
     map.addSource(id, sourceOptions);
     return map.getSource(id);
   }
@@ -44,7 +43,6 @@ function updateSource(
   nextOptions: SourceSpecification,
   prevOptions: SourceSpecification,
 ) {
-  console.log("updateSource", source.id);
   // verbose but exhaustive
   switch (nextOptions.type) {
     case "image": {
@@ -118,10 +116,8 @@ function updateSource(
 }
 
 export const RSource = memo(
-  forwardRef<Source | undefined, RSourceProps>(function RSource(props, ref) {
-    console.time("rsource");
+  forwardRef<Source | null, RSourceProps>(function RSource(props, ref) {
     const { id, ...sourceOptions } = props;
-    console.log("Render RSource", id);
 
     const context = useContext(mapLibreContext);
 
@@ -154,8 +150,6 @@ export const RSource = memo(
     const reRender = useCallback(() => void setTimeout(() => setVersion((v) => v + 1), 0), []);
 
     useEffect(() => {
-      console.log("RSource useEffect", map.style._loaded);
-
       /**
        * fired when
        *  - new source added/removed
@@ -197,18 +191,18 @@ export const RSource = memo(
     let source = map.style?._loaded && map.getSource(id);
 
     if (source) {
-      // console.log("updateSource", id);
       updateSource(source, sourceOptions, prevOptions);
     } else {
       source = createSource(map, id, sourceOptions);
-      map.off("styledata", reRender);
+      if (source) {
+        map.off("styledata", reRender);
+      }
     }
 
-    useImperativeHandle(ref, () => source, [source]);
+    // @ts-ignore
+    useImperativeHandle(ref, () => source || null, [source]);
 
     context.mapManager.setControlledSource(id, props);
-
-    console.timeEnd("rsource");
 
     return null;
   }),

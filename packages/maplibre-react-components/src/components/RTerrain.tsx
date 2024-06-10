@@ -50,9 +50,7 @@ export const RTerrain = (props: RTerrainProps) => {
     }
   } else if (map.style?._loaded) {
     if (map.getSource(terrainOptions.source)) {
-      console.log("setTerrain");
       map.setTerrain(terrainOptions);
-      context.controlledTerrain = true;
     } else {
       throw new Error(`Unable to find Terrain source ${terrainOptions.source}`);
     }

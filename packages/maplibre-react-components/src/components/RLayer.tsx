@@ -17,9 +17,12 @@ export type RLayerProps = LayerOptions & {
   beforeId?: string;
 };
 
-// -> TODO failed to build
-// type StyleLayer = Exclude<ReturnType<Map["getLayer"]>, undefined>;
-type StyleLayer = unknown;
+/**
+ * -> TODO failed to build
+ * type StyleLayer = Exclude<ReturnType<Map["getLayer"]>, undefined>;
+ * The inferred type of this node exceeds the maximum length the compiler will serialize. An explicit type annotation is needed.
+ */
+export type StyleLayer = unknown;
 
 function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
   // layer can't be added if style is not loaded
@@ -31,7 +34,6 @@ function createLayer(map: Map, layerOptions: LayerOptions, beforeId?: string) {
       // source exists for LayerSpecification who need one
       (layerOptions.source && map.getSource(layerOptions.source))
     ) {
-      console.log("createLayer", layerOptions.id);
       map.addLayer(layerOptions, beforeId && map.getLayer(beforeId) ? beforeId : undefined);
 
       return map.getLayer(layerOptions.id);
@@ -50,7 +52,6 @@ function updateLayer(
   if (prevOptions.type === "custom" || nextOptions.type === "custom") {
     return;
   }
-  console.log("updateLayer", nextOptions.id);
 
   if (prevBeforeId !== nextBeforeId) {
     map.moveLayer(nextOptions.id, nextBeforeId);
@@ -119,12 +120,9 @@ function updateLayer(
 }
 
 export const RLayer = memo(
-  forwardRef<StyleLayer | undefined, RLayerProps>(function RLayer(props, ref) {
-    console.time("rlayer");
+  forwardRef<StyleLayer | null, RLayerProps>(function RLayer(props, ref) {
     const { beforeId, ...layerOptions } = props;
     const id = layerOptions.id;
-
-    console.log("Render RLayer", id);
 
     const context = useContext(mapLibreContext);
 
@@ -177,14 +175,14 @@ export const RLayer = memo(
       updateLayer(map, props, prevProps);
     } else {
       layer = createLayer(map, layerOptions, beforeId);
-      map.off("styledata", reRender);
+      if (layer) {
+        map.off("styledata", reRender);
+      }
     }
 
-    useImperativeHandle(ref, () => layer, [layer]);
+    useImperativeHandle(ref, () => layer || null, [layer]);
 
     context.mapManager.setControlledLayer(id, props);
-
-    console.timeEnd("rlayer");
 
     return null;
   }),
