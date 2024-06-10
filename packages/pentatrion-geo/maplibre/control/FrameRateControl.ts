@@ -11,7 +11,7 @@ interface FrameRateControlOptions {
   width: number;
 }
 
-class FrameRateControl {
+export class FrameRateControl {
   frames: number;
   totalTime: number;
   totalFrames: number;
@@ -169,5 +169,3 @@ class FrameRateControl {
     return this;
   };
 }
-
-export default FrameRateControl;

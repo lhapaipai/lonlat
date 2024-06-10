@@ -1,9 +1,16 @@
-import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions, Popup } from "maplibre-gl";
+import {
+  Map,
+  MapMouseEvent,
+  MapTouchEvent,
+  Marker as MarkerOriginal,
+  MarkerOptions as MarkerOptionsOriginal,
+  Popup as PopupOriginal,
+} from "maplibre-gl";
 import { DOM } from "./core/util/dom";
 
-import LLPopup, { arrowHeight } from "./LLPopup";
+import { Popup, arrowHeight } from "./Popup";
 
-export interface LLMarkerOptions extends MarkerOptions {
+export interface MarkerOptions extends MarkerOptionsOriginal {
   icon?: string;
   text?: string;
   className?: string;
@@ -12,17 +19,17 @@ export interface LLMarkerOptions extends MarkerOptions {
 const defaultColor = "#ffe64b";
 const defaultHeight = 50;
 
-export default class LLMarker extends Marker {
+export class Marker extends MarkerOriginal {
   _icon?: string;
   _height = defaultHeight;
   _text?: string;
   // @ts-ignore
-  _popup?: Popup | LLPopup;
+  _popup?: Popup | PopupOriginal;
 
   _iconElement?: HTMLElement;
   _textElement?: HTMLDivElement;
 
-  constructor(options?: LLMarkerOptions) {
+  constructor(options?: MarkerOptions) {
     const useDefaultMarker = !options || !options.element;
 
     if (useDefaultMarker) {
@@ -147,7 +154,7 @@ export default class LLMarker extends Marker {
     return this._scale;
   }
 
-  setPopup(popup?: Popup | LLPopup | null): this {
+  setPopup(popup?: Popup | PopupOriginal | null): this {
     if (this._popup) {
       this._popup.remove();
       delete this._popup;
@@ -160,9 +167,9 @@ export default class LLMarker extends Marker {
 
     if (popup) {
       if (!("offset" in popup.options)) {
-        // offset of LLPopup is typed as OffsetOptions
+        // offset of Popup is typed as OffsetOptions
         // not Offset like Popup
-        if (popup instanceof LLPopup) {
+        if (popup instanceof Popup) {
           popup.options.offset = {
             mainAxis: this._height + arrowHeight,
           };

@@ -40,7 +40,7 @@ class Event {
   }
 }
 
-export interface LLPopupOptions {
+export interface PopupOptions {
   closeButton?: boolean;
   closeOnClick?: boolean;
   closeOnMove?: boolean;
@@ -66,9 +66,9 @@ const defaultOptions = {
 
 export const arrowHeight = 8;
 
-export default class LLPopup extends Evented {
+export class Popup extends Evented {
   _map?: Map;
-  options: LLPopupOptions;
+  options: PopupOptions;
   _content?: HTMLElement;
   _container?: HTMLElement;
   _dialog?: HTMLElement;
@@ -81,7 +81,7 @@ export default class LLPopup extends Evented {
   _flatPos?: Point;
   _virtualElement: VirtualElement;
 
-  constructor(options?: LLPopupOptions) {
+  constructor(options?: PopupOptions) {
     super();
     this.options = extend(Object.create(defaultOptions), options);
     this._virtualElement = new VirtualElement();

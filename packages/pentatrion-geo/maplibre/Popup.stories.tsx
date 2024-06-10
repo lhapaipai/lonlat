@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as maplibre from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import LLPopup from "./LLPopup";
+import { Popup } from "./Popup";
 
 const meta = {
-  title: "pentatrion-geo/LLPopup",
+  title: "pentatrion-geo/MapLibre/LLPopup",
   parameters: {
     layout: "fullscreen",
   },
@@ -21,7 +21,7 @@ export const Basic = () => {
       zoom: 4,
     });
 
-    new LLPopup({
+    new Popup({
       closeButton: true,
       closeOnClick: false,
       closeOnMove: false,
@@ -31,7 +31,7 @@ export const Basic = () => {
       .setHTML("Hello world", "Bassin d'arcachon")
       .addTo(map);
 
-    new LLPopup({
+    new Popup({
       closeButton: false,
       closeOnClick: true,
       closeOnMove: false,
@@ -60,7 +60,7 @@ export const TrackPointer = () => {
       zoom: 4,
     });
 
-    new LLPopup({
+    new Popup({
       closeButton: false,
       closeOnClick: false,
     })

@@ -1,7 +1,10 @@
-export { default as LLMarker } from "./LLMarker";
-export { default as LLPopup } from "./LLPopup";
-export { default as LLPegman } from "./LLPegman";
+export { Marker } from "./Marker";
+export { Popup } from "./Popup";
+export { Pegman } from "./Pegman";
 
-export * from "./react";
+export { RPegman } from "./RPegman";
+export { RMarker } from "./RMarker";
+export { FrameRateControl } from "./control/FrameRateControl";
+export { RFrameRateControl } from "./control/RFrameRateControl";
 
 export * from "./lib";

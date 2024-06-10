@@ -3,15 +3,15 @@ import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 // import { action } from "@storybook/addon-actions";
 import "maplibre-gl/dist/maplibre-gl.css";
-import RLLMarker from "./RLLMarker";
-import LLMarker from "../LLMarker";
+import { RMarker } from "./RMarker";
+import { Marker } from "./Marker";
 
 // const onChangeLngLatAction = action("onChangeLngLatAction");
 
-// @ts-ignore issue with memoized RLLMarker
+// @ts-ignore issue with memoized RMarker
 const meta = {
-  title: "pentatrion-geo/RLLMarker",
-  component: RLLMarker,
+  title: "pentatrion-geo/MapLibre/RMarker",
+  component: RMarker,
   parameters: {
     layout: "fullscreen",
   },
@@ -78,7 +78,7 @@ const meta = {
       </RMap>
     ),
   ],
-} satisfies Meta<typeof RLLMarker>;
+} satisfies Meta<typeof RMarker>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
@@ -103,16 +103,16 @@ export const Basic: Story = {
 
 export const Draggable = () => {
   const [coords, setCoords] = useState({ lng: 5, lat: 45 });
-  function handleDragEnd(e: Event<LLMarker>) {
+  function handleDragEnd(e: Event<Marker>) {
     console.log("on DragEnd");
     setCoords(e.target.getLngLat());
   }
   return (
-    <RLLMarker
+    <RMarker
       draggable={true}
       longitude={coords.lng}
       latitude={coords.lat}
       onDragEnd={handleDragEnd}
-    ></RLLMarker>
+    ></RMarker>
   );
 };

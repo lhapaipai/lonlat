@@ -1,18 +1,18 @@
 import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions, Point } from "maplibre-gl";
 import { DOM } from "./core/util/dom";
 
-export interface LLPegmanOptions extends MarkerOptions {
+export interface PegmanOptions extends MarkerOptions {
   bearing?: number;
 }
 
 const defaultHeight = 60;
 
-export default class LLPegman extends Marker {
+export class Pegman extends Marker {
   _height = defaultHeight;
   _bearing: number;
   declare _zone: number;
 
-  constructor(options?: LLPegmanOptions) {
+  constructor(options?: PegmanOptions) {
     const useDefaultMarker = !options || !options.element;
 
     if (useDefaultMarker) {

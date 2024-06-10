@@ -20,5 +20,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [pentatrionTw],
+  plugins: [pentatrionTw()],
 };

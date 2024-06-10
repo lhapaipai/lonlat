@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as maplibre from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import LLMarker from "./LLMarker";
+import { Marker } from "./Marker";
 
 const meta = {
-  title: "pentatrion-geo/LLMarker",
+  title: "pentatrion-geo/MapLibre/LLMarker",
 };
 export default meta;
 
@@ -466,20 +466,20 @@ export const Basic = () => {
       zoom: 4,
     });
 
-    new LLMarker().setLngLat({ lng: -4.492187500001222, lat: 48.43306399776475 }).addTo(map);
-    new LLMarker({ color: "green" })
+    new Marker().setLngLat({ lng: -4.492187500001222, lat: 48.43306399776475 }).addTo(map);
+    new Marker({ color: "green" })
       .setLngLat({ lng: 3.154296874998977, lat: 42.65440425112374 })
       .addTo(map);
-    new LLMarker({ text: "5" })
+    new Marker({ text: "5" })
       .setLngLat({ lng: -1.679687500000881, lat: 43.4890366431398 })
       .addTo(map);
-    new LLMarker({ scale: 0.5 })
+    new Marker({ scale: 0.5 })
       .setLngLat({ lng: 6.274414062498977, lat: 43.10523413827215 })
       .addTo(map);
-    new LLMarker({ draggable: true, icon: "fe-braille" })
+    new Marker({ draggable: true, icon: "fe-braille" })
       .setLngLat({ lng: 8.295898437499488, lat: 49.099264690742416 })
       .addTo(map);
-    new LLMarker({ text: "125", scale: 2 })
+    new Marker({ text: "125", scale: 2 })
       .setLngLat({ lng: 6.325788442409362, lat: 46.242459297071804 })
       .addTo(map);
   }, []);
