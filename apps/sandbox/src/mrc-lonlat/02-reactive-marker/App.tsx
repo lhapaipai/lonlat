@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.scss";
 
 import { RMap } from "maplibre-react-components";
-import { RLLMarker } from "pentatrion-geo";
+import { RMarker } from "pentatrion-geo";
 
 import "maplibre-gl/dist/maplibre-gl.css";
 import { getIndexLetter } from "pentatrion-design";
@@ -53,7 +53,10 @@ function App() {
   const [colorRange, setColorRange] = useState(180);
 
   function handleChangeMarkerCoords() {
-    setCoords1({ lng: Math.random() * 300 - 150, lat: Math.random() * 150 - 75 });
+    setCoords1({
+      lng: Math.random() * 300 - 150,
+      lat: Math.random() * 150 - 75,
+    });
   }
 
   return (
@@ -63,7 +66,9 @@ function App() {
           <button onClick={() => setShow((show) => !show)}>toggle map</button>
         </div>
         <div>
-          <button onClick={handleChangeMarkerCoords}>change marker cords</button>
+          <button onClick={handleChangeMarkerCoords}>
+            change marker cords
+          </button>
         </div>
         <div>
           <button onClick={() => setCounter((c) => c + 1)}>
@@ -85,12 +90,12 @@ function App() {
       </div>
       {show && (
         <RMap onClick={(e) => console.log(e.lngLat)}>
-          <RLLMarker
+          <RMarker
             longitude={coords1.lng}
             latitude={coords1.lat}
             icon={icons[counter % icons.length]}
           />
-          <RLLMarker
+          <RMarker
             draggable={true}
             longitude={coords2.lng}
             latitude={coords2.lat}

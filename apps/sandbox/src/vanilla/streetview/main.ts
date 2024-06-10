@@ -1,4 +1,4 @@
-import { googleMapsApiToken } from "../shared/constants";
+import { googleMapsApiToken } from "~/shared/constants";
 import "./main.scss";
 import { Loader } from "@googlemaps/js-api-loader";
 

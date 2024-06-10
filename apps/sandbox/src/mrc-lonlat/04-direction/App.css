@@ -1,38 +1,37 @@
 html,
 body,
 #root {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .sidebar {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 400px;
-    color: #fff;
-    padding: .5rem;
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  padding: 0.5rem;
+  pointer-events: none;
 
-    &>* {
-        pointer-events: all;
-    }
+  & > * {
+    pointer-events: all;
+  }
 }
 
 @media (max-width: 768px) {
-    .sidebar {
-        width: auto;
-        left: 0;
-    }
+  .sidebar {
+    width: auto;
+    left: 0;
+  }
 }
 
 .maplibregl-map .maplibregl-canvas-container.maplibregl-interactive {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .maplibregl-map .maplibregl-canvas-container.maplibregl-interactive:active {
-    cursor: grabbing;
+  cursor: grabbing;
 }

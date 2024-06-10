@@ -16,6 +16,7 @@
     "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^2.2.5",
     "@turf/turf": "6.5.0",
+    "clsx": "^2.1.1",
     "d3-array": "^3.2.4",
     "d3-scale": "^4.0.2",
     "d3-shape": "^3.2.0",

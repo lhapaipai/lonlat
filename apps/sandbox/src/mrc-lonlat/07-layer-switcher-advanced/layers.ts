@@ -9,10 +9,12 @@ import {
   googleOrthophotoURL,
   osmURL,
 } from "pentatrion-geo";
-import { ignToken, mapTilerStreetsStyleUrl } from "../shared/constants";
+import { ignToken, mapTilerStreetsStyleUrl } from "~/shared/constants";
 import { StyleSpecification } from "maplibre-gl";
 
-const terrariumTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
+const terrariumTiles = [
+  "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+];
 
 const googleStreetViewURLTiles = [
   "https://mts0.googleapis.com/vt?hl=en-US&lyrs=svv|cb_client:apiv3&style=40,18&x={x}&y={y}&z={z}",
@@ -66,8 +68,12 @@ export const baseLayers: BaseLayers = {
     "ign-raster-orthophoto",
     "ign-plan_ign-standard",
   ],
-  ch: ["swisstopo-raster-orthophoto", "swisstopo-raster-default", "swisstopo-raster-default_25"],
-  world: ["osm-raster-default", "google-raster-orthophoto", "maptiler"],
+  ch: [
+    "swisstopo-raster-orthophoto",
+    "swisstopo-raster-default",
+    "swisstopo-raster-default_25",
+  ],
+  world: ["osm-raster-default", "google-raster-orthophoto", "maptiler-streets"],
 };
 
 export const countryLabels = {
@@ -109,7 +115,10 @@ export const baseLayersById = {
     dataType: "raster",
     label: "Satellite",
     offsetY: -108,
-    style: createRasterStyle([getIgnOrthophotoURL()], `© <a href="https://www.ign.fr/">IGN</a>`),
+    style: createRasterStyle(
+      [getIgnOrthophotoURL()],
+      `© <a href="https://www.ign.fr/">IGN</a>`,
+    ),
     optionalLayers: [
       { id: "ign-admin_express-adminexpress" },
       { id: "ign-pci-pci" },
@@ -127,7 +136,10 @@ export const baseLayersById = {
     offsetY: -162,
     style: "/assets/styles/ign/PLAN.IGN/standard.json",
     optionalLayers: [
-      { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
+      {
+        id: "ign-admin_express-adminexpress",
+        beforeId: "limite admin - limite de commune",
+      },
       { id: "ign-pci-pci", beforeId: "point coté" },
     ],
     country: "fr",

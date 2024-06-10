@@ -3,7 +3,7 @@ import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Event, RMap } from "maplibre-react-components";
 import { useLayoutEffect, useRef, useState } from "react";
-import { LLPegman, RPegman } from "pentatrion-geo";
+import { Pegman, RPegman } from "pentatrion-geo";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
@@ -33,14 +33,18 @@ function App() {
             latitude={markerCoords[1]}
             bearing={bearing}
             draggable={true}
-            onDragEnd={(e: Event<LLPegman>) => setMarkerCoords(e.target.getLngLat().toArray())}
+            onDragEnd={(e: Event<Pegman>) =>
+              setMarkerCoords(e.target.getLngLat().toArray())
+            }
           />
           <div className="sidebar">
             <div>
               <button onClick={() => console.log(mapRef)}>info</button>
             </div>
             <div>
-              <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
+              <button onClick={() => setCounter((c) => c + 1)}>
+                counter {counter}
+              </button>
             </div>
             <div>
               <button onClick={() => setShowMap((s) => !s)}>

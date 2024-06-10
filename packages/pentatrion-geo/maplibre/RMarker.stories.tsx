@@ -1,14 +1,11 @@
 import { Event, RMap } from "maplibre-react-components";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj, ReactRenderer } from "@storybook/react";
 import { useState } from "react";
-// import { action } from "@storybook/addon-actions";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { RMarker } from "./RMarker";
 import { Marker } from "./Marker";
+import { PartialStoryFn } from "@storybook/types";
 
-// const onChangeLngLatAction = action("onChangeLngLatAction");
-
-// @ts-ignore issue with memoized RMarker
 const meta = {
   title: "pentatrion-geo/MapLibre/RMarker",
   component: RMarker,
@@ -47,18 +44,49 @@ const meta = {
       control: {
         type: "select",
       },
-      options: ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1"],
+      options: [
+        "0",
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4",
+        "0.5",
+        "0.6",
+        "0.7",
+        "0.8",
+        "0.9",
+        "1",
+      ],
     },
     opacityWhenCovered: {
       control: {
         type: "select",
       },
-      options: ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1"],
+      options: [
+        "0",
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4",
+        "0.5",
+        "0.6",
+        "0.7",
+        "0.8",
+        "0.9",
+        "1",
+      ],
     },
     color: {
       control: {
         type: "color",
-        presetColors: ["#ffe64b", "#9ed24d", "#5fbcff", "#ffa33d", "#ff4d4d", "#c0c0c0"],
+        presetColors: [
+          "#ffe64b",
+          "#9ed24d",
+          "#5fbcff",
+          "#ffa33d",
+          "#ff4d4d",
+          "#c0c0c0",
+        ],
       },
     },
     scale: {
@@ -77,7 +105,7 @@ const meta = {
         <Story />
       </RMap>
     ),
-  ],
+  ] as ((story: PartialStoryFn<ReactRenderer, any>) => JSX.Element)[],
 } satisfies Meta<typeof RMarker>;
 export default meta;
 

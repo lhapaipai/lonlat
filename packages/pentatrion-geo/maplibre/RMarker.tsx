@@ -1,5 +1,12 @@
 import { Marker as MarkerOriginal } from "maplibre-gl";
-import { forwardRef, memo, useEffect, useImperativeHandle, useMemo, useRef } from "react";
+import {
+  forwardRef,
+  memo,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+} from "react";
 import {
   prepareEventDep,
   transformPropsToOptions,
@@ -42,19 +49,24 @@ export const markerReactiveOptionNames = [
   "text",
   "icon",
 ] as const;
-export type MarkerReactiveOptionName = (typeof markerReactiveOptionNames)[number];
+export type MarkerReactiveOptionName =
+  (typeof markerReactiveOptionNames)[number];
 export type MarkerReactiveOptions = {
   [key in MarkerReactiveOptionName]?: MarkerOptions[key];
 };
 
 export const markerNonReactiveOptionNames = [] as const;
-export type MarkerNonReactiveOptionName = (typeof markerNonReactiveOptionNames)[number];
-export type MarkerInitialOptionName = `initial${Capitalize<MarkerNonReactiveOptionName>}`;
+export type MarkerNonReactiveOptionName =
+  (typeof markerNonReactiveOptionNames)[number];
+export type MarkerInitialOptionName =
+  `initial${Capitalize<MarkerNonReactiveOptionName>}`;
 export type MarkerInitialOptions = {
   [key in MarkerNonReactiveOptionName as `initial${Capitalize<key>}`]?: MarkerOptions[key];
 };
 
-export type MarkerProps = MarkerInitialOptions & MarkerReactiveOptions & MarkerCallbacks;
+export type MarkerProps = MarkerInitialOptions &
+  MarkerReactiveOptions &
+  MarkerCallbacks;
 
 type RMarkerProps = MarkerProps & {
   longitude: number;
@@ -89,7 +101,10 @@ export const RMarker = memo(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const eventDepStr = prepareEventDep(eventNameToCallbackName, markerCallbacks).join("-");
+    const eventDepStr = prepareEventDep(
+      eventNameToCallbackName,
+      markerCallbacks,
+    ).join("-");
     useEffect(() => {
       function onMarkerEvent(e: MarkerEvent) {
         const eventType = e.type as MarkerEventName;
@@ -157,7 +172,10 @@ export const RMarker = memo(
         className?.split(" ") || [],
       );
     }
-    if (marker.getLngLat().lng !== longitude || marker.getLngLat().lat !== latitude) {
+    if (
+      marker.getLngLat().lng !== longitude ||
+      marker.getLngLat().lat !== latitude
+    ) {
       marker.setLngLat([longitude, latitude]);
     }
     if (marker.isDraggable() !== draggable) {
@@ -175,7 +193,10 @@ export const RMarker = memo(
     if (marker.getPitchAlignment() !== pitchAlignment) {
       marker.setPitchAlignment(pitchAlignment);
     }
-    if (marker._opacity !== opacity || marker._opacityWhenCovered !== opacityWhenCovered) {
+    if (
+      marker._opacity !== opacity ||
+      marker._opacityWhenCovered !== opacityWhenCovered
+    ) {
       marker.setOpacity(opacity, opacityWhenCovered);
     }
     if (marker.getColor() !== color) {

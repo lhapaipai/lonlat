@@ -3,7 +3,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { ResizeArea, useEventCallback } from "pentatrion-design";
 import GoogleApiWrapper from "./GoogleApiWrapper";
-import { googleMapsApiToken, ignPlanStyleUrl } from "../shared/constants";
+import { googleMapsApiToken, ignPlanStyleUrl } from "~/shared/constants";
 import { Libraries } from "@googlemaps/js-api-loader";
 import {
   Event,
@@ -14,7 +14,7 @@ import {
   areLngLatClose,
   lngLatClassToObj,
 } from "maplibre-react-components";
-import { LLPegman, RPegman, getLngLatObj } from "pentatrion-geo";
+import { Pegman, RPegman, getLngLatObj } from "pentatrion-geo";
 
 const initialHeading = 0;
 const initialPitch = 30;
@@ -41,7 +41,14 @@ function latLngStr(lngLat: { lng: number; lat: number }) {
 }
 
 // https://developers.google.com/maps/documentation/javascript/streetview?hl=fr
-function StreetViewAndMap({ heading, pitch, coords, setHeading, setPitch, setCoords }: Props) {
+function StreetViewAndMap({
+  heading,
+  pitch,
+  coords,
+  setHeading,
+  setPitch,
+  setCoords,
+}: Props) {
   // console.log("render StreetViewAndMap", coords);
 
   const mapContainerRef = useRef<HTMLDivElement>(null!);
@@ -51,14 +58,22 @@ function StreetViewAndMap({ heading, pitch, coords, setHeading, setPitch, setCoo
   const streetRef = useRef<google.maps.StreetViewPanorama | null>(null);
 
   useEffect(() => {
-    console.log("useEffect setPov", streetRef.current?.getPov(), { heading, pitch });
+    console.log("useEffect setPov", streetRef.current?.getPov(), {
+      heading,
+      pitch,
+    });
     streetRef.current?.setPov({ heading, pitch });
   }, [heading, pitch]);
 
   useEffect(() => {
     const gLngLat = getLngLatObj(streetRef.current?.getPosition());
     if (gLngLat && !areLngLatClose(gLngLat, coords)) {
-      console.log("useEffect coords. gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(coords));
+      console.log(
+        "useEffect coords. gLngLat:",
+        latLngStr(gLngLat),
+        "coords: ",
+        latLngStr(coords),
+      );
       // submit a new position to google streetview
       // will normally relaunch a "pano_changed" with a position closest to the snapshots
       streetRef.current?.setPosition(coords);
@@ -74,7 +89,12 @@ function StreetViewAndMap({ heading, pitch, coords, setHeading, setPitch, setCoo
         return;
       }
       if (!areLngLatClose(gLngLat, coords)) {
-        console.log("pano_changed gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(coords));
+        console.log(
+          "pano_changed gLngLat:",
+          latLngStr(gLngLat),
+          "coords: ",
+          latLngStr(coords),
+        );
         setCoords(gLngLat);
       }
     }, 0);
@@ -149,7 +169,8 @@ function StreetViewAndMap({ heading, pitch, coords, setHeading, setPitch, setCoo
       google.maps.event.clearInstanceListeners(document);
 
       mapsContainer && google.maps.event.clearInstanceListeners(mapsContainer);
-      streetViewContainer && google.maps.event.clearInstanceListeners(streetViewContainer);
+      streetViewContainer &&
+        google.maps.event.clearInstanceListeners(streetViewContainer);
 
       mapRef.current = null;
       streetRef.current = null;
@@ -178,7 +199,7 @@ function App() {
   const [coords, setCoords] = useState(marignier);
   // console.log("render App", coords);
 
-  function handlePegmanDragEnd(e: Event<LLPegman>) {
+  function handlePegmanDragEnd(e: Event<Pegman>) {
     setCoords(lngLatClassToObj(e.target.getLngLat()));
   }
 
@@ -244,7 +265,9 @@ function App() {
         </div>
         <div className="container" id="extra-container">
           <div>
-            <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
+            <button onClick={() => setCounter((c) => c + 1)}>
+              counter {counter}
+            </button>
           </div>
           <div>
             <button onClick={() => setShowStreetView((s) => !s)}>

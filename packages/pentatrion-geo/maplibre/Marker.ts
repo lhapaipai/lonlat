@@ -90,7 +90,7 @@ export class Marker extends MarkerOriginal {
   };
 
   addTo(map: Map): this {
-    Marker.prototype.addTo.apply(this, [map]);
+    MarkerOriginal.prototype.addTo.apply(this, [map]);
     this._map.on("mousedown", this._onActive);
     this._map.on("touchstart", this._onActive);
 
@@ -103,7 +103,7 @@ export class Marker extends MarkerOriginal {
       this._map.off("touchstart", this._onActive);
     }
 
-    Marker.prototype.remove.apply(this);
+    MarkerOriginal.prototype.remove.apply(this);
 
     return this;
   }
@@ -192,7 +192,7 @@ export class Marker extends MarkerOriginal {
   }
 
   setDraggable(shouldBeDraggable?: boolean | undefined): this {
-    Marker.prototype.setDraggable.apply(this, [shouldBeDraggable]);
+    MarkerOriginal.prototype.setDraggable.apply(this, [shouldBeDraggable]);
     this._element.classList.toggle("draggable", shouldBeDraggable);
     return this;
   }

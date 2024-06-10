@@ -7,14 +7,17 @@ import {
   selectBaseLayer,
   selectElevation,
 } from "../store/layerSlice";
-import cn from "classnames";
 import { createPortal } from "react-dom";
 import { useRControl } from "maplibre-react-components";
+import { LayerButton } from "pentatrion-geo";
+import clsx from "clsx";
 
 export default function BaseLayerControl() {
   const { container } = useRControl({
     position: "bottom",
-    className: "ll-layer-switcher",
+    className: clsx(
+      "ll-layer-switcher flex overflow-x-auto flex-nowrap relative z-[1] select-none max-w-full pointer-events-auto gap-2 pt-0.5 pb-2 px-2 w-fit",
+    ),
   });
   const dispatch = useAppDispatch();
 
@@ -27,38 +30,32 @@ export default function BaseLayerControl() {
 
   return createPortal(
     <>
-      <div
-        className={cn("layer", elevation && "active")}
-        key="elevation"
+      <LayerButton
+        className={clsx("layer", elevation && "active")}
+        key="terrain"
         onClick={() => dispatch(elevationToggled())}
-      >
-        <img
-          className="preview"
-          src="/assets/graphics/sprites/all-layers-1x.jpg"
-          srcSet="/assets/graphics/sprites/all-layers-1x.jpg 1x, /graphics/sprites/all-layers-2x.jpg 2x"
-          style={{ objectPosition: `0px -2052px` }}
-        />
-        <div className="legend text-sm">3D</div>
-      </div>
+        image="/assets/graphics/sprites/layers-1x.jpg"
+        srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
+        imagePositionY={-2052}
+        label="3d"
+      />
+
       {layers.map((layerId) => {
         const layer = layersById[layerId];
         return (
-          <div
-            className={cn("layer", layerId === currentBaseLayerId && "active")}
+          <LayerButton
+            className={clsx(
+              "layer",
+              "base",
+              layerId === currentBaseLayerId && "active",
+            )}
+            image="/assets/graphics/sprites/all-layers-1x.jpg"
+            srcSet="/assets/graphics/sprites/all-layers-1x.jpg 1x, /graphics/sprites/all-layers-2x.jpg 2x"
             key={layerId}
             onClick={() => handleChangeLayer(layerId)}
-          >
-            <div className="type">
-              <i className={`fe-${layer.type}`}></i>
-            </div>
-            <img
-              className="preview"
-              src="/assets/graphics/sprites/all-layers-1x.jpg"
-              srcSet="/assets/graphics/sprites/all-layers-1x.jpg 1x, /graphics/sprites/all-layers-2x.jpg 2x"
-              style={{ objectPosition: `0px ${layer.offsetY}px` }}
-            />
-            <div className="legend text-sm">{layer.label}</div>
-          </div>
+            imagePositionY={layer.offsetY}
+            label={layer.label}
+          />
         );
       })}
     </>,

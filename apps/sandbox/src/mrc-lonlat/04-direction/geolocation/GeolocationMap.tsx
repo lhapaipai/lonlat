@@ -1,4 +1,4 @@
-import { RLLMarker } from "pentatrion-geo";
+import { RMarker } from "pentatrion-geo";
 import { selectDirectionWayPoints } from "../direction/directionSlice";
 import { selectSearchFeature } from "../search/searchSlice";
 import { useAppSelector } from "../store";
@@ -19,7 +19,7 @@ export default function GeolocationMap() {
   return (
     showMarker && (
       <>
-        <RLLMarker
+        <RMarker
           className="geolocation"
           icon="fe-locate"
           key="geolocation"

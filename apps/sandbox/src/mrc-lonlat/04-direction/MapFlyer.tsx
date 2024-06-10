@@ -18,7 +18,7 @@ export default function MapFlyer() {
       return;
     }
 
-    if (searchFeature && searchFeature.type !== "geolocation" && tab === "search") {
+    if (searchFeature && tab === "search") {
       const [lon, lat] = searchFeature.geometry.coordinates;
       const contains = map.getBounds().contains([lon, lat]);
 
@@ -42,7 +42,9 @@ export default function MapFlyer() {
           return;
         }
         default: {
-          const wayPointsBounds = getBounds(validWayPoints.map((p) => p.geometry.coordinates));
+          const wayPointsBounds = getBounds(
+            validWayPoints.map((p) => p.geometry.coordinates),
+          );
           const contains = boundsContained(map.getBounds(), wayPointsBounds);
 
           if (!contains) {

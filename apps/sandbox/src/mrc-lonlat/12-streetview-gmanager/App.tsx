@@ -2,10 +2,9 @@ import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useState } from "react";
 import { ResizeArea } from "pentatrion-design";
-import { ignPlanStyleUrl } from "../shared/constants";
-import { Event, RLayer, RMap, RSource, lngLatClassToObj } from "maplibre-react-components";
-import { GApiWrapper, LLPegman, RPegman, StreetView } from "pentatrion-geo";
-import { googleMapsApiToken } from "../shared/constants";
+import { ignPlanStyleUrl, googleMapsApiToken } from "~/shared/constants";
+import { Event, RLayer, RMap, RSource } from "maplibre-react-components";
+import { GApiWrapper, Pegman, RPegman, StreetView } from "pentatrion-geo";
 import { Libraries } from "@googlemaps/js-api-loader";
 const googleLibraries: Libraries = ["streetView"];
 
@@ -28,7 +27,7 @@ function App() {
   const [pitch, setPitch] = useState(initialPitch);
   const [coords, setCoords] = useState(marignier);
 
-  function handlePegmanDragEnd(e: Event<LLPegman>) {
+  function handlePegmanDragEnd(e: Event<Pegman>) {
     setCoords(e.target.getLngLat().toArray());
   }
 
@@ -74,7 +73,9 @@ function App() {
           )}
           <div className="sidebar">
             <div>
-              <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
+              <button onClick={() => setCounter((c) => c + 1)}>
+                counter {counter}
+              </button>
             </div>
             <div>
               <button onClick={() => setShowStreetView((s) => !s)}>
@@ -109,7 +110,11 @@ function App() {
       {showStreetView && (
         <div id="extra">
           <ResizeArea name="extra" position="left" />
-          <GApiWrapper apiKey={googleMapsApiToken} version="weekly" libraries={googleLibraries}>
+          <GApiWrapper
+            apiKey={googleMapsApiToken}
+            version="weekly"
+            libraries={googleLibraries}
+          >
             <StreetView
               heading={heading}
               pitch={pitch}

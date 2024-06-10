@@ -3,7 +3,7 @@ import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { RMap, RMarker } from "maplibre-react-components";
 import { useRef, useState } from "react";
-import { ignPlanStyleUrl } from "../shared/constants";
+import { ignPlanStyleUrl } from "~/shared/constants";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 
@@ -36,7 +36,9 @@ function App() {
           <button onClick={() => console.log(mapRef)}>info</button>
         </div>
         <div>
-          <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
+          <button onClick={() => setCounter((c) => c + 1)}>
+            counter {counter}
+          </button>
         </div>
         <div>
           <button onClick={handleGeolocate}>Geolocate</button>
