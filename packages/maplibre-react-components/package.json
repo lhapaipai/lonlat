@@ -29,6 +29,7 @@
     "src/"
   ],
   "devDependencies": {
+    "@babel/core": "^7.24.7",
     "@storybook/addon-actions": "^8.1.5",
     "@storybook/addon-docs": "^8.1.5",
     "@storybook/addon-essentials": "^8.1.5",
@@ -42,7 +43,7 @@
     "@storybook/test": "^8.1.5",
     "@storybook/theming": "^8.1.5",
     "@testing-library/jest-dom": "^6.4.5",
-    "@testing-library/react": "^16.0.0",
+    "@testing-library/react": "^15.0.0",
     "@types/geojson": "^7946.0.14",
     "@types/offscreencanvas": "^2019.7.3",
     "@types/react": "^18.3.3",
