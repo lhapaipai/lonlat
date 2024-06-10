@@ -1,11 +1,19 @@
-import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "pentatrion-design";
+import {
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuItemMouseEvent,
+} from "pentatrion-design";
 import { useAppDispatch } from "~/store";
 import { searchFeatureChanged } from "./searchSlice";
 import { createLonLatFeaturePoint } from "pentatrion-geo";
-import { MaplibreContextmenuEventDetail } from "maplibre-react-components";
+import {
+  MaplibreContextmenuEventDetail,
+  useCanvasRef,
+} from "maplibre-react-components";
 
 export default function SearchContextMenu() {
   const dispatch = useAppDispatch();
+  const canvasRef = useCanvasRef();
 
   function handleClickInfos(e: ContextMenuItemMouseEvent) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
@@ -13,9 +21,8 @@ export default function SearchContextMenu() {
     dispatch(searchFeatureChanged(lonlatFeature));
   }
 
-  //  compact={false}
   return (
-    <ContextMenu eventName="contextmenu-custom">
+    <ContextMenu targetRef={canvasRef} eventName="contextmenu-maplibre">
       <ContextMenuItem
         key="search-infos"
         label="Plus d'infos sur cet endroit"

@@ -1,6 +1,6 @@
 import {
-  LLMarker,
-  RLLMarker,
+  Marker,
+  RMarker,
   createLonLatFeaturePoint,
   isGeolocationGeoOption,
 } from "pentatrion-geo";
@@ -8,7 +8,10 @@ import { Event, RLayer, RSource } from "maplibre-react-components";
 
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { isochroneFillLayerStyle, isochroneLineLayerStyle } from "~/config/mapStyles";
+import {
+  isochroneFillLayerStyle,
+  isochroneLineLayerStyle,
+} from "~/config/mapStyles";
 import { selectIsochroneFeature } from "../isochrone/isochroneSlice";
 
 export default function SearchMap() {
@@ -16,7 +19,7 @@ export default function SearchMap() {
   const searchFeature = useAppSelector(selectSearchFeature);
   const isochroneFeature = useAppSelector(selectIsochroneFeature);
 
-  function handleSearchLocationDragEnd(e: Event<LLMarker>) {
+  function handleSearchLocationDragEnd(e: Event<Marker>) {
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
     dispatch(searchFeatureChanged(lonlatFeature));
   }
@@ -24,7 +27,7 @@ export default function SearchMap() {
   return (
     <>
       {searchFeature && !isGeolocationGeoOption(searchFeature) && (
-        <RLLMarker
+        <RMarker
           key={searchFeature.id}
           icon={`fe-${searchFeature.properties.type}`}
           draggable={true}

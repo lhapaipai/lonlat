@@ -5,7 +5,10 @@ import {
   getIndexLetter,
 } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { MaplibreContextmenuEventDetail } from "maplibre-react-components";
+import {
+  MaplibreContextmenuEventDetail,
+  useCanvasRef,
+} from "maplibre-react-components";
 
 import {
   directionWayPointChanged,
@@ -17,16 +20,23 @@ import { ReactElement } from "react";
 
 export default function DirectionContextMenu() {
   const dispatch = useAppDispatch();
+  const canvasRef = useCanvasRef();
 
   const wayPointsLength = useAppSelector(selectDirectionWayPoints).length;
 
-  function handleDirectionChangeWayPointAt(e: ContextMenuItemMouseEvent, index: number) {
+  function handleDirectionChangeWayPointAt(
+    e: ContextMenuItemMouseEvent,
+    index: number,
+  ) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
     const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
     dispatch(directionWayPointChanged({ index, feature: lonlatFeature }));
   }
 
-  function handleDirectionInsertWayPointBefore(e: ContextMenuItemMouseEvent, index: number) {
+  function handleDirectionInsertWayPointBefore(
+    e: ContextMenuItemMouseEvent,
+    index: number,
+  ) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
     const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
     dispatch(
@@ -69,7 +79,11 @@ export default function DirectionContextMenu() {
       <ContextMenuItem
         key={`direction-to-${i}`}
         icon={<span className="bullet">{getIndexLetter(i)}</span>}
-        label={i < wayPointsLength - 1 ? "Déplacer ce point" : "Itinéraire vers ce lieu"}
+        label={
+          i < wayPointsLength - 1
+            ? "Déplacer ce point"
+            : "Itinéraire vers ce lieu"
+        }
         onClick={(e) => handleDirectionChangeWayPointAt(e, i)}
       />,
     );
@@ -84,6 +98,9 @@ export default function DirectionContextMenu() {
     />,
   );
 
-  // compact={contextItems.length > 5 ? true : false}
-  return <ContextMenu eventName="contextmenu-custom">{contextItems}</ContextMenu>;
+  return (
+    <ContextMenu targetRef={canvasRef} eventName="contextmenu-maplibre">
+      {contextItems}
+    </ContextMenu>
+  );
 }

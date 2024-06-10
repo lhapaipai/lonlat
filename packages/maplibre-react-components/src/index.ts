@@ -35,7 +35,7 @@ export { useMap } from "./hooks/useMap";
 export { useRControl } from "./hooks/useRControl";
 export { useControl } from "./hooks/useControl";
 export { useMapAndCanvasRefs } from "./hooks/useMapAndCanvasRefs";
-
+export { useCanvasRef } from "./hooks/useCanvasRef";
 export * from "./lib/util";
 
 export { type Event } from "./types.d";

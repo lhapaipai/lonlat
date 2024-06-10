@@ -1,5 +1,10 @@
-import { RMap } from "maplibre-react-components";
-import { AttributionControl, Map, MapLibreEvent, StyleSpecification } from "maplibre-gl";
+import { ContextMenuEventDispatcher, RMap } from "maplibre-react-components";
+import {
+  AttributionControl,
+  Map,
+  MapLibreEvent,
+  StyleSpecification,
+} from "maplibre-gl";
 
 import { useAppDispatch, useAppSelector } from "./store";
 import { selectTab, selectViewState, viewStateChanged } from "./store/mapSlice";
@@ -40,9 +45,15 @@ function handleAfterMapInstanciation(map: Map) {
       "maplibregl-ctrl-bottom-container",
       map._controlContainer,
     );
-    positions["bottom-left"] && bottomContainer.append(positions["bottom-left"]);
-    positions["bottom-right"] && bottomContainer.append(positions["bottom-right"]);
-    positions["bottom"] = DOM.create("div", "maplibregl-ctrl-bottom", bottomContainer);
+    positions["bottom-left"] &&
+      bottomContainer.append(positions["bottom-left"]);
+    positions["bottom-right"] &&
+      bottomContainer.append(positions["bottom-right"]);
+    positions["bottom"] = DOM.create(
+      "div",
+      "maplibregl-ctrl-bottom",
+      bottomContainer,
+    );
   }
   // @ts-ignore position added above
   map.addControl(new AttributionControl(), "bottom");
@@ -52,12 +63,17 @@ function App() {
   const viewState = useAppSelector(selectViewState);
   const dispatch = useAppDispatch();
 
-  const { baseLayer, optionalLayers, terrain, streetView } = useAppSelector(selectLayer);
+  const { baseLayer, optionalLayers, terrain, streetView } =
+    useAppSelector(selectLayer);
   const tab = useAppSelector(selectTab);
   const geolocationEnabled = useAppSelector(selectGeolocationStatus) === "on";
-  const isochroneReferenceFeature = useAppSelector(selectIsochroneReferenceFeature);
+  const isochroneReferenceFeature = useAppSelector(
+    selectIsochroneReferenceFeature,
+  );
 
-  const [uncontrolledStyle, setUncontrolledStyle] = useState<StyleSpecification | string>({
+  const [uncontrolledStyle, setUncontrolledStyle] = useState<
+    StyleSpecification | string
+  >({
     version: 8,
     sources: {},
     layers: [],
@@ -82,7 +98,7 @@ function App() {
   }, [baseLayer, optionalLayers, terrain]);
 
   return (
-    <div id="app" className="w-full h-full flex flex-col md:flex-row">
+    <div id="app" className="flex h-full w-full flex-col md:flex-row">
       <div id="principal" className="flex-1">
         <RMap
           onMoveEnd={handleMoveEnd}
@@ -94,6 +110,7 @@ function App() {
           onZoomEnd={(e) => console.log(e.target.getZoom())}
         >
           {debug && <RFrameRateControl />}
+          <ContextMenuEventDispatcher />
           <TabsControl />
           <LayerSwitcherControl />
           <MapFlyer />

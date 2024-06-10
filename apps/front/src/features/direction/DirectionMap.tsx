@@ -1,5 +1,5 @@
 import { getIndexLetter } from "pentatrion-design";
-import { LLMarker, RLLMarker, createLonLatFeaturePoint } from "pentatrion-geo";
+import { Marker, RMarker, createLonLatFeaturePoint } from "pentatrion-geo";
 import { Event, RLayer, RSource } from "maplibre-react-components";
 
 import {
@@ -25,9 +25,11 @@ export default function DirectionMap() {
   // for getIndexLetter(index)
   const waypoints = useAppSelector(selectDirectionWayPoints);
   const directionRoute = useAppSelector(selectDirectionRoute);
-  const directionWaypointsGeojson = useAppSelector(selectDirectionWayPointsGeojson);
+  const directionWaypointsGeojson = useAppSelector(
+    selectDirectionWayPointsGeojson,
+  );
 
-  function handleDirectionWayPointDragEnd(e: Event<LLMarker>, index: number) {
+  function handleDirectionWayPointDragEnd(e: Event<Marker>, index: number) {
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
     dispatch(directionWayPointChanged({ index, feature: lonlatFeature }));
   }
@@ -38,8 +40,12 @@ export default function DirectionMap() {
         (feature, index) =>
           feature.type === "Feature" &&
           "Point" && (
-            <RLLMarker
-              color={[0, waypoints.length - 1].includes(index) ? "#ffe64b" : "#c0c0c0"}
+            <RMarker
+              color={
+                [0, waypoints.length - 1].includes(index)
+                  ? "#ffe64b"
+                  : "#c0c0c0"
+              }
               scale={[0, waypoints.length - 1].includes(index) ? 1 : 0.75}
               key={feature.id}
               draggable={true}

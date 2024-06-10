@@ -1,9 +1,9 @@
-import { RLLMarker, isGeolocationGeoOption } from "pentatrion-geo";
+import { RMarker, isGeolocationGeoOption } from "pentatrion-geo";
 import { selectValidDirectionWayPoints } from "~/features/direction/directionSlice";
 import { selectSearchFeature } from "~/features/search/searchSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { activationChanged, selectGeolocation } from "./geolocationSlice";
-import { RMarker, useMap } from "maplibre-react-components";
+import { RMarker as BasicRMarker, useMap } from "maplibre-react-components";
 import { Map } from "maplibre-gl";
 import { useEffect } from "react";
 
@@ -16,7 +16,9 @@ function getCircleDiameter(map: Map, accuracy: number | null) {
   const northEastPoint = bounds.getNorthEast();
   const mapHeightInMeters = southEastPoint.distanceTo(northEastPoint);
   const mapHeightInPixels = map._container.clientHeight;
-  const circleDiameter = Math.ceil(2 * (accuracy / (mapHeightInMeters / mapHeightInPixels)));
+  const circleDiameter = Math.ceil(
+    2 * (accuracy / (mapHeightInMeters / mapHeightInPixels)),
+  );
   return circleDiameter;
 }
 
@@ -54,7 +56,7 @@ export default function GeolocationMap() {
   return (
     <>
       {showMarker && showAccuracyCircle && circleDiameter && (
-        <RMarker
+        <BasicRMarker
           key="geolocation-accuracy"
           longitude={geolocationCoords[0]}
           latitude={geolocationCoords[1]}
@@ -63,13 +65,13 @@ export default function GeolocationMap() {
           opacity="0.2"
         >
           <div
-            className="rounded-full bg-yellow-1 border-4 border-gray-6"
+            className="rounded-full border-4 border-gray-6 bg-yellow-1"
             style={{ width: circleDiameter, height: circleDiameter }}
           ></div>
-        </RMarker>
+        </BasicRMarker>
       )}
       {showMarker && (
-        <RLLMarker
+        <RMarker
           className="geolocation"
           icon="fe-geolocation"
           key="geolocation"

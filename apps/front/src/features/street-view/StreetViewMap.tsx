@@ -1,7 +1,11 @@
 import { Event, RLayer, RSource, useMap } from "maplibre-react-components";
-import { LLPegman, RPegman, googleStreetViewURLTiles } from "pentatrion-geo";
+import { Pegman, RPegman, googleStreetViewURLTiles } from "pentatrion-geo";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { coordsChanged, selectPegmanCoords, selectPegmanPov } from "./streetViewSlice";
+import {
+  coordsChanged,
+  selectPegmanCoords,
+  selectPegmanPov,
+} from "./streetViewSlice";
 import { Map, MapMouseEvent } from "maplibre-gl";
 import { memo, useEffect } from "react";
 
@@ -15,7 +19,7 @@ function StreetViewMap() {
   const { heading } = useAppSelector(selectPegmanPov);
   const dispatch = useAppDispatch();
 
-  function handlePegmanDragEnd(e: Event<LLPegman>) {
+  function handlePegmanDragEnd(e: Event<Pegman>) {
     dispatch(coordsChanged(e.target.getLngLat().toArray()));
   }
 
@@ -47,7 +51,12 @@ function StreetViewMap() {
         tiles={googleStreetViewURLTiles}
         tileSize={256}
       />
-      <RLayer key="streetview-fill" source="streetview-raster" id="streetview-fill" type="raster" />
+      <RLayer
+        key="streetview-fill"
+        source="streetview-raster"
+        id="streetview-fill"
+        type="raster"
+      />
     </>
   );
 }
