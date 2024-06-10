@@ -5,7 +5,7 @@
 @import "tailwindcss/utilities";
 
 @import "pentatrion-geo/fontello-geo-inline.css";
-@import "pentatrion-geo/maplibre/LLMarker.css";
+@import "pentatrion-geo/maplibre/Marker.css";
 /* @import "./maplibregl-css/index.css"; */
 
 html {

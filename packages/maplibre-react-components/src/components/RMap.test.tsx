@@ -1,7 +1,7 @@
 import { afterEach, assertType, describe, test, vi, expect, beforeEach } from "vitest";
-import { Map, type MapOptions } from "maplibre-gl";
+import { Map, StyleSpecification, type MapOptions } from "maplibre-gl";
 
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, waitFor } from "@testing-library/react";
 
 import {
   MapReactiveOptionName,
@@ -38,7 +38,7 @@ describe("RMap", () => {
     const { container } = render(
       <RMap mapStyle={emptyStyle} initialAttributionControl={false}></RMap>,
     );
-    screen.debug();
+
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div
@@ -101,21 +101,211 @@ describe("RMap", () => {
     expect(ref.current).toBeInstanceOf(Map);
   });
 
-  test.only("RMap update reactive options", async () => {
+  test("RMap keep same reference between render", () => {
     const ref: MutableRefObject<Map | null> = { current: null };
-    const { rerender } = render(<RMap ref={ref} minZoom={10} maxZoom={14} pixelRatio={1} />);
+    const { rerender } = render(<RMap ref={ref} minZoom={10} />);
 
     const map1 = ref.current!;
-    expect(map1.getMinZoom()).toBe(10);
-    expect(map1.getMaxZoom()).toBe(14);
 
-    rerender(<RMap ref={ref} minZoom={11} maxZoom={13} pixelRatio={1} />);
+    rerender(<RMap mapStyle={emptyStyle} ref={ref} minZoom={11} maxZoom={13} pixelRatio={1} />);
 
     const map2 = ref.current!;
 
-    screen.debug();
     expect(map1).toBe(map2);
-    expect(map2.getMinZoom()).toBe(11);
-    expect(map2.getMaxZoom()).toBe(13);
+  });
+
+  test("RMap update reactive options", () => {
+    const ref: MutableRefObject<Map | null> = { current: null };
+    const { rerender } = render(
+      <RMap mapStyle={emptyStyle} ref={ref} minZoom={10} maxZoom={14} pixelRatio={1} />,
+    );
+
+    const map = ref.current!;
+    expect(map.getMinZoom()).toBe(10);
+    expect(map.getMaxZoom()).toBe(14);
+
+    rerender(<RMap ref={ref} minZoom={11} maxZoom={13} pixelRatio={1} />);
+
+    expect(map.getMinZoom()).toBe(11);
+    expect(map.getMaxZoom()).toBe(13);
+  });
+
+  test("RMap not updating initial options", () => {
+    const ref: MutableRefObject<Map | null> = { current: null };
+    const { rerender } = render(<RMap mapStyle={emptyStyle} ref={ref} initialCenter={[1, 2]} />);
+    const map = ref.current!;
+
+    expect(map.getCenter()).toMatchObject({ lng: 1, lat: 2 });
+
+    rerender(<RMap mapStyle={emptyStyle} ref={ref} initialCenter={[2, 3]} />);
+
+    expect(map.getCenter()).toMatchObject({ lng: 1, lat: 2 });
+  });
+
+  test("RMap handle events", () => {
+    const ref: MutableRefObject<Map | null> = { current: null };
+    const handler1 = vi.fn();
+    const handler2 = vi.fn();
+
+    const { rerender } = render(
+      <RMap mapStyle={emptyStyle} ref={ref} initialCenter={[1, 1]} onMoveEnd={handler1} />,
+    );
+    const map = ref.current!;
+
+    map.panBy([10, 10], {
+      animate: false,
+    });
+
+    expect(handler1).toBeCalledTimes(1);
+
+    rerender(<RMap mapStyle={emptyStyle} ref={ref} initialCenter={[1, 1]} onMoveEnd={handler2} />);
+
+    map.panBy([10, 10], {
+      animate: false,
+    });
+
+    /**
+     * we expect that the first handler was not called and that it was the new
+     * handler that was called
+     */
+    expect(handler1).toBeCalledTimes(1);
+    expect(handler2).toBeCalledTimes(1);
+  });
+
+  test.only("RMap listen to mapStyle updates", async () => {
+    const ref: MutableRefObject<Map | null> = { current: null };
+    const styleDataHandler = vi.fn();
+
+    const style1: StyleSpecification = {
+      version: 8,
+      name: "style1",
+      sources: {},
+      layers: [],
+    };
+    const style2: StyleSpecification = {
+      version: 8,
+      name: "style2",
+      sources: {},
+      layers: [],
+    };
+    const style3: StyleSpecification = {
+      version: 8,
+      name: "style3",
+      sources: {
+        source: {
+          type: "geojson",
+          data: {
+            type: "Point",
+            coordinates: [0, 0],
+          },
+        },
+      },
+      layers: [],
+    };
+    const handler1 = vi.fn();
+    handler1.mockReturnValue(style1);
+
+    const handler2 = vi.fn();
+    handler2.mockReturnValue(style2);
+
+    const handler3 = vi.fn();
+    handler3.mockReturnValue(style3);
+
+    const { rerender } = render(
+      <RMap
+        mapStyle={style1}
+        ref={ref}
+        styleDiffing={false}
+        styleTransformStyle={handler1}
+        onStyleData={styleDataHandler}
+      />,
+    );
+    await waitFor(() => {
+      expect(styleDataHandler).toBeCalledTimes(1);
+    });
+
+    expect(handler1).toBeCalledTimes(0);
+
+    rerender(
+      <RMap
+        mapStyle={style2}
+        ref={ref}
+        minZoom={3}
+        styleDiffing={false}
+        styleTransformStyle={handler2}
+        onStyleData={styleDataHandler}
+      />,
+    );
+
+    await waitFor(() => {
+      expect(styleDataHandler).toBeCalledTimes(2);
+    });
+    expect(handler2).toBeCalledTimes(1);
+
+    expect(handler2.mock.calls[0]).toMatchInlineSnapshot(`
+      [
+        {
+          "layers": [],
+          "name": "style1",
+          "sources": {},
+          "version": 8,
+        },
+        {
+          "layers": [],
+          "name": "style2",
+          "sources": {},
+          "terrain": undefined,
+          "version": 8,
+        },
+      ]
+    `);
+
+    rerender(
+      <RMap
+        mapStyle={style3}
+        ref={ref}
+        minZoom={4}
+        styleTransformStyle={handler3}
+        onStyleData={styleDataHandler}
+      />,
+    );
+
+    // /**
+    //  * we expect that the first handler was not called and that it was the new handler that was called
+    //  */
+    await waitFor(() => {
+      expect(styleDataHandler).toBeCalledTimes(3);
+    });
+
+    expect(handler2).toBeCalledTimes(1);
+    expect(handler3).toBeCalledTimes(1);
+    expect(handler3.mock.calls[0]).toMatchInlineSnapshot(`
+      [
+        {
+          "layers": [],
+          "name": "style2",
+          "sources": {},
+          "version": 8,
+        },
+        {
+          "layers": [],
+          "name": "style3",
+          "sources": {
+            "source": {
+              "data": {
+                "coordinates": [
+                  0,
+                  0,
+                ],
+                "type": "Point",
+              },
+              "type": "geojson",
+            },
+          },
+          "terrain": undefined,
+          "version": 8,
+        },
+      ]
+    `);
   });
 });

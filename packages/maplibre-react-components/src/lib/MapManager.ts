@@ -371,7 +371,7 @@ export default class MapManager {
         diff: options.diff,
         transformStyle: (prevStyle, nextStyle) => {
           console.log(
-            "merge controlled sources/layers",
+            `merge controlled sources/layers ${prevStyle?.name} ${nextStyle.name}`,
             this.controlledSources,
             this.controlledLayers,
           );

@@ -17,6 +17,6 @@ const config: Config = {
       typography: pentatrionTypographyExtend,
     },
   },
-  plugins: [pentatrionTw, typography],
+  plugins: [pentatrionTw(), typography],
 };
 export default config;

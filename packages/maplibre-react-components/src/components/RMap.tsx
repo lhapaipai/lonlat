@@ -49,7 +49,6 @@ export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
   },
   ref,
 ) {
-  // console.log("render RMap");
   const containerRef = useRef<HTMLDivElement>(null!);
 
   const maplibreRef = useRef<MapLibreContext>({
@@ -68,7 +67,6 @@ export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
    */
   useIsomorphicLayoutEffect(() => {
     if (!maplibreRef.current.mapManager) {
-      console.log("mapManager instanciation");
       maplibreRef.current.mapManager = new MapManager(
         { mapStyle, styleDiffing, padding },
         mapProps,
@@ -80,7 +78,7 @@ export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
       needPropsUpdate.current = false;
     } else {
       if (needPropsUpdate.current) {
-        console.log("mapManager setProps");
+        // console.log("mapManager setProps");
         maplibreRef.current.mapManager.setProps(
           { mapStyle, padding, styleDiffing, styleTransformStyle },
           mapProps,
@@ -93,7 +91,6 @@ export const RMap = forwardRef<Map | undefined, RMapProps>(function RMap(
 
   useIsomorphicLayoutEffect(() => {
     return () => {
-      console.log("destroy mapManager");
       if (maplibreRef.current.mapManager) {
         maplibreRef.current.mapManager.destroy();
         maplibreRef.current.mapManager = undefined;
