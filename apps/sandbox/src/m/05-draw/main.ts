@@ -23,7 +23,7 @@ const draw = new MapboxDraw({
   // },
 });
 
-function updateArea(e) {
+function updateArea(e: any) {
   const data = draw.getAll();
   const answer = document.getElementById("calculated-area")!;
   if (data.features.length > 0) {
@@ -33,7 +33,8 @@ function updateArea(e) {
     answer.innerHTML = `<p><strong>${roundedArea}</strong></p><p>square meters</p>`;
   } else {
     answer.innerHTML = "";
-    if (e.type !== "draw.delete") alert("Use the draw tools to draw a polygon!");
+    if (e.type !== "draw.delete")
+      alert("Use the draw tools to draw a polygon!");
   }
 }
 

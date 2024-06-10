@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { Map, StyleSpecification } from "maplibre-gl";
 import { RMap, RNavigationControl } from "maplibre-react-components";
-import { DOM } from "maplibre-gl/src/util/dom";
+import { DOM } from "~/shared/maplibre/dom";
 import { prepareStyle } from "./util";
 
 const marignier = { lng: 6.498, lat: 46.089 };
@@ -26,9 +26,15 @@ function handleAfterMapInstanciation(map: Map) {
       "maplibregl-ctrl-bottom-container",
       map._controlContainer,
     );
-    positions["bottom-left"] && bottomContainer.append(positions["bottom-left"]);
-    positions["bottom-right"] && bottomContainer.append(positions["bottom-right"]);
-    positions["bottom"] = DOM.create("div", "maplibregl-ctrl-bottom", bottomContainer);
+    positions["bottom-left"] &&
+      bottomContainer.append(positions["bottom-left"]);
+    positions["bottom-right"] &&
+      bottomContainer.append(positions["bottom-right"]);
+    positions["bottom"] = DOM.create(
+      "div",
+      "maplibregl-ctrl-bottom",
+      bottomContainer,
+    );
   }
 }
 
@@ -39,7 +45,9 @@ function App() {
   const hillshade = useAppSelector(selectHillshade);
   const streetView = useAppSelector(selectStreetView);
 
-  const [uncontrolledStyle, setUncontrolledStyle] = useState<StyleSpecification | string>({
+  const [uncontrolledStyle, setUncontrolledStyle] = useState<
+    StyleSpecification | string
+  >({
     version: 8,
     sources: {},
     layers: [],
@@ -49,9 +57,13 @@ function App() {
 
   // for debug
   useEffect(() => {
-    prepareStyle(baseLayerId, optionalLayersId, terrain, hillshade, streetView).then((nextStyle) =>
-      setUncontrolledStyle(nextStyle),
-    );
+    prepareStyle(
+      baseLayerId,
+      optionalLayersId,
+      terrain,
+      hillshade,
+      streetView,
+    ).then((nextStyle) => setUncontrolledStyle(nextStyle));
   }, [baseLayerId, optionalLayersId, terrain, hillshade, streetView]);
 
   return (

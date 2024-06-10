@@ -2,7 +2,7 @@ import { Handler, Point, Map } from "maplibre-gl";
 
 export class ClickZoomHandler implements Handler {
   _active!: boolean;
-  _enabled: boolean;
+  _enabled!: boolean;
   _map: Map;
 
   constructor(map: Map) {

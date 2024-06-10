@@ -1,6 +1,5 @@
 import { useListItem } from "@floating-ui/react";
 import { SelectValue } from "pentatrion-design/components/select/Select";
-import { SelectOptionProps } from "pentatrion-design/components/select/SelectOption";
 import { Select, useSelect } from "pentatrion-design/index";
 import { useState } from "react";
 import cn from "classnames";
@@ -43,8 +42,9 @@ const stars: StarOption[] = [
   { value: "fill", label: "Fill", icon: "fe-star" },
 ];
 
-function selectOptionComponent({ label, icon }: SelectOptionProps<StarOption>) {
-  const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
+function SelectOptionComponent({ label, icon }: StarOption) {
+  const { activeIndex, selectedIndex, getItemProps, handleSelect } =
+    useSelect();
 
   const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;
@@ -66,7 +66,10 @@ function selectOptionComponent({ label, icon }: SelectOptionProps<StarOption>) {
   );
 }
 
-function selectSelectionComponent({ label, icon }: SelectSelectionProps<StarOption>) {
+function SelectSelectionComponent({
+  label,
+  icon,
+}: SelectSelectionProps<StarOption>) {
   return label ? (
     <span>
       <i className={icon}></i>
@@ -109,8 +112,8 @@ export default function App() {
           onChange={(o) => {
             setStarValue(o.target.value);
           }}
-          selectSelectionComponent={selectSelectionComponent}
-          selectOptionComponent={selectOptionComponent}
+          selectSelectionComponent={SelectSelectionComponent}
+          selectOptionComponent={SelectOptionComponent}
         ></Select>
       </div>
     </>

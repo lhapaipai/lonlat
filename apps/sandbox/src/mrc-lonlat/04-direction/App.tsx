@@ -1,5 +1,5 @@
 import { Tabs } from "pentatrion-design";
-import { RMap } from "maplibre-react-components";
+import { ContextMenuEventDispatcher, RMap } from "maplibre-react-components";
 import { Map, MapLibreEvent } from "maplibre-gl";
 
 import SearchTab from "./search/SearchTab";
@@ -7,7 +7,12 @@ import SearchTab from "./search/SearchTab";
 import DirectionTab from "./direction/DirectionTab";
 
 import { useAppDispatch, useAppSelector } from "./store";
-import { selectTab, selectViewState, tabChanged, viewStateChanged } from "./store/mapSlice";
+import {
+  selectTab,
+  selectViewState,
+  tabChanged,
+  viewStateChanged,
+} from "./store/mapSlice";
 
 import MapFlyer from "./MapFlyer";
 
@@ -65,6 +70,7 @@ function App() {
         mapStyle="/assets/styles/ign/PLAN.IGN/standard.json"
         onMounted={handleAfterMapInstanciation}
       >
+        <ContextMenuEventDispatcher />
         <MapFlyer />
         {tab === "direction" && <DirectionMap />}
         {tab === "search" && <SearchMap />}
@@ -72,7 +78,12 @@ function App() {
         <ContextMenuManager />
       </RMap>
       <aside className="sidebar">
-        <Tabs fullWidth={true} tabs={tabs} value={tab} onChange={(e) => dispatch(tabChanged(e))} />
+        <Tabs
+          fullWidth={true}
+          tabs={tabs}
+          value={tab}
+          onChange={(e) => dispatch(tabChanged(e))}
+        />
       </aside>
     </>
   );

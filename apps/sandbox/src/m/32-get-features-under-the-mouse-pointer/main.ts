@@ -18,7 +18,15 @@ const map = new Map({
 map.on("mousemove", (e) => {
   const features = map.queryRenderedFeatures(e.point);
 
-  const displayProperties = ["type", "properties", "id", "layer", "source", "sourceLayer", "state"];
+  const displayProperties = [
+    "type",
+    "properties",
+    "id",
+    "layer",
+    "source",
+    "sourceLayer",
+    "state",
+  ];
 
   let displayFeatures = [];
 
@@ -30,9 +38,16 @@ map.on("mousemove", (e) => {
     });
   } else {
     displayFeatures = features.map((f) => {
-      return Object.fromEntries(displayProperties.map((prop) => [prop, f[prop]]));
+      return Object.fromEntries(
+        // @ts-ignore
+        displayProperties.map((prop) => [prop, f[prop]]),
+      );
     });
   }
 
-  document.getElementById("features")!.innerHTML = JSON.stringify(displayFeatures, null, 2);
+  document.getElementById("features")!.innerHTML = JSON.stringify(
+    displayFeatures,
+    null,
+    2,
+  );
 });

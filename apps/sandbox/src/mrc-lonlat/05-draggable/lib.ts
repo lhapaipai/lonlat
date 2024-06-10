@@ -1,13 +1,14 @@
 import { Point } from "geojson";
 import { GeoOption } from "pentatrion-design";
-import { IGNAddressResponse, createIgnAddressFeaturePoint } from "pentatrion-geo";
+import { createIgnAddressFeaturePoint } from "pentatrion-geo";
 
 export const handleChangeSearchValue = async (search: string) => {
+  console.log("search", search);
   const collection = (await fetch(`/data/ign-search.geojson`).then((res) =>
     res.json(),
-  )) as IGNAddressResponse;
+  )) as any;
 
-  return collection.features.map((feature) => {
+  return collection.features.map((feature: any) => {
     return createIgnAddressFeaturePoint(feature);
   });
 };

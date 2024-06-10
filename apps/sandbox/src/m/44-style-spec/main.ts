@@ -4,7 +4,6 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { LngLatLike, Map, StyleSpecification } from "maplibre-gl";
 import standard from "./standard.json";
 import minimal from "./minimal.json";
-import { Feature, Polygon } from "geojson";
 
 const $map = document.getElementById("map")!;
 
@@ -16,22 +15,6 @@ const map = new Map({
   zoom: 14,
   style: minimal as StyleSpecification,
 });
-
-const a: Feature<Polygon> = {
-  type: "Feature",
-  geometry: {
-    type: "Polygon",
-    coordinates: [
-      [
-        [6, 47],
-        [7, 47],
-        [7, 46],
-        [6, 46],
-        [6, 47],
-      ],
-    ],
-  },
-};
 
 const $zoom = document.getElementById("zoom")!;
 function handleZoom() {
@@ -117,7 +100,7 @@ map.on("load", async () => {
     id: "price",
     type: "symbol",
     source: "trace-02",
-    /* eslint-disable prettier/prettier */
+    /* prettier-disable */
     layout: {
       "text-field": ["id"],
       "text-font": ["Source Sans Pro Regular"],
@@ -125,30 +108,32 @@ map.on("load", async () => {
     paint: {
       "text-translate": [0, 30],
     },
-    /* eslint-enable prettier/prettier */
+    /* prettier-enable */
   });
 
   map.addLayer({
     id: "price-circle",
     type: "circle",
     source: "trace-02",
-    /* eslint-disable prettier/prettier */
+    /* prettier-disable */
     paint: {
       "circle-radius": {
+        property: "value",
         stops: [
           [13, 10],
           [14, 100],
         ],
+        type: "categorical",
       },
     },
-    /* eslint-enable prettier/prettier */
+    /* prettier-enable */
   });
 
   map.addLayer({
     id: "price-circle-copy",
     type: "circle",
     source: "trace-02",
-    /* eslint-disable prettier/prettier */
+    /* prettier-disable */
     paint: {
       "circle-radius": {
         property: "value",
@@ -160,11 +145,11 @@ map.on("load", async () => {
       },
       "circle-translate": [0, -200],
     },
-    /* eslint-enable prettier/prettier */
+    /* prettier-enable */
   });
 
   map.on("mouseenter", "price-circle", (e) => {
-    console.log(e.features[0]);
+    console.log(e.features?.[0]);
   });
 
   map.addLayer({
@@ -183,14 +168,22 @@ map.on("load", async () => {
     source: "trace",
     filter: ["==", ["get", "category"], "mairie"],
     paint: {
-      /* eslint-disable prettier/prettier */
+      /* prettier-disable */
       "circle-color": [
         "let",
         "myRadius",
         10,
-        ["interpolate", ["linear"], ["var", "myRadius"], 8, "black", 15, "white"],
+        [
+          "interpolate",
+          ["linear"],
+          ["var", "myRadius"],
+          8,
+          "black",
+          15,
+          "white",
+        ],
       ],
-      /* eslint-enable prettier/prettier */
+      /* prettier-enable */
     },
   });
 
@@ -200,7 +193,7 @@ map.on("load", async () => {
     type: "symbol",
     layout: {
       "text-field": [
-        /* eslint-disable prettier/prettier */
+        /* prettier-disable */
         "format",
         ["upcase", ["get", "name"]],
         { "font-scale": 1.2, "text-color": "green" },
@@ -211,7 +204,7 @@ map.on("load", async () => {
         ["downcase", ["get", "department"]],
         { "font-scale": 0.5 },
 
-        /* eslint-enable prettier/prettier */
+        /* prettier-enable */
       ],
       "text-font": ["Source Sans Pro Regular"],
     },

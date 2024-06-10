@@ -1,5 +1,5 @@
-import { RMarker } from "pentatrion-geo";
-import { selectDirectionWayPoints } from "../direction/directionSlice";
+import { RMarker, isGeolocationGeoOption } from "pentatrion-geo";
+import { selectValidDirectionWayPoints } from "../direction/directionSlice";
 import { selectSearchFeature } from "../search/searchSlice";
 import { useAppSelector } from "../store";
 import { selectGeolocationCoords } from "./geolocationSlice";
@@ -7,14 +7,14 @@ import { selectGeolocationCoords } from "./geolocationSlice";
 export default function GeolocationMap() {
   const geolocationCoords = useAppSelector(selectGeolocationCoords);
   const searchFeature = useAppSelector(selectSearchFeature);
-  const wayPoints = useAppSelector(selectDirectionWayPoints);
+  const validWayPoints = useAppSelector(selectValidDirectionWayPoints);
   if (!geolocationCoords) {
     return null;
   }
 
   const showMarker =
-    searchFeature?.type === "geolocation" ||
-    wayPoints.some((wayPoint) => wayPoint.type === "geolocation");
+    (searchFeature && isGeolocationGeoOption(searchFeature)) ||
+    validWayPoints.some(isGeolocationGeoOption);
 
   return (
     showMarker && (

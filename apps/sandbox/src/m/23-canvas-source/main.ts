@@ -85,6 +85,7 @@ console.log(map.unproject([100, 100]), map.unproject([500, 500]));
 
 map.on("load", () => {
   map.addSource("canvas-source", {
+    // @ts-ignore
     type: "canvas",
     canvas: "canvasID",
     coordinates: [

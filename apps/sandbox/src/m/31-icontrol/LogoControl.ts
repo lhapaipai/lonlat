@@ -1,5 +1,5 @@
 import { ControlPosition, IControl, Map } from "maplibre-gl";
-import { DOM } from "maplibre-gl/src/util/dom";
+import { DOM } from "~/shared/maplibre/dom";
 
 type LogoControlOptions = {
   compact?: boolean;
@@ -28,7 +28,10 @@ export default class LogoControl implements IControl {
     anchor.target = "_blank";
     anchor.rel = "noopener nofollow";
     anchor.href = "https://maplibre.org/";
-    anchor.setAttribute("aria-label", this._map._getUIString("LogoControl.Title"));
+    anchor.setAttribute(
+      "aria-label",
+      this._map._getUIString("LogoControl.Title"),
+    );
     anchor.setAttribute("rel", "noopener nofollow");
     this._container.appendChild(anchor);
     this._container.style.display = "block";

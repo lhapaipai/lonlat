@@ -2,12 +2,13 @@ import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 import * as maplibre from "maplibre-gl";
-import { LLMarker, LLPopup } from "pentatrion-geo";
+import { Marker, Popup } from "pentatrion-geo";
+import { Feature, LineString } from "geojson";
 const $map = document.getElementById("map");
 
-const marignier: maplibre.LngLatLike = [6.47249, 46.1023399];
-const startPoint: maplibre.LngLat = [6.500239938608518, 46.09073992765464];
-const mole: maplibre.LngLat = [6.4576, 46.1057];
+const marignier: [number, number] = [6.47249, 46.1023399];
+const startPoint: [number, number] = [6.500239938608518, 46.09073992765464];
+const mole: [number, number] = [6.4576, 46.1057];
 const map = new maplibre.Map({
   container: $map!,
   // style: "/assets/styles/ign/PLAN.IGN/standard.json",
@@ -29,19 +30,21 @@ async function initTrace() {
 
   const checkpointsByDistance = {};
 
+  // @ts-ignore
   checkpoints.features.forEach((feature) => {
+    // @ts-ignore
     checkpointsByDistance[feature.properties.distance] = feature;
   });
 
-  new LLMarker({
+  new Marker({
     icon: "fe-home",
   })
     .setLngLat(startPoint)
     .addTo(map);
 
-  const molePopup = new LLPopup().setHTML("altitude : 1863m", "le Môle");
+  const molePopup = new Popup().setHTML("altitude : 1863m", "le Môle");
 
-  new LLMarker({
+  new Marker({
     icon: "fe-summit",
   })
     .setLngLat(mole)
@@ -70,19 +73,21 @@ async function initTrace() {
 
   const fullCoordinates = trace.geometry.coordinates;
 
-  const head = {
+  const head: Feature<LineString> = {
     type: "Feature",
     geometry: {
       type: "LineString",
       coordinates: [fullCoordinates[0]],
     },
+    properties: {},
   };
-  const completed = {
+  const completed: Feature<LineString> = {
     type: "Feature",
     geometry: {
       type: "LineString",
       coordinates: [fullCoordinates[0]],
     },
+    properties: {},
   };
   trace.geometry.coordinates = [fullCoordinates[0]];
 
@@ -94,7 +99,9 @@ async function initTrace() {
     type: "geojson",
     data: head,
   });
-  const traceCompletedSource = map.getSource("traceCompleted") as maplibre.GeoJSONSource;
+  const traceCompletedSource = map.getSource(
+    "traceCompleted",
+  ) as maplibre.GeoJSONSource;
   const traceHeadSource = map.getSource("traceHead") as maplibre.GeoJSONSource;
 
   map.addLayer({
@@ -120,7 +127,7 @@ async function initTrace() {
 
   let i = 1;
   let nextCheckpoint = 3;
-  let checkpointMarkers: LLMarker[] = [];
+  let checkpointMarkers: Marker[] = [];
   setInterval(() => {
     if (i < fullCoordinates.length) {
       head.geometry.coordinates.push(fullCoordinates[i]);
@@ -129,9 +136,10 @@ async function initTrace() {
         completed.geometry.coordinates.push(fullCoordinates[i - 5]);
       }
       if (fullCoordinates[i][2] > nextCheckpoint) {
+        // @ts-ignore
         const feature = checkpointsByDistance[nextCheckpoint];
         nextCheckpoint += 3;
-        const newMarker = new LLMarker({
+        const newMarker = new Marker({
           scale: 0.75,
           color: "#9ed24d",
           text: feature.properties.distance,

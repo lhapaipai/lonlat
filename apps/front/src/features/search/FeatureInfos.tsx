@@ -2,7 +2,11 @@ import { Button, SimpleTooltip, useCopyToClipboard } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { selectSearchFeature } from "./searchSlice";
 import { getCoordsStr, stringifyGeoOption } from "pentatrion-geo";
-import { coordsUnitChanged, selectCoordsUnit, tabChanged } from "~/store/mapSlice";
+import {
+  coordsUnitChanged,
+  selectCoordsUnit,
+  tabChanged,
+} from "~/store/mapSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useCallback, useState } from "react";
@@ -54,10 +58,13 @@ export default function FeatureInfos() {
             <span
               className="can-copy"
               onClick={() => {
-                const value = getCoordsStr(searchFeature.geometry.coordinates, coordsUnit);
+                const value = getCoordsStr(
+                  searchFeature.geometry.coordinates,
+                  coordsUnit,
+                );
                 copy(value);
                 notify(`${T("copiedIntoClipboard")} : ${value}`, {
-                  expiration: 500000,
+                  expiration: 5000,
                 });
               }}
             >
@@ -75,7 +82,9 @@ export default function FeatureInfos() {
           </div>
         </div>
         {["city", "postcode"].map((key) => {
-          const value = searchFeature.properties.originalProperties?.[key] as string | undefined;
+          const value = searchFeature.properties.originalProperties?.[key] as
+            | string
+            | undefined;
           if (!value) {
             return null;
           }
@@ -90,7 +99,7 @@ export default function FeatureInfos() {
       <div className="flex gap-2">
         <SimpleTooltip content={T("tooltip.direction")} placement="top-start">
           <Button
-            className="flex-1 min-w-0 justify-center"
+            className="min-w-0 flex-1 justify-center"
             variant="text"
             color="gray"
             onClick={() => {
@@ -103,7 +112,7 @@ export default function FeatureInfos() {
         </SimpleTooltip>
         <SimpleTooltip content={T("tooltip.code")} placement="top">
           <Button
-            className="flex-1 min-w-0 justify-center"
+            className="min-w-0 flex-1 justify-center"
             variant="text"
             color="gray"
             selected={action === "raw"}
@@ -114,7 +123,7 @@ export default function FeatureInfos() {
         </SimpleTooltip>
         <SimpleTooltip content={T("tooltip.isochrone")} placement="top-end">
           <Button
-            className="flex-1 min-w-0 justify-center"
+            className="min-w-0 flex-1 justify-center"
             variant="text"
             color="gray"
             selected={action === "isochrone"}
@@ -129,7 +138,7 @@ export default function FeatureInfos() {
         <>
           <div className="separator"></div>
           <textarea
-            className="ll-textarea text-sm min-h-60"
+            className="ll-textarea min-h-60 text-sm"
             readOnly
             defaultValue={stringifyGeoOption(searchFeature)}
           />

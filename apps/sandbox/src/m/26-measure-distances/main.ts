@@ -1,7 +1,7 @@
 import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { GeoJSONSource, LngLatLike, Map, MapGeoJSONFeature } from "maplibre-gl";
+import { GeoJSONSource, LngLatLike, Map } from "maplibre-gl";
 import { Feature, FeatureCollection, LineString, Point } from "geojson";
 import { length } from "@turf/turf";
 const $map = document.getElementById("map")!;
@@ -101,7 +101,9 @@ map.on("load", () => {
     }
 
     geojsonLine.features[0].geometry.coordinates =
-      points.length >= 2 ? points.map((point) => point.geometry.coordinates) : [];
+      points.length >= 2
+        ? points.map((point) => point.geometry.coordinates)
+        : [];
 
     geojsonPoints.features = points;
 

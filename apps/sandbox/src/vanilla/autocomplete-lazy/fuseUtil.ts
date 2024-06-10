@@ -18,20 +18,23 @@ export type TownOption = Option & {
   value: string;
 };
 
+// @ts-ignore
 import Fuse, { FuseResult } from "fuse.js";
 import { Option } from "pentatrion-design";
 
 export type FormattedItem<T> = T & {
   _formatted?: {
-    [K in keyof T]?: HighlightZone[];
+    [K in keyof T]?: any;
   };
 };
 
 // used only by prepareTownsResult
-export function highlightFuseResult<T>(result: FuseResult<T>[]): FormattedItem<T>[] {
+export function highlightFuseResult<T>(
+  result: FuseResult<T>[],
+): FormattedItem<T>[] {
   return result.map(({ item, matches }) => {
     const copy: FormattedItem<T> = { ...item, _formatted: {} };
-    matches?.forEach(({ key, value, indices }) => {
+    matches?.forEach(({ key, value, indices }: any) => {
       if (!key || !value) {
         return;
       }

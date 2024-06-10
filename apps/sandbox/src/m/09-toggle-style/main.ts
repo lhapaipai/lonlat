@@ -139,7 +139,10 @@ const map = new maplibre.Map({
 });
 
 styles.forEach((styleId) => {
-  const style = entities[styleId];
+  const style: {
+    title: string;
+    url: string;
+  } = entities[styleId as keyof typeof entities];
   const $button = document.createElement("button");
   $button.classList.add("block");
   $button.innerText = style.title;
@@ -158,7 +161,9 @@ styles.forEach((styleId) => {
 document.getElementById("action-1")?.addEventListener("click", () => {
   map.addSource("terrarium", {
     type: "raster-dem",
-    tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+    tiles: [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+    ],
     encoding: "terrarium",
     tileSize: 256,
   });

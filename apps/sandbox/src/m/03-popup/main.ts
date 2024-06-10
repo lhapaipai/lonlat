@@ -3,7 +3,7 @@ import "~/shared/main.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import * as maplibre from "maplibre-gl";
-// import { LLPopup } from "pentatrion-geo";
+// import { Popup } from "pentatrion-geo";
 
 const $map = document.getElementById("map");
 
@@ -14,7 +14,7 @@ const map = new maplibre.Map({
   zoom: 4,
 });
 
-// const popup = new LLPopup({
+// const popup = new Popup({
 //   closeButton: false,
 //   closeOnClick: false,
 // });
@@ -26,4 +26,7 @@ const popup1 = new maplibre.Popup({
   closeOnClick: false,
 });
 
-popup1.setLngLat([-6.293, 49.92]).setHTML("<div class='description'>hello world</div>").addTo(map);
+popup1
+  .setLngLat([-6.293, 49.92])
+  .setHTML("<div class='description'>hello world</div>")
+  .addTo(map);

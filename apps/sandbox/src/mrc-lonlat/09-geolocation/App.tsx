@@ -1,4 +1,4 @@
-import { GeolocateControl, Map, Marker } from "maplibre-gl";
+import { GeolocateControl, Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { RMap, RMarker } from "maplibre-react-components";

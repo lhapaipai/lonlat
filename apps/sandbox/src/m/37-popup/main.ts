@@ -2,17 +2,20 @@ import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./maplibre-gl.css";
-import { LngLatLike, Map, Marker, TerrainControl, Popup } from "maplibre-gl";
+import { LngLatLike, Map, TerrainControl } from "maplibre-gl";
 import "./style.css";
 import { terrainStyle } from "./data";
-import { LLMarker, LLPopup } from "pentatrion-geo";
+import { Marker, Popup } from "pentatrion-geo";
 
 const $map = document.getElementById("map")!;
 
 const marignier1: LngLatLike = [6.498, 46.089];
 const marignier2: LngLatLike = [6.508, 46.089];
 const marignier3: LngLatLike = [6.478, 46.089];
-const marignier4: LngLatLike = { lng: 6.497802059919962, lat: 46.091824501717326 };
+const marignier4: LngLatLike = {
+  lng: 6.497802059919962,
+  lat: 46.091824501717326,
+};
 const map = new Map({
   container: $map,
   center: marignier1,
@@ -22,7 +25,7 @@ const map = new Map({
 
 map.addControl(new TerrainControl({ source: "elevation" }));
 
-const popup1 = new Popup({
+new Popup({
   closeOnClick: false,
   closeButton: true,
 })
@@ -31,7 +34,7 @@ const popup1 = new Popup({
   .setHTML(`<div>Hello world</div>`)
   .addTo(map);
 
-// const marker1 = new LLMarker({
+// const marker1 = new Marker({
 //   // offset: [0, 0],
 //   // pitchAlignment: "viewport",
 // })
@@ -47,7 +50,7 @@ new Marker({
   .setLngLat(marignier4)
   .addTo(map);
 
-const popup2 = new Popup({
+new Popup({
   closeOnClick: false,
   closeButton: true,
 })
@@ -58,7 +61,7 @@ const popup2 = new Popup({
   )
   .addTo(map);
 
-const marker2 = new Marker().setLngLat(marignier2).addTo(map);
+new Marker().setLngLat(marignier2).addTo(map);
 
 const popup3 = new Popup({
   closeOnClick: false,
@@ -72,7 +75,7 @@ const popup3 = new Popup({
   );
 
 // .setPopup(popup2)
-const marker3 = new Marker().setLngLat(marignier3).setPopup(popup3).addTo(map);
+new Marker().setLngLat(marignier3).setPopup(popup3).addTo(map);
 
 map.on("click", (e) => {
   console.log(e.lngLat);

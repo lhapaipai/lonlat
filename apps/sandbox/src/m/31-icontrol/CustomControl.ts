@@ -1,5 +1,5 @@
 import { Evented, IControl, Map } from "maplibre-gl";
-import { Event } from "maplibre-gl/src/util/evented";
+import { Event } from "~/shared/maplibre/evented";
 
 /**
  * @event `mounted` - Fired when controler is added into the map

@@ -15,10 +15,18 @@ const map = new maplibre.Map({
 
 const size = 200;
 
-const pulsingDot = {
+const pulsingDot: {
+  width: number;
+  height: number;
+  data: Uint8Array | Uint8ClampedArray;
+  context: null | CanvasRenderingContext2D;
+  onAdd(): void;
+  render(): boolean;
+} = {
   width: size,
   height: size,
   data: new Uint8Array(size * size * 4),
+  context: null,
   onAdd() {
     const canvas = document.createElement("canvas");
     canvas.width = this.width;
@@ -32,6 +40,10 @@ const pulsingDot = {
     const radius = (size / 2) * 0.3;
     const outerRadius = (size / 2) * 0.7 * t + radius;
     const context = this.context;
+
+    if (!context) {
+      return true;
+    }
 
     // draw outer circle
     context.clearRect(0, 0, this.width, this.height);
@@ -69,6 +81,7 @@ map.on("load", () => {
             type: "Point",
             coordinates: [0, 0],
           },
+          properties: {},
         },
       ],
     },

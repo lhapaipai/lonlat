@@ -2,7 +2,7 @@ import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { LngLatLike, Map } from "maplibre-gl";
-import { DOM } from "maplibre-gl/src/util/dom";
+import { DOM } from "~/shared/maplibre/dom";
 const $map = document.getElementById("map")!;
 const $info = document.getElementById("info") as HTMLSpanElement;
 
@@ -17,7 +17,9 @@ let map: Map | null = new Map({
 
 map.on("mousemove", (e) => {
   const pointStr1 = JSON.stringify(e.point);
-  const pointStr2 = JSON.stringify(DOM.mousePos(map.getCanvasContainer(), e.originalEvent));
+  const pointStr2 = JSON.stringify(
+    DOM.mousePos(map!.getCanvasContainer(), e.originalEvent),
+  );
   const lngLatStr1 = e.lngLat.wrap();
   const lngLatStr2 = map?.unproject(e.point).wrap();
 

@@ -13,7 +13,6 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 import {
-  Children,
   ReactElement,
   createContext,
   useCallback,
@@ -32,7 +31,9 @@ interface SelectContextValue {
   handleSelect: (index: number | null) => void;
 }
 
-const SelectContext = createContext<SelectContextValue>({} as SelectContextValue);
+const SelectContext = createContext<SelectContextValue>(
+  {} as SelectContextValue,
+);
 
 type Value = number | string;
 type ChangeEventLike = {
@@ -48,9 +49,10 @@ interface SelectProps {
   onChange?: ((e: ChangeEventLike) => void) | null;
 }
 
-function Select({ children, value = null, onChange }: SelectProps) {
+function Select({ children, onChange }: SelectProps) {
   const isControlled = onChange !== null;
-  const [uncontrolledSelectedIndex, setUncontrolledSelectedIndex] = useState<number | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [uncontrolledSelectedIndex] = useState<number | null>(null);
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -58,11 +60,7 @@ function Select({ children, value = null, onChange }: SelectProps) {
   const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
 
   let selectedIndex: number | null = null;
-  if (isControlled) {
-    if (value !== null) {
-      const pos = Children.forEach(child);
-    }
-  } else {
+  if (!isControlled) {
     selectedIndex = uncontrolledSelectedIndex;
   }
 
@@ -78,7 +76,7 @@ function Select({ children, value = null, onChange }: SelectProps) {
   const labelsRef = useRef<Array<string | null>>([]);
 
   const handleSelect = useCallback((index: number | null) => {
-    setSelectedIndex(index);
+    // setSelectedIndex(index);
     setIsOpen(false);
     if (index !== null) {
       setSelectedLabel(labelsRef.current[index]);
@@ -111,13 +109,9 @@ function Select({ children, value = null, onChange }: SelectProps) {
   const dismiss = useDismiss(context);
   const role = useRole(context, { role: "listbox" });
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-    listNav,
-    typeahead,
-    click,
-    dismiss,
-    role,
-  ]);
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
+    [listNav, typeahead, click, dismiss, role],
+  );
 
   const selectContext = useMemo(
     () => ({
@@ -134,10 +128,15 @@ function Select({ children, value = null, onChange }: SelectProps) {
       <div ref={refs.setReference} tabIndex={0} {...getReferenceProps()}>
         {selectedLabel ?? "Select..."}
       </div>
+      {/* @ts-ignore */}
       <SelectContext.Provider value={selectContext}>
         {isOpen && (
           <FloatingFocusManager context={context} modal={false}>
-            <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
+            <div
+              ref={refs.setFloating}
+              style={floatingStyles}
+              {...getFloatingProps()}
+            >
               <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
                 {children}
               </FloatingList>
@@ -149,8 +148,9 @@ function Select({ children, value = null, onChange }: SelectProps) {
   );
 }
 
-function Option({ label, value }: { label: string; value: string }) {
-  const { activeIndex, selectedIndex, getItemProps, handleSelect } = useContext(SelectContext);
+function Option({ label }: { label: string; value: string }) {
+  const { activeIndex, selectedIndex, getItemProps, handleSelect } =
+    useContext(SelectContext);
 
   const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;

@@ -1,8 +1,14 @@
 import "../../main.css";
 import "./style.scss";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { LngLatLike, Map, MapDataEvent, MapSourceDataEvent, MapStyleDataEvent } from "maplibre-gl";
-import { emptyStyle, styleBase, utm } from "./style";
+import {
+  LngLatLike,
+  Map,
+  MapDataEvent,
+  MapSourceDataEvent,
+  MapStyleDataEvent,
+} from "maplibre-gl";
+import { styleBase, utm } from "./style";
 
 const $map = document.getElementById("map")!;
 
@@ -44,8 +50,10 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
       const event = e as MapSourceDataEvent;
       if (event.sourceDataType) {
         console.log(event.type, map.style._loaded, event.sourceDataType);
+        // @ts-ignore
       } else if (event.coord) {
         if (!skipTileSource) {
+          // @ts-ignore
           const coord = event.coord.canonical;
           console.log(event.type, `${coord.x}/${coord.y}/${coord.z}`);
         }
@@ -58,6 +66,7 @@ function handleEvent(e: MapDataEvent | MapStyleDataEvent | MapSourceDataEvent) {
       console.log(e.type, map.style._loaded, e);
 
       const event = e as MapStyleDataEvent;
+      // @ts-ignore
       const newContent = JSON.stringify(event.style.serialize(), undefined, 2);
 
       if (newContent != content) {
@@ -115,7 +124,6 @@ document.getElementById("action-2")?.addEventListener("click", () => {
     {
       type: "geojson",
       data: "/data/utm-light.json",
-      foo: "bar",
     },
     {
       validate: false,
@@ -143,7 +151,9 @@ document.getElementById("action-3-bis")?.addEventListener("click", () => {
 document.getElementById("action-4")?.addEventListener("click", () => {
   map.addSource("elevation", {
     type: "raster-dem",
-    tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+    tiles: [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+    ],
     encoding: "terrarium",
     tileSize: 256,
   });
@@ -161,9 +171,12 @@ document.getElementById("action-6")?.addEventListener("click", () => {
       console.log("transformStyle");
       const savedSources = {};
       if (previous?.sources["utm-trace-1"]) {
+        // @ts-ignore
         savedSources["utm-trace-1"] = previous.sources["utm-trace-1"];
       }
-      const savedLayers = previous!.layers.filter((l) => l.id === "utm-trace-line");
+      const savedLayers = previous!.layers.filter(
+        (l) => l.id === "utm-trace-line",
+      );
       const newStyle = {
         ...next,
         sources: {
@@ -180,9 +193,8 @@ document.getElementById("action-6")?.addEventListener("click", () => {
 document.getElementById("action-7")?.addEventListener("click", () => {
   map.setStyle(styleBase, {
     diff: false,
-    transformStyle(previous, next) {
+    transformStyle(_, next) {
       console.log("transformStyle");
-      debugger;
       return next;
     },
   });
@@ -191,7 +203,9 @@ document.getElementById("action-7")?.addEventListener("click", () => {
 document.getElementById("action-8")?.addEventListener("click", () => {
   map.addSource("terrarium", {
     type: "raster-dem",
-    tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+    tiles: [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+    ],
     encoding: "terrarium",
     tileSize: 256,
   });

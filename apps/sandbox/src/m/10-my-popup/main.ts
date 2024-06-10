@@ -3,8 +3,7 @@ import "~/shared/main.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import * as maplibre from "maplibre-gl";
-import { FPSControl } from "./lib/FPSControl";
-import { LLMarker, LLPopup } from "pentatrion-geo";
+import { Marker } from "pentatrion-geo";
 
 const $map = document.getElementById("map");
 
@@ -20,8 +19,6 @@ const map = new maplibre.Map({
   zoom: 16,
 });
 
-const fpsControl = new FPSControl();
-map.addControl(fpsControl, "top-right");
 // map.on("load", () => {
 //   map.addSource("terrarium", {
 //     type: "raster-dem",
@@ -52,38 +49,41 @@ map.addControl(fpsControl, "top-right");
 // new maplibre.Marker().setLngLat(house).addTo(map);
 // new maplibre.Marker().setLngLat(marignier).addTo(map);
 
-new LLMarker().setLngLat(house).addTo(map);
-new LLMarker().setLngLat(marignier).addTo(map);
-new LLMarker().setLngLat(mole).addTo(map);
+new Marker().setLngLat(house).addTo(map);
+new Marker().setLngLat(marignier).addTo(map);
+new Marker().setLngLat(mole).addTo(map);
 
 for (let a = 0; a < 100; a++) {
-  new LLMarker()
-    .setLngLat([house[0] + (Math.random() - 0.5) * 0.05, house[1] + (Math.random() - 0.5) * 0.05])
+  new Marker()
+    .setLngLat([
+      house[0] + (Math.random() - 0.5) * 0.05,
+      house[1] + (Math.random() - 0.5) * 0.05,
+    ])
     .addTo(map);
 }
 
-// const popupWithMarker = new LLPopup({
+// const popupWithMarker = new Popup({
 //   closeButton: true,
 //   closeOnClick: true,
 // });
 // popupWithMarker.setHTML("hello world", "Bienvenue !");
 
-// const popupMole = new LLPopup({
+// const popupMole = new Popup({
 //   closeButton: true,
 //   closeOnClick: true,
 // });
 // popupMole.setHTML("le Môle", "altitude : 1863m !");
-// const markerMole = new LLMarker({
+// const markerMole = new Marker({
 //   anchor: "bottom",
 // });
 // markerMole.setLngLat(mole).setPopup(popupMole).addTo(map);
 
-// const simplePopup = new LLPopup({
+// const simplePopup = new Popup({
 //   closeButton: true,
 //   closeOnClick: true,
 // });
 // simplePopup.setHTML("hello world", "Bienvenue !").setLngLat(marignier).addTo(map);
 // // simplePopup.trackPointer().setHTML("hello world", "Bienvenue !").addTo(map);
 
-// const marker = new LLMarker();
+// const marker = new Marker();
 // marker.setLngLat(house).setPopup(popupWithMarker).addTo(map);

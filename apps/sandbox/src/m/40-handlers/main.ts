@@ -7,7 +7,7 @@ const $map = document.getElementById("map")!;
 
 const marignier: LngLatLike = [6.498, 46.089];
 
-const map = new Map({
+new Map({
   container: $map,
   center: marignier,
   zoom: 16,

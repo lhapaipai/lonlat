@@ -13,7 +13,12 @@ import {
   directionLocationsSorted,
   selectDirectionLocations,
 } from "../store/directionSlice";
-import { createNodataFeature, isNoData, updateId, AutocompleteGeoOption } from "pentatrion-geo";
+import {
+  createNodataFeature,
+  isNoData,
+  updateId,
+  AutocompleteGeoOption,
+} from "pentatrion-geo";
 
 export default function DirectionTab() {
   // issue with ReactSortable and redux
@@ -25,7 +30,9 @@ export default function DirectionTab() {
 
   function handleChangeSelection(index: number, selection: GeoOption | null) {
     const itemId = locations[index].id;
-    const feature = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
+    const feature = selection
+      ? updateId(selection, itemId)
+      : createNodataFeature(itemId);
 
     dispatch(directionLocationChangedAction({ index, feature }));
   }
@@ -36,7 +43,11 @@ export default function DirectionTab() {
 
   return (
     <>
-      <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
+      <Steps
+        markerType="bullet"
+        lineStyle="dotted"
+        associateLineWithStep={false}
+      >
         <Sortable
           list={locations}
           setList={handleSortLocations}
@@ -51,13 +62,17 @@ export default function DirectionTab() {
               status={index < locations.length - 1 ? "done" : "current"}
               markerClassName="handle"
             >
-              <LazyAutocomplete<GeoOption>
+              <LazyAutocomplete
                 placeholder="Search a location..."
-                icon={false}
+                icon={false /* @ts-ignore */}
                 selection={isNoData(location) ? null : location}
                 debounce={50}
-                onChangeSelection={(selection) => handleChangeSelection(index, selection)}
-                onChangeSearchValueCallback={(search) => handleChangeSearchValue(search)}
+                onChangeSelection={(selection) =>
+                  handleChangeSelection(index, selection)
+                }
+                onChangeSearchValueCallback={(search) =>
+                  handleChangeSearchValue(search)
+                }
                 autocompleteOptionComponent={AutocompleteGeoOption}
               />
             </Step>

@@ -1,5 +1,4 @@
 import { useAppSelector } from "./store";
-import { ContextMenuEventDispatcher } from "maplibre-react-components";
 import { selectTab } from "./store/mapSlice";
 import SearchContextMenu from "./search/SearchContextMenu";
 import DirectionContextMenu from "./direction/DirectionContextMenu";
@@ -22,5 +21,5 @@ export default function ContextMenuManager() {
     return null;
   }
 
-  return <ContextMenuEventDispatcher>{ContextMenuElement}</ContextMenuEventDispatcher>;
+  return ContextMenuElement;
 }

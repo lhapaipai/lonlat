@@ -1,5 +1,5 @@
 import { Handler, Map } from "maplibre-gl";
-import { DOM } from "maplibre-gl/src/util/dom";
+import { DOM } from "~/shared/maplibre/dom";
 
 // import { DOM } from "./dom";
 

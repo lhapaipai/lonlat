@@ -31,7 +31,13 @@ function App() {
     setCoords(e.target.getLngLat().toArray());
   }
 
-  function handleChangePov({ heading, pitch }) {
+  function handleChangePov({
+    heading,
+    pitch,
+  }: {
+    heading: number;
+    pitch: number;
+  }) {
     setHeading(heading);
     setPitch(pitch);
   }

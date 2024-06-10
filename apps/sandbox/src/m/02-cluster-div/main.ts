@@ -49,12 +49,16 @@ map.on("load", () => {
     paint: {
       "circle-color": [
         "case",
+        // @ts-ignore
         mag1,
         colors[0],
+        // @ts-ignore
         mag2,
         colors[1],
+        // @ts-ignore
         mag3,
         colors[2],
+        // @ts-ignore
         mag4,
         colors[3],
         colors[4],
@@ -88,6 +92,7 @@ map.on("load", () => {
     const features = map.querySourceFeatures("earthquakes");
 
     for (let i = 0; i < features.length; i++) {
+      // @ts-ignore
       const coords = features[i].geometry.coordinates;
       const props = features[i].properties;
       if (!props.cluster) continue;
@@ -117,6 +122,7 @@ map.on("load", () => {
   }
 
   map.on("data", (e) => {
+    // @ts-ignore
     if (e.sourceId !== "earthquakes" || !e.isSourceLoaded) return;
 
     map.on("move", updateMarkers);

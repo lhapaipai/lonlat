@@ -22,7 +22,7 @@ const map = new Map({
 
 document.getElementById("action-1")?.addEventListener("click", () => {
   map.setStyle("/assets/styles/ign/PLAN.IGN/standard.json", {
-    transformStyle(prevStyle, nextStyle) {
+    transformStyle(_, nextStyle) {
       console.log("transformStyle");
       return nextStyle;
     },
@@ -59,7 +59,7 @@ document.getElementById("action-2")?.addEventListener("click", () => {
       ],
     },
     {
-      transformStyle(prevStyle, nextStyle) {
+      transformStyle(_, nextStyle) {
         console.log("transformStyle2", nextStyle);
         return nextStyle;
       },

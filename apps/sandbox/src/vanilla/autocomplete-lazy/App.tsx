@@ -19,7 +19,9 @@ export default function App() {
     return prepareTownsResult(towns, searchValue).map((town) => {
       return {
         ...town,
+        // @ts-ignore
         label: town.context,
+        // @ts-ignore
         value: town.insee.toString(),
       };
     }) as TownOption[];
@@ -32,9 +34,9 @@ export default function App() {
       <div className="container">
         <NotificationsProvider>
           <LazyAutocomplete
-            selection={selection}
+            selection={selection /* @ts-ignore */}
             onChangeSelection={setSelection}
-            onChangeSearchValue={handleChangeSearchValue}
+            onChangeSearchValue={handleChangeSearchValue /* @ts-ignore */}
             autocompleteOptionComponent={AutocompleteGeoOption}
           />
           <div>sélection : {selection && selection.label}</div>

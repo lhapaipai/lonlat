@@ -1,7 +1,12 @@
 import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { CustomLayerInterface, LngLatLike, Map, MercatorCoordinate } from "maplibre-gl";
+import {
+  CustomLayerInterface,
+  LngLatLike,
+  Map,
+  MercatorCoordinate,
+} from "maplibre-gl";
 
 const $map = document.getElementById("map")!;
 
@@ -12,24 +17,19 @@ const berlin: LngLatLike = {
 
 const map = new Map({
   container: $map,
-  // style: "https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
-  // center: berlin,
-  // zoom: 15,
-  // style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-  // zoom: 0.3,
-  // center: [0, 20],
   center: berlin,
   zoom: 3,
   style: "/assets/styles/ign/PLAN.IGN/standard.json",
 });
 
+// @ts-ignore
 const highlightLayer: CustomLayerInterface & {
   program: WebGLProgram | null;
   aPos?: number;
 } = {
   id: "highlight",
   type: "custom",
-  onAdd(map, gl) {
+  onAdd(_, gl) {
     const vertexSource = `#version 300 es
     uniform mat4 u_matrix;
     in vec2 a_pos;
@@ -46,18 +46,24 @@ const highlightLayer: CustomLayerInterface & {
     }`;
 
     const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+    // @ts-ignore
     gl.shaderSource(vertexShader, vertexSource);
+    // @ts-ignore
     gl.compileShader(vertexShader);
 
     const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+    // @ts-ignore
     gl.shaderSource(fragmentShader, fragmentSource);
+    // @ts-ignore
     gl.compileShader(fragmentShader);
 
     this.program = gl.createProgram();
     if (!this.program) {
       throw new Error("gl fail");
     }
+    // @ts-ignore
     gl.attachShader(this.program, vertexShader);
+    // @ts-ignore
     gl.attachShader(this.program, fragmentShader);
     gl.linkProgram(this.program);
 
@@ -76,20 +82,38 @@ const highlightLayer: CustomLayerInterface & {
       lat: 50.541,
     });
 
+    // @ts-ignore
     this.buffer = gl.createBuffer();
+    // @ts-ignore
     gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
     gl.bufferData(
       gl.ARRAY_BUFFER,
-      new Float32Array([helsinki.x, helsinki.y, berlin.x, berlin.y, kyiv.x, kyiv.y]),
+      new Float32Array([
+        helsinki.x,
+        helsinki.y,
+        berlin.x,
+        berlin.y,
+        kyiv.x,
+        kyiv.y,
+      ]),
       gl.STATIC_DRAW,
     );
   },
 
   render(gl, matrix) {
     gl.useProgram(this.program);
-    gl.uniformMatrix4fv(gl.getUniformLocation(this.program, "u_matrix"), false, matrix);
+    // @ts-ignore
+    gl.uniformMatrix4fv(
+      // @ts-ignore
+      gl.getUniformLocation(this.program, "u_matrix"),
+      false,
+      matrix,
+    );
+    // @ts-ignore
     gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+    // @ts-ignore
     gl.enableVertexAttribArray(this.aPos);
+    // @ts-ignore
     gl.vertexAttribPointer(this.aPos, 2, gl.FLOAT, false, 0, 0);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
