@@ -27,7 +27,7 @@ export function Badge({
     <span
       className={clsx(
         "ll-badge",
-        "text-xs rounded-full w-fit shadow overflow-hidden inline-flex items-stretch",
+        "inline-flex w-fit items-stretch overflow-hidden rounded-full text-xs shadow",
         buttonVariants.variant.contained(color),
         // badgeVariants.color[color],
         // `variant-solid-${color}`,
@@ -43,7 +43,10 @@ export function Badge({
         <span className="px-2">{children}</span>
       )}
       {onRemove && (
-        <button className="remove rounded-r-full pr-1 pl-0.5" onClick={onRemove}>
+        <button
+          className="remove rounded-r-full pl-0.5 pr-1"
+          onClick={onRemove}
+        >
           <i className="fe-cancel"></i>
         </button>
       )}

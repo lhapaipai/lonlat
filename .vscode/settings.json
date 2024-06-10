@@ -45,6 +45,7 @@
     "packages/pentatrion-geo/tailwind.config.js": "packages/pentatrion-geo/**",
     "packages/pentatrion-design/tailwind.config.js": "packages/pentatrion-design/**",
     "apps/front/tailwind.config.js": "apps/front/**",
-    "apps/sandbox/tailwind.config.js": "apps/sandbox/**"
+    "apps/sandbox/tailwind.config.js": "apps/sandbox/**",
+    "apps/mrc-doc/tailwind.config.js": "apps/mrc-doc/**"
   }
 }

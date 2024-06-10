@@ -1,8 +1,11 @@
-import type { Config } from "tailwindcss";
-import { pentatrionTw, pentatrionTypographyExtend } from "pentatrion-design/tailwind";
+import {
+  pentatrionTw,
+  pentatrionTypographyExtend,
+} from "pentatrion-design/tailwind";
 import typography from "@tailwindcss/typography";
 
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+const config = {
   content: [
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,6 +20,6 @@ const config: Config = {
       typography: pentatrionTypographyExtend,
     },
   },
-  plugins: [pentatrionTw(), typography],
+  plugins: [pentatrionTw({}), typography],
 };
 export default config;

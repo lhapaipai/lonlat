@@ -17,5 +17,5 @@ export default {
     },
   },
   safelist: ["light", "dark"],
-  plugins: [pentatrionTw(), typography],
+  plugins: [pentatrionTw({}), typography],
 };
