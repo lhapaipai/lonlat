@@ -13,7 +13,7 @@ export function Flash({ color = "yellow", children, className }: Props) {
   return (
     <div
       className={clsx(
-        "p-2 shadow border-l-4 dark:shadow-dark",
+        "border-l-4 bg-gray-0 p-2 shadow dark:shadow-dark",
         colorVariants[color].border,
         className,
       )}

@@ -31,9 +31,13 @@ export function Snack({
   }, [onRemoveStable, expiration]);
 
   return (
-    <Dialog className={clsx("animate-fade-in", "ll-snack")} placement="top" color={color}>
-      <div className="w-fit min-w-60 px-2 py-1 flex items-center">
-        <span className="pr-4 flex-1">{content}</span>
+    <Dialog
+      className={clsx("motion-safe:animate-fade-in", "ll-snack")}
+      placement="top"
+      color={color}
+    >
+      <div className="flex w-fit min-w-60 items-center px-2 py-1">
+        <span className="flex-1 pr-4">{content}</span>
         {withLoader && <Loader size="small" color="gray" />}
 
         {canClose && (

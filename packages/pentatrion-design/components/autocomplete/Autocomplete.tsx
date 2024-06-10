@@ -10,7 +10,9 @@ import {
   ReactNode,
 } from "react";
 import type { OptionLike, Option } from "../select";
-import AutocompleteOption, { AutocompleteOptionProps } from "./AutocompleteOption.tsx";
+import AutocompleteOption, {
+  AutocompleteOptionProps,
+} from "./AutocompleteOption.tsx";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -75,7 +77,9 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
   onChangeSelection: (option: O | null) => void;
   options: O[];
 
-  autocompleteOptionComponent?: (props: AutocompleteOptionProps<O>) => ReactNode;
+  autocompleteOptionComponent?: (
+    props: AutocompleteOptionProps<O>,
+  ) => ReactNode;
 
   loading?: boolean;
 
@@ -149,11 +153,9 @@ function Autocomplete<O extends OptionLike = Option>(
     loop: true,
   });
 
-  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-    role,
-    dismiss,
-    listNav,
-  ]);
+  const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
+    [role, dismiss, listNav],
+  );
 
   function handleChangeSearchValue(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -208,12 +210,22 @@ function Autocomplete<O extends OptionLike = Option>(
 
   return (
     <div className={className}>
-      <div className={clsx(inputConfig.container)} ref={refs.setReference} data-color={color}>
+      <div
+        className={clsx(inputConfig.container)}
+        ref={refs.setReference}
+        data-color={color}
+      >
         {icon !== false && (
-          <div className="flex-center relative">
-            {loading && <Loader size="medium" color="gray" className="absolute top-0 left-0" />}
+          <div className="relative flex-center">
+            {loading && (
+              <Loader
+                size="medium"
+                color="gray"
+                className="absolute left-0 top-0"
+              />
+            )}
             {icon === true ? (
-              <span className="w-8 h-8 flex-center">
+              <span className="h-8 w-8 flex-center">
                 <i className="fe-search"></i>
               </span>
             ) : (
@@ -257,24 +269,25 @@ function Autocomplete<O extends OptionLike = Option>(
             },
           })}
         />
-        <div className="flex-center relative">
+        <div className="relative flex-center">
           {selection && selectionSuffix}
-          {clearSearchButton && (searchValue.trim() !== "" || selection !== null) && (
-            <Button
-              withRipple={false}
-              icon
-              color="gray"
-              variant="text"
-              onClick={() => {
-                setIsOpen(false);
-                onChangeSelectionStable(null);
-                setActiveIndex(null);
-                onChangeSearchValueStable("", true);
-              }}
-            >
-              <i className="fe-cancel"></i>
-            </Button>
-          )}
+          {clearSearchButton &&
+            (searchValue.trim() !== "" || selection !== null) && (
+              <Button
+                withRipple={false}
+                icon
+                color="gray"
+                variant="text"
+                onClick={() => {
+                  setIsOpen(false);
+                  onChangeSelectionStable(null);
+                  setActiveIndex(null);
+                  onChangeSearchValueStable("", true);
+                }}
+              >
+                <i className="fe-cancel"></i>
+              </Button>
+            )}
           {icon === false && loading && <Loader size="medium" color="gray" />}
           {!selection && searchValue === "" && noSearchSuffix}
         </div>
@@ -296,11 +309,16 @@ function Autocomplete<O extends OptionLike = Option>(
               >
                 <Dialog
                   placement={context.placement}
-                  className="animate-fade-in-list overflow-auto"
+                  className="overflow-auto motion-safe:animate-fade-in-list"
                 >
                   <FloatingList elementsRef={listRef}>
                     {options.map((option) => {
-                      return <OptionComponent {...option} key={getOptionValue(option)} />;
+                      return (
+                        <OptionComponent
+                          {...option}
+                          key={getOptionValue(option)}
+                        />
+                      );
                     })}
                   </FloatingList>
                 </Dialog>

@@ -4,7 +4,7 @@ html {
   color-scheme: normal;
 }
 body {
-  @apply font-sans bg-gray-0 text-gray-7;
+  @apply bg-gray-0 font-sans text-gray-7;
 }
 .light {
   color-scheme: light;
@@ -41,11 +41,11 @@ h6 {
 }
 
 a:not(.ghost-link) {
-  @apply decoration-gray-8 underline text-gray-8 visited:text-gray-8 active:text-yellow-5 hover:decoration-2 hover:decoration-yellow-5;
+  @apply text-gray-8 underline decoration-gray-8 visited:text-gray-8 hover:decoration-yellow-5 hover:decoration-2 active:text-yellow-5;
 }
 
 :focus-visible {
-  @apply outline outline-offset-2 outline-2 outline-yellow-5 rounded;
+  @apply rounded outline outline-2 outline-offset-2 outline-yellow-5;
 }
 
 textarea:read-only {
@@ -53,11 +53,11 @@ textarea:read-only {
 }
 
 mark {
-  @apply text-gray-8 bg-yellow-1;
+  @apply bg-yellow-1 text-gray-8;
 }
 
 abbr {
-  @apply underline decoration-dashed cursor-help;
+  @apply cursor-help underline decoration-dashed;
 }
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -136,6 +136,7 @@ input[type="search"]::-webkit-search-results-decoration {
   /* text hover color, button active bgcolor */
   --color-yellow-5: 255 250 199; /* rgb(255, 250, 199); */
   /* text color, button hover bgcolor */
+  --y: rgb(145, 140, 88);
   --color-yellow-4: 255 245 142; /* rgb(255, 245, 142); */
   /* button default bgcolor */
   --color-yellow-3: 255 232 34; /* rgb(255, 232, 34); */

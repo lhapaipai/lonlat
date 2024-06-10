@@ -42,25 +42,34 @@ export function Tabs({
 }: Props) {
   const content = tabs.find((t) => t.id === value)?.content;
   return (
-    <div className={clsx("ll-tabs  md:rounded-sm shadow bg-gray-2 overflow-hidden", className)}>
+    <div
+      className={clsx(
+        "ll-tabs overflow-hidden bg-gray-2 shadow md:rounded-sm",
+        className,
+      )}
+    >
       <div
         role="tablist"
-        className={clsx("tabs-list flex", stickyTabs && "sticky z-[1] top-0", listClassName)}
+        className={clsx(
+          "tabs-list flex",
+          stickyTabs && "sticky top-0 z-[1]",
+          listClassName,
+        )}
       >
         {tabs.map(({ title, id }) => {
           return (
             <div
               key={id}
               className={clsx(
-                "tabs-list-item border-t-4 hover:text-gray-7 transition-all",
-                fullWidth && "text-center flex-1",
+                "tabs-list-item border-t-4 hover:text-gray-7",
+                fullWidth && "flex-1 text-center",
                 value === id
                   ? "border-t-yellow-3 bg-gray-0 text-gray-7"
                   : "border-t-transparent text-gray-6",
               )}
             >
               <button
-                className="px-2 py-1 focus-visible:outline-offset-0 w-full"
+                className="w-full px-2 py-1 focus-visible:outline-offset-0"
                 onClick={(event) => {
                   event.stopPropagation();
                   event.preventDefault();
@@ -72,9 +81,13 @@ export function Tabs({
             </div>
           );
         })}
-        {children && <div className="extra ml-auto mr-2 flex items-center">{children}</div>}
+        {children && (
+          <div className="extra ml-auto mr-2 flex items-center">{children}</div>
+        )}
       </div>
-      <div className={clsx("p-2 bg-gray-0 shadow", contentClassName)}>{content}</div>
+      <div className={clsx("bg-gray-0 p-2 shadow", contentClassName)}>
+        {content}
+      </div>
     </div>
   );
 }

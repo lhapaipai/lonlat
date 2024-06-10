@@ -1,6 +1,10 @@
 import { ComponentProps, forwardRef } from "react";
 import { usePopoverContext } from ".";
-import { FloatingFocusManager, FloatingPortal, useMergeRefs } from "@floating-ui/react";
+import {
+  FloatingFocusManager,
+  FloatingPortal,
+  useMergeRefs,
+} from "@floating-ui/react";
 import clsx from "clsx";
 import { computeArrowStyle } from "../dialog/util";
 import { Dialog } from "../dialog";
@@ -28,7 +32,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
             <Dialog
               placement={context.placement}
               color={context.color}
-              className={clsx("animate-fade-in-list", className)}
+              className={clsx("motion-safe:animate-fade-in-list", className)}
             >
               {children}
               <div

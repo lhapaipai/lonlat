@@ -1,4 +1,9 @@
-import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
+import {
+  ComponentPropsWithRef,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import clsx from "clsx";
 import { ThemeColor } from "../../types.d";
 import { Loader } from "../loader";
@@ -72,7 +77,7 @@ export const buttonVariants = {
         "shadow hover:shadow-md focus:shadow-md active-full:shadow-lg outline-offset-0 bg-gray-0",
         {
           yellow:
-            "text-gray-text hover:text-yellow-text hover:bg-yellow-3 active-full:bg-yellow-4 dark:active-full:bg-yellow-4/50 focus-visible:outline-yellow-4",
+            "text-gray-text hover:text-yellow-text hover:bg-yellow-3 active-full:bg-yellow-4 dark:active-full:bg-yellow-4 focus-visible:outline-yellow-4",
           gray: "text-gray-text hover:text-gray-text hover:bg-gray-3 active-full:bg-gray-4 dark:active-full:bg-gray-4/50 focus-visible:outline-gray-4",
           red: "text-gray-text hover:text-red-text hover:bg-red-3 active-full:bg-red-4 dark:active-full:bg-red-4/50 focus-visible:outline-red-4",
           orange:
@@ -109,7 +114,8 @@ export const buttonVariants = {
           red: "hover:bg-red-1/50 active-full:bg-red-2/50 text-red-4 hover:text-red-5",
           orange:
             "hover:bg-orange-1/50 active-full:bg-orange-2/50 text-orange-4 hover:text-orange-5",
-          green: "hover:bg-green-1/50 active-full:bg-green-2/50 text-green-4 hover:text-green-5",
+          green:
+            "hover:bg-green-1/50 active-full:bg-green-2/50 text-green-4 hover:text-green-5",
           blue: "hover:bg-blue-1/50 active-full:bg-blue-2/50 text-blue-4 hover:text-blue-5",
         }[color],
       );
@@ -167,11 +173,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         role="button"
         ref={inputRef}
         className={clsx(
-          "rounded-2xl cursor-pointer relative overflow-clip focus-visible:outline focus-visible:outline-2 no-underline border-0 inline-flex items-center transition-color-shadow duration-300 leading-5",
+          "relative inline-flex cursor-pointer items-center overflow-clip rounded-2xl border-0 leading-5 no-underline duration-300 focus-visible:outline focus-visible:outline-2 motion-safe:transition-color-shadow",
           className,
           buttonVariants.size(icon, size),
           buttonVariants.variant[variant](color),
-          icon && "justify-center min-w-8 h-8 [&_i]:w-8 [&_:last-child:not(i,img)]:pr-4",
+          icon &&
+            "h-8 min-w-8 justify-center [&_:last-child:not(i,img)]:pr-4 [&_i]:w-8",
           fullWidth && "w-full",
           selected && "active",
           notClickable && "disabled",
@@ -188,7 +195,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <Loader
               color={color}
               size="small"
-              className={clsx("ml-2 -mr-2", !loading && "invisible")}
+              className={clsx("-mr-2 ml-2", !loading && "invisible")}
             />
           </span>
         )}

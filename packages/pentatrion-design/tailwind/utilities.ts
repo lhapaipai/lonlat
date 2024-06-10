@@ -7,7 +7,7 @@ export const utilities: CSSRuleObject = {
     "justify-content": "center",
   },
   "a.link": {
-    "@apply decoration-gray-8 underline text-gray-8 visited:text-gray-8 active:text-yellow-5 hover:decoration-2 hover:decoration-yellow-5":
+    "@apply decoration-gray-8 underline text-gray-8 visited:text-gray-8 active:text-yellow-4 hover:decoration-2 hover:decoration-yellow-4":
       {},
   },
 };

@@ -29,14 +29,15 @@ export const base: CSSRuleObject = {
     /* bg outlined hovered color */
     "--color-yellow-2": "255 245 142" /* rgb(255, 245, 142); */,
 
-    /* button default bgcolor */
+    // /* button default bgcolor */
     "--color-yellow-3": "255 232 34" /* rgb(255, 232, 34); */,
 
-    /* text color, button hover bgcolor */
-    "--color-yellow-4": "242 214 62" /* rgb(242, 214, 62); */,
+    // /* text color, button hover bgcolor */
+    "--color-yellow-4": "251 191 36" /* rgb(251, 191, 36); */,
 
-    /* text hover color, button active bgcolor */
-    "--color-yellow-5": "219 167 38" /* rgb(219, 167, 38); */,
+    // /* text hover color, button active bgcolor */
+    "--color-yellow-5": "245 158 11" /* rgb(245, 158, 11); */,
+
     "--color-yellow-text": "var(--color-gray-7)",
 
     "--color-green-1": "232 245 212" /* rgb(232, 245, 212); */,
@@ -93,9 +94,9 @@ export const base: CSSRuleObject = {
     /* button default bgcolor */
     "--color-yellow-3": "255 232 34" /* rgb(255, 232, 34); */,
     /* bg outlined hovered color (with generally 50% transparency) */
-    "--color-yellow-2": "242 214 62" /* rgb(242, 214, 62); */,
+    "--color-yellow-2": "251 191 36" /* rgb(251, 191, 36); */,
     /* bg outlined color (with generally 50% transparency) */
-    "--color-yellow-1": "219 167 38" /* rgb(219, 167, 38); */,
+    "--color-yellow-1": "245 158 11" /* rgb(245, 158, 11); */,
 
     "--color-yellow-text": "var(--color-gray-0)",
 

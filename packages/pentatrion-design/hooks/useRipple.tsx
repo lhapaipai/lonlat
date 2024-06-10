@@ -63,7 +63,7 @@ export const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>) => {
       <span
         key={i}
         data-testid="ripple"
-        className="animate-ripple"
+        className="motion-safe:animate-ripple"
         style={{
           ...style,
           //should be absolutely positioned

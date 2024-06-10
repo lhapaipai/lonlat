@@ -1,7 +1,14 @@
 import type { Meta, StoryObj, ReactRenderer } from "@storybook/react";
 import { PartialStoryFn } from "@storybook/types";
 
-import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "../table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+} from "../table";
 
 import { Button } from ".";
 
@@ -33,7 +40,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="bg-gray-1 p-4">
+      <div className="p-4">
         <Story />
       </div>
     ),
@@ -63,19 +70,13 @@ const colors = ["yellow", "gray", "red", "orange", "green", "blue"] as const;
 export const Context = () => {
   return (
     <div>
-      hello
-      <a href="#">link</a>
-      world
-      <button>normal button</button>
-      <span tabIndex={0}>tab</span>
-      index
-      <h3 className="mt-8">Sizes</h3>
-      <div className="flex gap-2 items-center">
+      <h3 className="sb-h3">Sizes</h3>
+      <div className="flex items-center gap-2">
         <Button size="small">small</Button>
         <Button size="medium">medium</Button>
         <Button size="large">large</Button>
       </div>
-      <h3 className="mt-8">Variants</h3>
+      <h3 className="sb-h3">Variants</h3>
       <div className="flex gap-2">
         <Button variant="contained">solid</Button>
         <Button variant="light">light</Button>
@@ -83,13 +84,13 @@ export const Context = () => {
         <Button variant="text">text</Button>
         <Button variant="ghost">ghost</Button>
       </div>
-      <h3 className="mt-8">States</h3>
-      <div className="flex gap-2 items-center">
+      <h3 className="sb-h3">States</h3>
+      <div className="flex items-center gap-2">
         <Button disabled={true}>disabled</Button>
         <Button loading={false}>isLoading false</Button>
         <Button loading={true}>isLoading true</Button>
       </div>
-      <h3 className="mt-8">Default state</h3>
+      <h3 className="sb-h3">Default state</h3>
       <Table>
         <TableHeader>
           <TableRow>
@@ -118,7 +119,7 @@ export const Context = () => {
           ))}
         </TableBody>
       </Table>
-      <h3 className="mt-8">Only Selected state</h3>
+      <h3 className="sb-h3">Only Selected state</h3>
       <Table>
         <TableHeader>
           <TableRow>
@@ -147,8 +148,8 @@ export const Context = () => {
           ))}
         </TableBody>
       </Table>
-      <h3 className="mt-8">Icons</h3>
-      <div className="flex items-center gap-4 mb-4">
+      <h3 className="sb-h3">Icons</h3>
+      <div className="mb-4 flex items-center gap-4">
         <Button icon variant="contained" color="gray">
           <i className="fe-cancel"></i>
         </Button>
@@ -166,7 +167,7 @@ export const Context = () => {
           <span>Cancel</span>
         </Button>
       </div>
-      <div className="flex items-center gap-4 mb-4">
+      <div className="mb-4 flex items-center gap-4">
         <Button icon variant="contained">
           <i className="fe-cancel"></i>
         </Button>

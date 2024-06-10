@@ -121,7 +121,8 @@ export const Select = forwardRef<HTMLDivElement, Props>(
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [searchHasFocus, setSearchHasFocus] = useState(false);
 
-    const SelectSelectionComponent = SelectSelectionCustomComponent ?? SelectSelection;
+    const SelectSelectionComponent =
+      SelectSelectionCustomComponent ?? SelectSelection;
 
     function handleSearchChange(e: ChangeEvent<HTMLInputElement>) {
       setActiveIndex(null);
@@ -141,7 +142,8 @@ export const Select = forwardRef<HTMLDivElement, Props>(
             Object.assign(elements.floating.style, {
               width: `${Math.max(floatingMinWidth, rects.reference.width)}px`,
             });
-            const firstChild = elements.floating.firstElementChild as HTMLElement;
+            const firstChild = elements.floating
+              .firstElementChild as HTMLElement;
             if (firstChild) {
               firstChild.style.maxHeight = `${Math.min(availableHeight, 300)}px`;
             }
@@ -180,13 +182,8 @@ export const Select = forwardRef<HTMLDivElement, Props>(
       },
     });
 
-    const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-      listNav,
-      typeahead,
-      click,
-      dismiss,
-      role,
-    ]);
+    const { getReferenceProps, getFloatingProps, getItemProps } =
+      useInteractions([listNav, typeahead, click, dismiss, role]);
 
     useEffect(() => {
       if (SelectOptionCustomComponent) {
@@ -229,7 +226,7 @@ export const Select = forwardRef<HTMLDivElement, Props>(
         <div
           className={clsx(
             // "selection",
-            "rounded-2xl outline outline-1 outline-offset-[-1px] hover:outline-gray-3 flex focus-full:outline-yellow-4 focus-full:outline-2 cursor-pointer",
+            "flex cursor-pointer rounded-2xl outline outline-1 outline-offset-[-1px] hover:outline-gray-3 focus-full:outline-2 focus-full:outline-yellow-4",
             variant === "normal" ? "outline-gray-2" : "outline-transparent",
             selectionClassName,
             isOpen && "focus",
@@ -242,9 +239,12 @@ export const Select = forwardRef<HTMLDivElement, Props>(
           }}
           {...getReferenceProps()}
         >
-          <span className={clsx("h-8 flex-1 flex items-center px-2")}>
+          <span className={clsx("flex h-8 flex-1 items-center px-2")}>
             {selectedIndex !== null ? (
-              <SelectSelectionComponent {...filteredOptions[selectedIndex]} key={selectedIndex} />
+              <SelectSelectionComponent
+                {...filteredOptions[selectedIndex]}
+                key={selectedIndex}
+              />
             ) : (
               placeholder
             )}
@@ -267,7 +267,13 @@ export const Select = forwardRef<HTMLDivElement, Props>(
             </Button>
           )}
           {!showCancelButton && showArrow && (
-            <Button color="gray" withRipple={false} icon variant="text" focusable={false}>
+            <Button
+              color="gray"
+              withRipple={false}
+              icon
+              variant="text"
+              focusable={false}
+            >
               <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
             </Button>
           )}
@@ -288,7 +294,7 @@ export const Select = forwardRef<HTMLDivElement, Props>(
                 >
                   <Dialog
                     placement={context.placement}
-                    className="animate-fade-in-list max-h-80 overflow-auto"
+                    className="max-h-80 overflow-auto motion-safe:animate-fade-in-list"
                   >
                     {searchable && (
                       <div className="p-2">
@@ -306,7 +312,10 @@ export const Select = forwardRef<HTMLDivElement, Props>(
                     {SelectOptionCustomComponent ? (
                       <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
                         {filteredOptions.map((option) => (
-                          <SelectOptionCustomComponent {...option} key={option.value} />
+                          <SelectOptionCustomComponent
+                            {...option}
+                            key={option.value}
+                          />
                         ))}
                       </FloatingList>
                     ) : (
@@ -319,7 +328,9 @@ export const Select = forwardRef<HTMLDivElement, Props>(
                             key={option.value}
                             className={clsx(
                               "option",
-                              isSelected ? "bg-gray-2" : isActive && "bg-gray-1",
+                              isSelected
+                                ? "bg-gray-2"
+                                : isActive && "bg-gray-1",
                             )}
                             role="option"
                             aria-selected={isActive && isSelected}
@@ -348,4 +359,6 @@ export const Select = forwardRef<HTMLDivElement, Props>(
 
   // see : React with Typescript -- Generics while using React.forwardRef
   // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-) as <O extends Option>(p: Props<O> & { ref?: Ref<HTMLDivElement> }) => ReactElement;
+) as <O extends Option>(
+  p: Props<O> & { ref?: Ref<HTMLDivElement> },
+) => ReactElement;
