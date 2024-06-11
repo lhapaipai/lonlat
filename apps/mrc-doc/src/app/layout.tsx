@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import ProgressBar from "~/components/ProgressBar";
 import "~/main.css";
 
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
@@ -17,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={clsx(nunito.variable, "font-sans")}>{children}</body>
+      <body className={clsx(nunito.variable, "font-sans")}>
+        <ProgressBar />
+        {children}
+      </body>
     </html>
   );
 }
