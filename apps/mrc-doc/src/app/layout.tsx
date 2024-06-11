@@ -1,8 +1,9 @@
+import clsx from "clsx";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./main.css";
+import { Nunito } from "next/font/google";
+import "~/main.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
 
 export const metadata: Metadata = {
   title: "Maplibre React Components",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={clsx(nunito.variable, "font-sans")}>{children}</body>
     </html>
   );
 }

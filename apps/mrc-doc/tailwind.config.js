@@ -3,6 +3,7 @@ import {
   pentatrionTypographyExtend,
 } from "pentatrion-design/tailwind";
 import typography from "@tailwindcss/typography";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -16,6 +17,12 @@ const config = {
   ],
   darkMode: ["class"],
   theme: {
+    fontFamily: {
+      sans: ["var(--font-nunito)", "ui-sans-serif", "system-ui", "sans-serif"],
+      fontello: ["fontello"],
+      serif: defaultTheme.fontFamily.serif,
+      mono: defaultTheme.fontFamily.mono,
+    },
     extend: {
       typography: pentatrionTypographyExtend,
     },

@@ -46,13 +46,17 @@ export const buttonVariants = {
     if (size === "custom") {
       return false;
     }
+
     switch (size) {
       case "small":
-        return clsx(!icon && "px-2", "text-sm h-6");
+        return clsx("text-sm h-6", icon ? "min-w-6 [&_i]:w-6" : "px-2");
       case "medium":
-        return !icon && "px-4 h-8";
+        return clsx("h-8", icon ? "min-w-8 [&_i]:w-8" : "px-4");
       case "large":
-        return !icon && "px-8 h-12";
+        return clsx(
+          "h-12",
+          icon ? "text-2xl min-w-12 [&_i]:w-12" : "text-xl px-8",
+        );
     }
   },
   variant: {
@@ -173,12 +177,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         role="button"
         ref={inputRef}
         className={clsx(
-          "relative inline-flex cursor-pointer items-center overflow-clip rounded-2xl border-0 leading-5 no-underline duration-300 focus-visible:outline focus-visible:outline-2 motion-safe:transition-color-shadow",
+          "relative inline-flex cursor-pointer items-center overflow-clip border-0 text-center leading-5 no-underline duration-300 focus-visible:outline focus-visible:outline-2 motion-safe:transition-color-shadow",
+          icon ? "rounded-full" : "rounded-2xl",
           className,
           buttonVariants.size(icon, size),
           buttonVariants.variant[variant](color),
-          icon &&
-            "h-8 min-w-8 justify-center [&_:last-child:not(i,img)]:pr-4 [&_i]:w-8",
+          icon && "justify-center [&_:last-child:not(i,img)]:pr-4",
           fullWidth && "w-full",
           selected && "active",
           notClickable && "disabled",

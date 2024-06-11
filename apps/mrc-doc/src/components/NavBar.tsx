@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { FloatingOverlay } from "@floating-ui/react";
-
+import { Button } from "pentatrion-design/components/button";
 const links = [
   {
     url: "/getting-started",
@@ -55,12 +55,17 @@ export default function NavBar() {
 
   return (
     <>
-      <button
-        className="absolute left-0 top-0 z-10 bg-blue-1 md:hidden"
-        onClick={() => setShowNavBar((s) => !s)}
-      >
-        Menu
-      </button>
+      <div className="absolute left-0 top-0 z-10 md:hidden">
+        <Button
+          icon
+          onClick={() => setShowNavBar((s) => !s)}
+          color="gray"
+          variant="text"
+          size="large"
+        >
+          <i className="fe-menu"></i>
+        </Button>
+      </div>
       <FloatingOverlay
         className={clsx(
           "z-20 bg-yellow-3/20 md:hidden",
@@ -73,16 +78,22 @@ export default function NavBar() {
       />
       <div
         className={clsx(
-          "fixed left-0 top-0 z-30 h-screen w-64 max-w-full flex-none overflow-y-auto overflow-x-hidden bg-gray-1 md:flex md:flex-col",
+          "fixed left-0 top-0 z-30 h-screen w-64 max-w-full flex-none overflow-y-auto overflow-x-hidden bg-blue-1 md:flex md:flex-col",
           !showNavBar && "hidden",
         )}
       >
-        <button
-          className="absolute right-0 top-0 bg-blue-1 md:hidden"
-          onClick={() => setShowNavBar(false)}
-        >
-          Close
-        </button>
+        <div className="absolute right-0 top-0 bg-green-2 md:hidden">
+          <Button
+            icon
+            onClick={() => setShowNavBar(false)}
+            color="gray"
+            variant="text"
+            size="large"
+          >
+            <i className="fe-cancel"></i>
+          </Button>
+        </div>
+
         <nav className="flex flex-col">
           <Link href="/">MapLibre React Components</Link>
           {links.map(({ url, title }) => (

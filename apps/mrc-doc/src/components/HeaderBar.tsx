@@ -1,13 +1,18 @@
 "use client";
 
-import Link from "next/link";
-
+import LinkButton from "./LinkButton";
 export default function HeaderBar() {
   return (
-    <header className="flex h-16 items-center bg-red-1">
-      <Link className="ml-auto" href="https://github.com/lhapaipai/lonlat">
-        Github
-      </Link>
+    <header className="flex h-12 items-center justify-end bg-red-1">
+      <LinkButton
+        variant="text"
+        color="gray"
+        icon
+        size="large"
+        href="https://github.com/lhapaipai/lonlat"
+      >
+        <i className="fe-github text-3xl"></i>
+      </LinkButton>
     </header>
   );
 }

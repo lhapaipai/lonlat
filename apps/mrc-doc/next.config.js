@@ -7,7 +7,7 @@ const nextConfig = {
   // reactStrictMode: false,
   webpack(config, options) {
     config.resolve.alias["next-mdx-import-source-file"] = [
-      "private-next-root-dir/src/mdx-components",
+      "private-next-root-dir/src/components/Mdx",
       "@mdx-js/react",
     ];
     /** @type {import('rehype-pretty-code').Options} */
