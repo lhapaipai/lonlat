@@ -1,8 +1,14 @@
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import "./styles.scss";
-import { LngLatLike, Map, Marker, PaddingOptions, RequireAtLeastOne } from "maplibre-gl";
+import {
+  LngLatLike,
+  Map,
+  Marker,
+  PaddingOptions,
+  RequireAtLeastOne,
+} from "maplibre-gl";
 
 const $map = document.getElementById("map")!;
 

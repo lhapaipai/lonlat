@@ -19,7 +19,7 @@ import MapFlyer from "./MapFlyer";
 import ContextMenuManager from "./ContextMenuManager";
 
 import "./App.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import DirectionMap from "./direction/DirectionMap";
 import SearchMap from "./search/SearchMap";
 import GeolocationMap from "./geolocation/GeolocationMap";

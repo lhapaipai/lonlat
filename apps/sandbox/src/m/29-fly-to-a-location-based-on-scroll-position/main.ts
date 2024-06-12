@@ -1,5 +1,5 @@
 import "../../main.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { Map } from "maplibre-gl";
 import "./styles.scss";
 import { ChapterName, chapters } from "./chapters";
@@ -8,7 +8,8 @@ const $map = document.getElementById("map")!;
 
 const map = new Map({
   container: $map,
-  style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+  style:
+    "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
   zoom: 0.3,
   center: [0, 20],
 });
@@ -41,5 +42,7 @@ function setActiveChapter(chapterName: ChapterName) {
 function isElementOnScreen(id: string) {
   const element = document.getElementById(id) as HTMLDivElement;
   const bounds = element.getBoundingClientRect();
-  return bounds.top >= -40 && bounds.top < window.innerHeight && bounds.bottom > 0;
+  return (
+    bounds.top >= -40 && bounds.top < window.innerHeight && bounds.bottom > 0
+  );
 }

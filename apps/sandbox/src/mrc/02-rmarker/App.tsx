@@ -1,6 +1,6 @@
 import { Map, Marker, Offset } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { Event, RMap, RMarker, RPopup } from "maplibre-react-components";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import Pin from "./Pin";
@@ -16,8 +16,14 @@ const popupOffset = {
   "top-left": [0, 0],
   "top-right": [0, 0],
   bottom: [0, -markerHeight],
-  "bottom-left": [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-  "bottom-right": [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+  "bottom-left": [
+    linearOffset,
+    (markerHeight - markerRadius + linearOffset) * -1,
+  ],
+  "bottom-right": [
+    -linearOffset,
+    (markerHeight - markerRadius + linearOffset) * -1,
+  ],
   left: [markerRadius, (markerHeight - markerRadius) * -1],
   right: [-markerRadius, (markerHeight - markerRadius) * -1],
 } as Offset;
@@ -75,22 +81,34 @@ function App() {
       )}
       <div className="sidebar">
         <div>
-          <button onClick={() => console.log(mapRef)}>console.log(mapRef)</button>
+          <button onClick={() => console.log(mapRef)}>
+            console.log(mapRef)
+          </button>
         </div>
         <div>
-          <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
+          <button onClick={() => setCounter((c) => c + 1)}>
+            counter {counter}
+          </button>
         </div>
 
         <div>
           <label>
             afficher carte
-            <input type="checkbox" onChange={() => setShowMap((s) => !s)} checked={showMap} />
+            <input
+              type="checkbox"
+              onChange={() => setShowMap((s) => !s)}
+              checked={showMap}
+            />
           </label>
         </div>
         <div>
           <label>
             afficher Marignier popup
-            <input type="checkbox" onChange={() => setShowPopup((s) => !s)} checked={showPopup} />
+            <input
+              type="checkbox"
+              onChange={() => setShowPopup((s) => !s)}
+              checked={showPopup}
+            />
           </label>
         </div>
         <div>
@@ -110,7 +128,11 @@ function App() {
         <div>
           <label>
             show Geneva Marker
-            <input type="checkbox" onChange={() => setShowMarker((s) => !s)} checked={showMarker} />
+            <input
+              type="checkbox"
+              onChange={() => setShowMarker((s) => !s)}
+              checked={showMarker}
+            />
           </label>
         </div>
       </div>

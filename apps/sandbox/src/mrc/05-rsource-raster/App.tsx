@@ -1,6 +1,6 @@
 import { Map, MapStyleDataEvent, StyleSpecification } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
 import { useLayoutEffect, useRef, useState } from "react";
 
@@ -67,7 +67,12 @@ function App() {
             tiles={rasterTiles[tileName]}
             tileSize={256}
           />
-          <RLayer source="raster-tile" key="raster-fill" id="raster-fill" type="raster" />
+          <RLayer
+            source="raster-tile"
+            key="raster-fill"
+            id="raster-fill"
+            type="raster"
+          />
         </RMap>
       )}
       <div className="sidebar">
@@ -75,10 +80,15 @@ function App() {
           <button onClick={() => console.log(mapRef)}>info</button>
         </div>
         <div>
-          <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
+          <button onClick={() => setCounter((c) => c + 1)}>
+            counter {counter}
+          </button>
         </div>
         <div>
-          <button onClick={() => setShow((s) => !s)}> {show ? "masquer" : "afficher"}</button>
+          <button onClick={() => setShow((s) => !s)}>
+            {" "}
+            {show ? "masquer" : "afficher"}
+          </button>
         </div>
         <div>
           <select onChange={(e) => setTileName(e.target.value as TileName)}>

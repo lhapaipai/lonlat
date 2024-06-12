@@ -6,7 +6,7 @@
 
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { FlyToOptions, GeoJSONSource, LngLatLike, Map } from "maplibre-gl";
 import { EasingKeys, easingFunctions } from "./easing";
 
@@ -21,7 +21,9 @@ const map = new Map({
   style: "/assets/styles/ign/PLAN.IGN/standard.json",
 });
 
-const $durationValue = document.getElementById("durationValue") as HTMLSpanElement;
+const $durationValue = document.getElementById(
+  "durationValue",
+) as HTMLSpanElement;
 const $durationInput = document.getElementById("duration") as HTMLInputElement;
 $durationValue.innerHTML = `${$durationInput.valueAsNumber / 1000} seconds`;
 $durationInput.addEventListener("change", (e) => {
@@ -29,14 +31,18 @@ $durationInput.addEventListener("change", (e) => {
   $durationValue.innerHTML = `${target.valueAsNumber / 1000} seconds`;
 });
 
-const $animateLabel = document.getElementById("animateLabel") as HTMLLabelElement;
+const $animateLabel = document.getElementById(
+  "animateLabel",
+) as HTMLLabelElement;
 const $animateValue = document.getElementById("animate") as HTMLInputElement;
 $animateValue.addEventListener("change", (e) => {
   const target = e.target as HTMLInputElement;
   $animateLabel.innerHTML = target.checked ? "Yes" : "No";
 });
 
-const $animateButton = document.getElementById("animateButton") as HTMLButtonElement;
+const $animateButton = document.getElementById(
+  "animateButton",
+) as HTMLButtonElement;
 const $easingInput = document.getElementById("easing") as HTMLSelectElement;
 
 const $offsetX = document.getElementById("offset-x") as HTMLInputElement;

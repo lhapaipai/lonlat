@@ -1,6 +1,10 @@
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import "./App.scss";
-import { ContextMenu, ContextMenuItem, ContextMenuItemMouseEvent } from "pentatrion-design/index";
+import {
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuItemMouseEvent,
+} from "pentatrion-design/index";
 import { Marker } from "maplibre-gl";
 import {
   ContextMenuEventDispatcher,

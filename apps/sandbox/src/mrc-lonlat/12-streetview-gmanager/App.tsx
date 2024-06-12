@@ -1,5 +1,5 @@
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { useState } from "react";
 import { ResizeArea } from "pentatrion-design";
 import { ignPlanStyleUrl, googleMapsApiToken } from "~/shared/constants";

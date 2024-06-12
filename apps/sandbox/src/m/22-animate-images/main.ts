@@ -1,6 +1,6 @@
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { ImageSource, LngLatLike, Map } from "maplibre-gl";
 
 const $map = document.getElementById("map")!;
@@ -16,7 +16,8 @@ const map = new Map({
   // style: "https://api.maptiler.com/maps/basic-v2/style.json?key=5MBwnNxTfGUDJh3LabgI",
   // center: usa,
   // zoom: 15,
-  style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+  style:
+    "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
   zoom: 5,
   center: usa,
 });

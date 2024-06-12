@@ -1,6 +1,6 @@
 import { Map, MapStyleDataEvent } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 
@@ -66,7 +66,12 @@ function App() {
           ></RMarker>
           {showAnotherSource && (
             <>
-              <RSource key="thyez" id="thyez" type="geojson" data="/data/thyez.geojson" />
+              <RSource
+                key="thyez"
+                id="thyez"
+                type="geojson"
+                data="/data/thyez.geojson"
+              />
               <RLayer
                 source="thyez"
                 key="thyez-fill"
@@ -76,29 +81,52 @@ function App() {
               />
             </>
           )}
-          <RSource key="town" id="town" type="geojson" data={`/data/${sourceData}.geojson`} />
-          <RLayer source="town" key="town-fill" id="town-fill" type="fill" paint={townPaintStyle} />
+          <RSource
+            key="town"
+            id="town"
+            type="geojson"
+            data={`/data/${sourceData}.geojson`}
+          />
+          <RLayer
+            source="town"
+            key="town-fill"
+            id="town-fill"
+            type="fill"
+            paint={townPaintStyle}
+          />
         </RMap>
       )}
       <div className="sidebar">
         <div>
-          <button onClick={() => console.log(mapRef)}>console.log(mapRef)</button>
+          <button onClick={() => console.log(mapRef)}>
+            console.log(mapRef)
+          </button>
         </div>
         <div>
-          <button onClick={() => setCounter((c) => c + 1)}>reRender App {counter}</button>
+          <button onClick={() => setCounter((c) => c + 1)}>
+            reRender App {counter}
+          </button>
         </div>
         <div>
           <label>
             afficher carte
-            <input type="checkbox" onChange={() => setShow((s) => !s)} checked={show} />
+            <input
+              type="checkbox"
+              onChange={() => setShow((s) => !s)}
+              checked={show}
+            />
           </label>
         </div>
 
         <div>
           <button
-            onClick={() => setSourceData((s) => (s === "marignier" ? "cluses" : "marignier"))}
+            onClick={() =>
+              setSourceData((s) => (s === "marignier" ? "cluses" : "marignier"))
+            }
           >
-            {sourceData === "marignier" ? "afficher cluses" : "afficher marignier"}
+            {sourceData === "marignier"
+              ? "afficher cluses"
+              : "afficher marignier"}
           </button>
         </div>
 
@@ -120,7 +148,9 @@ function App() {
           </select>
         </div>
         <div>
-          <button onClick={() => setRed((r) => !r)}>{red ? "set gray" : "set red"}</button>
+          <button onClick={() => setRed((r) => !r)}>
+            {red ? "set gray" : "set red"}
+          </button>
         </div>
       </div>
     </>

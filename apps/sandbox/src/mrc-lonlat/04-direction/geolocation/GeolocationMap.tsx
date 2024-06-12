@@ -1,8 +1,9 @@
-import { RMarker, isGeolocationGeoOption } from "pentatrion-geo";
+import { isGeolocationGeoOption } from "pentatrion-geo";
 import { selectValidDirectionWayPoints } from "../direction/directionSlice";
 import { selectSearchFeature } from "../search/searchSlice";
 import { useAppSelector } from "../store";
 import { selectGeolocationCoords } from "./geolocationSlice";
+import { RGradientMarker } from "maplibre-react-components";
 
 export default function GeolocationMap() {
   const geolocationCoords = useAppSelector(selectGeolocationCoords);
@@ -19,7 +20,7 @@ export default function GeolocationMap() {
   return (
     showMarker && (
       <>
-        <RMarker
+        <RGradientMarker
           className="geolocation"
           icon="fe-locate"
           key="geolocation"

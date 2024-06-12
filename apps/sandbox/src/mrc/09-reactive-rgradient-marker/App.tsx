@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "./App.scss";
 
-import { RMap } from "maplibre-react-components";
-import { RMarker } from "pentatrion-geo";
+import { RMap, RGradientMarker } from "maplibre-react-components";
 
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { getIndexLetter } from "pentatrion-design";
 
 function hue2rgb(p: number, q: number, t: number) {
@@ -90,12 +89,12 @@ function App() {
       </div>
       {show && (
         <RMap onClick={(e) => console.log(e.lngLat)}>
-          <RMarker
+          <RGradientMarker
             longitude={coords1.lng}
             latitude={coords1.lat}
             icon={icons[counter % icons.length]}
           />
-          <RMarker
+          <RGradientMarker
             draggable={true}
             longitude={coords2.lng}
             latitude={coords2.lat}

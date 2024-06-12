@@ -1,6 +1,6 @@
 import { Map } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { useEffect, useRef, useState } from "react";
 
 const marignier = { lng: 6.498, lat: 46.089 };
@@ -40,10 +40,14 @@ function App() {
           <button onClick={() => console.log(mapRef)}>info</button>
         </div>
         <div>
-          <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
+          <button onClick={() => setCounter((c) => c + 1)}>
+            counter {counter}
+          </button>
         </div>
         <div>
-          <button onClick={() => setShowMap((s) => !s)}>{showMap ? "masquer" : "afficher"}</button>
+          <button onClick={() => setShowMap((s) => !s)}>
+            {showMap ? "masquer" : "afficher"}
+          </button>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import BaseLayerControl from "./components/BaseLayerControl";
 import { useAppSelector } from "./store";
 import { selectBaseLayer, selectElevation } from "./store/layerSlice";

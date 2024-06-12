@@ -1,6 +1,6 @@
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { LngLatLike, Map, Point, Popup } from "maplibre-gl";
 import "./style.scss";
 
@@ -10,7 +10,8 @@ const usa: LngLatLike = [-98, 38.88];
 
 const map = new Map({
   container: $map,
-  style: "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+  style:
+    "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
   center: usa,
   zoom: 3,
 
@@ -135,8 +136,14 @@ map.on("load", () => {
         layers: ["provinces"],
       });
 
-      const provinceIDs = features.map((feature) => feature.properties.adm1_code);
-      map.setFilter("provinces-highlighted", ["in", "adm1_code", ...provinceIDs]);
+      const provinceIDs = features.map(
+        (feature) => feature.properties.adm1_code,
+      );
+      map.setFilter("provinces-highlighted", [
+        "in",
+        "adm1_code",
+        ...provinceIDs,
+      ]);
     }
 
     map.dragPan.enable();

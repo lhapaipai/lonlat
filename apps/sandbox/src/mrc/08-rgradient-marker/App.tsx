@@ -1,6 +1,5 @@
-import "maplibre-gl/dist/maplibre-gl.css";
-import { RMap } from "maplibre-react-components";
-import { RMarker } from "pentatrion-geo";
+import "maplibre-react-components/dist/maplibre-mrc.css";
+import { RMap, RGradientMarker } from "maplibre-react-components";
 import "./App.scss";
 
 const marignier = { lng: 6.498, lat: 46.089 };
@@ -14,7 +13,7 @@ function App() {
         initialZoom={14}
         mapStyle="/assets/styles/ign/PLAN.IGN/standard.json"
       >
-        <RMarker
+        <RGradientMarker
           longitude={marignierChurch.lng}
           latitude={marignierChurch.lat}
         />

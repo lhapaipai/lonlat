@@ -1,6 +1,6 @@
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 
 import * as maplibre from "maplibre-gl";
 
@@ -24,7 +24,9 @@ map.on("load", () => {
 
   map.addSource("terrarium", {
     type: "raster-dem",
-    tiles: ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+    tiles: [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+    ],
     encoding: "terrarium",
     tileSize: 256,
   });

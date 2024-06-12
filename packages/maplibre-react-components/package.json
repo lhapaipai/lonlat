@@ -19,8 +19,8 @@
   "scripts": {
     "dev:lib": "tsup --watch",
     "build:lib": "tsup",
-    "dev:css": "postcss --watch -o dist/style.css src/index.postcss",
-    "build:css": "postcss -o dist/style.css src/index.postcss",
+    "dev:css": "postcss --watch -d dist src/mrc.css src/maplibre-mrc.css",
+    "build:css": "postcss -d dist src/mrc.css src/maplibre-mrc.css",
     "build": "pnpm build:lib && node generate-public-package && pnpm build:css",
     "storybook": "storybook dev -p 6009",
     "build:storybook": "storybook build",

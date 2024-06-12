@@ -5,7 +5,7 @@ export default defineConfig({
   dts: true,
   format: ["esm"],
   esbuildOptions(options) {
-    options.external = ["react", "react-dom", "maplibre-gl", "@floating-ui/dom"];
+    options.external = ["react", "react-dom", "maplibre-gl", "@floating-ui/dom", "clsx"];
   },
   shims: true,
   clean: true,

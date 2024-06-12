@@ -1,6 +1,12 @@
 import { getIndexLetter } from "pentatrion-design";
-import { Marker, RMarker, createLonLatFeaturePoint } from "pentatrion-geo";
-import { Event, RLayer, RSource } from "maplibre-react-components";
+import { createLonLatFeaturePoint } from "pentatrion-geo";
+import {
+  Event,
+  RLayer,
+  RSource,
+  GradientMarker,
+  RGradientMarker,
+} from "maplibre-react-components";
 
 import {
   directionWayPointChanged,
@@ -25,7 +31,10 @@ export default function DirectionMap() {
   const directionRoute = useAppSelector(selectDirectionRoute);
   const directionWaypoints = useAppSelector(selectDirectionWayPointsGeojson);
 
-  function handleDirectionWayPointDragEnd(e: Event<Marker>, index: number) {
+  function handleDirectionWayPointDragEnd(
+    e: Event<GradientMarker>,
+    index: number,
+  ) {
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
     dispatch(directionWayPointChanged({ index, feature: lonlatFeature }));
   }
@@ -35,7 +44,7 @@ export default function DirectionMap() {
       {validDirectionWayPoints.map(
         (feature, index) =>
           feature?.geometry.type === "Point" && (
-            <RMarker
+            <RGradientMarker
               color={
                 [0, validDirectionWayPoints.length - 1].includes(index)
                   ? "#ffe64b"

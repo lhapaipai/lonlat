@@ -1,6 +1,6 @@
 import { RMap } from "maplibre-react-components";
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { MapStyleDataEvent } from "maplibre-gl";
 
@@ -29,19 +29,27 @@ function App() {
 
   return (
     <>
-      <div ref={divRef} className="absolute top-2 left-2 z-10 bg-white">
+      <div ref={divRef} className="absolute left-2 top-2 z-10 bg-white">
         <div>
           <label>
             afficher carte
-            <input type="checkbox" onChange={() => setVisible((v) => !v)} checked={visible} />
+            <input
+              type="checkbox"
+              onChange={() => setVisible((v) => !v)}
+              checked={visible}
+            />
           </label>
         </div>
 
         <div>
-          <button onClick={() => setCounter((c) => c + 1)}>App counter {counter}</button>
+          <button onClick={() => setCounter((c) => c + 1)}>
+            App counter {counter}
+          </button>
         </div>
         <div>
-          <button onClick={() => setListeners((l) => !l)}>change listeners</button>
+          <button onClick={() => setListeners((l) => !l)}>
+            change listeners
+          </button>
         </div>
       </div>
       {visible && (

@@ -1,6 +1,6 @@
 import { Map } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/maplibre-mrc.css";
 import { RMap, RMarker } from "maplibre-react-components";
 import { useRef, useState } from "react";
 import { ResizeArea } from "pentatrion-design";
@@ -24,12 +24,18 @@ function App() {
                 <button onClick={() => console.log(mapRef)}>info</button>
               </div>
               <div>
-                <button onClick={() => setCounter((c) => c + 1)}>counter {counter}</button>
+                <button onClick={() => setCounter((c) => c + 1)}>
+                  counter {counter}
+                </button>
               </div>
               <div>
                 <label>
                   afficher carte
-                  <input type="checkbox" onChange={() => setShowMap((s) => !s)} checked={showMap} />
+                  <input
+                    type="checkbox"
+                    onChange={() => setShowMap((s) => !s)}
+                    checked={showMap}
+                  />
                 </label>
               </div>
 
@@ -50,7 +56,11 @@ function App() {
             <div>
               <label>
                 afficher carte
-                <input type="checkbox" onChange={() => setShowMap((s) => !s)} checked={showMap} />
+                <input
+                  type="checkbox"
+                  onChange={() => setShowMap((s) => !s)}
+                  checked={showMap}
+                />
               </label>
             </div>{" "}
             <div>
