@@ -1,6 +1,5 @@
 import { RMap } from "./RMap";
 import { Meta, StoryObj } from "@storybook/react";
-import "maplibre-gl/dist/maplibre-gl.css";
 
 const meta = {
   title: "maplibre-react-components/RMap",

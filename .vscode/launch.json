@@ -10,6 +10,14 @@
       "args": ["save", "geo"]
     },
     {
+      "name": "Python Fontello css replace",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/.local/fontello-css-replace/fontello.py",
+      "cwd": "${workspaceFolder}/.local/fontello-css-replace",
+      "console": "integratedTerminal"
+    },
+    {
       "name": "Listen for Xdebug API",
       "type": "php",
       "request": "launch",

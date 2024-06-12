@@ -4,7 +4,6 @@ import { RMarker } from "../RMarker";
 import { markerPopupOffset } from "../../lib/util";
 import { RPopup } from "./RPopup";
 import { useState } from "react";
-import "maplibre-gl/dist/maplibre-gl.css";
 
 const meta = {
   title: "maplibre-react-components/RPopup",

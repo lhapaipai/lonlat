@@ -1,14 +1,15 @@
-import { Event, RMap } from "maplibre-react-components";
+import { RMap } from "../RMap";
+import { Event } from "../../types.d";
 import { Meta, StoryObj, ReactRenderer } from "@storybook/react";
 import { useState } from "react";
-import "maplibre-gl/dist/maplibre-gl.css";
-import { RMarker } from "./RMarker";
-import { Marker } from "./Marker";
+
+import { RGradientMarker } from "./RGradientMarker";
+import { type GradientMarker } from "./GradientMarker";
 import { PartialStoryFn } from "@storybook/types";
 
 const meta = {
-  title: "pentatrion-geo/MapLibre/RMarker",
-  component: RMarker,
+  title: "maplibre-react-components/RGradientMarker",
+  component: RGradientMarker,
   parameters: {
     layout: "fullscreen",
   },
@@ -44,49 +45,18 @@ const meta = {
       control: {
         type: "select",
       },
-      options: [
-        "0",
-        "0.1",
-        "0.2",
-        "0.3",
-        "0.4",
-        "0.5",
-        "0.6",
-        "0.7",
-        "0.8",
-        "0.9",
-        "1",
-      ],
+      options: ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1"],
     },
     opacityWhenCovered: {
       control: {
         type: "select",
       },
-      options: [
-        "0",
-        "0.1",
-        "0.2",
-        "0.3",
-        "0.4",
-        "0.5",
-        "0.6",
-        "0.7",
-        "0.8",
-        "0.9",
-        "1",
-      ],
+      options: ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1"],
     },
     color: {
       control: {
         type: "color",
-        presetColors: [
-          "#ffe64b",
-          "#9ed24d",
-          "#5fbcff",
-          "#ffa33d",
-          "#ff4d4d",
-          "#c0c0c0",
-        ],
+        presetColors: ["#ffe64b", "#9ed24d", "#5fbcff", "#ffa33d", "#ff4d4d", "#c0c0c0"],
       },
     },
     scale: {
@@ -106,7 +76,7 @@ const meta = {
       </RMap>
     ),
   ] as ((story: PartialStoryFn<ReactRenderer, any>) => JSX.Element)[],
-} satisfies Meta<typeof RMarker>;
+} satisfies Meta<typeof RGradientMarker>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
@@ -131,16 +101,16 @@ export const Basic: Story = {
 
 export const Draggable = () => {
   const [coords, setCoords] = useState({ lng: 5, lat: 45 });
-  function handleDragEnd(e: Event<Marker>) {
+  function handleDragEnd(e: Event<GradientMarker>) {
     console.log("on DragEnd");
     setCoords(e.target.getLngLat());
   }
   return (
-    <RMarker
+    <RGradientMarker
       draggable={true}
       longitude={coords.lng}
       latitude={coords.lat}
       onDragEnd={handleDragEnd}
-    ></RMarker>
+    ></RGradientMarker>
   );
 };

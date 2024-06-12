@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/react";
-import "./storybook.scss";
+import "./storybook.css";
+import "../dist/style.css";
+import "./base.css";
 
 // https://storybook.js.org/docs/react/configure/overview#configure-story-rendering
 const preview: Preview = {

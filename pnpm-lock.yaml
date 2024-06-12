@@ -379,30 +379,6 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
-  extra/maplibrecss:
-    dependencies:
-      autoprefixer:
-        specifier: ^10.4.19
-        version: 10.4.19(postcss@8.4.38)
-      cssnano:
-        specifier: ^7.0.2
-        version: 7.0.2(postcss@8.4.38)
-      postcss:
-        specifier: ^8.4.38
-        version: 8.4.38
-      postcss-cli:
-        specifier: ^11.0.0
-        version: 11.0.0(jiti@1.21.3)(postcss@8.4.38)
-      postcss-import:
-        specifier: ^16.1.0
-        version: 16.1.0(postcss@8.4.38)
-      postcss-inline-base64:
-        specifier: ^7.3.1
-        version: 7.3.1(postcss@8.4.38)
-      postcss-inline-svg:
-        specifier: ^6.0.0
-        version: 6.0.0(postcss@8.4.38)
-
   extra/swagger:
     dependencies:
       '@grafikart/o2ts':
@@ -424,25 +400,19 @@ importers:
 
   packages/maplibre-react-components:
     dependencies:
-      '@floating-ui/dom':
-        specifier: ^1.6.5
-        version: 1.6.5
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
       maplibre-gl:
-        specifier: ^4.3.2
+        specifier: ^3.0.0 || ^4.0.0
         version: 4.3.2
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
     devDependencies:
       '@babel/core':
         specifier: ^7.24.7
         version: 7.24.7
+      '@floating-ui/dom':
+        specifier: ^1.6.5
+        version: 1.6.5
       '@storybook/addon-actions':
         specifier: ^8.1.5
         version: 8.1.6
@@ -479,6 +449,9 @@ importers:
       '@storybook/theming':
         specifier: ^8.1.5
         version: 8.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@storybook/types':
+        specifier: ^8.1.5
+        version: 8.1.6
       '@testing-library/jest-dom':
         specifier: ^6.4.5
         version: 6.4.5(vitest@1.6.0(@types/node@20.14.2)(@vitest/ui@1.6.0)(jsdom@22.1.0(canvas@2.10.2))(sass@1.77.4)(terser@5.31.1))
@@ -539,6 +512,12 @@ importers:
       postcss-load-config:
         specifier: ^5.1.0
         version: 5.1.0(jiti@1.21.3)(postcss@8.4.38)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
       storybook:
         specifier: ^8.1.5
         version: 8.1.6(@babel/preset-env@7.24.7(@babel/core@7.24.7))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

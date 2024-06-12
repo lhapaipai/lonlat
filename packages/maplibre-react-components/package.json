@@ -1,6 +1,6 @@
 {
   "name": "maplibre-react-components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React components for MapLibre GL JS",
   "private": true,
   "keywords": [
@@ -17,14 +17,15 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup && node generate-public-package",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
+    "dev:lib": "tsup --watch",
+    "build:lib": "tsup",
+    "dev:css": "postcss --watch -o dist/style.css src/index.postcss",
+    "build:css": "postcss -o dist/style.css src/index.postcss",
+    "build": "pnpm build:lib && node generate-public-package && pnpm build:css",
     "storybook": "storybook dev -p 6009",
-    "storybook-build": "storybook build",
-    "build-css": "postcss -o dist/style.css src/style/index.postcss",
-    "watch-css": "postcss --watch -o dist/style.css src/style/index.postcss"
+    "build:storybook": "storybook build",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "files": [
     "dist/",
@@ -32,6 +33,7 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.24.7",
+    "@floating-ui/dom": "^1.6.5",
     "@storybook/addon-actions": "^8.1.5",
     "@storybook/addon-docs": "^8.1.5",
     "@storybook/addon-essentials": "^8.1.5",
@@ -44,6 +46,7 @@
     "@storybook/react-vite": "^8.1.5",
     "@storybook/test": "^8.1.5",
     "@storybook/theming": "^8.1.5",
+    "@storybook/types": "^8.1.5",
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^15.0.0",
     "@types/geojson": "^7946.0.14",
@@ -64,6 +67,8 @@
     "postcss-inline-base64": "^7.3.1",
     "postcss-inline-svg": "^6.0.0",
     "postcss-load-config": "^5.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "storybook": "^8.1.5",
     "ts-node": "^10.9.2",
     "tsup": "^8.1.0",
@@ -73,14 +78,19 @@
     "vitest-webgl-canvas-mock": "^1.1.0"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.5",
-    "clsx": "^2.1.1",
-    "maplibre-gl": "^4.3.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "clsx": "^2.1.1"
+  },
+  "peerDependencies": {
+    "@floating-ui/dom": "^1.0.0",
+    "maplibre-gl": "^3.0.0 || ^4.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {
     "maplibre-gl": {
+      "optional": false
+    },
+    "@floating-ui/dom": {
       "optional": true
     }
   }

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as maplibre from "maplibre-gl";
-import { FloatingPopup } from "./FloatingPopup";
+import "maplibre-gl/dist/maplibre-gl.css";
+import { Popup } from "./Popup";
 
 const meta = {
   title: "pentatrion-geo/MapLibre/LLPopup",
@@ -20,7 +21,7 @@ export const Basic = () => {
       zoom: 4,
     });
 
-    new FloatingPopup({
+    new Popup({
       closeButton: true,
       closeOnClick: false,
       closeOnMove: false,
@@ -30,7 +31,7 @@ export const Basic = () => {
       .setHTML("Hello world", "Bassin d'arcachon")
       .addTo(map);
 
-    new FloatingPopup({
+    new Popup({
       closeButton: false,
       closeOnClick: true,
       closeOnMove: false,
@@ -59,7 +60,7 @@ export const TrackPointer = () => {
       zoom: 4,
     });
 
-    new FloatingPopup({
+    new Popup({
       closeButton: false,
       closeOnClick: false,
     })

@@ -18,6 +18,7 @@ export { RPopup } from "./components/RPopup";
 export { RLayer } from "./components/RLayer";
 export { RSource } from "./components/RSource";
 export { RTerrain } from "./components/RTerrain";
+export { RGradientMarker, GradientMarker } from "./components/RGradientMarker";
 export {
   ContextMenuEventDispatcher,
   type MaplibreContextmenuEventDetail,

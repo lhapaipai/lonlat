@@ -19,9 +19,11 @@ fontello_host = "https://fontello.com"
 
 config_file = font_dir / "config.json"
 id_file = project_dir / ".fontello"
-css_file = font_dir / "fontello.postcss"
+
+# not used in files
+# only to find the icon content code
+css_file = font_dir / "codes.postcss"
 generated_dir = font_dir / "generated"
-css_replace_str = "./generated"
 
 fontello_id = None
 
@@ -86,16 +88,10 @@ def save_font():
     with open(tmp_project_dir / "css/fontello.css", "r", encoding="utf8") as file:
         lines = file.readlines()
 
-    header = """
-@font-face {
-  font-family: "fontello-mrc";
-  src: url("b64---./src/style/font/generated/fontello.woff2---");
-  font-weight: normal;
-  font-style: normal;
-}
-"""
-    css_file_content = header + "".join(lines[12:])
-    css_file_content = css_file_content.replace("../font", css_replace_str)
+        index = lines.index(
+            "  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n"
+        )
+        css_file_content = "".join(lines[index + 3 :])
 
     with open(css_file, "w", encoding="utf8") as file:
         file.write(css_file_content)

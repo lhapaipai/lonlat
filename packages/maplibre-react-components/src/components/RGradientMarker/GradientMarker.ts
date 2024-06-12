@@ -27,7 +27,7 @@ export class GradientMarker extends Marker {
 
     if (useDefaultMarker) {
       options ??= {};
-      options.element = DOM.create("div", "ll-marker");
+      options.element = DOM.create("div", "maplibregl-gradient-marker");
       if (options.className) {
         options.element.classList.add(options.className);
       }
