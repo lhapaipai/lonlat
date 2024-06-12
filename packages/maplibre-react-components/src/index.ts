@@ -12,33 +12,11 @@
  * solved with : type StyleLayer = unknown;
  */
 
-export { RMap } from "./components/RMap";
-export { RMarker } from "./components/RMarker";
-export { RPopup } from "./components/RPopup";
-export { RLayer } from "./components/RLayer";
-export { RSource } from "./components/RSource";
-export { RTerrain } from "./components/RTerrain";
-export { RGradientMarker, GradientMarker } from "./components/RGradientMarker";
-export {
-  ContextMenuEventDispatcher,
-  type MaplibreContextmenuEventDetail,
-} from "./components/ContextMenuEventDispatcher";
+export * from "./components";
+export * from "./controls";
+export * from "./hooks";
+export * from "./lib";
 
-export { RAttributionControl } from "./controls/RAttributionControl";
-export { RFullscreenControl } from "./controls/RFullscreenControl";
-export { RGeolocateControl } from "./controls/RGeolocateControl";
-export { RLogoControl } from "./controls/RLogoControl";
-export { RNavigationControl } from "./controls/RNavigationControl";
-export { RScaleControl } from "./controls/RScaleControl";
-export { RTerrainControl } from "./controls/RTerrainControl";
-
-export { useMap } from "./hooks/useMap";
-export { useRControl } from "./hooks/useRControl";
-export { useControl } from "./hooks/useControl";
-export { useMapAndCanvasRefs } from "./hooks/useMapAndCanvasRefs";
-export { useCanvasRef } from "./hooks/useCanvasRef";
-export * from "./lib/util";
-
-export { type Event } from "./types.d";
+export type * from "./types.d";
 
 export { mapLibreContext, type MapLibreContext } from "./context";

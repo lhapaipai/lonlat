@@ -10,7 +10,7 @@ import {
   updateClassNames,
   updateListeners,
 } from "./util";
-import { MapProps } from "./MapManager";
+import { type MapProps } from "./MapManager";
 
 describe("util", () => {
   test("filterMapProps", () => {

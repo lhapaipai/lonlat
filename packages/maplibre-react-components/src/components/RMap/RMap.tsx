@@ -11,7 +11,7 @@ import {
   useState,
 } from "react";
 
-import MapManager, { ManagerOptions, MapProps } from "../../lib/MapManager";
+import { MapManager, type ManagerOptions, type MapProps } from "../../lib/MapManager";
 import { MapLibreContext, mapLibreContext } from "../../context";
 import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 
@@ -101,6 +101,22 @@ export const RMap = forwardRef<Map | null, RMapProps>(function RMap(
   // @ts-ignore
   useImperativeHandle(ref, () => maplibreRef.current.mapManager?.map || null, []);
 
+  /**
+   * container class attribute must not be controlled by React
+   * - maplibre GL add : maplibregl-map
+   * - other plugins can add classes dynamically
+   */
+  useIsomorphicLayoutEffect(() => {
+    if (!className) {
+      return;
+    }
+    const container = containerRef.current;
+    className.split(" ").map((classItem) => container.classList.add(classItem));
+
+    return () =>
+      void className.split(" ").map((classItem) => container.classList.remove(classItem));
+  }, [className]);
+
   const completeStyle: CSSProperties = useMemo(
     () => ({
       position: "relative",
@@ -112,7 +128,7 @@ export const RMap = forwardRef<Map | null, RMapProps>(function RMap(
   );
 
   return (
-    <div ref={containerRef} id={id} className={className} style={completeStyle}>
+    <div ref={containerRef} id={id} style={completeStyle}>
       {maplibreRef.current.mapManager && (
         <mapLibreContext.Provider value={maplibreRef.current}>
           <div className="maplibregl-children" style={childContainerStyle}>

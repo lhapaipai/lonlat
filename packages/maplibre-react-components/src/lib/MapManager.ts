@@ -265,7 +265,7 @@ export type MapProps = MapReactiveOptions & MapHandlerOptions & MapInitialOption
 
 const DEFAULT_STYLE = "https://demotiles.maplibre.org/style.json";
 
-export default class MapManager {
+export class MapManager {
   reactiveOptions: MapReactiveOptions = {};
   handlerOptions: MapHandlerOptions = {};
   eventNames: string[] = [];

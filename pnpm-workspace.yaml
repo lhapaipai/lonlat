@@ -2,6 +2,7 @@ packages:
   - "apps/*"
   - "packages/pentatrion-design"
   - "packages/maplibre-react-components"
+  - "packages/maplibre-theme"
   - "packages/pentatrion-fonts"
   - "packages/pentatrion-geo"
   - "extra/swagger"

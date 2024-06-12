@@ -25,6 +25,7 @@
         "maplibre-gl": "^4.3.2",
         "maplibre-react-components": "workspace:*",
         "nanoid": "^5.0.7",
+        "maplibre-theme": "workspace:*",
         "pentatrion-design": "workspace:*",
         "pentatrion-fonts": "workspace:^",
         "pentatrion-geo": "workspace:*",

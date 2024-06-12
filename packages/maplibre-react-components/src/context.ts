@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import MapManager from "./lib/MapManager";
+import { MapManager } from "./lib/MapManager";
 
 export type MapLibreContext = {
   mapManager?: MapManager;

@@ -1,6 +1,7 @@
 import { Map } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-theme/dist/core.css";
+import "maplibre-theme/dist/default.css";
 import "maplibre-react-components/dist/mrc.css";
 import { RMap, RMarker } from "maplibre-react-components";
 import { useRef, useState } from "react";

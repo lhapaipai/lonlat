@@ -1,0 +1,21 @@
+{
+  "name": "maplibre-theme",
+  "version": "0.0.1",
+  "description": "CSS Themes for your Maplibre GL Js Web app",
+  "type": "module",
+  "scripts": {
+    "dev": "postcss --watch -d dist src/core.css src/default.css",
+    "build": "postcss -d dist src/core.css src/default.css"
+  },
+  "keywords": [],
+  "author": "Hugues Tavernier",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "cssnano": "^7.0.2",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "postcss-inline-svg": "^6.0.0"
+  }
+}

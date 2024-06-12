@@ -6,7 +6,8 @@
 
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-theme/dist/core.css";
+import "maplibre-theme/dist/default.css";
 import "maplibre-react-components/dist/mrc.css";
 import { FlyToOptions, GeoJSONSource, LngLatLike, Map } from "maplibre-gl";
 import { EasingKeys, easingFunctions } from "./easing";
