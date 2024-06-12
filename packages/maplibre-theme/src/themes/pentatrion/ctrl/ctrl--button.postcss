@@ -1,0 +1,76 @@
+.maplibregl-ctrl button,
+.maplibregl-ctrl-attrib-button {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke,
+    box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.3s;
+
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.15), 0 1px 2px -1px rgb(0 0 0 / 0.15);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+
+.maplibregl-ctrl button:not(:disabled):hover,
+.maplibregl-ctrl-attrib-button:not(:disabled):hover {
+  background-color: rgb(var(--color-gray-1));
+}
+.maplibregl-ctrl button:not(:disabled):active,
+.maplibregl-ctrl-attrib-button:not(:disabled):active {
+  background-color: rgb(var(--color-gray-2));
+
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -2px rgb(0 0 0 / 0.15);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+    0 4px 6px -2px var(--tw-shadow-color);
+}
+
+.maplibregl-ctrl button:focus,
+.maplibregl-ctrl-attrib-button:focus {
+  --tw-ring-shadow: 0 0 0px 2px rgb(var(--color-yellow-5) / 1);
+}
+
+.maplibregl-ctrl button:focus:focus-visible,
+.maplibregl-ctrl-attrib-button:focus:focus-visible {
+  --tw-ring-shadow: 0 0 0px 2px rgb(var(--color-yellow-5) / 1);
+}
+
+.maplibregl-ctrl button:focus:not(:focus-visible),
+.maplibregl-ctrl-attrib-button:focus:not(:focus-visible) {
+  --tw-ring-shadow: 0 0 #0000;
+}
+
+.maplibregl-ctrl button .maplibregl-ctrl-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@media (-ms-high-contrast: active) {
+  .maplibregl-ctrl-icon {
+    background-color: transparent;
+  }
+}
+
+/* https://bugzilla.mozilla.org/show_bug.cgi?id=140562 */
+.maplibregl-ctrl button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.maplibregl-ctrl button:disabled {
+  cursor: not-allowed;
+}
+
+.maplibregl-ctrl button:disabled .maplibregl-ctrl-icon {
+  opacity: 0.25;
+}

@@ -1,8 +1,9 @@
 import { Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-theme/dist/core.css";
-// import "maplibre-theme/dist/default.css";
+import "maplibre-theme/dist/pentatrion.css";
 import "maplibre-react-components/dist/mrc.css";
+
 import {
   MrcLogoControl,
   RAttributionControl,
@@ -12,6 +13,7 @@ import {
   RMap,
   RNavigationControl,
   RPopup,
+  RScaleControl,
   RSource,
   RTerrainControl,
   markerPopupOffset,
@@ -54,13 +56,13 @@ function CustomMap({ className }: { className?: string }) {
       >
         Hello world !
       </RPopup>
-      <MrcLogoControl />
-      <RAttributionControl compact={false} />
+      <MrcLogoControl position="top-left" />
       <RFullscreenControl />
       <RGeolocateControl />
       <RNavigationControl />
       <RTerrainControl source="terrarium" />
-      <div className="sidebar">
+      <RScaleControl />
+      {/* <div className="sidebar">
         <div>
           <button onClick={() => console.log(mapRef)}>info</button>
         </div>
@@ -69,7 +71,7 @@ function CustomMap({ className }: { className?: string }) {
             counter {counter}
           </button>
         </div>
-      </div>
+      </div> */}
     </RMap>
   );
 }
@@ -77,17 +79,20 @@ function CustomMap({ className }: { className?: string }) {
 function App() {
   return (
     <div>
+      <div className="m-20">
+        <div className="h-20 w-20 shadow hover:shadow-md focus:shadow-md active-full:shadow-lg"></div>
+      </div>
       <div className="grid grid-cols-2 gap-16 p-16">
         <div className="h-[400px]">
-          <CustomMap />
+          <CustomMap className="shadow-md" />
         </div>
         <div className="h-[400px]">
-          <CustomMap />
+          <CustomMap className="shadow-md" />
         </div>
       </div>
       <div className="dark grid grid-cols-2 gap-16 bg-[#111725] p-16">
         <div className="h-[400px]">
-          <CustomMap />
+          <CustomMap className="" />
         </div>
         <div className="h-[400px]">
           <CustomMap />

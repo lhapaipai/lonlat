@@ -80,7 +80,8 @@ export const RPopup = memo(
     if (!popupRef.current) {
       popupRef.current = new Popup({
         ...options,
-        closeButton: false,
+        closeButton: true,
+        // closeButton: false,
         closeOnClick: false,
         closeOnMove: false,
       });

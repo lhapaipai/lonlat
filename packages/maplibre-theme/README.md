@@ -8,3 +8,5 @@ To facilitate the creation of themes for MapLibre, the main style sheet has been
 /* optional */
 @import "maplibre-theme/dist/default.css";
 ```
+
+<img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/packages/maplibre-theme/public/light-pentatrion-theme.png" alt="MapLibre light theme" />

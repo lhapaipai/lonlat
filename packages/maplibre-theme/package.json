@@ -1,13 +1,20 @@
 {
   "name": "maplibre-theme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CSS Themes for your Maplibre GL Js Web app",
   "type": "module",
   "scripts": {
-    "dev": "postcss --watch -d dist src/core.css src/default.css",
-    "build": "postcss -d dist src/core.css src/default.css"
+    "dev": "postcss --watch -d dist src/core.css src/default.css src/pentatrion.css",
+    "build": "postcss -d dist src/core.css src/default.css src/pentatrion.css"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lhapaipai/lonlat.git"
+  },
+  "homepage": "https://github.com/lhapaipai/lonlat/tree/main/packages/maplibre-theme",
+  "keywords": [
+    "maplibre"
+  ],
   "author": "Hugues Tavernier",
   "license": "ISC",
   "devDependencies": {
