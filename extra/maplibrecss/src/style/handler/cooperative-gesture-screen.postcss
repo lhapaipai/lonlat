@@ -1,0 +1,35 @@
+.maplibregl-cooperative-gesture-screen {
+  background: rgba(0 0 0 / 40%);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+  font-size: 1.4em;
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease 1s;
+  z-index: 99999;
+}
+
+.maplibregl-cooperative-gesture-screen.maplibregl-show {
+  opacity: 1;
+  transition: opacity 0.05s;
+}
+
+.maplibregl-cooperative-gesture-screen .maplibregl-mobile-message {
+  display: none;
+}
+
+@media (hover: none), (width <= 480px) {
+  .maplibregl-cooperative-gesture-screen .maplibregl-desktop-message {
+    display: none;
+  }
+
+  .maplibregl-cooperative-gesture-screen .maplibregl-mobile-message {
+    display: block;
+  }
+}
