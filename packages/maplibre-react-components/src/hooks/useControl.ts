@@ -24,6 +24,8 @@ export function useControl({
   const onRemoveStable = useEventCallback(onRemove || null);
 
   useEffect(() => {
+    console.log("map addControl", ctrl);
+
     if (!map.hasControl(ctrl)) {
       map.addControl(ctrl, position);
     }
@@ -31,7 +33,11 @@ export function useControl({
       onRemoveStable && onRemoveStable(map);
 
       if (map.hasControl(ctrl)) {
+        console.log("map removeControl", ctrl);
+
         map.removeControl(ctrl);
+      } else {
+        console.log("map has not control", ctrl);
       }
     };
   }, [map, ctrl, onRemoveStable, position]);

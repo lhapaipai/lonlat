@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "postcss --watch -d dist src/core.css src/default.css src/pentatrion.css",
-    "build": "postcss -d dist src/core.css src/default.css src/pentatrion.css"
+    "build": "postcss -d dist src/core.css src/default.css src/pentatrion.css",
+    "build:fontello": "tsup",
+    "dev:fontello": "tsup --watch"
   },
   "repository": {
     "type": "git",
@@ -18,11 +20,26 @@
   "author": "Hugues Tavernier",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@types/prompts": "^2.4.9",
     "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
     "cssnano": "^7.0.2",
+    "extract-zip": "^2.0.1",
+    "form-data": "^4.0.0",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",
-    "postcss-inline-svg": "^6.0.0"
-  }
+    "postcss-inline-svg": "^6.0.0",
+    "prompts": "^2.4.2",
+    "rimraf": "^5.0.7",
+    "tsup": "^8.1.0"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "package.json",
+    "postcss.config.js",
+    "README.md"
+  ]
 }

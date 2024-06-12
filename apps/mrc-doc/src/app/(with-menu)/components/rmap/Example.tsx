@@ -14,15 +14,14 @@ export default function App() {
     <RMap
       initialCenter={home}
       cooperativeGestures={true}
-      className="overflow-hidden rounded-2xl"
-      style={{ width: "100%", height: 400 }}
+      style={{ height: 400 }}
       mapStyle="https://demotiles.maplibre.org/style.json"
     >
-      <RAttributionControl />
-      <RFullscreenControl />
+      {/* <RAttributionControl />
+      <RFullscreenControl /> */}
       <RGeolocateControl />
-      <RNavigationControl />
-      <MrcLogoControl />
+      {/* <RNavigationControl />
+      <MrcLogoControl /> */}
     </RMap>
   );
 }
