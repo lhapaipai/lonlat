@@ -22,7 +22,7 @@ import {
   memo,
   useCallback,
 } from "react";
-import { mapLibreContext } from "../context";
+import { mapLibreContext } from "../../context";
 
 export type RSourceProps = SourceSpecification & {
   readonly id: string;

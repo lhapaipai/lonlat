@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { FloatingOverlay } from "@floating-ui/react";
 import { Button } from "pentatrion-design/components/button";
+import MapLibreReactLogo from "./MapLibreReactLogo";
 const links = [
   {
     url: "/getting-started",
@@ -67,10 +68,7 @@ export default function NavBar() {
         </Button>
       </div>
       <FloatingOverlay
-        className={clsx(
-          "z-20 bg-yellow-3/20 md:hidden",
-          !showNavBar && "hidden",
-        )}
+        className={clsx("z-20 md:hidden", !showNavBar && "hidden")}
         onClick={() => {
           console.log("click floating overlay");
           setShowNavBar(false);
@@ -78,11 +76,11 @@ export default function NavBar() {
       />
       <div
         className={clsx(
-          "fixed left-0 top-0 z-30 h-screen w-64 max-w-full flex-none overflow-y-auto overflow-x-hidden bg-blue-1 md:flex md:flex-col",
+          "fixed left-0 top-0 z-30 h-screen w-64 max-w-full flex-none overflow-y-auto overflow-x-hidden md:flex md:flex-col",
           !showNavBar && "hidden",
         )}
       >
-        <div className="absolute right-0 top-0 bg-green-2 md:hidden">
+        <div className="absolute right-0 top-0 md:hidden">
           <Button
             icon
             onClick={() => setShowNavBar(false)}
@@ -95,7 +93,9 @@ export default function NavBar() {
         </div>
 
         <nav className="flex flex-col">
-          <Link href="/">MapLibre React Components</Link>
+          <Link href="/" className="grid min-h-32 place-content-center">
+            <MapLibreReactLogo height={100} />
+          </Link>
           {links.map(({ url, title }) => (
             <Link href={url} key={url}>
               {title}

@@ -2,12 +2,13 @@ import { cleanup, render, waitFor } from "@testing-library/react";
 import { CircleLayerSpecification, Map, Source } from "maplibre-gl";
 import { RefObject } from "react";
 import { afterEach, beforeEach, describe, test } from "vitest";
-import { beforeMapTest } from "../tests/util";
-import { RMap } from "./RMap";
+import { RMap } from "../RMap";
 import { Point } from "geojson";
-import { RSource } from "./RSource";
+import { RSource } from "../RSource";
 import { RLayer, StyleLayer } from "./RLayer";
-import { emptyStyle } from "../lib/util";
+
+import { beforeMapTest } from "~/tests/util";
+import { emptyStyle } from "~/lib/util";
 
 beforeEach(() => {
   beforeMapTest();

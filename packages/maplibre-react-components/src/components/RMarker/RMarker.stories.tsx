@@ -2,10 +2,10 @@ import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Marker } from "maplibre-gl";
 import { action } from "@storybook/addon-actions";
-import { Event } from "../types.d";
+import { Event } from "../../types.d";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { RMarker } from "./RMarker";
-import { RMap } from "./RMap";
+import { RMap } from "../RMap";
 
 const onChangeLngLatAction = action("onChangeLngLatAction");
 

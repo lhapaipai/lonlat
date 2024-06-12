@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { mapLibreContext } from "../context";
+import { mapLibreContext } from "../../context";
 import { TerrainSpecification } from "maplibre-gl";
 
 export type RTerrainProps = TerrainSpecification;

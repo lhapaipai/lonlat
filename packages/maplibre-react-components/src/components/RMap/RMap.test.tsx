@@ -7,10 +7,10 @@ import {
   MapReactiveOptionName,
   MapNonReactiveOptionName,
   MapHandlerOptionName,
-} from "../lib/MapManager";
+} from "~/lib/MapManager";
 import { RMap } from "./RMap";
-import { beforeMapTest } from "../tests/util";
-import { emptyStyle } from "../lib/util";
+import { beforeMapTest } from "~/tests/util";
+import { emptyStyle } from "~/lib/util";
 import { RefObject } from "react";
 
 beforeEach(() => {

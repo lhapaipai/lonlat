@@ -8,11 +8,7 @@ export const base: CSSRuleObject = {
   },
 
   body: {
-    "--tw-bg-opacity": "1",
-    "--tw-text-opacity": "1",
-    "font-family": "ui-sans-serif, system-ui, sans-serif",
-    "background-color": "rgb(var(--color-gray-0) / var(--tw-bg-opacity))",
-    color: "rgb(var(--color-gray-7) / var(--tw-text-opacity))",
+    "@apply bg-gray-0 font-sans text-gray-7": {},
   },
 
   ".light": {
@@ -147,15 +143,10 @@ export const base: CSSRuleObject = {
     },
 
   ":focus-visible": {
-    "outline-style": "solid",
-    "outline-offset": "2px",
-    "outline-width": "2px",
-    "outline-color": "rgb(var(--color-yellow-5) / 1)",
-    "border-radius": "0.25rem",
+    "@apply rounded outline outline-2 outline-offset-2 outline-yellow-5": {},
   },
 
   "textarea:read-only": {
-    "--tw-bg-opacity": "1",
-    "background-color": "rgb(var(--color-gray-1) / var(--tw-bg-opacity))",
+    "@apply bg-gray-1": {},
   },
 };

@@ -1,12 +1,12 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, test, vi } from "vitest";
-import { beforeMapTest } from "../tests/util";
+import { beforeMapTest } from "~/tests/util";
 import { cleanup, render, waitFor } from "@testing-library/react";
 import { GeoJSONSource, Map, Source } from "maplibre-gl";
 import { RefObject } from "react";
-import { RMap } from "./RMap";
+import { RMap } from "../RMap";
 import { RSource } from "./RSource";
 import { Point } from "geojson";
-import { emptyStyle } from "../lib/util";
+import { emptyStyle } from "~/lib/util";
 import { setupServer } from "msw/node";
 import { HttpResponse, http, delay } from "msw";
 

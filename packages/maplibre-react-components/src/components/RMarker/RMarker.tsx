@@ -9,14 +9,14 @@ import {
   useRef,
 } from "react";
 import { createPortal } from "react-dom";
-import { Event } from "../types.d";
-import { useMap } from "../hooks/useMap";
+import { Event } from "../../types.d";
+import { useMap } from "../../hooks/useMap";
 import {
   arePointsEqual,
   prepareEventDep,
   transformPropsToOptions,
   updateClassNames,
-} from "../lib/util";
+} from "../../lib/util";
 
 const eventNameToCallbackName = {
   dragstart: "onDragStart",
@@ -67,7 +67,7 @@ export type MarkerInitialOptions = {
 
 export type MarkerProps = MarkerInitialOptions & MarkerReactiveOptions & MarkerCallbacks;
 
-type RMarkerProps = MarkerProps & {
+export type RMarkerProps = MarkerProps & {
   longitude: number;
   latitude: number;
   children?: ReactNode;

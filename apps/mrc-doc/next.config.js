@@ -12,7 +12,7 @@ const nextConfig = {
     ];
     /** @type {import('rehype-pretty-code').Options} */
     const rehypePluginsOptions = {
-      theme: "github-light-default",
+      theme: "github-dark-default",
     };
     config.module.rules.push({
       test: /\.mdx$/,

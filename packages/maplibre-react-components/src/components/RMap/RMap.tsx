@@ -11,9 +11,9 @@ import {
   useState,
 } from "react";
 
-import MapManager, { ManagerOptions, MapProps } from "../lib/MapManager";
-import { MapLibreContext, mapLibreContext } from "../context";
-import { useIsomorphicLayoutEffect } from "../hooks/useIsomorphicLayoutEffect";
+import MapManager, { ManagerOptions, MapProps } from "../../lib/MapManager";
+import { MapLibreContext, mapLibreContext } from "../../context";
+import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 
 type RMapComponentProps = {
   children?: ReactNode;
@@ -23,7 +23,7 @@ type RMapComponentProps = {
   onMounted?: (map: Map) => void;
 };
 
-type RMapProps = MapProps & ManagerOptions & RMapComponentProps;
+export type RMapProps = MapProps & ManagerOptions & RMapComponentProps;
 
 const childContainerStyle = {
   height: "100%",

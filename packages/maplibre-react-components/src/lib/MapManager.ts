@@ -25,9 +25,9 @@ import {
   updateListeners,
 } from "./util";
 
-import { RTerrainProps } from "../components/RTerrain";
-import { RLayerProps } from "../components/RLayer";
-import { RSourceProps } from "../components/RSource";
+import { type RTerrainProps } from "../components/RTerrain";
+import { type RLayerProps } from "../components/RLayer";
+import { type RSourceProps } from "../components/RSource";
 
 const eventNameToCallbackName = {
   mousedown: "onMouseDown",

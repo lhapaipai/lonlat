@@ -18,7 +18,8 @@ const config = {
   darkMode: ["class"],
   theme: {
     fontFamily: {
-      sans: ["var(--font-nunito)", "ui-sans-serif", "system-ui", "sans-serif"],
+      sans: ["ui-sans-serif", "system-ui", "sans-serif"],
+      title: ["var(--font-alata)", "ui-sans-serif", "system-ui", "sans-serif"],
       fontello: ["fontello"],
       serif: defaultTheme.fontFamily.serif,
       mono: defaultTheme.fontFamily.mono,
@@ -27,6 +28,11 @@ const config = {
       typography: pentatrionTypographyExtend,
     },
   },
-  plugins: [pentatrionTw({}), typography],
+  plugins: [
+    pentatrionTw({
+      base: false,
+    }),
+    typography,
+  ],
 };
 export default config;

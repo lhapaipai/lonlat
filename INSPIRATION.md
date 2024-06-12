@@ -40,3 +40,7 @@ Au revoir Mongo db article de developpez
 « Au revoir MongoDB » : le témoignage d'un développeur qui a changé MongoDB pour PostgreSQL
 https://mongodb.developpez.com/actu/346157/-Au-revoir-MongoDB-le-temoignage-d-un-developpeur-qui-a-change-MongoDB-pour-PostgreSQL-il-revele-aussi-les-inconvenients-et-les-limites-du-SGBD-NoSQL/
 
+
+
+MapLibre : logo figma
+https://www.figma.com/design/hVmulAVC8dMwYS14ovGd3w/OLD-%2F-MapLibre-Logo-%2F-Visuals?node-id=444-207&t=6zmpioaRqbQZtSTL-0

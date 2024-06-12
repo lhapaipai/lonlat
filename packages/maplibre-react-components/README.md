@@ -4,6 +4,9 @@
 
 # MapLibre React Components
 
+# Import alias
+
+n'utiliser l'alias d'import que pour les tests ?
 
 # Tests
 

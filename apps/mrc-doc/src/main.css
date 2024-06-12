@@ -5,3 +5,14 @@
 @import "./icons/fontello.css";
 @import "pentatrion-geo/fontello-geo-inline.css";
 @import "pentatrion-geo/maplibre/Marker.css";
+
+@import "./base.css";
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-react {
+  animation: spin 25s linear infinite;
+}

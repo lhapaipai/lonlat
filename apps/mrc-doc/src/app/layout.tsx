@@ -1,10 +1,14 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Alata } from "next/font/google";
 import ProgressBar from "~/components/ProgressBar";
 import "~/main.css";
 
-const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
+const alata = Alata({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-alata",
+});
 
 export const metadata: Metadata = {
   title: "Maplibre React Components",
@@ -18,7 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={clsx(nunito.variable, "font-sans")}>
+      <body
+        className={clsx(
+          alata.variable,
+          "dark bg-gray-0 font-sans text-gray-text",
+        )}
+      >
         <ProgressBar />
         {children}
       </body>

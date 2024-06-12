@@ -3,7 +3,7 @@
 import LinkButton from "./LinkButton";
 export default function HeaderBar() {
   return (
-    <header className="flex h-12 items-center justify-end bg-red-1">
+    <header className="flex h-12 items-center justify-end">
       <LinkButton
         variant="text"
         color="gray"

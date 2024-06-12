@@ -9,8 +9,13 @@ import {
   useRef,
 } from "react";
 import { createPortal } from "react-dom";
-import { useMap } from "../hooks/useMap";
-import { deepEqual, prepareEventDep, transformPropsToOptions, updateClassNames } from "../lib/util";
+import { useMap } from "../../hooks/useMap";
+import {
+  deepEqual,
+  prepareEventDep,
+  transformPropsToOptions,
+  updateClassNames,
+} from "../../lib/util";
 
 const eventNameToCallbackName = {
   map_click: "onMapClick",
@@ -47,7 +52,7 @@ export type PopupInitialOptions = {
 
 export type PopupProps = PopupInitialOptions & PopupReactiveOptions & PopupCallbacks;
 
-type RPopupProps = PopupProps & {
+export type RPopupProps = PopupProps & {
   longitude?: number;
   latitude?: number;
   children?: ReactNode;

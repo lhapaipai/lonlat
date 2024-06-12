@@ -22,7 +22,9 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6009",
-    "storybook-build": "storybook build"
+    "storybook-build": "storybook build",
+    "build-css": "postcss -o dist/style.css src/style/index.postcss",
+    "watch-css": "postcss --watch -o dist/style.css src/style/index.postcss"
   },
   "files": [
     "dist/",
@@ -45,15 +47,22 @@
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^15.0.0",
     "@types/geojson": "^7946.0.14",
+    "@types/mapbox__point-geometry": "^0.1.4",
     "@types/offscreencanvas": "^2019.7.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "autoprefixer": "^10.4.19",
     "canvas": "~2.10.2",
+    "cssnano": "^7.0.2",
     "jsdom": "^22.1.0",
     "msw": "^2.3.1",
     "pentatrion-design": "workspace:*",
     "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "postcss-inline-base64": "^7.3.1",
+    "postcss-inline-svg": "^6.0.0",
     "postcss-load-config": "^5.1.0",
     "storybook": "^8.1.5",
     "ts-node": "^10.9.2",
@@ -64,6 +73,8 @@
     "vitest-webgl-canvas-mock": "^1.1.0"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.5",
+    "clsx": "^2.1.1",
     "maplibre-gl": "^4.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

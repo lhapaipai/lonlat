@@ -1,6 +1,6 @@
 import { ControlPosition, IControl, ScaleControl, ScaleControlOptions } from "maplibre-gl";
 import { memo, forwardRef, useImperativeHandle } from "react";
-import { useControl } from "..";
+import { useControl } from "../hooks/useControl";
 
 type RScaleControlProps = ScaleControlOptions & {
   position?: ControlPosition;

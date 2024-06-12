@@ -9,11 +9,8 @@ function jumpVal(val: number) {
 }
 
 export default function LandingBackground() {
-  // const [points, setPoints] = useState<[number, number][]>(() =>
-  //   new Array(16).fill(0).map(() => [Math.random(), Math.random()]),
-  // );
   /**
-   * Same as above but predictive values to be consistent for SSR and hydration
+   * Predictive values (!= random) to be consistent for SSR and hydration
    */
   const [points, setPoints] = useState<[number, number][]>([
     [0.201, 0.978],
@@ -47,12 +44,12 @@ export default function LandingBackground() {
 
   return (
     <div
-      className="bg absolute inset-0 -z-10 transform-gpu overflow-hidden blur-3xl"
+      className="pointer-events-none absolute inset-0 transform-gpu overflow-hidden blur-3xl"
       aria-hidden="true"
     >
       <div
         className={clsx(
-          "dark:xs:opacity-50 aspect-[1.7] h-full w-full bg-gradient-to-r from-yellow-4 to-white/10 dark:lg:opacity-30",
+          "aspect-[1.7] h-full w-full bg-gradient-to-r from-yellow-4 to-white/10 dark:opacity-50 dark:lg:opacity-30",
           style.cloud,
         )}
         style={{ clipPath: `polygon(${poly})` }}

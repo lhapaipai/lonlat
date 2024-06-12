@@ -1,7 +1,7 @@
 import { ControlPosition } from "maplibre-gl";
 import { useEffect, useRef } from "react";
 import { updateClassNames } from "../lib/util";
-import { useMap } from "../hooks/useMap";
+import { useMap } from "./useMap";
 
 type RControlHookOptions<T extends string = ControlPosition> = {
   position: T;

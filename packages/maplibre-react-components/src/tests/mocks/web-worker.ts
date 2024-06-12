@@ -5,6 +5,7 @@ import type { ActorTarget } from "maplibre-gl/src/util/actor";
 export class MessageBus implements WorkerGlobalScopeInterface, ActorTarget {
   addListeners: Array<EventListener>;
   postListeners: Array<EventListener>;
+  // @ts-ignore
   target: MessageBus;
 
   registerWorkerSource: any;
@@ -18,12 +19,14 @@ export class MessageBus implements WorkerGlobalScopeInterface, ActorTarget {
     this.postListeners = postListeners;
   }
 
+  // @ts-ignore
   addEventListener(event: "message", callback: EventListener) {
     if (event === "message") {
       this.addListeners.push(callback);
     }
   }
 
+  // @ts-ignore
   removeEventListener(event: "message", callback: EventListener) {
     const i = this.addListeners.indexOf(callback);
     if (i >= 0) {

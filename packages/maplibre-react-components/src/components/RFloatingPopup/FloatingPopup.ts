@@ -1,10 +1,10 @@
 import { Evented, LngLat, LngLatLike, Map, MapMouseEvent } from "maplibre-gl";
-import { extend } from "./core/util/util";
-import { smartWrap } from "./core/util/smart_wrap";
-import { DOM } from "./core/util/dom";
+import { extend } from "../../maplibre-core/util/util";
+import { smartWrap } from "../../maplibre-core/util/smart_wrap";
+import { DOM } from "../../maplibre-core/util/dom";
 
-import Point from "@mapbox/point-geometry";
-import VirtualElement from "./lib/VirtualElement";
+import type Point from "@mapbox/point-geometry";
+import VirtualElement from "./VirtualElement";
 
 import {
   OffsetOptions,
@@ -23,6 +23,7 @@ import { dialogVariants } from "pentatrion-design/components/dialog";
 import { type ThemeColor } from "pentatrion-design/types";
 
 import clsx from "clsx";
+import { arrowHeight } from "./util";
 // import "pentatrion-design/components/dialog/Dialog.scss";
 // import "pentatrion-design/components/button/Button.scss";
 
@@ -40,7 +41,7 @@ class Event {
   }
 }
 
-export interface PopupOptions {
+export interface FloatingPopupOptions {
   closeButton?: boolean;
   closeOnClick?: boolean;
   closeOnMove?: boolean;
@@ -64,11 +65,9 @@ const defaultOptions = {
   borderColor: "yellow",
 };
 
-export const arrowHeight = 8;
-
-export class Popup extends Evented {
+export class FloatingPopup extends Evented {
   _map?: Map;
-  options: PopupOptions;
+  options: FloatingPopupOptions;
   _content?: HTMLElement;
   _container?: HTMLElement;
   _dialog?: HTMLElement;
@@ -81,7 +80,7 @@ export class Popup extends Evented {
   _flatPos?: Point;
   _virtualElement: VirtualElement;
 
-  constructor(options?: PopupOptions) {
+  constructor(options?: FloatingPopupOptions) {
     super();
     this.options = extend(Object.create(defaultOptions), options);
     this._virtualElement = new VirtualElement();

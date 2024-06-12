@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { mapLibreContext } from "../context";
+import { mapLibreContext } from "../../context";
 
 export type LayerOptions = LayerSpecification | CustomLayerInterface;
 

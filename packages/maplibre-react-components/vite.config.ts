@@ -8,7 +8,7 @@ const projectDir = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   resolve: {
     alias: {
-      "~mrc": resolve(projectDir, "src"),
+      "~": resolve(projectDir, "src"),
     },
   },
   test: {

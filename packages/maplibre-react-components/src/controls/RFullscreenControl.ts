@@ -5,7 +5,7 @@ import {
   FullscreenControlOptions,
 } from "maplibre-gl";
 import { memo, forwardRef, useImperativeHandle } from "react";
-import { useControl } from "..";
+import { useControl } from "../hooks/useControl";
 
 type RFullscreenControlProps = FullscreenControlOptions & {
   position?: ControlPosition;
