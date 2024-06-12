@@ -1,6 +1,7 @@
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-react-components/dist/maplibre-mrc.css";
+import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/mrc.css";
 import "./maplibre-gl.css";
 import { LngLatLike, Map, TerrainControl } from "maplibre-gl";
 import "./style.css";

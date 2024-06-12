@@ -1,10 +1,14 @@
 import {
-  Marker,
-  RMarker,
   createLonLatFeaturePoint,
   isGeolocationGeoOption,
 } from "pentatrion-geo";
-import { Event, RLayer, RSource } from "maplibre-react-components";
+import {
+  GradientMarker,
+  RGradientMarker,
+  Event,
+  RLayer,
+  RSource,
+} from "maplibre-react-components";
 
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
@@ -19,7 +23,7 @@ export default function SearchMap() {
   const searchFeature = useAppSelector(selectSearchFeature);
   const isochroneFeature = useAppSelector(selectIsochroneFeature);
 
-  function handleSearchLocationDragEnd(e: Event<Marker>) {
+  function handleSearchLocationDragEnd(e: Event<GradientMarker>) {
     const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
     dispatch(searchFeatureChanged(lonlatFeature));
   }
@@ -27,7 +31,7 @@ export default function SearchMap() {
   return (
     <>
       {searchFeature && !isGeolocationGeoOption(searchFeature) && (
-        <RMarker
+        <RGradientMarker
           key={searchFeature.id}
           icon={`fe-${searchFeature.properties.type}`}
           draggable={true}

@@ -3,8 +3,7 @@
 @import "tailwindcss/utilities";
 
 @import "pentatrion-design/fontello.css";
-@import "pentatrion-geo/fontello-geo-inline.css";
-@import "pentatrion-geo/maplibre/Marker.css";
+@import "maplibre-react-components/dist/mrc.css";
 @import "./maplibregl-css/index.css";
 
 html {

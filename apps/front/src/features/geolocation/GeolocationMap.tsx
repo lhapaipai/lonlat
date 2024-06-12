@@ -1,9 +1,9 @@
-import { RMarker, isGeolocationGeoOption } from "pentatrion-geo";
+import { isGeolocationGeoOption } from "pentatrion-geo";
 import { selectValidDirectionWayPoints } from "~/features/direction/directionSlice";
 import { selectSearchFeature } from "~/features/search/searchSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { activationChanged, selectGeolocation } from "./geolocationSlice";
-import { RMarker as BasicRMarker, useMap } from "maplibre-react-components";
+import { RGradientMarker, RMarker, useMap } from "maplibre-react-components";
 import { Map } from "maplibre-gl";
 import { useEffect } from "react";
 
@@ -56,7 +56,7 @@ export default function GeolocationMap() {
   return (
     <>
       {showMarker && showAccuracyCircle && circleDiameter && (
-        <BasicRMarker
+        <RMarker
           key="geolocation-accuracy"
           longitude={geolocationCoords[0]}
           latitude={geolocationCoords[1]}
@@ -68,10 +68,10 @@ export default function GeolocationMap() {
             className="rounded-full border-4 border-gray-6 bg-yellow-1"
             style={{ width: circleDiameter, height: circleDiameter }}
           ></div>
-        </BasicRMarker>
+        </RMarker>
       )}
       {showMarker && (
-        <RMarker
+        <RGradientMarker
           className="geolocation"
           icon="fe-geolocation"
           key="geolocation"

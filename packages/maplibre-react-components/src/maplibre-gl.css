@@ -17,6 +17,3 @@
 @import "./style/ui/popup.postcss";
 @import "./style/cursor.postcss";
 @import "./style/layout.postcss";
-
-@import "./style/font/fontello.postcss";
-@import "./components/RGradientMarker/GradientMarker.css";

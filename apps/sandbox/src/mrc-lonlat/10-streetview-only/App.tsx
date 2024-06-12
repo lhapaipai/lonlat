@@ -1,5 +1,6 @@
 import "./App.scss";
-import "maplibre-react-components/dist/maplibre-mrc.css";
+import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/mrc.css";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { ResizeArea, useEventCallback } from "pentatrion-design";
 import GoogleApiWrapper from "./GoogleApiWrapper";

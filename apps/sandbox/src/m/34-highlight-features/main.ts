@@ -1,6 +1,7 @@
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-react-components/dist/maplibre-mrc.css";
+import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/mrc.css";
 import { LngLatLike, Map, Point, Popup } from "maplibre-gl";
 import "./style.scss";
 

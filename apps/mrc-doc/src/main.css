@@ -2,10 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import "./icons/fontello.css";
-@import "pentatrion-geo/fontello-geo-inline.css";
-@import "pentatrion-geo/maplibre/Marker.css";
+@import "maplibre-react-components/dist/maplibre-gl.css";
+@import "maplibre-react-components/dist/mrc.css";
 
+@import "./icons/fontello.css";
 @import "./base.css";
 
 @keyframes spin {

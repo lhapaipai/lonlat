@@ -1,5 +1,6 @@
 import "../../main.css";
-import "maplibre-react-components/dist/maplibre-mrc.css";
+import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/mrc.css";
 import { Map } from "maplibre-gl";
 import "./styles.scss";
 import { ChapterName, chapters } from "./chapters";

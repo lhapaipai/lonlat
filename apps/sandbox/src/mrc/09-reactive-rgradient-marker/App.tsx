@@ -3,7 +3,8 @@ import "./App.scss";
 
 import { RMap, RGradientMarker } from "maplibre-react-components";
 
-import "maplibre-react-components/dist/maplibre-mrc.css";
+import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/mrc.css";
 import { getIndexLetter } from "pentatrion-design";
 
 function hue2rgb(p: number, q: number, t: number) {

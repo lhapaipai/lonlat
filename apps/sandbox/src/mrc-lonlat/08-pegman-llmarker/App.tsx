@@ -1,6 +1,7 @@
 import { Map } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-react-components/dist/maplibre-mrc.css";
+import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/mrc.css";
 import { Event, RMap } from "maplibre-react-components";
 import { useLayoutEffect, useRef, useState } from "react";
 import { Pegman, RPegman } from "pentatrion-geo";

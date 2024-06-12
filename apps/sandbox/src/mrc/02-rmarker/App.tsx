@@ -1,6 +1,7 @@
 import { Map, Marker, Offset } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-react-components/dist/maplibre-mrc.css";
+import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/mrc.css";
 import { Event, RMap, RMarker, RPopup } from "maplibre-react-components";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import Pin from "./Pin";

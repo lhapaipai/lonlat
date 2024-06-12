@@ -1,6 +1,7 @@
 import "../../main.css";
 import "./style.scss";
-import "maplibre-react-components/dist/maplibre-mrc.css";
+import "maplibre-react-components/dist/maplibre-gl.css";
+import "maplibre-react-components/dist/mrc.css";
 import { LngLatLike, Map } from "maplibre-gl";
 import ContextHandler from "./lib/ContextHandler";
 
