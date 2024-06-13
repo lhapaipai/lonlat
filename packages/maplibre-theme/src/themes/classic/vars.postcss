@@ -62,26 +62,6 @@
     --ml-c-error: 255 0 0;
   }
 }
-
-@media (forced-colors: active) {
-  :root .maplibregl-map,
-  .dark .maplibregl-map {
-    --ml-c-bg: 0 0 0;
-    --ml-c-neutral: 255 255 255;
-
-    --ml-c-text: 255 255 255;
-    --ml-c-icon: 255 255 255;
-
-    --ml-c-disabled: 153 153 153;
-
-    --ml-c-gray-1: 0 0 0;
-    --ml-c-gray-2: 65 72 83;
-    --ml-c-gray-3: 153 153 153;
-
-    --ml-c-error: 255 0 0;
-  }
-}
-
 /* only for debug remove when web app created */
 .light-forced {
   --ml-c-bg: 255 255 255;
@@ -98,6 +78,25 @@
 
   --ml-c-error: 255 0 0;
 }
+@media (forced-colors: active) {
+  :root .maplibregl-map,
+  .dark .maplibregl-map {
+    --ml-c-bg: 0 0 0;
+    --ml-c-neutral: 255 255 255;
+
+    --ml-c-text: 255 255 255;
+    --ml-c-icon: 255 255 255;
+
+    --ml-c-disabled: 153 153 153;
+
+    --ml-c-gray-1: 0 0 0;
+    --ml-c-gray-2: 65 72 83;
+    --ml-c-gray-3: 50 54 63;
+
+    --ml-c-error: 255 0 0;
+  }
+}
+
 .dark-forced {
   --ml-c-bg: 0 0 0;
   --ml-c-neutral: 255 255 255;
@@ -109,7 +108,7 @@
 
   --ml-c-gray-1: 0 0 0;
   --ml-c-gray-2: 65 72 83;
-  --ml-c-gray-3: 153 153 153;
+  --ml-c-gray-3: 50 54 63;
 
   --ml-c-error: 255 0 0;
 }

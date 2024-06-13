@@ -122,6 +122,7 @@ const dotStyle = {
 
 function CustomMap({ className }: { className?: string }) {
   const mapRef = useRef<Map>(null);
+  //       mapStyle={"/assets/styles/ign/PLAN.IGN/standard.json"}
 
   return (
     <RMap
@@ -130,7 +131,6 @@ function CustomMap({ className }: { className?: string }) {
       initialZoom={8}
       initialAttributionControl={false}
       className={className}
-      mapStyle={"/assets/styles/ign/PLAN.IGN/standard.json"}
     >
       <RSource
         type="raster-dem"

@@ -1,7 +1,11 @@
 @import "./core.css";
 
+@import "./themes/classic/vars.postcss";
+@import "./themes/classic/font/fontello.postcss";
+
 @import "./themes/classic/ctrl/ctrl--base.postcss";
 @import "./themes/classic/ctrl/ctrl--components.postcss";
+@import "./themes/classic/ctrl/ctrl--button.postcss";
 @import "./themes/classic/ctrl/ctrl-attrib.postcss";
 @import "./themes/classic/ctrl/ctrl-fullscreen.postcss";
 @import "./themes/classic/ctrl/ctrl-geolocate-marker.postcss";

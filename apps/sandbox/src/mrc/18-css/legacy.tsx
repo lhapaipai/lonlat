@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import "maplibre-theme/dist/optimized.css";
+import "maplibre-theme/dist/legacy.css";
 
 import App from "./App.tsx";
 
