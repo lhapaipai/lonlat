@@ -3,6 +3,13 @@ import "./App.scss";
 import "maplibre-theme/dist/core.css";
 import "maplibre-react-components/dist/mrc.css";
 
+new URL(window.location.toString()).searchParams
+  .get("classes")
+  ?.split("|")
+  .forEach((className) => {
+    document.body.classList.add(className);
+  });
+
 import {
   MrcLogoControl,
   RAttributionControl,
@@ -11,6 +18,7 @@ import {
   RGradientMarker,
   RLogoControl,
   RMap,
+  RMarker,
   RNavigationControl,
   RPopup,
   RScaleControl,
@@ -24,14 +32,14 @@ import { createPortal } from "react-dom";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 const marignier2 = { lng: 6.2, lat: 46.089 };
-
+const leman = { lng: 6.382560880284075, lat: 46.41406563675616 };
 const rasterDemTiles = [
   "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
 ];
 
 function MyCtrl() {
   const { container } = useRControl({
-    position: "bottom-right",
+    position: "top-left",
   });
 
   return createPortal(
@@ -98,18 +106,31 @@ function MyCtrl() {
   );
 }
 
+const acuracyCircleStyle = {
+  transform:
+    "translate(-50%, -50%) translate(148px, 250px) rotateX(0deg) rotateZ(0deg)",
+  width: "297px",
+  height: "297px",
+  opacity: 1,
+};
+
+const dotStyle = {
+  transform:
+    "translate(-50%, -50%) translate(148px, 250px) rotateX(0deg) rotateZ(0deg)",
+  opacity: 1,
+};
+
 function CustomMap({ className }: { className?: string }) {
   const mapRef = useRef<Map>(null);
-  const [counter, setCounter] = useState(0);
 
   return (
     <RMap
       ref={mapRef}
       initialCenter={marignier}
       initialZoom={8}
+      initialAttributionControl={false}
       className={className}
       mapStyle={"/assets/styles/ign/PLAN.IGN/standard.json"}
-      cooperativeGestures={true}
     >
       <RSource
         type="raster-dem"
@@ -118,7 +139,19 @@ function CustomMap({ className }: { className?: string }) {
         encoding="terrarium"
         tileSize={256}
       />
-      <RGradientMarker longitude={marignier.lng} latitude={marignier.lat} />
+      <RMarker longitude={leman.lng} latitude={leman.lat}>
+        <div
+          className="maplibregl-user-location-accuracy-circle maplibregl-marker maplibregl-marker-anchor-center"
+          style={acuracyCircleStyle}
+        ></div>
+        <div
+          className="maplibregl-user-location-dot maplibregl-marker maplibregl-marker-anchor-center"
+          style={dotStyle}
+        ></div>
+      </RMarker>
+      <RMarker longitude={marignier2.lng} latitude={marignier2.lat} />
+
+      <RMarker longitude={marignier2.lng} latitude={marignier2.lat} />
       <RPopup
         longitude={marignier.lng}
         latitude={marignier.lat}
@@ -129,22 +162,19 @@ function CustomMap({ className }: { className?: string }) {
       </RPopup>
       <MrcLogoControl position="top-left" />
       <RFullscreenControl />
-      <RGeolocateControl />
+      <RGeolocateControl
+        showAccuracyCircle={true}
+        showUserLocation={true}
+        trackUserLocation={true}
+      />
       <RNavigationControl />
       <RTerrainControl source="terrarium" />
-      <RScaleControl />
       <RLogoControl />
+      <RLogoControl compact={true} />
+      <RScaleControl />
+      <RAttributionControl compact={false} />
+      <RAttributionControl compact={true} />
       <MyCtrl />
-      <div className="sidebar">
-        <div>
-          <button onClick={() => console.log(mapRef)}>info</button>
-        </div>
-        <div>
-          <button onClick={() => setCounter((c) => c + 1)}>
-            counter {counter}
-          </button>
-        </div>
-      </div>
     </RMap>
   );
 }

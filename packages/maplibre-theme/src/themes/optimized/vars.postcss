@@ -1,0 +1,115 @@
+:root {
+  --ml-ctrl-border-radius: 4px;
+  --ml-font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  --ml-font-attribution: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+
+  --blue: 29 161 242;
+  --ml-c-neutral: 0 0 0;
+
+  --ml-c-active: var(--blue);
+  --ml-c-error: 229 78 51;
+
+  --ml-c-bg: 255 255 255;
+
+  --ml-c-gray-1: 255 255 255;
+  --ml-c-gray-2: 240 240 240;
+  --ml-c-gray-3: 215 215 215;
+
+  --ml-c-text: 51 51 51;
+  --ml-c-icon: 51 51 51;
+
+  --ml-c-disabled: 170 170 170;
+
+  --ml-shadow-ctrl: 0 0 0 2px rgb(0 0 0 / 10%);
+  --ml-shadow-popup: 0 1px 2px rgb(0 0 0 / 10%);
+
+  --ml-c-geoloc: var(--blue);
+  --ml-outline: 0 0 2px 2px rgb(var(--blue));
+}
+
+.dark {
+  --ml-c-bg: 17 23 37;
+  --ml-c-neutral: 255 255 255;
+
+  --ml-c-text: 203 213 225;
+  --ml-c-icon: 255 255 255;
+
+  --ml-c-gray-1: 17 23 37;
+  --ml-c-gray-2: 65 72 83;
+  --ml-c-gray-3: 50 54 63;
+
+  --ml-shadow-ctrl: 0 0 0 2px rgb(0 0 0 / 35%);
+  --ml-shadow-popup: 0 0 0 2px rgb(0 0 0 / 35%);
+}
+
+@media (forced-colors: active) and (prefers-color-scheme: light) {
+  :root .maplibregl-map,
+  .dark .maplibregl-map {
+    --ml-c-bg: 255 255 255;
+    --ml-c-neutral: 0 0 0;
+
+    --ml-c-text: 0 0 0;
+    --ml-c-icon: 0 0 0;
+
+    --ml-c-disabled: 102 102 102;
+
+    --ml-c-gray-1: 255 255 255;
+    --ml-c-gray-2: 200 200 200;
+    --ml-c-gray-3: 180 180 180;
+
+    --ml-c-gray-3: 0 0 0;
+
+    --ml-c-error: 255 0 0;
+  }
+}
+
+@media (forced-colors: active) {
+  :root .maplibregl-map,
+  .dark .maplibregl-map {
+    --ml-c-bg: 0 0 0;
+    --ml-c-neutral: 255 255 255;
+
+    --ml-c-text: 255 255 255;
+    --ml-c-icon: 255 255 255;
+
+    --ml-c-disabled: 153 153 153;
+
+    --ml-c-gray-1: 0 0 0;
+    --ml-c-gray-2: 65 72 83;
+    --ml-c-gray-3: 153 153 153;
+
+    --ml-c-error: 255 0 0;
+  }
+}
+
+/* only for debug remove when web app created */
+.light-forced {
+  --ml-c-bg: 255 255 255;
+  --ml-c-neutral: 0 0 0;
+
+  --ml-c-text: 0 0 0;
+  --ml-c-icon: 0 0 0;
+
+  --ml-c-disabled: 102 102 102;
+
+  --ml-c-gray-1: 255 255 255;
+  --ml-c-gray-2: 200 200 200;
+  --ml-c-gray-3: 180 180 180;
+
+  --ml-c-error: 255 0 0;
+}
+.dark-forced {
+  --ml-c-bg: 0 0 0;
+  --ml-c-neutral: 255 255 255;
+
+  --ml-c-text: 255 255 255;
+  --ml-c-icon: 255 255 255;
+
+  --ml-c-disabled: 153 153 153;
+
+  --ml-c-gray-1: 0 0 0;
+  --ml-c-gray-2: 65 72 83;
+  --ml-c-gray-3: 153 153 153;
+
+  --ml-c-error: 255 0 0;
+}

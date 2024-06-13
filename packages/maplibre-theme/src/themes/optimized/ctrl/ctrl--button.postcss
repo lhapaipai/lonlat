@@ -1,0 +1,103 @@
+.maplibregl-ctrl-group button {
+  width: 29px;
+  height: 29px;
+  display: block;
+  padding: 0;
+  outline: none;
+  border: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.maplibregl-ctrl button .maplibregl-ctrl-icon {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.maplibregl-ctrl .maplibregl-ctrl-attrib-button::before,
+.maplibregl-ctrl button .maplibregl-ctrl-icon::before,
+.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::after,
+.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon::after {
+  font-family: "fontello-ml";
+  font-style: normal;
+  font-weight: normal;
+
+  color: rgb(var(--ml-c-icon));
+
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.maplibregl-ctrl button .maplibregl-ctrl-icon::before,
+.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::after,
+.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon::after {
+  /* = 25px */
+  width: 22.5px;
+  height: 22.5px;
+
+  font-size: 18px;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1.25em;
+}
+
+@media (-ms-high-contrast: active) {
+  .maplibregl-ctrl-icon {
+    background-color: transparent;
+  }
+}
+
+/* https://bugzilla.mozilla.org/show_bug.cgi?id=140562 */
+.maplibregl-ctrl button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.maplibregl-ctrl-group button:focus {
+  z-index: 2;
+  position: relative;
+}
+
+.maplibregl-ctrl-attrib-button:focus,
+.maplibregl-ctrl-group button:focus {
+  box-shadow: var(--ml-outline);
+}
+
+.maplibregl-ctrl button:disabled {
+  cursor: not-allowed;
+}
+
+.maplibregl-ctrl button:disabled .maplibregl-ctrl-icon {
+  opacity: 0.25;
+}
+
+.maplibregl-ctrl button:not(:disabled):hover {
+  background-color: rgb(var(--ml-c-gray-2));
+}
+
+.maplibregl-ctrl button:not(:disabled):active {
+  background-color: rgb(var(--ml-c-gray-3));
+}
+
+.maplibregl-ctrl-group button:focus:focus-visible {
+  box-shadow: var(--ml-outline);
+}
+
+.maplibregl-ctrl-group button:focus:not(:focus-visible) {
+  box-shadow: none;
+}
