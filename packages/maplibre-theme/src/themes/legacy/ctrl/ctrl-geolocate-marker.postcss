@@ -1,12 +1,12 @@
 .maplibregl-user-location-dot {
-  background-color: rgb(var(--ml-c-geoloc));
+  background-color: #1da1f2;
   width: 15px;
   height: 15px;
   border-radius: 50%;
 }
 
 .maplibregl-user-location-dot::before {
-  background-color: rgb(var(--ml-c-geoloc));
+  background-color: #1da1f2;
   content: "";
   width: 15px;
   height: 15px;
@@ -17,7 +17,7 @@
 
 .maplibregl-user-location-dot::after {
   border-radius: 50%;
-  border: 2px solid rgb(var(--ml-c-gray-1));
+  border: 2px solid #fff;
   content: "";
   height: 19px;
   left: -2px;
@@ -25,7 +25,7 @@
   top: -2px;
   width: 19px;
   box-sizing: border-box;
-  box-shadow: var(--ml-shadow);
+  box-shadow: 0 0 3px rgb(0 0 0 / 35%);
 }
 
 @keyframes maplibregl-user-location-dot-pulse {
@@ -44,7 +44,7 @@
 }
 
 .maplibregl-user-location-dot-stale {
-  background-color: rgb(var(--ml-c-disabled));
+  background-color: #aaa;
 }
 
 .maplibregl-user-location-dot-stale::after {
@@ -52,7 +52,7 @@
 }
 
 .maplibregl-user-location-accuracy-circle {
-  background-color: rgb(var(--ml-c-geoloc) / 20%);
+  background-color: #1da1f233;
   width: 1px;
   height: 1px;
   border-radius: 100%;

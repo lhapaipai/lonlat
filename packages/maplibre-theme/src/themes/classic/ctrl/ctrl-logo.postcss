@@ -1,48 +1,22 @@
 a.maplibregl-ctrl-logo {
-  width: 88px;
-  height: 23px;
   margin: 0 0 -4px -4px;
   display: block;
-  background-repeat: no-repeat;
   cursor: pointer;
-  overflow: hidden;
-  background-image: svg-load("../assets/maplibregl-ctrl-logo.svg");
 }
 
-a.maplibregl-ctrl-logo.maplibregl-compact {
-  width: 14px;
+a.maplibregl-ctrl-logo::before {
+  font-size: 16px;
+
+  font-family: "fontello-ml";
+
+  font-weight: 900;
+  color: #fff;
+  content: "\e813MapLibre";
+  text-stroke: 2px #999;
+  -webkit-text-stroke: 2px #999;
+  paint-order: stroke fill;
 }
 
-@media (-ms-high-contrast: active) {
-  a.maplibregl-ctrl-logo {
-    @svg-load ctrl-logo-white url("../assets/maplibregl-ctrl-logo.svg") {
-      #outline {
-        opacity: 1;
-      }
-      #fill {
-        opacity: 1;
-      }
-    }
-
-    background-color: transparent;
-    background-image: svg-inline(ctrl-logo-white);
-  }
-}
-
-@media (-ms-high-contrast: black-on-white) {
-  a.maplibregl-ctrl-logo {
-    @svg-load ctrl-logo-black url("../assets/maplibregl-ctrl-logo.svg") {
-      #outline {
-        opacity: 1;
-        fill: #fff;
-        stroke: #fff;
-      }
-      #fill {
-        opacity: 1;
-        fill: #000;
-      }
-    }
-
-    background-image: svg-inline(ctrl-logo-black);
-  }
+a.maplibregl-ctrl-logo.maplibregl-compact::before {
+  content: "\e813";
 }

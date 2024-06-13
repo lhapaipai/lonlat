@@ -9,12 +9,16 @@
 }
 
 .maplibregl-popup-close-button:hover {
-  background-color: rgb(0 0 0 / 5%);
+  background-color: rgb(var(--ml-c-gray-2));
+}
+
+.maplibregl-popup-close-button:active {
+  background-color: rgb(var(--ml-c-gray-3));
 }
 
 .maplibregl-popup-content {
-  background: #fff;
+  background: rgb(var(--ml-c-bg));
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+  box-shadow: var(--ml-shadow);
   padding: 15px 10px;
 }

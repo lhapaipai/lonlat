@@ -1,6 +1,6 @@
 # Maplibre GL CSS Themes
 
-## Theme `optimized`
+## Theme `classic`
 
 this theme is like the current theme with some improvements.
 
@@ -18,7 +18,7 @@ in your js file
 
 ```diff
 - import "maplibre-gl/dist/maplibre-gl.css";
-+ import "maplibre-theme/dist/optimized.css";
++ import "maplibre-theme/dist/classic.css";
 ```
 
 advanced configuration with CSS vars.
@@ -61,9 +61,6 @@ note: define your colors as just the color channel so we can work with the opaci
 
 <img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/packages/maplibre-theme/screenshot.png" alt="MapLibre light theme" />
 
-@media (-ms-high-contrast: active) {} 	@media (forced-colors: active) {}
-
-@media (-ms-high-contrast: black-on-white) {} 	@media (forced-colors: active) and (prefers-color-scheme: light) {}
 
 
 ## Create your own Theme

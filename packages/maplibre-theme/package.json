@@ -4,8 +4,8 @@
   "description": "CSS Themes for your Maplibre GL Js Web app",
   "type": "module",
   "scripts": {
-    "dev": "postcss --watch -d dist src/core.css src/classic.css src/optimized.css src/modern.css",
-    "build": "postcss -d dist src/core.css src/classic.css src/optimized.css src/modern.css",
+    "dev": "postcss --watch -d dist src/core.css src/legacy.css src/classic.css src/modern.css",
+    "build": "postcss -d dist src/core.css src/legacy.css src/classic.css src/modern.css",
     "build:fontello": "tsup",
     "dev:fontello": "tsup --watch"
   },
