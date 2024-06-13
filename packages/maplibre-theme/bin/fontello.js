@@ -48,7 +48,7 @@ var themeDir = resolve(themesDir, theme);
 var configFile = resolve(themeDir, "font/config.json");
 var generatedDir = resolve(themeDir, "font/generated");
 var idFile = resolve(themeDir, "font/.fontello");
-var cssFile = resolve(themeDir, "font/fontello.css");
+var cssFile = resolve(themeDir, "font/codes.css");
 switch (action) {
   case "open": {
     if (!existsSync(configFile)) {

@@ -7,8 +7,6 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 const projectDir = dirname(fileURLToPath(import.meta.url));
 
-console.log(projectDir);
-
 const config = {
   plugins: [
     postcssImport(),

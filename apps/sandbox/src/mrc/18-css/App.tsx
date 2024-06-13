@@ -9,6 +9,7 @@ import {
   RFullscreenControl,
   RGeolocateControl,
   RGradientMarker,
+  RLogoControl,
   RMap,
   RNavigationControl,
   RPopup,
@@ -16,8 +17,10 @@ import {
   RSource,
   RTerrainControl,
   markerPopupOffset,
+  useRControl,
 } from "maplibre-react-components";
 import { useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 const marignier2 = { lng: 6.2, lat: 46.089 };
@@ -25,6 +28,75 @@ const marignier2 = { lng: 6.2, lat: 46.089 };
 const rasterDemTiles = [
   "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
 ];
+
+function MyCtrl() {
+  const { container } = useRControl({
+    position: "bottom-right",
+  });
+
+  return createPortal(
+    <>
+      <button
+        className="maplibregl-ctrl-geolocate"
+        type="button"
+        title="Find my location"
+        aria-label="Find my location"
+      >
+        <span className="maplibregl-ctrl-icon" aria-hidden="true"></span>
+      </button>
+      <button
+        className="maplibregl-ctrl-geolocate maplibregl-ctrl-geolocate-active"
+        type="button"
+        title="Find my location"
+        aria-label="Find my location"
+      >
+        <span className="maplibregl-ctrl-icon" aria-hidden="true"></span>
+      </button>
+      <button
+        className="maplibregl-ctrl-geolocate maplibregl-ctrl-geolocate-active-error"
+        type="button"
+        title="Find my location"
+        aria-label="Find my location"
+      >
+        <span className="maplibregl-ctrl-icon" aria-hidden="true"></span>
+      </button>
+      <button
+        className="maplibregl-ctrl-geolocate maplibregl-ctrl-geolocate-background"
+        type="button"
+        title="Find my location"
+        aria-label="Find my location"
+      >
+        <span className="maplibregl-ctrl-icon" aria-hidden="true"></span>
+      </button>
+      <button
+        className="maplibregl-ctrl-geolocate maplibregl-ctrl-geolocate-background-error"
+        type="button"
+        title="Find my location"
+        aria-label="Find my location"
+      >
+        <span className="maplibregl-ctrl-icon" aria-hidden="true"></span>
+      </button>
+      <button
+        className="maplibregl-ctrl-geolocate maplibregl-ctrl-geolocate-waiting"
+        type="button"
+        title="Find my location"
+        aria-label="Find my location"
+      >
+        <span className="maplibregl-ctrl-icon" aria-hidden="true"></span>
+      </button>
+      <button
+        className="maplibregl-ctrl-geolocate"
+        type="button"
+        title="Find my location"
+        aria-label="Find my location"
+        disabled
+      >
+        <span className="maplibregl-ctrl-icon" aria-hidden="true"></span>
+      </button>
+    </>,
+    container,
+  );
+}
 
 function CustomMap({ className }: { className?: string }) {
   const mapRef = useRef<Map>(null);
@@ -61,6 +133,8 @@ function CustomMap({ className }: { className?: string }) {
       <RNavigationControl />
       <RTerrainControl source="terrarium" />
       <RScaleControl />
+      <RLogoControl />
+      <MyCtrl />
       <div className="sidebar">
         <div>
           <button onClick={() => console.log(mapRef)}>info</button>
@@ -78,7 +152,7 @@ function CustomMap({ className }: { className?: string }) {
 function App() {
   return (
     <div className="p-8">
-      <div className="h-[400px]">
+      <div className="h-[500px]">
         <CustomMap className="shadow-md" />
       </div>
     </div>

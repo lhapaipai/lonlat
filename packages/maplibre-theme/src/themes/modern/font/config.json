@@ -1,24 +1,64 @@
 {
   "name": "",
-  "css_prefix_text": "mrc-",
+  "css_prefix_text": "ml-",
   "css_use_suffix": false,
   "hinting": true,
   "units_per_em": 1000,
   "ascent": 850,
   "glyphs": [
     {
-      "uid": "aa97b9de214a99f273d6b8bc9ab326cc",
-      "css": "marker",
-      "code": 59420,
-      "src": "custom_icons",
-      "selected": true,
-      "svg": {
-        "path": "M350 20C167.7 20 20 167.7 20 350 20 560 165.3 579.1 278.3 793.9 349.1 928.5 300 980 350 980S350.9 928.5 421.7 793.9C534.7 579.1 680 560 680 350 680 167.7 532.3 20 350 20Z",
-        "width": 700
-      },
-      "search": [
-        "marker"
-      ]
+      "uid": "a66a6e088038a1881d532b6675bf8412",
+      "css": "attrib",
+      "code": 59392,
+      "src": "modernpics"
+    },
+    {
+      "uid": "b05c5a209b56e7ea6632a31e4bd0b41d",
+      "css": "shrink",
+      "code": 59393,
+      "src": "iconic"
+    },
+    {
+      "uid": "4815ddddea76d90e367a9694a93b7e24",
+      "css": "fullscreen",
+      "code": 59394,
+      "src": "iconic"
+    },
+    {
+      "uid": "e5d624264734620fa9f98d59e6dc941f",
+      "css": "compass",
+      "code": 61774,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "81bb68665e8e595505272a746db07c7a",
+      "css": "geolocate",
+      "code": 61842,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "32b4054f35918992f723e39f4095f005",
+      "css": "terrain",
+      "code": 59395,
+      "src": "entypo"
+    },
+    {
+      "uid": "44e04715aecbca7f266a17d5a7863c68",
+      "css": "zoom-in",
+      "code": 59396,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "5211af474d3a9848f67f945e2ccaf143",
+      "css": "cancel",
+      "code": 59397,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "861ab06e455e2de3232ebef67d60d708",
+      "css": "zoom-out",
+      "code": 59398,
+      "src": "fontawesome"
     }
   ]
 }

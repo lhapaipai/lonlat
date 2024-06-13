@@ -1,4 +1,3 @@
-import "maplibre-theme/dist/core.css";
 import "maplibre-theme/dist/default.css";
 import "maplibre-react-components/dist/mrc.css";
 import { RMap, RGradientMarker } from "maplibre-react-components";

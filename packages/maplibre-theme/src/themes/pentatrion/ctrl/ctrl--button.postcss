@@ -48,11 +48,43 @@
 }
 
 .maplibregl-ctrl button .maplibregl-ctrl-icon {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
+  display: grid;
+  place-content: center;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+
+.maplibregl-ctrl .maplibregl-ctrl-attrib-button::before,
+.maplibregl-ctrl button .maplibregl-ctrl-icon::before,
+.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::after,
+.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon::after {
+  font-family: "fontello-ml";
+  font-style: normal;
+  font-weight: normal;
+
+  display: inline-block;
+  text-decoration: inherit;
+  /* = 25px */
+  width: 1.563rem;
+  height: 1.563rem;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1.25em;
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.25rem;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
 @media (-ms-high-contrast: active) {

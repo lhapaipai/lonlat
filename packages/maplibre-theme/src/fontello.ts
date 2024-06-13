@@ -55,7 +55,7 @@ const themeDir = resolve(themesDir, theme);
 const configFile = resolve(themeDir, "font/config.json");
 const generatedDir = resolve(themeDir, "font/generated");
 const idFile = resolve(themeDir, "font/.fontello");
-const cssFile = resolve(themeDir, "font/fontello.css");
+const cssFile = resolve(themeDir, "font/codes.css");
 
 switch (action) {
   case "open": {

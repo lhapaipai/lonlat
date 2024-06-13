@@ -1,3 +1,5 @@
+@import "./core.css";
+
 @import "./themes/default/ctrl/ctrl--base.postcss";
 @import "./themes/default/ctrl/ctrl--components.postcss";
 @import "./themes/default/ctrl/ctrl-attrib.postcss";

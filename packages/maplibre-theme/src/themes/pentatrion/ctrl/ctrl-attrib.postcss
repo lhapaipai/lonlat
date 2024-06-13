@@ -23,14 +23,21 @@
   }
 
   .maplibregl-ctrl-attrib-button {
-    background-image: svg-load("../../../assets/default/maplibregl-ctrl-attrib.svg");
-    background-position: center;
-    background-repeat: no-repeat;
     border-radius: 1rem;
 
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  .maplibregl-ctrl-attrib-button::before {
+    content: "\e808";
+    margin: 0.2rem 0.2rem;
+    /* font-size: 1.25rem;
+    height: 2rem;
+    display: grid;
+    place-content: center;
+    margin: 0 0.3em; */
   }
 
   .maplibregl-ctrl-top-left .maplibregl-ctrl-attrib-button,
@@ -60,14 +67,15 @@
 }
 
 @media screen and (-ms-high-contrast: active) {
+  /* TODO why after ? */
   .maplibregl-ctrl-attrib.maplibregl-compact::after {
-    background-image: svg-load("../../../assets/default/maplibregl-ctrl-attrib.svg", fill=#fff);
+    color: #fff;
   }
 }
 
 @media screen and (-ms-high-contrast: black-on-white) {
   .maplibregl-ctrl-attrib.maplibregl-compact::after {
-    background-image: svg-load("../../../assets/default/maplibregl-ctrl-attrib.svg");
+    color: #000;
   }
 }
 

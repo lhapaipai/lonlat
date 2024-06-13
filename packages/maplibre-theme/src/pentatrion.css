@@ -1,3 +1,7 @@
+@import "./core.css";
+
+@import "./themes/pentatrion/font/fontello.postcss";
+
 @import "./themes/pentatrion/ctrl/ctrl--base.postcss";
 @import "./themes/pentatrion/ctrl/ctrl--components.postcss";
 @import "./themes/pentatrion/ctrl/ctrl--button.postcss";
@@ -7,6 +11,7 @@
 @import "./themes/pentatrion/ctrl/ctrl-geolocate.postcss";
 @import "./themes/pentatrion/ctrl/ctrl-logo.postcss";
 @import "./themes/pentatrion/ctrl/ctrl-navigation.postcss";
+
 @import "./themes/pentatrion/ctrl/ctrl-scale.postcss";
 @import "./themes/pentatrion/ctrl/ctrl-terrain.postcss";
 

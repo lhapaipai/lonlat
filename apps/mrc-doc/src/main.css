@@ -2,7 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import "maplibre-theme/dist/core.css";
 @import "maplibre-theme/dist/pentatrion.css";
 @import "maplibre-react-components/dist/mrc.css";
 

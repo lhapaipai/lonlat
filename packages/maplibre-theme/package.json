@@ -30,6 +30,7 @@
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",
+    "postcss-inline-base64": "^7.3.1",
     "postcss-inline-svg": "^6.0.0",
     "prompts": "^2.4.2",
     "rimraf": "^5.0.7",
