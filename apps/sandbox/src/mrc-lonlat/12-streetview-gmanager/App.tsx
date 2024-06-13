@@ -1,5 +1,5 @@
 import "./App.scss";
-import "maplibre-theme/dist/default.css";
+import "maplibre-theme/dist/classic.css";
 import "maplibre-react-components/dist/mrc.css";
 import { useState } from "react";
 import { ResizeArea } from "pentatrion-design";
