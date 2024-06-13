@@ -1,0 +1,113 @@
+.maplibregl-map {
+  border-radius: 1rem;
+
+  /* text hover color, button active bgcolor */
+  --color-yellow-5: 219 167 38; /* rgb(219, 167, 38); */
+
+  --color-gray-0: 255 255 255; /* rgb(255, 255, 255); */
+  --color-gray-1: 242 242 242; /* rgb(242, 242, 242); */
+  --color-gray-2: 228 228 228; /* rgb(228, 228, 228); */
+  --color-gray-3: 204 204 204; /* rgb(204, 204, 204); */
+  --color-gray-4: 180 180 180; /* rgb(180, 180, 180); */
+  --color-gray-5: 140 140 140; /* rgb(140, 140, 140); */
+  /* text-hint text-disabled */
+  --color-gray-6: 90 90 90; /* rgb(90, 90, 90); */
+  --color-gray-7: 50 50 50; /* rgb(50, 50, 50); */
+  --color-gray-8: 0 0 0; /* rgb(0, 0, 0); */
+  --color-gray-text: var(--color-gray-7);
+}
+
+:root {
+  --ml-ctrl-border-radius: 1rem;
+  --ml-font: inherit;
+  --ml-font-attribution: inherit;
+
+  --blue: 29 161 242;
+
+  --ml-c-active: var(--blue);
+  --ml-c-error: 229 78 51;
+
+  --ml-c-bg: 255 255 255;
+  --ml-c-neutral: 0 0 0;
+
+  /*
+   * text: content of popup, attribution
+   * icon: control buttons (hover effect -> neutral)
+   */
+  --ml-c-text: 51 51 51; /* --color-gray-7 */
+  --ml-c-icon: 51 51 51; /* --color-gray-7 */
+
+  /*
+   * gray-1 usually hover effect
+   * gray-2 active effect
+   */
+  --ml-c-gray-0: 255 255 255; /* --color-gray-0 */
+  --ml-c-gray-1: 240 240 240; /* --color-gray-1 */
+  --ml-c-gray-2: 215 215 215; /* --color-gray-2 */
+
+  --ml-c-disabled: 180 180 180; /* --color-gray-4 */
+
+  /**
+   * button group / popup shadow
+   * shadow-active: when your button is active
+   */
+  --ml-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.15), 0 1px 2px -1px rgb(0 0 0 / 0.15); /* shadow */
+  --ml-shadow-active: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -2px rgb(0 0 0 / 0.15);
+  --ml-ring-shadow: 0 0 0px 2px rgb(var(--color-yellow-5) / 1);
+
+  --ml-c-geoloc: var(--blue);
+}
+
+.dark {
+  --ml-c-bg: 17 23 37;
+  --ml-c-neutral: 255 255 255;
+
+  --ml-c-text: 203 213 225;
+  --ml-c-icon: 255 255 255;
+
+  --ml-c-gray-0: 17 23 37;
+  --ml-c-gray-1: 65 72 83;
+  --ml-c-gray-2: 50 54 63;
+
+  --ml-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.15), 0 1px 2px -1px rgb(0 0 0 / 0.15); /* shadow */
+}
+
+@media (forced-colors: active) and (prefers-color-scheme: light) {
+  :root .maplibregl-map,
+  .dark .maplibregl-map {
+    --ml-c-bg: 255 255 255;
+    --ml-c-neutral: 0 0 0;
+
+    --ml-c-text: 0 0 0;
+    --ml-c-icon: 0 0 0;
+
+    --ml-c-disabled: 102 102 102;
+
+    --ml-c-gray-0: 255 255 255;
+    --ml-c-gray-1: 200 200 200;
+    --ml-c-gray-2: 180 180 180;
+
+    --ml-c-gray-2: 0 0 0;
+
+    --ml-c-error: 255 0 0;
+  }
+}
+
+@media (forced-colors: active) {
+  :root .maplibregl-map,
+  .dark .maplibregl-map {
+    --ml-c-bg: 0 0 0;
+    --ml-c-neutral: 255 255 255;
+
+    --ml-c-text: 255 255 255;
+    --ml-c-icon: 255 255 255;
+
+    --ml-c-disabled: 153 153 153;
+
+    --ml-c-gray-0: 0 0 0;
+    --ml-c-gray-1: 65 72 83;
+    --ml-c-gray-2: 50 54 63;
+
+    --ml-c-error: 255 0 0;
+  }
+}

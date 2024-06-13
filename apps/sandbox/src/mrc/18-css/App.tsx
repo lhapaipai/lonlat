@@ -2,6 +2,7 @@ import { Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-theme/dist/core.css";
 import "maplibre-react-components/dist/mrc.css";
+import style from "./style.json";
 
 new URL(window.location.toString()).searchParams
   .get("classes")
@@ -15,7 +16,6 @@ import {
   RAttributionControl,
   RFullscreenControl,
   RGeolocateControl,
-  RGradientMarker,
   RLogoControl,
   RMap,
   RMarker,
@@ -27,7 +27,7 @@ import {
   markerPopupOffset,
   useRControl,
 } from "maplibre-react-components";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { createPortal } from "react-dom";
 
 const marignier = { lng: 6.498, lat: 46.089 };
@@ -45,7 +45,7 @@ function MyCtrl() {
   return createPortal(
     <>
       <button
-        className="maplibregl-ctrl-geolocate"
+        className="maplibregl-ctrl-geolocate ring-1"
         type="button"
         title="Find my location"
         aria-label="Find my location"
@@ -131,6 +131,7 @@ function CustomMap({ className }: { className?: string }) {
       initialZoom={8}
       initialAttributionControl={false}
       className={className}
+      mapStyle={style}
     >
       <RSource
         type="raster-dem"
@@ -169,7 +170,7 @@ function CustomMap({ className }: { className?: string }) {
       />
       <RNavigationControl />
       <RTerrainControl source="terrarium" />
-      <RLogoControl />
+      <RLogoControl compact={false} />
       <RLogoControl compact={true} />
       <RScaleControl />
       <RAttributionControl compact={false} />

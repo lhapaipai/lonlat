@@ -1,48 +1,41 @@
 a.maplibregl-ctrl-logo {
-  width: 88px;
-  height: 23px;
   margin: 0 0 -4px -4px;
   display: block;
-  background-repeat: no-repeat;
   cursor: pointer;
-  overflow: hidden;
 }
 
 a.maplibregl-ctrl-logo::before {
+  font-size: 1rem;
+
   font-family: "fontello-ml";
 
   font-weight: 900;
-  color: white;
+  color: rgb(var(--ml-c-gray-0));
   content: "\e813MapLibre";
   text-stroke: 2px #999;
   -webkit-text-stroke: 2px #999;
   paint-order: stroke fill;
+
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.3s;
 }
 
-a.maplibregl-ctrl-logo.maplibregl-compact {
-  width: 14px;
+.dark a.maplibregl-ctrl-logo::before {
+  text-stroke: 0;
+  -webkit-text-stroke: 0;
 }
-
-@media (-ms-high-contrast: active) {
-  a.maplibregl-ctrl-logo {
-    /*
-    @svg-load ctrl-logo-white url("../../../assets/default/maplibregl-ctrl-logo.svg") {
-      #outline {
-        opacity: 1;
-      }
-      #fill {
-        opacity: 1;
-      }
-    }
-*/
-    color: white;
+@media (forced-colors: active) {
+  .dark a.maplibregl-ctrl-logo::before {
+    text-stroke: 0;
+    -webkit-text-stroke: 0;
   }
 }
 
-@media (-ms-high-contrast: black-on-white) {
-  a.maplibregl-ctrl-logo {
-    color: white;
-    text-stroke: 2px black;
-    -webkit-text-stroke: 1px black;
-  }
+a.maplibregl-ctrl-logo:hover::before {
+  color: rgb(var(--ml-c-gray-2));
+}
+
+a.maplibregl-ctrl-logo.maplibregl-compact::before {
+  content: "\e813";
 }

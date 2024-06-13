@@ -1,15 +1,14 @@
 .maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon::before {
-  color: #333;
   content: "\e80c";
 }
 
 .maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::before {
-  color: #aaa;
+  color: rgb(var(--ml-c-disabled));
 }
 
 .maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::after {
   content: "\e80e";
-  color: #f00;
+  color: rgb(var(--ml-c-error));
   position: absolute;
   left: 50%;
   top: 50%;
@@ -20,54 +19,34 @@
   button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active
   .maplibregl-ctrl-icon::before {
   content: "\e80c";
-  color: #33b5e5;
+  color: rgb(var(--ml-c-active));
 }
 
 .maplibregl-ctrl
   button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-active-error
   .maplibregl-ctrl-icon::before {
   content: "\e80c";
-  color: #e54e33;
+  color: rgb(var(--ml-c-error));
 }
 
 .maplibregl-ctrl
   button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background
   .maplibregl-ctrl-icon::before {
   content: "\e80d";
-  color: #33b5e5;
+  color: rgb(var(--ml-c-active));
 }
 
 .maplibregl-ctrl
   button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-background-error
   .maplibregl-ctrl-icon::before {
   content: "\e80d";
-  color: #e54e33;
+  color: rgb(var(--ml-c-error));
 }
 
 .maplibregl-ctrl
   button.maplibregl-ctrl-geolocate.maplibregl-ctrl-geolocate-waiting
-  .maplibregl-ctrl-icon {
+  .maplibregl-ctrl-icon::before {
   animation: maplibregl-spin 2s infinite linear;
-}
-
-@media (-ms-high-contrast: active) {
-  .maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon::before {
-    color: white;
-  }
-
-  .maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::before {
-    color: #999;
-  }
-}
-
-@media (-ms-high-contrast: black-on-white) {
-  .maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon::before {
-    color: black;
-  }
-
-  .maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::before {
-    color: #666;
-  }
 }
 
 @keyframes maplibregl-spin {

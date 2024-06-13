@@ -1,12 +1,12 @@
 .maplibregl-user-location-dot {
-  background-color: #1da1f2;
+  background-color: rgb(var(--ml-c-geoloc));
   width: 15px;
   height: 15px;
   border-radius: 50%;
 }
 
 .maplibregl-user-location-dot::before {
-  background-color: #1da1f2;
+  background-color: rgb(var(--ml-c-geoloc));
   content: "";
   width: 15px;
   height: 15px;
@@ -17,7 +17,7 @@
 
 .maplibregl-user-location-dot::after {
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid rgb(var(--ml-c-gray-1));
   content: "";
   height: 19px;
   left: -2px;
@@ -44,7 +44,7 @@
 }
 
 .maplibregl-user-location-dot-stale {
-  background-color: #aaa;
+  background-color: rgb(var(--ml-c-disabled));
 }
 
 .maplibregl-user-location-dot-stale::after {
@@ -52,7 +52,7 @@
 }
 
 .maplibregl-user-location-accuracy-circle {
-  background-color: #1da1f233;
+  background-color: rgb(var(--ml-c-geoloc) / 20%);
   width: 1px;
   height: 1px;
   border-radius: 100%;
