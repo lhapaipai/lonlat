@@ -1,4 +1,8 @@
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import rehypePrettyCode from "rehype-pretty-code";
+
+const projectDir = dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -12,7 +16,12 @@ const nextConfig = {
     ];
     /** @type {import('rehype-pretty-code').Options} */
     const rehypePluginsOptions = {
-      theme: "github-dark-default",
+      // theme is singular (not themes) from shiki default config
+      theme: {
+        // same as apps/mrc-doc/webpack/shikiLoader.js
+        light: "github-light-default",
+        dark: "github-dark-default",
+      },
     };
     config.module.rules.push({
       test: /\.mdx$/,
@@ -25,6 +34,16 @@ const nextConfig = {
             remarkPlugins: [],
             rehypePlugins: [[rehypePrettyCode, rehypePluginsOptions]],
           },
+        },
+      ],
+    });
+
+    config.module.rules.push({
+      test: /\.tsx$/,
+      resourceQuery: /shiki/,
+      use: [
+        {
+          loader: resolve(projectDir, "webpack/shikiLoader.js"),
         },
       ],
     });

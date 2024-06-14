@@ -2,7 +2,11 @@ export const metadata = {
   title: 'RMap',
   description: 'Base component'
 }
-import Example from "./Example";
+import Example from "./Example.tsx";
+import exampleHtml from "./Example.tsx?shiki";
+
+import CodeAndExample from "~/components/CodeAndExample.tsx";
+
 
 # RMap
 
@@ -26,8 +30,8 @@ export default function App() {
   );
 }
 ```
+<CodeAndExample html={exampleHtml} Element={Example} />
 
-<Example />
 
 ## Reference
 

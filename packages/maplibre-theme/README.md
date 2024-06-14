@@ -22,6 +22,8 @@ in your js file
 // for classic theme
 + import "maplibre-theme/dist/classic.css";
 
+// or
+
 // for modern theme
 + import "maplibre-theme/dist/modern.css";
 ```

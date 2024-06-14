@@ -1,0 +1,15 @@
+pre[data-theme*=" "],
+pre[data-theme*=" "] span,
+pre.shiki-themes,
+pre.shiki-themes span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+body.dark pre[data-theme*=" "],
+body.dark pre[data-theme*=" "] span,
+body.dark pre.shiki-themes,
+body.dark pre.shiki-themes span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}

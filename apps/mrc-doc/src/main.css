@@ -8,6 +8,8 @@
 @import "./icons/fontello.css";
 @import "./base.css";
 
+@import "./shiki.css";
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
