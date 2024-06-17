@@ -20,21 +20,20 @@ export function useControl({
   // we don't want to re-instanciate new control if factory change
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const ctrl = useMemo(() => factory(map), [map]);
-
   const onRemoveStable = useEventCallback(onRemove || null);
 
   useEffect(() => {
-    console.log("map addControl", ctrl);
+    console.log("useControl useEffect");
 
     if (!map.hasControl(ctrl)) {
+      console.log("map addControl");
       map.addControl(ctrl, position);
     }
     return () => {
       onRemoveStable && onRemoveStable(map);
 
       if (map.hasControl(ctrl)) {
-        console.log("map removeControl", ctrl);
-
+        console.log("map removeControl uhh");
         map.removeControl(ctrl);
       } else {
         console.log("map has not control", ctrl);

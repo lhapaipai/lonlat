@@ -97,8 +97,6 @@ export const RMarker = memo(
       const mk = new Marker(completeOptions);
       mk.setLngLat([longitude, latitude]);
 
-      mk.addTo(map);
-
       return mk;
       // marker reactivity is managed below
       // we don't want to destroy/re-instanciate a Marker instance in each render
@@ -142,6 +140,8 @@ export const RMarker = memo(
     }, [nextEventsStr, marker]);
 
     useEffect(() => {
+      marker.addTo(map);
+
       return () => void marker.remove();
       // we can add [marker] but we know they will not change during the lifecycle
       // eslint-disable-next-line react-hooks/exhaustive-deps

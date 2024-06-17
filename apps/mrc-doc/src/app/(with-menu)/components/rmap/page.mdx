@@ -2,35 +2,54 @@ export const metadata = {
   title: 'RMap',
   description: 'Base component'
 }
-import Example from "./Example.tsx";
-import exampleHtml from "./Example.tsx?shiki";
 
-import CodeAndExample from "~/components/CodeAndExample.tsx";
-
+import TwoCols from "~/components/TwoCols.tsx";
+import ShikiContent from "~/components/ShikiContent";
 
 # RMap
 
-Base component
+Principal component. All others components described in this library need to be defined as children of this component.
+This component take his props from `MapOptions`, map events, and some extra configuration options.
 
-## Usage
+It instantiates a Map object adds event listeners and is responsive to only a few props (see reference below).
 
-```tsx
-import { RMap } from "maplibre-react-components";
+## Hello world.
 
-const home = { lng: 6, lat: 46 };
+The `RMap` component accepts the `style` and `mapStyle` prop to respectively define the style attribute of the containing element `div.maplibregl-map` and the style to apply to the Map instance.
 
-export default function App() {
+import HelloWorld from "./HelloWorld.tsx";
+import helloWorldHtml from "./HelloWorld.tsx?shiki";
 
-  return (
-    <RMap
-      initialCenter={home}
-      style={{ width: "100%", height: "100%" }}
-      mapStyle="https://demotiles.maplibre.org/style.json"
-    />
-  );
-}
+<TwoCols first={<ShikiContent html={helloWorldHtml} />} second={<HelloWorld />} />
+
+Internally your style prop is wrap inside a `useMemo`, you can therefore define this object online without affecting performance
+
+```ts
+// extract of source code : /src/components/RMap/RMap.tsx
+const completeStyle: CSSProperties = useMemo(
+  () => ({
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    ...style,
+  }),
+  [style],
+);
 ```
-<CodeAndExample html={exampleHtml} Element={Example} />
+
+## `MapOptions` / `events` and reactivity
+
+You can use all options from `MapOptions` as props for the `RMap` component. Some of these options are responsive and some are not. To distinguish them, non-reactive options have been prefixed with `initial`
+
+import Options from "./Options.tsx";
+import optionsHtml from "./Options.tsx?shiki";
+
+<TwoCols first={<Options />} second={<ShikiContent html={optionsHtml} />} foreground="second"  />
+
+
+If your prop is an array or an object define your variable
+- outside your component if it's a readonly value
+- inside a `useMemo` to prevent unnecessary renderings
 
 
 ## Reference

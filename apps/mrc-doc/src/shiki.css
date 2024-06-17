@@ -1,15 +1,64 @@
+pre {
+  @apply my-6 rounded-2xl shadow dark:shadow-dark;
+  overflow-x: auto;
+  font-weight: "400";
+}
+
+.windowed-code pre {
+  @apply overflow-y-auto;
+  max-height: 500px;
+}
+
+pre code {
+  @apply grid py-4 text-sm;
+}
+pre code span:is([data-line], .line) {
+  @apply px-4;
+}
+.code-with-preview pre {
+  @apply rounded-2xl lg:-mb-7 lg:mt-7;
+}
+
 pre[data-theme*=" "],
-pre[data-theme*=" "] span,
-pre.shiki-themes,
-pre.shiki-themes span {
+pre.shiki-themes {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
 }
+:is(pre[data-theme*=" "], pre.shiki-themes) :is(:scope, span) {
+  color: var(--shiki-light);
+}
 
-body.dark pre[data-theme*=" "],
-body.dark pre[data-theme*=" "] span,
-body.dark pre.shiki-themes,
-body.dark pre.shiki-themes span {
+body.dark :is(pre[data-theme*=" "], pre.shiki-themes) {
   color: var(--shiki-dark);
   background-color: var(--shiki-dark-bg);
+}
+body.dark :is(pre[data-theme*=" "], pre.shiki-themes) :is(:scope, span) {
+  color: var(--shiki-dark);
+}
+
+:is(pre, .dark pre) span[data-highlighted-line] {
+  @apply bg-gray-1 dark:bg-gray-7/10;
+}
+
+:is(pre, .dark pre)
+  span[data-highlighted-line][data-highlighted-line-id="delete"] {
+  @apply bg-red-1/50 dark:bg-red-1/10;
+}
+
+:is(pre, .dark pre)
+  span[data-highlighted-line][data-highlighted-line-id="add"] {
+  @apply bg-green-1/50 dark:bg-green-1/10;
+}
+
+.prose .maplibregl-map {
+  @apply rounded-2xl shadow;
+}
+
+.prose .mdx-header i {
+  @apply text-gray-5 transition-colors hover:text-gray-text;
+  visibility: hidden;
+}
+
+.prose .mdx-header:hover i {
+  visibility: visible;
 }

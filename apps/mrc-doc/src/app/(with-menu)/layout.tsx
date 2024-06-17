@@ -11,7 +11,7 @@ export default function WithMenuLayout({
       <NavBar />
       <div className="relative overflow-x-hidden">
         <HeaderBar />
-        <div className="p-4">
+        <div className="mx-auto p-4 md:max-w-6xl">
           <div className="prose prose-neutral dark:prose-invert">
             {children}
           </div>

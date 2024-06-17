@@ -25,7 +25,11 @@ const config = {
       mono: defaultTheme.fontFamily.mono,
     },
     extend: {
-      typography: pentatrionTypographyExtend,
+      typography: {
+        DEFAULT: {
+          css: [pentatrionTypographyExtend.DEFAULT.css],
+        },
+      },
     },
   },
   plugins: [

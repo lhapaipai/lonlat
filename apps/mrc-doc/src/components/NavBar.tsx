@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { FloatingOverlay } from "@floating-ui/react";
 import { Button } from "pentatrion-design/components/button";
 import MapLibreReactLogo from "./MapLibreReactLogo";
+import LinkButton from "./LinkButton";
 const links = [
   {
     url: "/getting-started",
@@ -97,9 +98,9 @@ export default function NavBar() {
             <MapLibreReactLogo height={100} />
           </Link>
           {links.map(({ url, title }) => (
-            <Link href={url} key={url}>
+            <LinkButton variant="text" color="gray" href={url} key={url}>
               {title}
-            </Link>
+            </LinkButton>
           ))}
         </nav>
       </div>

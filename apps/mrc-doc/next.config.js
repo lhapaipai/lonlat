@@ -1,7 +1,7 @@
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import rehypePrettyCode from "rehype-pretty-code";
-
+import rehypeSlug from "rehype-slug";
 const projectDir = dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
@@ -14,8 +14,9 @@ const nextConfig = {
       "private-next-root-dir/src/components/Mdx",
       "@mdx-js/react",
     ];
+
     /** @type {import('rehype-pretty-code').Options} */
-    const rehypePluginsOptions = {
+    const rehypePrettyCodeOptions = {
       // theme is singular (not themes) from shiki default config
       theme: {
         // same as apps/mrc-doc/webpack/shikiLoader.js
@@ -23,6 +24,7 @@ const nextConfig = {
         dark: "github-dark-default",
       },
     };
+
     config.module.rules.push({
       test: /\.mdx$/,
       use: [
@@ -32,7 +34,10 @@ const nextConfig = {
           options: {
             providerImportSource: "next-mdx-import-source-file",
             remarkPlugins: [],
-            rehypePlugins: [[rehypePrettyCode, rehypePluginsOptions]],
+            rehypePlugins: [
+              [rehypePrettyCode, rehypePrettyCodeOptions],
+              rehypeSlug,
+            ],
           },
         },
       ],

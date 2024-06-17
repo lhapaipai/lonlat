@@ -43,6 +43,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "815503841e980c848f55e0271deacead",
+      "css": "link",
+      "code": 59395,
+      "src": "entypo"
+    },
+    {
       "uid": "c4ab4e02333d10843cd478dfb390028f",
       "css": "circle-exclamation",
       "code": 59416,
