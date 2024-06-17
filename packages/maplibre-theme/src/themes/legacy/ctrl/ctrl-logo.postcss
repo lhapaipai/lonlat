@@ -13,7 +13,7 @@ a.maplibregl-ctrl-logo.maplibregl-compact {
   width: 14px;
 }
 
-@media (-ms-high-contrast: active) {
+@media (forced-colors: active) {
   a.maplibregl-ctrl-logo {
     @svg-load ctrl-logo-white url("../assets/maplibregl-ctrl-logo.svg") {
       #outline {
@@ -29,7 +29,7 @@ a.maplibregl-ctrl-logo.maplibregl-compact {
   }
 }
 
-@media (-ms-high-contrast: black-on-white) {
+@media (forced-colors: active) and (prefers-color-scheme: light) {
   a.maplibregl-ctrl-logo {
     @svg-load ctrl-logo-black url("../assets/maplibregl-ctrl-logo.svg") {
       #outline {

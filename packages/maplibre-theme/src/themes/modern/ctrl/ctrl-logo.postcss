@@ -7,8 +7,6 @@ a.maplibregl-ctrl-logo {
 a.maplibregl-ctrl-logo::before {
   font-size: 1rem;
 
-  font-family: "fontello-ml";
-
   font-weight: 900;
   color: rgb(var(--ml-c-gray-0));
   content: "\e813MapLibre";
@@ -26,6 +24,7 @@ a.maplibregl-ctrl-logo::before {
   -webkit-text-stroke: 0;
 }
 @media (forced-colors: active) {
+  a.maplibregl-ctrl-logo::before,
   .dark a.maplibregl-ctrl-logo::before {
     text-stroke: 0;
     -webkit-text-stroke: 0;

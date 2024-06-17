@@ -1,8 +1,9 @@
-import { Map } from "maplibre-gl";
+import { Map, StyleSpecification } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-theme/dist/core.css";
 import "maplibre-react-components/dist/mrc.css";
 import style from "./style.json";
+
+const mapStyle = style as StyleSpecification;
 
 new URL(window.location.toString()).searchParams
   .get("classes")
@@ -29,6 +30,7 @@ import {
 } from "maplibre-react-components";
 import { useRef } from "react";
 import { createPortal } from "react-dom";
+import clsx from "clsx";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 const marignier2 = { lng: 6.2, lat: 46.089 };
@@ -120,7 +122,13 @@ const dotStyle = {
   opacity: 1,
 };
 
-function CustomMap({ className }: { className?: string }) {
+function CustomMap({
+  className,
+  theme,
+}: {
+  className?: string;
+  theme?: "legacy" | "classic" | "modern";
+}) {
   const mapRef = useRef<Map>(null);
   //       mapStyle={"/assets/styles/ign/PLAN.IGN/standard.json"}
 
@@ -130,8 +138,12 @@ function CustomMap({ className }: { className?: string }) {
       initialCenter={marignier}
       initialZoom={8}
       initialAttributionControl={false}
-      className={className}
-      mapStyle={style}
+      className={clsx(
+        className,
+
+        `shadow-md ml-theme-${theme}`,
+      )}
+      mapStyle={mapStyle}
     >
       <RSource
         type="raster-dem"
@@ -182,11 +194,39 @@ function CustomMap({ className }: { className?: string }) {
 
 function App() {
   return (
-    <div className="p-8">
-      <div className="h-[500px]">
-        <CustomMap className="shadow-md" />
+    <>
+      <div className="grid grid-cols-2 gap-8 p-8">
+        <div className="h-[500px]">
+          <CustomMap theme="classic" />
+        </div>
+        <div className="dark h-[500px]">
+          <CustomMap theme="classic" />
+        </div>
+        {/* <div className="light-forced h-[500px]">
+        <CustomMap theme="classic" />
       </div>
-    </div>
+      <div className="dark-forced h-[500px]">
+        <CustomMap theme="classic" />
+      </div> */}
+
+        <div className="h-[500px]">
+          <CustomMap theme="modern" />
+        </div>
+        <div className="dark h-[500px]">
+          <CustomMap theme="modern" />
+        </div>
+        {/* <div className="light-forced h-[500px]">
+        <CustomMap theme="modern" />
+      </div>
+      <div className="dark-forced h-[500px]">
+        <CustomMap theme="modern" />
+      </div> */}
+
+        <div className="h-[500px]">
+          <CustomMap theme="legacy" />
+        </div>
+      </div>
+    </>
   );
 }
 

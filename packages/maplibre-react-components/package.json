@@ -34,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.7",
     "@floating-ui/dom": "^1.6.5",
+    "@mapbox/point-geometry": "^0.1.0",
     "@storybook/addon-actions": "^8.1.9",
     "@storybook/addon-docs": "^8.1.9",
     "@storybook/addon-essentials": "^8.1.9",

@@ -130,3 +130,17 @@ original svg files are saved inside `packages/maplibre-theme/src/themes/<...>/as
 There is some restriction with your SVG file, check the [Fontello Wiki page](https://github.com/fontello/fontello/wiki/How-to-use-custom-images).
 
 If you want to optimize your svg icon files you can use [SVGOMG](https://jakearchibald.github.io/svgomg/).
+
+
+## Forced-colors
+
+Default generated colors with Forced-colors active.
+
+Theme           Light         Dark
+CanvasText      #000000       #fff
+Canvas          #ffffff       #000
+LinkText        #0000ee       #ff0
+ButtonText      #000000       #fff
+ButtonFace      #f5f5f5       #000
+HighlightText   #ffffff       #000
+Highlight       #1f9ede       #1aebff

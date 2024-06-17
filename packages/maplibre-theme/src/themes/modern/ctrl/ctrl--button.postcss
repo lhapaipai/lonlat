@@ -20,6 +20,21 @@
   box-shadow: var(--ml-ring-shadow-active, 0 0 #0000);
 }
 
+.maplibregl-ctrl .maplibregl-ctrl-attrib-button::before,
+.maplibregl-ctrl button .maplibregl-ctrl-icon::before,
+.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::after,
+.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon::after {
+  /* = 25px */
+  width: 1.563rem;
+  height: 1.563rem;
+  /* opacity: .8; */
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1.25em;
+
+  font-size: 1.25rem;
+}
+
 .maplibregl-ctrl button:not(:disabled):hover,
 .maplibregl-ctrl-attrib-button:not(:disabled):hover {
   background-color: rgb(var(--ml-c-gray-1));
@@ -56,36 +71,7 @@
   height: 100%;
 }
 
-.maplibregl-ctrl .maplibregl-ctrl-attrib-button::before,
-.maplibregl-ctrl button .maplibregl-ctrl-icon::before,
-.maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::after,
-.maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon::after {
-  font-family: "fontello-ml";
-  font-style: normal;
-  font-weight: normal;
-
-  display: inline-block;
-  text-decoration: inherit;
-  text-align: center;
-  /* = 25px */
-  width: 1.563rem;
-  height: 1.563rem;
-  /* opacity: .8; */
-
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1.25em;
-
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1.25rem;
-}
-
-@media (-ms-high-contrast: active) {
+@media (forced-colors: active) {
   .maplibregl-ctrl-icon {
     background-color: transparent;
   }
@@ -101,6 +87,6 @@
   cursor: not-allowed;
 }
 
-.maplibregl-ctrl button:disabled .maplibregl-ctrl-icon {
+.maplibregl-ctrl button:disabled .maplibregl-ctrl-icon::before {
   opacity: 0.25;
 }

@@ -1,4 +1,4 @@
-import type Point from "@mapbox/point-geometry";
+import Point from "@mapbox/point-geometry";
 
 type ScaleReturnValue = {
   x: number;

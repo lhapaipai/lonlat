@@ -1,22 +1,3 @@
-.maplibregl-map {
-  border-radius: 1rem;
-
-  /* text hover color, button active bgcolor */
-  --color-yellow-5: 219 167 38; /* rgb(219, 167, 38); */
-
-  --color-gray-0: 255 255 255; /* rgb(255, 255, 255); */
-  --color-gray-1: 242 242 242; /* rgb(242, 242, 242); */
-  --color-gray-2: 228 228 228; /* rgb(228, 228, 228); */
-  --color-gray-3: 204 204 204; /* rgb(204, 204, 204); */
-  --color-gray-4: 180 180 180; /* rgb(180, 180, 180); */
-  --color-gray-5: 140 140 140; /* rgb(140, 140, 140); */
-  /* text-hint text-disabled */
-  --color-gray-6: 90 90 90; /* rgb(90, 90, 90); */
-  --color-gray-7: 50 50 50; /* rgb(50, 50, 50); */
-  --color-gray-8: 0 0 0; /* rgb(0, 0, 0); */
-  --color-gray-text: var(--color-gray-7);
-}
-
 :root {
   --ml-ctrl-border-radius: 1rem;
   --ml-font: inherit;
@@ -44,16 +25,18 @@
 
   --ml-c-disabled: 180 180 180; /* --color-gray-4 */
 
+  --ml-c-outline: 219 167 38; /* --color-yellow-5 */
+
+  --ml-c-active: 29 161 242;
+  --ml-c-geoloc: 29 161 242;
+
   /**
    * button group / popup shadow
    * shadow-active: when your button is active
    */
   --ml-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.15), 0 1px 2px -1px rgb(0 0 0 / 0.15); /* shadow */
   --ml-shadow-active: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -2px rgb(0 0 0 / 0.15);
-  --ml-ring-shadow: 0 0 0px 2px rgb(var(--color-yellow-5) / 1);
-
-  --ml-c-active: 29 161 242;
-  --ml-c-geoloc: 29 161 242;
+  --ml-ring-shadow: 0 0 0px 2px rgb(var(--ml-c-outline) / 1);
 }
 
 .dark {
@@ -71,8 +54,8 @@
 }
 
 @media (forced-colors: active) and (prefers-color-scheme: light) {
-  :root .maplibregl-map,
-  .dark .maplibregl-map {
+  :root,
+  .dark {
     --ml-c-bg: 255 255 255;
     --ml-c-neutral: 0 0 0;
 
@@ -92,8 +75,8 @@
 }
 
 @media (forced-colors: active) {
-  :root .maplibregl-map,
-  .dark .maplibregl-map {
+  :root,
+  .dark {
     --ml-c-bg: 0 0 0;
     --ml-c-neutral: 255 255 255;
 

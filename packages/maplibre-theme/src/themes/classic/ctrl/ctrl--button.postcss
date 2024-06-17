@@ -8,6 +8,7 @@
   box-sizing: border-box;
   background-color: transparent;
   cursor: pointer;
+  position: relative;
 }
 
 .maplibregl-ctrl button .maplibregl-ctrl-icon {
@@ -21,27 +22,7 @@
 .maplibregl-ctrl button .maplibregl-ctrl-icon::before,
 .maplibregl-ctrl button.maplibregl-ctrl-geolocate:disabled .maplibregl-ctrl-icon::after,
 .maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon::after {
-  font-family: "fontello-ml";
-  font-style: normal;
-  font-weight: normal;
-
   color: rgb(var(--ml-c-icon));
-
-  display: inline-block;
-  text-decoration: inherit;
-  text-align: center;
-  /* opacity: .8; */
-
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
 .maplibregl-ctrl button .maplibregl-ctrl-icon::before,
@@ -55,7 +36,7 @@
   line-height: 1.25em;
 }
 
-@media (-ms-high-contrast: active) {
+@media (forced-colors: active) {
   .maplibregl-ctrl-icon {
     background-color: transparent;
   }

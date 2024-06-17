@@ -112,7 +112,7 @@
   animation: maplibregl-spin 2s infinite linear;
 }
 
-@media (-ms-high-contrast: active) {
+@media (forced-colors: active) {
   .maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon {
     background-image: svg-inline(ctrl-geolocate-white);
   }
@@ -146,7 +146,7 @@
   }
 }
 
-@media (-ms-high-contrast: black-on-white) {
+@media (forced-colors: active) and (prefers-color-scheme: light) {
   .maplibregl-ctrl button.maplibregl-ctrl-geolocate .maplibregl-ctrl-icon {
     background-image: svg-inline(ctrl-geolocate-black);
   }

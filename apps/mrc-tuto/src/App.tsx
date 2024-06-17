@@ -88,6 +88,7 @@ function App() {
 
   return (
     <RMap
+      className="theme-modern"
       minZoom={6}
       onClick={handleClick}
       initialCenter={mountain}

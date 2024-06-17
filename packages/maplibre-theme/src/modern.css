@@ -1,7 +1,8 @@
 @import "./core.css";
 
+@import "./icons/default/fontello.postcss";
+
 @import "./themes/modern/vars.postcss";
-@import "./themes/modern/font/fontello.postcss";
 
 @import "./themes/modern/ctrl/ctrl--base.postcss";
 @import "./themes/modern/ctrl/ctrl--components.postcss";

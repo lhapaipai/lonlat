@@ -9,3 +9,17 @@ body,
   width: 100%;
   height: 100%;
 }
+
+.maplibregl-ctrl label {
+  display: block;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.maplibregl-ctrl label:has(input:checked) {
+  background-color: #ddd;
+}
+
+.maplibregl-ctrl label input[type="radio"] {
+  appearance: none;
+}

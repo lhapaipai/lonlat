@@ -14,17 +14,17 @@ import {
 } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { spawn } from "node:child_process";
+import open from "open";
 import { rimrafSync } from "rimraf";
 import FormData from "form-data";
 import prompts from "prompts";
 import axios from "axios";
 import extractZip from "extract-zip";
 var projectDir = dirname(dirname(fileURLToPath(import.meta.url)));
-var themesDir = resolve(projectDir, "src/themes");
+var iconsDir = resolve(projectDir, "src/icons");
 var tmpDir = resolve(projectDir, "tmp");
 var fontelloHost = "https://fontello.com";
-var { action, theme } = await prompts([
+var { action, iconSet } = await prompts([
   {
     message: "Which action do you want ?",
     type: "select",
@@ -35,20 +35,20 @@ var { action, theme } = await prompts([
     ]
   },
   {
-    message: "Which theme ?",
+    message: "Which icon set?",
     type: "select",
-    name: "theme",
-    choices: readdirSync(themesDir, { encoding: "utf-8" }).map((dirname2) => ({
+    name: "iconSet",
+    choices: readdirSync(iconsDir, { encoding: "utf-8" }).map((dirname2) => ({
       title: dirname2,
       value: dirname2
     }))
   }
 ]);
-var themeDir = resolve(themesDir, theme);
-var configFile = resolve(themeDir, "font/config.json");
-var generatedDir = resolve(themeDir, "font/generated");
-var idFile = resolve(themeDir, "font/.fontello");
-var cssFile = resolve(themeDir, "font/codes.css");
+var iconSetDir = resolve(iconsDir, iconSet);
+var configFile = resolve(iconSetDir, "config.json");
+var generatedDir = resolve(iconSetDir, "generated");
+var idFile = resolve(iconSetDir, ".fontello");
+var cssFile = resolve(iconSetDir, "codes.css");
 switch (action) {
   case "open": {
     if (!existsSync(configFile)) {
@@ -65,8 +65,11 @@ switch (action) {
     });
     const id = res.data;
     writeFileSync(idFile, id, { encoding: "utf-8" });
-    spawn("open", [`${fontelloHost}/${id}`]);
-    console.log(`running on: ${fontelloHost}/${id}`);
+    const url = `${fontelloHost}/${id}`;
+    open(url);
+    console.log(
+      `Your browser should open itself, otherwise you can open the following URL manually: ${url}`
+    );
     break;
   }
   case "save": {

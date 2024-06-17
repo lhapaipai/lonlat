@@ -11,7 +11,7 @@ import {
   RSource,
   useRControl,
 } from "maplibre-react-components";
-import { Dispatch, SetStateAction, useState } from "react";
+import { CSSProperties, Dispatch, SetStateAction, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Feature, Polygon } from "geojson";
 
@@ -36,6 +36,10 @@ const townData: Feature<Polygon> = {
 const townFillPaint = {
   "fill-outline-color": "rgba(0,0,0,0.1)",
   "fill-color": "rgba(0,0,0,0.3)",
+};
+
+const mapCSS: CSSProperties = {
+  minHeight: 300,
 };
 
 const styles = {
@@ -98,6 +102,7 @@ function App() {
       initialCenter={mountain}
       initialZoom={11}
       mapStyle={styles[style]}
+      style={mapCSS}
     >
       <LayerSwitcherControl style={style} setStyle={setStyle} />
       <RNavigationControl position="top-right" visualizePitch={true} />

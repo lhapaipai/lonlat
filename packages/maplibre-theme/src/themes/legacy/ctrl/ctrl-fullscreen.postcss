@@ -6,7 +6,7 @@
   background-image: svg-load("../assets/maplibregl-ctrl-shrink.svg");
 }
 
-@media (-ms-high-contrast: active) {
+@media (forced-colors: active) {
   .maplibregl-ctrl button.maplibregl-ctrl-fullscreen .maplibregl-ctrl-icon {
     background-image: svg-load("../assets/maplibregl-ctrl-fullscreen.svg", fill: #fff);
   }
@@ -16,7 +16,7 @@
   }
 }
 
-@media (-ms-high-contrast: black-on-white) {
+@media (forced-colors: active) and (prefers-color-scheme: light) {
   .maplibregl-ctrl button.maplibregl-ctrl-fullscreen .maplibregl-ctrl-icon {
     background-image: svg-load("../assets/maplibregl-ctrl-fullscreen.svg", fill: #000);
   }

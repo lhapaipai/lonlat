@@ -8,42 +8,64 @@ import { FloatingOverlay } from "@floating-ui/react";
 import { Button } from "pentatrion-design/components/button";
 import MapLibreReactLogo from "./MapLibreReactLogo";
 import LinkButton from "./LinkButton";
-const links = [
+
+interface NavLink {
+  title: string;
+  url?: string;
+  children?: NavLink[];
+}
+
+const links: NavLink[] = [
   {
-    url: "/getting-started",
-    title: "Getting Started",
+    title: "Guide",
+    children: [
+      {
+        url: "/getting-started",
+        title: "Getting Started",
+      },
+      {
+        url: "/tutorial",
+        title: "Tutorial",
+      },
+    ],
   },
   {
-    url: "/tutorial",
-    title: "Tutorial",
+    title: "Reference",
+    children: [
+      {
+        url: "/components/rmap",
+        title: "RMap",
+      },
+      {
+        url: "/components/rsource",
+        title: "RSource",
+      },
+      {
+        url: "/components/rlayer",
+        title: "RLayer",
+      },
+      {
+        url: "/components/rmarker",
+        title: "RMarker",
+      },
+      {
+        url: "/hooks/usercontrol",
+        title: "useRControl",
+      },
+      {
+        url: "/hooks/usecontrol",
+        title: "useControl",
+      },
+    ],
   },
   {
-    url: "/components/rmap",
-    title: "RMap",
-  },
-  {
-    url: "/components/rsource",
-    title: "RSource",
-  },
-  {
-    url: "/components/rlayer",
-    title: "RLayer",
-  },
-  {
-    url: "/components/rmarker",
-    title: "RMarker",
-  },
-  {
-    url: "/hooks/usercontrol",
-    title: "useRControl",
-  },
-  {
-    url: "/hooks/usecontrol",
-    title: "useControl",
-  },
-  {
-    url: "/tips",
-    title: "Tips",
+    title: "Extra",
+    children: [
+      {
+        url: "/tips",
+        title: "Tips",
+      },
+    ],
   },
 ];
 
@@ -77,7 +99,7 @@ export default function NavBar() {
       />
       <div
         className={clsx(
-          "fixed left-0 top-0 z-30 h-screen w-64 max-w-full flex-none overflow-y-auto overflow-x-hidden md:flex md:flex-col",
+          "fixed left-0 top-0 z-30 h-screen w-64 max-w-full flex-none overflow-y-auto overflow-x-hidden bg-gray-0 px-4 shadow dark:shadow-dark md:flex md:flex-col md:bg-transparent md:shadow-none md:dark:shadow-none",
           !showNavBar && "hidden",
         )}
       >
@@ -93,15 +115,47 @@ export default function NavBar() {
           </Button>
         </div>
 
-        <nav className="flex flex-col">
-          <Link href="/" className="grid min-h-32 place-content-center">
+        <nav className="flex flex-col gap-1">
+          <Link href="/" className="mb-4 grid min-h-32 place-content-center">
             <MapLibreReactLogo height={100} />
           </Link>
-          {links.map(({ url, title }) => (
-            <LinkButton variant="text" color="gray" href={url} key={url}>
-              {title}
-            </LinkButton>
-          ))}
+          {links.map(({ url, title, children }) =>
+            children ? (
+              <div key={title}>
+                <h3 className="mt-4 px-4 font-bold">{title}</h3>
+                <div className="flex flex-col gap-1">
+                  {children.map(
+                    ({ url, title }) =>
+                      url && (
+                        <LinkButton
+                          key={url}
+                          selected={pathname === url}
+                          fullWidth={true}
+                          variant="text"
+                          color="gray"
+                          href={url}
+                        >
+                          {title}
+                        </LinkButton>
+                      ),
+                  )}
+                </div>
+              </div>
+            ) : (
+              url && (
+                <LinkButton
+                  key={url}
+                  selected={pathname === url}
+                  fullWidth={true}
+                  variant="text"
+                  color="gray"
+                  href={url}
+                >
+                  {title}
+                </LinkButton>
+              )
+            ),
+          )}
         </nav>
       </div>
     </>

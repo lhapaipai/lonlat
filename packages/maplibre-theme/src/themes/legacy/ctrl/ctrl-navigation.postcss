@@ -6,7 +6,7 @@
   background-image: svg-load("../assets/maplibregl-ctrl-zoom-in.svg", fill: #333);
 }
 
-@media (-ms-high-contrast: active) {
+@media (forced-colors: active) {
   .maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon {
     background-image: svg-load("../assets/maplibregl-ctrl-zoom-out.svg", fill: #fff);
   }
@@ -16,7 +16,7 @@
   }
 }
 
-@media (-ms-high-contrast: black-on-white) {
+@media (forced-colors: active) and (prefers-color-scheme: light) {
   .maplibregl-ctrl button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon {
     background-image: svg-load("../assets/maplibregl-ctrl-zoom-out.svg", fill: #000);
   }
@@ -30,7 +30,7 @@
   background-image: svg-load("../assets/maplibregl-ctrl-compass.svg", fill: #333);
 }
 
-@media (-ms-high-contrast: active) {
+@media (forced-colors: active) {
   .maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon {
     @svg-load ctrl-compass-white url("../assets/maplibregl-ctrl-compass.svg") {
       fill: #fff;
@@ -43,7 +43,7 @@
   }
 }
 
-@media (-ms-high-contrast: black-on-white) {
+@media (forced-colors: active) and (prefers-color-scheme: light) {
   .maplibregl-ctrl button.maplibregl-ctrl-compass .maplibregl-ctrl-icon {
     background-image: svg-load("../assets/maplibregl-ctrl-compass.svg", fill: #000);
   }
