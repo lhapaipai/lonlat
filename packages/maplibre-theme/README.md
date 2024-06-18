@@ -17,7 +17,7 @@ npm i maplibre-theme
 in your js file
 
 ```diff
-- import "maplibre-gl/maplibre-gl.css";
+- import "maplibre-gl/dist/maplibre-gl.css";
 
 // for classic theme
 + import "maplibre-theme/classic.css";

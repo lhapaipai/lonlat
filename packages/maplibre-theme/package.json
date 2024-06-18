@@ -22,7 +22,7 @@
   "author": "Hugues Tavernier",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.14.4",
     "@types/prompts": "^2.4.9",
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",

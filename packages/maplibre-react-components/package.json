@@ -1,6 +1,6 @@
 {
   "name": "maplibre-react-components",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React components for MapLibre GL JS",
   "private": true,
   "keywords": [
@@ -19,8 +19,8 @@
   "scripts": {
     "dev:lib": "tsup --watch",
     "build:lib": "tsup",
-    "dev:css": "postcss --watch -d dist src/style/mrc.css",
-    "build:css": "postcss -d dist src/style/mrc.css",
+    "dev:css": "postcss --watch -o dist/style.css src/style/index.css",
+    "build:css": "postcss -o dist/style.css src/style/index.css",
     "build": "pnpm build:lib && node generate-public-package && pnpm build:css",
     "storybook": "storybook dev -p 6009",
     "build:storybook": "storybook build",
