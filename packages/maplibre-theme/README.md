@@ -30,7 +30,26 @@ in your js file
 + import "maplibre-theme/modern.css";
 ```
 
-advanced configuration with CSS vars.
+## Package files
+
+List of available CSS files to import. (see [Scoped themes](#scoped-themes) section for `.scoped.css` files)
+
+```
+.
+└── maplibre-theme
+    ├── classic.css (23 ko)
+    ├── classic.scoped.css (26 ko)
+    ├── core.css (5 ko)
+    ├── core.scoped.css (5 ko)
+    ├── legacy.css (66 ko)
+    ├── legacy.scoped.css (69 ko)
+    ├── modern.css (24 ko)
+    └── modern.scoped.css (28 ko)
+```
+
+## Advanced configuration
+
+with CSS vars.
 
 ```css
 /**

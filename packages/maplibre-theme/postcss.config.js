@@ -44,25 +44,25 @@ const config = (ctx) => {
       }),
       autoprefixer(),
       postcssInlineSvg(),
-      // cssnanoPlugin({
-      //   preset: [
-      //     "default",
-      //     {
-      //       svgo: {
-      //         plugins: [
-      //           {
-      //             name: "preset-default",
-      //             params: {
-      //               overrides: {
-      //                 removeViewBox: false,
-      //               },
-      //             },
-      //           },
-      //         ],
-      //       },
-      //     },
-      //   ],
-      // }),
+      cssnanoPlugin({
+        preset: [
+          "default",
+          {
+            svgo: {
+              plugins: [
+                {
+                  name: "preset-default",
+                  params: {
+                    overrides: {
+                      removeViewBox: false,
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      }),
     ],
   };
 };
