@@ -27,7 +27,23 @@ const config = {
     extend: {
       typography: {
         DEFAULT: {
-          css: [pentatrionTypographyExtend.DEFAULT.css],
+          css: [
+            pentatrionTypographyExtend.DEFAULT.css,
+            {
+              code: {
+                color: "rgb(var(--color-gray-text))",
+                backgroundColor: "rgb(var(--color-gray-1))",
+                borderRadius: "3px",
+                padding: "3px 6px 0px",
+              },
+              "code::before": {
+                content: "none",
+              },
+              "code::after": {
+                content: "none",
+              },
+            },
+          ],
         },
       },
     },

@@ -7,8 +7,3 @@
 @import "pentatrion-geo/fontello-geo-inline.css";
 @import "pentatrion-geo/maplibre/Marker.css";
 /* @import "./maplibregl-css/index.css"; */
-
-.ll-marker .marker .text {
-  font-weight: 600;
-  font-size: max(10px, var(--marker-size) * 0.3);
-}

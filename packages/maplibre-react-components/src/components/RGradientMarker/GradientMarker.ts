@@ -4,7 +4,7 @@ import { DOM } from "../../maplibre-core/util/dom";
 import { type FloatingPopup } from "../RFloatingPopup/FloatingPopup";
 import { arrowHeight } from "../RFloatingPopup/util";
 export interface GradientMarkerOptions extends MarkerOptions {
-  icon?: string;
+  icon?: string | HTMLElement | SVGSVGElement | (() => HTMLElement | SVGSVGElement);
   text?: string;
   className?: string;
 }
@@ -13,14 +13,15 @@ const defaultColor = "#ffe64b";
 const defaultHeight = 50;
 
 export class GradientMarker extends Marker {
-  _icon?: string;
+  _icon?: string | HTMLElement | SVGSVGElement | (() => HTMLElement | SVGSVGElement);
   _height = defaultHeight;
   _text?: string;
   // @ts-ignore
   _popup?: FloatingPopup | Popup;
 
-  _iconElement?: HTMLElement;
+  _iconElement?: HTMLElement | SVGSVGElement;
   _textElement?: HTMLDivElement;
+  _markerElement?: HTMLElement;
 
   constructor(options?: GradientMarkerOptions) {
     const useDefaultMarker = !options || !options.element;
@@ -53,18 +54,19 @@ export class GradientMarker extends Marker {
       this.setScale(this._scale);
       this.setColor(this._color);
 
-      const container = DOM.create("div", "marker");
-      DOM.create("div", "ovale", container);
+      this._markerElement = DOM.create("div", "marker");
       if (this._text) {
-        this._textElement = DOM.create("div", "text", container);
+        DOM.create("div", "circle", this._markerElement);
+        this._textElement = DOM.create("div", "text", this._markerElement);
         this._textElement.innerText = this._text;
       } else if (this._icon) {
-        this._iconElement = DOM.create("i", this._icon, container);
+        DOM.create("div", "circle", this._markerElement);
+        this.setIcon(this._icon);
       }
 
       const target = DOM.create("div", "target");
 
-      this._element.appendChild(container);
+      this._element.appendChild(this._markerElement);
       this._element.appendChild(target);
     }
   }
@@ -101,11 +103,27 @@ export class GradientMarker extends Marker {
     return this;
   }
 
-  setIcon(icon?: string): this {
+  setIcon(icon?: string | HTMLElement | SVGSVGElement | (() => HTMLElement | SVGSVGElement)): this {
     this._icon = icon;
     if (this._iconElement) {
-      this._iconElement.className = this._icon || "";
+      this._iconElement.remove();
     }
+    if (!icon) {
+      return this;
+    }
+
+    if (typeof icon === "string") {
+      DOM.create("div", "circle", this._markerElement);
+      this._iconElement = DOM.create("i", icon, this._markerElement);
+      this._iconElement.className = icon || "";
+    } else if (typeof icon === "function") {
+      this._iconElement = icon();
+      this._markerElement?.append(this._iconElement);
+    } else {
+      this._iconElement = icon;
+      this._markerElement?.append(icon);
+    }
+
     return this;
   }
 

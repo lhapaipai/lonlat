@@ -1,23 +1,28 @@
-"use client";
-
-import { MapLayerMouseEvent } from "maplibre-gl";
-import "maplibre-theme/modern.css";
-import "maplibre-react-components/dist/mrc.css";
-import {
-  RGradientMarker,
-  RLayer,
-  RMap,
-  RNavigationControl,
-  RSource,
-  useRControl,
-} from "maplibre-react-components";
-import { CSSProperties, Dispatch, SetStateAction, useState } from "react";
-import { createPortal } from "react-dom";
+// only if you use TypeScript
 import type { Feature, Polygon } from "geojson";
+import { CSSProperties } from "react";
 
-const mountain: [number, number] = [6.4546, 46.1067];
+export const mountainIconFactory = () => {
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNamespace, "svg");
 
-const townData: Feature<Polygon> = {
+  svg.setAttribute("xmlns", svgNamespace);
+  svg.setAttribute("viewBox", "0 0 640 512");
+  svg.setAttribute("fill", "currentColor");
+
+  const path = document.createElementNS(svgNamespace, "path");
+  path.setAttribute(
+    "d",
+    "M560 160A80 80 0 1 0 560 0a80 80 0 1 0 0 160zM55.9 512H381.1h75H578.9c33.8 0 61.1-27.4 61.1-61.1c0-11.2-3.1-22.2-8.9-31.8l-132-216.3C495 196.1 487.8 192 480 192s-15 4.1-19.1 10.7l-48.2 79L286.8 81c-6.6-10.6-18.3-17-30.8-17s-24.1 6.4-30.8 17L8.6 426.4C3 435.3 0 445.6 0 456.1C0 487 25 512 55.9 512z",
+  );
+
+  // Ajouter l'élément path à l'élément SVG
+  svg.appendChild(path);
+
+  return svg;
+};
+
+export const townData: Feature<Polygon> = {
   type: "Feature",
   properties: {
     category: "boundary",
@@ -33,97 +38,6 @@ const townData: Feature<Polygon> = {
   },
 };
 
-const townFillPaint = {
-  "fill-outline-color": "rgba(0,0,0,0.1)",
-  "fill-color": "rgba(0,0,0,0.3)",
-};
-
-const mapCSS: CSSProperties = {
+export const mapCSS: CSSProperties = {
   minHeight: 300,
 };
-
-const styles = {
-  "osm-bright":
-    "https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json",
-  demotiles: "https://demotiles.maplibre.org/style.json",
-};
-type StyleID = keyof typeof styles;
-
-interface LayerSwitcherControlProps {
-  style: StyleID;
-  setStyle: Dispatch<SetStateAction<StyleID>>;
-}
-function LayerSwitcherControl({ style, setStyle }: LayerSwitcherControlProps) {
-  const { container } = useRControl({
-    position: "top-right",
-  });
-
-  return createPortal(
-    <div>
-      <label>
-        <input
-          type="radio"
-          name="base-layer"
-          checked={style === "osm-bright"}
-          onChange={() => setStyle("osm-bright")}
-        />
-        OSM Bright
-      </label>
-      <label>
-        <input
-          type="radio"
-          name="base-layer"
-          checked={style === "demotiles"}
-          onChange={() => setStyle("demotiles")}
-        />
-        Demo tiles
-      </label>
-    </div>,
-    container,
-  );
-}
-
-function App() {
-  const [style, setStyle] = useState<StyleID>("osm-bright");
-
-  const [markerPosition, setMarkerPosition] = useState<null | [number, number]>(
-    null,
-  );
-
-  function handleClick(e: MapLayerMouseEvent) {
-    console.log("handleClick", e);
-    setMarkerPosition(e.lngLat.toArray());
-  }
-
-  return (
-    <RMap
-      minZoom={6}
-      onClick={handleClick}
-      initialCenter={mountain}
-      initialZoom={11}
-      mapStyle={styles[style]}
-      style={mapCSS}
-    >
-      <LayerSwitcherControl style={style} setStyle={setStyle} />
-      <RNavigationControl position="top-right" visualizePitch={true} />
-      <RGradientMarker longitude={mountain[0]} latitude={mountain[1]} />
-      {markerPosition && (
-        <RGradientMarker
-          color="#285daa"
-          longitude={markerPosition[0]}
-          latitude={markerPosition[1]}
-        />
-      )}
-      <RSource key="town" id="town" type="geojson" data={townData} />
-      <RLayer
-        key="town-fill"
-        id="town-fill"
-        source="town"
-        type="fill"
-        paint={townFillPaint}
-      />
-    </RMap>
-  );
-}
-
-export default App;

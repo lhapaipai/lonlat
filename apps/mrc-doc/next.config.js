@@ -2,6 +2,8 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import rehypeExternalLinks from "rehype-external-links";
+import { rehypePrettyCodeOptions } from "./rehype.config.js";
 const projectDir = dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
@@ -15,16 +17,6 @@ const nextConfig = {
       "@mdx-js/react",
     ];
 
-    /** @type {import('rehype-pretty-code').Options} */
-    const rehypePrettyCodeOptions = {
-      // theme is singular (not themes) from shiki default config
-      theme: {
-        // same as apps/mrc-doc/webpack/shikiLoader.js
-        light: "github-light-default",
-        dark: "github-dark-default",
-      },
-    };
-
     config.module.rules.push({
       test: /\.mdx$/,
       use: [
@@ -37,6 +29,7 @@ const nextConfig = {
             rehypePlugins: [
               [rehypePrettyCode, rehypePrettyCodeOptions],
               rehypeSlug,
+              [rehypeExternalLinks, { rel: ["nofollow"] }],
             ],
           },
         },
@@ -44,15 +37,14 @@ const nextConfig = {
     });
 
     config.module.rules.push({
-      test: /\.tsx$/,
-      resourceQuery: /shiki/,
+      test: /\.(tsx?|postcss|html|bash)$/,
+      resourceQuery: /code/,
       use: [
         {
-          loader: resolve(projectDir, "webpack/shikiLoader.js"),
+          loader: resolve(projectDir, "webpack/codeLoader.js"),
         },
       ],
     });
-
     return config;
   },
 

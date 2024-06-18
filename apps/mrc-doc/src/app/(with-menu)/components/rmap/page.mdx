@@ -18,7 +18,7 @@ It instantiates a Map object adds event listeners and is responsive to only a fe
 The `RMap` component accepts the `style` and `mapStyle` prop to respectively define the style attribute of the containing element `div.maplibregl-map` and the style to apply to the Map instance.
 
 import HelloWorld from "./HelloWorld.tsx";
-import helloWorldHtml from "./HelloWorld.tsx?shiki";
+import helloWorldHtml from "./HelloWorld.tsx?code";
 
 <TwoCols first={<ShikiContent html={helloWorldHtml} />} second={<HelloWorld />} />
 
@@ -42,7 +42,7 @@ const completeStyle: CSSProperties = useMemo(
 You can use all options from `MapOptions` as props for the `RMap` component. Some of these options are responsive and some are not. To distinguish them, non-reactive options have been prefixed with `initial`
 
 import Options from "./Options.tsx";
-import optionsHtml from "./Options.tsx?shiki";
+import optionsHtml from "./Options.tsx?code";
 
 <TwoCols first={<Options />} second={<ShikiContent html={optionsHtml} />} foreground="second"  />
 

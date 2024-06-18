@@ -21,7 +21,8 @@
     "build:lib": "tsup",
     "dev:css": "postcss --watch -o dist/style.css src/style/index.css",
     "build:css": "postcss -o dist/style.css src/style/index.css",
-    "build": "pnpm build:lib && node generate-public-package && pnpm build:css",
+    "build:css-fontello": "postcss -o dist/fontello.css src/style/font/fontello.postcss",
+    "build": "pnpm build:lib && node generate-public-package && pnpm build:css && pnpm build:css-fontello",
     "storybook": "storybook dev -p 6009",
     "build:storybook": "storybook build",
     "test": "vitest",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.7",
     "@floating-ui/dom": "^1.6.5",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@mapbox/point-geometry": "^0.1.0",
     "@storybook/addon-actions": "^8.1.9",
     "@storybook/addon-docs": "^8.1.9",

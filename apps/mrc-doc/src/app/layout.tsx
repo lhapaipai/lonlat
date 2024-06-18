@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import { Alata } from "next/font/google";
 import ProgressBar from "~/components/ProgressBar";
-import "~/main.css";
+import "~/style/index.css";
 
 const alata = Alata({
   subsets: ["latin"],

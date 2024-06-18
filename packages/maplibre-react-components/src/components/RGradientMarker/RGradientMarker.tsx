@@ -186,6 +186,11 @@ export const RGradientMarker = memo(
     if (marker.getText() !== text) {
       marker.setText(text);
     }
+
+    /**
+     * getIcon return the option (string, HTMLElement, factory) not
+     * the HTMLElement created.
+     */
     if (marker.getIcon() !== icon) {
       marker.setIcon(icon);
     }

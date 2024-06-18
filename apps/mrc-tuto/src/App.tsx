@@ -1,6 +1,6 @@
 import { MapLayerMouseEvent } from "maplibre-gl";
 import "maplibre-theme/modern.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import {
   RGradientMarker,
   RLayer,
@@ -37,8 +37,11 @@ const townFillPaint = {
 };
 
 const styles = {
-  "osm-bright": "https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json",
+  "OSM Bright": "https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json",
   demotiles: "https://demotiles.maplibre.org/style.json",
+  streets:
+    "https://api.maptiler.com/maps/streets-v2/style.json?key=" +
+    import.meta.env.VITE_MAPTILER_TOKEN,
 };
 type StyleID = keyof typeof styles;
 
@@ -53,31 +56,24 @@ function LayerSwitcherControl({ style, setStyle }: LayerSwitcherControlProps) {
 
   return createPortal(
     <div>
-      <label>
-        <input
-          type="radio"
-          name="base-layer"
-          checked={style === "osm-bright"}
-          onChange={() => setStyle("osm-bright")}
-        />
-        OSM Bright
-      </label>
-      <label>
-        <input
-          type="radio"
-          name="base-layer"
-          checked={style === "demotiles"}
-          onChange={() => setStyle("demotiles")}
-        />
-        Demo tiles
-      </label>
+      {Object.entries(styles).map(([key]) => (
+        <label key={key}>
+          <input
+            type="radio"
+            name="base-layer"
+            checked={style === key}
+            onChange={() => setStyle(key as StyleID)}
+          />
+          {key}
+        </label>
+      ))}
     </div>,
     container,
   );
 }
 
 function App() {
-  const [style, setStyle] = useState<StyleID>("osm-bright");
+  const [style, setStyle] = useState<StyleID>("OSM Bright");
 
   const [markerPosition, setMarkerPosition] = useState<null | [number, number]>(null);
 
