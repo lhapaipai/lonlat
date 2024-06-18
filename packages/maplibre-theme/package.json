@@ -1,11 +1,13 @@
 {
   "name": "maplibre-theme",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "CSS Themes for your Maplibre GL Js Web app",
   "type": "module",
   "scripts": {
-    "dev": "postcss --watch -d dist src/core.css src/legacy.css src/classic.css src/modern.css",
-    "build": "postcss -d dist src/core.css src/legacy.css src/classic.css src/modern.css",
+    "dev": "postcss --watch -d dist src/core.css src/legacy.css src/classic.css src/modern.css --ext .scoped.css --env scoped",
+    "build:scoped": "postcss -d dist src/core.css src/legacy.css src/classic.css src/modern.css --ext .scoped.css --env scoped",
+    "build:base": "postcss -d dist src/core.css src/legacy.css src/classic.css src/modern.css --env base",
+    "build": "pnpm build:scoped && pnpm build:base && node generate-public-package.js",
     "build:fontello": "tsup",
     "dev:fontello": "tsup --watch"
   },
@@ -37,10 +39,5 @@
     "prompts": "^2.4.2",
     "rimraf": "^5.0.7",
     "tsup": "^8.1.0"
-  },
-  "files": [
-    "dist/",
-    "package.json",
-    "README.md"
-  ]
+  }
 }

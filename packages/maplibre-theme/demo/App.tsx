@@ -1,6 +1,6 @@
 import { Map, StyleSpecification } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/style.css";
 import style from "./style.json";
 
 const mapStyle = style as StyleSpecification;
@@ -35,9 +35,7 @@ import clsx from "clsx";
 const marignier = { lng: 6.498, lat: 46.089 };
 const marignier2 = { lng: 6.2, lat: 46.089 };
 const leman = { lng: 6.382560880284075, lat: 46.41406563675616 };
-const rasterDemTiles = [
-  "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
-];
+const rasterDemTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
 
 function MyCtrl() {
   const { container } = useRControl({
@@ -109,16 +107,14 @@ function MyCtrl() {
 }
 
 const acuracyCircleStyle = {
-  transform:
-    "translate(-50%, -50%) translate(148px, 250px) rotateX(0deg) rotateZ(0deg)",
+  transform: "translate(-50%, -50%) translate(148px, 250px) rotateX(0deg) rotateZ(0deg)",
   width: "297px",
   height: "297px",
   opacity: 1,
 };
 
 const dotStyle = {
-  transform:
-    "translate(-50%, -50%) translate(148px, 250px) rotateX(0deg) rotateZ(0deg)",
+  transform: "translate(-50%, -50%) translate(148px, 250px) rotateX(0deg) rotateZ(0deg)",
   opacity: 1,
 };
 

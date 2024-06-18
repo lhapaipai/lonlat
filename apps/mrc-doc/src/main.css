@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import "maplibre-theme/dist/modern.css";
+@import "maplibre-theme/modern.css";
 @import "maplibre-react-components/dist/mrc.css";
 
 @import "./icons/fontello.css";

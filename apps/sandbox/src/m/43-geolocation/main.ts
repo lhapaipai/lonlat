@@ -1,6 +1,6 @@
 import "../../main.css";
 import "~/shared/main.css";
-import "maplibre-theme/dist/classic.css";
+import "maplibre-theme/classic.css";
 import "maplibre-react-components/dist/mrc.css";
 import { LngLatLike, Map } from "maplibre-gl";
 import { GeolocateControl } from "./GeolocateControl";

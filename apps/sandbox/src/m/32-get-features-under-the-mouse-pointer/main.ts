@@ -1,6 +1,6 @@
 import "../../main.css";
 import "./style.scss";
-import "maplibre-theme/dist/classic.css";
+import "maplibre-theme/classic.css";
 import "maplibre-react-components/dist/mrc.css";
 import { LngLatLike, Map } from "maplibre-gl";
 

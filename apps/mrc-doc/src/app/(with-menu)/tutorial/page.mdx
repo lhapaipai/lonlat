@@ -13,7 +13,7 @@ Welcome to the tutorial! We'll be building a small, but feature-rich map app tha
 
 ## Setup
 
-We'll be using [Vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) for our dev server / bundler for this tutorial.
+For this tutorial, we'll be using [Vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) for our bundler / dev server .
 
 ```bash
 npm create vite@latest my-react-map
@@ -237,7 +237,7 @@ You can also import the `modern` theme from the `maplibre-theme` package. In add
 
 ```tsx {2,4-5,7,29,31-32}#add {9}#delete
 import { MapLayerMouseEvent } from "maplibre-gl";
-import "maplibre-theme/dist/modern.css";
+import "maplibre-theme/modern.css";
 
 // needed for the RGradientMap component
 import "maplibre-react-components/dist/mrc.css";
@@ -288,7 +288,7 @@ If you're using `TypeScript` add the `geojson` types with your package manager `
 
 ```tsx
 import { MapLayerMouseEvent } from "maplibre-gl";
-import "maplibre-theme/dist/modern.css";
+import "maplibre-theme/modern.css";
 import "maplibre-react-components/dist/mrc.css";
 import {
   RGradientMarker,

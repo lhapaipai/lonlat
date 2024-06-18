@@ -1,6 +1,6 @@
 import { Coordinates, Map, MapStyleDataEvent } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-theme/dist/classic.css";
+import "maplibre-theme/classic.css";
 import "maplibre-react-components/dist/mrc.css";
 import { RLayer, RMap, RMarker, RSource } from "maplibre-react-components";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";

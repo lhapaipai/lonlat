@@ -4,7 +4,7 @@
 
 this theme is like the current theme with some improvements.
 
-- light : actually 23ko minified (the current theme from `maplibre-gl/dist/maplibre-gl.css` is 65ko minified).
+- light : actually 23ko minified (the current theme from `maplibre-gl/maplibre-gl.css` is 65ko minified).
 - support dark mode
 - support CSS variables for easy optimisation.
 
@@ -17,15 +17,15 @@ npm i maplibre-theme
 in your js file
 
 ```diff
-- import "maplibre-gl/dist/maplibre-gl.css";
+- import "maplibre-gl/maplibre-gl.css";
 
 // for classic theme
-+ import "maplibre-theme/dist/classic.css";
++ import "maplibre-theme/classic.css";
 
 // or
 
 // for modern theme
-+ import "maplibre-theme/dist/modern.css";
++ import "maplibre-theme/modern.css";
 ```
 
 advanced configuration with CSS vars.
@@ -83,6 +83,29 @@ If you find inconsistencies, open an issue or submit a PR instead.
 
 note: define your colors as just the color channel so we can work with the opacity modifier syntax [TailwindCSS explanation](https://tailwindcss.com/docs/customizing-colors#using-css-variables).
 
+## Scoped themes
+
+If you want to show multiple themes inside the same page we probably need to scope your CSS theme.
+
+You can use the `*.scoped.css` version of the theme for this to work. In addition you will have to add the `ml-theme-<modern|classic|legacy>` className to your map container.
+
+```ts
+import "maplibre-theme/modern.scoped.css";
+import { Map } from "maplibre-gl";
+
+new Map({
+  container: "map"
+})
+```
+```html
+<html>
+  <body>
+    <div id="map" class="ml-theme-classic"></div>
+  </body>
+</html>
+```
+
+
 ## Screenshot
 
 
@@ -95,7 +118,7 @@ note: define your colors as just the color channel so we can work with the opaci
 To facilitate the creation of themes for MapLibre, the main style sheet has been split into several files. vital css rules vs default style related rules.
 
 ```css
-@import "maplibre-theme/dist/core.css";
+@import "maplibre-theme/core.css";
 ```
 
 ## Notes

@@ -1,5 +1,5 @@
 import "./App.scss";
-import "maplibre-theme/dist/classic.css";
+import "maplibre-theme/classic.css";
 import "maplibre-react-components/dist/mrc.css";
 import BaseLayerControl from "./components/BaseLayerControl";
 import { useAppSelector } from "./store";

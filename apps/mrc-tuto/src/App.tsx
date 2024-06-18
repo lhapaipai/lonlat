@@ -1,5 +1,5 @@
 import { MapLayerMouseEvent } from "maplibre-gl";
-import "maplibre-theme/dist/modern.css";
+import "maplibre-theme/modern.css";
 import "maplibre-react-components/dist/mrc.css";
 import {
   RGradientMarker,

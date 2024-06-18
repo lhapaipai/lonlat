@@ -8,58 +8,63 @@ import { dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 const projectDir = dirname(fileURLToPath(import.meta.url));
 
-const config = {
-  plugins: [
-    postcssImport(),
-    prefixer({
-      prefix: "",
-      transform(prefix, selector, prefixedSelector, filePath, rule) {
-        const entryName = basename(filePath, ".css");
-        const themeClassName = `.ml-theme-${entryName}`;
+const config = (ctx) => {
+  const scoped = ctx.env === "scoped";
+  return {
+    plugins: [
+      postcssImport(),
+      scoped &&
+        prefixer({
+          prefix: "",
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          transform(prefix, selector, _prefixedSelector, filePath, _rule) {
+            const entryName = basename(filePath, ".css");
+            const themeClassName = `.ml-theme-${entryName}`;
 
-        if (entryName === "core" || selector.includes(themeClassName)) {
-          return selector;
-        }
-        /* todo difference avec ":root,\n .dark" */
-        if (selector === ":root") {
-          return themeClassName;
-        }
-        if (selector === ".dark") {
-          return `.dark ${themeClassName}`;
-        }
+            if (entryName === "core" || selector.includes(themeClassName)) {
+              return selector;
+            }
+            /* todo difference with ":root,\n .dark" ? */
+            if (selector === ":root") {
+              return themeClassName;
+            }
+            if (selector === ".dark") {
+              return `.dark ${themeClassName}`;
+            }
 
-        if (selector.startsWith(".maplibregl-map")) {
-          return `${themeClassName}${selector}`;
-        }
+            if (selector.startsWith(".maplibregl-map")) {
+              return `${themeClassName}${selector}`;
+            }
 
-        return `${themeClassName} ${selector}`;
-      },
-    }),
-    postcssInlineBase64({
-      baseDir: projectDir,
-    }),
-    autoprefixer(),
-    postcssInlineSvg(),
-    // cssnanoPlugin({
-    //   preset: [
-    //     "default",
-    //     {
-    //       svgo: {
-    //         plugins: [
-    //           {
-    //             name: "preset-default",
-    //             params: {
-    //               overrides: {
-    //                 removeViewBox: false,
-    //               },
-    //             },
-    //           },
-    //         ],
-    //       },
-    //     },
-    //   ],
-    // }),
-  ],
+            return `${themeClassName} ${selector}`;
+          },
+        }),
+      postcssInlineBase64({
+        baseDir: projectDir,
+      }),
+      autoprefixer(),
+      postcssInlineSvg(),
+      // cssnanoPlugin({
+      //   preset: [
+      //     "default",
+      //     {
+      //       svgo: {
+      //         plugins: [
+      //           {
+      //             name: "preset-default",
+      //             params: {
+      //               overrides: {
+      //                 removeViewBox: false,
+      //               },
+      //             },
+      //           },
+      //         ],
+      //       },
+      //     },
+      //   ],
+      // }),
+    ],
+  };
 };
 
 export default config;

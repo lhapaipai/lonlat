@@ -1,4 +1,4 @@
-import "maplibre-theme/dist/modern.css";
+import "maplibre-theme/modern.css";
 import "maplibre-react-components/dist/mrc.css";
 import { RMap, useRControl } from "maplibre-react-components";
 import { Dispatch, SetStateAction, useState } from "react";

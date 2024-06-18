@@ -6,7 +6,7 @@ import "maplibre-theme/classic.scoped.css";
 
 import App from "./App.tsx";
 
-import "../../main.css";
+// import "../../main.css";
 /*
  <React.StrictMode>
     <App />
