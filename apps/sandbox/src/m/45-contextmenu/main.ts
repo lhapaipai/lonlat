@@ -1,4 +1,4 @@
-import "../../main.css";
+import "~/shared/tailwind.css";
 import "./main.css";
 import "maplibre-theme/classic.css";
 import "maplibre-react-components/dist/style.css";

@@ -1,5 +1,5 @@
-import "../../main.css";
-import "~/shared/main.css";
+import "~/shared/tailwind.css";
+import "~/shared/ml-overlay.css";
 import "maplibre-theme/classic.css";
 import "maplibre-react-components/dist/style.css";
 import { LngLatLike, Map, Point, Popup } from "maplibre-gl";

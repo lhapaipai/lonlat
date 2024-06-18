@@ -1,5 +1,6 @@
-import "../../main.css";
-import "~/shared/main.css";
+import "~/shared/tailwind.css";
+import "~/shared/ml-overlay.css";
+import "./style.css";
 import "maplibre-theme/classic.css";
 import "maplibre-react-components/dist/style.css";
 import { LngLatLike, Map, NavigationControl } from "maplibre-gl";
