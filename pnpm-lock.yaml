@@ -676,11 +676,11 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       maplibre-gl:
-        specifier: ^4.4.0
-        version: 4.4.0
+        specifier: ^4.4.1
+        version: 4.4.1
       maplibre-react-components:
-        specifier: ^0.0.5
-        version: 0.0.5(@floating-ui/dom@1.6.5)(maplibre-gl@4.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^0.0.6
+        version: 0.0.6(@floating-ui/dom@1.6.5)(maplibre-gl@4.4.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       maplibre-theme:
         specifier: workspace:*
         version: link:../dist
@@ -713,8 +713,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0(jiti@1.21.3)(postcss@8.4.38)
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.4
-        version: 0.6.4(prettier@3.3.2)
+        specifier: ^0.6.5
+        version: 0.6.5(prettier@3.3.2)
       tailwindcss:
         specifier: ^3.4.4
         version: 3.4.4(ts-node@10.9.2(@types/node@20.14.4)(typescript@5.4.5))
@@ -6238,8 +6238,12 @@ packages:
     resolution: {integrity: sha512-RS5ZYjUfcTuyTjR+jbPNGO+Cbjgid8jtBsUpgmx/m+2voj9oY6DmpanBBm2xvjOxZSfChR2wUpzK22mf6sEOlw==}
     engines: {node: '>=16.14.0', npm: '>=8.1.0'}
 
-  maplibre-react-components@0.0.5:
-    resolution: {integrity: sha512-DdVhlLfbEHwUkVWxm1L2qepIwPerp6XlOIdD9mq+b8iTLI4KyM6tLcA32ANgs4P7/hhlTmyyQrBpdxvzsiAnfQ==}
+  maplibre-gl@4.4.1:
+    resolution: {integrity: sha512-tD+wn8qWSLCGhABKBrbewmgFfyopZDz+fkYXeOM8vdBhnf126DvMPyaYGGoKvoF4QuswCsgikETd2c39wK+OQw==}
+    engines: {node: '>=16.14.0', npm: '>=8.1.0'}
+
+  maplibre-react-components@0.0.6:
+    resolution: {integrity: sha512-P/a/IifqH4QFATLCzXx1eGXcHGYdX65x8HfSwCfwzsW96dJXokQE9nZhZRYnkxX1FRKIosFtoSXZKlGiFbK4vQ==}
     peerDependencies:
       '@floating-ui/dom': ^1.0.0
       maplibre-gl: ^3.0.0 || ^4.0.0
@@ -7199,6 +7203,58 @@ packages:
 
   prettier-plugin-tailwindcss@0.6.4:
     resolution: {integrity: sha512-3vhbIvlKyAWPaw9bUr2cw6M1BGx2Oy9CCLJyv+nxEiBGCTcL69WcAz2IFMGqx8IXSzQCInGSo2ujAByg9poHLQ==}
+    engines: {node: '>=14.21.3'}
+    peerDependencies:
+      '@ianvs/prettier-plugin-sort-imports': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
+      '@zackad/prettier-plugin-twig-melody': '*'
+      prettier: ^3.0
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-import-sort: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-marko: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-sort-imports: '*'
+      prettier-plugin-style-order: '*'
+      prettier-plugin-svelte: '*'
+    peerDependenciesMeta:
+      '@ianvs/prettier-plugin-sort-imports':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      '@zackad/prettier-plugin-twig-melody':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-marko:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-sort-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+
+  prettier-plugin-tailwindcss@0.6.5:
+    resolution: {integrity: sha512-axfeOArc/RiGHjOIy9HytehlC0ZLeMaqY09mm8YCkMzznKiDkwFzOpBvtuhuv3xG5qB73+Mj7OCe2j/L1ryfuQ==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -11643,23 +11699,6 @@ snapshots:
   '@swc/core-win32-x64-msvc@1.5.27':
     optional: true
 
-  '@swc/core@1.5.27':
-    dependencies:
-      '@swc/counter': 0.1.3
-      '@swc/types': 0.1.8
-    optionalDependencies:
-      '@swc/core-darwin-arm64': 1.5.27
-      '@swc/core-darwin-x64': 1.5.27
-      '@swc/core-linux-arm-gnueabihf': 1.5.27
-      '@swc/core-linux-arm64-gnu': 1.5.27
-      '@swc/core-linux-arm64-musl': 1.5.27
-      '@swc/core-linux-x64-gnu': 1.5.27
-      '@swc/core-linux-x64-musl': 1.5.27
-      '@swc/core-win32-arm64-msvc': 1.5.27
-      '@swc/core-win32-ia32-msvc': 1.5.27
-      '@swc/core-win32-x64-msvc': 1.5.27
-    optional: true
-
   '@swc/core@1.5.27(@swc/helpers@0.5.5)':
     dependencies:
       '@swc/counter': 0.1.3
@@ -15893,10 +15932,40 @@ snapshots:
       tinyqueue: 2.0.3
       vt-pbf: 3.1.3
 
-  maplibre-react-components@0.0.5(@floating-ui/dom@1.6.5)(maplibre-gl@4.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  maplibre-gl@4.4.1:
+    dependencies:
+      '@mapbox/geojson-rewind': 0.5.2
+      '@mapbox/jsonlint-lines-primitives': 2.0.2
+      '@mapbox/point-geometry': 0.1.0
+      '@mapbox/tiny-sdf': 2.0.6
+      '@mapbox/unitbezier': 0.0.1
+      '@mapbox/vector-tile': 1.3.1
+      '@mapbox/whoots-js': 3.1.0
+      '@maplibre/maplibre-gl-style-spec': 20.3.0
+      '@types/geojson': 7946.0.14
+      '@types/geojson-vt': 3.2.5
+      '@types/junit-report-builder': 3.0.2
+      '@types/mapbox__point-geometry': 0.1.4
+      '@types/mapbox__vector-tile': 1.3.4
+      '@types/pbf': 3.0.5
+      '@types/supercluster': 7.1.3
+      earcut: 2.2.4
+      geojson-vt: 3.2.1
+      gl-matrix: 3.4.3
+      global-prefix: 3.0.0
+      kdbush: 4.0.2
+      murmurhash-js: 1.0.0
+      pbf: 3.2.1
+      potpack: 2.0.0
+      quickselect: 2.0.0
+      supercluster: 8.0.1
+      tinyqueue: 2.0.3
+      vt-pbf: 3.1.3
+
+  maplibre-react-components@0.0.6(@floating-ui/dom@1.6.5)(maplibre-gl@4.4.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       clsx: 2.1.1
-      maplibre-gl: 4.4.0
+      maplibre-gl: 4.4.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
@@ -17051,6 +17120,10 @@ snapshots:
       fast-diff: 1.3.0
 
   prettier-plugin-tailwindcss@0.6.4(prettier@3.3.2):
+    dependencies:
+      prettier: 3.3.2
+
+  prettier-plugin-tailwindcss@0.6.5(prettier@3.3.2):
     dependencies:
       prettier: 3.3.2
 
@@ -18438,7 +18511,7 @@ snapshots:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 20.14.4
-      acorn: 8.12.0
+      acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
       create-require: 1.1.1
@@ -18448,7 +18521,7 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     optionalDependencies:
-      '@swc/core': 1.5.27
+      '@swc/core': 1.5.27(@swc/helpers@0.5.5)
     optional: true
 
   ts-toolbelt@9.6.0: {}
@@ -18511,7 +18584,7 @@ snapshots:
       sucrase: 3.35.0
       tree-kill: 1.2.2
     optionalDependencies:
-      '@swc/core': 1.5.27
+      '@swc/core': 1.5.27(@swc/helpers@0.5.5)
       postcss: 8.4.38
       typescript: 5.4.5
     transitivePeerDependencies:

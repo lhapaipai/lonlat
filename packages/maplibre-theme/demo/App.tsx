@@ -131,7 +131,7 @@ function CustomMap({
   //       mapStyle={"/assets/styles/ign/PLAN.IGN/standard.json"}
 
   return (
-    <div className={clsx("h-[500px] p-8", scheme)}>
+    <div className={clsx("map-container", scheme)}>
       <RMap
         ref={mapRef}
         initialCenter={marignier}
@@ -194,7 +194,7 @@ function CustomMap({
 function App() {
   return (
     <>
-      <div className="grid grid-cols-2">
+      <div id="app">
         <CustomMap theme="classic" scheme="light" />
         <CustomMap theme="classic" scheme="dark" />
 

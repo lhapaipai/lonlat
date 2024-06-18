@@ -1,7 +1,7 @@
 import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 
 import * as maplibre from "maplibre-gl";
 // import { Popup } from "pentatrion-geo";

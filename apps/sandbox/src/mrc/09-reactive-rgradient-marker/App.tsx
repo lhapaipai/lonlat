@@ -4,7 +4,7 @@ import "./App.scss";
 import { RMap, RGradientMarker } from "maplibre-react-components";
 
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import { getIndexLetter } from "pentatrion-design";
 
 function hue2rgb(p: number, q: number, t: number) {

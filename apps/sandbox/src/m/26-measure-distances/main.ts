@@ -1,7 +1,7 @@
 import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import { GeoJSONSource, LngLatLike, Map } from "maplibre-gl";
 import { Feature, FeatureCollection, LineString, Point } from "geojson";
 import { length } from "@turf/turf";

@@ -1,7 +1,7 @@
 import { RMap } from "maplibre-react-components";
 import "./App.scss";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { MapStyleDataEvent } from "maplibre-gl";
 

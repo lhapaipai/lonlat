@@ -1,6 +1,6 @@
 import { Map, StyleSpecification } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import style from "./style.json";
 
 const mapStyle = style as StyleSpecification;

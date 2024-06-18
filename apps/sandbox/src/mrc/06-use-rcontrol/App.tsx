@@ -1,7 +1,7 @@
 import { Map, NavigationControl } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import {
   RMap,
   RMarker,

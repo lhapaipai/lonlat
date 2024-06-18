@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 @import "pentatrion-design/fontello.css";
-@import "maplibre-react-components/dist/mrc.css";
+@import "maplibre-react-components/dist/style.css";
 @import "./maplibregl-css/index.css";
 
 html {

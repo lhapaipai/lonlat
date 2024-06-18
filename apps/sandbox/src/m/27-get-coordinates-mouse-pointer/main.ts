@@ -1,7 +1,7 @@
 import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import { LngLatLike, Map } from "maplibre-gl";
 import { DOM } from "~/shared/maplibre/dom";
 const $map = document.getElementById("map")!;

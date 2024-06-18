@@ -16,6 +16,8 @@ mrc_doc_host := maplibre-react-components.pentatrion.com
 assets_path	:= $(local_path)/extra/assets/public
 assets_host := assets.lonlat.org
 
+maplibre_theme_path := $(local_path)/packages/maplibre-theme/demo
+maplibre_theme_host := maplibre-theme.pentatrion.com
 
 .PHONY: help
 help:
@@ -60,6 +62,14 @@ deploy-mrc-doc:
 		$(mrc_doc_path)/out/ \
 		berlin:prod/$(mrc_doc_host)
 	@echo "go : https://$(mrc_doc_host)"
+
+.PHONY: deploy-maplibre-theme-demo
+deploy-maplibre-theme-demo:
+	cd $(maplibre_theme_path) && pnpm build
+	rsync -ax --delete \
+		$(maplibre_theme_path)/dist/ \
+		berlin:prod/$(maplibre_theme_host)
+	@echo "go : https://$(maplibre_theme_host)"
 
 .PHONY: deploy-assets
 deploy-assets: ## Build and deploy examples

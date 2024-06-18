@@ -20,7 +20,7 @@ import ContextMenuManager from "./ContextMenuManager";
 
 import "./App.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import DirectionMap from "./direction/DirectionMap";
 import SearchMap from "./search/SearchMap";
 import GeolocationMap from "./geolocation/GeolocationMap";

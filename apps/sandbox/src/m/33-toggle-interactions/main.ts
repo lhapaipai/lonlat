@@ -1,7 +1,7 @@
 import "../../main.css";
 import "./style.scss";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import { LngLatLike, Map } from "maplibre-gl";
 import { ClickZoomHandler } from "./lib/ClickZoomHandler";
 

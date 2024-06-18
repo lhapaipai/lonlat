@@ -1,7 +1,7 @@
 import "../../main.css";
 import "~/shared/main.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/mrc.css";
+import "maplibre-react-components/dist/style.css";
 import { LngLatLike, Map, NavigationControl } from "maplibre-gl";
 import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
 import MapboxDraw from "@mapbox/mapbox-gl-draw";

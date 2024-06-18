@@ -8,6 +8,8 @@ this theme is like the current theme with some improvements.
 - support dark mode
 - support CSS variables for easy optimisation.
 
+[Demo](https://maplibre-theme.pentatrion.com/)
+
 ## Installation
 
 ```bash
@@ -110,6 +112,8 @@ new Map({
 
 
 <img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/packages/maplibre-theme/screenshot.png" alt="MapLibre light theme" />
+
+
 
 
 
