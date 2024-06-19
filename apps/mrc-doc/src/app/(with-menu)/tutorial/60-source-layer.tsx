@@ -9,7 +9,8 @@ import {
   RSource,
 } from "maplibre-react-components";
 import { useState } from "react";
-import { mapCSS, mountainIconFactory, townData } from "./util";
+import { mountainIconFactory, townData } from "./util";
+import { mapCSS } from "~/lib/map-util";
 
 const mountain: [number, number] = [6.4546, 46.1067];
 

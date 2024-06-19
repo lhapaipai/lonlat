@@ -3,7 +3,7 @@
 import { MapLayerMouseEvent } from "maplibre-gl";
 import { RMap, RMarker } from "maplibre-react-components";
 import { useState } from "react";
-import { mapCSS } from "./util";
+import { mapCSS } from "~/lib/map-util";
 
 const mountain: [number, number] = [6.4546, 46.1067];
 

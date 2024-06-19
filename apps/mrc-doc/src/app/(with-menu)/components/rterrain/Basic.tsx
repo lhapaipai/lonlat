@@ -3,6 +3,7 @@
 import { RLayer, RMap, RSource, RTerrain } from "maplibre-react-components";
 import { Toggle } from "pentatrion-design";
 import { useState } from "react";
+import { mapCSS } from "~/lib/map-util";
 
 const rasterDemTiles = [
   "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
@@ -19,10 +20,11 @@ export default function App() {
       initialBearing={-10}
       initialPitch={50}
       initialCenter={center}
-      style={{ minHeight: 300 }}
       doubleClickZoom={false}
       mapStyle="https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json"
       onMounted={(map) => console.log(map)}
+      style={mapCSS}
+      initialAttributionControl={false}
     >
       <RSource
         type="raster-dem"

@@ -1,5 +1,5 @@
 import { RMap, RMarker } from "maplibre-react-components";
-import { mapCSS } from "./util";
+import { mapCSS } from "~/lib/map-util";
 
 const mountain: [number, number] = [6.4546, 46.1067];
 

@@ -6,6 +6,7 @@ import {
   useControl,
 } from "maplibre-react-components";
 import { CustomControl } from "./CustomControl";
+import { mapCSS } from "~/lib/map-util";
 
 function RCustomControl() {
   useControl({
@@ -17,7 +18,7 @@ function RCustomControl() {
 
 export default function App() {
   return (
-    <RMap className="maplibregl-theme-modern">
+    <RMap className="maplibregl-theme-modern" style={mapCSS}>
       <RNavigationControl />
       <RCustomControl />
     </RMap>

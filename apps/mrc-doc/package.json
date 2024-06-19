@@ -14,7 +14,7 @@
     "clsx": "^2.1.1",
     "maplibre-gl": "^4.4.0",
     "maplibre-react-components": "workspace:^",
-    "maplibre-theme": "workspace:^",
+    "maplibre-theme": "^0.0.6",
     "next": "14.2.3",
     "nprogress": "^0.2.0",
     "pentatrion-design": "workspace:^",

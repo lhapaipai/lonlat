@@ -12,7 +12,7 @@
   "dependencies": {
     "maplibre-gl": "^4.4.0",
     "maplibre-react-components": "workspace:*",
-    "maplibre-theme": "workspace:*",
+    "maplibre-theme": "^0.0.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

@@ -4,6 +4,7 @@ import { RGradientMarker, RMap } from "maplibre-react-components";
 import { useState } from "react";
 import { Button } from "pentatrion-design/components/button";
 import { hslToRgb } from "./util";
+import { mapCSS } from "~/lib/map-util";
 
 const center: [number, number] = [-0.5, 47.5];
 
@@ -19,6 +20,7 @@ export default function App() {
       initialCenter={center}
       initialZoom={2}
       initialAttributionControl={false}
+      style={mapCSS}
     >
       <RGradientMarker
         longitude={center[0]}

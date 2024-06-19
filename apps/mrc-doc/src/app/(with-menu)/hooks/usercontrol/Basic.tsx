@@ -6,6 +6,7 @@ import {
   useRControl,
 } from "maplibre-react-components";
 import { createPortal } from "react-dom";
+import { mapCSS } from "~/lib/map-util";
 
 function CustomControl() {
   const { container } = useRControl({
@@ -23,7 +24,7 @@ function CustomControl() {
 
 export default function App() {
   return (
-    <RMap className="maplibregl-theme-modern">
+    <RMap className="maplibregl-theme-modern" style={mapCSS}>
       <RNavigationControl />
       <CustomControl />
     </RMap>

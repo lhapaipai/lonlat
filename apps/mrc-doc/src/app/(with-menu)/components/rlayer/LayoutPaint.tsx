@@ -3,6 +3,7 @@
 import { RLayer, RMap, RSource } from "maplibre-react-components";
 import { useMemo, useState } from "react";
 import { Button } from "pentatrion-design/components/button";
+import { mapCSS } from "~/lib/map-util";
 const center = { lng: 6.53, lat: 46.09 };
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         initialCenter={center}
         mapStyle="https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json"
         initialAttributionControl={false}
+        style={mapCSS}
       >
         <RSource id="thyez" type="geojson" data="/data/thyez.geojson" />
         <RLayer

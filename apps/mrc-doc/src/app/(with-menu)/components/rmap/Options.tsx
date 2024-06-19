@@ -2,6 +2,7 @@
 
 import { MapLayerMouseEvent } from "maplibre-gl";
 import { RMap } from "maplibre-react-components";
+import { mapCSS } from "~/lib/map-util";
 
 const center = { lng: 6.6, lat: 46.2 };
 
@@ -15,7 +16,7 @@ export default function App() {
       className="maplibregl-theme-modern"
       minZoom={8}
       initialCenter={center}
-      style={{ minHeight: 300 }}
+      style={mapCSS}
       onClick={handleClick}
       doubleClickZoom={false}
       mapStyle="https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json"
