@@ -4,7 +4,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypePrettyCode from "rehype-pretty-code";
-import { rehypePrettyCodeOptions } from "~/../rehype.config.js";
+import { rehypePrettyCodeOptions } from "~/../webpack/rehype.config.js";
 
 interface Props {
   code: string;

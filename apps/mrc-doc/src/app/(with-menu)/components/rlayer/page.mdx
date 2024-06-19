@@ -3,7 +3,19 @@ export const metadata = {
   description: 'wrapper for the layer object'
 };
 
+import TwoCols from "~/components/TwoCols.tsx";
+import ShikiContent from "~/components/ShikiContent";
+
 # RLayer
+
+This component wraps a MapLibre Layer object. He manages its life cycle and is
+responsible for adding/removing it to the map. For this reason this component
+must be a descendant of `RMap`.
+
+The `id` and the `type` props are **readonly**. This allows us to manage
+reactivity on the same instance throughout its lifecycle. In some cases you'll have
+to add a `key` prop to maintain this state. see below [Error: RLayer id should not change](#error-rlayer-id-should-not-change).
+
 
 ## Usage
 
@@ -30,124 +42,47 @@ export default function App() {
 };
 ```
 
+## Reactivity
+
+Some props are reactives. Here is the complete list, it applies depending on whether or not the layer
+has this prop in its options.
+
+```ts
+type LayerReactiveOptions = {
+  layout?: any;
+  paint?: any;
+  filter?: FilterSpecification;
+  minzoom?: number;
+  maxzoom?: number;
+  beforeId?: string;
+}
+```
+
+Be careful to define stable objects for `layout`, `paint` and `filter` props to avoid multiplying renderings.
+
+import LayoutPaint from "./LayoutPaint.tsx";
+import layoutPaintCode from "./LayoutPaint.extract.tsx?code";
+
+<TwoCols first={<ShikiContent html={layoutPaintCode} />} second={<LayoutPaint />} />
+
+## Error: RLayer id should not change.
+
+When you have conditional renderers within your `RMap` component you will need to set the
+prop `key` for your `RLayer` to help React maintain its association with the correct component.
+
+Consider `id` prop for MapLibre mapping and `key` prop for React mapping. If you want to know
+why see [Tips: key vs id](/tips#error-id-should-not-change-key-vs-id).
+
+
 ## Reference
 
 `RLayer` accept same props as `Layer` options plus `beforeId`.
 
 ```tsx
-type LayerOptions = LayerSpecification | CustomLayerInterface;
-
 type RLayerProps = LayerOptions & {
   beforeId?: string;
 };
+
+type LayerOptions = LayerSpecification | CustomLayerInterface;
 ```
 
-## Reactivity
-
-Some props are responsive, it depends on the layer type.
-
-### `layout`, `paint` props
-
-This 2 props are deeply reactives. However, be careful to define stable objects to avoid multiplying renderings.
-
-```tsx
-export default function App() {
-  const [red, setRed] = useState(false);
-
-  const townPaintStyle = useMemo(() => ({
-    "fill-outline-color": "rgba(0,0,0,0.1)",
-    "fill-color": red ? "rgba(255,0,0,0.3)" : "rgba(0,0,0,0.3)",
-  }), [red])
-
-  return (
-    <>
-      <RMap>
-        <RSource id="thyez" type="geojson" data="/data/thyez.geojson" />
-        <RLayer
-          source="thyez"
-          id="thyez-fill"
-          type="fill"
-          paint={townPaintStyle}
-        />
-      </RMap>
-      <div className="sidebar">
-        <div>
-          <button onClick={() => setRed((r) => !r)}>
-            {red ? "set gray" : "set red"}
-          </button>
-        </div>
-      </div>
-    </>
-  );
-};
-```
-
-### `filter` prop
-
-This prop is reactive. Be careful to define stable object (or outside component) to avoid multiplying renderings.
-
-### `beforeId`, `minzoom`, `maxzoom`
-
-This props are reactive.
-
-
-## `key` vs `id`
-
-When you have conditional renderers within your `RMap` component you will need to set the prop `key` for your `RLayer` to help React maintain its association with the correct component.
-
-Consider `id` for `maplibre` mapping and `key` for React mapping.
-
-Note: if `maplibre-react-components` detects a mapping error it will throw an exception.
-
-```tsx
-const cityLinePaintStyle = {
-  "line-color": "#ffe64b",
-  "line-width": 5,
-}
-
-const cityFillPaintStyle = {
-  "fill-outline-color": "rgba(0,0,0,0.1)",
-  "fill-color": "rgba(255,0,0,0.3)",
-};
-
-export default function App() {
-  const [showStroke, setShowStroke] = useState(false);
-
-  return (
-    <>
-      <RMap>
-        <RSource
-          key="city"
-          id="city"
-          type="geojson"
-          data="/data/city.geojson"
-        />
-        {showStroke && (
-          <RLayer
-            key="city-line"
-            id="city-line"
-            source="city"
-            type="line"
-            paint={cityLinePaintStyle}
-          />
-        )}
-        <RLayer
-          key="city-fill"
-          id="city-fill"
-          source="city"
-          type="fill"
-          paint={cityFillPaintStyle}
-        />
-      </RMap>
-      <div className="sidebar">
-        <div>
-          <button onClick={() => setShowStroke((s) => !s)}>
-            {showStroke ? "hide city stroke" : "show city stroke"}
-          </button>
-        </div>
-      </div>
-    </>
-
-  );
-};
-```

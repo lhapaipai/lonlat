@@ -19,14 +19,13 @@ pre code span:is([data-line], .line) {
   @apply rounded-2xl lg:-mb-7 lg:mt-7;
 }
 
-code {
+/* code {
   counter-reset: line;
 }
 code > [data-line]::before {
   counter-increment: line;
   content: counter(line);
 
-  /* Other styling */
   display: inline-block;
   width: 1rem;
   margin-right: 2rem;
@@ -40,7 +39,7 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
 
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
-}
+} */
 
 pre[data-theme*=" "],
 pre.shiki-themes {
@@ -84,4 +83,14 @@ body.dark :is(pre[data-theme*=" "], pre.shiki-themes) :is(:scope, span) {
 
 .prose .mdx-header:hover i {
   visibility: visible;
+}
+
+.prose .grid figure[data-rehype-pretty-code-figure] {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.prose .columns-2 figure[data-rehype-pretty-code-figure] {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }

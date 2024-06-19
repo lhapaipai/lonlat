@@ -2,13 +2,17 @@ import clsx from "clsx";
 import { ReactElement } from "react";
 interface Props {
   first: ReactElement;
+  firstClassName?: string;
   second: ReactElement;
+  secondClassName?: string;
   foreground?: "first" | "second";
 }
 
-export default function CodeAndExample({
+export default function TwoCols({
   first,
+  firstClassName,
   second,
+  secondClassName,
   foreground = "first",
 }: Props) {
   return (
@@ -16,6 +20,7 @@ export default function CodeAndExample({
       <div
         className={clsx(
           "relative",
+          firstClassName,
           foreground === "first" && "z-10 lg:-mb-7 lg:-mr-36 lg:mt-7",
         )}
       >
@@ -24,6 +29,7 @@ export default function CodeAndExample({
       <div
         className={clsx(
           "relative",
+          secondClassName,
           foreground === "second" && "z-10 lg:-mb-7 lg:-ml-36 lg:mt-7",
         )}
       >

@@ -3,37 +3,54 @@ export const metadata = {
   description: 'Hook to add Vanilla MapLibre Control inside RMap'
 };
 
+import TwoCols from "~/components/TwoCols.tsx";
+import ShikiContent from "~/components/ShikiContent";
+
 # useControl
 
-Hook to add Vanilla MapLibre Control inside RMap.
+Hook allowing you to integrate controls implementing the IControl interface
+into your Map. This hook return your Control instance.
+
 
 ## Usage
 
+import Basic from "./Basic.tsx";
+import basicCode from "./Basic.extract.tsx?code";
+
+<TwoCols first={<ShikiContent html={basicCode} />} second={<Basic />} />
+
 ```tsx
-import { ControlPosition, IControl, LogoControl, LogoControlOptions } from "maplibre-gl";
-import { memo } from "react";
-import { useControl } from "maplibre-react-components";
+// CustomControl.ts
+import { ControlPosition, IControl, Map } from "maplibre-gl";
 
-type RLogoControlProps = LogoControlOptions & {
-  position?: ControlPosition;
-};
+export class CustomControl implements IControl {
+  declare _map: Map;
+  declare _container: HTMLDivElement;
 
-const RLogoControl = memo(function RLogoControl({ position = "bottom-left", ...controlOptions }: RLogoControlProps) {
-  const control = useControl({
-    position,
-    factory: () => new LogoControl(controlOptions),
-  });
-  return null;
-})
+  getDefaultPosition(): ControlPosition {
+    return "top-right";
+  }
 
+  onAdd(map: Map) {
+    this._map = map;
+    this._container = document.createElement("div");
+    this._container.classList.add(
+      "maplibregl-ctrl",
+      "maplibregl-ctrl-group",
+      "bg-gray-0",
+      "p-4",
+    );
+    this._container.innerText = "Custom control";
+    this._container.style.display = "block";
 
-function App() {
-  return (
-    <RMap>
-      <RLogoControl position="top-left" />
-    </RMap>
-  )
+    return this._container;
+  }
+
+  onRemove() {
+    this._container.remove();
+  }
 }
+
 ```
 
 ## Reference

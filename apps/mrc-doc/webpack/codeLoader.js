@@ -4,7 +4,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypePrettyCode from "rehype-pretty-code";
 import { extname } from "node:path";
-import { rehypePrettyCodeOptions } from "../rehype.config.js";
+import { rehypePrettyCodeOptions } from "./rehype.config.js";
 
 export default async function codeLoader(source) {
   const extension = extname(this.resourcePath).substring(1);

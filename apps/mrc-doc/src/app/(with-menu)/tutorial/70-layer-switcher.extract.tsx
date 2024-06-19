@@ -1,4 +1,5 @@
 // App.tsx
+import { RMap } from "maplibre-react-components";
 import {
   CSSProperties,
   useState
@@ -26,6 +27,7 @@ function App() {
     <RMap
       /* some props unchanged */
       mapStyle={styles[style]}
+      style={mapCSS}
     >
       <LayerSwitcherControl
         style={style}

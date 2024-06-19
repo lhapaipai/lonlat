@@ -33,18 +33,18 @@
 
 .two-cols > div:nth-child(1) {
   & .maplibregl-ctrl-bottom-right {
-    @apply right-32;
+    @apply lg:right-32;
   }
   & .maplibregl-ctrl-top-right {
-    @apply right-32;
+    @apply lg:right-32;
   }
 }
 
 .two-cols > div:nth-child(2) {
   & .maplibregl-ctrl-bottom-left {
-    @apply left-32;
+    @apply lg:left-32;
   }
   & .maplibregl-ctrl-top-left {
-    @apply left-32;
+    @apply lg:left-32;
   }
 }

@@ -26,17 +26,17 @@ export type GradientMarkerCallbacks = {
 
 export const markerReactiveOptionNames = [
   "className",
-  "draggable",
   "clickTolerance",
-  "rotation",
-  "rotationAlignment",
-  "pitchAlignment",
+  "color",
+  "draggable",
+  "icon",
   "opacity",
   "opacityWhenCovered",
-  "color",
+  "pitchAlignment",
+  "rotation",
+  "rotationAlignment",
   "scale",
   "text",
-  "icon",
 ] as const;
 export type GradientMarkerReactiveOptionName = (typeof markerReactiveOptionNames)[number];
 export type GradientMarkerReactiveOptions = {

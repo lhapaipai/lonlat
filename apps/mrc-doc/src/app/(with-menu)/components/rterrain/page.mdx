@@ -3,31 +3,29 @@ export const metadata = {
   description: 'wrapper for the terrain object'
 };
 
+import TwoCols from "~/components/TwoCols.tsx";
+import ShikiContent from "~/components/ShikiContent";
+
 # RTerrain
 
 ## Usage
 
-```tsx
-import { RMap, RSource, RTerrain } from "maplibre-react-components";
+import Basic from "./Basic.tsx";
+import basicCode from "./Basic.extract.tsx?code";
 
-const rasterDemTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
+<TwoCols first={<ShikiContent html={basicCode} />} second={<Basic />} />
 
-export default function App() {
-  return (
-    <RMap>
-      <RSource
-        type="raster-dem"
-        id="terrarium"
-        tiles={rasterDemTiles}
-        encoding="terrarium"
-        tileSize={256}
-      />
-      <RTerrain source="terrarium" exaggeration={1.3} />
-    </RMap>
-  );
-};
+## Incompatibility `RTerrain` / `RTerrainControl`.
 
-```
+The `RTerrainControl` component is a wrapper of MapLibre `TerrainControl`.
+When you use this control, the maplibre instance will be modified without
+your map app being aware of it, this could result map's state to deviate from its props.
+So use either `RTerrain` or `RTerrainControl` but never both components at the
+same time.
+
+Generally speaking, you use `RTerrain` if you want to benefit from reactivity
+ with the exaggeration option.
+
 
 ## Reference
 
@@ -43,13 +41,3 @@ type TerrainSpecification = {
 ```
 
 
-## Incompatibility `RTerrain` / `RTerrainControl`.
-
-The `RTerrainControl` is only a wrapper of MapLibre `TerrainControl`.
-When you use this control, the maplibre instance will be modified without
-your RTerrain instance being aware of it, which can lead to incompatibilities.
-So use either `RTerrain` or `RTerrainControl` but never both components at the
-same time.
-
-Generally speaking, you use `RTerrain` if you want to benefit from reactivity
- with the exaggeration option.

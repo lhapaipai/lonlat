@@ -1,4 +1,4 @@
-import { RMap, RMarker, RNavigationControl } from "maplibre-react-components";
+import { RMap, RNavigationControl } from "maplibre-react-components";
 
 function App() {
   // some code unchanged

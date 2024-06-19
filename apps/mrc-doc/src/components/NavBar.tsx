@@ -30,24 +30,42 @@ const links: NavLink[] = [
     ],
   },
   {
-    title: "Reference",
+    title: "Components",
     children: [
+      {
+        url: "/components/rgradient-marker",
+        title: "RGradientMarker",
+      },
+
+      {
+        url: "/components/rlayer",
+        title: "RLayer",
+      },
       {
         url: "/components/rmap",
         title: "RMap",
+      },
+      {
+        url: "/components/rmarker",
+        title: "RMarker",
+      },
+      {
+        url: "/components/rpopup",
+        title: "RPopup",
       },
       {
         url: "/components/rsource",
         title: "RSource",
       },
       {
-        url: "/components/rlayer",
-        title: "RLayer",
+        url: "/components/rterrain",
+        title: "RTerrain",
       },
-      {
-        url: "/components/rmarker",
-        title: "RMarker",
-      },
+    ],
+  },
+  {
+    title: "Hooks",
+    children: [
       {
         url: "/hooks/usercontrol",
         title: "useRControl",
@@ -55,6 +73,10 @@ const links: NavLink[] = [
       {
         url: "/hooks/usecontrol",
         title: "useControl",
+      },
+      {
+        url: "/hooks/usemap",
+        title: "useMap",
       },
     ],
   },

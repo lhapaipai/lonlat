@@ -3,11 +3,14 @@ import { fileURLToPath } from "node:url";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeExternalLinks from "rehype-external-links";
-import { rehypePrettyCodeOptions } from "./rehype.config.js";
+import { rehypePrettyCodeOptions } from "./webpack/rehype.config.js";
 const projectDir = dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    tsconfigPath: "./tsconfig.build.json",
+  },
   output: "export",
   pageExtensions: ["mdx", "ts", "tsx"],
   // reactStrictMode: false,
@@ -17,34 +20,32 @@ const nextConfig = {
       "@mdx-js/react",
     ];
 
-    config.module.rules.push({
-      test: /\.mdx$/,
-      use: [
-        options.defaultLoaders.babel,
-        {
-          loader: "@mdx-js/loader",
-          options: {
-            providerImportSource: "next-mdx-import-source-file",
-            remarkPlugins: [],
-            rehypePlugins: [
-              [rehypePrettyCode, rehypePrettyCodeOptions],
-              rehypeSlug,
-              [rehypeExternalLinks, { rel: ["nofollow"] }],
-            ],
+    config.module.rules.push(
+      {
+        test: /\.mdx$/,
+        use: [
+          options.defaultLoaders.babel,
+          {
+            loader: "@mdx-js/loader",
+            options: {
+              providerImportSource: "next-mdx-import-source-file",
+              remarkPlugins: [],
+              rehypePlugins: [
+                [rehypePrettyCode, rehypePrettyCodeOptions],
+                rehypeSlug,
+                [rehypeExternalLinks, { rel: ["nofollow"] }],
+              ],
+            },
           },
-        },
-      ],
-    });
+        ],
+      },
+      {
+        test: /\.(tsx?|postcss|html|bash)$/,
+        resourceQuery: /code/,
+        use: [resolve(projectDir, "webpack/codeLoader.js")],
+      },
+    );
 
-    config.module.rules.push({
-      test: /\.(tsx?|postcss|html|bash)$/,
-      resourceQuery: /code/,
-      use: [
-        {
-          loader: resolve(projectDir, "webpack/codeLoader.js"),
-        },
-      ],
-    });
     return config;
   },
 

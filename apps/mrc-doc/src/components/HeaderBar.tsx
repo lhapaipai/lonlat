@@ -9,8 +9,16 @@ export default function HeaderBar() {
   const { isDarkMode, setDarkMode } = useDarkMode();
   return (
     <header className="flex h-12 items-center">
-      <Link href="/" className="ml-12 place-content-center md:hidden">
-        <MapLibreReactLogo height={42} />
+      <Link href="/" className="ml-12 place-content-center md:ml-0">
+        <span className="block md:hidden">
+          <MapLibreReactLogo height={42} />
+        </span>
+        <span className="hidden font-title text-2xl md:block">
+          <span>
+            Map<span className="text-[#99bfea]">Libre</span>
+          </span>{" "}
+          React Components
+        </span>
       </Link>
       <span className="ml-auto">
         <Toggle

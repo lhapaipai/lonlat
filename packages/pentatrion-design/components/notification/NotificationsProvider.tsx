@@ -19,7 +19,13 @@ export function NotificationsProvider({ children }: Props) {
     container.current = document.createElement("div");
     container.current.id = Math.floor(Math.random() * 100000).toString();
     /* .ll-snack-bar */
-    container.current.classList.add("fixed", "bottom-0", "left-0", "right-0", "z-notification");
+    container.current.classList.add(
+      "fixed",
+      "bottom-0",
+      "left-0",
+      "right-0",
+      "z-notification",
+    );
     document.body.append(container.current);
   }
 
@@ -39,10 +45,12 @@ export function NotificationsProvider({ children }: Props) {
 
   return (
     <>
-      <NotificationsContext.Provider value={manager}>{children}</NotificationsContext.Provider>
+      <NotificationsContext.Provider value={manager}>
+        {children}
+      </NotificationsContext.Provider>
       {createPortal(
         /* snack-bar-inner */
-        <div className="mb-4 mx-4 flex flex-col gap-4 items-center">
+        <div className="mx-4 mb-4 flex flex-col items-center gap-4">
           {notifications.map((props) => (
             <Snack
               {...props}

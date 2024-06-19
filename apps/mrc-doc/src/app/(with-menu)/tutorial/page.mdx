@@ -150,7 +150,7 @@ npm i maplibre-theme
 You can also import the `modern` theme from the `maplibre-theme` package. In addition to being 3 times
 lighter than the default theme, it is compatible with dark mode and easily customizable with CSS variables.
 
-import liftingCode from "./50-lifting.extract.tsx?code={2,4-5,8,15,27-31,33-38}%23add%20{1,10}%23delete";
+import liftingCode from "./50-lifting.extract.tsx?code={2,4-5,8,14-15,27-31,33-38}%23add%20{1,10}%23delete";
 import Lifting from "./50-lifting.tsx";
 
 <TwoCols foreground="second" first={<Lifting />} second={<ShikiContent html={liftingCode} />} />
@@ -159,10 +159,6 @@ import Lifting from "./50-lifting.tsx";
 etc...), just specify the className and it will be wrapped inside a `<i className={icon} />` element.
 
 Otherwise, you need to specify a factory function who generate your `HTMLElement` or `SVGSVGElement`.
-
-Note: `RGradientMarker` is a React wrapper of a `GradientMarker` class who extends `Marker` from
-`maplibre-gl`. When the marker is added to the map it is integrated into a DOM node which is not managed
-by React. This is why the generated element must be a DOM element and not a JSX.Element
 
 ```ts
 // util.ts
@@ -235,7 +231,7 @@ Also note that the `type` prop is read-only for `RSource` and `RLayer` and shoul
 
 ## Adding a layer switcher
 
-import layerSwitcherCode from "./70-layer-switcher.extract.tsx?code={3,6-9,13-15,18-21,28,30-33}";
+import layerSwitcherCode from "./70-layer-switcher.extract.tsx?code={4,7-10,14-16,19-22,29-30,32-35}";
 import layerSwitcherCtrlCode from "./70-layer-switcher-ctrl.extract.tsx?code";
 import LayerSwitcher from "./70-layer-switcher.tsx";
 

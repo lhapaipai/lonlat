@@ -19,3 +19,5 @@
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# .fontello

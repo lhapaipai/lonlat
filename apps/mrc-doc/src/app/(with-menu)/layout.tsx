@@ -1,3 +1,4 @@
+import Footer from "~/components/Footer";
 import HeaderBar from "~/components/HeaderBar";
 import NavBar from "~/components/NavBar";
 
@@ -16,6 +17,7 @@ export default function WithMenuLayout({
             {children}
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );

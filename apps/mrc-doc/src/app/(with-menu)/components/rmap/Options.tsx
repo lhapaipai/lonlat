@@ -12,12 +12,14 @@ export default function App() {
 
   return (
     <RMap
+      className="ml-theme-modern"
       minZoom={8}
       initialCenter={center}
       style={{ minHeight: 300 }}
       onClick={handleClick}
       doubleClickZoom={false}
       mapStyle="https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json"
+      initialAttributionControl={false}
     />
   );
 }
