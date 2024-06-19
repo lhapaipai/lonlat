@@ -2,13 +2,13 @@
 
 ## Themes `classic` / `modern`
 
-this theme is like the current theme with some improvements.
+this themes are designed to mimic the actual theme with some improvements.
 
-- light : actually 23ko minified (the current theme from `maplibre-gl/maplibre-gl.css` is 65ko minified).
+- light : actually 20ko-30ko minified (the current theme from `maplibre-gl/maplibre-gl.css` is 65ko minified).
 - support dark mode
 - support CSS variables for easy optimisation.
 
-[Demo](https://maplibre-theme.pentatrion.com/)
+See a [Demo](https://maplibre-theme.pentatrion.com/).
 
 ## Installation
 
@@ -20,14 +20,7 @@ in your js file
 
 ```diff
 - import "maplibre-gl/dist/maplibre-gl.css";
-
-// for classic theme
-+ import "maplibre-theme/classic.css";
-
-// or
-
-// for modern theme
-+ import "maplibre-theme/modern.css";
++ import "maplibre-theme/<your-theme>.css";
 ```
 
 ## Package files
@@ -38,18 +31,66 @@ List of available CSS files to import. (see [Scoped themes](#scoped-themes) sect
 .
 └── maplibre-theme
     ├── classic.css (23 ko)
-    ├── classic.scoped.css (26 ko)
+    ├── classic.scoped.css (28 ko)
     ├── core.css (5 ko)
     ├── core.scoped.css (5 ko)
     ├── legacy.css (66 ko)
-    ├── legacy.scoped.css (69 ko)
+    ├── legacy.scoped.css (70 ko)
     ├── modern.css (24 ko)
-    └── modern.scoped.css (28 ko)
+    └── modern.scoped.css (29 ko)
 ```
 
-## Advanced configuration
+## Theme modern
 
-with CSS vars.
+```ts
+import { Map } from "maplibre-gl";
+import "maplibre-theme/modern.css";
+
+new Map({
+  container: "map-1"
+})
+new Map({
+  container: "map-2"
+})
+```
+
+```html
+<div id="map-1"></div>
+
+<div class="dark">
+  <div id="map-2"></div>
+</div>
+```
+
+<img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/packages/maplibre-theme/theme-modern.png" alt="MapLibre classic theme" />
+
+
+## Theme classic
+
+```ts
+import { Map } from "maplibre-gl";
+import "maplibre-theme/classic.css";
+
+new Map({
+  container: "map-1"
+})
+new Map({
+  container: "map-2"
+})
+```
+
+```html
+<div id="map-1"></div>
+
+<div class="dark">
+  <div id="map-2"></div>
+</div>
+```
+
+<img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/packages/maplibre-theme/theme-classic.png" alt="MapLibre classic theme" />
+
+
+## Advanced configuration with CSS vars.
 
 ```css
 /**
@@ -108,33 +149,36 @@ note: define your colors as just the color channel so we can work with the opaci
 
 If you want to show multiple themes inside the same page we probably need to scope your CSS theme.
 
-You can use the `*.scoped.css` version of the theme for this to work. In addition you will have to add the `ml-theme-<modern|classic|legacy>` className to your map container.
+You can use the `*.scoped.css` version of the theme for this to work. In addition you will have to add the `maplibregl-theme-<modern|classic|legacy>` className to your map container.
 
 ```ts
+import "maplibre-theme/classic.scoped.css";
 import "maplibre-theme/modern.scoped.css";
 import { Map } from "maplibre-gl";
 
 new Map({
-  container: "map"
+  container: "map-1"
+})
+new Map({
+  container: "map-2"
 })
 ```
 ```html
 <html>
   <body>
-    <div id="map" class="ml-theme-classic"></div>
+    <div id="map-1" class="maplibregl-theme-classic"></div>
+    <div id="map-2" class="maplibregl-theme-modern"></div>
   </body>
 </html>
 ```
 
+If you want to overwrite CSS vars add the specific class
 
-## Screenshot
-
-
-<img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/packages/maplibre-theme/screenshot.png" alt="MapLibre light theme" />
-
-
-
-
+```css
+.maplibregl-map.maplibregl-theme-classic {
+  --ml-ctrl-border-radius: 4px;
+}
+```
 
 ## Create your own Theme
 

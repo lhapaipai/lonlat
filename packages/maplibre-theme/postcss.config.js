@@ -19,7 +19,7 @@ const config = (ctx) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           transform(prefix, selector, _prefixedSelector, filePath, _rule) {
             const entryName = basename(filePath, ".css");
-            const themeClassName = `.ml-theme-${entryName}`;
+            const themeClassName = `.maplibregl-theme-${entryName}`;
 
             if (entryName === "core" || selector.includes(themeClassName)) {
               return selector;

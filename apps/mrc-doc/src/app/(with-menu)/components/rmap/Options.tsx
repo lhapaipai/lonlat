@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <RMap
-      className="ml-theme-modern"
+      className="maplibregl-theme-modern"
       minZoom={8}
       initialCenter={center}
       style={{ minHeight: 300 }}

@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <RMap
-      className="ml-theme-modern"
+      className="maplibregl-theme-modern"
       initialCenter={center}
       initialZoom={2}
       initialAttributionControl={false}

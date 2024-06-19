@@ -7,7 +7,11 @@ const center: [number, number] = [-0.5, 47.5];
 
 export default function App() {
   return (
-    <RMap className="ml-theme-modern" initialCenter={center} initialZoom={2}>
+    <RMap
+      className="maplibregl-theme-modern"
+      initialCenter={center}
+      initialZoom={2}
+    >
       <RMarker longitude={-2.5} latitude={55} />
 
       {/* with custom Element */}

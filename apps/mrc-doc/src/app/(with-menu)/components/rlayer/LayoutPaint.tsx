@@ -19,7 +19,7 @@ export default function App() {
   return (
     <>
       <RMap
-        className="ml-theme-modern"
+        className="maplibregl-theme-modern"
         minZoom={12}
         initialCenter={center}
         mapStyle="https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json"

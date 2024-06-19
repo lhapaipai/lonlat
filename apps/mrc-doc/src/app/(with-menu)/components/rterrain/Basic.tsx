@@ -14,7 +14,7 @@ export default function App() {
   const [exaggeration, setExaggeration] = useState(1.3);
   return (
     <RMap
-      className="ml-theme-modern"
+      className="maplibregl-theme-modern"
       initialZoom={10}
       initialBearing={-10}
       initialPitch={50}

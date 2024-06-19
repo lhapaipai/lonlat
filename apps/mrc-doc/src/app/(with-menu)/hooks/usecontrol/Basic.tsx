@@ -17,7 +17,7 @@ function RCustomControl() {
 
 export default function App() {
   return (
-    <RMap className="ml-theme-modern">
+    <RMap className="maplibregl-theme-modern">
       <RNavigationControl />
       <RCustomControl />
     </RMap>

@@ -27,8 +27,12 @@
 .maplibregl-popup-content {
   background: rgb(var(--ml-c-bg));
   border-radius: 1rem;
-  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+  padding: 0.5rem;
   min-height: 2.5rem;
   box-shadow: var(--ml-shadow);
   box-sizing: border-box;
+}
+
+.maplibregl-popup-content:has(.maplibregl-popup-close-button) {
+  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
 }

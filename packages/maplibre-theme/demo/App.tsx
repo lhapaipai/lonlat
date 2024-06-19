@@ -1,6 +1,6 @@
 import { Map, StyleSpecification } from "maplibre-gl";
 import "./App.scss";
-import "maplibre-react-components/style.css";
+import "maplibre-react-components/dist/style.css";
 import style from "./style.json";
 
 const mapStyle = style as StyleSpecification;
@@ -25,7 +25,6 @@ import {
   RScaleControl,
   RSource,
   RTerrainControl,
-  markerPopupOffset,
   useRControl,
 } from "maplibre-react-components";
 import { useRef } from "react";
@@ -137,8 +136,9 @@ function CustomMap({
         initialCenter={marignier}
         initialZoom={8}
         initialAttributionControl={false}
-        className={clsx(className, `shadow-md ml-theme-${theme}`)}
+        className={clsx(className, `shadow-md maplibregl-theme-${theme}`)}
         mapStyle={mapStyle}
+        onClick={(e) => console.log(e.lngLat)}
       >
         <RSource
           type="raster-dem"
@@ -160,14 +160,13 @@ function CustomMap({
         <RMarker longitude={marignier2.lng} latitude={marignier2.lat} />
 
         <RMarker longitude={marignier2.lng} latitude={marignier2.lat} />
-        <RPopup
-          longitude={marignier.lng}
-          latitude={marignier.lat}
-          initialAnchor="top"
-          offset={markerPopupOffset}
-        >
+        <RPopup longitude={marignier.lng} latitude={marignier.lat}>
           Hello world !
         </RPopup>
+        <RPopup longitude={5.74} latitude={45.95}>
+          Hello world !<button className="maplibregl-popup-close-button">×</button>
+        </RPopup>
+
         <MrcLogoControl position="top-left" />
         <RFullscreenControl />
         <RGeolocateControl

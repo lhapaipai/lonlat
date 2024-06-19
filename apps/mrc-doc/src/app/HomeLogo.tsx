@@ -2,7 +2,7 @@ import MapLibreReactLogo from "~/components/MapLibreReactLogo";
 
 export default function HomeLogo() {
   return (
-    <div className="font-title flex items-center gap-2">
+    <div className="flex items-center gap-2 font-title">
       <MapLibreReactLogo height={110} />
       <span className="flex flex-col text-6xl md:min-w-[31rem] md:flex-row md:gap-3">
         <span>

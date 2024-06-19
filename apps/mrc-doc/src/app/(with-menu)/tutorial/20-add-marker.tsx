@@ -6,7 +6,7 @@ const mountain: [number, number] = [6.4546, 46.1067];
 function App() {
   return (
     <RMap
-      className="ml-theme-classic"
+      className="maplibregl-theme-classic"
       minZoom={6}
       initialCenter={mountain}
       initialZoom={11}

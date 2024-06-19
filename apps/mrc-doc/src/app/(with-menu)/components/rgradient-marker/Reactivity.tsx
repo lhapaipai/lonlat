@@ -15,7 +15,7 @@ export default function App() {
   const color = hslToRgb(colorRange / 360, 0.5, 0.5);
   return (
     <RMap
-      className="ml-theme-modern"
+      className="maplibregl-theme-modern"
       initialCenter={center}
       initialZoom={2}
       initialAttributionControl={false}

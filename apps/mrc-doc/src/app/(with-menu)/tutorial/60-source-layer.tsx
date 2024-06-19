@@ -29,7 +29,7 @@ function App() {
 
   return (
     <RMap
-      className="ml-theme-modern"
+      className="maplibregl-theme-modern"
       minZoom={6}
       onClick={handleClick}
       initialCenter={mountain}
