@@ -1,3 +1,8 @@
+## 0.0.8
+
+Range fix ComponentPropsWithRef import
+tsconfig remove extends from base
+
 ## 0.0.3
 
 Range add component

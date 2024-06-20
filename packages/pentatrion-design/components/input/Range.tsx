@@ -1,5 +1,4 @@
-import { ComponentPropsWithRef } from "@react-spring/web";
-import { forwardRef, useMemo } from "react";
+import { forwardRef, useMemo, ComponentPropsWithRef } from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../types.d";

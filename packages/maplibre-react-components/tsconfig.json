@@ -1,6 +1,30 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    /**
+     * Base
+     */
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /**
+     * Package specific
+     */
     "types": ["react/experimental", "@testing-library/jest-dom", "offscreencanvas"],
     "baseUrl": ".",
     "paths": {
