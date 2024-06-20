@@ -32,9 +32,28 @@ export const base: CSSRuleObject = {
 
   'input[type="range"]': {
     backgroundColor: "transparent",
+    "-webkit-appearance": "none",
+    appearance: "none",
   },
+  'input[type="range"]::-webkit-slider-thumb': {
+    "-webkit-appearance": "none",
+    appearance: "none",
 
-  'input[type="range"]::range-thumb': {
+    border: "0",
+    boxSizing: "border-box",
+    borderRadius: "50%",
+    cursor: "pointer",
+    position: "relative",
+  },
+  'input[type="range"]::-moz-range-thumb': {
+    appearance: "none",
+    border: "0",
+    boxSizing: "border-box",
+    borderRadius: "50%",
+    cursor: "pointer",
+    position: "relative",
+  },
+  'input[type="range"]::-ms-thumb': {
     appearance: "none",
     border: "0",
     boxSizing: "border-box",
