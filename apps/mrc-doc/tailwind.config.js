@@ -82,7 +82,7 @@ const config = {
   },
   plugins: [
     pentatrionTw({
-      base: false,
+      vars: false,
     }),
     typography,
   ],

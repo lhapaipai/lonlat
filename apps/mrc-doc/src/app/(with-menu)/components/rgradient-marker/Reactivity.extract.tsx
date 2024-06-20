@@ -30,7 +30,7 @@ export default function App() {
             increment counter {counter}
           </Button>
         </div>
-        <div className="flex justify-between gap-2">
+        <div className="flex items-center justify-between gap-2">
           Color
           <input
             type="range"
@@ -43,7 +43,7 @@ export default function App() {
           />
           <span className="w-16">{color}</span>
         </div>
-        <div className="flex justify-between gap-2">
+        <div className="flex items-center justify-between gap-2">
           Scale
           <input
             type="range"

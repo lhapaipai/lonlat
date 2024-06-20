@@ -3,12 +3,12 @@ import { type ThemeColor } from "../../types.d";
 import { useCombinedRefs } from "../../hooks";
 import clsx from "clsx";
 
-interface Props extends ComponentPropsWithRef<"input"> {
+export interface ToggleProps extends ComponentPropsWithRef<"input"> {
   disabled?: boolean;
   color?: ThemeColor;
 }
 
-export const Toggle = forwardRef<HTMLInputElement, Props>(
+export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   (
     {
       color = "yellow",

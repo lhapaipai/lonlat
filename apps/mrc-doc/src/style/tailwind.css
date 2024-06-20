@@ -1,28 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :focus-visible {
-    @apply rounded-2xl outline outline-2 outline-offset-2 outline-yellow-5;
-  }
-
-  textarea:read-only {
-    @apply bg-gray-1;
-  }
-
-  mark {
-    @apply bg-yellow-1 text-gray-8;
-  }
-
-  abbr {
-    @apply cursor-help underline decoration-dashed;
-  }
-
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-decoration,
-  input[type="search"]::-webkit-search-results-button,
-  input[type="search"]::-webkit-search-results-decoration {
-    display: none;
-  }
-}

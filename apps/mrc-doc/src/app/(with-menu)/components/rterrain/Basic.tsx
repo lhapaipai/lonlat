@@ -4,6 +4,7 @@ import { RLayer, RMap, RSource, RTerrain } from "maplibre-react-components";
 import { Toggle } from "pentatrion-design";
 import { useState } from "react";
 import { mapCSS } from "~/lib/map-util";
+import { Range } from "pentatrion-design/components/input/Range";
 
 const rasterDemTiles = [
   "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
@@ -47,14 +48,14 @@ export default function App() {
             onChange={(e) => setShowTerrain(e.target.checked)}
           />
         </div>
-        <div className="flex justify-between gap-2">
+        <div className="flex items-center justify-between gap-2">
           Exaggeration
-          <input
-            type="range"
+          <Range
             min={0}
             max={2}
             step={0.1}
             value={exaggeration}
+            showValue={false}
             onChange={(e) => setExaggeration(e.target.valueAsNumber)}
           />
           <span className="w-8">{exaggeration}</span>

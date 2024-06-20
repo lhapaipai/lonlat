@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Checkbox } from ".";
 
 const meta = {
-  title: "Components/Checkbox",
+  title: "Components/Input/Checkbox",
   component: Checkbox,
 } satisfies Meta<typeof Checkbox>;
 export default meta;
@@ -44,7 +44,11 @@ export const WithIndeterminate = () => {
   }
 
   return (
-    <Checkbox checked={checked} indeterminate={indeterminate} onChange={handleChange}>
+    <Checkbox
+      checked={checked}
+      indeterminate={indeterminate}
+      onChange={handleChange}
+    >
       Checkbox value : {checked ? "True" : "False"}, Indeterminate value :{" "}
       {indeterminate ? "True" : "False"}
     </Checkbox>

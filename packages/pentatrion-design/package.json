@@ -53,6 +53,7 @@
     "maplibre-gl": "^4.4.0",
     "pentatrion-fonts": "workspace:*",
     "postcss": "^8.4.38",
+    "postcss-input-range": "^5.0.0",
     "postcss-load-config": "^5.1.0",
     "prettier-plugin-tailwindcss": "^0.6.4",
     "react-redux": "^9.1.2",

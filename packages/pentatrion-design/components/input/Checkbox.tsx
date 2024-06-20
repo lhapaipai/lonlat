@@ -3,21 +3,34 @@ import { type ThemeColor } from "../../types.d";
 import { useCombinedRefs } from "../../hooks";
 import clsx from "clsx";
 
-interface Props extends ComponentPropsWithRef<"input"> {
+export interface CheckboxProps extends ComponentPropsWithRef<"input"> {
   indeterminate?: boolean;
   disabled?: boolean;
   color?: ThemeColor;
 }
 
-export const Checkbox = forwardRef<HTMLInputElement, Props>(
-  (
-    { color = "yellow", indeterminate, disabled = false, checked, className, children, ...rest },
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  function Checkbox(
+    {
+      color = "yellow",
+      indeterminate,
+      disabled = false,
+      checked,
+      className,
+      children,
+      ...rest
+    },
     ref,
-  ) => {
+  ) {
     const inputRef = useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     return (
-      <label className={clsx("flex items-center cursor-pointer", disabled && "disabled")}>
+      <label
+        className={clsx(
+          "flex cursor-pointer items-center",
+          disabled && "disabled",
+        )}
+      >
         <input
           data-color={color}
           ref={combinedRef}
@@ -25,7 +38,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(
           type="checkbox"
           className={clsx(
             "p8n-input-checkbox",
-            "appearance-none p-0 inline-block bg-origin-border select-none shrink-0 h-5 w-5 bg-gray-0 my-0 mr-1 rounded",
+            "my-0 mr-1 inline-block h-5 w-5 shrink-0 select-none appearance-none rounded bg-gray-0 bg-origin-border p-0",
             indeterminate && "indeterminate",
             className,
           )}

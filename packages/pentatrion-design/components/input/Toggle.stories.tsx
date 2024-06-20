@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Toggle } from ".";
 
 const meta = {
-  title: "Components/Toggle",
+  title: "Components/Input/Toggle",
   component: Toggle,
 } satisfies Meta<typeof Toggle>;
 export default meta;

@@ -17,6 +17,9 @@ pnpm create vite my-app
 cd my-app
 
 pnpm add -D tailwindcss postcss autoprefixer postcss-load-config prettier-plugin-tailwindcss
+
+# si vous utilisez le composant <input type="range" />
+pnpm add -D postcss-input-range
 ```
 
 Supprimer les fichiers inutiles
@@ -53,6 +56,10 @@ export default {
   plugins: {
     "tailwindcss/nesting": {},
     tailwindcss: {},
+
+    // si vous utilisez le composant <input type="range" />
+    // bien le mettre en dernier car tailwind génère du contenu à transformer
+    "postcss-input-range": {}
   },
 };
 ```

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { RadioGroup } from ".";
 
 const meta = {
-  title: "Components/RadioGroup",
+  title: "Components/Input/RadioGroup",
   component: RadioGroup,
 } satisfies Meta<typeof RadioGroup>;
 export default meta;
@@ -69,7 +69,12 @@ export const Basic = () => {
         value={value}
         onChange={setValue}
       />
-      <RadioGroup placement="inline-grid" options={options} value={value} onChange={setValue} />
+      <RadioGroup
+        placement="inline-grid"
+        options={options}
+        value={value}
+        onChange={setValue}
+      />
       <RadioGroup options={options} value={value} onChange={setValue} />
     </div>
   );

@@ -2,6 +2,7 @@ import plugin from "tailwindcss/plugin";
 import { keyframes } from "./keyframes";
 
 import defaultTheme from "tailwindcss/defaultTheme";
+import { vars } from "./vars";
 import { base } from "./base";
 import {
   components,
@@ -45,6 +46,7 @@ export const pentatrionTypographyExtend = {
 };
 
 interface PentatrionTwOptions {
+  vars?: boolean;
   base?: boolean;
   components?: boolean;
   componentsInputOutline?: boolean;
@@ -57,10 +59,13 @@ interface PentatrionTwOptions {
 export const pentatrionTw = plugin.withOptions(
   function (options: PentatrionTwOptions = {}) {
     return ({ addBase, addUtilities, addComponents, addVariant }) => {
+      options.vars !== false && addBase(vars);
       options.base !== false && addBase(base);
       options.components !== false && addComponents(components);
-      options.componentsInputOutline !== false && addComponents(componentsInputOutline);
-      options.componentsResizeArea !== false && addComponents(componentsResizeArea);
+      options.componentsInputOutline !== false &&
+        addComponents(componentsInputOutline);
+      options.componentsResizeArea !== false &&
+        addComponents(componentsResizeArea);
       options.componentsStep !== false && addComponents(componentsStep);
       options.utilities !== false && addUtilities(utilities);
       options.utilitiesDialog !== false && addUtilities(utilitiesDialog);
@@ -158,7 +163,8 @@ export const pentatrionTw = plugin.withOptions(
         },
         boxShadow: {
           sm: "0 1px 2px 0 rgb(0 0 0 / 0.1)",
-          DEFAULT: "0 1px 3px 0 rgb(0 0 0 / 0.15), 0 1px 2px -1px rgb(0 0 0 / 0.15)",
+          DEFAULT:
+            "0 1px 3px 0 rgb(0 0 0 / 0.15), 0 1px 2px -1px rgb(0 0 0 / 0.15)",
           md: "0 4px 6px -1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.15)",
           lg: "0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -2px rgb(0 0 0 / 0.15)",
           xl: "0 20px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.15)",
