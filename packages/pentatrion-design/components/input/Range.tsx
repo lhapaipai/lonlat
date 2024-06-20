@@ -1,9 +1,8 @@
 import { ComponentPropsWithRef } from "@react-spring/web";
 import { forwardRef, useMemo } from "react";
 
-// import "./Range.css";
 import clsx from "clsx";
-import { ThemeColor } from "types";
+import { ThemeColor } from "../../types.d";
 
 export interface RangeProps
   extends Omit<
