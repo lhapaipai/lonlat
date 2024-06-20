@@ -16,7 +16,7 @@ export default function TwoCols({
   foreground = "first",
 }: Props) {
   return (
-    <div className="not-prose two-cols my-7 grid grid-cols-1 gap-4 lg:mb-14 lg:grid-cols-2">
+    <div className="two-cols my-7 grid grid-cols-1 gap-4 lg:mb-14 lg:grid-cols-2">
       <div
         className={clsx(
           "relative",

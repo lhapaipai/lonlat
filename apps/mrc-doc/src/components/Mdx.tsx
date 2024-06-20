@@ -47,9 +47,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h4: H4,
     h5: H5,
     h6: H6,
-    pre: ({ className, ...rest }) => {
-      return <pre className={clsx(className, "not-prose")} {...rest} />;
-    },
     ...components,
   };
 }

@@ -31,6 +31,20 @@ const config = {
           css: [
             pentatrionTypographyExtend.DEFAULT.css,
             {
+              /** floating-ui typo source-code
+               * https://github.com/floating-ui/floating-ui/blob/master/website/tailwind.config.js
+               */
+              pre: {
+                "@apply rounded-2xl shadow dark:shadow-dark px-0 py-4 text-sm relative":
+                  {},
+                "[data-line]": {
+                  padding: "0 1rem",
+                },
+                "&::before": {
+                  "@apply absolute top-1 right-1 text-gray-3": {},
+                  content: "attr(data-language)",
+                },
+              },
               code: {
                 color: "rgb(var(--color-gray-text))",
                 backgroundColor: "rgb(var(--color-gray-1))",
@@ -42,6 +56,23 @@ const config = {
               },
               "code::after": {
                 content: "none",
+              },
+              ":is(.grid, .columns-2) figure[data-rehype-pretty-code-figure]": {
+                marginTop: "0",
+                marginBottom: "0",
+              },
+              ".maplibregl-map": {
+                "@apply rounded-2xl shadow": {},
+                a: {
+                  fontWeight: "400",
+                },
+              },
+              ".mdx-header i": {
+                "@apply text-gray-5 transition-colors hover:text-gray-text invisible":
+                  {},
+              },
+              ".mdx-header:hover i": {
+                visibility: "visible",
               },
             },
           ],

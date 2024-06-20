@@ -37,6 +37,7 @@ function App() {
       initialZoom={11}
       mapStyle="https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json"
       style={mapCSS}
+      initialAttributionControl={false}
     >
       <RNavigationControl position="top-right" visualizePitch={true} />
       <RSource key="town" id="town" type="geojson" data={townData} />

@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -14,7 +13,7 @@ export default async function Code({ code, className }: Props) {
   const highlightedCode = await highlightCode(code);
   return (
     <div
-      className={clsx("not-prose", className)}
+      className={className}
       dangerouslySetInnerHTML={{ __html: highlightedCode }}
     ></div>
   );
