@@ -41,18 +41,17 @@ Créer un fichier `tailwind.config.js` et `postcss.config.js`.
 // tailwind.config.js
 
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+const config = {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: ["class"],
 };
+
+export default config;
 
 
 // postcss.config.js
 /** @type {import("postcss-load-config").Config} */
-export default {
+const config = {
   plugins: {
     "tailwindcss/nesting": {},
     tailwindcss: {},
@@ -62,11 +61,18 @@ export default {
     "postcss-input-range": {}
   },
 };
+export default config;
 ```
 
 Mettre à jour le fichier `src/index.css`
 ```css
-/* on utilisera des imports pour faciliter l'intégration du design système */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * ou bien on utilisera des imports pour faciliter l'intégration du design système
+ */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -86,10 +92,11 @@ Mettre à jour la configuration de tailwind.
 + import { pentatrionTw } from "pentatrion-design/tailwind";
 
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
++   "./node_modules/pentatrion-design/lib/**/*.{ts,tsx}",
 +   "./node_modules/pentatrion-design/components/**/*.{ts,tsx}",
 +   "./node_modules/pentatrion-design/hooks/**/*.{ts,tsx}",
 +   "./node_modules/pentatrion-design/redux/**/*.{ts,tsx}",
@@ -97,6 +104,9 @@ export default {
   darkMode: ["class"],
 +  plugins: [pentatrionTw],
 };
+
+export default config;
+
 ```
 
 La dépendance `pentatrion-fonts` est optionnelle.
@@ -127,27 +137,6 @@ export default App
 ```
 
 L'import minimal `import { Button } from "pentatrion-design/components/button";` est plus contraignant et n'est pas nécessaire si votre projet utilise toutes les dépendances de `pentatrion-design`. si par contre votre projet n'utilise que certains composants et n'utilise pas certains dépendances comme `react-sortablejs` il vaut mieux utiliser l'import `pentatrion-design/components/button`. Cela allégera le build (que notre compilateur fasse du tree shaking ou non).
-
-Mettre à jour `src/index.css`
-```diff
-/* index.css */
-@import "tailwindcss/base";
-+ @import "pentatrion-design/tailwind/base.css" layer(base);
-
-@import "tailwindcss/components";
-+ @import "pentatrion-design/tailwind/components.css" layer(components);
-+ @import "pentatrion-design/tailwind/components-input-outline.css" layer(components);
-+ @import "pentatrion-design/tailwind/components-resize-area.css" layer(components);
-+ @import "pentatrion-design/tailwind/components-step.css" layer(components);
-
-@import "tailwindcss/utilities";
-+ @import "pentatrion-design/tailwind/utilities.css" layer(utilities);
-+ @import "pentatrion-design/tailwind/utilities-dialog.css" layer(utilities);
-
-/* Optionel */
-+ @import "pentatrion-fonts/fontello-lonlat";
-```
-
 
 ## projet sans TypeScript
 

@@ -1,6 +1,6 @@
 {
   "name": "pentatrion-design",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "author": "Hugues Tavernier",
@@ -17,7 +17,13 @@
   },
   "files": [
     "dist/",
-    "src/"
+    "components/",
+    "hooks/",
+    "lib/",
+    "redux/",
+    "styles",
+    "tailwind",
+    ""
   ],
   "type": "module",
   "devDependencies": {

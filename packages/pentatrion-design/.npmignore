@@ -1,0 +1,6 @@
+.storybook/
+dist/
+node_modules/
+storybook-static/
+.fontello
+Makefile
