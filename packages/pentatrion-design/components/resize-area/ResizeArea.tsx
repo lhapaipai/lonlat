@@ -1,17 +1,26 @@
-import { useCallback, useEffect } from "react";
+import { ComponentProps, useCallback, useEffect } from "react";
 import clsx from "clsx";
 
-interface Props {
+interface Props extends ComponentProps<"div"> {
   name: string;
   position: "top" | "bottom" | "left" | "right";
   initialValue?: number;
 }
 
-export function ResizeArea({ name, position, initialValue }: Props) {
+export function ResizeArea({
+  name,
+  position,
+  initialValue,
+  className,
+  ...rest
+}: Props) {
   useEffect(() => {
     const cssVarName = `--sidebar-${name}-${["top", "bottom"].includes(position) ? "height" : "width"}`;
     if (initialValue) {
-      document.documentElement.style.setProperty(cssVarName, `${initialValue}px`);
+      document.documentElement.style.setProperty(
+        cssVarName,
+        `${initialValue}px`,
+      );
     }
     // we want to set the initial value, we don't want this value to be updated after
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,7 +52,10 @@ export function ResizeArea({ name, position, initialValue }: Props) {
           cssVarValue = e.pageY;
           break;
       }
-      document.documentElement.style.setProperty(cssVarName, `${cssVarValue}px`);
+      document.documentElement.style.setProperty(
+        cssVarName,
+        `${cssVarValue}px`,
+      );
       return () => {
         document.documentElement.style.removeProperty(cssVarName);
       };
@@ -54,7 +66,10 @@ export function ResizeArea({ name, position, initialValue }: Props) {
   const handlePointerUp = useCallback(() => {
     const handler = handlePointerMove;
     document.removeEventListener("pointermove", handler);
-    document.documentElement.classList.remove("cursor-row-resize", "cursor-col-resize");
+    document.documentElement.classList.remove(
+      "cursor-row-resize",
+      "cursor-col-resize",
+    );
 
     return () => {
       document.removeEventListener("pointermove", handler);
@@ -72,8 +87,12 @@ export function ResizeArea({ name, position, initialValue }: Props) {
   }
 
   return (
-    <div className={clsx(["p8n-resize-area", position])}>
-      <button className="area-button" type="button" onPointerDown={handlePointerDown}></button>
+    <div className={clsx(["p8n-resize-area", position, className])} {...rest}>
+      <button
+        className="area-button"
+        type="button"
+        onPointerDown={handlePointerDown}
+      ></button>
     </div>
   );
 }

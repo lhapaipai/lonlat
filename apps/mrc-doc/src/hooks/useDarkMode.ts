@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useIsomorphicLayoutEffect } from "usehooks-ts";
+import { useEffect, useState } from "react";
 
 type DarkModeReturn = {
   isDarkMode: boolean;
@@ -17,7 +16,7 @@ export function useDarkMode(): DarkModeReturn {
       : document.body.classList.contains("dark"),
   );
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     document.body.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
 

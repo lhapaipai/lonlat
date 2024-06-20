@@ -1,3 +1,6 @@
-v0.0.3
+## 0.0.3
 
-add input range
+Range add component
+LinkButton add component
+fix Toggle cursor pointer
+ResizeArea add more Props

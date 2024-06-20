@@ -62,7 +62,6 @@ export const RPopup = memo(
   forwardRef<Popup, RPopupProps>(function RPopup(props, ref) {
     const { longitude, latitude, children, ...popupProps } = props;
     const map = useMap();
-    console.log("render RPopup", map);
     const [options, callbacks] = transformPropsToOptions(popupProps) as [
       PopupProps,
       PopupCallbacks,
