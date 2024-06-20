@@ -41,7 +41,7 @@ const config = {
                   padding: "0 1rem",
                 },
                 "&::before": {
-                  "@apply absolute top-1 right-1 text-gray-3": {},
+                  "@apply absolute top-1 right-3 text-gray-3 text-xs": {},
                   content: "attr(data-language)",
                 },
               },

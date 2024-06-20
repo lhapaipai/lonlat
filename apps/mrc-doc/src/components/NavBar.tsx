@@ -138,7 +138,10 @@ export default function NavBar() {
         </div>
 
         <nav className="flex flex-col gap-1">
-          <Link href="/" className="mb-4 grid min-h-32 place-content-center">
+          <Link
+            href="/"
+            className="mb-4 grid min-h-32 place-content-center transition-colors hover:text-gray-7 active:text-gray-6"
+          >
             <MapLibreReactLogo height={100} />
           </Link>
           {links.map(({ url, title, children }) =>

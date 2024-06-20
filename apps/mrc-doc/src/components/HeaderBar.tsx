@@ -9,15 +9,19 @@ export default function HeaderBar() {
   const { isDarkMode, setDarkMode } = useDarkMode();
   return (
     <header className="flex h-12 items-center">
-      <Link href="/" className="ml-12 place-content-center md:ml-0">
+      <Link
+        href="/"
+        className="ml-12 place-content-center transition-colors hover:text-gray-7 active:text-gray-6 md:ml-0 [&:hover_.libre]:text-blue-4"
+      >
         <span className="block md:hidden">
           <MapLibreReactLogo height={42} />
         </span>
         <span className="hidden font-title text-2xl md:block">
           <span>
-            Map<span className="text-[#99bfea]">Libre</span>
+            Map
+            <span className="libre text-blue-3 transition-colors">Libre</span>
           </span>{" "}
-          React Components
+          React <span className="text-xl">components</span>
         </span>
       </Link>
       <span className="ml-auto">

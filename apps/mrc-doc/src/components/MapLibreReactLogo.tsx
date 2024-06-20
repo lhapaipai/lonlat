@@ -1,7 +1,13 @@
+"use client";
+
+import { useState } from "react";
+
 interface Props {
   height?: number;
 }
 export default function MapLibreReactLogo({ height = 27 }: Props) {
+  const [duration, setDuration] = useState("25s");
+
   return (
     <svg
       width={(height * 21) / 27}
@@ -11,6 +17,8 @@ export default function MapLibreReactLogo({ height = 27 }: Props) {
       version="1.1"
       id="svg3"
       xmlns="http://www.w3.org/2000/svg"
+      onMouseEnter={() => setDuration("2s")}
+      onMouseLeave={() => setDuration("25s")}
     >
       <path
         fill="#82b4fe"
@@ -45,7 +53,7 @@ export default function MapLibreReactLogo({ height = 27 }: Props) {
         <animateTransform
           attributeName="transform"
           type="rotate"
-          dur="25s"
+          dur={duration}
           values="0 0 0;360 0 0;"
           repeatCount="indefinite"
         />
