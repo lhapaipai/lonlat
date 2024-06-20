@@ -16,3 +16,10 @@ body:not(.dark) {
   );
   background-attachment: fixed;
 }
+
+.light {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}

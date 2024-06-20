@@ -113,14 +113,14 @@ export const buttonVariants = {
         "bg-transparent active-full:shadow-sm outline-offset-0",
         {
           yellow:
-            "hover:bg-yellow-1/50 active-full:bg-yellow-2/25 text-yellow-4 hover:text-yellow-5",
-          gray: "hover:bg-gray-1 active-full:bg-gray-2 text-gray-5 hover:text-gray-6 active-full:text-gray-7",
-          red: "hover:bg-red-1/50 active-full:bg-red-2/50 text-red-4 hover:text-red-5",
+            "hover:bg-yellow-1/50 active-full:bg-yellow-2/25 text-yellow-4 hover:text-yellow-5 focus-visible:outline-yellow-5",
+          gray: "hover:bg-gray-1 active-full:bg-gray-2 text-gray-5 hover:text-gray-6 active-full:text-gray-7 focus-visible:outline-gray-5",
+          red: "hover:bg-red-1/50 active-full:bg-red-2/50 text-red-4 hover:text-red-5 focus-visible:outline-red-5",
           orange:
-            "hover:bg-orange-1/50 active-full:bg-orange-2/50 text-orange-4 hover:text-orange-5",
+            "hover:bg-orange-1/50 active-full:bg-orange-2/50 text-orange-4 hover:text-orange-5 focus-visible:outline-orange-5",
           green:
-            "hover:bg-green-1/50 active-full:bg-green-2/50 text-green-4 hover:text-green-5",
-          blue: "hover:bg-blue-1/50 active-full:bg-blue-2/50 text-blue-4 hover:text-blue-5",
+            "hover:bg-green-1/50 active-full:bg-green-2/50 text-green-4 hover:text-green-5 focus-visible:outline-green-5",
+          blue: "hover:bg-blue-1/50 active-full:bg-blue-2/50 text-blue-4 hover:text-blue-5 focus-visible:outline-blue-5",
         }[color],
       );
     },
