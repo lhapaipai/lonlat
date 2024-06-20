@@ -25,8 +25,6 @@ export default function App() {
         <RPopup
           longitude={center[0]}
           latitude={center[1]}
-          onMapClick={() => setShowPopup(false)}
-          onMapMove={() => setShowPopup(false)}
           offset={markerPopupOffset}
         >
           Hello Lyon !

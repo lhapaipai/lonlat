@@ -1,8 +1,7 @@
 import { Map, StyleSpecification } from "maplibre-gl";
-import "./App.scss";
+import "./App.css";
 import "maplibre-react-components/dist/style.css";
 import style from "./style.json";
-
 const mapStyle = style as StyleSpecification;
 
 new URL(window.location.toString()).searchParams
@@ -25,7 +24,6 @@ import {
   RScaleControl,
   RSource,
   RTerrainControl,
-  markerPopupOffset,
   useRControl,
 } from "maplibre-react-components";
 import { useRef } from "react";
@@ -108,18 +106,14 @@ function MyCtrl() {
   );
 }
 
-const acuracyCircleStyle = {
-  transform:
-    "translate(-50%, -50%) translate(148px, 250px) rotateX(0deg) rotateZ(0deg)",
-  width: "297px",
-  height: "297px",
-  opacity: 1,
+const accuracyCircleStyle = {
+  transform: "translate(-50%, -50%)",
+  width: "200px",
+  height: "200px",
 };
 
 const dotStyle = {
-  transform:
-    "translate(-50%, -50%) translate(148px, 250px) rotateX(0deg) rotateZ(0deg)",
-  opacity: 1,
+  transform: "translate(-50%, -50%)",
 };
 
 function CustomMap({
@@ -132,17 +126,17 @@ function CustomMap({
   scheme?: "light" | "dark";
 }) {
   const mapRef = useRef<Map>(null);
-  //       mapStyle={"/assets/styles/ign/PLAN.IGN/standard.json"}
 
   return (
-    <div className={clsx("h-[500px] p-8", scheme)}>
+    <div className={clsx("map-container", scheme)}>
       <RMap
         ref={mapRef}
         initialCenter={marignier}
         initialZoom={8}
         initialAttributionControl={false}
-        className={clsx(className, `shadow-md ml-theme-${theme}`)}
+        className={clsx(className, `shadow-md maplibregl-theme-${theme}`)}
         mapStyle={mapStyle}
+        onClick={(e) => console.log(e.lngLat)}
       >
         <RSource
           type="raster-dem"
@@ -151,10 +145,14 @@ function CustomMap({
           encoding="terrarium"
           tileSize={256}
         />
-        <RMarker longitude={leman.lng} latitude={leman.lat}>
+        <RMarker
+          longitude={leman.lng}
+          latitude={leman.lat}
+          initialAnchor="center"
+        >
           <div
             className="maplibregl-user-location-accuracy-circle maplibregl-marker maplibregl-marker-anchor-center"
-            style={acuracyCircleStyle}
+            style={accuracyCircleStyle}
           ></div>
           <div
             className="maplibregl-user-location-dot maplibregl-marker maplibregl-marker-anchor-center"
@@ -164,14 +162,14 @@ function CustomMap({
         <RMarker longitude={marignier2.lng} latitude={marignier2.lat} />
 
         <RMarker longitude={marignier2.lng} latitude={marignier2.lat} />
-        <RPopup
-          longitude={marignier.lng}
-          latitude={marignier.lat}
-          initialAnchor="top"
-          offset={markerPopupOffset}
-        >
+        <RPopup longitude={marignier.lng} latitude={marignier.lat}>
           Hello world !
         </RPopup>
+        <RPopup longitude={5.74} latitude={45.95}>
+          Hello world !
+          <button className="maplibregl-popup-close-button">×</button>
+        </RPopup>
+
         <MrcLogoControl position="top-left" />
         <RFullscreenControl />
         <RGeolocateControl
@@ -191,6 +189,7 @@ function CustomMap({
           {theme} {scheme}
         </div>
       </RMap>
+      <a href="#">hello</a>world
     </div>
   );
 }
@@ -198,7 +197,7 @@ function CustomMap({
 function App() {
   return (
     <>
-      <div className="grid grid-cols-2">
+      <div id="app">
         <CustomMap theme="classic" scheme="light" />
         <CustomMap theme="classic" scheme="dark" />
 

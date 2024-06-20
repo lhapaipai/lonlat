@@ -6,11 +6,18 @@ import "maplibre-theme/classic.scoped.css";
 
 import App from "./App.tsx";
 
-import "~/shared/tailwind.css";
-/*
- <React.StrictMode>
-    <App />
-  </React.StrictMode>
-*/
+// import "~/shared/tailwind.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+import React from "react";
+
+const strict = false;
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  strict ? (
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  ) : (
+    <App />
+  ),
+);

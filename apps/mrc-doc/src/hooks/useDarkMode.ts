@@ -10,7 +10,12 @@ type DarkModeReturn = {
 };
 
 export function useDarkMode(): DarkModeReturn {
-  const [isDarkMode, setDarkMode] = useState(true);
+  // dark by default because I prefer the dark theme for this doc...
+  const [isDarkMode, setDarkMode] = useState(() =>
+    typeof window === "undefined"
+      ? true
+      : document.body.classList.contains("dark"),
+  );
 
   useIsomorphicLayoutEffect(() => {
     document.body.classList.toggle("dark", isDarkMode);
