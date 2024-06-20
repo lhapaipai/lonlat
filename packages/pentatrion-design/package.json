@@ -1,6 +1,6 @@
 {
   "name": "pentatrion-design",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "keywords": [],
   "author": "Hugues Tavernier",
@@ -15,16 +15,6 @@
     "storybook": "storybook dev -p 6007",
     "storybook-build": "storybook build"
   },
-  "files": [
-    "dist/",
-    "components/",
-    "hooks/",
-    "lib/",
-    "redux/",
-    "styles",
-    "tailwind",
-    ""
-  ],
   "type": "module",
   "devDependencies": {
     "@babel/core": "^7.24.7",
