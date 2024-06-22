@@ -2,7 +2,14 @@ import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Button } from "../button";
 
-import { Modal, ModalTrigger, ModalContent, ModalDescription, ModalHeader, ModalFooter } from ".";
+import {
+  Modal,
+  ModalTrigger,
+  ModalContent,
+  ModalDescription,
+  ModalHeader,
+  ModalFooter,
+} from ".";
 
 const meta = {
   title: "Components/Modal",
@@ -31,6 +38,30 @@ export const Basic: Story = {
   },
 };
 
+export const BasicLongText: Story = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: ({ children, ...args }) => {
+    return (
+      <Modal {...args}>
+        <ModalTrigger>open Modal</ModalTrigger>
+        <ModalContent>
+          <ModalHeader>Header</ModalHeader>
+          <ModalDescription>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Exercitationem voluptates amet ad recusandae a. Laudantium, aliquam!
+            Perferendis reiciendis aliquid ut repudiandae, repellat tenetur
+            harum! Ad dicta nostrum laboriosam consectetur ratione.
+          </ModalDescription>
+        </ModalContent>
+      </Modal>
+    );
+  },
+  args: {
+    initialOpen: false,
+    color: "default",
+  },
+};
+
 export const Context = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -47,7 +78,11 @@ export const Context = () => {
         <ModalDescription>Content</ModalDescription>
         <ModalFooter>
           <div className="flex justify-between">
-            <Button variant="text" color="gray" onClick={() => setIsOpen(false)}>
+            <Button
+              variant="text"
+              color="gray"
+              onClick={() => setIsOpen(false)}
+            >
               Cancel
             </Button>
             <Button color="yellow" onClick={() => setIsOpen(false)}>
@@ -76,30 +111,38 @@ export const ScrollableModal = () => {
         <ModalDescription height={160}>
           <div className="px-4 text-justify">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
-              rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?
-              Deleniti iure amet qui vero, blanditiis quos?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Praesentium unde, blanditiis rem accusamus obcaecati enim amet,
+              voluptatibus nemo facilis illum aut itaque in? Deleniti iure amet
+              qui vero, blanditiis quos?
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
-              rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?
-              Deleniti iure amet qui vero, blanditiis quos?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Praesentium unde, blanditiis rem accusamus obcaecati enim amet,
+              voluptatibus nemo facilis illum aut itaque in? Deleniti iure amet
+              qui vero, blanditiis quos?
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
-              rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?
-              Deleniti iure amet qui vero, blanditiis quos?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Praesentium unde, blanditiis rem accusamus obcaecati enim amet,
+              voluptatibus nemo facilis illum aut itaque in? Deleniti iure amet
+              qui vero, blanditiis quos?
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
-              rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?
-              Deleniti iure amet qui vero, blanditiis quos?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Praesentium unde, blanditiis rem accusamus obcaecati enim amet,
+              voluptatibus nemo facilis illum aut itaque in? Deleniti iure amet
+              qui vero, blanditiis quos?
             </p>
           </div>
         </ModalDescription>
         <ModalFooter>
           <div className="flex justify-between">
-            <Button variant="text" color="gray" onClick={() => setIsOpen(false)}>
+            <Button
+              variant="text"
+              color="gray"
+              onClick={() => setIsOpen(false)}
+            >
               Cancel
             </Button>
             <Button color="yellow" onClick={() => setIsOpen(false)}>

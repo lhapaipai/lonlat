@@ -10,7 +10,7 @@ import clsx from "clsx";
 import { Dialog } from "../dialog";
 
 export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ style, children, ...props }, propRef) => {
+  ({ style, className, children, ...props }, propRef) => {
     const context = useModalContext();
     const floatingContext = context.context;
 
@@ -31,17 +31,17 @@ export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
           <FloatingFocusManager context={floatingContext}>
             <Dialog
               className={clsx(
-                "w-96 max-w-full",
+                "mx-4 min-w-96 max-w-full",
                 `border-${context.color}-2`,
                 "motion-safe:animate-fade-in",
+                className,
               )}
-              ref={ref}
+              style={style}
               aria-labelledby={context.labelId}
               aria-describedby={context.descriptionId}
-              style={style}
               {...context.getFloatingProps(props)}
             >
-              {children}
+              <div ref={ref}>{children}</div>
             </Dialog>
           </FloatingFocusManager>
         </FloatingOverlay>

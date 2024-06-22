@@ -1,3 +1,8 @@
+## 0.0.9
+
+modal add ComponentProps to parent
+modal fix forwardRef to functional component
+
 ## 0.0.8
 
 Range fix ComponentPropsWithRef import
