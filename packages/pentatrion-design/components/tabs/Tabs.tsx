@@ -43,10 +43,7 @@ export function Tabs({
   const content = tabs.find((t) => t.id === value)?.content;
   return (
     <div
-      className={clsx(
-        "ll-tabs overflow-hidden bg-gray-2 shadow md:rounded-sm",
-        className,
-      )}
+      className={clsx("ll-tabs overflow-hidden bg-gray-2 shadow", className)}
     >
       <div
         role="tablist"

@@ -30,6 +30,7 @@ export * from "./components/sortable";
 export * from "./components/steps";
 export * from "./components/table";
 export * from "./components/tabs";
+export * from "./components/textarea";
 export * from "./components/tooltip";
 
 export * from "./hooks";

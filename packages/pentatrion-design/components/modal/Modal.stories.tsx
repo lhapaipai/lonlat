@@ -10,6 +10,7 @@ import {
   ModalHeader,
   ModalFooter,
 } from ".";
+import { type Tab, Tabs } from "../tabs/Tabs";
 
 const meta = {
   title: "Components/Modal",
@@ -44,7 +45,7 @@ export const BasicLongText: Story = {
     return (
       <Modal {...args}>
         <ModalTrigger>open Modal</ModalTrigger>
-        <ModalContent>
+        <ModalContent className="w-[600px] max-w-full">
           <ModalHeader>Header</ModalHeader>
           <ModalDescription>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -62,7 +63,7 @@ export const BasicLongText: Story = {
   },
 };
 
-export const Context = () => {
+export const WithButtons = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Modal
@@ -95,7 +96,68 @@ export const Context = () => {
   );
 };
 
-export const ScrollableModal = () => {
+export const WithTabs = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [id, setId] = useState<string | number>("css");
+
+  const tabs: Tab[] = [
+    {
+      id: "css",
+      title: "CSS Export",
+      content: (
+        <div className="flex h-96 max-h-full flex-col p-4">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere odit
+            id omnis molestias quidem necessitatibus aperiam deleniti, neque
+            reiciendis iusto dolorem pariatur voluptatem natus reprehenderit
+            itaque illum autem consectetur vero?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere odit
+            id omnis molestias quidem necessitatibus aperiam deleniti, neque
+            reiciendis iusto dolorem pariatur voluptatem natus reprehenderit
+            itaque illum autem consectetur vero?
+          </p>
+        </div>
+      ),
+    },
+    {
+      id: "json",
+      title: "JSON Export",
+      content: (
+        <div className="flex h-96 max-h-full flex-col p-4">
+          <p>
+            Hello world Hello world Hello world Hello world Hello world Hello
+            world Hello world Hello world Hello world Hello world Hello world
+            Hello world Hello world Hello world Hello world Hello world Hello
+            world Hello world Hello world Hello world Hello world Hello world
+            Hello world{" "}
+          </p>
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <Modal open={isOpen} onOpen={setIsOpen}>
+      <ModalTrigger>Generate config</ModalTrigger>
+      <ModalContent className="w-full max-w-[600px]">
+        <Tabs tabs={tabs} value={id} onChange={setId} className="rounded-2xl">
+          <Button
+            icon
+            variant="text"
+            color="gray"
+            onClick={() => setIsOpen(false)}
+          >
+            <i className="fe-cancel"></i>
+          </Button>
+        </Tabs>
+      </ModalContent>
+    </Modal>
+  );
+};
+
+export const Scrollable = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Modal

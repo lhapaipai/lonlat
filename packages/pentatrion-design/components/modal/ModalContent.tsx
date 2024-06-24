@@ -31,7 +31,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
           <FloatingFocusManager context={floatingContext}>
             <Dialog
               className={clsx(
-                "mx-4 min-w-96 max-w-full",
+                "mx-4",
                 `border-${context.color}-2`,
                 "motion-safe:animate-fade-in",
                 className,

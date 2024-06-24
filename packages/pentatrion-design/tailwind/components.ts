@@ -196,39 +196,40 @@ export const componentsResizeArea: CSSRuleObject = {
 };
 
 export const componentsInputOutline: CSSRuleObject = {
-  ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text)": {
-    "@apply outline outline-1 focus-full:outline-2": {},
-  },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-color="yellow"])':
+  ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea)":
+    {
+      "@apply outline outline-1 focus-full:outline-2": {},
+    },
+  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="yellow"])':
     {
       "@apply outline-gray-2 hover:outline-gray-3 focus-full:outline-yellow-4":
         {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-color="gray"])':
+  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="gray"])':
     {
       "@apply outline-gray-2 hover:outline-gray-3 focus-full:outline-gray-4":
         {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-color="red"])':
+  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="red"])':
     {
       "@apply outline-red-2 hover:outline-red-3 focus-full:outline-red-4": {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-color="orange"])':
+  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="orange"])':
     {
       "@apply outline-orange-2 hover:outline-orange-3 focus-full:outline-orange-4":
         {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-color="blue"])':
+  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="blue"])':
     {
       "@apply outline-blue-2 hover:outline-blue-3 focus-full:outline-blue-4":
         {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-color="green"])':
+  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="green"])':
     {
       "@apply outline-green-2 hover:outline-green-3 focus-full:outline-green-4":
         {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text):where([data-variant="ghost"])':
+  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-variant="ghost"])':
     {
       "@apply outline-transparent": {},
     },

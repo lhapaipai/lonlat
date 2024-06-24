@@ -1,3 +1,9 @@
+## 0.0.10
+
+add textarea
+modal without size className for more flexibility
+tabs without border-radius for more flexibility
+
 ## 0.0.9
 
 modal add ComponentProps to parent
