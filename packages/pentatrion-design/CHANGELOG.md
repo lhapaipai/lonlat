@@ -1,3 +1,8 @@
+## 0.0.11
+
+add input/button color
+fix notificationsProvider pointer event none
+
 ## 0.0.10
 
 add textarea

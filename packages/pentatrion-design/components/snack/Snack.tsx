@@ -32,7 +32,10 @@ export function Snack({
 
   return (
     <Dialog
-      className={clsx("motion-safe:animate-fade-in", "ll-snack")}
+      className={clsx(
+        "pointer-events-auto motion-safe:animate-fade-in",
+        "ll-snack",
+      )}
       placement="top"
       color={color}
     >

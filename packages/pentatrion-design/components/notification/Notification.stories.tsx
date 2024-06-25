@@ -46,6 +46,11 @@ export const Context = () => {
       <Button onClick={handleClick}>Show info notification</Button>
       <Button onClick={throwError}>Throw custom error</Button>
       <Button onClick={handle404Error}>Throw 404 fetch error</Button>
+      <div className="mt-96">
+        <a href="#" className="link">
+          link
+        </a>
+      </div>
     </div>
   );
 };

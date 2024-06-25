@@ -25,6 +25,7 @@ export function NotificationsProvider({ children }: Props) {
       "left-0",
       "right-0",
       "z-notification",
+      "pointer-events-none",
     );
     document.body.append(container.current);
   }
