@@ -1,3 +1,6 @@
+## 0.0.12
+fix notificationsConsumer pointer event none
+
 ## 0.0.11
 
 add input/button color
