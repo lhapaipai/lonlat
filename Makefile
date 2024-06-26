@@ -7,17 +7,8 @@ remote_prod_host 	:= lonlat.org
 maplibre_react_sandbox_path	:= $(local_path)/apps/maplibre-react-sandbox
 maplibre_react_sandbox_host := maplibre-react-sandbox.lonlat.pentatrion.com
 
-design_path	:= $(local_path)/packages/pentatrion-design
-design_host	:= design.pentatrion.com
-
-mrc_doc_path := $(local_path)/apps/mrc-doc
-mrc_doc_host := maplibre-react-components.pentatrion.com
-
 assets_path	:= $(local_path)/extra/assets/public
 assets_host := assets.lonlat.org
-
-maplibre_theme_path := $(local_path)/packages/maplibre-theme/demo
-maplibre_theme_host := maplibre-theme.pentatrion.com
 
 .PHONY: help
 help:
@@ -46,30 +37,6 @@ deploy-maplibre-react-sandbox: ## Build and deploy examples
 		$(maplibre_react_sandbox_path)/dist/ \
 		berlin:prod/$(maplibre_react_sandbox_host)
 	@echo "go : https://$(maplibre_react_sandbox_host)"
-
-.PHONY: deploy-design-storybook
-deploy-design-storybook: ## Build and deploy examples
-	cd $(design_path) && pnpm storybook-build
-	rsync -av --delete \
-		$(design_path)/storybook-static/ \
-		berlin:prod/$(design_host)
-	@echo "go : https://$(design_host)"
-
-.PHONY: deploy-mrc-doc
-deploy-mrc-doc:
-	cd $(mrc_doc_path) && pnpm build
-	rsync -av --delete \
-		$(mrc_doc_path)/out/ \
-		berlin:prod/$(mrc_doc_host)
-	@echo "go : https://$(mrc_doc_host)"
-
-.PHONY: deploy-maplibre-theme-demo
-deploy-maplibre-theme-demo:
-	cd $(maplibre_theme_path) && pnpm build
-	rsync -ax --delete \
-		$(maplibre_theme_path)/dist/ \
-		berlin:prod/$(maplibre_theme_host)
-	@echo "go : https://$(maplibre_theme_host)"
 
 .PHONY: deploy-assets
 deploy-assets: ## Build and deploy examples

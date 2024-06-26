@@ -1,8 +1,4 @@
 packages:
   - "apps/*"
-  - "packages/pentatrion-design"
-  - "packages/maplibre-react-components"
-  - "packages/pentatrion-fonts"
-  - "packages/pentatrion-geo"
   - "extra/swagger"
   - "extra/assets"

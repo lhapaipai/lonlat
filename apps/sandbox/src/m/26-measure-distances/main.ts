@@ -1,7 +1,7 @@
 import "~/shared/tailwind.css";
 import "~/shared/ml-overlay.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/style.css";
+import "maplibre-react-components/style.css";
 import { GeoJSONSource, LngLatLike, Map } from "maplibre-gl";
 import { Feature, FeatureCollection, LineString, Point } from "geojson";
 import { length } from "@turf/turf";

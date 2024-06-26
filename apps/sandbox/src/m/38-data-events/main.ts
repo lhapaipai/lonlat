@@ -1,7 +1,7 @@
 import "~/shared/tailwind.css";
 import "./style.scss";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/style.css";
+import "maplibre-react-components/style.css";
 import {
   LngLatLike,
   Map,

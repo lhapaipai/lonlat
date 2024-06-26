@@ -7,7 +7,7 @@
 import "~/shared/tailwind.css";
 import "~/shared/ml-overlay.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/style.css";
+import "maplibre-react-components/style.css";
 import { FlyToOptions, GeoJSONSource, LngLatLike, Map } from "maplibre-gl";
 import { EasingKeys, easingFunctions } from "./easing";
 

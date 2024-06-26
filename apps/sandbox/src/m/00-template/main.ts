@@ -1,7 +1,7 @@
 import "~/shared/tailwind.css";
 import "~/shared/ml-overlay.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/style.css";
+import "maplibre-react-components/style.css";
 import { LngLatLike, Map } from "maplibre-gl";
 
 const $map = document.getElementById("map")!;

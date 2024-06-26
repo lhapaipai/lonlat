@@ -1,7 +1,7 @@
 import { GeolocateControl, Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/style.css";
+import "maplibre-react-components/style.css";
 import { RMap, RMarker } from "maplibre-react-components";
 import { useRef, useState } from "react";
 import { ignPlanStyleUrl } from "~/shared/constants";

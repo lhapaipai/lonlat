@@ -1,1 +1,0 @@
-export { cardConfig } from "./config";

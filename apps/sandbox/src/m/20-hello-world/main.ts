@@ -2,7 +2,7 @@ import "~/shared/tailwind.css";
 import "~/shared/ml-overlay.css";
 import "./style.css";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/style.css";
+import "maplibre-react-components/style.css";
 import { LngLatLike, Map, NavigationControl } from "maplibre-gl";
 import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
 import MapboxDraw from "@mapbox/mapbox-gl-draw";

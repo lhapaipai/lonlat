@@ -1,6 +1,6 @@
 import "./App.scss";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/style.css";
+import "maplibre-react-components/style.css";
 import LayerSwitcherControl from "./components/LayerSwitcherControl";
 import { useAppSelector } from "./store";
 import {

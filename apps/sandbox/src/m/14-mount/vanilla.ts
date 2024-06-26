@@ -1,7 +1,7 @@
 import { Map } from "maplibre-gl";
 import "./App.scss";
 import "maplibre-theme/classic.css";
-import "maplibre-react-components/dist/style.css";
+import "maplibre-react-components/style.css";
 
 const marignier = { lng: 6.498, lat: 46.089 };
 

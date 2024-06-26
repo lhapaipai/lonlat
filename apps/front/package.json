@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "build-with-errors": "vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fontello": "fontello"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.17",
@@ -25,10 +26,9 @@
     "geojson": "^0.5.0",
     "immutable": "5.0.0-beta.5",
     "maplibre-gl": "^4.4.0",
-    "maplibre-react-components": "workspace:*",
+    "maplibre-react-components": "^0.0.7",
     "nanoid": "^5.0.7",
-    "pentatrion-design": "workspace:*",
-    "pentatrion-fonts": "workspace:*",
+    "pentatrion-design": "^0.0.13",
     "pentatrion-geo": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -45,6 +45,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "pentatrion-fontello-cli": "^0.0.5",
     "postcss": "^8.4.38",
     "postcss-load-config": "^5.1.0",
     "prettier-plugin-tailwindcss": "^0.6.4",
