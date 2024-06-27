@@ -10,7 +10,7 @@ interface LayerState {
   streetView: boolean;
 }
 
-const hashInfos = parseHashString();
+const hashInfos = parseHashString(window.location.hash);
 const baseLayer: BaseLayerId =
   hashInfos && baseLayersById[hashInfos.baseLayer as BaseLayerId]
     ? (hashInfos.baseLayer as BaseLayerId)
@@ -33,7 +33,9 @@ const layerSlice = createSlice({
     optionalLayerToggled(state, action: PayloadAction<OptionalLayerId>) {
       const layerId = action.payload;
       if (state.optionalLayers.includes(layerId)) {
-        state.optionalLayers = state.optionalLayers.filter((id) => layerId !== id);
+        state.optionalLayers = state.optionalLayers.filter(
+          (id) => layerId !== id,
+        );
       } else {
         state.optionalLayers.push(layerId);
       }
@@ -50,8 +52,12 @@ const layerSlice = createSlice({
 
 export default layerSlice.reducer;
 
-export const { baseLayerChanged, optionalLayerToggled, terrainToggled, streetViewToggled } =
-  layerSlice.actions;
+export const {
+  baseLayerChanged,
+  optionalLayerToggled,
+  terrainToggled,
+  streetViewToggled,
+} = layerSlice.actions;
 
 export const selectLayer = (state: RootState) => state.layer;
 export const selectBaseLayer = (state: RootState) => state.layer.baseLayer;

@@ -83,12 +83,15 @@ importers:
       maplibre-react-components:
         specifier: ^0.0.7
         version: 0.0.7(@floating-ui/dom@1.6.6)(maplibre-gl@4.4.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      maplibre-theme:
+        specifier: ^0.0.14
+        version: 0.0.14
       nanoid:
         specifier: ^5.0.7
         version: 5.0.7
       pentatrion-design:
-        specifier: ^0.0.13
-        version: 0.0.13(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2)))
+        specifier: ^0.0.16
+        version: 0.0.16(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2)))
       pentatrion-geo:
         specifier: workspace:*
         version: link:../pentatrion-geo
@@ -108,6 +111,12 @@ importers:
         specifier: ^3.4.0
         version: 3.4.0
     devDependencies:
+      '@testing-library/jest-dom':
+        specifier: ^6.4.6
+        version: 6.4.6(vitest@1.6.0(@types/node@20.14.9)(jsdom@24.1.0)(sass@1.77.6))
+      '@testing-library/react':
+        specifier: ^15.0.7
+        version: 15.0.7(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/d3-array':
         specifier: ^3.2.1
         version: 3.2.1
@@ -132,6 +141,9 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.0
         version: 3.7.0(vite@5.3.1(@types/node@20.14.9)(sass@1.77.6))
+      jsdom:
+        specifier: ^24.1.0
+        version: 24.1.0
       pentatrion-fontello-cli:
         specifier: ^0.0.5
         version: 0.0.5
@@ -156,6 +168,9 @@ importers:
       vite:
         specifier: ^5.3.1
         version: 5.3.1(@types/node@20.14.9)(sass@1.77.6)
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.0(@types/node@20.14.9)(jsdom@24.1.0)(sass@1.77.6)
 
   apps/pentatrion-geo:
     dependencies:
@@ -4763,6 +4778,9 @@ packages:
       '@floating-ui/dom':
         optional: true
 
+  maplibre-theme@0.0.14:
+    resolution: {integrity: sha512-s/dOSMSpRlxlR+v4LbUju/ouBIIOIyogi/ka8fg2hbS4yQ1gOzkM3N+TKagwUhMij/SvqR5R234KiyhYiBcu7Q==}
+
   maplibre-theme@0.0.6:
     resolution: {integrity: sha512-d3IcUYVRGT2ozW2Y3P04E9vCtNCxay4vY+5sw1blSFkbLDjYsjT9Jsb305BXb6nXSh53juwywqr/miy0X6tP/g==}
 
@@ -5175,6 +5193,20 @@ packages:
 
   pentatrion-design@0.0.14:
     resolution: {integrity: sha512-GONMCnf9E9ImuxWnnvPVzs7/hDdZEyq0bfEm1n8xZlmpJDLu5ATBt0U+SPWajYc/+eZ0oQ1TpZxjZVyUoY5ZTA==}
+    peerDependencies:
+      '@reduxjs/toolkit': '*'
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react-redux: '*'
+      tailwindcss: '*'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  pentatrion-design@0.0.16:
+    resolution: {integrity: sha512-Ked/2uT8/VZIAVfDQs5gPLnrLj5LAon3lJd3wgDkHUDtGgRdND5kS0e1+9z9n+1Znj8tuwbSFsJ7J95HMGGRCw==}
     peerDependencies:
       '@reduxjs/toolkit': '*'
       '@types/react': '*'
@@ -12301,6 +12333,8 @@ snapshots:
     optionalDependencies:
       '@floating-ui/dom': 1.6.6
 
+  maplibre-theme@0.0.14: {}
+
   maplibre-theme@0.0.6: {}
 
   markdown-to-jsx@7.3.2(react@18.3.1):
@@ -12675,6 +12709,24 @@ snapshots:
       - sortablejs
 
   pentatrion-design@0.0.14(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))):
+    dependencies:
+      '@floating-ui/react': 0.26.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@reduxjs/toolkit': 2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
+      clsx: 2.1.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-polymorphic-types: 2.0.0(@types/react@18.3.3)
+      react-redux: 9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1)
+      react-sortablejs: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sortablejs@1.15.2)
+      tailwindcss: 3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
+    transitivePeerDependencies:
+      - '@types/sortablejs'
+      - sortablejs
+
+  pentatrion-design@0.0.16(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))):
     dependencies:
       '@floating-ui/react': 0.26.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@reduxjs/toolkit': 2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1)

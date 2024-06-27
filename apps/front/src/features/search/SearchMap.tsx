@@ -1,68 +1,33 @@
-import {
-  createLonLatFeaturePoint,
-  isGeolocationGeoOption,
-} from "pentatrion-geo";
+import { createLonLatGeoOption, isGeolocationGeoOption } from "pentatrion-geo";
 import {
   GradientMarker,
   RGradientMarker,
   Event,
-  RLayer,
-  RSource,
 } from "maplibre-react-components";
 
-import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
+import { searchFeatureChanged, selectSearch } from "./searchSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
-import {
-  isochroneFillLayerStyle,
-  isochroneLineLayerStyle,
-} from "~/config/mapStyles";
-import { selectIsochroneFeature } from "../isochrone/isochroneSlice";
 
 export default function SearchMap() {
   const dispatch = useAppDispatch();
-  const searchFeature = useAppSelector(selectSearchFeature);
-  const isochroneFeature = useAppSelector(selectIsochroneFeature);
+  const { feature, readOnly } = useAppSelector(selectSearch);
 
   function handleSearchLocationDragEnd(e: Event<GradientMarker>) {
-    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
+    const lonlatFeature = createLonLatGeoOption(e.target.getLngLat(), 0);
     dispatch(searchFeatureChanged(lonlatFeature));
   }
 
   return (
     <>
-      {searchFeature && !isGeolocationGeoOption(searchFeature) && (
+      {feature && !isGeolocationGeoOption(feature) && (
         <RGradientMarker
-          key={searchFeature.id}
-          icon={`fe-${searchFeature.properties.type}`}
-          draggable={true}
-          longitude={searchFeature.geometry.coordinates[0]}
-          latitude={searchFeature.geometry.coordinates[1]}
+          key={feature.id}
+          icon={`fe-${feature.properties.type}`}
+          draggable={!readOnly}
+          longitude={feature.geometry.coordinates[0]}
+          latitude={feature.geometry.coordinates[1]}
           onDragEnd={handleSearchLocationDragEnd}
         />
-      )}
-      {isochroneFeature && (
-        <>
-          <RSource
-            id="search-isochrone"
-            key="search-isochrone"
-            type="geojson"
-            data={isochroneFeature}
-          />
-          <RLayer
-            id="search-isochrone-fill"
-            key="search-isochrone-fill"
-            type="fill"
-            source="search-isochrone"
-            {...isochroneFillLayerStyle}
-          />
-          <RLayer
-            id="search-isochrone-line"
-            key="search-isochrone-line"
-            type="line"
-            source="search-isochrone"
-            {...isochroneLineLayerStyle}
-          />
-        </>
       )}
     </>
   );

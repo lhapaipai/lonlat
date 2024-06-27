@@ -1,7 +1,7 @@
 /* eslint-disable no-empty */
 import { LngLat } from "maplibre-gl";
 import { LonLatGeoOption } from "../types";
-import { createLonLatFeaturePoint } from "./lonlat";
+import { createLonLatGeoOption } from "./lonlat";
 import { ddmToDd, dmsToDd } from "./util";
 
 const dms = /(\d+)\s*°\s*(\d+)\s*['′]\s*(\d+(?:\.\d+)?)\s*["″]/;
@@ -82,19 +82,23 @@ export const latlonRegex = new RegExp(
     end.source,
 );
 
-function createFeatures(strLon: string | number, strLat: string | number, strict = true) {
+function createFeatures(
+  strLon: string | number,
+  strLat: string | number,
+  strict = true,
+) {
   const lon = Number(strLon);
   const lat = Number(strLat);
   const results: LonLatGeoOption[] = [];
   try {
     const lngLat = LngLat.convert([lon, lat]);
-    results.push(createLonLatFeaturePoint(lngLat));
+    results.push(createLonLatGeoOption(lngLat));
   } catch (_) {}
 
   if (!strict) {
     try {
       const lngLat = LngLat.convert([lat, lon]);
-      results.push(createLonLatFeaturePoint(lngLat));
+      results.push(createLonLatGeoOption(lngLat));
     } catch (_) {}
   }
 

@@ -27,13 +27,15 @@ type MapState = {
   mode: "dark" | "light";
 };
 
-const hashInfos = parseHashString();
+const hashInfos = parseHashString(window.location.hash);
 
 const initialState: MapState = {
   viewState: hashInfos
     ? hashInfos.viewState
     : {
-        center: debug ? [marignier.lng, marignier.lat] : [france.lng, france.lat],
+        center: debug
+          ? [marignier.lng, marignier.lat]
+          : [france.lng, france.lat],
         zoom: debug ? marignier.zoom : france.zoom,
         pitch: 0,
         bearing: 0,
@@ -62,7 +64,9 @@ const mapSlice = createSlice({
       if (action.payload) {
         state.coordsUnit = action.payload;
       } else {
-        const currentIndex = coordsUnits.findIndex((c) => c === state.coordsUnit);
+        const currentIndex = coordsUnits.findIndex(
+          (c) => c === state.coordsUnit,
+        );
         state.coordsUnit = coordsUnits[(currentIndex + 1) % coordsUnits.length];
       }
     },
@@ -89,12 +93,14 @@ export const selectViewState = (state: RootState) => state.map.viewState;
 export const selectTab = (state: RootState) => state.map.tab;
 export const selectSearchEngine = (state: RootState) => state.map.searchEngine;
 export const selectCoordsUnit = (state: RootState) => state.map.coordsUnit;
-export const selectDistractionFree = (state: RootState) => state.map.distractionFree;
+export const selectDistractionFree = (state: RootState) =>
+  state.map.distractionFree;
 export const selectMode = (state: RootState) => state.map.mode;
 
-export const modeChangedAction = (mode: "light" | "dark") => (dispatch: AppDispatch) => {
-  document.documentElement.classList.remove("light", "dark");
-  document.documentElement.classList.add(mode);
+export const modeChangedAction =
+  (mode: "light" | "dark") => (dispatch: AppDispatch) => {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(mode);
 
-  dispatch(modeChanged(mode));
-};
+    dispatch(modeChanged(mode));
+  };

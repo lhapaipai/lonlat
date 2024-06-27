@@ -98,7 +98,6 @@ map.on("load", () => {
       const props = features[i].properties;
       if (!props.cluster) continue;
       const id = props.cluster_id;
-      console.log("cluster_id", id);
 
       let marker = markers[id];
       if (!marker) {

@@ -1,6 +1,6 @@
-export * from "./util";
+export { coordsSearch } from "./coordsSearch";
+export * from "./geolocation";
+export * from "./geometry";
 export * from "./lonlat";
 export * from "./nodata";
-export * from "./geometry";
-export * from "./geolocation";
-export { coordsSearch } from "./coordsSearch";
+export * from "./util";

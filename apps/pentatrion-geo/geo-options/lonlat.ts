@@ -5,7 +5,7 @@ import { FeatureProperties, GeoPointOption, LonLatGeoOption } from "../types";
 
 import { Point } from "geojson";
 
-export function createLonLatFeaturePoint(
+export function createLonLatGeoOption(
   lngLat: LngLat,
   // if score is 0 we try to reverse geocode
   // if score is 1 we don't try to convert this feature into another feature
@@ -56,7 +56,9 @@ export const reverseGeocodeLonLatFeaturePoint = async (
     throw new Error("only Point geometry can be reverse geocoded");
   }
 
-  const reversedGeoOption = await ignReverseSearch(feature.geometry.coordinates);
+  const reversedGeoOption = await ignReverseSearch(
+    feature.geometry.coordinates,
+  );
 
   if (reversedGeoOption === null) {
     // we update the score to 1 we don't try anymore to reverse geocode
@@ -67,8 +69,13 @@ export const reverseGeocodeLonLatFeaturePoint = async (
   return reversedGeoOption.properties;
 };
 
-export const getFeaturePointAltitude = async (feature: GeoPointOption): Promise<Point | null> => {
-  if (feature.geometry.type !== "Point" || feature.geometry.coordinates[2] !== undefined) {
+export const getFeaturePointAltitude = async (
+  feature: GeoPointOption,
+): Promise<Point | null> => {
+  if (
+    feature.geometry.type !== "Point" ||
+    feature.geometry.coordinates[2] !== undefined
+  ) {
     return null;
   }
 

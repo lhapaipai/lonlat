@@ -1,0 +1,3 @@
+interface WindowEventHandlersEventMap {
+  replacestate: CustomEvent;
+}

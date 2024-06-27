@@ -207,7 +207,11 @@ export function dmsToDd(
   return dd;
 }
 
-export function ddmToDd(degStr: string | number, minStr: string | number, dirRaw: string) {
+export function ddmToDd(
+  degStr: string | number,
+  minStr: string | number,
+  dirRaw: string,
+) {
   const deg = Number(degStr);
   const min = Number(minStr);
   const dir = dirRaw.toLowerCase();
@@ -222,7 +226,8 @@ export function ddmToDd(degStr: string | number, minStr: string | number, dirRaw
 }
 
 export function stringifyGeoOption(geoFeature: GeoOption) {
-  const { label, name, context, type, originalProperties } = geoFeature.properties;
+  const { label, name, context, type, originalProperties } =
+    geoFeature.properties;
   return JSON.stringify(
     {
       type: "Feature",
@@ -256,7 +261,10 @@ export function humanDuration(seconds: number) {
   return `${minutes}min`;
 }
 
-export function hashRoute(features: GeoPointOption[], options: DirectionOptions) {
+export function hashRoute(
+  features: GeoPointOption[],
+  options: DirectionOptions,
+) {
   const { optimization, profile, constraints } = options;
   const featuresStr = features
     .map((feature) => {
@@ -269,4 +277,8 @@ export function hashRoute(features: GeoPointOption[], options: DirectionOptions)
     .map(([key]) => key)
     .join("|");
   return `${featuresStr}-${optimization}-${profile}-${constraintsStr}`;
+}
+
+export function customRound(nb: number, precision: number) {
+  return Math.round(nb * Math.pow(10, precision)) / Math.pow(10, precision);
 }

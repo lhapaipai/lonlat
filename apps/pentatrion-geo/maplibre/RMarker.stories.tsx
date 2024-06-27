@@ -132,7 +132,6 @@ export const Basic: Story = {
 export const Draggable = () => {
   const [coords, setCoords] = useState({ lng: 5, lat: 45 });
   function handleDragEnd(e: Event<Marker>) {
-    console.log("on DragEnd");
     setCoords(e.target.getLngLat());
   }
   return (

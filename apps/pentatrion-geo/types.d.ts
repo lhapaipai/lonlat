@@ -1,4 +1,11 @@
-import { BBox, Feature, Geometry, GeometryCollection, LineString, Point } from "geojson";
+import {
+  BBox,
+  Feature,
+  Geometry,
+  GeometryCollection,
+  LineString,
+  Point,
+} from "geojson";
 
 export interface LngLatObj {
   lng: number;
@@ -7,7 +14,12 @@ export interface LngLatObj {
 
 export type GeocodeType = AddressType | LonLatType;
 
-export type AddressType = "housenumber" | "street" | "locality" | "municipality" | "unknown";
+export type AddressType =
+  | "housenumber"
+  | "street"
+  | "locality"
+  | "municipality"
+  | "unknown";
 export type LonLatType = "lonlat";
 export type WaypointType =
   | "summit" // sommet
@@ -73,12 +85,14 @@ export type AddressGeoOption = GeoOption<Point, AddressType>;
 export type LonLatGeoOption = GeoOption<Point, LonLatType>;
 export type MountainGeoOption = GeoOption<Point, WaypointType>;
 export type GeolocationGeoOption = GeoOption<Point, GeolocationType>;
+export type CustomGeoOption = GeoOption<Point>;
 
 export type AppGeoOption =
   | AddressGeoOption
   | LonLatGeoOption
   | MountainGeoOption
-  | GeolocationGeoOption;
+  | GeolocationGeoOption
+  | CustomGeoOption;
 
 export type GeoPointOption = GeoOption<Point>;
 

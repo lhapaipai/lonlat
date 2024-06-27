@@ -1,6 +1,6 @@
 import { Button, LazyAutocomplete, Select } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
+import { searchFeatureChanged, selectSearch } from "./searchSlice";
 import {
   AppGeoOption,
   GeoPointOption,
@@ -20,18 +20,27 @@ import {
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useMemo, useState } from "react";
-import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/constants";
-import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
+import {
+  inputSearchDebounceDelay,
+  openRouteServiceToken,
+} from "~/config/constants";
+import {
+  SearchEngineOption,
+  StarOption,
+} from "~/components/search-engine/SearchEngineOption";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { iconBySearchEngine } from "~/components/search-engine/util";
-import { activationChanged, selectGeolocation } from "~/features/geolocation/geolocationSlice";
+import {
+  activationChanged,
+  selectGeolocation,
+} from "~/features/geolocation/geolocationSlice";
 import FeatureInfos from "./FeatureInfos";
 import GeolocationInfos from "~/features/geolocation/GeolocationInfos";
 import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
 import { geolocationIconClassName } from "../geolocation/util";
 
 export default function SearchTab() {
-  const searchFeature = useAppSelector(selectSearchFeature);
+  const { feature, readOnly } = useAppSelector(selectSearch);
   const dispatch = useAppDispatch();
   const viewState = useAppSelector(selectViewState);
   const { notifyError } = useReduxNotifications();
@@ -54,8 +63,10 @@ export default function SearchTab() {
           clearSearchButton={true}
           placeholder={T(`searchEngine.${searchEngine}.placeholder`)}
           debounce={inputSearchDebounceDelay}
+          readOnly={readOnly}
           icon={
             <Select
+              disabled={readOnly}
               variant="ghost"
               showArrow={false}
               selectionClassName=""
@@ -74,7 +85,7 @@ export default function SearchTab() {
             />
           }
           selectionSuffix={
-            searchFeature?.properties.type === "geolocation" &&
+            feature?.properties.type === "geolocation" &&
             (geolocation.status === "on" ? (
               <Button
                 icon
@@ -89,19 +100,25 @@ export default function SearchTab() {
             ))
           }
           noSearchSuffix={
-            <Button
-              icon
-              variant="ghost"
-              color="gray"
-              onClick={() => {
-                dispatch(searchFeatureChanged(createGeolocationGeoOption(T("myGeolocation"))));
-                dispatch(activationChanged(true));
-              }}
-            >
-              <i className="fe-geolocation"></i>
-            </Button>
+            !readOnly && (
+              <Button
+                icon
+                variant="ghost"
+                color="gray"
+                onClick={() => {
+                  dispatch(
+                    searchFeatureChanged(
+                      createGeolocationGeoOption(T("myGeolocation")),
+                    ),
+                  );
+                  dispatch(activationChanged(true));
+                }}
+              >
+                <i className="fe-geolocation"></i>
+              </Button>
+            )
           }
-          selection={searchFeature}
+          selection={feature}
           onChangeSelection={(e) => dispatch(searchFeatureChanged(e))}
           onChangeSearchValueCallback={async (searchValue) => {
             let collection: AppGeoOption[] = [];
@@ -111,7 +128,11 @@ export default function SearchTab() {
               } else if (searchEngine === "ors") {
                 // we're not defining openRouteServiceUrl because self-hosted doesn't provide
                 // geocode service
-                collection = await orsSearch(searchValue, viewState.center, openRouteServiceToken);
+                collection = await orsSearch(
+                  searchValue,
+                  viewState.center,
+                  openRouteServiceToken,
+                );
               } else if (searchEngine === "coords") {
                 collection = coordsSearch(searchValue);
               } else {
@@ -125,10 +146,10 @@ export default function SearchTab() {
           }}
         />
       </div>
-      {searchFeature && searchFeature.properties.type !== "geolocation" && <FeatureInfos />}
-      {searchFeature && searchFeature.properties.type === "geolocation" && showGeolocationInfos && (
-        <GeolocationInfos />
-      )}
+      {feature && feature.properties.type !== "geolocation" && <FeatureInfos />}
+      {feature &&
+        feature.properties.type === "geolocation" &&
+        showGeolocationInfos && <GeolocationInfos />}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
 import unpluginInjectPreload from "unplugin-inject-preload/vite";
 
@@ -32,4 +32,11 @@ export default defineConfig({
       ],
     }),
   ],
+
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./vitest-setup.ts"],
+    include: ["src/**/*.test.ts?(x)"],
+    watch: false,
+  },
 });

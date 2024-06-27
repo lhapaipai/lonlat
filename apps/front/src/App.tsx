@@ -30,6 +30,7 @@ import GeolocationMap from "~/features/geolocation/GeolocationMap";
 import IsochroneControl from "./features/isochrone/IsochroneControl";
 import { selectIsochroneReferenceFeature } from "./features/isochrone/isochroneSlice";
 import { selectGeolocationStatus } from "./features/geolocation/geolocationSlice";
+import IsochroneMap from "./features/isochrone/IsochroneMap";
 
 function handleAfterMapInstanciation(map: Map) {
   map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {
@@ -107,7 +108,6 @@ function App() {
           initialAttributionControl={false}
           mapStyle={uncontrolledStyle}
           onMounted={handleAfterMapInstanciation}
-          onZoomEnd={(e) => console.log(e.target.getZoom())}
         >
           {debug && <RFrameRateControl />}
           <ContextMenuEventDispatcher />
@@ -117,6 +117,7 @@ function App() {
           {streetView && <StreetViewMap />}
           {tab === "direction" && <DirectionMap />}
           {tab === "search" && <SearchMap />}
+          <IsochroneMap />
           {geolocationEnabled && <GeolocationMap />}
           <ContextMenuManager />
           {isochroneReferenceFeature && <IsochroneControl />}

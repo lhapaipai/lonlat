@@ -1,6 +1,6 @@
 import { Button, SimpleTooltip, useCopyToClipboard } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { selectSearchFeature } from "./searchSlice";
+import { selectSearch, searchReadOnlyChanged } from "./searchSlice";
 import { getCoordsStr, stringifyGeoOption } from "pentatrion-geo";
 import {
   coordsUnitChanged,
@@ -9,15 +9,16 @@ import {
 } from "~/store/mapSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { directionWayPointsAddedFromSearch } from "~/features/direction/directionSlice";
 import { referenceFeatureChanged } from "../isochrone/isochroneSlice";
+import ShareUrlInput from "~/components/ShareUrlInput";
 
-type Action = "isochrone" | "direction" | "raw";
+type Action = "isochrone" | "direction" | "raw" | "share";
 
 export default function FeatureInfos() {
-  const searchFeature = useAppSelector(selectSearchFeature);
+  const { feature } = useAppSelector(selectSearch);
   const dispatch = useAppDispatch();
   const [, copy] = useCopyToClipboard();
   const { notify } = useReduxNotifications();
@@ -36,7 +37,14 @@ export default function FeatureInfos() {
     [action],
   );
 
-  if (searchFeature?.type !== "Feature") {
+  useEffect(() => {
+    if (action === "share") {
+      dispatch(searchReadOnlyChanged(true));
+    }
+    return () => void dispatch(searchReadOnlyChanged(false));
+  }, [action, dispatch]);
+
+  if (feature?.type !== "Feature") {
     return null;
   }
 
@@ -59,7 +67,7 @@ export default function FeatureInfos() {
               className="can-copy"
               onClick={() => {
                 const value = getCoordsStr(
-                  searchFeature.geometry.coordinates,
+                  feature.geometry.coordinates,
                   coordsUnit,
                 );
                 copy(value);
@@ -68,21 +76,21 @@ export default function FeatureInfos() {
                 });
               }}
             >
-              {getCoordsStr(searchFeature.geometry.coordinates, coordsUnit)}
+              {getCoordsStr(feature.geometry.coordinates, coordsUnit)}
             </span>
           </div>
         </div>
         <div className="p8n-setting">
           <div>{T("elevation")}</div>
           <div>
-            {searchFeature.properties.originalProperties?.elevation ??
-              searchFeature.geometry.coordinates[2] ??
+            {feature.properties.originalProperties?.elevation ??
+              feature.geometry.coordinates[2] ??
               "-"}
             <span className="text-gray-6"> m</span>
           </div>
         </div>
         {["city", "postcode"].map((key) => {
-          const value = searchFeature.properties.originalProperties?.[key] as
+          const value = feature.properties.originalProperties?.[key] as
             | string
             | undefined;
           if (!value) {
@@ -103,7 +111,7 @@ export default function FeatureInfos() {
             variant="text"
             color="gray"
             onClick={() => {
-              dispatch(directionWayPointsAddedFromSearch(searchFeature));
+              dispatch(directionWayPointsAddedFromSearch(feature));
               dispatch(tabChanged("direction"));
             }}
           >
@@ -121,27 +129,44 @@ export default function FeatureInfos() {
             <i className="fe-code"></i>
           </Button>
         </SimpleTooltip>
-        <SimpleTooltip content={T("tooltip.isochrone")} placement="top-end">
+        <SimpleTooltip content={T("tooltip.isochrone")} placement="top">
           <Button
             className="min-w-0 flex-1 justify-center"
             variant="text"
             color="gray"
             selected={action === "isochrone"}
-            onClick={() => dispatch(referenceFeatureChanged(searchFeature))}
+            onClick={() => dispatch(referenceFeatureChanged(feature))}
           >
             <i className="fe-isochrone"></i>
+          </Button>
+        </SimpleTooltip>
+        <SimpleTooltip content={T("tooltip.share")} placement="top-end">
+          <Button
+            className="min-w-0 flex-1 justify-center"
+            variant="text"
+            color="gray"
+            selected={action === "share"}
+            onClick={() => setOrToggleAction("share")}
+          >
+            <i className="fe-share"></i>
           </Button>
         </SimpleTooltip>
       </div>
 
       {action === "raw" && (
         <>
-          <div className="separator"></div>
+          <div className="p8n-separator"></div>
           <textarea
             className="ll-textarea min-h-60 text-sm"
             readOnly
-            defaultValue={stringifyGeoOption(searchFeature)}
+            defaultValue={stringifyGeoOption(feature)}
           />
+        </>
+      )}
+      {action === "share" && (
+        <>
+          <div className="p8n-separator"></div>
+          <ShareUrlInput />
         </>
       )}
     </>

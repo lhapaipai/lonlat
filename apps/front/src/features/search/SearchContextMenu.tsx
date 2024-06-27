@@ -5,7 +5,7 @@ import {
 } from "pentatrion-design";
 import { useAppDispatch } from "~/store";
 import { searchFeatureChanged } from "./searchSlice";
-import { createLonLatFeaturePoint } from "pentatrion-geo";
+import { createLonLatGeoOption } from "pentatrion-geo";
 import {
   MaplibreContextmenuEventDetail,
   useCanvasRef,
@@ -17,7 +17,7 @@ export default function SearchContextMenu() {
 
   function handleClickInfos(e: ContextMenuItemMouseEvent) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
-    const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
+    const lonlatFeature = createLonLatGeoOption(mapEvent.detail.lngLat, 0);
     dispatch(searchFeatureChanged(lonlatFeature));
   }
 

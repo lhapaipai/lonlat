@@ -29,7 +29,10 @@ export async function prepareStyle(
   let extraSources: StyleSpecification["sources"] = {};
 
   const allOptionalLayersId: OptionalLayerId[] = Array.from(
-    new Set([...(terrain ? (["terrain", "hillshade"] as const) : []), ...optionalLayersId]),
+    new Set([
+      ...(terrain ? (["terrain", "hillshade"] as const) : []),
+      ...optionalLayersId,
+    ]),
   );
 
   for (const optionalLayerId of allOptionalLayersId) {
@@ -41,7 +44,9 @@ export async function prepareStyle(
     if (!["street-view", "terrain"].includes(optionalLayerId)) {
       // optionalLayersId contains filters from redux. It can be possible than some
       // filters are not compatible with baseLayer but are enabled by prevBaseLayer.
-      const infos = baseLayer.optionalLayers.find((o) => o.id === optionalLayerId);
+      const infos = baseLayer.optionalLayers.find(
+        (o) => o.id === optionalLayerId,
+      );
       if (!infos) {
         continue;
       }
@@ -79,7 +84,9 @@ export async function prepareStyle(
     let insertLayerIndex = nextLayers.length;
 
     if (optionalLayerInfo.beforeId) {
-      insertLayerIndex = nextLayers.findIndex((l) => l.id === optionalLayerInfo.beforeId);
+      insertLayerIndex = nextLayers.findIndex(
+        (l) => l.id === optionalLayerInfo.beforeId,
+      );
 
       if (insertLayerIndex === -1) {
         insertLayerIndex = nextLayers.length;
@@ -88,8 +95,6 @@ export async function prepareStyle(
 
     nextLayers.splice(insertLayerIndex, 0, ...optionalStyle.layers);
   }
-
-  console.log("calculate uncontrolled styles");
 
   const nextStyle: StyleSpecification = {
     ...style,

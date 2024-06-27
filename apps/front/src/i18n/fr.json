@@ -116,6 +116,7 @@
   "tooltip": {
     "direction": "Calculer un itinéraire vers ce point",
     "code": "Afficher la donnée brute",
-    "isochrone": "Calculer un temps de trajet"
+    "isochrone": "Calculer un temps de trajet",
+    "share": "Partager un lien"
   }
 }

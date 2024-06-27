@@ -45,25 +45,12 @@ cp .env .env.local
 pnpm dev
 ```
 
-### [Storybook](https://design.pentatrion.com)
 
-<a href="https://storybook.lonlat.pentatrion.com">
-<img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/storybook.jpg" alt="Lonlat Storybook" />
-</a>
-
-```bash
-cd apps/storybook
-pnpm dev
-```
 
 ### [Maplibre react sandbox](https://maplibre-react-sandbox.lonlat.pentatrion.com)
 
 <a href="https://maplibre-react-sandbox.lonlat.pentatrion.com/">
 <img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/maplibre-react-sandbox.jpg" alt="Maplibre react sandbox" />
 </a>
-
-
-### [Maplibre React Components](https://maplibre-react-components.pentatrion.com)
-
 
 

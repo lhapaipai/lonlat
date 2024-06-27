@@ -13,12 +13,11 @@ const $map = document.getElementById("map");
 
 const marignier: maplibre.LngLatLike = [6.498, 46.089];
 
-const map = new maplibre.Map({
+new maplibre.Map({
   container: $map!,
   // style: "https://demotiles.maplibre.org/style.json", // style URL
   style: "/assets/styles/ign/PLAN.IGN/standard.json",
   center: marignier,
   zoom: 15,
 });
-console.log(map);
 // map.addControl(new InspectControl(), "bottom-right");

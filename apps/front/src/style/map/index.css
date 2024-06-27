@@ -1,4 +1,4 @@
-@import "./maplibre-base.css";
+@import "./core.css";
 
 @import "./ctrl/_layout.css";
 @import "./ctrl/attrib.css";

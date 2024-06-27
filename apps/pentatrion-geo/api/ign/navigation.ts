@@ -1,5 +1,10 @@
 import { fetchAPI } from "pentatrion-design/lib";
-import { IsochroneGeoJSON, APIPaths, APIRequests, APIResponse } from "./navigation-api";
+import {
+  IsochroneGeoJSON,
+  APIPaths,
+  APIRequests,
+  APIResponse,
+} from "./navigation-api";
 import {
   DirectionOptions,
   RouteFeatureResponse,
@@ -10,11 +15,13 @@ import { LineString, Position } from "geojson";
 import { dataGeoserviceUrl } from "./url";
 import { hashRoute } from "../../geo-options";
 
-export function fetchIGNNavigationAPI<Path extends APIPaths, Options extends APIRequests<Path>>(
+export function fetchIGNNavigationAPI<
+  Path extends APIPaths,
+  Options extends APIRequests<Path>,
+>(
   path: Path,
   options?: Options,
 ): Promise<APIResponse<Path, Options["method"]>> {
-  console.log("fetchAPI", path, options);
   return fetchAPI(path, options, dataGeoserviceUrl);
 }
 
@@ -31,7 +38,10 @@ export async function ignIsochrone(
     method: "post",
     body: {
       costType,
-      costValue: (costType === "distance" ? costValue : costValue * 60).toString(),
+      costValue: (costType === "distance"
+        ? costValue
+        : costValue * 60
+      ).toString(),
       profile,
       direction,
       distanceUnit: "meter",
@@ -93,7 +103,9 @@ export async function ignItineraire(
     body: {
       profile,
       optimization,
-      ...(intermediates.length > 0 ? { intermediates: intermediates.map(stringifyPosition) } : {}),
+      ...(intermediates.length > 0
+        ? { intermediates: intermediates.map(stringifyPosition) }
+        : {}),
       ...(bannedFeatures.length > 0
         ? {
             constraints: bannedFeatures.map((value) => ({
@@ -115,7 +127,15 @@ export async function ignItineraire(
     },
   });
 
-  const { geometry, timeUnit, distanceUnit, distance, duration, resource, bbox } = response;
+  const {
+    geometry,
+    timeUnit,
+    distanceUnit,
+    distance,
+    duration,
+    resource,
+    bbox,
+  } = response;
 
   return {
     type: "Feature",
