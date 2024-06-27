@@ -1,5 +1,15 @@
-import { Button, Checkbox, Input, Select, SimpleTooltip } from "pentatrion-design";
-import { IsochroneGeoJSON, IsochroneOptions, ignIsochrone } from "pentatrion-geo";
+import {
+  Button,
+  Checkbox,
+  Input,
+  Select,
+  SimpleTooltip,
+} from "pentatrion-design";
+import {
+  IsochroneGeoJSON,
+  IsochroneOptions,
+  ignIsochrone,
+} from "pentatrion-geo";
 import { useRef, useState } from "react";
 import { useT } from "talkr";
 import { useAppDispatch, useAppSelector } from "~/store";
@@ -34,12 +44,21 @@ export default function IsochroneControl() {
 
   const { container } = useRControl({
     position: "top-right",
-    className: clsx("maplibregl-ctrl maplibregl-ctrl-group", distractionFree && "distraction-free"),
+    className: clsx(
+      "maplibregl-ctrl maplibregl-ctrl-group",
+      distractionFree && "distraction-free",
+    ),
   });
 
   const { T } = useT();
-  const { referenceFeature, costType, costValue, direction, profile, constraints } =
-    useAppSelector(selectIsochrone);
+  const {
+    referenceFeature,
+    costType,
+    costValue,
+    direction,
+    profile,
+    constraints,
+  } = useAppSelector(selectIsochrone);
 
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
@@ -130,10 +149,21 @@ export default function IsochroneControl() {
             content={T("isochrone.description")}
             placement="bottom-end"
           >
-            <div className="h-8 flex-center cursor-help">
+            <div className="h-8 cursor-help flex-center">
               <i className="fe-help"></i>
             </div>
           </SimpleTooltip>
+        </div>
+      </div>
+
+      <div className="p8n-setting">
+        <div>{T("isochrone.referenceFeature")}</div>
+        <div>
+          <Input
+            variant="ghost"
+            value={referenceFeature?.properties.label}
+            readOnly={true}
+          />
         </div>
       </div>
 
@@ -146,7 +176,9 @@ export default function IsochroneControl() {
             options={profileOptions}
             value={profile}
             onChange={(o) => {
-              const value = (o.target.value || "car") as NonNullable<IsochroneOptions["profile"]>;
+              const value = (o.target.value || "car") as NonNullable<
+                IsochroneOptions["profile"]
+              >;
               if (["car", "pedestrian"].includes(value)) {
                 dispatch(profileChanged(value));
               }
@@ -164,7 +196,9 @@ export default function IsochroneControl() {
             options={directionOptions}
             value={direction}
             onChange={(o) => {
-              const value = (o.target.value || "car") as NonNullable<IsochroneOptions["direction"]>;
+              const value = (o.target.value || "car") as NonNullable<
+                IsochroneOptions["direction"]
+              >;
               if (["departure", "arrival"].includes(value)) {
                 dispatch(directionChanged(value));
               }
@@ -206,7 +240,12 @@ export default function IsochroneControl() {
             disabled={loading}
             checked={constraints.avoidHighways}
             onChange={(e) =>
-              dispatch(constraintChanged({ key: "avoidHighways", value: e.target.checked }))
+              dispatch(
+                constraintChanged({
+                  key: "avoidHighways",
+                  value: e.target.checked,
+                }),
+              )
             }
           >
             <span>{T("constraints.highways")}</span>
@@ -215,7 +254,12 @@ export default function IsochroneControl() {
             disabled={loading}
             checked={constraints.avoidBridges}
             onChange={(e) =>
-              dispatch(constraintChanged({ key: "avoidBridges", value: e.target.checked }))
+              dispatch(
+                constraintChanged({
+                  key: "avoidBridges",
+                  value: e.target.checked,
+                }),
+              )
             }
           >
             <span>{T("constraints.bridges")}</span>
@@ -224,14 +268,19 @@ export default function IsochroneControl() {
             disabled={loading}
             checked={constraints.avoidTunnels}
             onChange={(e) =>
-              dispatch(constraintChanged({ key: "avoidTunnels", value: e.target.checked }))
+              dispatch(
+                constraintChanged({
+                  key: "avoidTunnels",
+                  value: e.target.checked,
+                }),
+              )
             }
           >
             <span>{T("constraints.tunnels")}</span>
           </Checkbox>
         </div>
       </div>
-      <div className="flex gap-2 justify-between">
+      <div className="flex justify-between gap-2">
         <Button
           className="mr-2"
           variant="text"
