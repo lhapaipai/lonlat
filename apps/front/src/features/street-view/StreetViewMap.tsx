@@ -6,19 +6,15 @@ import {
   selectPegmanCoords,
   selectPegmanPov,
 } from "./streetViewSlice";
-import { Map, MapMouseEvent } from "maplibre-gl";
+import { MapMouseEvent } from "maplibre-gl";
 import { memo, useEffect } from "react";
-
-function getRealBearing(map: Map, streetViewHeading: number) {
-  const bearing = map.getBearing();
-  return (streetViewHeading - bearing) % 360;
-}
+import { selectViewState } from "~/store/mapSlice";
 
 function StreetViewMap() {
   const coords = useAppSelector(selectPegmanCoords);
-  const { heading } = useAppSelector(selectPegmanPov);
+  const { heading: streetViewHeading } = useAppSelector(selectPegmanPov);
   const dispatch = useAppDispatch();
-
+  const { bearing: mapBearing } = useAppSelector(selectViewState);
   function handlePegmanDragEnd(e: Event<Pegman>) {
     dispatch(coordsChanged(e.target.getLngLat().toArray()));
   }
@@ -31,7 +27,9 @@ function StreetViewMap() {
     }
     map.on("click", handleMapClick);
     return () => void map.off("click", handleMapClick);
-  });
+  }, [map, dispatch]);
+
+  const pegmanBearing = (streetViewHeading - mapBearing) % 360;
 
   return (
     <>
@@ -39,7 +37,7 @@ function StreetViewMap() {
         <RPegman
           longitude={coords[0]}
           latitude={coords[1]}
-          bearing={getRealBearing(map, heading)}
+          bearing={pegmanBearing}
           draggable={true}
           onDragEnd={handlePegmanDragEnd}
         />

@@ -10,11 +10,11 @@ export default {
     "./projection/**/*.{ts,tsx}",
     "./url/**/*.{ts,tsx}",
 
-    "./node_modules/pentatrion-design/components/**/*.{ts,tsx}",
-    "./node_modules/pentatrion-design/hooks/**/*.{ts,tsx}",
-    "./node_modules/pentatrion-design/lib/**/*.{ts,tsx}",
-    "./node_modules/pentatrion-design/redux/**/*.{ts,tsx}",
-    "./node_modules/pentatrion-design/styles/**/*.{ts,tsx}",
+    "./node_modules/pentatrion-design/components/**/*.js",
+    "./node_modules/pentatrion-design/hooks/**/*.js",
+    "./node_modules/pentatrion-design/lib/**/*.js",
+    "./node_modules/pentatrion-design/redux/**/*.js",
+    "./node_modules/pentatrion-design/styles/**/*.js",
   ],
   darkMode: ["class"],
   theme: {

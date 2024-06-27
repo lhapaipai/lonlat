@@ -15,9 +15,9 @@ interface Props {
   onChangeCoords: (lngLat: [number, number]) => void;
 }
 
-function latLngStr(lngLat: { lng: number; lat: number }) {
-  return `(${lngLat.lat}, ${lngLat.lng})`;
-}
+// function latLngStr(lngLat: { lng: number; lat: number }) {
+//   return `(${lngLat.lat}, ${lngLat.lng})`;
+// }
 
 const eltStyle: CSSProperties = {
   width: "100%",
@@ -39,7 +39,7 @@ export function StreetView({
   useEffect(() => {
     const gPov = panoramaRef.current?.getPov();
     if (!gPov || gPov.heading !== heading || gPov.pitch !== pitch) {
-      console.log("useEffect setPov", panoramaRef.current?.getPov(), { heading, pitch });
+      // console.log("useEffect setPov", panoramaRef.current?.getPov(), { heading, pitch });
       panoramaRef.current?.setPov({ heading, pitch });
     }
   }, [heading, pitch]);
@@ -48,7 +48,8 @@ export function StreetView({
     const gLngLat = panoramaRef.current?.getPosition()?.toJSON();
     const lngLatCoords = LngLat.convert(coords);
     if (gLngLat && !areLngLatClose(gLngLat, lngLatCoords)) {
-      console.log("useEffect gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(lngLatCoords));
+      // console.log("useEffect gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(lngLatCoords));
+
       // submit a new position to google streetview
       // will normally relaunch a "pano_changed" with a position closest to the snapshots
       panoramaRef.current?.setPosition(lngLatCoords);
@@ -56,32 +57,39 @@ export function StreetView({
   }, [coords]);
 
   const handlePosChangedStable = useEventCallback((gLngLat: LngLatObj) => {
-    console.log("handlePanoChanged");
+    // console.log("handlePanoChanged");
     const lngLatCoords = LngLat.convert(coords);
 
     if (!areLngLatClose(gLngLat, lngLatCoords)) {
-      console.log("pano_changed gLngLat:", latLngStr(gLngLat), "coords: ", latLngStr(lngLatCoords));
+      // console.log(
+      //   "pano_changed gLngLat:",
+      //   latLngStr(gLngLat),
+      //   "coords: ",
+      //   latLngStr(lngLatCoords),
+      // );
       onChangeCoords([gLngLat.lng, gLngLat.lat]);
     }
   });
 
-  const handlePovChangedStable = useEventCallback((pov: google.maps.StreetViewPov) => {
-    console.log("handlePovChanged");
+  const handlePovChangedStable = useEventCallback(
+    (pov: google.maps.StreetViewPov) => {
+      // console.log("handlePovChanged");
 
-    // pegman changes heading position every 22.5 deg we do not need
-    // to fire a heading event as soon as the position changes by 1deg
-    // actually no change for the pitch
-    if (Math.round(pov.heading * 0.2) !== Math.round(heading * 0.2)) {
-      console.log("pov_changed gPov:", pov, "current:", heading, pitch);
-      onChangePov({
-        heading: pov.heading,
-        pitch: pov.pitch,
-      });
-    }
-  });
+      // pegman changes heading position every 22.5 deg we do not need
+      // to fire a heading event as soon as the position changes by 1deg
+      // actually no change for the pitch
+      if (Math.round(pov.heading * 0.2) !== Math.round(heading * 0.2)) {
+        // console.log("pov_changed gPov:", pov, "current:", heading, pitch);
+        onChangePov({
+          heading: pov.heading,
+          pitch: pov.pitch,
+        });
+      }
+    },
+  );
 
   const handleVisibleChangedStable = useEventCallback((isVisible) => {
-    console.log("visible_changed", isVisible);
+    // console.log("visible_changed", isVisible);
     if (isVisible === false) {
       onChangeVisible(false);
     }

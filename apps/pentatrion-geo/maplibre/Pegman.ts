@@ -1,4 +1,11 @@
-import { Map, MapMouseEvent, MapTouchEvent, Marker, MarkerOptions, Point } from "maplibre-gl";
+import {
+  Map,
+  MapMouseEvent,
+  MapTouchEvent,
+  Marker,
+  MarkerOptions,
+  Point,
+} from "maplibre-gl";
 import { DOM } from "./core/util/dom";
 
 export interface PegmanOptions extends MarkerOptions {
@@ -17,7 +24,7 @@ export class Pegman extends Marker {
 
     if (useDefaultMarker) {
       options ??= {};
-      options.element = DOM.create("div", "ll-marker pegman");
+      options.element = DOM.create("div", "maplibregl-gradient-marker pegman");
     }
 
     super(options);

@@ -1,7 +1,0 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
-@import "pentatrion-design/fontello.css";
-@import "./maplibre/Marker.css";
-@import "./maplibre/Pegman.css";

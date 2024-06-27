@@ -100,6 +100,7 @@ export default function DirectionContextMenu() {
 
   return (
     <ContextMenu targetRef={canvasRef} eventName="contextmenu-maplibre">
+      {/* @ts-ignore TODO */}
       {contextItems}
     </ContextMenu>
   );
