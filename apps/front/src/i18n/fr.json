@@ -117,7 +117,16 @@
   "tooltip": {
     "direction": "Calculer un itinéraire vers ce point",
     "code": "Afficher la donnée brute",
-    "isochrone": "Calculer un temps de trajet",
+    "isochrone": "Calculer un isochrone",
     "share": "Partager un lien"
+  },
+  "contextMenu": {
+    "searchInfos": "Plus d'infos sur cet endroit",
+    "isochrone": "Calculer un isochrone",
+    "directionFrom": "Itinéraire depuis ce lieu",
+    "directionInter": "point intermédiaire",
+    "directionTo": "Itinéraire vers ce lieu",
+    "directionAdd": "Prolonger l'itinéraire jusqu'ici",
+    "movePoint": "Déplacer ce point"
   }
 }

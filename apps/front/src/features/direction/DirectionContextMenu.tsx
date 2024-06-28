@@ -17,10 +17,12 @@ import {
 } from "./directionSlice";
 import { createLonLatGeoOption } from "pentatrion-geo";
 import { ReactElement } from "react";
+import { useT } from "talkr";
 
 export default function DirectionContextMenu() {
   const dispatch = useAppDispatch();
   const canvasRef = useCanvasRef();
+  const { T } = useT();
 
   const wayPointsLength = useAppSelector(selectDirectionWayPoints).length;
 
@@ -63,7 +65,7 @@ export default function DirectionContextMenu() {
     <ContextMenuItem
       key="direction-from"
       icon={<span className="bullet">A</span>}
-      label="Itinéraire depuis ce lieu"
+      label={T("contextMenu.directionFrom")}
       onClick={(e) => handleDirectionChangeWayPointAt(e, 0)}
     />,
   );
@@ -73,17 +75,15 @@ export default function DirectionContextMenu() {
         className="discret"
         key={`direction-inter-${i}`}
         icon={<i className="fe-point-inter"></i>}
-        label="point intermédiaire"
+        label={T("contextMenu.directionInter")}
         onClick={(e) => handleDirectionInsertWayPointBefore(e, i)}
       />,
       <ContextMenuItem
         key={`direction-to-${i}`}
         icon={<span className="bullet">{getIndexLetter(i)}</span>}
-        label={
-          i < wayPointsLength - 1
-            ? "Déplacer ce point"
-            : "Itinéraire vers ce lieu"
-        }
+        label={T(
+          `contextMenu.${i < wayPointsLength - 1 ? "modePoint" : "directionTo"}`,
+        )}
         onClick={(e) => handleDirectionChangeWayPointAt(e, i)}
       />,
     );
@@ -93,7 +93,7 @@ export default function DirectionContextMenu() {
     <ContextMenuItem
       key="direction-plus"
       icon={<i className="fe-plus"></i>}
-      label="Prolonger l'itinéraire jusqu'ici"
+      label={T("contextMenu.directionAdd")}
       onClick={(e) => handleAppendDirection(e)}
     />,
   );
