@@ -82,7 +82,7 @@ export default function DirectionContextMenu() {
         key={`direction-to-${i}`}
         icon={<span className="bullet">{getIndexLetter(i)}</span>}
         label={T(
-          `contextMenu.${i < wayPointsLength - 1 ? "modePoint" : "directionTo"}`,
+          `contextMenu.${i < wayPointsLength - 1 ? "movePoint" : "directionTo"}`,
         )}
         onClick={(e) => handleDirectionChangeWayPointAt(e, i)}
       />,

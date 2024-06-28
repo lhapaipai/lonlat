@@ -1,6 +1,12 @@
-import { fetchAPI } from "pentatrion-design/lib";
+import { fetchAPI } from "pentatrion-design/lib/fetch";
 
-import { APIPaths, APIRequests, APIResponse, APISchemas, QualityType } from "./api";
+import {
+  APIPaths,
+  APIRequests,
+  APIResponse,
+  APISchemas,
+  QualityType,
+} from "./api";
 import { campToCampApiUrl } from "./url";
 import { MountainGeoOption } from "../../types.d";
 import { epsg3857to4326 } from "../../projection/reproject";
@@ -8,14 +14,19 @@ import { epsg3857to4326 } from "../../projection/reproject";
 import { nanoid } from "nanoid";
 import { Point } from "geojson";
 
-export function fetchC2cGeodageAPI<Path extends APIPaths, Options extends APIRequests<Path>>(
+export function fetchC2cGeodageAPI<
+  Path extends APIPaths,
+  Options extends APIRequests<Path>,
+>(
   path: Path,
   options?: Options,
 ): Promise<APIResponse<Path, Options["method"]>> {
   return fetchAPI(path, options, campToCampApiUrl);
 }
 
-export async function c2cWaypointSearch(searchValue: string): Promise<MountainGeoOption[]> {
+export async function c2cWaypointSearch(
+  searchValue: string,
+): Promise<MountainGeoOption[]> {
   const response = await fetchC2cGeodageAPI("/waypoints", {
     method: "get",
     query: {
@@ -26,7 +37,9 @@ export async function c2cWaypointSearch(searchValue: string): Promise<MountainGe
     },
   });
 
-  return response.documents.map((waypoint) => parseC2CWaypoint(waypoint)).filter(isNotNull);
+  return response.documents
+    .map((waypoint) => parseC2CWaypoint(waypoint))
+    .filter(isNotNull);
 }
 
 function isNotNull(w: MountainGeoOption | null): w is MountainGeoOption {
@@ -67,8 +80,11 @@ function getScoreFromQuality(quality: QualityType) {
   }
 }
 
-export function parseC2CWaypoint(collection: APISchemas["Waypoint"]): MountainGeoOption | null {
-  const { document_id, geometry, locales, areas, quality, waypoint_type } = collection;
+export function parseC2CWaypoint(
+  collection: APISchemas["Waypoint"],
+): MountainGeoOption | null {
+  const { document_id, geometry, locales, areas, quality, waypoint_type } =
+    collection;
   const uniqId = nanoid();
 
   const point3857 = JSON.parse(geometry.geom) as Point;

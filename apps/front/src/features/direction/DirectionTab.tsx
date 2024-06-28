@@ -20,6 +20,7 @@ import {
   optimizationChanged,
   profileChanged,
   constraintChanged,
+  directionReadOnlyChanged,
 } from "./directionSlice";
 import {
   AppGeoOption,
@@ -46,12 +47,19 @@ import {
 } from "~/store/mapSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import { useMemo, useState } from "react";
-import { inputSearchDebounceDelay, openRouteServiceToken } from "~/config/constants";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  inputSearchDebounceDelay,
+  openRouteServiceToken,
+} from "~/config/constants";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
-import { SearchEngineOption, StarOption } from "~/components/search-engine/SearchEngineOption";
+import {
+  SearchEngineOption,
+  StarOption,
+} from "~/components/search-engine/SearchEngineOption";
 import { iconBySearchEngine } from "~/components/search-engine/util";
 import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
+import ShareUrlInput from "~/components/ShareUrlInput";
 
 function placeholderByIndex(idx: number, length: number) {
   if (idx === 0) {
@@ -62,14 +70,16 @@ function placeholderByIndex(idx: number, length: number) {
   return "Point intermédiaire";
 }
 
+type Action = "settings" | "share";
+
 export default function DirectionTab() {
   const direction = useAppSelector(selectDirection);
   const { wayPoints, optimization, constraints, profile, route } = direction;
   const dispatch = useAppDispatch();
   const { notifyError } = useReduxNotifications();
   const { T } = useT();
-  const [showSettings, setShowSettings] = useState(false);
   const searchEngine = useAppSelector(selectSearchEngine);
+  const [action, setAction] = useState<Action | null>(null);
 
   const viewState = useAppSelector(selectViewState);
 
@@ -84,13 +94,20 @@ export default function DirectionTab() {
 
   function handleChangeSelection(index: number, selection: GeoOption | null) {
     const itemId = wayPoints[index].id;
-    const feature = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
+    const feature = selection
+      ? updateId(selection, itemId)
+      : createNodataFeature(itemId);
     const featurePointOrNoData = feature as GeoPointOption | NoDataOption;
-    dispatch(directionWayPointChanged({ index, feature: featurePointOrNoData }));
+    dispatch(
+      directionWayPointChanged({ index, feature: featurePointOrNoData }),
+    );
   }
 
   function handleSortWayPoints(wayPointsUpdated: (GeoOption | NoDataOption)[]) {
-    const wayPointPointsUpdated = wayPointsUpdated as (GeoPointOption | NoDataOption)[];
+    const wayPointPointsUpdated = wayPointsUpdated as (
+      | GeoPointOption
+      | NoDataOption
+    )[];
     dispatch(directionWayPointsChanged(wayPointPointsUpdated));
   }
 
@@ -104,7 +121,9 @@ export default function DirectionTab() {
   }
 
   function handleReset() {
-    dispatch(directionWayPointsChanged([createNodataFeature(), createNodataFeature()]));
+    dispatch(
+      directionWayPointsChanged([createNodataFeature(), createNodataFeature()]),
+    );
   }
 
   const searchEngineOptions = useMemo<StarOption[]>(() => {
@@ -115,13 +134,34 @@ export default function DirectionTab() {
     }));
   }, [T]);
 
+  const setOrToggleAction = useCallback(
+    (a: Action) => {
+      if (a === action) {
+        setAction(null);
+      } else {
+        setAction(a);
+      }
+    },
+    [action],
+  );
+
+  // if user is openning app from link the link action is not visible by
+  // default but the state is readonly.
+  // it's not a bug a desired state. the interface is cleaner.
+  useEffect(() => {
+    if (action === "share") {
+      dispatch(directionReadOnlyChanged(true));
+    }
+    return () => void dispatch(directionReadOnlyChanged(false));
+  }, [action, dispatch]);
+
   return (
     <div className="grid grid-cols-1 gap-2">
       <div className="flex gap-2">
         <Button
           variant="text"
           color="gray"
-          className="flex-1 min-w-0 justify-center"
+          className="min-w-0 flex-1 justify-center"
           selected={profile === "car"}
           onClick={() => dispatch(profileChanged("car"))}
         >
@@ -131,7 +171,7 @@ export default function DirectionTab() {
         <Button
           variant="text"
           color="gray"
-          className="flex-1 min-w-0 justify-center"
+          className="min-w-0 flex-1 justify-center"
           selected={profile === "bike"}
           onClick={() => dispatch(profileChanged("bike"))}
         >
@@ -141,7 +181,7 @@ export default function DirectionTab() {
         <Button
           variant="text"
           color="gray"
-          className="flex-1 min-w-0 justify-center"
+          className="min-w-0 flex-1 justify-center"
           selected={profile === "pedestrian"}
           onClick={() => dispatch(profileChanged("pedestrian"))}
         >
@@ -150,7 +190,11 @@ export default function DirectionTab() {
         </Button>
       </div>
 
-      <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
+      <Steps
+        markerType="bullet"
+        lineStyle="dotted"
+        associateLineWithStep={false}
+      >
         <Sortable
           list={wayPoints}
           setList={handleSortWayPoints}
@@ -189,7 +233,9 @@ export default function DirectionTab() {
                 selection={isNoData(wayPoint) ? null : wayPoint}
                 debounce={inputSearchDebounceDelay}
                 autocompleteOptionComponent={AutocompleteGeoOption}
-                onChangeSelection={(selection) => handleChangeSelection(index, selection)}
+                onChangeSelection={(selection) =>
+                  handleChangeSelection(index, selection)
+                }
                 onChangeSearchValueCallback={async (searchValue) => {
                   let collection: AppGeoOption[] = [];
                   try {
@@ -206,7 +252,10 @@ export default function DirectionTab() {
                     } else if (searchEngine === "coords") {
                       collection = coordsSearch(searchValue);
                     } else {
-                      collection = await ignSearch(searchValue, viewState.center);
+                      collection = await ignSearch(
+                        searchValue,
+                        viewState.center,
+                      );
                     }
                     return collection;
                   } catch (err) {
@@ -239,11 +288,11 @@ export default function DirectionTab() {
       <div className="ll-steps-extra">
         <Button variant="text" color="gray" onClick={handleAppendItem}>
           <span
-            className="ll-marker"
+            className="maplibregl-gradient-marker ml-[calc(1rem-var(--marker-size)*.35)]"
             style={{ "--marker-color": "#c0c0c0", "--marker-size": "34px" }}
           >
             <span className="marker">
-              <span className="ovale"></span>
+              <span className="circle"></span>
               <i className="fe-plus"></i>
             </span>
             <span className="target"></span>
@@ -255,12 +304,30 @@ export default function DirectionTab() {
           <span>{T("reset")}</span>
         </Button>
 
-        <Button icon variant="text" color="gray" onClick={() => setShowSettings((s) => !s)}>
+        <Button
+          icon
+          variant="text"
+          color="gray"
+          selected={action === "settings"}
+          onClick={() => setOrToggleAction("settings")}
+        >
           <i className="fe-sliders"></i>
         </Button>
+
+        <SimpleTooltip content={T("tooltip.share")} placement="top-end">
+          <Button
+            icon
+            variant="text"
+            color="gray"
+            selected={action === "share"}
+            onClick={() => setOrToggleAction("share")}
+          >
+            <i className="fe-share"></i>
+          </Button>
+        </SimpleTooltip>
       </div>
 
-      {showSettings && (
+      {action === "settings" && (
         <>
           <div className="p8n-setting">
             <div>{T("optimization.title")}</div>
@@ -270,7 +337,8 @@ export default function DirectionTab() {
                 options={optimizationOptions}
                 value={optimization}
                 onChange={(o) => {
-                  const value = (o.target.value || "shortest") as DirectionOptions["optimization"];
+                  const value = (o.target.value ||
+                    "shortest") as DirectionOptions["optimization"];
                   if (["shortest", "fastest"].includes(value)) {
                     dispatch(optimizationChanged(value));
                   }
@@ -287,7 +355,12 @@ export default function DirectionTab() {
                   <Checkbox
                     checked={constraints.avoidTollways}
                     onChange={(e) =>
-                      dispatch(constraintChanged({ key: "avoidTollways", value: e.target.checked }))
+                      dispatch(
+                        constraintChanged({
+                          key: "avoidTollways",
+                          value: e.target.checked,
+                        }),
+                      )
                     }
                   >
                     <span>{T("constraints.tollways")}</span>
@@ -295,7 +368,12 @@ export default function DirectionTab() {
                   <Checkbox
                     checked={constraints.avoidHighways}
                     onChange={(e) =>
-                      dispatch(constraintChanged({ key: "avoidHighways", value: e.target.checked }))
+                      dispatch(
+                        constraintChanged({
+                          key: "avoidHighways",
+                          value: e.target.checked,
+                        }),
+                      )
                     }
                   >
                     <span>{T("constraints.highways")}</span>
@@ -306,7 +384,12 @@ export default function DirectionTab() {
               <Checkbox
                 checked={constraints.avoidBorders}
                 onChange={(e) =>
-                  dispatch(constraintChanged({ key: "avoidBorders", value: e.target.checked }))
+                  dispatch(
+                    constraintChanged({
+                      key: "avoidBorders",
+                      value: e.target.checked,
+                    }),
+                  )
                 }
               >
                 <span>{T("constraints.borders")}</span>
@@ -315,6 +398,14 @@ export default function DirectionTab() {
           </div>
         </>
       )}
+
+      {action === "share" && (
+        <>
+          <div className="p8n-separator"></div>
+          <ShareUrlInput />
+        </>
+      )}
+
       {route && (
         <>
           <div className="p8n-separator"></div>
@@ -324,7 +415,8 @@ export default function DirectionTab() {
               <div className="p8n-setting">
                 <div>{T("distance")}</div>
                 <div>
-                  {m2km(route.properties.distance)} <span className="text-gray-6">km</span>
+                  {m2km(route.properties.distance)}{" "}
+                  <span className="text-gray-6">km</span>
                 </div>
               </div>
               <div className="p8n-setting">
@@ -332,11 +424,13 @@ export default function DirectionTab() {
                 <div>
                   {route.properties.duration > 3600 && (
                     <span>
-                      {getHours(route.properties.duration)} <span className="text-gray-6">h</span>
+                      {getHours(route.properties.duration)}{" "}
+                      <span className="text-gray-6">h</span>
                     </span>
                   )}
                   <span>
-                    {getMinutes(route.properties.duration)} <span className="text-gray-6">min</span>
+                    {getMinutes(route.properties.duration)}{" "}
+                    <span className="text-gray-6">min</span>
                   </span>
                 </div>
               </div>
@@ -346,7 +440,8 @@ export default function DirectionTab() {
                 <div className="p8n-setting">
                   <div>{T("ascent")}</div>
                   <div>
-                    {route.properties.ascent} <span className="text-gray-6">m</span>
+                    {route.properties.ascent}{" "}
+                    <span className="text-gray-6">m</span>
                   </div>
                 </div>
               )}
@@ -354,7 +449,8 @@ export default function DirectionTab() {
                 <div className="p8n-setting">
                   <div>{T("descent")}</div>
                   <div>
-                    {route.properties.descent} <span className="text-gray-6">m</span>
+                    {route.properties.descent}{" "}
+                    <span className="text-gray-6">m</span>
                   </div>
                 </div>
               )}

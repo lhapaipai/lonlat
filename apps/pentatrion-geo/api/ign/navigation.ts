@@ -1,4 +1,4 @@
-import { fetchAPI } from "pentatrion-design/lib";
+import { fetchAPI } from "pentatrion-design/lib/fetch";
 import {
   IsochroneGeoJSON,
   APIPaths,

@@ -1,4 +1,4 @@
-import { fetchAPI } from "pentatrion-design/lib";
+import { fetchAPI } from "pentatrion-design/lib/fetch";
 import {
   APIPaths as ElevationAPIPaths,
   APIRequests as ElevationAPIRequests,
@@ -14,11 +14,16 @@ export const noDataElevationValue = -99999;
 export function fetchIGNElevationAPI<
   Path extends ElevationAPIPaths,
   Options extends ElevationAPIRequests<Path>,
->(path: Path, options?: Options): Promise<ElevationAPIResponse<Path, Options["method"]>> {
+>(
+  path: Path,
+  options?: Options,
+): Promise<ElevationAPIResponse<Path, Options["method"]>> {
   return fetchAPI(path, options, dataGeoserviceUrl);
 }
 
-export async function ignElevationPoint([lon, lat]: Position): Promise<[number, number, number]> {
+export async function ignElevationPoint([lon, lat]: Position): Promise<
+  [number, number, number]
+> {
   const collection = (await fetchIGNElevationAPI(
     "/altimetrie/1.0/calcul/alti/rest/elevation.{format}",
     {
@@ -35,7 +40,10 @@ export async function ignElevationPoint([lon, lat]: Position): Promise<[number, 
     },
   )) as ElevationAPISchemas["ElevationResponseZonly"];
 
-  if (collection.elevations.length === 0 || collection.elevations[0] <= -99999) {
+  if (
+    collection.elevations.length === 0 ||
+    collection.elevations[0] <= -99999
+  ) {
     return [lon, lat, noDataElevationValue];
   }
 

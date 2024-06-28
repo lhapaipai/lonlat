@@ -3,7 +3,7 @@ import {
   APIRequests as OrsAPIRequests,
   APIResponse as OrsAPIResponse,
 } from "./api";
-import { fetchAPI } from "pentatrion-design/lib";
+import { fetchAPI } from "pentatrion-design/lib/fetch";
 
 // export const openRouteServiceUrl = "http://localhost:8080/ors";
 export const openRouteServiceUrl = "https://api.openrouteservice.org";

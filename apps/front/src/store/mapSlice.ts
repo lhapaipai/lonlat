@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from ".";
-import { parseHashString } from "~/lib/hashUtil";
+import { parseHashString } from "~/lib/hash";
 import { france, marignier } from "~/features/layer/util";
 import { debug } from "~/config/constants";
 import { getColorScheme } from "~/lib/util";
@@ -40,7 +40,7 @@ const initialState: MapState = {
         pitch: 0,
         bearing: 0,
       },
-  tab: "search",
+  tab: hashInfos?.direction ? "direction" : "search",
   searchEngine: "ign-address",
   coordsUnit: "lonlat",
   distractionFree: false,

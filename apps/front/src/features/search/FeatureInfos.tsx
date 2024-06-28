@@ -37,6 +37,9 @@ export default function FeatureInfos() {
     [action],
   );
 
+  // if user is openning app from link the link action is not visible by
+  // default but the state is readonly.
+  // it's not a bug a desired state. the interface is cleaner.
   useEffect(() => {
     if (action === "share") {
       dispatch(searchReadOnlyChanged(true));

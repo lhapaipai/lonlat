@@ -81,7 +81,7 @@
   "ascent": "Dénivelé positif",
   "descent": "Dénivelé négatif",
   "compute": "Calculer",
-  "addPoint": "Ajouter un point",
+  "addPoint": "Ajouter point",
   "reset": "Réinitialiser",
   "isochrone": {
     "description": "Permet de déterminer l’ensemble des lieux que l’on peut atteindre depuis un point de départ pour atteindre un point d’arrivée en un temps ou une distance donné(e).",

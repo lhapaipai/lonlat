@@ -13,7 +13,7 @@ import {
 } from "pentatrion-geo";
 import { Point } from "geojson";
 import { errorAdded } from "pentatrion-design/redux";
-import { parseHashString } from "~/lib/hashUtil";
+import { parseHashString } from "~/lib/hash";
 
 export type SearchFeature = GeoPointOption | null;
 
@@ -24,7 +24,7 @@ export type SearchState = {
 
 const hashInfos = parseHashString(window.location.hash);
 
-const initialState: SearchState = hashInfos
+const initialState: SearchState = hashInfos?.search
   ? hashInfos.search
   : {
       feature: null,

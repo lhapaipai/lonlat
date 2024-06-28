@@ -1,7 +1,12 @@
-import { fetchAPI } from "pentatrion-design/lib";
+import { fetchAPI } from "pentatrion-design/lib/fetch";
 import { AddressGeoOption, LngLatObj } from "../../types.d";
 import { getDepartmentName } from "../../geo-options";
-import { APIPaths, APIRequests, APIResponse, APISchemas } from "./geocodage-api";
+import {
+  APIPaths,
+  APIRequests,
+  APIResponse,
+  APISchemas,
+} from "./geocodage-api";
 import { Feature, FeatureCollection, Point, Position } from "geojson";
 import { nanoid } from "nanoid";
 import { dataGeoserviceUrl } from "./url";
@@ -9,7 +14,10 @@ import { dataGeoserviceUrl } from "./url";
 type AddressProperties = APISchemas["AddressProperties"];
 type AddressReverseProperties = APISchemas["AddressReverseProperties"];
 
-export function fetchIGNGeodageAPI<Path extends APIPaths, Options extends APIRequests<Path>>(
+export function fetchIGNGeodageAPI<
+  Path extends APIPaths,
+  Options extends APIRequests<Path>,
+>(
   path: Path,
   options?: Options,
 ): Promise<APIResponse<Path, Options["method"]>> {
@@ -17,13 +25,16 @@ export function fetchIGNGeodageAPI<Path extends APIPaths, Options extends APIReq
 }
 
 export async function ignReverseSearch([lon, lat]: Position) {
-  const collection = await fetchIGNGeodageAPI("/geocodage/reverse?index=address", {
-    query: {
-      lon,
-      lat,
-      limit: 1,
+  const collection = await fetchIGNGeodageAPI(
+    "/geocodage/reverse?index=address",
+    {
+      query: {
+        lon,
+        lat,
+        limit: 1,
+      },
     },
-  });
+  );
 
   if (collection.features.length === 0) {
     return null;
@@ -51,13 +62,16 @@ export async function ignSearch(
   if (searchValue.length < 3) {
     return [];
   }
-  const collection = await fetchIGNGeodageAPI("/geocodage/search?index=address", {
-    query: {
-      q: searchValue,
-      lon: coords[0],
-      lat: coords[1],
+  const collection = await fetchIGNGeodageAPI(
+    "/geocodage/search?index=address",
+    {
+      query: {
+        q: searchValue,
+        lon: coords[0],
+        lat: coords[1],
+      },
     },
-  });
+  );
   return parseIgnAddressCollection(collection);
 }
 
@@ -90,7 +104,11 @@ function getLabel(properties: AddressProperties | AddressReverseProperties) {
 }
 
 export function createIgnAddressFeaturePoint(
-  { type, geometry, properties }: Feature<Point, AddressProperties | AddressReverseProperties>,
+  {
+    type,
+    geometry,
+    properties,
+  }: Feature<Point, AddressProperties | AddressReverseProperties>,
   forceCoordinates?: LngLatObj,
 ): AddressGeoOption {
   const uniqId = nanoid();
