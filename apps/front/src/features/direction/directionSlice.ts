@@ -23,6 +23,7 @@ import { errorAdded } from "pentatrion-design/redux";
 import { FeatureCollection, Point } from "geojson";
 import { openRouteServiceToken, openRouteServiceUrl } from "~/config/constants";
 import { parseHashString } from "~/lib/hash";
+import { tabChanged } from "~/store/mapSlice";
 
 type WayPoint = GeoPointOption | NoDataOption;
 
@@ -40,8 +41,6 @@ export type DirectionState = {
 };
 
 const hashInfos = parseHashString(window.location.hash);
-
-console.log(hashInfos);
 
 const initialState: DirectionState = hashInfos?.direction
   ? hashInfos.direction
@@ -138,7 +137,16 @@ const directionSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchRoute.fulfilled, (state, action) => {
-      state.route = action.payload;
+      if (action.payload) {
+        state.route = action.payload;
+      } else if (action.payload === null) {
+        // fetchRoute has been called but the route is dirty, we need to
+        // remove
+        state.route = null;
+      } else {
+        // fetchRoute has been called while the parameters have not
+        // changed, the route must not be removed
+      }
     });
   },
 });
@@ -192,11 +200,20 @@ directionWayPointsListenerMiddleware.startListening({
     profileChanged,
     constraintChanged,
     optimizationChanged,
+    tabChanged,
   ),
-  effect: async (_, { getState, dispatch }) => {
+  effect: async (_, { dispatch }) => {
+    dispatch(fetchRoute());
+  },
+});
+
+export const fetchRoute = createAsyncThunk(
+  "direction/fetchRoute",
+  async (_, { getState, dispatch }) => {
     const state = getState() as RootState;
     const { wayPoints, optimization, constraints, profile } = state.direction;
     const validWayPoints = filterDataFeatures(wayPoints);
+
     if (validWayPoints.length >= 2) {
       const newHash = hashRoute(validWayPoints, {
         optimization,
@@ -207,31 +224,24 @@ directionWayPointsListenerMiddleware.startListening({
         !state.direction.route ||
         newHash !== state.direction.route.properties.hash
       ) {
-        dispatch(fetchRoute());
+        return await orsRoute(
+          validWayPoints,
+          {
+            optimization,
+            profile,
+            constraints,
+          },
+          openRouteServiceToken,
+          openRouteServiceUrl,
+        );
       }
+      // undefined -> route is always valid we do nothing
+      return;
     } else {
       dispatch(directionRouteChanged(null));
+      // null -> route is invalided we need to remove
+      return null;
     }
-  },
-});
-
-export const fetchRoute = createAsyncThunk(
-  "direction/fetchRoute",
-  async (_, { getState }) => {
-    const state = getState() as RootState;
-    const { wayPoints, optimization, constraints, profile } = state.direction;
-    const validWayPoints = filterDataFeatures(wayPoints);
-
-    return await orsRoute(
-      validWayPoints,
-      {
-        optimization,
-        profile,
-        constraints,
-      },
-      openRouteServiceToken,
-      openRouteServiceUrl,
-    );
   },
 );
 

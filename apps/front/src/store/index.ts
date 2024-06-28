@@ -1,19 +1,26 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 
-import { errorCatcherMiddleware, notificationSlice } from "pentatrion-design/redux";
+import {
+  errorCatcherMiddleware,
+  notificationSlice,
+} from "pentatrion-design/redux";
 import { ViewStateListenerMiddleware } from "./stateStorage";
 import mapSlice, { modeChangedAction } from "./mapSlice";
 
-import searchSlice, { searchFeatureListenerMiddleware } from "~/features/search/searchSlice";
+import searchSlice, {
+  searchFeatureListenerMiddleware,
+} from "~/features/search/searchSlice";
 import directionSlice, {
   directionWayPointListenerMiddleware,
   directionWayPointsListenerMiddleware,
+  fetchRoute,
 } from "~/features/direction/directionSlice";
 import layerSlice from "~/features/layer/layerSlice";
 import streetViewSlice from "~/features/street-view/streetViewSlice";
 import geolocationSlice from "~/features/geolocation/geolocationSlice";
 import isochroneSlice from "~/features/isochrone/isochroneSlice";
+import { parseHashString } from "~/lib/hash";
 
 const store = configureStore({
   reducer: {
@@ -44,7 +51,15 @@ export type AppDispatch = typeof store.dispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-  const mode = e.matches ? "dark" : "light";
-  store.dispatch(modeChangedAction(mode));
-});
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (e) => {
+    const mode = e.matches ? "dark" : "light";
+    store.dispatch(modeChangedAction(mode));
+  });
+
+const hashInfos = parseHashString(window.location.hash);
+
+if (hashInfos?.direction) {
+  store.dispatch(fetchRoute());
+}
