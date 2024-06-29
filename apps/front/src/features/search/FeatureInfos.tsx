@@ -18,14 +18,16 @@ import ShareUrlInput from "~/components/ShareUrlInput";
 type Action = "isochrone" | "direction" | "raw" | "share";
 
 export default function FeatureInfos() {
-  const { feature } = useAppSelector(selectSearch);
+  const { feature, readOnly } = useAppSelector(selectSearch);
   const dispatch = useAppDispatch();
   const [, copy] = useCopyToClipboard();
   const { notify } = useReduxNotifications();
   const coordsUnit = useAppSelector(selectCoordsUnit);
   const { T } = useT();
 
-  const [action, setAction] = useState<Action | null>(null);
+  const [action, setAction] = useState<Action | null>(
+    readOnly ? "share" : null,
+  );
   const setOrToggleAction = useCallback(
     (a: Action) => {
       if (a === action) {

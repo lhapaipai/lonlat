@@ -19,7 +19,7 @@ import {
 } from "~/store/mapSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import { useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import {
   inputSearchDebounceDelay,
   openRouteServiceToken,
@@ -55,6 +55,26 @@ export default function SearchTab() {
     }));
   }, [T]);
   const geolocation = useAppSelector(selectGeolocation);
+
+  let suffix: ReactNode = null;
+
+  if (feature) {
+    suffix =
+      feature?.properties.type === "geolocation" &&
+      (geolocation.status === "on" ? (
+        <Button
+          icon
+          variant="ghost"
+          color="gray"
+          onClick={() => setShowGeolocationInfos((s) => !s)}
+        >
+          <i className="fe-geolocation-cog"></i>
+        </Button>
+      ) : (
+        <i className={geolocationIconClassName(geolocation)}></i>
+      ));
+  }
+
   return (
     <div className="grid grid-cols-1 gap-2">
       <div>
@@ -84,21 +104,7 @@ export default function SearchTab() {
               zIndex={110}
             />
           }
-          selectionSuffix={
-            feature?.properties.type === "geolocation" &&
-            (geolocation.status === "on" ? (
-              <Button
-                icon
-                variant="ghost"
-                color="gray"
-                onClick={() => setShowGeolocationInfos((s) => !s)}
-              >
-                <i className="fe-geolocation-cog"></i>
-              </Button>
-            ) : (
-              <i className={geolocationIconClassName(geolocation)}></i>
-            ))
-          }
+          suffix={suffix}
           noSearchSuffix={
             !readOnly && (
               <Button

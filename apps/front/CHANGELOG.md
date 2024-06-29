@@ -1,3 +1,8 @@
+## 0.1.1
+
+- Isochrone in context menu
+- Hash for search/direction to retrieve current state
+
 ## 0.1.0 (2024-05-22)
 
 - TailwindCSS migration

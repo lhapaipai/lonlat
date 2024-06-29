@@ -74,12 +74,15 @@ type Action = "settings" | "share";
 
 export default function DirectionTab() {
   const direction = useAppSelector(selectDirection);
-  const { wayPoints, optimization, constraints, profile, route } = direction;
+  const { wayPoints, optimization, constraints, profile, route, readOnly } =
+    direction;
   const dispatch = useAppDispatch();
   const { notifyError } = useReduxNotifications();
   const { T } = useT();
   const searchEngine = useAppSelector(selectSearchEngine);
-  const [action, setAction] = useState<Action | null>(null);
+  const [action, setAction] = useState<Action | null>(
+    readOnly ? "share" : null,
+  );
 
   const viewState = useAppSelector(selectViewState);
 
@@ -202,87 +205,93 @@ export default function DirectionTab() {
           className="ll-sortable"
           handle=".handle"
         >
-          {wayPoints.map((wayPoint, index) => (
-            <Step
-              key={wayPoint.id}
-              icon={getIndexLetter(index)}
-              status={index < wayPoints.length - 1 ? "done" : "current"}
-              markerClassName="handle"
-              contentClassName="flex"
-            >
-              <LazyAutocomplete
-                className="flex-1"
-                placeholder={placeholderByIndex(index, wayPoints.length)}
-                icon={
-                  <Select
-                    variant="ghost"
-                    showArrow={false}
-                    width={37}
-                    floatingMinWidth={220}
-                    placement="bottom-start"
-                    options={searchEngineOptions}
-                    value={searchEngine}
-                    onChange={(o) => {
-                      const searchEngine = o.target.value as SearchEngine;
-                      dispatch(searchEngineChanged(searchEngine));
-                    }}
-                    selectSelectionComponent={SearchEngineSelection}
-                    selectOptionComponent={SearchEngineOption}
-                  />
-                }
-                selection={isNoData(wayPoint) ? null : wayPoint}
-                debounce={inputSearchDebounceDelay}
-                autocompleteOptionComponent={AutocompleteGeoOption}
-                onChangeSelection={(selection) =>
-                  handleChangeSelection(index, selection)
-                }
-                onChangeSearchValueCallback={async (searchValue) => {
-                  let collection: AppGeoOption[] = [];
-                  try {
-                    if (searchEngine === "c2c") {
-                      collection = await c2cWaypointSearch(searchValue);
-                    } else if (searchEngine === "ors") {
-                      // we're not defining openRouteServiceUrl because self-hosted doesn't provide
-                      // geocode service
-                      collection = await orsSearch(
-                        searchValue,
-                        viewState.center,
-                        openRouteServiceToken,
-                      );
-                    } else if (searchEngine === "coords") {
-                      collection = coordsSearch(searchValue);
-                    } else {
-                      collection = await ignSearch(
-                        searchValue,
-                        viewState.center,
-                      );
-                    }
-                    return collection;
-                  } catch (err) {
-                    notifyError(err);
-                    throw err;
+          {wayPoints.map((wayPoint, index) => {
+            const clearButtonWillRemove = wayPoints.length > 2;
+            const isReadOnly = isNoData(wayPoint) ? false : readOnly;
+            const selection = isNoData(wayPoint) ? null : wayPoint;
+
+            return (
+              <Step
+                key={wayPoint.id}
+                icon={getIndexLetter(index)}
+                status={index < wayPoints.length - 1 ? "done" : "current"}
+                markerClassName="handle"
+                contentClassName="flex"
+              >
+                <LazyAutocomplete
+                  autocompleteOptionComponent={AutocompleteGeoOption}
+                  className="flex-1"
+                  placeholder={placeholderByIndex(index, wayPoints.length)}
+                  clearSearchButton={!clearButtonWillRemove}
+                  readOnly={isReadOnly}
+                  icon={
+                    <Select
+                      disabled={isReadOnly}
+                      variant="ghost"
+                      showArrow={false}
+                      width={37}
+                      floatingMinWidth={220}
+                      placement="bottom-start"
+                      options={searchEngineOptions}
+                      value={searchEngine}
+                      onChange={(o) => {
+                        const searchEngine = o.target.value as SearchEngine;
+                        dispatch(searchEngineChanged(searchEngine));
+                      }}
+                      selectSelectionComponent={SearchEngineSelection}
+                      selectOptionComponent={SearchEngineOption}
+                    />
                   }
-                }}
-              />
-              {wayPoints.length > 2 && (
-                <SimpleTooltip
-                  content="Supprimer le point"
-                  closeDelay={0}
-                  placement="top-end"
-                  color="yellow"
-                >
-                  <Button
-                    icon
-                    variant="ghost"
-                    color="gray"
-                    onClick={() => dispatch(directionWayPointRemoved(index))}
-                  >
-                    <i className="fe-cancel"></i>
-                  </Button>
-                </SimpleTooltip>
-              )}
-            </Step>
-          ))}
+                  selection={selection}
+                  debounce={inputSearchDebounceDelay}
+                  onChangeSelection={(selection) =>
+                    handleChangeSelection(index, selection)
+                  }
+                  onChangeSearchValueCallback={async (searchValue) => {
+                    let collection: AppGeoOption[] = [];
+                    try {
+                      if (searchEngine === "c2c") {
+                        collection = await c2cWaypointSearch(searchValue);
+                      } else if (searchEngine === "ors") {
+                        // we're not defining openRouteServiceUrl because self-hosted doesn't provide
+                        // geocode service
+                        collection = await orsSearch(
+                          searchValue,
+                          viewState.center,
+                          openRouteServiceToken,
+                        );
+                      } else if (searchEngine === "coords") {
+                        collection = coordsSearch(searchValue);
+                      } else {
+                        collection = await ignSearch(
+                          searchValue,
+                          viewState.center,
+                        );
+                      }
+                      return collection;
+                    } catch (err) {
+                      notifyError(err);
+                      throw err;
+                    }
+                  }}
+                  suffix={
+                    clearButtonWillRemove && (
+                      <Button
+                        icon
+                        color="gray"
+                        variant="text"
+                        onClick={() => {
+                          dispatch(directionWayPointRemoved(index));
+                        }}
+                      >
+                        <i className="fe-cancel"></i>
+                      </Button>
+                    )
+                  }
+                />
+              </Step>
+            );
+          })}
         </Sortable>
       </Steps>
       <div className="ll-steps-extra">
