@@ -1,4 +1,10 @@
-import { Button, SimpleTooltip, useCopyToClipboard } from "pentatrion-design";
+import {
+  Button,
+  Input,
+  SimpleTooltip,
+  Textarea,
+  useCopyToClipboard,
+} from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { selectSearch, searchReadOnlyChanged } from "./searchSlice";
 import { getCoordsStr, stringifyGeoOption } from "pentatrion-geo";
@@ -9,7 +15,7 @@ import {
 } from "~/store/mapSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { directionWayPointsAddedFromSearch } from "~/features/direction/directionSlice";
 import { referenceFeatureChanged } from "../isochrone/isochroneSlice";
@@ -30,24 +36,19 @@ export default function FeatureInfos() {
   );
   const setOrToggleAction = useCallback(
     (a: Action) => {
-      if (a === action) {
-        setAction(null);
-      } else {
-        setAction(a);
+      const nextAction = a === action ? null : a;
+      setAction(nextAction);
+      if (action === "share" || nextAction === "share") {
+        dispatch(searchReadOnlyChanged(nextAction === "share"));
       }
     },
-    [action],
+    [action, dispatch],
   );
 
-  // if user is openning app from link the link action is not visible by
-  // default but the state is readonly.
-  // it's not a bug a desired state. the interface is cleaner.
-  useEffect(() => {
-    if (action === "share") {
-      dispatch(searchReadOnlyChanged(true));
-    }
-    return () => void dispatch(searchReadOnlyChanged(false));
-  }, [action, dispatch]);
+  function handleClickClipboard(value: string) {
+    copy(value);
+    notify(T("copiedIntoClipboard"));
+  }
 
   if (feature?.type !== "Feature") {
     return null;
@@ -161,10 +162,61 @@ export default function FeatureInfos() {
       {action === "raw" && (
         <>
           <div className="p8n-separator"></div>
-          <textarea
-            className="ll-textarea min-h-60 text-sm"
+          <Textarea
+            className="h-10 text-sm [&_textarea]:h-full"
             readOnly
-            defaultValue={stringifyGeoOption(feature)}
+            value={stringifyGeoOption(feature, "lng-lat-array")}
+            action={
+              <Button
+                withRipple={false}
+                icon
+                variant="text"
+                color="gray"
+                onClick={() =>
+                  handleClickClipboard(
+                    stringifyGeoOption(feature, "lng-lat-array"),
+                  )
+                }
+              >
+                <i className="fe-clipboard-copy"></i>
+              </Button>
+            }
+          />
+          <Textarea
+            className="h-24 text-sm [&_textarea]:h-full"
+            readOnly
+            value={stringifyGeoOption(feature, "lng-lat")}
+            action={
+              <Button
+                withRipple={false}
+                icon
+                variant="text"
+                color="gray"
+                onClick={() =>
+                  handleClickClipboard(stringifyGeoOption(feature, "lng-lat"))
+                }
+              >
+                <i className="fe-clipboard-copy"></i>
+              </Button>
+            }
+          />
+          <Textarea
+            className="min-h-48 text-sm [&_textarea]:h-full"
+            readOnly
+            value={stringifyGeoOption(feature)}
+            action={
+              <Button
+                withRipple={false}
+                icon
+                variant="text"
+                color="gray"
+                onClick={() =>
+                  handleClickClipboard(stringifyGeoOption(feature))
+                }
+              >
+                <i className="fe-clipboard-copy"></i>
+              </Button>
+            }
           />
         </>
       )}

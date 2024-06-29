@@ -7,6 +7,5 @@ export function encodeBool(val: boolean) {
 }
 
 export function decode(str: string) {
-  console.log("decode", str);
   return str ? decodeURI(str) : "";
 }

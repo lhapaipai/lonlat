@@ -174,7 +174,8 @@ export const selectValidDirectionWayPoints = createSelector(
   (wayPoints) => filterDataFeatures(wayPoints),
 );
 export const selectDirectionRoute = (state: RootState) => state.direction.route;
-
+export const selectDirectionReadOnly = (state: RootState) =>
+  state.direction.readOnly;
 export const selectDirectionWayPointsGeojson = createSelector(
   selectDirectionRoute,
   (route): null | FeatureCollection<Point> => {

@@ -1,5 +1,6 @@
 import { Position } from "geojson";
 import { DirectionOptions, GeoOption, GeoPointOption } from "../types";
+import { LngLat, LngLatLike } from "maplibre-gl";
 
 export function updateId<T extends { id: string }>(obj: T, id: string): T {
   return {
@@ -225,18 +226,43 @@ export function ddmToDd(
   return dd;
 }
 
-export function stringifyGeoOption(geoFeature: GeoOption) {
+export function stringifyGeoOption(
+  geoFeature: GeoPointOption,
+  action?: "full" | "lng-lat" | "lng-lat-array",
+) {
   const { label, name, context, type, originalProperties } =
     geoFeature.properties;
-  return JSON.stringify(
-    {
-      type: "Feature",
-      properties: { label, name, context, type, originalProperties },
-      geometry: geoFeature.geometry,
-    },
-    undefined,
-    2,
-  );
+  const { coordinates } = geoFeature.geometry;
+  const lng = customRound(coordinates[0], 4);
+  const lat = customRound(coordinates[1], 4);
+
+  switch (action) {
+    case "lng-lat": {
+      return JSON.stringify(
+        {
+          lng,
+          lat,
+        },
+        undefined,
+        2,
+      );
+    }
+    case "lng-lat-array": {
+      return JSON.stringify([lng, lat]);
+    }
+
+    default: {
+      return JSON.stringify(
+        {
+          type: "Feature",
+          properties: { label, name, context, type, originalProperties },
+          geometry: geoFeature.geometry,
+        },
+        undefined,
+        2,
+      );
+    }
+  }
 }
 
 export function m2km(value: number) {

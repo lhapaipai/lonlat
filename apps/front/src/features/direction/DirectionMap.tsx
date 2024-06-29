@@ -10,6 +10,7 @@ import {
 
 import {
   directionWayPointChanged,
+  selectDirectionReadOnly,
   selectDirectionRoute,
   selectDirectionWayPoints,
   selectDirectionWayPointsGeojson,
@@ -34,6 +35,7 @@ export default function DirectionMap() {
   const directionWaypointsGeojson = useAppSelector(
     selectDirectionWayPointsGeojson,
   );
+  const readOnly = useAppSelector(selectDirectionReadOnly);
 
   function handleDirectionWayPointDragEnd(
     e: Event<GradientMarker>,
@@ -57,7 +59,7 @@ export default function DirectionMap() {
               }
               scale={[0, waypoints.length - 1].includes(index) ? 1 : 0.75}
               key={feature.id}
-              draggable={true}
+              draggable={!readOnly}
               longitude={feature.geometry.coordinates[0]}
               latitude={feature.geometry.coordinates[1]}
               onDragEnd={(e) => handleDirectionWayPointDragEnd(e, index)}

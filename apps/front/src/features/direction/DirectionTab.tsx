@@ -47,7 +47,7 @@ import {
 } from "~/store/mapSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import {
   inputSearchDebounceDelay,
   openRouteServiceToken,
@@ -139,24 +139,14 @@ export default function DirectionTab() {
 
   const setOrToggleAction = useCallback(
     (a: Action) => {
-      if (a === action) {
-        setAction(null);
-      } else {
-        setAction(a);
+      const nextAction = a === action ? null : a;
+      setAction(nextAction);
+      if (action === "share" || nextAction === "share") {
+        dispatch(directionReadOnlyChanged(nextAction === "share"));
       }
     },
-    [action],
+    [action, dispatch],
   );
-
-  // if user is openning app from link the link action is not visible by
-  // default but the state is readonly.
-  // it's not a bug a desired state. the interface is cleaner.
-  useEffect(() => {
-    if (action === "share") {
-      dispatch(directionReadOnlyChanged(true));
-    }
-    return () => void dispatch(directionReadOnlyChanged(false));
-  }, [action, dispatch]);
 
   return (
     <div className="grid grid-cols-1 gap-2">
