@@ -5,3 +5,8 @@ export function encode(str = "") {
 export function encodeBool(val: boolean) {
   return val ? "1" : "0";
 }
+
+export function decode(str: string) {
+  console.log("decode", str);
+  return str ? decodeURI(str) : "";
+}

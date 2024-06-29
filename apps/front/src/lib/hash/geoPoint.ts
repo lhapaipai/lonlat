@@ -1,6 +1,6 @@
 import { CustomGeoOption, GeoPointOption } from "pentatrion-geo";
 import { customRound } from "pentatrion-geo/geo-options/util";
-import { encode } from "./util";
+import { decode, encode } from "./util";
 import { Position } from "geojson";
 
 function stringifyCoordinates([lng, lat, z]: Position) {
@@ -71,11 +71,11 @@ export function parseGeoPoint(
       },
       properties: {
         id: "custom",
-        label: decodeURI(label),
-        name: decodeURI(name),
-        context: decodeURI(context),
+        label: decode(label),
+        name: decode(name),
+        context: decode(context),
         score: 1,
-        type: decodeURI(type),
+        type: decode(type),
         originalProperties: null,
       },
     };
