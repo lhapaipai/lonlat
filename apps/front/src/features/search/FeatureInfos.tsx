@@ -1,6 +1,6 @@
 import {
   Button,
-  Input,
+  LinkButton,
   SimpleTooltip,
   Textarea,
   useCopyToClipboard,
@@ -20,6 +20,7 @@ import { useCallback, useState } from "react";
 import { directionWayPointsAddedFromSearch } from "~/features/direction/directionSlice";
 import { referenceFeatureChanged } from "../isochrone/isochroneSlice";
 import ShareUrlInput from "~/components/ShareUrlInput";
+import { generateGMapsDirection, generateWazeDirection } from "~/lib/url";
 
 type Action = "isochrone" | "direction" | "raw" | "share";
 
@@ -224,6 +225,34 @@ export default function FeatureInfos() {
         <>
           <div className="p8n-separator"></div>
           <ShareUrlInput />
+          <div className="flex gap-2">
+            <SimpleTooltip
+              content={T("tooltip.googleDirection")}
+              placement="top-start"
+            >
+              <LinkButton
+                className="min-w-0 flex-1 justify-center"
+                variant="text"
+                href={generateGMapsDirection(feature.geometry.coordinates)}
+                color="gray"
+              >
+                <i className="fe-google"></i>
+              </LinkButton>
+            </SimpleTooltip>
+            <SimpleTooltip
+              content={T("tooltip.wazeDirection")}
+              placement="top-end"
+            >
+              <LinkButton
+                className="min-w-0 flex-1 justify-center"
+                variant="text"
+                href={generateWazeDirection(feature.geometry.coordinates)}
+                color="gray"
+              >
+                <i className="fe-waze"></i>
+              </LinkButton>
+            </SimpleTooltip>
+          </div>
         </>
       )}
     </>

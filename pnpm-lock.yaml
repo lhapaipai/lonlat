@@ -83,15 +83,12 @@ importers:
       maplibre-react-components:
         specifier: ^0.0.7
         version: 0.0.7(@floating-ui/dom@1.6.6)(maplibre-gl@4.4.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      maplibre-theme:
-        specifier: ^0.0.14
-        version: 0.0.14
       nanoid:
         specifier: ^5.0.7
         version: 5.0.7
       pentatrion-design:
-        specifier: ^0.0.19
-        version: 0.0.19(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2)))
+        specifier: ^0.0.20
+        version: 0.0.20(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2)))
       pentatrion-geo:
         specifier: workspace:*
         version: link:../pentatrion-geo
@@ -158,7 +155,7 @@ importers:
         version: 0.6.5(prettier@3.3.2)
       tailwindcss:
         specifier: ^3.4.4
-        version: 3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))
+        version: 3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))
       typescript:
         specifier: ^5.4.5
         version: 5.5.2
@@ -202,8 +199,8 @@ importers:
         specifier: ^5.0.7
         version: 5.0.7
       pentatrion-design:
-        specifier: ^0.0.19
-        version: 0.0.19(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2)))
+        specifier: ^0.0.20
+        version: 0.0.20(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2)))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -297,7 +294,7 @@ importers:
         version: 8.1.10(@babel/preset-env@7.24.7(@babel/core@7.24.7))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwindcss:
         specifier: ^3.4.4
-        version: 3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))
+        version: 3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))
       tsup:
         specifier: ^8.1.0
         version: 8.1.0(@swc/core@1.6.5)(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))(typescript@5.5.2)
@@ -353,8 +350,8 @@ importers:
         specifier: ^5.0.7
         version: 5.0.7
       pentatrion-design:
-        specifier: ^0.0.13
-        version: 0.0.13(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2)))
+        specifier: ^0.0.20
+        version: 0.0.20(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2)))
       pentatrion-geo:
         specifier: workspace:*
         version: link:../pentatrion-geo
@@ -421,7 +418,7 @@ importers:
         version: 0.6.5(prettier@3.3.2)
       tailwindcss:
         specifier: ^3.4.4
-        version: 3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))
+        version: 3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))
       typescript:
         specifier: ^5.4.5
         version: 5.5.2
@@ -4778,9 +4775,6 @@ packages:
       '@floating-ui/dom':
         optional: true
 
-  maplibre-theme@0.0.14:
-    resolution: {integrity: sha512-s/dOSMSpRlxlR+v4LbUju/ouBIIOIyogi/ka8fg2hbS4yQ1gOzkM3N+TKagwUhMij/SvqR5R234KiyhYiBcu7Q==}
-
   maplibre-theme@0.0.6:
     resolution: {integrity: sha512-d3IcUYVRGT2ozW2Y3P04E9vCtNCxay4vY+5sw1blSFkbLDjYsjT9Jsb305BXb6nXSh53juwywqr/miy0X6tP/g==}
 
@@ -5177,22 +5171,8 @@ packages:
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
 
-  pentatrion-design@0.0.13:
-    resolution: {integrity: sha512-LhS3OdVg+IoNRS0FSgxV1WzyBefTKeS5QASVdOwV36ddWkSuVlUvBCBQctqpyQb9zKpC/N0oN00yzw52bHo4mg==}
-    peerDependencies:
-      '@reduxjs/toolkit': '*'
-      '@types/react': '*'
-      '@types/react-dom': '*'
-      react-redux: '*'
-      tailwindcss: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
-
-  pentatrion-design@0.0.19:
-    resolution: {integrity: sha512-5eKJsrUGnWSJ9b3KunZ8q+lUSjOlIb11tMHZkvQfUTVN40lnUMZE0bKKMhI7Wf1jt06YtF2ZqSQ3KAKvdRIDtQ==}
+  pentatrion-design@0.0.20:
+    resolution: {integrity: sha512-xsLkIRYGeFfeWQJ0xpbGgwxP7ri6f/mjxZDwbVY+xEobBzXzpCbQW33JwlCxJZbWP+aFB0vmvtP5F2zaDunVQQ==}
     peerDependencies:
       '@reduxjs/toolkit': '*'
       '@types/react': '*'
@@ -12319,8 +12299,6 @@ snapshots:
     optionalDependencies:
       '@floating-ui/dom': 1.6.6
 
-  maplibre-theme@0.0.14: {}
-
   maplibre-theme@0.0.6: {}
 
   markdown-to-jsx@7.3.2(react@18.3.1):
@@ -12676,7 +12654,7 @@ snapshots:
 
   pend@1.2.0: {}
 
-  pentatrion-design@0.0.13(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))):
+  pentatrion-design@0.0.20(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))):
     dependencies:
       '@floating-ui/react': 0.26.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@reduxjs/toolkit': 2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
@@ -12686,25 +12664,7 @@ snapshots:
       react-polymorphic-types: 2.0.0(@types/react@18.3.3)
       react-redux: 9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1)
       react-sortablejs: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sortablejs@1.15.2)
-      tailwindcss: 3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))
-    optionalDependencies:
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
-    transitivePeerDependencies:
-      - '@types/sortablejs'
-      - sortablejs
-
-  pentatrion-design@0.0.19(@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.3.3)(@types/sortablejs@1.15.8)(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(sortablejs@1.15.2)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))):
-    dependencies:
-      '@floating-ui/react': 0.26.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@reduxjs/toolkit': 2.2.5(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
-      clsx: 2.1.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-polymorphic-types: 2.0.0(@types/react@18.3.3)
-      react-redux: 9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1)
-      react-sortablejs: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sortablejs@1.15.2)
-      tailwindcss: 3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))
+      tailwindcss: 3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))
     optionalDependencies:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
@@ -12779,7 +12739,7 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.38
 
-  postcss-load-config@4.0.2(postcss@8.4.38)(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2)):
+  postcss-load-config@4.0.2(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2)):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.4.5
@@ -13707,7 +13667,7 @@ snapshots:
 
   tabbable@6.2.0: {}
 
-  tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2)):
+  tailwindcss@3.4.4(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -13726,7 +13686,7 @@ snapshots:
       postcss: 8.4.38
       postcss-import: 15.1.0(postcss@8.4.38)
       postcss-js: 4.0.1(postcss@8.4.38)
-      postcss-load-config: 4.0.2(postcss@8.4.38)(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))
+      postcss-load-config: 4.0.2(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))
       postcss-nested: 6.0.1(postcss@8.4.38)
       postcss-selector-parser: 6.1.0
       resolve: 1.22.8
@@ -13918,7 +13878,7 @@ snapshots:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss-load-config: 4.0.2(postcss@8.4.38)(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.2))
+      postcss-load-config: 4.0.2(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@20.14.9)(typescript@5.5.2))
       resolve-from: 5.0.0
       rollup: 4.18.0
       source-map: 0.8.0-beta.0

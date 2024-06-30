@@ -1,6 +1,5 @@
 import { Position } from "geojson";
-import { DirectionOptions, GeoOption, GeoPointOption } from "../types";
-import { LngLat, LngLatLike } from "maplibre-gl";
+import { DirectionOptions, GeoPointOption } from "../types";
 
 export function updateId<T extends { id: string }>(obj: T, id: string): T {
   return {

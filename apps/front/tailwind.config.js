@@ -9,6 +9,9 @@ export default {
     "./node_modules/pentatrion-design/components/**/*.js",
     "./node_modules/pentatrion-design/hooks/**/*.js",
     "./node_modules/pentatrion-design/redux/**/*.js",
+    // "../../node_modules/pentatrion-design/components/**/*.js",
+    // "../../node_modules/pentatrion-design/hooks/**/*.js",
+    // "../../node_modules/pentatrion-design/redux/**/*.js",
 
     "./node_modules/pentatrion-geo/api/**/*.{ts,tsx}",
     "./node_modules/pentatrion-geo/components/**/*.{ts,tsx}",

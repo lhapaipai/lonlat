@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_DIR="$( dirname "$SCRIPT_DIR")"
+
+cd $PROJECT_DIR
+pnpm remove pentatrion-design
+
+cd $PROJECT_DIR/apps/front
+pnpm i pentatrion-design@latest
+
+
+cd $PROJECT_DIR/apps/pentatrion-geo
+pnpm i pentatrion-design@latest
+
+cd $PROJECT_DIR/apps/sandbox
+pnpm i pentatrion-design@latest
+
+

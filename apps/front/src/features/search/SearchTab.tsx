@@ -56,7 +56,7 @@ export default function SearchTab() {
   }, [T]);
   const geolocation = useAppSelector(selectGeolocation);
 
-  let suffix: ReactNode = null;
+  let suffix: ReactNode;
 
   if (feature) {
     suffix =

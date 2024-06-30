@@ -22,7 +22,10 @@ function TabsControl() {
 
   const { container } = useRControl({
     position: "top-right",
-    className: clsx("maplibregl-ctrl maplibregl-ctrl-tabs", distractionFree && "distraction-free"),
+    className: clsx(
+      "maplibregl-ctrl maplibregl-ctrl-tabs",
+      distractionFree && "distraction-free",
+    ),
   });
   const tab = useAppSelector(selectTab);
   const dispatch = useAppDispatch();
@@ -31,7 +34,7 @@ function TabsControl() {
     {
       id: "search",
       title: (
-        <span className="px-6 inline-block">
+        <span className="inline-block px-6">
           <i className="fe-search"></i>
         </span>
       ),
@@ -40,7 +43,7 @@ function TabsControl() {
     {
       id: "direction",
       title: (
-        <span className="px-6 inline-block">
+        <span className="inline-block px-6">
           <i className="fe-route"></i>
         </span>
       ),
@@ -49,7 +52,7 @@ function TabsControl() {
     {
       id: "help",
       title: (
-        <span className="px-6 inline-block">
+        <span className="inline-block px-6">
           <i className="fe-info"></i>
         </span>
       ),
@@ -65,12 +68,15 @@ function TabsControl() {
         value={tab}
         onChange={(e) => dispatch(tabChanged(e))}
         contentClassName="overflow-auto max-h-[calc(100vh-36px-1rem)]"
+        className="rounded-2xl"
       >
         <Button
           icon
           variant="ghost"
           color="gray"
-          onClick={() => dispatch(modeChangedAction(mode === "light" ? "dark" : "light"))}
+          onClick={() =>
+            dispatch(modeChangedAction(mode === "light" ? "dark" : "light"))
+          }
         >
           <i className={mode === "light" ? "fe-dark" : "fe-light"}></i>
         </Button>
@@ -84,7 +90,7 @@ function TabsControl() {
         </Button>
       </Tabs>
       {distractionFree && (
-        <div className="absolute top-2 right-[calc(100%+1rem)] md:top-0 md:right-[calc(100%+0.5rem)]">
+        <div className="absolute right-[calc(100%+1rem)] top-2 md:right-[calc(100%+0.5rem)] md:top-0">
           <Button
             icon
             variant="ghost"
@@ -97,7 +103,7 @@ function TabsControl() {
               src="/logo-1x.png"
               srcSet="/logo-1x.png 1x, /logo-2x.png 2x"
               alt="LonLat logo"
-              className="w-8 h-8 max-w-none"
+              className="h-8 w-8 max-w-none"
             />
           </Button>
         </div>

@@ -118,7 +118,9 @@
     "direction": "Calculer un itinéraire vers ce point",
     "code": "Afficher la donnée brute",
     "isochrone": "Calculer un isochrone",
-    "share": "Partager un lien"
+    "share": "Partager un lien",
+    "googleDirection": "Utiliser Google Maps pour aller vers ce point",
+    "wazeDirection": "Utiliser Waze pour aller vers ce point"
   },
   "contextMenu": {
     "searchInfos": "Plus d'infos sur cet endroit",

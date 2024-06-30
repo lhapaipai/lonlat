@@ -40,6 +40,9 @@ const searchSlice = createSlice({
     },
     searchFeatureChanged(state, action: PayloadAction<SearchFeature>) {
       state.feature = action.payload;
+      if (state.feature === null) {
+        state.readOnly = false;
+      }
     },
     searchFeaturePropertiesChanged(
       state,
