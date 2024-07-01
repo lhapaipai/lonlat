@@ -9,6 +9,8 @@
 @import "pentatrion-geo/style.css";
 
 html {
-  --sidebar-extra-width: 50%;
-  --sidebar-extra-height: 50%;
+  --sidebar-streetview-width: 50%;
+  --sidebar-streetview-height: 50%;
+
+  --sidebar-extra-height: 200px;
 }

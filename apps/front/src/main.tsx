@@ -10,19 +10,20 @@ import store from "./store/index.ts";
 import { NotificationConsumer } from "pentatrion-design/redux";
 
 import fr from "./i18n/fr.json";
+import React from "react";
 
-/*
- <React.StrictMode>
-    <App />
-  </React.StrictMode>
-*/
+const strict = false;
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const container = (
   <Provider store={store}>
     <Talkr languages={{ fr }} defaultLanguage="fr">
       <NotificationConsumer>
         <App />
       </NotificationConsumer>
     </Talkr>
-  </Provider>,
+  </Provider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  strict ? <React.StrictMode>{container}</React.StrictMode> : container,
 );

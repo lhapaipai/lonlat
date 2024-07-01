@@ -31,8 +31,10 @@ import IsochroneControl from "./features/isochrone/IsochroneControl";
 import { selectIsochroneReferenceFeature } from "./features/isochrone/isochroneSlice";
 import { selectGeolocationStatus } from "./features/geolocation/geolocationSlice";
 import IsochroneMap from "./features/isochrone/IsochroneMap";
+import Extra from "./components/Extra";
 
 function handleAfterMapInstanciation(map: Map) {
+  console.log("handleAfterMapInstanciation", map._loaded);
   map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {
     if (!map.hasImage("oneway")) {
       map.addImage("oneway", img.data);
@@ -99,31 +101,34 @@ function App() {
   }, [baseLayer, optionalLayers, terrain]);
 
   return (
-    <div id="app" className="flex h-full w-full flex-col md:flex-row">
-      <div id="principal" className="flex-1">
-        <RMap
-          onMoveEnd={handleMoveEnd}
-          initialCenter={viewState.center}
-          initialZoom={viewState.zoom}
-          initialAttributionControl={false}
-          mapStyle={uncontrolledStyle}
-          onMounted={handleAfterMapInstanciation}
-        >
-          {debug && <RFrameRateControl />}
-          <ContextMenuEventDispatcher />
-          <TabsControl />
-          <LayerSwitcherControl />
-          <MapFlyer />
-          {streetView && <StreetViewMap />}
-          {tab === "direction" && <DirectionMap />}
-          {tab === "search" && <SearchMap />}
-          <IsochroneMap />
-          {geolocationEnabled && <GeolocationMap />}
-          <ContextMenuManager />
-          {isochroneReferenceFeature && <IsochroneControl />}
-        </RMap>
+    <div id="app" className="flex h-full w-full flex-col">
+      <div className="flex h-full w-full flex-1 flex-col md:flex-row">
+        <div id="principal" className="flex-1">
+          <RMap
+            onMoveEnd={handleMoveEnd}
+            initialCenter={viewState.center}
+            initialZoom={viewState.zoom}
+            initialAttributionControl={false}
+            mapStyle={uncontrolledStyle}
+            onMounted={handleAfterMapInstanciation}
+          >
+            {debug && <RFrameRateControl />}
+            <ContextMenuEventDispatcher />
+            <TabsControl />
+            <LayerSwitcherControl />
+            <MapFlyer />
+            {streetView && <StreetViewMap />}
+            {tab === "direction" && <DirectionMap />}
+            {tab === "search" && <SearchMap />}
+            <IsochroneMap />
+            {geolocationEnabled && <GeolocationMap />}
+            <ContextMenuManager />
+            {isochroneReferenceFeature && <IsochroneControl />}
+          </RMap>
+        </div>
+        {streetView && <StreetViewWindow />}
       </div>
-      {streetView && <StreetViewWindow />}
+      <Extra />
     </div>
   );
 }

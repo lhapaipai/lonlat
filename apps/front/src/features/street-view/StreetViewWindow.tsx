@@ -1,4 +1,4 @@
-import { ResizeArea } from "pentatrion-design";
+// import { ResizeArea } from "pentatrion-design";
 import { GApiWrapper, StreetView, googleLibraries } from "pentatrion-geo";
 import { googleMapsApiToken } from "~/config/constants";
 import {
@@ -10,9 +10,11 @@ import {
 } from "./streetViewSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { streetViewToggled } from "~/features/layer/layerSlice";
-import { memo } from "react";
+import { memo, useRef } from "react";
+import { ResizeArea } from "~/components/resize-area";
 
 function StreetViewWindow() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const coords = useAppSelector(selectPegmanCoords);
   const { heading, pitch } = useAppSelector(selectPegmanPov);
   const dispatch = useAppDispatch();
@@ -32,12 +34,20 @@ function StreetViewWindow() {
   return (
     coords && (
       <div
-        id="extra"
-        className="relative border-l-0 border-t-[1px] border-gray-4 flex-[0_0_clamp(25vw,var(--sidebar-extra-height),60vw)] md:border-t-0 md:border-l-[1px] md:flex-[0_0_clamp(25vw,var(--sidebar-extra-width),calc(100vw-400px-1rem))]"
+        className="relative flex-[0_0_clamp(1px,var(--sidebar-streetview-height),60vw)] border-l-0 border-t-[1px] border-gray-4 md:flex-[0_0_clamp(25vw,var(--sidebar-streetview-width),calc(100vw-400px-1rem))] md:border-l-[1px] md:border-t-0"
+        ref={containerRef}
       >
-        <ResizeArea name="extra" position="left" />
-        <ResizeArea name="extra" position="top" />
-        <GApiWrapper apiKey={googleMapsApiToken} version="weekly" libraries={googleLibraries}>
+        <ResizeArea
+          name="streetview"
+          position="left"
+          container={containerRef}
+        />
+        <ResizeArea name="streetview" position="top" container={containerRef} />
+        <GApiWrapper
+          apiKey={googleMapsApiToken}
+          version="weekly"
+          libraries={googleLibraries}
+        >
           <StreetView
             heading={heading}
             pitch={pitch}
