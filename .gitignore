@@ -4,6 +4,6 @@ dist/
 
 extra/maputnik
 
-apps/front-with-router
+apps/elevation
 
 *storybook.log

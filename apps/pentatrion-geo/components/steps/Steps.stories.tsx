@@ -1,6 +1,7 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
-import { Step, Steps, getIndexLetter } from "pentatrion-design/components/steps";
+import { Step, Steps } from "pentatrion-design/components/steps";
+import { getIndexLetter } from "pentatrion-design/lib";
 import { Sortable } from "pentatrion-design/components/sortable";
 import { LazyAutocomplete } from "pentatrion-design/components/autocomplete";
 import { NotificationsProvider } from "pentatrion-design/components/notification";
@@ -29,17 +30,20 @@ const meta = {
 export default meta;
 
 export const WithAutocompleteSortable = () => {
-  const [locations, setLocations] = useState<(GeoPointOption | NoDataOption)[]>([
-    createNodataFeature(),
-    createNodataFeature(),
-    createNodataFeature(),
-  ]);
+  const [locations, setLocations] = useState<(GeoPointOption | NoDataOption)[]>(
+    [createNodataFeature(), createNodataFeature(), createNodataFeature()],
+  );
 
-  function handleChangeSelection(index: number, selection: GeoPointOption | null) {
+  function handleChangeSelection(
+    index: number,
+    selection: GeoPointOption | null,
+  ) {
     const itemId = locations[index].id;
 
     const itemsCopy = [...locations];
-    itemsCopy[index] = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
+    itemsCopy[index] = selection
+      ? updateId(selection, itemId)
+      : createNodataFeature(itemId);
 
     setLocations(itemsCopy);
   }
@@ -54,7 +58,11 @@ export const WithAutocompleteSortable = () => {
 
   return (
     <>
-      <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
+      <Steps
+        markerType="bullet"
+        lineStyle="dotted"
+        associateLineWithStep={false}
+      >
         <Sortable
           list={locations}
           setList={setLocations}
@@ -75,7 +83,9 @@ export const WithAutocompleteSortable = () => {
                 className="flex-1"
                 icon={false}
                 selection={isNoData(location) ? null : location}
-                onChangeSelection={(selection) => handleChangeSelection(index, selection)}
+                onChangeSelection={(selection) =>
+                  handleChangeSelection(index, selection)
+                }
                 onChangeSearchValueCallback={handleChangeSearchValue}
                 autocompleteOptionComponent={AutocompleteGeoOption}
               />
@@ -113,7 +123,9 @@ export const WithAutocompleteSortable = () => {
         <div>Sélections :</div>
         <ul>
           {locations.map((i) => (
-            <li key={i.id}>{isNoData(i) ? "non défini" : i.properties.label}</li>
+            <li key={i.id}>
+              {isNoData(i) ? "non défini" : i.properties.label}
+            </li>
           ))}
         </ul>
       </div>

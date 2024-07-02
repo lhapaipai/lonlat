@@ -2,7 +2,7 @@ import { useListItem } from "@floating-ui/react";
 import { SelectValue } from "pentatrion-design/components/select/Select";
 import { Select, useSelect } from "pentatrion-design/index";
 import { useState } from "react";
-import cn from "classnames";
+import clsx from "clsx";
 import { Option } from "./interface";
 import { SelectSelectionProps } from "pentatrion-design/components/select/SelectSelection";
 
@@ -52,7 +52,7 @@ function SelectOptionComponent({ label, icon }: StarOption) {
 
   return (
     <button
-      className={cn("option", isSelected && "selected", isActive && "active")}
+      className={clsx("option", isSelected && "selected", isActive && "active")}
       ref={ref}
       role="option"
       aria-selected={isActive && isSelected}

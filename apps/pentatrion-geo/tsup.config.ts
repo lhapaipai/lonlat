@@ -10,6 +10,8 @@ export default defineConfig({
       "@floating-ui/react",
       "@googlemaps/js-api-loader",
       "@mapbox/point-geometry",
+      "@turf/distance",
+      "@turf/helpers",
       "clsx",
       "fuse.js",
       "maplibre-gl",
