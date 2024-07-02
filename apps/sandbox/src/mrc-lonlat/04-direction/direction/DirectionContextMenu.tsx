@@ -15,7 +15,7 @@ import {
   directionWayPointInsertAt,
   selectDirectionWayPoints,
 } from "./directionSlice";
-import { createLonLatFeaturePoint } from "pentatrion-geo";
+import { createLonLatGeoOption } from "pentatrion-geo";
 import { ReactElement } from "react";
 
 export default function DirectionContextMenu() {
@@ -29,7 +29,7 @@ export default function DirectionContextMenu() {
     index: number,
   ) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
-    const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
+    const lonlatFeature = createLonLatGeoOption(mapEvent.detail.lngLat, 0);
     dispatch(directionWayPointChanged({ index, feature: lonlatFeature }));
   }
 
@@ -38,7 +38,7 @@ export default function DirectionContextMenu() {
     index: number,
   ) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
-    const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
+    const lonlatFeature = createLonLatGeoOption(mapEvent.detail.lngLat, 0);
     dispatch(
       directionWayPointInsertAt({
         feature: lonlatFeature,
@@ -49,7 +49,7 @@ export default function DirectionContextMenu() {
 
   function handleAppendDirection(e: ContextMenuItemMouseEvent) {
     const mapEvent = e as CustomEvent<MaplibreContextmenuEventDetail>;
-    const lonlatFeature = createLonLatFeaturePoint(mapEvent.detail.lngLat, 0);
+    const lonlatFeature = createLonLatGeoOption(mapEvent.detail.lngLat, 0);
     dispatch(
       directionWayPointInsertAt({
         feature: lonlatFeature,

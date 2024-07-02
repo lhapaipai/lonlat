@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",
-    "@testing-library/react": "^15.0.7",
+    "@testing-library/react": "^16.0.0",
     "@types/d3-array": "^3.2.1",
     "@types/d3-scale": "^4.0.8",
     "@types/d3-shape": "^3.1.6",
@@ -50,7 +50,7 @@
     "jsdom": "^24.1.0",
     "pentatrion-fontello-cli": "^0.0.5",
     "postcss": "^8.4.39",
-    "postcss-load-config": "^5.1.0",
+    "postcss-load-config": "^6.0.1",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.5.3",

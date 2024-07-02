@@ -1,4 +1,4 @@
-import { createLonLatFeaturePoint } from "pentatrion-geo";
+import { createLonLatGeoOption } from "pentatrion-geo";
 import { Event, RMarker } from "maplibre-react-components";
 import { Marker } from "maplibre-gl";
 
@@ -10,21 +10,22 @@ export default function SearchMap() {
   const searchFeature = useAppSelector(selectSearchFeature);
 
   function handleSearchLocationDragEnd(e: Event<Marker>) {
-    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
+    const lonlatFeature = createLonLatGeoOption(e.target.getLngLat(), 0);
     dispatch(searchFeatureChanged(lonlatFeature));
   }
 
   return (
     <>
-      {searchFeature?.type == "Feature" && searchFeature.geometry.type === "Point" && (
-        <RMarker
-          key={searchFeature.id}
-          draggable={true}
-          longitude={searchFeature.geometry.coordinates[0]}
-          latitude={searchFeature.geometry.coordinates[1]}
-          onDragEnd={handleSearchLocationDragEnd}
-        />
-      )}
+      {searchFeature?.type == "Feature" &&
+        searchFeature.geometry.type === "Point" && (
+          <RMarker
+            key={searchFeature.id}
+            draggable={true}
+            longitude={searchFeature.geometry.coordinates[0]}
+            latitude={searchFeature.geometry.coordinates[1]}
+            onDragEnd={handleSearchLocationDragEnd}
+          />
+        )}
     </>
   );
 }

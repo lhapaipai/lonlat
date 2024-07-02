@@ -1,5 +1,5 @@
 import { getIndexLetter } from "pentatrion-design";
-import { createLonLatFeaturePoint } from "pentatrion-geo";
+import { createLonLatGeoOption } from "pentatrion-geo";
 import {
   Event,
   RLayer,
@@ -35,7 +35,7 @@ export default function DirectionMap() {
     e: Event<GradientMarker>,
     index: number,
   ) {
-    const lonlatFeature = createLonLatFeaturePoint(e.target.getLngLat(), 0);
+    const lonlatFeature = createLonLatGeoOption(e.target.getLngLat(), 0);
     dispatch(directionWayPointChanged({ index, feature: lonlatFeature }));
   }
 

@@ -54,3 +54,8 @@ pnpm dev
 </a>
 
 
+
+## Mises à jour des paquets
+
+eslint doit rester en version ^8 car les paquets `@typescript-eslint/...` ne sont pas encore compatible eslint v9
+.
