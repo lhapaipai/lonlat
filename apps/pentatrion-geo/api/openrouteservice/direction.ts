@@ -1,8 +1,15 @@
 import { hashRoute } from "../../geo-options";
-import { DirectionOptions, GeoPointOption, RouteFeatureResponse } from "../../types.d";
+import {
+  DirectionOptions,
+  GeoPointOption,
+  RouteFeatureResponse,
+} from "../../types.d";
 import { ORSProfile } from "./api";
 import { fetchOpenRouteServiceAPI, openRouteServiceUrl } from "./config";
 import { nanoid } from "nanoid";
+import { computeDistance } from "./util";
+import { localExtrema } from "../../lib/localExtrema";
+import { Position } from "geojson";
 
 export async function orsRoute(
   wayPoints: GeoPointOption[],
@@ -40,7 +47,9 @@ export async function orsRoute(
       method: "post",
       body: {
         id: nanoid(),
-        coordinates: wayPoints.map((wayPoint) => wayPoint.geometry.coordinates.slice(0, 2)),
+        coordinates: wayPoints.map((wayPoint) =>
+          wayPoint.geometry.coordinates.slice(0, 2),
+        ),
         preference: optimization,
         units: "m",
         geometry: true,
@@ -72,6 +81,13 @@ export async function orsRoute(
     },
   } = feature;
 
+  const extremas = localExtrema<Position>(geometry.coordinates, {
+    y: (coordinates, idx) => coordinates[idx][2],
+    yTolerance: 15,
+  });
+  const minima = extremas.minima.map((m) => m[0]);
+  const maxima = extremas.maxima.map((m) => m[0]);
+
   return {
     type: "Feature",
     properties: {
@@ -86,8 +102,10 @@ export async function orsRoute(
       descent: descent && Math.round(descent),
       resource: "open-route-service",
       hash: hashRoute(wayPoints, options),
+      minima,
+      maxima,
     },
-    geometry,
+    geometry: computeDistance(geometry),
     bbox,
   };
 }

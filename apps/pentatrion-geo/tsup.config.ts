@@ -12,6 +12,7 @@ export default defineConfig({
       "@mapbox/point-geometry",
       "@turf/distance",
       "@turf/helpers",
+      "@turf/nearest-point-on-line",
       "clsx",
       "fuse.js",
       "maplibre-gl",

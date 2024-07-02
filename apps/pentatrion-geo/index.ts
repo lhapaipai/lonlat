@@ -14,7 +14,10 @@ export * from "./api/google";
 export * from "./api/ign";
 export * from "./api/camptocamp";
 export * from "./api/openrouteservice";
+export * from "./api/overpass";
 
 export * from "./projection/reproject";
+
+export * from "./lib";
 
 export * from "./types.d";

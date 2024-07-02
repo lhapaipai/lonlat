@@ -86,12 +86,14 @@ export type LonLatGeoOption = GeoOption<Point, LonLatType>;
 export type MountainGeoOption = GeoOption<Point, WaypointType>;
 export type GeolocationGeoOption = GeoOption<Point, GeolocationType>;
 export type CustomGeoOption = GeoOption<Point>;
+export type PoiGeoOption = GeoOption<Point>;
 
 export type AppGeoOption =
   | AddressGeoOption
   | LonLatGeoOption
   | MountainGeoOption
   | GeolocationGeoOption
+  | PoiGeoOption
   | CustomGeoOption;
 
 export type GeoPointOption = GeoOption<Point>;
@@ -108,6 +110,8 @@ export type RouteProperties = {
   descent?: number;
   resource: string;
   hash: string;
+  minima: number[];
+  maxima: number[];
 };
 
 export type RouteFeatureResponse = Feature<LineString, RouteProperties>;
