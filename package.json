@@ -20,5 +20,8 @@
     },
     "volta": {
         "node": "20.14.0"
+    },
+    "dependencies": {
+        "maplibre-react-components": "link:../maplibre-react-components/dist"
     }
 }

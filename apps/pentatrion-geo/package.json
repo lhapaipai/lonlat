@@ -59,7 +59,6 @@
     "clsx": "^2.1.1",
     "fuse.js": "^7.0.0",
     "maplibre-gl": "^4.5.0",
-    "maplibre-react-components": "^0.0.7",
     "nanoid": "^5.0.7",
     "pentatrion-design": "^0.1.0",
     "react": "^18.3.1",

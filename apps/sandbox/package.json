@@ -23,7 +23,6 @@
     "d3-shape": "^3.2.0",
     "immutable": "5.0.0-beta.5",
     "maplibre-gl": "^4.5.0",
-    "maplibre-react-components": "^0.0.7",
     "maplibre-theme": "^0.1.0",
     "nanoid": "^5.0.7",
     "pentatrion-design": "^0.1.0",

@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "name": "ROOT",
+      "path": "../",
+    },
+    {
+      "name": "apps/front",
+      "path": "../apps/front",
+    },
+    {
+      "name": "apps/pentatrion-geo",
+      "path": "../apps/pentatrion-geo",
+    },
+    {
+      "name": "apps/sandbox",
+      "path": "../apps/sandbox",
+    },
+    {
+      "name": "apps/elevation",
+      "path": "../apps/elevation",
+    },
+    {
+      "name": "extra/assets",
+      "path": "../extra/assets",
+    },
+  ],
+  "settings": {},
+}

@@ -1,5 +1,5 @@
 import { PoiGeoOption, RouteFeatureResponse } from "types";
-import { fetchOverpassAPI } from "./config";
+// import { fetchOverpassAPI } from "./config";
 import { point } from "@turf/helpers";
 import { nearestPointOnLine } from "@turf/nearest-point-on-line";
 import { poiResponse } from "./_mock";
@@ -12,22 +12,22 @@ import { Position } from "geojson";
 export async function fetchPois(
   route: RouteFeatureResponse,
 ): Promise<PoiGeoOption[]> {
-  const minimaPoints = route.properties.minima.map(
-    (idx) => route.geometry.coordinates[idx],
-  );
-  const maximaPoints = route.properties.maxima.map(
-    (idx) => route.geometry.coordinates[idx],
-  );
+  // const minimaPoints = route.properties.minima.map(
+  //   (idx) => route.geometry.coordinates[idx],
+  // );
+  // const maximaPoints = route.properties.maxima.map(
+  //   (idx) => route.geometry.coordinates[idx],
+  // );
 
-  const minimaQL = minimaPoints.map(
-    (coords) =>
-      `node(around:500,${coords[1]}, ${coords[0]})[place~"^(town|village|city|municipality)$"];`,
-  );
-  const maximaQL = maximaPoints.map(
-    (coords) =>
-      `node(around:500,${coords[1]}, ${coords[0]})[natural~"^(peak)$"];`,
-  );
-  const query = `[timeout:10][out:json]; (${minimaQL.join("")}${maximaQL.join("")}); out;`;
+  // const minimaQL = minimaPoints.map(
+  //   (coords) =>
+  //     `node(around:500,${coords[1]}, ${coords[0]})[place~"^(city|town|village)$"];`,
+  // );
+  // const maximaQL = maximaPoints.map(
+  //   (coords) =>
+  //     `node(around:500,${coords[1]}, ${coords[0]})[natural~"^(peak)$"];`,
+  // );
+  // const query = `[timeout:10][out:json]; (${minimaQL.join("")}${maximaQL.join("")}); out;`;
 
   // const json = await fetchOverpassAPI("/api/interpreter", {
   //   method: "post",
@@ -113,10 +113,35 @@ export function createPoiGeoOption(
 
 function getType(tags: { [key: string]: string }) {
   if (tags.place) {
-    return "municipality";
+    switch (tags.place) {
+      case "city":
+      case "town":
+        return "locality";
+      case "village":
+      case "borough":
+      case "suburb":
+      case "quarter":
+      case "neighbourhood":
+      case "city_block":
+      case "plot":
+        return "locality";
+
+      default:
+        return "locality";
+    }
   } else if (tags.natural) {
+    switch (tags.natural) {
+      case "peak":
+      case "hill":
+        return "summit";
+      case "saddle": // col
+        return "pass";
+
+      default:
+        return "star";
+    }
     return tags.natural;
   }
 
-  return "unknown";
+  return "star";
 }

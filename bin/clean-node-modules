@@ -3,14 +3,13 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_DIR="$( dirname "$SCRIPT_DIR")"
 
+cd $PROJECT_DIR && rm -r node_modules
+
 cd $PROJECT_DIR/apps/front && rm -r node_modules
-cd $PROJECT_DIR/apps/mrc-doc && rm -r node_modules
+cd $PROJECT_DIR/apps/pentatrion-geo && rm -r node_modules
 cd $PROJECT_DIR/apps/sandbox && rm -r node_modules
+cd $PROJECT_DIR/apps/elevation && rm -r node_modules
 
 cd $PROJECT_DIR/extra/assets && rm -r node_modules
 cd $PROJECT_DIR/extra/swagger && rm -r node_modules
 
-cd $PROJECT_DIR/packages/pentatrion-design && rm -r node_modules
-cd $PROJECT_DIR/packages/pentatrion-geo && rm -r node_modules
-cd $PROJECT_DIR/packages/pentatrion-fonts && rm -r node_modules
-cd $PROJECT_DIR/packages/maplibre-react-components && rm -r node_modules

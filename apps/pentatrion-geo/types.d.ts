@@ -110,8 +110,8 @@ export type RouteProperties = {
   descent?: number;
   resource: string;
   hash: string;
-  minima: number[];
-  maxima: number[];
+  minima?: number[];
+  maxima?: number[];
 };
 
 export type RouteFeatureResponse = Feature<LineString, RouteProperties>;

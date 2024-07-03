@@ -1,51 +1,6 @@
 {
-  // https://stackoverflow.com/questions/68163385/parsing-error-cannot-find-module-next-babel
-  "eslint.workingDirectories": [".", "./apps/mrc-doc"],
-  "intelephense.files.exclude": [
-    "**/.git/**",
-    "**/.svn/**",
-    "**/.hg/**",
-    "**/CVS/**",
-    "**/.DS_Store/**",
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**/{Tests,tests}/**",
-    "**/.history/**",
-    "**/vendor/**/vendor/**",
-    // extra
-    "**/var/cache/**",
-    "**/vendor/fakerphp/faker/src/Faker/Provider/**",
-    "**/vendor/api-platform/core/src/Doctrine/Odm/**",
-    "**/vendor/api-platform/core/src/Elasticsearch/**",
-    "**/vendor/api-platform/core/src/GraphQl/**",
-    "**/vendor/symfony/serializer/Annotation/**"
-  ],
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
-  "editor.quickSuggestions": {
-    "strings": "on"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "tailwindCSS.experimental.configFile": {
-    "packages/pentatrion-geo/tailwind.config.js": "packages/pentatrion-geo/**",
-    "packages/pentatrion-design/tailwind.config.js": "packages/pentatrion-design/**",
-    "apps/front/tailwind.config.js": "apps/front/**",
-    "apps/sandbox/tailwind.config.js": "apps/sandbox/**",
-    "apps/mrc-doc/tailwind.config.js": "apps/mrc-doc/**"
+  "files.exclude": {
+    "apps/": true,
+    "extra/": true
   }
 }

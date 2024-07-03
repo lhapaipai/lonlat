@@ -1,0 +1,21 @@
+{
+  "intelephense.files.exclude": [
+    "**/.git/**",
+    "**/.svn/**",
+    "**/.hg/**",
+    "**/CVS/**",
+    "**/.DS_Store/**",
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**/{Tests,tests}/**",
+    "**/.history/**",
+    "**/vendor/**/vendor/**",
+    // extra
+    "**/var/cache/**",
+    "**/vendor/fakerphp/faker/src/Faker/Provider/**",
+    "**/vendor/api-platform/core/src/Doctrine/Odm/**",
+    "**/vendor/api-platform/core/src/Elasticsearch/**",
+    "**/vendor/api-platform/core/src/GraphQl/**",
+    "**/vendor/symfony/serializer/Annotation/**"
+  ]
+}
