@@ -7,3 +7,5 @@ extra/maputnik
 apps/front-with-router
 
 *storybook.log
+
+apps/elevation/
