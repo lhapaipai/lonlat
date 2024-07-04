@@ -1,7 +1,10 @@
 import { ResizeArea } from "~/components/resize-area";
-import { useRef } from "react";
+import { ReactNode, useRef } from "react";
 
-export default function Extra() {
+interface Props {
+  children?: ReactNode;
+}
+export default function Extra({ children }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -10,7 +13,7 @@ export default function Extra() {
       className="relative flex-[0_0_clamp(10vh,var(--sidebar-extra-height),50vw)] border-t border-gray-4"
     >
       <ResizeArea name="extra" position="top" container={containerRef} />
-      <div>extra content zone</div>
+      {children}
     </div>
   );
 }

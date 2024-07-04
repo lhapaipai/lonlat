@@ -10,17 +10,21 @@ import {
   Checkbox,
   Select,
 } from "pentatrion-design";
-import { useAppDispatch, useAppSelector } from "~/store";
+import { RootState, useAppDispatch, useAppSelector } from "~/store";
 import {
   directionWayPointChanged,
   directionWayPointsChanged,
   directionWayPointInsertAt,
   directionWayPointRemoved,
-  selectDirection,
   optimizationChanged,
   profileChanged,
   constraintChanged,
   directionReadOnlyChanged,
+  directionElevationChartChanged,
+  selectDirectionWayPoints,
+  selectDirectionRoute,
+  selectDirectionReadOnly,
+  selectDirectionElevationChart,
 } from "./directionSlice";
 import {
   AppGeoOption,
@@ -73,9 +77,18 @@ function placeholderByIndex(idx: number, length: number) {
 type Action = "settings" | "share";
 
 export default function DirectionTab() {
-  const direction = useAppSelector(selectDirection);
-  const { wayPoints, optimization, constraints, profile, route, readOnly } =
-    direction;
+  const wayPoints = useAppSelector(selectDirectionWayPoints);
+  const optimization = useAppSelector(
+    (state: RootState) => state.direction.optimization,
+  );
+  const constraints = useAppSelector(
+    (state: RootState) => state.direction.constraints,
+  );
+  const profile = useAppSelector((state: RootState) => state.direction.profile);
+  const route = useAppSelector(selectDirectionRoute);
+  const readOnly = useAppSelector(selectDirectionReadOnly);
+  const elevationChart = useAppSelector(selectDirectionElevationChart);
+
   const dispatch = useAppDispatch();
   const { notifyError } = useReduxNotifications();
   const { T } = useT();
@@ -302,17 +315,38 @@ export default function DirectionTab() {
           <i className="fe-trash"></i>
           <span>{T("reset")}</span>
         </Button>
-
-        <Button
-          icon
-          variant="text"
-          color="gray"
-          selected={action === "settings"}
-          onClick={() => setOrToggleAction("settings")}
+        {route && (
+          <SimpleTooltip
+            content={T("tooltip.showElevationChart")}
+            placement="top-end"
+          >
+            <Button
+              icon
+              variant="text"
+              color="gray"
+              selected={elevationChart === true}
+              onClick={() =>
+                dispatch(directionElevationChartChanged(!elevationChart))
+              }
+            >
+              <i className="fe-chart"></i>
+            </Button>
+          </SimpleTooltip>
+        )}
+        <SimpleTooltip
+          content={T("tooltip.directionSettings")}
+          placement="top-end"
         >
-          <i className="fe-sliders"></i>
-        </Button>
-
+          <Button
+            icon
+            variant="text"
+            color="gray"
+            selected={action === "settings"}
+            onClick={() => setOrToggleAction("settings")}
+          >
+            <i className="fe-sliders"></i>
+          </Button>
+        </SimpleTooltip>
         <SimpleTooltip content={T("tooltip.share")} placement="top-end">
           <Button
             icon

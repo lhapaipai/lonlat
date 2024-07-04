@@ -24,10 +24,10 @@ export function getHashString(
     searchStr && searchParams.set("search", searchStr);
   }
 
-  if (directionState.readOnly) {
-    const directionStr = stringifyDirection(directionState);
-    directionStr && searchParams.set("direction", directionStr);
-  }
+  // if (directionState.readOnly) {
+  const directionStr = stringifyDirection(directionState);
+  directionStr && searchParams.set("direction", directionStr);
+  // }
 
   return searchParams.size === 0
     ? `#${mode}/${mapHash}`

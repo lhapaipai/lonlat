@@ -22,6 +22,8 @@ export default defineConfig({
       "react",
       "react-dom",
       "react-sortablejs",
+      "simplify-js",
+      "d3",
     ];
   },
   shims: true,

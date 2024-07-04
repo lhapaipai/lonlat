@@ -81,7 +81,7 @@
   "ascent": "Dénivelé positif",
   "descent": "Dénivelé négatif",
   "compute": "Calculer",
-  "addPoint": "Ajouter point",
+  "addPoint": "Ajout point",
   "reset": "Réinitialiser",
   "isochrone": {
     "description": "Permet de déterminer l’ensemble des lieux que l’on peut atteindre depuis un point de départ pour atteindre un point d’arrivée en un temps ou une distance donné(e).",
@@ -120,7 +120,9 @@
     "isochrone": "Calculer un isochrone",
     "share": "Partager un lien",
     "googleDirection": "Utiliser Google Maps pour aller vers ce point",
-    "wazeDirection": "Utiliser Waze pour aller vers ce point"
+    "wazeDirection": "Utiliser Waze pour aller vers ce point",
+    "directionSettings": "Configurer le choix de l'itinéraire",
+    "showElevationChart": "Afficher le profil altimétrique"
   },
   "contextMenu": {
     "searchInfos": "Plus d'infos sur cet endroit",

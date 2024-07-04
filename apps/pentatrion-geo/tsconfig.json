@@ -3,7 +3,7 @@
   "compilerOptions": {
     "declaration": true,
     "skipLibCheck": true,
-    "types": ["google.maps", "react/experimental"],
+    "types": ["google.maps"],
     "baseUrl": "."
   },
   "exclude": ["**/node_modules", "dist"],

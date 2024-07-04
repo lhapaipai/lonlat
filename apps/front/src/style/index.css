@@ -12,5 +12,32 @@ html {
   --sidebar-streetview-width: 50%;
   --sidebar-streetview-height: 50%;
 
-  --sidebar-extra-height: 200px;
+  --sidebar-extra-height: 300px;
+}
+
+:root {
+  --chart-poi-text-rotation: -40deg;
+  --chart-poi-extra-opacity: 0;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --chart-poi-text-rotation: -20deg;
+    --chart-poi-extra-opacity: 0.5;
+  }
+}
+
+body .bg-default {
+  @apply bg-gray-1;
+  background-image: conic-gradient(
+    from 90deg at -10% 100%,
+    #aaa 0deg,
+    #aaa 90deg,
+    #fff 1turn
+  );
+  background-attachment: fixed;
+}
+
+.dark .bg-default {
+  background-image: none;
 }

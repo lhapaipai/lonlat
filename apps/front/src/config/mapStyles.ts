@@ -46,6 +46,16 @@ export const roadLayerStyle: {
   },
 };
 
+export const roadLayerAccomplishedStyle: {
+  paint?: LineLayerSpecification["paint"];
+  layout?: LineLayerSpecification["layout"];
+} = {
+  paint: {
+    "line-color": "#136a7a",
+    "line-width": ["step", ["zoom"], 4, 10, 6, 14, 8],
+  },
+};
+
 export const waypointsLayerStyle: {
   paint?: CircleLayerSpecification["paint"];
   layout?: CircleLayerSpecification["layout"];
@@ -69,5 +79,15 @@ export const roadArrowLayerStyle: {
     "icon-rotation-alignment": "map",
     "icon-rotate": 90,
     "icon-padding": 2,
+  },
+};
+
+export const roadHaloPaintStyle: {
+  paint?: LineLayerSpecification["paint"];
+  layout?: LineLayerSpecification["layout"];
+} = {
+  paint: {
+    "line-width": 50,
+    "line-color": "transparent",
   },
 };

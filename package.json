@@ -22,6 +22,7 @@
         "node": "20.14.0"
     },
     "dependencies": {
-        "maplibre-react-components": "link:../maplibre-react-components/dist"
+        "maplibre-react-components": "^0.1.2",
+        "pentatrion-design": "^0.1.1"
     }
 }

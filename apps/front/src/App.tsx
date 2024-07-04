@@ -32,6 +32,8 @@ import { selectIsochroneReferenceFeature } from "./features/isochrone/isochroneS
 import { selectGeolocationStatus } from "./features/geolocation/geolocationSlice";
 import IsochroneMap from "./features/isochrone/IsochroneMap";
 import Extra from "./components/Extra";
+import { selectDirectionElevationChart } from "./features/direction/directionSlice";
+import DirectionElevationChart from "./features/direction/DirectionElevationChart";
 
 function handleAfterMapInstanciation(map: Map) {
   console.log("handleAfterMapInstanciation", map._loaded);
@@ -73,6 +75,9 @@ function App() {
   const isochroneReferenceFeature = useAppSelector(
     selectIsochroneReferenceFeature,
   );
+  const showDirectionElevationChart = useAppSelector(
+    selectDirectionElevationChart,
+  );
 
   const [uncontrolledStyle, setUncontrolledStyle] = useState<
     StyleSpecification | string
@@ -101,8 +106,8 @@ function App() {
   }, [baseLayer, optionalLayers, terrain]);
 
   return (
-    <div id="app" className="flex h-full w-full flex-col">
-      <div className="flex h-full w-full flex-1 flex-col md:flex-row">
+    <div id="app" className="flex h-full w-full flex-col md:flex-row">
+      <div className="flex h-full w-full flex-1 flex-col">
         <div id="principal" className="flex-1">
           <RMap
             onMoveEnd={handleMoveEnd}
@@ -126,9 +131,13 @@ function App() {
             {isochroneReferenceFeature && <IsochroneControl />}
           </RMap>
         </div>
-        {streetView && <StreetViewWindow />}
+        {showDirectionElevationChart && (
+          <Extra>
+            <DirectionElevationChart />
+          </Extra>
+        )}
       </div>
-      <Extra />
+      {streetView && <StreetViewWindow />}
     </div>
   );
 }

@@ -12,6 +12,7 @@ import searchSlice, {
   searchFeatureListenerMiddleware,
 } from "~/features/search/searchSlice";
 import directionSlice, {
+  directionRouteListenerMiddleware,
   directionWayPointListenerMiddleware,
   directionWayPointsListenerMiddleware,
   fetchRoute,
@@ -38,6 +39,7 @@ const store = configureStore({
       .prepend(searchFeatureListenerMiddleware.middleware)
       .prepend(directionWayPointListenerMiddleware.middleware)
       .prepend(directionWayPointsListenerMiddleware.middleware)
+      .prepend(directionRouteListenerMiddleware.middleware)
       .prepend(ViewStateListenerMiddleware.middleware)
       .concat(errorCatcherMiddleware);
   },

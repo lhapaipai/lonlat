@@ -1,41 +1,51 @@
 import { PoiGeoOption, RouteFeatureResponse } from "types";
-// import { fetchOverpassAPI } from "./config";
+import { fetchOverpassAPI, overpassServiceUrl } from "./config";
 import { point } from "@turf/helpers";
 import { nearestPointOnLine } from "@turf/nearest-point-on-line";
-import { poiResponse } from "./_mock";
+// import { poiResponse } from "./_mock";
 import { APISchemas } from "./api";
 import { customRound } from "geo-options";
 import { isNotNull } from "lib";
 import { nanoid } from "nanoid";
 import { Position } from "geojson";
 
-export async function fetchPois(
+export async function fetchOverpassPois(
   route: RouteFeatureResponse,
+  serviceUrl = overpassServiceUrl,
 ): Promise<PoiGeoOption[]> {
-  // const minimaPoints = route.properties.minima.map(
-  //   (idx) => route.geometry.coordinates[idx],
-  // );
-  // const maximaPoints = route.properties.maxima.map(
-  //   (idx) => route.geometry.coordinates[idx],
-  // );
+  const minimaPoints =
+    route.properties.minima?.map((idx) => route.geometry.coordinates[idx]) ||
+    [];
+  const maximaPoints =
+    route.properties.maxima?.map((idx) => route.geometry.coordinates[idx]) ||
+    [];
 
-  // const minimaQL = minimaPoints.map(
-  //   (coords) =>
-  //     `node(around:500,${coords[1]}, ${coords[0]})[place~"^(city|town|village)$"];`,
-  // );
-  // const maximaQL = maximaPoints.map(
-  //   (coords) =>
-  //     `node(around:500,${coords[1]}, ${coords[0]})[natural~"^(peak)$"];`,
-  // );
-  // const query = `[timeout:10][out:json]; (${minimaQL.join("")}${maximaQL.join("")}); out;`;
+  const minimaQL = minimaPoints.map(
+    (coords) =>
+      `node(around:3000,${coords[1]}, ${coords[0]})[place~"^(city|town|village)$"];`,
+  );
+  const maximaQL = maximaPoints.map(
+    (coords) =>
+      `node(around:500,${coords[1]}, ${coords[0]})[natural~"^(peak)$"];`,
+  );
 
-  // const json = await fetchOverpassAPI("/api/interpreter", {
-  //   method: "post",
-  //   body: {
-  //     data: query,
-  //   },
-  // });
-  const json = poiResponse;
+  if (minimaQL.length + maximaQL.length === 0) {
+    return [];
+  }
+
+  const query = `[timeout:10][out:json]; (${minimaQL.join("")}${maximaQL.join("")}); out;`;
+
+  const json = await fetchOverpassAPI(
+    "/api/interpreter",
+    {
+      method: "post",
+      body: {
+        data: query,
+      },
+    },
+    serviceUrl,
+  );
+  // const json = poiResponse;
   console.log(json);
 
   const pois = json.elements

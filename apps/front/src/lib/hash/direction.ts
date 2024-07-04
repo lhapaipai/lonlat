@@ -49,6 +49,9 @@ export function parseDirection(
     });
 
     return {
+      elevationChart: true,
+      pois: null,
+      focusPosition: null,
       wayPoints: waypoints,
       route: null,
       constraints: {
@@ -64,7 +67,8 @@ export function parseDirection(
       profile: (["car", "pedestrian", "bike"].includes(profile)
         ? profile
         : "car") as DirectionOptions["profile"],
-      readOnly: true,
+      readOnly: false,
+      // readOnly: true,
     };
   } catch (err) {
     return null;

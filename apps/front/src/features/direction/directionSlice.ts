@@ -8,6 +8,8 @@ import {
   hashRoute,
   DirectionOptions,
   orsRoute,
+  PoiGeoOption,
+  fetchOverpassPois,
 } from "pentatrion-geo";
 import {
   createAsyncThunk,
@@ -20,14 +22,21 @@ import {
 import { RootState } from "~/store";
 import { NoDataOption } from "pentatrion-design";
 import { errorAdded } from "pentatrion-design/redux";
-import { FeatureCollection, Point } from "geojson";
-import { openRouteServiceToken, openRouteServiceUrl } from "~/config/constants";
+import { FeatureCollection, Point, Position } from "geojson";
+import {
+  openRouteServiceToken,
+  openRouteServiceUrl,
+  overpassUrl,
+} from "~/config/constants";
 import { parseHashString } from "~/lib/hash";
 import { tabChanged } from "~/store/mapSlice";
 
 type WayPoint = GeoPointOption | NoDataOption;
 
 export type DirectionState = {
+  elevationChart: boolean;
+  pois: PoiGeoOption[] | null;
+  focusCoordinates: Position | null;
   wayPoints: WayPoint[];
   route: RouteFeatureResponse | null;
   constraints: {
@@ -45,6 +54,9 @@ const hashInfos = parseHashString(window.location.hash);
 const initialState: DirectionState = hashInfos?.direction
   ? hashInfos.direction
   : {
+      elevationChart: false,
+      pois: null,
+      focusCoordinates: null,
       wayPoints: [createNodataFeature(), createNodataFeature()],
       route: null,
       constraints: {
@@ -63,10 +75,21 @@ const directionSlice = createSlice({
   name: "direction",
   initialState,
   reducers: {
+    directionFocusCoordinatesChanged(
+      state,
+      action: PayloadAction<Position | null>,
+    ) {
+      state.focusCoordinates = action.payload;
+    },
+    directionElevationChartChanged(state, action: PayloadAction<boolean>) {
+      state.elevationChart = action.payload;
+    },
+    directionPoisChanged(state, action: PayloadAction<PoiGeoOption[] | null>) {
+      state.pois = action.payload;
+    },
     directionReadOnlyChanged(state, action: PayloadAction<boolean>) {
       state.readOnly = action.payload;
     },
-
     directionWayPointsAddedFromSearch: {
       reducer(state, action: PayloadAction<WayPoint[]>) {
         state.wayPoints = action.payload;
@@ -136,24 +159,37 @@ const directionSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(fetchRoute.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.route = action.payload;
-      } else if (action.payload === null) {
-        // fetchRoute has been called but the route is dirty, we need to
-        // remove
-        state.route = null;
-      } else {
-        // fetchRoute has been called while the parameters have not
-        // changed, the route must not be removed
-      }
-    });
+    builder
+      .addCase(fetchRoute.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.route = action.payload;
+        } else if (action.payload === null) {
+          // fetchRoute has been called but the route is dirty, we need to
+          // remove
+          state.route = null;
+        } else {
+          // fetchRoute has been called while the parameters have not
+          // changed, the route must not be removed
+        }
+      })
+      .addCase(fetchPois.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.pois = action.payload;
+        } else if (action.payload === null) {
+          // fetchPois has been called but there is no route already we need to remove
+          // dirty pois.
+          state.pois = null;
+        }
+      });
   },
 });
 
 export default directionSlice.reducer;
 
 export const {
+  directionElevationChartChanged,
+  directionPoisChanged,
+  directionFocusCoordinatesChanged,
   directionWayPointsAddedFromSearch,
   directionWayPointChanged,
   directionWayPointPropertiesChanged,
@@ -167,6 +203,11 @@ export const {
   directionReadOnlyChanged,
 } = directionSlice.actions;
 
+export const selectDirectionFocusCoordinates = (state: RootState) =>
+  state.direction.focusCoordinates;
+export const selectDirectionElevationChart = (state: RootState) =>
+  state.direction.elevationChart;
+export const selectDirectionPois = (state: RootState) => state.direction.pois;
 export const selectDirectionWayPoints = (state: RootState) =>
   state.direction.wayPoints;
 export const selectValidDirectionWayPoints = createSelector(
@@ -203,7 +244,7 @@ directionWayPointsListenerMiddleware.startListening({
     optimizationChanged,
     tabChanged,
   ),
-  effect: async (_, { dispatch }) => {
+  effect: (_, { dispatch }) => {
     dispatch(fetchRoute());
   },
 });
@@ -242,6 +283,31 @@ export const fetchRoute = createAsyncThunk(
       dispatch(directionRouteChanged(null));
       // null -> route is invalided we need to remove
       return null;
+    }
+  },
+);
+
+export const directionRouteListenerMiddleware = createListenerMiddleware();
+directionRouteListenerMiddleware.startListening({
+  matcher: isAnyOf(fetchRoute.fulfilled, directionRouteChanged),
+  effect: (_, { dispatch, getState }) => {
+    dispatch(directionPoisChanged(null));
+    const state = getState() as RootState;
+
+    if (state.direction.route) {
+      dispatch(fetchPois());
+    }
+  },
+});
+
+export const fetchPois = createAsyncThunk(
+  "direction/fetchPois",
+  async (_, { getState }) => {
+    const state = getState() as RootState;
+    if (!state.direction.route) {
+      return null;
+    } else {
+      return await fetchOverpassPois(state.direction.route, overpassUrl);
     }
   },
 );

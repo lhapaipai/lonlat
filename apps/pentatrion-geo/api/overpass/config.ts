@@ -1,4 +1,4 @@
-import { fetchAPI } from "./fetch";
+import { fetchAPI } from "pentatrion-design/lib/fetch";
 import {
   APIPaths as OverpassAPIPaths,
   APIRequests as OverpassAPIRequests,
