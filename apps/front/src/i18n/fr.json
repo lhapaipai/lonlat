@@ -131,6 +131,6 @@
     "directionInter": "point intermédiaire",
     "directionTo": "Itinéraire vers ce lieu",
     "directionAdd": "Prolonger l'itinéraire jusqu'ici",
-    "movePoint": "Déplacer ce point"
+    "movePoint": "Remplacer ce point"
   }
 }

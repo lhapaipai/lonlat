@@ -1,39 +1,68 @@
-import { PoiGeoOption, RouteFeatureResponse } from "types";
+import { PoiGeoOption, RouteFeatureResponse } from "../../types.d";
 import { fetchOverpassAPI, overpassServiceUrl } from "./config";
-import { point } from "@turf/helpers";
+import { lineString, point } from "@turf/helpers";
+import { along } from "@turf/along";
+import { length } from "@turf/length";
 import { nearestPointOnLine } from "@turf/nearest-point-on-line";
-// import { poiResponse } from "./_mock";
 import { APISchemas } from "./api";
-import { customRound } from "geo-options";
-import { isNotNull } from "lib";
+import { customRound } from "../../geo-options";
+import { isNotNull, simplifyCoords } from "../../lib";
 import { nanoid } from "nanoid";
 import { Position } from "geojson";
+
+/**
+ * for calibration see : src/mrc-lonlat/13-pois
+ */
+const routeSimplificationTolerance = 0.005;
+const routeAlongIntervalInMeters = 1500;
+const placeAroundCircleRadius = 1000;
+const peakAroundCircleRadius = 500;
+
+export function generatePoisQuery(route: RouteFeatureResponse) {
+  const maximaPoints =
+    route.properties?.maxima?.map(
+      (idx: number) => route.geometry.coordinates[idx],
+    ) || [];
+
+  const maximaQL = maximaPoints.map(
+    (coords) =>
+      `node(around:${peakAroundCircleRadius},${coords[1]}, ${coords[0]})[natural~"^(peak)$"];`,
+  );
+
+  const simplifiedCoords = simplifyCoords(
+    route.geometry.coordinates,
+    routeSimplificationTolerance,
+  );
+  const simplifiedLine = lineString(simplifiedCoords);
+
+  const routePoints: Position[] = [route.geometry.coordinates[0]];
+
+  let distance: number = routeAlongIntervalInMeters;
+  const simplifiedRouteLength = length(simplifiedLine, { units: "meters" });
+  while (distance < simplifiedRouteLength) {
+    const point = along(simplifiedLine, distance, { units: "meters" });
+    routePoints.push(point.geometry.coordinates);
+    distance += routeAlongIntervalInMeters;
+  }
+  routePoints.push(
+    route.geometry.coordinates[route.geometry.coordinates.length - 1],
+  );
+
+  const alongQl = routePoints.map(
+    (coords) =>
+      `node(around:${placeAroundCircleRadius},${coords[1]}, ${coords[0]})[place~"^(city|town|village)$"];`,
+  );
+
+  const query = `[timeout:10][out:json];\n\n(\n${alongQl.join("\n")}\n\n${maximaQL.join("\n")}\n); out;`;
+
+  return query;
+}
 
 export async function fetchOverpassPois(
   route: RouteFeatureResponse,
   serviceUrl = overpassServiceUrl,
 ): Promise<PoiGeoOption[]> {
-  const minimaPoints =
-    route.properties.minima?.map((idx) => route.geometry.coordinates[idx]) ||
-    [];
-  const maximaPoints =
-    route.properties.maxima?.map((idx) => route.geometry.coordinates[idx]) ||
-    [];
-
-  const minimaQL = minimaPoints.map(
-    (coords) =>
-      `node(around:3000,${coords[1]}, ${coords[0]})[place~"^(city|town|village)$"];`,
-  );
-  const maximaQL = maximaPoints.map(
-    (coords) =>
-      `node(around:500,${coords[1]}, ${coords[0]})[natural~"^(peak)$"];`,
-  );
-
-  if (minimaQL.length + maximaQL.length === 0) {
-    return [];
-  }
-
-  const query = `[timeout:10][out:json]; (${minimaQL.join("")}${maximaQL.join("")}); out;`;
+  const query = generatePoisQuery(route);
 
   const json = await fetchOverpassAPI(
     "/api/interpreter",
@@ -45,8 +74,11 @@ export async function fetchOverpassPois(
     },
     serviceUrl,
   );
-  // const json = poiResponse;
-  console.log(json);
+
+  // if query error returned content is html string
+  if (typeof json === "string" || !Array.isArray(json.elements)) {
+    return [];
+  }
 
   const pois = json.elements
     .map((element) => {

@@ -1,5 +1,9 @@
 import { getIndexLetter } from "pentatrion-design";
-import { createLonLatGeoOption } from "pentatrion-geo";
+import {
+  createLonLatGeoOption,
+  lineString,
+  simplifyCoords,
+} from "pentatrion-geo";
 import {
   type GradientMarker,
   RGradientMarker,
@@ -13,6 +17,7 @@ import {
   directionWayPointChanged,
   selectDirectionFocusCoordinates,
   selectDirectionPois,
+  selectDirectionProfile,
   selectDirectionReadOnly,
   selectDirectionRoute,
   selectDirectionWayPoints,
@@ -30,55 +35,116 @@ import {
   roadLayerAccomplishedStyle,
 } from "~/config/mapStyles";
 import { MapLayerMouseEvent } from "maplibre-gl";
-import { feature, lineString, point } from "@turf/helpers";
+import { point } from "@turf/helpers";
 import { nearestPointOnLine } from "@turf/nearest-point-on-line";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Feature, LineString } from "geojson";
+import { selectViewStateZoom } from "~/store/mapSlice";
+
+function lonlatToleranceByZoom(zoom: number) {
+  if (zoom < 7) {
+    return 0.01;
+  }
+  switch (Math.round(zoom)) {
+    case 7:
+      return 0.005;
+    case 8:
+      return 0.002;
+    case 9:
+      return 0.001;
+    case 10:
+      return 0.0005;
+    case 11:
+      return 0.0003;
+    case 12:
+      return 0.0002;
+    default:
+      return 0.0001;
+  }
+}
+
+const iconByProfile = {
+  pedestrian: "fe-person-walking",
+  bike: "fe-person-biking",
+  car: "fe-car",
+};
 
 export default function DirectionMap() {
   const dispatch = useAppDispatch();
-
+  const [isDragging, setIsDragging] = useState(false);
   // we are not using selectValidDirectionWayPoints because we want real index
   // for getIndexLetter(index)
   const waypoints = useAppSelector(selectDirectionWayPoints);
   const directionRoute = useAppSelector(selectDirectionRoute);
+  const mapZoom = useAppSelector(selectViewStateZoom);
   const directionWaypointsGeojson = useAppSelector(
     selectDirectionWayPointsGeojson,
   );
   const pois = useAppSelector(selectDirectionPois);
   const focusCoordinates = useAppSelector(selectDirectionFocusCoordinates);
-
+  const profile = useAppSelector(selectDirectionProfile);
   const readOnly = useAppSelector(selectDirectionReadOnly);
 
-  const directionRouteAccomplished = useMemo((): Feature<LineString> => {
-    if (!directionRoute || !focusCoordinates) {
-      // returning an empty linestring allows us to avoid if in rendering
-      // and adding/removing layer (beforeId management)
-      return feature({
-        type: "LineString",
-        coordinates: [],
-      });
+  const simplifiedRoute: Feature<LineString> | null = useMemo(() => {
+    if (!directionRoute) {
+      return null;
     }
-    const index = directionRoute.geometry.coordinates.findIndex(
+
+    if (mapZoom > 14) {
+      return directionRoute;
+    }
+
+    const simplifiedCoords = simplifyCoords(
+      directionRoute.geometry.coordinates,
+      lonlatToleranceByZoom(mapZoom),
+    );
+
+    return lineString(simplifiedCoords);
+  }, [directionRoute, mapZoom]);
+
+  /**
+   * simplifiedRouteAccomplished is an invalid LineString from turf's point
+   * of view because it can have as coordinates an empty array, don't use turf
+   * utility functions (eg: nearestPointOnLine) on it
+   */
+  const simplifiedRouteAccomplished = useMemo((): Feature<LineString> => {
+    if (!simplifiedRoute || !focusCoordinates) {
+      // returning an empty linestring allows us to avoid conditional rendering
+      // and beforeId management when adding/removing layer
+      return lineString([]);
+    }
+    const index = simplifiedRoute.geometry.coordinates.findIndex(
       (coord) => coord[3] > focusCoordinates[3],
     );
-    const segmentsAccomplished = directionRoute.geometry.coordinates.slice(
+    const segmentsAccomplished = simplifiedRoute.geometry.coordinates.slice(
       0,
-      index - 1,
+      index,
     );
     segmentsAccomplished.push(focusCoordinates);
     return lineString(segmentsAccomplished);
-  }, [directionRoute, focusCoordinates]);
-  console.log("directionRouteAccomplished", directionRouteAccomplished);
+  }, [simplifiedRoute, focusCoordinates]);
+
+  function handleDirectionWayPointDragStart() {
+    setIsDragging(true);
+  }
+
   function handleDirectionWayPointDragEnd(
     e: Event<GradientMarker>,
     index: number,
   ) {
+    setIsDragging(false);
     const lonlatFeature = createLonLatGeoOption(e.target.getLngLat(), 0);
     dispatch(directionWayPointChanged({ index, feature: lonlatFeature }));
   }
 
   function handleRouteMouseMove(e: MapLayerMouseEvent) {
+    if (isDragging) {
+      dispatch(directionFocusCoordinatesChanged(null));
+      return;
+    }
+    /**
+     * we will not use the simplified route because it does not have altitude information
+     */
     if (!directionRoute) {
       throw new Error("you can't move on a non existant route");
     }
@@ -107,39 +173,19 @@ export default function DirectionMap() {
 
   return (
     <>
-      {waypoints.map(
-        (feature, index) =>
-          feature.type === "Feature" &&
-          "Point" && (
-            <RGradientMarker
-              color={
-                [0, waypoints.length - 1].includes(index)
-                  ? "#ffe64b"
-                  : "#c0c0c0"
-              }
-              scale={[0, waypoints.length - 1].includes(index) ? 1 : 0.75}
-              key={feature.id}
-              draggable={!readOnly}
-              longitude={feature.geometry.coordinates[0]}
-              latitude={feature.geometry.coordinates[1]}
-              onDragEnd={(e) => handleDirectionWayPointDragEnd(e, index)}
-              text={getIndexLetter(index)}
-            />
-          ),
-      )}
-      {directionRoute && (
+      {simplifiedRoute && (
         <>
           <RSource
             id="direction-route"
             key="direction-route"
             type="geojson"
-            data={directionRoute}
+            data={simplifiedRoute}
           />
           <RSource
             id="direction-route-accomplished"
             key="direction-route-accomplished"
             type="geojson"
-            data={directionRouteAccomplished}
+            data={simplifiedRouteAccomplished}
           />
 
           <RLayer
@@ -156,7 +202,12 @@ export default function DirectionMap() {
             id="direction-road-casing"
             key="direction-road-casing"
             type="line"
-            {...roadLayerCasingStyle}
+            layout={roadLayerCasingStyle.layout}
+            paint={
+              isDragging
+                ? roadLayerCasingStyle.paintTemp
+                : roadLayerCasingStyle.paint
+            }
             source="direction-route"
             beforeId="point coté"
           />
@@ -165,7 +216,8 @@ export default function DirectionMap() {
             id="direction-road-"
             key="direction-road"
             type="line"
-            {...roadLayerStyle}
+            layout={roadLayerStyle.layout}
+            paint={isDragging ? roadLayerStyle.paintTemp : roadLayerStyle.paint}
             source="direction-route"
             beforeId="point coté"
           />
@@ -209,9 +261,10 @@ export default function DirectionMap() {
         pois.map((poi) => (
           <RGradientMarker
             key={poi.id}
-            draggable={false}
+            shape="circle"
+            interactive={false}
             color="#e0e0e0"
-            scale={0.5}
+            scale={0.75}
             longitude={poi.geometry.coordinates[0]}
             latitude={poi.geometry.coordinates[1]}
             icon={`fe-${poi.properties.type}`}
@@ -219,11 +272,38 @@ export default function DirectionMap() {
         ))}
       {focusCoordinates && (
         <RGradientMarker
+          shape="circle"
+          interactive={false}
+          color="#136a7a"
+          scale={0.75}
           longitude={focusCoordinates[0]}
           latitude={focusCoordinates[1]}
-          icon="fe-person-walking"
+          icon={iconByProfile[profile]}
           className="pointer-events-none"
         />
+      )}
+      {waypoints.map(
+        (feature, index) =>
+          feature.type === "Feature" &&
+          "Point" && (
+            <RGradientMarker
+              color={
+                [0, waypoints.length - 1].includes(index)
+                  ? "#ffe64b"
+                  : "#c0c0c0"
+              }
+              scale={[0, waypoints.length - 1].includes(index) ? 1 : 0.75}
+              key={feature.id}
+              draggable={!readOnly}
+              longitude={feature.geometry.coordinates[0]}
+              latitude={feature.geometry.coordinates[1]}
+              onDragStart={handleDirectionWayPointDragStart}
+              onDragEnd={(e) => {
+                handleDirectionWayPointDragEnd(e, index);
+              }}
+              text={getIndexLetter(index)}
+            />
+          ),
       )}
     </>
   );

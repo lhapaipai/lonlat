@@ -1,6 +1,6 @@
 {
   "files.exclude": {
-    "apps": true,
-    "extra/": true
+    // "apps/": true,
+    // "extra/": true
   }
 }

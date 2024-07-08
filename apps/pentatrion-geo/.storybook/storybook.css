@@ -1,0 +1,41 @@
+.sb-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+
+  &.large {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  & .sample {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  & > div {
+    border: 1px solid rgb(var(--color-gray-4));
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+
+    i {
+      font-size: 2.5rem;
+    }
+  }
+
+  & pre {
+    font-size: 0.75rem;
+  }
+
+  & .maplibregl-pegman {
+    position: relative;
+  }
+}
+
+.sb-bg-gray {
+  background-color: rgb(var(--color-gray-1));
+}

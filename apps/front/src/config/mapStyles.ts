@@ -27,21 +27,41 @@ export const isochroneLineLayerStyle: {
 };
 
 export const roadLayerCasingStyle: {
-  paint?: LineLayerSpecification["paint"];
   layout?: LineLayerSpecification["layout"];
+  paint?: LineLayerSpecification["paint"];
+  paintTemp?: LineLayerSpecification["paint"];
 } = {
+  layout: {
+    "line-join": "round",
+    "line-round-limit": 1,
+  },
   paint: {
     "line-color": "#136a7a",
+    "line-width": ["step", ["zoom"], 6, 10, 8, 14, 10],
+  },
+  paintTemp: {
+    "line-color": "#136a7a",
+    "line-opacity": 0.6,
     "line-width": ["step", ["zoom"], 6, 10, 8, 14, 10],
   },
 };
 
 export const roadLayerStyle: {
-  paint?: LineLayerSpecification["paint"];
   layout?: LineLayerSpecification["layout"];
+  paint?: LineLayerSpecification["paint"];
+  paintTemp?: LineLayerSpecification["paint"];
 } = {
+  layout: {
+    "line-join": "round",
+    "line-round-limit": 1,
+  },
   paint: {
     "line-color": "#5fbcff",
+    "line-width": ["step", ["zoom"], 4, 10, 6, 14, 8],
+  },
+  paintTemp: {
+    "line-color": "#ffffff",
+    "line-opacity": 0.6,
     "line-width": ["step", ["zoom"], 4, 10, 6, 14, 8],
   },
 };
@@ -50,8 +70,12 @@ export const roadLayerAccomplishedStyle: {
   paint?: LineLayerSpecification["paint"];
   layout?: LineLayerSpecification["layout"];
 } = {
+  layout: {
+    "line-join": "round",
+    "line-round-limit": 1,
+  },
   paint: {
-    "line-color": "#136a7a",
+    "line-color": "#3993bc",
     "line-width": ["step", ["zoom"], 4, 10, 6, 14, 8],
   },
 };

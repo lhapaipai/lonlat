@@ -1,161 +1,205 @@
-import { Button, LazyAutocomplete, Select } from "pentatrion-design";
+import {
+  Button,
+  LinkButton,
+  SimpleTooltip,
+  useCopyToClipboard,
+} from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { searchFeatureChanged, selectSearch } from "./searchSlice";
+import { selectSearch, searchReadOnlyChanged } from "./searchSlice";
+import { getCoordsStr } from "pentatrion-geo";
 import {
-  AppGeoOption,
-  GeoPointOption,
-  c2cWaypointSearch,
-  coordsSearch,
-  createGeolocationGeoOption,
-  ignSearch,
-  orsSearch,
-} from "pentatrion-geo";
-import {
-  SearchEngine,
-  searchEngineChanged,
-  searchEngines,
-  selectSearchEngine,
-  selectViewState,
+  coordsUnitChanged,
+  selectCoordsUnit,
+  tabChanged,
 } from "~/store/mapSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import { ReactNode, useMemo, useState } from "react";
-import {
-  inputSearchDebounceDelay,
-  openRouteServiceToken,
-} from "~/config/constants";
-import {
-  SearchEngineOption,
-  StarOption,
-} from "~/components/search-engine/SearchEngineOption";
-import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
-import { iconBySearchEngine } from "~/components/search-engine/util";
-import {
-  activationChanged,
-  selectGeolocation,
-} from "~/features/geolocation/geolocationSlice";
-import FeatureInfos from "./FeatureInfos";
-import GeolocationInfos from "~/features/geolocation/GeolocationInfos";
-import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
-import { geolocationIconClassName } from "../geolocation/util";
+import { useCallback, useState } from "react";
+
+import { directionWayPointsAddedFromSearch } from "~/features/direction/directionSlice";
+import { referenceFeatureChanged } from "../isochrone/isochroneSlice";
+import ShareUrlInput from "~/components/ShareUrlInput";
+import { generateGMapsDirection, generateWazeDirection } from "~/lib/url";
+
+import SearchInput from "./SearchInput";
+import RawData from "./RawData";
+
+type Action = "isochrone" | "direction" | "raw" | "share";
 
 export default function SearchTab() {
   const { feature, readOnly } = useAppSelector(selectSearch);
   const dispatch = useAppDispatch();
-  const viewState = useAppSelector(selectViewState);
-  const { notifyError } = useReduxNotifications();
-  const searchEngine = useAppSelector(selectSearchEngine);
+  const [, copy] = useCopyToClipboard();
+  const { notify } = useReduxNotifications();
+  const coordsUnit = useAppSelector(selectCoordsUnit);
   const { T } = useT();
-  const [showGeolocationInfos, setShowGeolocationInfos] = useState(false);
-  const searchEngineOptions = useMemo<StarOption[]>(() => {
-    return searchEngines.map((s) => ({
-      value: s,
-      label: T(`searchEngine.${s}.label`),
-      icon: iconBySearchEngine(s),
-    }));
-  }, [T]);
-  const geolocation = useAppSelector(selectGeolocation);
 
-  let suffix: ReactNode;
-
-  if (feature) {
-    suffix =
-      feature?.properties.type === "geolocation" &&
-      (geolocation.status === "on" ? (
-        <Button
-          icon
-          variant="ghost"
-          color="gray"
-          onClick={() => setShowGeolocationInfos((s) => !s)}
-        >
-          <i className="fe-geolocation-cog"></i>
-        </Button>
-      ) : (
-        <i className={geolocationIconClassName(geolocation)}></i>
-      ));
-  }
+  const [action, setAction] = useState<Action | null>(
+    readOnly ? "share" : null,
+  );
+  const setOrToggleAction = useCallback(
+    (a: Action) => {
+      const nextAction = a === action ? null : a;
+      setAction(nextAction);
+      if (action === "share" || nextAction === "share") {
+        dispatch(searchReadOnlyChanged(nextAction === "share"));
+      }
+    },
+    [action, dispatch],
+  );
 
   return (
     <div className="grid grid-cols-1 gap-2">
-      <div>
-        <LazyAutocomplete<GeoPointOption>
-          autocompleteOptionComponent={AutocompleteGeoOption}
-          clearSearchButton={true}
-          placeholder={T(`searchEngine.${searchEngine}.placeholder`)}
-          debounce={inputSearchDebounceDelay}
-          readOnly={readOnly}
-          icon={
-            <Select
-              disabled={readOnly}
-              variant="ghost"
-              showArrow={false}
-              selectionClassName=""
-              width={37}
-              floatingMinWidth={220}
-              placement="bottom-start"
-              options={searchEngineOptions}
-              value={searchEngine}
-              onChange={(o) => {
-                const searchEngine = o.target.value as SearchEngine;
-                dispatch(searchEngineChanged(searchEngine));
-              }}
-              selectSelectionComponent={SearchEngineSelection}
-              selectOptionComponent={SearchEngineOption}
-              zIndex={110}
-            />
-          }
-          suffix={suffix}
-          noSearchSuffix={
-            !readOnly && (
-              <Button
-                icon
-                variant="ghost"
-                color="gray"
-                onClick={() => {
-                  dispatch(
-                    searchFeatureChanged(
-                      createGeolocationGeoOption(T("myGeolocation")),
-                    ),
-                  );
-                  dispatch(activationChanged(true));
-                }}
-              >
-                <i className="fe-geolocation"></i>
-              </Button>
-            )
-          }
-          selection={feature}
-          onChangeSelection={(e) => dispatch(searchFeatureChanged(e))}
-          onChangeSearchValueCallback={async (searchValue) => {
-            let collection: AppGeoOption[] = [];
-            try {
-              if (searchEngine === "c2c") {
-                collection = await c2cWaypointSearch(searchValue);
-              } else if (searchEngine === "ors") {
-                // we're not defining openRouteServiceUrl because self-hosted doesn't provide
-                // geocode service
-                collection = await orsSearch(
-                  searchValue,
-                  viewState.center,
-                  openRouteServiceToken,
-                );
-              } else if (searchEngine === "coords") {
-                collection = coordsSearch(searchValue);
-              } else {
-                collection = await ignSearch(searchValue, viewState.center);
-              }
-              return collection;
-            } catch (err) {
-              notifyError(err);
-              throw err;
-            }
-          }}
-        />
-      </div>
-      {feature && feature.properties.type !== "geolocation" && <FeatureInfos />}
+      <SearchInput />
       {feature &&
-        feature.properties.type === "geolocation" &&
-        showGeolocationInfos && <GeolocationInfos />}
+        feature.type === "Feature" &&
+        feature.properties.type !== "geolocation" && (
+          <>
+            <div>
+              <div className="p8n-setting">
+                <div>{T("coordinates")}</div>
+                <div>
+                  <Button
+                    className="text-sm text-gray-6"
+                    variant="ghost"
+                    color="gray"
+                    onClick={() => dispatch(coordsUnitChanged())}
+                  >
+                    {T(`coordsUnit.${coordsUnit}`)}{" "}
+                  </Button>
+                  &nbsp;
+                  <span
+                    className="can-copy"
+                    onClick={() => {
+                      const value = getCoordsStr(
+                        feature.geometry.coordinates,
+                        coordsUnit,
+                      );
+                      copy(value);
+                      notify(`${T("copiedIntoClipboard")} : ${value}`, {
+                        expiration: 5000,
+                      });
+                    }}
+                  >
+                    {getCoordsStr(feature.geometry.coordinates, coordsUnit)}
+                  </span>
+                </div>
+              </div>
+              <div className="p8n-setting">
+                <div>{T("elevation")}</div>
+                <div>
+                  {feature.properties.originalProperties?.elevation ??
+                    feature.geometry.coordinates[2] ??
+                    "-"}
+                  <span className="text-gray-6"> m</span>
+                </div>
+              </div>
+              {["city", "postcode"].map((key) => {
+                const value = feature.properties.originalProperties?.[key] as
+                  | string
+                  | undefined;
+                if (!value) {
+                  return null;
+                }
+                return (
+                  <div className="p8n-setting" key={key}>
+                    <div>{T(`property.${key}`)}</div>
+                    <div>{value}</div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="flex gap-2">
+              <SimpleTooltip
+                content={T("tooltip.direction")}
+                placement="top-start"
+              >
+                <Button
+                  className="min-w-0 flex-1 justify-center"
+                  variant="text"
+                  color="gray"
+                  onClick={() => {
+                    dispatch(directionWayPointsAddedFromSearch(feature));
+                    dispatch(tabChanged("direction"));
+                  }}
+                >
+                  <i className="fe-route"></i>
+                </Button>
+              </SimpleTooltip>
+              <SimpleTooltip content={T("tooltip.code")} placement="top">
+                <Button
+                  className="min-w-0 flex-1 justify-center"
+                  variant="text"
+                  color="gray"
+                  selected={action === "raw"}
+                  onClick={() => setOrToggleAction("raw")}
+                >
+                  <i className="fe-code"></i>
+                </Button>
+              </SimpleTooltip>
+              <SimpleTooltip content={T("tooltip.isochrone")} placement="top">
+                <Button
+                  className="min-w-0 flex-1 justify-center"
+                  variant="text"
+                  color="gray"
+                  selected={action === "isochrone"}
+                  onClick={() => dispatch(referenceFeatureChanged(feature))}
+                >
+                  <i className="fe-isochrone"></i>
+                </Button>
+              </SimpleTooltip>
+              <SimpleTooltip content={T("tooltip.share")} placement="top-end">
+                <Button
+                  className="min-w-0 flex-1 justify-center"
+                  variant="text"
+                  color="gray"
+                  selected={action === "share"}
+                  onClick={() => setOrToggleAction("share")}
+                >
+                  <i className="fe-share"></i>
+                </Button>
+              </SimpleTooltip>
+            </div>
+
+            {action === "raw" && <RawData feature={feature} />}
+            {action === "share" && (
+              <>
+                <div className="p8n-separator"></div>
+                <ShareUrlInput />
+                <div className="flex gap-2">
+                  <SimpleTooltip
+                    content={T("tooltip.googleDirection")}
+                    placement="top-start"
+                  >
+                    <LinkButton
+                      className="min-w-0 flex-1 justify-center"
+                      variant="text"
+                      href={generateGMapsDirection(
+                        feature.geometry.coordinates,
+                      )}
+                      color="gray"
+                    >
+                      <i className="fe-google"></i>
+                    </LinkButton>
+                  </SimpleTooltip>
+                  <SimpleTooltip
+                    content={T("tooltip.wazeDirection")}
+                    placement="top-end"
+                  >
+                    <LinkButton
+                      className="min-w-0 flex-1 justify-center"
+                      variant="text"
+                      href={generateWazeDirection(feature.geometry.coordinates)}
+                      color="gray"
+                    >
+                      <i className="fe-waze"></i>
+                    </LinkButton>
+                  </SimpleTooltip>
+                </div>
+              </>
+            )}
+          </>
+        )}
     </div>
   );
 }

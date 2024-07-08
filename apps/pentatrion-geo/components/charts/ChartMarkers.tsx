@@ -36,6 +36,33 @@ function ChartMarkers({ wayPoints, pois, xScale, yScale, route }: Props) {
     });
   }, [wayPoints, route, xScale, yScale]);
 
+  const poisInfos = useMemo(() => {
+    if (!pois) {
+      return null;
+    }
+    const poisInfos = pois?.map((poi) => {
+      // pixel perfect
+      const x = Math.round(xScale(poi.geometry.coordinates[3]));
+      const y = yScale(poi.geometry.coordinates[2]);
+
+      return {
+        target: poi,
+        x,
+        y,
+      };
+    });
+    const xPositions: number[] = [];
+    const filteredPoisInfos = poisInfos.filter((poiInfos) => {
+      const show = xPositions.every((xPos) => Math.abs(xPos - poiInfos.x) > 15);
+      if (show) {
+        xPositions.push(poiInfos.x);
+      }
+      return show;
+    });
+
+    return filteredPoisInfos;
+  }, [pois, xScale, yScale]);
+
   return (
     <g>
       {waypointsInfos?.map(({ target: wayPoint, x, y }, index) => {
@@ -52,10 +79,7 @@ function ChartMarkers({ wayPoints, pois, xScale, yScale, route }: Props) {
           </g>
         );
       })}
-      {pois?.map((poi) => {
-        // pixel perfect
-        const x = Math.round(xScale(poi.geometry.coordinates[3]));
-        const y = yScale(poi.geometry.coordinates[2]);
+      {poisInfos?.map(({ target: poi, x, y }) => {
         return (
           <g transform={`translate(${x}, 0)`} key={poi.id}>
             <line

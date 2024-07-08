@@ -18,13 +18,14 @@ import {
 import { createLonLatGeoOption } from "pentatrion-geo";
 import { ReactElement } from "react";
 import { useT } from "talkr";
+import { isNoData } from "pentatrion-geo/geo-options";
 
 export default function DirectionContextMenu() {
   const dispatch = useAppDispatch();
   const canvasRef = useCanvasRef();
   const { T } = useT();
 
-  const wayPointsLength = useAppSelector(selectDirectionWayPoints).length;
+  const wayPoints = useAppSelector(selectDirectionWayPoints);
 
   function handleDirectionChangeWayPointAt(
     e: ContextMenuItemMouseEvent,
@@ -55,7 +56,7 @@ export default function DirectionContextMenu() {
     dispatch(
       directionWayPointInsertAt({
         feature: lonlatFeature,
-        index: wayPointsLength,
+        index: wayPoints.length,
       }),
     );
   }
@@ -65,11 +66,13 @@ export default function DirectionContextMenu() {
     <ContextMenuItem
       key="direction-from"
       icon={<span className="bullet">A</span>}
-      label={T("contextMenu.directionFrom")}
+      label={T(
+        `contextMenu.${isNoData(wayPoints[0]) ? "directionFrom" : "movePoint"}`,
+      )}
       onClick={(e) => handleDirectionChangeWayPointAt(e, 0)}
     />,
   );
-  for (let i = 1; i < wayPointsLength; i++) {
+  for (let i = 1; i < wayPoints.length; i++) {
     contextItems.push(
       <ContextMenuItem
         className="discret"
@@ -82,7 +85,7 @@ export default function DirectionContextMenu() {
         key={`direction-to-${i}`}
         icon={<span className="bullet">{getIndexLetter(i)}</span>}
         label={T(
-          `contextMenu.${i < wayPointsLength - 1 ? "movePoint" : "directionTo"}`,
+          `contextMenu.${isNoData(wayPoints[i]) ? "directionTo" : "movePoint"}`,
         )}
         onClick={(e) => handleDirectionChangeWayPointAt(e, i)}
       />,

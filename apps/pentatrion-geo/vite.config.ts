@@ -5,7 +5,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./vitest-setup.ts"],
     include: [
-      "(api|components|geo-options|maplibre|projection|url)/**/*.test.ts?(x)",
+      "(api|components|geo-options|maplibre|projection|url|lib)/**/*.test.ts?(x)",
     ],
     watch: false,
   },

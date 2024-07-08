@@ -64,6 +64,7 @@ import {
 import { iconBySearchEngine } from "~/components/search-engine/util";
 import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
 import ShareUrlInput from "~/components/ShareUrlInput";
+import RawData from "./RawData";
 
 function placeholderByIndex(idx: number, length: number) {
   if (idx === 0) {
@@ -74,7 +75,7 @@ function placeholderByIndex(idx: number, length: number) {
   return "Point intermédiaire";
 }
 
-type Action = "settings" | "share";
+type Action = "raw" | "share";
 
 export default function DirectionTab() {
   const wayPoints = useAppSelector(selectDirectionWayPoints);
@@ -93,6 +94,8 @@ export default function DirectionTab() {
   const { notifyError } = useReduxNotifications();
   const { T } = useT();
   const searchEngine = useAppSelector(selectSearchEngine);
+
+  const [showDirectionSettings, setShowDirectionSettings] = useState(false);
   const [action, setAction] = useState<Action | null>(
     readOnly ? "share" : null,
   );
@@ -315,24 +318,7 @@ export default function DirectionTab() {
           <i className="fe-trash"></i>
           <span>{T("reset")}</span>
         </Button>
-        {route && (
-          <SimpleTooltip
-            content={T("tooltip.showElevationChart")}
-            placement="top-end"
-          >
-            <Button
-              icon
-              variant="text"
-              color="gray"
-              selected={elevationChart === true}
-              onClick={() =>
-                dispatch(directionElevationChartChanged(!elevationChart))
-              }
-            >
-              <i className="fe-chart"></i>
-            </Button>
-          </SimpleTooltip>
-        )}
+
         <SimpleTooltip
           content={T("tooltip.directionSettings")}
           placement="top-end"
@@ -341,26 +327,15 @@ export default function DirectionTab() {
             icon
             variant="text"
             color="gray"
-            selected={action === "settings"}
-            onClick={() => setOrToggleAction("settings")}
+            selected={showDirectionSettings}
+            onClick={() => setShowDirectionSettings((s) => !s)}
           >
             <i className="fe-sliders"></i>
           </Button>
         </SimpleTooltip>
-        <SimpleTooltip content={T("tooltip.share")} placement="top-end">
-          <Button
-            icon
-            variant="text"
-            color="gray"
-            selected={action === "share"}
-            onClick={() => setOrToggleAction("share")}
-          >
-            <i className="fe-share"></i>
-          </Button>
-        </SimpleTooltip>
       </div>
 
-      {action === "settings" && (
+      {showDirectionSettings && (
         <>
           <div className="p8n-setting">
             <div>{T("optimization.title")}</div>
@@ -432,13 +407,6 @@ export default function DirectionTab() {
         </>
       )}
 
-      {action === "share" && (
-        <>
-          <div className="p8n-separator"></div>
-          <ShareUrlInput />
-        </>
-      )}
-
       {route && (
         <>
           <div className="p8n-separator"></div>
@@ -462,7 +430,7 @@ export default function DirectionTab() {
                     </span>
                   )}
                   <span>
-                    {getMinutes(route.properties.duration)}{" "}
+                    {getMinutes(route.properties.duration, true)}{" "}
                     <span className="text-gray-6">min</span>
                   </span>
                 </div>
@@ -489,8 +457,57 @@ export default function DirectionTab() {
               )}
             </div>
           </div>
+
+          <div className="flex gap-2">
+            <SimpleTooltip content={T("tooltip.code")} placement="top">
+              <Button
+                className="min-w-0 flex-1 justify-center"
+                variant="text"
+                color="gray"
+                selected={action === "raw"}
+                onClick={() => setOrToggleAction("raw")}
+              >
+                <i className="fe-code"></i>
+              </Button>
+            </SimpleTooltip>
+            <SimpleTooltip content={T("tooltip.share")}>
+              <Button
+                className="min-w-0 flex-1 justify-center"
+                variant="text"
+                color="gray"
+                selected={action === "share"}
+                onClick={() => setOrToggleAction("share")}
+              >
+                <i className="fe-share"></i>
+              </Button>
+            </SimpleTooltip>
+            <SimpleTooltip
+              content={T("tooltip.showElevationChart")}
+              placement="top-end"
+            >
+              <Button
+                className="min-w-0 flex-1 justify-center"
+                variant="text"
+                color="gray"
+                selected={elevationChart === true}
+                onClick={() =>
+                  dispatch(directionElevationChartChanged(!elevationChart))
+                }
+              >
+                <i className="fe-chart"></i>
+              </Button>
+            </SimpleTooltip>
+          </div>
         </>
       )}
+
+      {action === "share" && (
+        <>
+          <div className="p8n-separator"></div>
+          <ShareUrlInput />
+        </>
+      )}
+      {route && action === "raw" && <RawData route={route} />}
     </div>
   );
 }

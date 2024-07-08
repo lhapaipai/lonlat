@@ -1,7 +1,7 @@
 import { scaleLinear, extent, line, curveMonotoneX, bisector, area } from "d3";
 import { CSSProperties, useMemo, useRef, MouseEvent } from "react";
 import { useDimensions } from "./useDimensions";
-import simplify from "simplify-js";
+
 import { createPortal } from "react-dom";
 import BottomAxis from "./BottomAxis";
 import LeftAxis from "./LeftAxis";
@@ -10,6 +10,7 @@ import { Position } from "geojson";
 import { customRound } from "../../geo-options";
 import ChartMarkers from "./ChartMarkers";
 import { WayPoint } from "./types";
+import { simplify } from "../../lib";
 
 const defaultStyle: CSSProperties = {
   width: "100%",
@@ -110,14 +111,15 @@ export function ElevationChart({
         xCursor &&
         createPortal(
           <div
-            className="pointer-events-none absolute left-0 top-0 -translate-x-1/2 -translate-y-full rounded-2xl bg-gray-0 p-2 text-sm shadow"
+            className="pointer-events-none absolute left-0 top-0"
             style={{
-              left: size.marginLeft + xCursor,
-              top: size.svgTop + size.marginTop - tooltipOffsetY,
+              transform: `translate(${size.marginLeft + xCursor}px, ${size.svgTop + size.marginTop - tooltipOffsetY}px)`,
             }}
           >
-            <div>distance: {customRound(focusCoordinates[3], 1)}km</div>
-            <div>altitude: {Math.round(focusCoordinates[2])}m</div>
+            <div className="-translate-x-1/2 -translate-y-full rounded-2xl bg-gray-0 p-2 text-sm shadow">
+              <div>distance: {customRound(focusCoordinates[3], 1)}km</div>
+              <div>altitude: {Math.round(focusCoordinates[2])}m</div>
+            </div>
           </div>,
           document.body,
         )}

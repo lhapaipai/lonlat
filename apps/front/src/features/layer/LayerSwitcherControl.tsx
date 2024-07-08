@@ -33,7 +33,7 @@ function LayerSwitcherControl() {
   const { container } = useRControl({
     position: "bottom",
     className: clsx(
-      "ll-layer-switcher flex overflow-x-auto flex-nowrap relative z-[1] select-none max-w-full pointer-events-auto gap-2 pt-0.5 pb-2 px-2 w-fit",
+      "ll-layer-switcher flex overflow-x-auto flex-nowrap relative z-[4] select-none max-w-full pointer-events-auto gap-2 pt-0.5 pb-2 px-2 w-fit",
       distractionFree && "distraction-free",
     ),
   });
@@ -46,10 +46,15 @@ function LayerSwitcherControl() {
   }
 
   useEffect(() => {
-    document.documentElement.classList.toggle("ll-layer-switcher-expanded", !collapsed);
+    document.documentElement.classList.toggle(
+      "ll-layer-switcher-expanded",
+      !collapsed,
+    );
   }, [collapsed]);
 
-  const eventName = window.matchMedia("(pointer: coarse)").matches ? "touchstart" : "mousedown";
+  const eventName = window.matchMedia("(pointer: coarse)").matches
+    ? "touchstart"
+    : "mousedown";
   useOnClickOutside({ current: container }, handleClickOutside, eventName);
 
   const [countryFilter, setCountryFilter] = useState<keyof BaseLayers>("fr");
@@ -80,18 +85,20 @@ function LayerSwitcherControl() {
     ) : (
       <>
         <ButtonGroup direction="vertical">
-          {(Object.keys(baseLayers) as (keyof BaseLayers)[]).map((countryId) => (
-            <Button
-              key={countryId}
-              className="text-sm flex-1"
-              variant="light"
-              color="gray"
-              selected={countryFilter === countryId}
-              onClick={() => setCountryFilter(countryId)}
-            >
-              {T(`countries.${countryId}`)}
-            </Button>
-          ))}
+          {(Object.keys(baseLayers) as (keyof BaseLayers)[]).map(
+            (countryId) => (
+              <Button
+                key={countryId}
+                className="flex-1 text-sm"
+                variant="light"
+                color="gray"
+                selected={countryFilter === countryId}
+                onClick={() => setCountryFilter(countryId)}
+              >
+                {T(`countries.${countryId}`)}
+              </Button>
+            ),
+          )}
         </ButtonGroup>
 
         {baseLayers[countryFilter].map((id) => {
@@ -99,7 +106,11 @@ function LayerSwitcherControl() {
           const layer = baseLayersById[layerId];
           return (
             <LayerButton
-              className={clsx("layer", "base", layerId === currentBaseLayerId && "active")}
+              className={clsx(
+                "layer",
+                "base",
+                layerId === currentBaseLayerId && "active",
+              )}
               image="/assets/graphics/sprites/layers-1x.jpg"
               srcSet="/assets/graphics/sprites/layers-1x.jpg 1x, /assets/graphics/sprites/layers-2x.jpg 2x"
               key={layerId}
@@ -110,10 +121,12 @@ function LayerSwitcherControl() {
           );
         })}
 
-        <div className="w-1 flex-[0_0_0.25rem] my-4 bg-gray-1 rounded-full relative"></div>
+        <div className="relative my-4 w-1 flex-[0_0_0.25rem] rounded-full bg-gray-1"></div>
 
         {currentBaseLayerId &&
-          (baseLayersById[currentBaseLayerId] as BaseLayerInfos).optionalLayers.map(({ id }) => {
+          (
+            baseLayersById[currentBaseLayerId] as BaseLayerInfos
+          ).optionalLayers.map(({ id }) => {
             const layerId = id as OptionalLayerId;
             const layer = optionalLayersById[layerId];
 
@@ -135,7 +148,7 @@ function LayerSwitcherControl() {
             );
           })}
 
-        <div className="w-1 flex-[0_0_0.25rem] my-4 bg-gray-1 rounded-full relative"></div>
+        <div className="relative my-4 w-1 flex-[0_0_0.25rem] rounded-full bg-gray-1"></div>
 
         <LayerButton
           className={clsx("layer", "base", currentTerrain && "active")}

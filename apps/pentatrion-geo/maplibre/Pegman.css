@@ -1,9 +1,26 @@
-.maplibregl-gradient-marker.pegman {
+.maplibregl-pegman {
   --marker-size: 60px;
   --marker-height: var(--marker-size);
   --marker-width: var(--marker-size);
 
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+
+  cursor: pointer;
+
+  &,
+  & .image,
+  & .image::before,
+  & .image::after {
+    width: var(--marker-width);
+    height: var(--marker-height);
+  }
+
   & .image {
+    transition: transform 0.2s ease;
+
     &::before {
       content: "";
       position: absolute;
@@ -15,8 +32,6 @@
       background-image: url(/assets/maplibre/marker-shadow-centered.png);
       background-size: cover;
       pointer-events: none;
-      width: var(--marker-size);
-      height: var(--marker-size);
       z-index: -1;
     }
 
@@ -25,15 +40,29 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: var(--marker-size);
-      height: var(--marker-size);
       background-image: url(/assets/pegman/pegman-rotation-1x.png);
       background-position: 0px 0px;
     }
   }
 
   & .target {
+    width: calc(var(--marker-size) * 0.2);
+    height: calc(var(--marker-size) * 0.1);
+    background-color: #b4b4b4;
+    position: absolute;
+    left: calc(50% - var(--marker-size) * 0.1);
     top: calc(75% - var(--marker-width) * 0.05);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+
+    opacity: 0;
+    transform: scale(0.5);
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+
+    box-shadow: 0px 0px 2px #000;
   }
 
   &:hover,
@@ -43,7 +72,7 @@
     }
 
     .target {
-      opacity: 0.25;
+      opacity: 0.5;
       transform: scale(0.5);
     }
   }

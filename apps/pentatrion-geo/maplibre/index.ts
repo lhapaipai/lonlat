@@ -1,4 +1,4 @@
-export { Popup } from "./Popup";
+export { FloatingPopup } from "./FloatingPopup";
 
 export { Pegman } from "./Pegman";
 export { RPegman } from "./RPegman";

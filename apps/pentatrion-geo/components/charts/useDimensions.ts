@@ -47,12 +47,10 @@ export const useDimensions: (
   });
   const [, rerender] = useState(0);
 
-  const onResizeStable = useEventCallback((entries) => {
-    if (!Array.isArray(entries)) return;
-    if (!entries.length) return;
+  const onResizeStable = useEventCallback(() => {
+    const currentElt = containerRef.current;
 
-    const { width, height } = entries[0].contentRect;
-    const { top, left } = entries[0].target.getBoundingClientRect();
+    const { top, left, width, height } = currentElt.getBoundingClientRect();
     if (size.current.width !== width || size.current.height !== height) {
       size.current = {
         svgTop: top,
@@ -74,9 +72,10 @@ export const useDimensions: (
     const currentElt = containerRef.current;
     const resizeObserver = new ResizeObserver(onResizeStable);
     resizeObserver.observe(currentElt);
-
+    window.addEventListener("resize", onResizeStable);
     return () => {
       void resizeObserver.unobserve(currentElt);
+      window.removeEventListener("resize", onResizeStable);
     };
   }, [rerender, onResizeStable]);
 

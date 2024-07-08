@@ -208,6 +208,8 @@ export const selectDirectionFocusCoordinates = (state: RootState) =>
 export const selectDirectionElevationChart = (state: RootState) =>
   state.direction.elevationChart;
 export const selectDirectionPois = (state: RootState) => state.direction.pois;
+export const selectDirectionProfile = (state: RootState) =>
+  state.direction.profile;
 export const selectDirectionWayPoints = (state: RootState) =>
   state.direction.wayPoints;
 export const selectValidDirectionWayPoints = createSelector(

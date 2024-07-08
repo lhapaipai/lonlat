@@ -7,7 +7,7 @@ import {
 } from "maplibre-gl";
 
 import { useAppDispatch, useAppSelector } from "./store";
-import { selectTab, selectViewState, viewStateChanged } from "./store/mapSlice";
+import { selectViewState, viewStateChanged } from "./store/mapSlice";
 
 import MapFlyer from "./MapFlyer";
 
@@ -19,7 +19,7 @@ import { DOM } from "pentatrion-geo/maplibre/core/util/dom";
 import LayerSwitcherControl from "~/features/layer/LayerSwitcherControl";
 
 import { selectLayer } from "~/features/layer/layerSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { prepareStyle } from "~/features/layer/util";
 import StreetViewMap from "~/features/street-view/StreetViewMap";
 import StreetViewWindow from "~/features/street-view/StreetViewWindow";
@@ -34,6 +34,7 @@ import IsochroneMap from "./features/isochrone/IsochroneMap";
 import Extra from "./components/Extra";
 import { selectDirectionElevationChart } from "./features/direction/directionSlice";
 import DirectionElevationChart from "./features/direction/DirectionElevationChart";
+import { useEventCallback } from "pentatrion-design";
 
 function handleAfterMapInstanciation(map: Map) {
   console.log("handleAfterMapInstanciation", map._loaded);
@@ -67,10 +68,10 @@ function handleAfterMapInstanciation(map: Map) {
 function App() {
   const viewState = useAppSelector(selectViewState);
   const dispatch = useAppDispatch();
+  const principalRef = useRef<HTMLDivElement>(null!);
 
   const { baseLayer, optionalLayers, terrain, streetView } =
     useAppSelector(selectLayer);
-  const tab = useAppSelector(selectTab);
   const geolocationEnabled = useAppSelector(selectGeolocationStatus) === "on";
   const isochroneReferenceFeature = useAppSelector(
     selectIsochroneReferenceFeature,
@@ -99,17 +100,38 @@ function App() {
     );
   }
 
+  function handleResize(e: MapLibreEvent) {
+    console.log("handleResize", e);
+  }
+
   useEffect(() => {
     prepareStyle(baseLayer, optionalLayers, terrain).then((nextStyle) =>
       setUncontrolledStyle(nextStyle),
     );
   }, [baseLayer, optionalLayers, terrain]);
 
+  const onResizeStable = useEventCallback((entries: ResizeObserverEntry[]) => {
+    if (!Array.isArray(entries) || !entries.length) {
+      return;
+    }
+    const height = entries[0].contentRect.height;
+    document.documentElement.style.setProperty("--map-height", `${height}px`);
+  });
+  useEffect(() => {
+    const currentElt = principalRef.current;
+    const resizeObserver = new ResizeObserver(onResizeStable);
+    resizeObserver.observe(currentElt);
+    return () => {
+      void resizeObserver.unobserve(currentElt);
+    };
+  }, [onResizeStable]);
+
   return (
     <div id="app" className="flex h-full w-full flex-col md:flex-row">
       <div className="flex h-full w-full flex-1 flex-col">
-        <div id="principal" className="flex-1">
+        <div ref={principalRef} id="principal" className="flex-1">
           <RMap
+            onResize={handleResize}
             onMoveEnd={handleMoveEnd}
             initialCenter={viewState.center}
             initialZoom={viewState.zoom}
@@ -123,8 +145,8 @@ function App() {
             <LayerSwitcherControl />
             <MapFlyer />
             {streetView && <StreetViewMap />}
-            {tab === "direction" && <DirectionMap />}
-            {tab === "search" && <SearchMap />}
+            <DirectionMap />
+            <SearchMap />
             <IsochroneMap />
             {geolocationEnabled && <GeolocationMap />}
             <ContextMenuManager />

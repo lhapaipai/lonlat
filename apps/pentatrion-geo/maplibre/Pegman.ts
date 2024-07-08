@@ -24,7 +24,7 @@ export class Pegman extends Marker {
 
     if (useDefaultMarker) {
       options ??= {};
-      options.element = DOM.create("div", "maplibregl-gradient-marker pegman");
+      options.element = DOM.create("div", "maplibregl-pegman");
     }
 
     super(options);

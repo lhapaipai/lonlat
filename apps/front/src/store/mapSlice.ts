@@ -90,6 +90,8 @@ export const {
 } = mapSlice.actions;
 
 export const selectViewState = (state: RootState) => state.map.viewState;
+export const selectViewStateZoom = (state: RootState) =>
+  state.map.viewState.zoom;
 export const selectTab = (state: RootState) => state.map.tab;
 export const selectSearchEngine = (state: RootState) => state.map.searchEngine;
 export const selectCoordsUnit = (state: RootState) => state.map.coordsUnit;

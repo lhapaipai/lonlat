@@ -3,7 +3,7 @@ import { extend } from "./core/util/util";
 import { smartWrap } from "./core/util/smart_wrap";
 import { DOM } from "./core/util/dom";
 
-import Point from "@mapbox/point-geometry";
+import type Point from "@mapbox/point-geometry";
 import VirtualElement from "./lib/VirtualElement";
 
 import {
@@ -23,8 +23,8 @@ import { dialogVariants } from "pentatrion-design/components/dialog";
 import { type ThemeColor } from "pentatrion-design/types";
 
 import clsx from "clsx";
-// import "pentatrion-design/components/dialog/Dialog.scss";
-// import "pentatrion-design/components/button/Button.scss";
+
+const arrowHeight = 8;
 
 /**
  * from ./core/util/evented
@@ -40,7 +40,7 @@ class Event {
   }
 }
 
-export interface PopupOptions {
+export interface FloatingPopupOptions {
   closeButton?: boolean;
   closeOnClick?: boolean;
   closeOnMove?: boolean;
@@ -64,11 +64,9 @@ const defaultOptions = {
   borderColor: "yellow",
 };
 
-export const arrowHeight = 8;
-
-export class Popup extends Evented {
+export class FloatingPopup extends Evented {
   _map?: Map;
-  options: PopupOptions;
+  options: FloatingPopupOptions;
   _content?: HTMLElement;
   _container?: HTMLElement;
   _dialog?: HTMLElement;
@@ -81,7 +79,7 @@ export class Popup extends Evented {
   _flatPos?: Point;
   _virtualElement: VirtualElement;
 
-  constructor(options?: PopupOptions) {
+  constructor(options?: FloatingPopupOptions) {
     super();
     this.options = extend(Object.create(defaultOptions), options);
     this._virtualElement = new VirtualElement();
@@ -163,8 +161,14 @@ export class Popup extends Evented {
       this._map.on("move", this._update);
     }
 
-    this._container?.classList.toggle("maplibregl-track-pointer", this._trackPointer);
-    this._map._canvasContainer.classList.toggle("maplibregl-track-pointer", this._trackPointer);
+    this._container?.classList.toggle(
+      "maplibregl-track-pointer",
+      this._trackPointer,
+    );
+    this._map._canvasContainer.classList.toggle(
+      "maplibregl-track-pointer",
+      this._trackPointer,
+    );
   }
 
   setLngLat(lnglat: LngLatLike): this {
@@ -315,13 +319,20 @@ export class Popup extends Evented {
       this._tip = DOM.create("div", "p8n-arrow", this._dialog);
     }
 
-    if (this.options.maxWidth && this._dialog.style.maxWidth !== this.options.maxWidth) {
+    if (
+      this.options.maxWidth &&
+      this._dialog.style.maxWidth !== this.options.maxWidth
+    ) {
       this._dialog.style.maxWidth = this.options.maxWidth;
     }
 
     if (this._map.transform.renderWorldCopies && !this._trackPointer) {
-      // @ts-ignore
-      this._lngLat = smartWrap(this._lngLat, this._flatPos, this._map.transform);
+      this._lngLat = smartWrap(
+        // @ts-ignore
+        this._lngLat,
+        this._flatPos,
+        this._map.transform,
+      );
     } else {
       this._lngLat = this._lngLat?.wrap();
     }
@@ -333,7 +344,9 @@ export class Popup extends Evented {
     const pos =
       (this._flatPos =
       this._pos =
-        this._trackPointer && cursorPosition ? cursorPosition : this._map.project(this._lngLat!));
+        this._trackPointer && cursorPosition
+          ? cursorPosition
+          : this._map.project(this._lngLat!));
 
     if (this._map.terrain) {
       this._flatPos =
@@ -344,7 +357,11 @@ export class Popup extends Evented {
 
     this._virtualElement.setCoords(pos.x, pos.y);
 
-    if (this._prevPos && this._prevPos.x === pos.x && this._prevPos.y === pos.y) {
+    if (
+      this._prevPos &&
+      this._prevPos.x === pos.x &&
+      this._prevPos.y === pos.y
+    ) {
       return;
     }
 
@@ -436,7 +453,11 @@ export class Popup extends Evented {
 
   _createHeader(title?: string) {
     if (title) {
-      const header = DOM.create("header", "flex items-center px-2 pt-2", this._content);
+      const header = DOM.create(
+        "header",
+        "flex items-center px-2 pt-2",
+        this._content,
+      );
       const h4 = DOM.create("h4", undefined, header);
       h4.innerText = title;
     }

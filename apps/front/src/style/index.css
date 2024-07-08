@@ -13,6 +13,7 @@ html {
   --sidebar-streetview-height: 50%;
 
   --sidebar-extra-height: 300px;
+  --map-height: 100vh;
 }
 
 :root {

@@ -1,5 +1,9 @@
-import { Position } from "geojson";
-import { DirectionOptions, GeoPointOption } from "../types";
+import { Feature, LineString, Position } from "geojson";
+import {
+  DirectionOptions,
+  GeoPointOption,
+  RouteFeatureResponse,
+} from "../types";
 
 export function updateId<T extends { id: string }>(obj: T, id: string): T {
   return {
@@ -264,6 +268,12 @@ export function stringifyGeoOption(
   }
 }
 
+export function stringifyRoute(
+  route: RouteFeatureResponse | Feature<LineString>,
+) {
+  return JSON.stringify(route, undefined, 2);
+}
+
 export function m2km(value: number) {
   return Math.round(value / 100) / 10;
 }
@@ -272,8 +282,9 @@ export function getHours(seconds: number) {
   return Math.floor(seconds / 3600);
 }
 
-export function getMinutes(seconds: number) {
-  return Math.floor((seconds % 3600) / 60);
+export function getMinutes(seconds: number, toString = false) {
+  const min = Math.floor((seconds % 3600) / 60);
+  return toString ? (min < 10 ? "0" : "") + min.toString() : min;
 }
 
 export function humanDuration(seconds: number) {

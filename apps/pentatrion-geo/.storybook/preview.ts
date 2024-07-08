@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/react";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import "./index.css";
+import "./storybook.css";
 
 // https://storybook.js.org/docs/react/configure/overview#configure-story-rendering
 const preview: Preview = {

@@ -1,5 +1,5 @@
 import { DirectionOptions } from "pentatrion-geo";
-import { createNodataFeature } from "pentatrion-geo/geo-options";
+import { createNodataFeature, isNoData } from "pentatrion-geo/geo-options";
 import { DirectionState } from "~/features/direction/directionSlice";
 import { parseGeoPoint, stringifyGeoPoint } from "./geoPoint";
 import { encodeBool } from "./util";
@@ -12,6 +12,10 @@ export function stringifyDirection(direction: DirectionState): string | null {
       optimization,
       profile,
     } = direction;
+
+    if (wayPoints.every(isNoData)) {
+      return null;
+    }
 
     const wayPointsStr = wayPoints
       .map((w) => {
@@ -51,7 +55,7 @@ export function parseDirection(
     return {
       elevationChart: true,
       pois: null,
-      focusPosition: null,
+      focusCoordinates: null,
       wayPoints: waypoints,
       route: null,
       constraints: {
