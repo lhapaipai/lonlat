@@ -24,7 +24,7 @@ deploy-front-test: ## Build and deploy examples
 
 .PHONY: deploy-front
 deploy-front: ## Build and deploy examples
-	cd $(front_path) && pnpm build
+	pnpm build
 	rsync -av --delete \
 		$(front_path)/dist/ \
 		berlin:prod/$(remote_prod_host)

@@ -5,10 +5,3 @@
   transition: opacity 0.2s;
   will-change: transform;
 }
-
-.maplibregl-marker[data-shape="pin"] {
-  z-index: 2;
-}
-.maplibregl-marker[data-shape="circle"] {
-  z-index: 1;
-}

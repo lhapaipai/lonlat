@@ -4,10 +4,18 @@ import { RootState } from ".";
 import { customReplaceState } from "~/lib/util";
 import { getHashString } from "~/lib/hash";
 import { readOnlyChanged } from "./configSlice";
+import { fetchRoute } from "~/features/direction/directionSlice";
+import { searchFeatureChanged } from "~/features/search/searchSlice";
 
 export const ViewStateListenerMiddleware = createListenerMiddleware();
 ViewStateListenerMiddleware.startListening({
-  matcher: isAnyOf(viewStateChanged, baseLayerChanged, readOnlyChanged),
+  matcher: isAnyOf(
+    viewStateChanged,
+    baseLayerChanged,
+    fetchRoute.fulfilled,
+    searchFeatureChanged,
+    readOnlyChanged,
+  ),
   effect: async (_, { getState }) => {
     const state = getState() as RootState;
 

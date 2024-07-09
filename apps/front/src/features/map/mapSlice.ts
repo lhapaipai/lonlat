@@ -83,6 +83,7 @@ export const selectViewStateZoom = (state: RootState) =>
   state.map.viewState.zoom;
 export const selectMap = (state: RootState) => state.map;
 export const selectBaseLayer = (state: RootState) => state.map.baseLayer;
-export const selectOptionalLayers = (state: RootState) => state.map.baseLayer;
-export const selectTerrain = (state: RootState) => state.map.baseLayer;
-export const selectStreetView = (state: RootState) => state.map.baseLayer;
+export const selectOptionalLayers = (state: RootState) =>
+  state.map.optionalLayers;
+export const selectTerrain = (state: RootState) => state.map.terrain;
+export const selectStreetView = (state: RootState) => state.map.streetView;

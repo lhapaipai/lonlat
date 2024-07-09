@@ -38,7 +38,7 @@ function LayerSwitcherControl() {
   const { container } = useRControl({
     position: "bottom",
     className: clsx(
-      "ll-layer-switcher flex overflow-x-auto flex-nowrap relative z-[4] select-none max-w-full pointer-events-auto gap-2 pt-0.5 pb-2 px-2 w-fit",
+      "ll-layer-switcher flex overflow-x-auto flex-nowrap relative select-none max-w-full pointer-events-auto gap-2 pt-0.5 pb-2 px-2 w-fit",
       distractionFree && "distraction-free",
     ),
   });

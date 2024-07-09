@@ -68,7 +68,7 @@ function TabsControl() {
         value={tab}
         onChange={(e) => dispatch(tabChanged(e))}
         contentClassName="overflow-auto max-h-[calc(var(--map-height)-36px-1rem)]"
-        className="rounded-2xl"
+        className="md:rounded-2xl"
       >
         <Button
           icon

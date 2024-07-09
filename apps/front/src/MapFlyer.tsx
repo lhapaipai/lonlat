@@ -4,10 +4,7 @@ import { selectSearchFeature } from "~/features/search/searchSlice";
 import { selectTab } from "./store/configSlice";
 import { selectValidDirectionWayPoints } from "~/features/direction/directionSlice";
 import { GeoPointOption } from "pentatrion-geo/types";
-import {
-  boundsContained,
-  getBounds,
-} from "pentatrion-geo/geo-options/geometry";
+import { getBounds } from "pentatrion-geo/geo-options/geometry";
 import { isGeolocationGeoOption } from "pentatrion-geo/geo-options/geolocation";
 
 import { useMap } from "maplibre-react-components";
@@ -69,13 +66,16 @@ function MapFlyer() {
       return;
     }
 
-    // no searchFeature or wayPoint is a GeolocationGeoOption
+    /**
+     * from now, we know that neither searchFeature nor directionWaypoints
+     * are GeolocationGeoOption
+     */
 
     if (searchFeature && tab === "search") {
       const [lon, lat] = searchFeature.geometry.coordinates;
       const contains = map.getBounds().contains([lon, lat]);
 
-      if (!contains || map.getZoom() < 15) {
+      if (!contains || map.getZoom() < 10) {
         map.flyTo({ center: [lon, lat], zoom: Math.max(15, map.getZoom()) });
       }
       return;
@@ -98,6 +98,9 @@ function MapFlyer() {
           const contains = map.getBounds().contains([lon, lat]);
 
           if (!contains) {
+            /**
+             * we move while keeping exactly the same zoom level.
+             */
             map.flyTo({ center: [lon, lat] });
           }
           return;
@@ -106,9 +109,15 @@ function MapFlyer() {
           const wayPointsBounds = getBounds(
             validWayPoints.map((p) => p.geometry.coordinates),
           );
-          const contains = boundsContained(map.getBounds(), wayPointsBounds);
 
-          if (!contains) {
+          const mapBounds = map.getBounds();
+          const atLeastOne = validWayPoints.some((wayPoint) =>
+            mapBounds.contains(
+              wayPoint.geometry.coordinates as [number, number],
+            ),
+          );
+
+          if (!atLeastOne) {
             map.fitBounds(wayPointsBounds, { padding: 75 });
           }
           return;

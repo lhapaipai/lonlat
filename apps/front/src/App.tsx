@@ -125,6 +125,7 @@ function App() {
       <div className="flex h-full w-full flex-1 flex-col">
         <div ref={principalRef} id="principal" className="flex-1">
           <RMap
+            onZoomEnd={(e) => void console.log(e.target.getZoom())}
             onMoveEnd={handleMoveEnd}
             initialCenter={viewState.center}
             initialZoom={viewState.zoom}

@@ -2,6 +2,7 @@ import {
   CircleLayerSpecification,
   FillLayerSpecification,
   LineLayerSpecification,
+  RasterLayerSpecification,
   SymbolLayerSpecification,
 } from "maplibre-gl";
 
@@ -113,5 +114,14 @@ export const roadHaloPaintStyle: {
   paint: {
     "line-width": 50,
     "line-color": "transparent",
+  },
+};
+
+export const streetviewPaintStyle: {
+  paint?: RasterLayerSpecification["paint"];
+  layout?: RasterLayerSpecification["layout"];
+} = {
+  paint: {
+    "raster-opacity": 0.65,
   },
 };

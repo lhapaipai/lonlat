@@ -1,3 +1,7 @@
+## 0.2.0 (2024-07-09)
+
+- Elevation charts
+
 ## 0.1.1
 
 - Isochrone in context menu

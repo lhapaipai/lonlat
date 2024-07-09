@@ -10,6 +10,7 @@ import {
 import { MapMouseEvent } from "maplibre-gl";
 import { memo, useEffect } from "react";
 import { selectViewState } from "~/features/map/mapSlice";
+import { streetviewPaintStyle } from "~/config/mapStyles";
 
 function StreetViewMap() {
   const coords = useAppSelector(selectPegmanCoords);
@@ -55,6 +56,7 @@ function StreetViewMap() {
         source="streetview-raster"
         id="streetview-fill"
         type="raster"
+        {...streetviewPaintStyle}
       />
     </>
   );
