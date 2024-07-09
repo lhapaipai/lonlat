@@ -7,7 +7,6 @@ import {
 } from "maplibre-gl";
 
 import { useAppDispatch, useAppSelector } from "./store";
-import { selectViewState, viewStateChanged } from "./store/mapSlice";
 
 import MapFlyer from "./MapFlyer";
 
@@ -16,11 +15,10 @@ import ContextMenuManager from "./ContextMenuManager";
 import DirectionMap from "~/features/direction/DirectionMap";
 import SearchMap from "~/features/search/SearchMap";
 import { DOM } from "pentatrion-geo/maplibre/core/util/dom";
-import LayerSwitcherControl from "~/features/layer/LayerSwitcherControl";
+import LayerSwitcherControl from "~/features/map/LayerSwitcherControl";
 
-import { selectLayer } from "~/features/layer/layerSlice";
 import { useEffect, useRef, useState } from "react";
-import { prepareStyle } from "~/features/layer/util";
+import { prepareStyle } from "~/features/map/util";
 import StreetViewMap from "~/features/street-view/StreetViewMap";
 import StreetViewWindow from "~/features/street-view/StreetViewWindow";
 import TabsControl from "./TabsControl";
@@ -35,6 +33,7 @@ import Extra from "./components/Extra";
 import { selectDirectionElevationChart } from "./features/direction/directionSlice";
 import DirectionElevationChart from "./features/direction/DirectionElevationChart";
 import { useEventCallback } from "pentatrion-design";
+import { selectMap, viewStateChanged } from "./features/map/mapSlice";
 
 function handleAfterMapInstanciation(map: Map) {
   console.log("handleAfterMapInstanciation", map._loaded);
@@ -66,12 +65,11 @@ function handleAfterMapInstanciation(map: Map) {
 }
 
 function App() {
-  const viewState = useAppSelector(selectViewState);
   const dispatch = useAppDispatch();
   const principalRef = useRef<HTMLDivElement>(null!);
 
-  const { baseLayer, optionalLayers, terrain, streetView } =
-    useAppSelector(selectLayer);
+  const { baseLayer, optionalLayers, terrain, streetView, viewState } =
+    useAppSelector(selectMap);
   const geolocationEnabled = useAppSelector(selectGeolocationStatus) === "on";
   const isochroneReferenceFeature = useAppSelector(
     selectIsochroneReferenceFeature,
@@ -98,10 +96,6 @@ function App() {
         bearing: map.getBearing(),
       }),
     );
-  }
-
-  function handleResize(e: MapLibreEvent) {
-    console.log("handleResize", e);
   }
 
   useEffect(() => {
@@ -131,7 +125,6 @@ function App() {
       <div className="flex h-full w-full flex-1 flex-col">
         <div ref={principalRef} id="principal" className="flex-1">
           <RMap
-            onResize={handleResize}
             onMoveEnd={handleMoveEnd}
             initialCenter={viewState.center}
             initialZoom={viewState.zoom}

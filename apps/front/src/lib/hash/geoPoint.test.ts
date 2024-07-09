@@ -7,19 +7,16 @@ describe("hashUtil", () => {
     expect(
       stringifySearch({
         feature: createFakeFeature({}),
-        readOnly: true,
       }),
     ).toMatchInlineSnapshot(`"5_45!type!label"`);
     expect(
       stringifySearch({
         feature: createFakeFeature({ z: 3 }),
-        readOnly: true,
       }),
     ).toMatchInlineSnapshot(`"5_45_3!type!label"`);
     expect(
       stringifySearch({
         feature: null,
-        readOnly: false,
       }),
     ).toMatchInlineSnapshot(`null`);
     expect(
@@ -30,7 +27,6 @@ describe("hashUtil", () => {
             context: "spélà@chars",
             type: "with!d!e!l!i!m!i!t!e!r",
           }),
-          readOnly: false,
         },
         false,
       ),

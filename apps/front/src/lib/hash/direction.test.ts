@@ -17,7 +17,6 @@ describe("hash.direction", () => {
         },
         optimization: "recommended",
         profile: "car",
-        readOnly: true,
         route: null,
       }),
     ).toMatchInlineSnapshot(
@@ -36,9 +35,11 @@ describe("hash.direction", () => {
           "avoidHighways": true,
           "avoidTollways": true,
         },
+        "elevationChart": true,
+        "focusCoordinates": null,
         "optimization": "shortest",
+        "pois": null,
         "profile": "bike",
-        "readOnly": true,
         "route": null,
         "wayPoints": [
           {
@@ -51,10 +52,10 @@ describe("hash.direction", () => {
             },
             "id": "5_45!type!label",
             "properties": {
-              "context": "undefined",
+              "context": "",
               "id": "custom",
               "label": "label",
-              "name": "undefined",
+              "name": "",
               "originalProperties": null,
               "score": 1,
               "type": "type",
@@ -79,10 +80,10 @@ describe("hash.direction", () => {
             },
             "id": "5_45!type!label",
             "properties": {
-              "context": "undefined",
+              "context": "",
               "id": "custom",
               "label": "label",
-              "name": "undefined",
+              "name": "",
               "originalProperties": null,
               "score": 1,
               "type": "type",

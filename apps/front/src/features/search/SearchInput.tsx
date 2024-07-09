@@ -17,7 +17,7 @@ import {
   selectReadOnly,
   selectSearchEngine,
 } from "~/store/configSlice";
-import { selectViewState } from "~/store/mapSlice";
+import { selectViewState } from "~/features/map/mapSlice";
 
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";

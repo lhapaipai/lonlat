@@ -40,7 +40,7 @@ import {
   orsSearch,
   updateId,
 } from "pentatrion-geo";
-import { selectViewState } from "~/store/mapSlice";
+import { selectViewState } from "~/features/map/mapSlice";
 import {
   SearchEngine,
   searchEngineChanged,

@@ -8,7 +8,7 @@ import {
 } from "./streetViewSlice";
 import { MapMouseEvent } from "maplibre-gl";
 import { memo, useEffect } from "react";
-import { selectViewState } from "~/store/mapSlice";
+import { selectViewState } from "~/features/map/mapSlice";
 
 function StreetViewMap() {
   const coords = useAppSelector(selectPegmanCoords);

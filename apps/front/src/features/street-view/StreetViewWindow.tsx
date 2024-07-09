@@ -9,7 +9,7 @@ import {
   selectPegmanPov,
 } from "./streetViewSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { streetViewToggled } from "~/features/layer/layerSlice";
+import { streetViewToggled } from "~/features/map/mapSlice";
 import { memo, useRef } from "react";
 import { ResizeArea } from "~/components/resize-area";
 

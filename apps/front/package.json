@@ -9,7 +9,12 @@
     "build-with-errors": "vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "fontello": "fontello"
+    "fontello": "fontello",
+    "lint:check": "eslint -c ../../.eslintrc ./src",
+    "tsc:check": "tsc --noEmit",
+    "test": "vitest",
+    "test-run": "vitest --run",
+    "ci": "pnpm lint:check && pnpm tsc:check && pnpm test-run"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.19",

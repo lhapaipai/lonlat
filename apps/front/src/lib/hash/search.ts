@@ -22,7 +22,6 @@ export function parseSearch(search: string | null): SearchState | null {
   return feature
     ? {
         feature: feature,
-        readOnly: true,
       }
     : null;
 }

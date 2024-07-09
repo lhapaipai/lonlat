@@ -13,8 +13,7 @@ import {
   terrainToggled,
   optionalLayerToggled,
   streetViewToggled,
-  selectLayer,
-} from "./layerSlice";
+} from "./mapSlice";
 import clsx from "clsx";
 import { createPortal } from "react-dom";
 import { useMap, useRControl } from "maplibre-react-components";
@@ -24,6 +23,12 @@ import { LayerButton } from "pentatrion-geo";
 import { coordsChanged } from "~/features/street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/configSlice";
 import { useT } from "talkr";
+import {
+  selectBaseLayer,
+  selectOptionalLayers,
+  selectStreetView,
+  selectTerrain,
+} from "./mapSlice";
 
 function LayerSwitcherControl() {
   const [collapsed, setCollapsed] = useState(true);
@@ -62,12 +67,10 @@ function LayerSwitcherControl() {
 
   const map = useMap();
 
-  const {
-    baseLayer: currentBaseLayerId,
-    optionalLayers: currentOptionalLayers,
-    terrain: currentTerrain,
-    streetView: currentStreetView,
-  } = useAppSelector(selectLayer);
+  const currentBaseLayerId = useAppSelector(selectBaseLayer);
+  const currentOptionalLayers = useAppSelector(selectOptionalLayers);
+  const currentTerrain = useAppSelector(selectTerrain);
+  const currentStreetView = useAppSelector(selectStreetView);
 
   const currentLayer = baseLayersById[currentBaseLayerId];
 

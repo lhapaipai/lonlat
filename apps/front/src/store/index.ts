@@ -6,7 +6,6 @@ import {
   notificationSlice,
 } from "pentatrion-design/redux";
 import { ViewStateListenerMiddleware } from "./stateStorage";
-import mapSlice from "./mapSlice";
 import configSlice, { modeChangedAction } from "./configSlice";
 import searchSlice, {
   searchFeatureListenerMiddleware,
@@ -17,7 +16,7 @@ import directionSlice, {
   directionWayPointsListenerMiddleware,
   fetchRoute,
 } from "~/features/direction/directionSlice";
-import layerSlice from "~/features/layer/layerSlice";
+import mapSlice from "~/features/map/mapSlice";
 import streetViewSlice from "~/features/street-view/streetViewSlice";
 import geolocationSlice from "~/features/geolocation/geolocationSlice";
 import isochroneSlice from "~/features/isochrone/isochroneSlice";
@@ -28,7 +27,6 @@ const store = configureStore({
     notification: notificationSlice,
     map: mapSlice,
     config: configSlice,
-    layer: layerSlice,
     search: searchSlice,
     direction: directionSlice,
     streetView: streetViewSlice,

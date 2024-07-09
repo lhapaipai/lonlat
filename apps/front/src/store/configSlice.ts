@@ -16,7 +16,7 @@ export type SearchEngine = (typeof searchEngines)[number];
 export const coordsUnits = ["lonlat", "latlon", "dms"] as const;
 export type CoordsUnit = (typeof coordsUnits)[number];
 
-type ConfigState = {
+export type ConfigState = {
   readOnly: boolean;
   tab: string | number;
   searchEngine: SearchEngine;

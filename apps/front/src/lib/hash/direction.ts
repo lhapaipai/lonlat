@@ -71,8 +71,6 @@ export function parseDirection(
       profile: (["car", "pedestrian", "bike"].includes(profile)
         ? profile
         : "car") as DirectionOptions["profile"],
-      readOnly: false,
-      // readOnly: true,
     };
   } catch (err) {
     return null;

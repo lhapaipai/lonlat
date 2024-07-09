@@ -10,12 +10,8 @@ import {
   isGeolocationGeoOption,
 } from "pentatrion-geo";
 import { useMap } from "maplibre-react-components";
-import { selectBaseLayer } from "~/features/layer/layerSlice";
-import {
-  BaseLayers,
-  countryBBoxes,
-  layerCountry,
-} from "~/features/layer/layers";
+import { selectBaseLayer } from "~/features/map/mapSlice";
+import { BaseLayers, countryBBoxes, layerCountry } from "~/features/map/layers";
 import booleanContains from "@turf/boolean-contains";
 import { point } from "@turf/helpers";
 import { selectGeolocation } from "~/features/geolocation/geolocationSlice";
