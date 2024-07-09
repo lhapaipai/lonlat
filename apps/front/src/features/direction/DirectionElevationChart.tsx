@@ -28,7 +28,7 @@ export default function DirectionElevationChart() {
   const pois = useAppSelector(selectDirectionPois);
   const focusCoordinates = useAppSelector(selectDirectionFocusCoordinates);
   const dispatch = useAppDispatch();
-  if (!route) {
+  if (!route || !pois) {
     return null;
   }
 
@@ -41,7 +41,7 @@ export default function DirectionElevationChart() {
         style={chartStyle}
         route={route}
         wayPoints={wayPoints}
-        pois={pois}
+        pois={pois ? pois.features : null}
         focusCoordinates={focusCoordinates}
         onChangeFocusCoordinates={(f) =>
           void dispatch(directionFocusCoordinatesChanged(f))

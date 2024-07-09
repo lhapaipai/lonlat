@@ -99,6 +99,12 @@ export type AppGeoOption =
 
 export type GeoPointOption = GeoOption<Point>;
 
+export type PoiFeatureCollectionResponse = {
+  type: "FeatureCollection";
+  features: PoiGeoOption[];
+  referenceHash: string;
+};
+
 export type WayPoint = GeoPointOption | NoDataOption;
 
 export type RouteProperties = {

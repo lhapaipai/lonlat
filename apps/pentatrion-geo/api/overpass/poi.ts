@@ -1,4 +1,8 @@
-import { PoiGeoOption, RouteFeatureResponse } from "../../types";
+import {
+  PoiFeatureCollectionResponse,
+  PoiGeoOption,
+  RouteFeatureResponse,
+} from "../../types";
 import { fetchOverpassAPI, overpassServiceUrl } from "./config";
 import { lineString, point } from "@turf/helpers";
 import { along } from "@turf/along";
@@ -61,7 +65,7 @@ export function generatePoisQuery(route: RouteFeatureResponse) {
 export async function fetchOverpassPois(
   route: RouteFeatureResponse,
   serviceUrl = overpassServiceUrl,
-): Promise<PoiGeoOption[]> {
+): Promise<PoiFeatureCollectionResponse | null> {
   const query = generatePoisQuery(route);
 
   const json = await fetchOverpassAPI(
@@ -77,7 +81,7 @@ export async function fetchOverpassPois(
 
   // if query error returned content is html string
   if (typeof json === "string" || !Array.isArray(json.elements)) {
-    return [];
+    return null;
   }
 
   const pois = json.elements
@@ -111,7 +115,11 @@ export async function fetchOverpassPois(
     })
     .filter(isNotNull);
 
-  return pois;
+  return {
+    type: "FeatureCollection",
+    features: pois,
+    referenceHash: route.properties.hash,
+  };
 }
 
 export function createPoiGeoOption(

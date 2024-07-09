@@ -6,6 +6,9 @@
     "dev:front": "cd apps/front && pnpm run dev",
     "dev:pentatrion-geo": "cd apps/pentatrion-geo && pnpm run dev",
     "dev": "run-p dev:*",
+    "build:front": "cd apps/front && pnpm run build",
+    "build:pentatrion-geo": "cd apps/pentatrion-geo && pnpm run build",
+    "build": "run-s build:pentatrion-geo build:front",
     "swagger": "pnpm run --filter @lonlat/swagger swagger"
   },
   "keywords": [],

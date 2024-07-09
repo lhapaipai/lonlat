@@ -53,7 +53,7 @@ export function parseDirection(
     });
 
     return {
-      elevationChart: true,
+      elevationChart: false,
       pois: null,
       focusCoordinates: null,
       wayPoints: waypoints,

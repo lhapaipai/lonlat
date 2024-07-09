@@ -10,7 +10,7 @@ import {
   RouteFeatureResponse,
   FeatureProperties,
   DirectionOptions,
-  PoiGeoOption,
+  PoiFeatureCollectionResponse,
 } from "pentatrion-geo/types";
 import {
   createAsyncThunk,
@@ -36,7 +36,7 @@ type WayPoint = GeoPointOption | NoDataOption;
 
 export type DirectionState = {
   elevationChart: boolean;
-  pois: PoiGeoOption[] | null;
+  pois: PoiFeatureCollectionResponse | null;
   focusCoordinates: Position | null;
   wayPoints: WayPoint[];
   route: RouteFeatureResponse | null;
@@ -83,7 +83,10 @@ const directionSlice = createSlice({
     directionElevationChartChanged(state, action: PayloadAction<boolean>) {
       state.elevationChart = action.payload;
     },
-    directionPoisChanged(state, action: PayloadAction<PoiGeoOption[] | null>) {
+    directionPoisChanged(
+      state,
+      action: PayloadAction<PoiFeatureCollectionResponse | null>,
+    ) {
       state.pois = action.payload;
     },
     directionWayPointsAddedFromSearch: {
@@ -173,7 +176,7 @@ const directionSlice = createSlice({
           state.pois = action.payload;
         } else if (action.payload === null) {
           // fetchPois has been called but there is no route already we need to remove
-          // dirty pois.
+          // out of date pois.
           state.pois = null;
         }
       });
@@ -285,10 +288,45 @@ export const fetchRoute = createAsyncThunk(
 
 export const directionRouteListenerMiddleware = createListenerMiddleware();
 directionRouteListenerMiddleware.startListening({
-  matcher: isAnyOf(fetchRoute.fulfilled, directionRouteChanged),
+  matcher: isAnyOf(
+    fetchRoute.fulfilled,
+    directionRouteChanged,
+    directionElevationChartChanged,
+  ),
   effect: (_, { dispatch, getState }) => {
-    dispatch(directionPoisChanged(null));
     const state = getState() as RootState;
+
+    if (!state.direction.elevationChart) {
+      /**
+       * user has hidden the chart, points of interest were visible
+       * and the route has changed
+       * pois are out of date we need to remove them.
+       */
+      if (
+        state.direction.pois &&
+        state.direction.route?.properties.hash !==
+          state.direction.pois.referenceHash
+      ) {
+        dispatch(directionPoisChanged(null));
+      } else {
+        /**
+         * the graph is hidden the display of the pois does not require
+         * an additional request and they are not expired so we can keep them
+         */
+      }
+      return;
+    }
+    if (
+      state.direction.route &&
+      state.direction.pois &&
+      state.direction.route.properties.hash ===
+        state.direction.pois.referenceHash
+    ) {
+      console.log("by pass");
+      return;
+    }
+
+    dispatch(directionPoisChanged(null));
 
     if (state.direction.route) {
       dispatch(fetchPois());

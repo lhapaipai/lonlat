@@ -256,7 +256,7 @@ export default function DirectionMap() {
         </>
       )}
       {pois &&
-        pois.map((poi) => (
+        pois.features.map((poi) => (
           <RGradientMarker
             key={poi.id}
             shape="circle"
