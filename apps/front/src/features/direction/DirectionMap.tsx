@@ -18,7 +18,6 @@ import {
   selectDirectionFocusCoordinates,
   selectDirectionPois,
   selectDirectionProfile,
-  selectDirectionReadOnly,
   selectDirectionRoute,
   selectDirectionWayPoints,
   selectDirectionWayPointsGeojson,
@@ -40,6 +39,7 @@ import { nearestPointOnLine } from "@turf/nearest-point-on-line";
 import { useMemo, useState } from "react";
 import { Feature, LineString } from "geojson";
 import { selectViewStateZoom } from "~/store/mapSlice";
+import { selectReadOnly } from "~/store/configSlice";
 
 function lonlatToleranceByZoom(zoom: number) {
   if (zoom < 7) {
@@ -83,7 +83,7 @@ export default function DirectionMap() {
   const pois = useAppSelector(selectDirectionPois);
   const focusCoordinates = useAppSelector(selectDirectionFocusCoordinates);
   const profile = useAppSelector(selectDirectionProfile);
-  const readOnly = useAppSelector(selectDirectionReadOnly);
+  const readOnly = useAppSelector(selectReadOnly);
 
   const simplifiedRoute: Feature<LineString> | null = useMemo(() => {
     if (!directionRoute) {

@@ -19,7 +19,6 @@ export type SearchFeature = GeoPointOption | null;
 
 export type SearchState = {
   feature: SearchFeature;
-  readOnly: boolean;
 };
 
 const hashInfos = parseHashString(window.location.hash);
@@ -28,21 +27,14 @@ const initialState: SearchState = hashInfos?.search
   ? hashInfos.search
   : {
       feature: null,
-      readOnly: false,
     };
 
 const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    searchReadOnlyChanged(state, action: PayloadAction<boolean>) {
-      state.readOnly = action.payload;
-    },
     searchFeatureChanged(state, action: PayloadAction<SearchFeature>) {
       state.feature = action.payload;
-      if (state.feature === null) {
-        state.readOnly = false;
-      }
     },
     searchFeaturePropertiesChanged(
       state,
@@ -68,7 +60,6 @@ export const {
   searchFeatureChanged,
   searchFeaturePropertiesChanged,
   searchFeatureGeometryChanged,
-  searchReadOnlyChanged,
 } = searchSlice.actions;
 
 export const selectSearchFeature = (state: RootState) => state.search.feature;

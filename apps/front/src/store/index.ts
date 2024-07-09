@@ -6,8 +6,8 @@ import {
   notificationSlice,
 } from "pentatrion-design/redux";
 import { ViewStateListenerMiddleware } from "./stateStorage";
-import mapSlice, { modeChangedAction } from "./mapSlice";
-
+import mapSlice from "./mapSlice";
+import configSlice, { modeChangedAction } from "./configSlice";
 import searchSlice, {
   searchFeatureListenerMiddleware,
 } from "~/features/search/searchSlice";
@@ -27,6 +27,7 @@ const store = configureStore({
   reducer: {
     notification: notificationSlice,
     map: mapSlice,
+    config: configSlice,
     layer: layerSlice,
     search: searchSlice,
     direction: directionSlice,

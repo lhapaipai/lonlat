@@ -22,7 +22,7 @@ import { memo, useEffect, useState } from "react";
 import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
 import { LayerButton } from "pentatrion-geo";
 import { coordsChanged } from "~/features/street-view/streetViewSlice";
-import { selectDistractionFree } from "~/store/mapSlice";
+import { selectDistractionFree } from "~/store/configSlice";
 import { useT } from "talkr";
 
 function LayerSwitcherControl() {

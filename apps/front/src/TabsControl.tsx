@@ -11,7 +11,7 @@ import {
   selectMode,
   selectTab,
   tabChanged,
-} from "./store/mapSlice";
+} from "./store/configSlice";
 import { memo } from "react";
 import clsx from "clsx";
 import HelpTab from "./components/HelpTab";

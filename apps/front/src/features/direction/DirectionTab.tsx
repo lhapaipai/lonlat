@@ -19,11 +19,9 @@ import {
   optimizationChanged,
   profileChanged,
   constraintChanged,
-  directionReadOnlyChanged,
   directionElevationChartChanged,
   selectDirectionWayPoints,
   selectDirectionRoute,
-  selectDirectionReadOnly,
   selectDirectionElevationChart,
 } from "./directionSlice";
 import {
@@ -42,13 +40,14 @@ import {
   orsSearch,
   updateId,
 } from "pentatrion-geo";
+import { selectViewState } from "~/store/mapSlice";
 import {
   SearchEngine,
   searchEngineChanged,
   searchEngines,
+  selectReadOnly,
   selectSearchEngine,
-  selectViewState,
-} from "~/store/mapSlice";
+} from "~/store/configSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useCallback, useMemo, useState } from "react";
@@ -63,7 +62,6 @@ import {
 } from "~/components/search-engine/SearchEngineOption";
 import { iconBySearchEngine } from "~/components/search-engine/util";
 import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
-import ShareUrlInput from "~/components/ShareUrlInput";
 import RawData from "./RawData";
 
 function placeholderByIndex(idx: number, length: number) {
@@ -87,7 +85,7 @@ export default function DirectionTab() {
   );
   const profile = useAppSelector((state: RootState) => state.direction.profile);
   const route = useAppSelector(selectDirectionRoute);
-  const readOnly = useAppSelector(selectDirectionReadOnly);
+  const readOnly = useAppSelector(selectReadOnly);
   const elevationChart = useAppSelector(selectDirectionElevationChart);
 
   const dispatch = useAppDispatch();
@@ -96,9 +94,7 @@ export default function DirectionTab() {
   const searchEngine = useAppSelector(selectSearchEngine);
 
   const [showDirectionSettings, setShowDirectionSettings] = useState(false);
-  const [action, setAction] = useState<Action | null>(
-    readOnly ? "share" : null,
-  );
+  const [action, setAction] = useState<Action | null>(null);
 
   const viewState = useAppSelector(selectViewState);
 
@@ -157,11 +153,8 @@ export default function DirectionTab() {
     (a: Action) => {
       const nextAction = a === action ? null : a;
       setAction(nextAction);
-      if (action === "share" || nextAction === "share") {
-        dispatch(directionReadOnlyChanged(nextAction === "share"));
-      }
     },
-    [action, dispatch],
+    [action],
   );
 
   return (
@@ -504,7 +497,7 @@ export default function DirectionTab() {
       {action === "share" && (
         <>
           <div className="p8n-separator"></div>
-          <ShareUrlInput />
+          <div>Google waze</div>
         </>
       )}
       {route && action === "raw" && <RawData route={route} />}

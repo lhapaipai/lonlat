@@ -1,6 +1,6 @@
 import { Button, LazyAutocomplete, Select } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { searchFeatureChanged, selectSearch } from "./searchSlice";
+import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import {
   AppGeoOption,
   GeoPointOption,
@@ -14,9 +14,11 @@ import {
   SearchEngine,
   searchEngineChanged,
   searchEngines,
+  selectReadOnly,
   selectSearchEngine,
-  selectViewState,
-} from "~/store/mapSlice";
+} from "~/store/configSlice";
+import { selectViewState } from "~/store/mapSlice";
+
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { ReactNode, useMemo, useState } from "react";
@@ -39,7 +41,8 @@ import { geolocationIconClassName } from "../geolocation/util";
 import GeolocationInfos from "../geolocation/GeolocationInfos";
 
 export default function SearchInput() {
-  const { feature, readOnly } = useAppSelector(selectSearch);
+  const feature = useAppSelector(selectSearchFeature);
+  const readOnly = useAppSelector(selectReadOnly);
   const dispatch = useAppDispatch();
   const viewState = useAppSelector(selectViewState);
   const { notifyError } = useReduxNotifications();

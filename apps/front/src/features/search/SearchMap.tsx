@@ -5,12 +5,14 @@ import {
   Event,
 } from "maplibre-react-components";
 
-import { searchFeatureChanged, selectSearch } from "./searchSlice";
+import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
+import { selectReadOnly } from "~/store/configSlice";
 
 export default function SearchMap() {
   const dispatch = useAppDispatch();
-  const { feature, readOnly } = useAppSelector(selectSearch);
+  const feature = useAppSelector(selectSearchFeature);
+  const readOnly = useAppSelector(selectReadOnly);
 
   function handleSearchLocationDragEnd(e: Event<GradientMarker>) {
     const lonlatFeature = createLonLatGeoOption(e.target.getLngLat(), 0);

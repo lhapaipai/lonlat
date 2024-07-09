@@ -1,6 +1,7 @@
 import { version } from "~/../package.json";
 
 import { useT } from "talkr";
+import ShareUrlInput from "./ShareUrlInput";
 
 export default function HelpTab() {
   const { T } = useT();
@@ -33,6 +34,8 @@ export default function HelpTab() {
           </a>
         </div>
       </div>
+      <div className="p8n-separator"></div>
+      <ShareUrlInput />
     </div>
   );
 }

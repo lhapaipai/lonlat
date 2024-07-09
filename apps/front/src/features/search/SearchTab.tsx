@@ -5,20 +5,19 @@ import {
   useCopyToClipboard,
 } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { selectSearch, searchReadOnlyChanged } from "./searchSlice";
+import { selectSearchFeature } from "./searchSlice";
 import { getCoordsStr } from "pentatrion-geo";
 import {
   coordsUnitChanged,
   selectCoordsUnit,
   tabChanged,
-} from "~/store/mapSlice";
+} from "~/store/configSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useCallback, useState } from "react";
 
 import { directionWayPointsAddedFromSearch } from "~/features/direction/directionSlice";
 import { referenceFeatureChanged } from "../isochrone/isochroneSlice";
-import ShareUrlInput from "~/components/ShareUrlInput";
 import { generateGMapsDirection, generateWazeDirection } from "~/lib/url";
 
 import SearchInput from "./SearchInput";
@@ -27,25 +26,20 @@ import RawData from "./RawData";
 type Action = "isochrone" | "direction" | "raw" | "share";
 
 export default function SearchTab() {
-  const { feature, readOnly } = useAppSelector(selectSearch);
+  const feature = useAppSelector(selectSearchFeature);
   const dispatch = useAppDispatch();
   const [, copy] = useCopyToClipboard();
   const { notify } = useReduxNotifications();
   const coordsUnit = useAppSelector(selectCoordsUnit);
   const { T } = useT();
 
-  const [action, setAction] = useState<Action | null>(
-    readOnly ? "share" : null,
-  );
+  const [action, setAction] = useState<Action | null>(null);
   const setOrToggleAction = useCallback(
     (a: Action) => {
       const nextAction = a === action ? null : a;
       setAction(nextAction);
-      if (action === "share" || nextAction === "share") {
-        dispatch(searchReadOnlyChanged(nextAction === "share"));
-      }
     },
-    [action, dispatch],
+    [action],
   );
 
   return (
@@ -165,7 +159,6 @@ export default function SearchTab() {
             {action === "share" && (
               <>
                 <div className="p8n-separator"></div>
-                <ShareUrlInput />
                 <div className="flex gap-2">
                   <SimpleTooltip
                     content={T("tooltip.googleDirection")}

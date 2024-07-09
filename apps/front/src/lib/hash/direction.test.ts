@@ -6,6 +6,9 @@ describe("hash.direction", () => {
   test("stringifyDirection", () => {
     expect(
       stringifyDirection({
+        elevationChart: false,
+        pois: [],
+        focusCoordinates: null,
         wayPoints: [createFakeFeature({}), createFakeFeature({})],
         constraints: {
           avoidBorders: false,

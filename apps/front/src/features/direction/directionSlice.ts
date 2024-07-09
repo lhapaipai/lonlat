@@ -29,7 +29,7 @@ import {
   overpassUrl,
 } from "~/config/constants";
 import { parseHashString } from "~/lib/hash";
-import { tabChanged } from "~/store/mapSlice";
+// import { tabChanged } from "~/store/configSlice";
 
 type WayPoint = GeoPointOption | NoDataOption;
 
@@ -46,7 +46,6 @@ export type DirectionState = {
   };
   optimization: DirectionOptions["optimization"];
   profile: DirectionOptions["profile"];
-  readOnly: boolean;
 };
 
 const hashInfos = parseHashString(window.location.hash);
@@ -66,7 +65,6 @@ const initialState: DirectionState = hashInfos?.direction
       },
       optimization: "recommended",
       profile: "car",
-      readOnly: false,
     };
 
 export type WayPointPayload = { index: number; feature: WayPoint };
@@ -86,9 +84,6 @@ const directionSlice = createSlice({
     },
     directionPoisChanged(state, action: PayloadAction<PoiGeoOption[] | null>) {
       state.pois = action.payload;
-    },
-    directionReadOnlyChanged(state, action: PayloadAction<boolean>) {
-      state.readOnly = action.payload;
     },
     directionWayPointsAddedFromSearch: {
       reducer(state, action: PayloadAction<WayPoint[]>) {
@@ -200,7 +195,6 @@ export const {
   profileChanged,
   constraintChanged,
   optimizationChanged,
-  directionReadOnlyChanged,
 } = directionSlice.actions;
 
 export const selectDirectionFocusCoordinates = (state: RootState) =>
@@ -217,8 +211,6 @@ export const selectValidDirectionWayPoints = createSelector(
   (wayPoints) => filterDataFeatures(wayPoints),
 );
 export const selectDirectionRoute = (state: RootState) => state.direction.route;
-export const selectDirectionReadOnly = (state: RootState) =>
-  state.direction.readOnly;
 export const selectDirectionWayPointsGeojson = createSelector(
   selectDirectionRoute,
   (route): null | FeatureCollection<Point> => {
@@ -244,7 +236,8 @@ directionWayPointsListenerMiddleware.startListening({
     profileChanged,
     constraintChanged,
     optimizationChanged,
-    tabChanged,
+    // todo why tabChanged ?
+    // tabChanged,
   ),
   effect: (_, { dispatch }) => {
     dispatch(fetchRoute());

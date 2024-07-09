@@ -2,19 +2,13 @@ import { baseLayerChanged } from "~/features/layer/layerSlice";
 import { viewStateChanged } from "./mapSlice";
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { searchReadOnlyChanged } from "~/features/search/searchSlice";
 import { customReplaceState } from "~/lib/util";
 import { getHashString } from "~/lib/hash";
-import { directionReadOnlyChanged } from "~/features/direction/directionSlice";
+import { readOnlyChanged } from "./configSlice";
 
 export const ViewStateListenerMiddleware = createListenerMiddleware();
 ViewStateListenerMiddleware.startListening({
-  matcher: isAnyOf(
-    viewStateChanged,
-    baseLayerChanged,
-    searchReadOnlyChanged,
-    directionReadOnlyChanged,
-  ),
+  matcher: isAnyOf(viewStateChanged, baseLayerChanged, readOnlyChanged),
   effect: async (_, { getState }) => {
     const state = getState() as RootState;
 
