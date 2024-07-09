@@ -1,9 +1,15 @@
 import { Feature, LineString, Polygon } from "geojson";
 
-export type IsochroneProperties = Omit<APISchemas["IsochroneResponse"], "geometry">;
+export type IsochroneProperties = Omit<
+  APISchemas["IsochroneResponse"],
+  "geometry"
+>;
 export type IsochroneGeoJSON = Feature<Polygon, IsochroneProperties>;
 
-export type ItineraireProperties = Omit<APISchemas["ItineraireResponse"], "portions" | "geometry">;
+export type ItineraireProperties = Omit<
+  APISchemas["ItineraireResponse"],
+  "portions" | "geometry"
+>;
 export type ItineraireGeoJSON = Feature<LineString, ItineraireProperties>;
 
 export type APISchemas = {
@@ -202,7 +208,10 @@ export type APISchemas = {
     /**
      * On peut définir jusqu'à 3 contraintes
      */
-    constraints?: (APISchemas["OsrmConstraint"] | APISchemas["PgrConstraint"])[];
+    constraints?: (
+      | APISchemas["OsrmConstraint"]
+      | APISchemas["PgrConstraint"]
+    )[];
   };
 
   ItineraireResponse: {
@@ -240,7 +249,10 @@ export type APISchemas = {
     /* Format: float */
     duration: number;
 
-    constraints?: (APISchemas["OsrmConstraint"] | APISchemas["PgrConstraint"])[];
+    constraints?: (
+      | APISchemas["OsrmConstraint"]
+      | APISchemas["PgrConstraint"]
+    )[];
 
     portions: {
       start: string;
@@ -282,9 +294,6 @@ export type APISchemas = {
           nom_1_droite: string;
           cpx_numero: string;
           cpx_toponyme_route_nommee: string;
-
-          /** avec en plus les champs définis dans wayAttributes */
-          name: string;
         };
 
         /**
@@ -292,8 +301,20 @@ export type APISchemas = {
          * objet vide avec bdtopo-pgr
          */
         instruction: {
-          type: string | "depart" | "arrive" | "turn" | "new name" | "end of road";
-          modifier?: string | "right" | "slight right" | "left" | "slight left" | "straight";
+          type:
+            | string
+            | "depart"
+            | "arrive"
+            | "turn"
+            | "new name"
+            | "end of road";
+          modifier?:
+            | string
+            | "right"
+            | "slight right"
+            | "left"
+            | "slight left"
+            | "straight";
         };
         // alerts?: Array<{ message?: string }>;
       }[];
@@ -339,7 +360,10 @@ export type APISchemas = {
      */
     direction?: "departure" | "arrival";
 
-    constraints?: (APISchemas["OsrmConstraint"] | APISchemas["PgrConstraint"])[];
+    constraints?: (
+      | APISchemas["OsrmConstraint"]
+      | APISchemas["PgrConstraint"]
+    )[];
 
     /**
      * Permet de préciser le format dans lequel la géométrie sera retournée :
@@ -382,7 +406,10 @@ export type APISchemas = {
     profile: "car" | "pedestrian";
     direction: "departure" | "arrival";
     crs: "EPSG:4326" | "EPSG:2154";
-    constraints?: (APISchemas["OsrmConstraint"] | APISchemas["PgrConstraint"])[];
+    constraints?: (
+      | APISchemas["OsrmConstraint"]
+      | APISchemas["PgrConstraint"]
+    )[];
     geometry: Polygon;
   };
 };
@@ -424,7 +451,9 @@ export type APIPaths = keyof APIEndpoints;
 
 export type APIRequests<T extends APIPaths> = APIEndpoints[T]["requests"];
 
-export type APIMethods<T extends APIPaths> = NonNullable<APIRequests<T>["method"]>;
+export type APIMethods<T extends APIPaths> = NonNullable<
+  APIRequests<T>["method"]
+>;
 
 export type APIRequest<T extends APIPaths, M extends APIMethods<T>> = Omit<
   {

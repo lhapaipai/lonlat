@@ -6,7 +6,7 @@ interface Props extends ComponentProps<"g"> {
   graphWidth: number;
 }
 
-export default function LeftAxis({ graphWidth, yScale, ...rest }: Props) {
+export function LeftAxis({ graphWidth, yScale, ...rest }: Props) {
   const ticks = useMemo(() => {
     return yScale.ticks().map((value) => ({ value, yOffset: yScale(value) }));
   }, [yScale]);

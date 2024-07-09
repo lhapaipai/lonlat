@@ -1,15 +1,21 @@
 import { memo, useId } from "react";
 import { useListItem } from "@floating-ui/react";
-import { useAutocomplete, getOptionValue } from "pentatrion-design/components/autocomplete";
-import { GeoPointOption } from "../../types.d";
+import {
+  useAutocomplete,
+  getOptionValue,
+} from "pentatrion-design/components/autocomplete";
+import { GeoPointOption } from "../../types";
 import { getTypeLabel } from "../../geo-options";
 import clsx from "clsx";
 
 type Props = GeoPointOption;
 
-function AutocompleteGeoOption({ properties: { label, id, type, name, context } }: Props) {
+export const AutocompleteGeoOption = memo(function AutocompleteGeoOption({
+  properties: { label, id, type, name, context },
+}: Props) {
   const uniqId = useId();
-  const { activeIndex, selection, getItemProps, handleSelect } = useAutocomplete();
+  const { activeIndex, selection, getItemProps, handleSelect } =
+    useAutocomplete();
   const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;
   const isSelected = selection ? getOptionValue(selection) === id : false;
@@ -18,7 +24,7 @@ function AutocompleteGeoOption({ properties: { label, id, type, name, context } 
     <div
       className={clsx(
         "option",
-        "h-12 flex px-0",
+        "flex h-12 px-0",
         isSelected ? "bg-gray-2" : isActive && "bg-gray-1",
       )}
       ref={ref}
@@ -29,19 +35,19 @@ function AutocompleteGeoOption({ properties: { label, id, type, name, context } 
         onClick: () => handleSelect(index),
       })}
     >
-      <div className="h-12 w-12 flex-flex-col">
+      <div className="flex-flex-col h-12 w-12">
         <div className="flex-1 text-xl flex-center">
           <i className={`fe-${type}`}></i>
         </div>
-        <div className="text-center text-gray-6 text-2xs/[11px] truncate">{getTypeLabel(type)}</div>
+        <div className="truncate text-center text-2xs/[11px] text-gray-6">
+          {getTypeLabel(type)}
+        </div>
       </div>
 
-      <div className="flex flex-col justify-center text-sm w-[calc(100%-3rem)] px-2">
+      <div className="flex w-[calc(100%-3rem)] flex-col justify-center px-2 text-sm">
         <div className="truncate">{name}</div>
-        <div className="text-gray-6 text-xs truncate">{context}</div>
+        <div className="truncate text-xs text-gray-6">{context}</div>
       </div>
     </div>
   );
-}
-
-export default memo(AutocompleteGeoOption);
+});

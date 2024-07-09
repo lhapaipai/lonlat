@@ -1,15 +1,12 @@
 import { Button, LazyAutocomplete, Select } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
+import { c2cWaypointSearch, ignSearch, orsSearch } from "pentatrion-geo/api";
+import { AppGeoOption, GeoPointOption } from "pentatrion-geo/types";
 import {
-  AppGeoOption,
-  GeoPointOption,
-  c2cWaypointSearch,
   coordsSearch,
   createGeolocationGeoOption,
-  ignSearch,
-  orsSearch,
-} from "pentatrion-geo";
+} from "pentatrion-geo/geo-options";
 import {
   SearchEngine,
   searchEngineChanged,

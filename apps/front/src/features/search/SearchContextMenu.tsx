@@ -5,7 +5,7 @@ import {
 } from "pentatrion-design";
 import { useAppDispatch } from "~/store";
 import { searchFeatureChanged } from "./searchSlice";
-import { createLonLatGeoOption } from "pentatrion-geo";
+import { createLonLatGeoOption } from "pentatrion-geo/geo-options";
 import {
   MaplibreContextmenuEventDetail,
   useCanvasRef,

@@ -1,7 +1,7 @@
 import { Button, Textarea, useCopyToClipboard } from "pentatrion-design";
 import { useReduxNotifications } from "pentatrion-design/redux";
-import { GeoPointOption } from "pentatrion-geo";
-import { stringifyGeoOption } from "pentatrion-geo";
+import { GeoPointOption } from "pentatrion-geo/types";
+import { stringifyGeoOption } from "pentatrion-geo/geo-options";
 import { useT } from "talkr";
 
 interface Props {

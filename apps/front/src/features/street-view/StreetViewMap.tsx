@@ -1,5 +1,6 @@
 import { Event, RLayer, RSource, useMap } from "maplibre-react-components";
-import { Pegman, RPegman, googleStreetViewURLTiles } from "pentatrion-geo";
+import { Pegman, RPegman } from "pentatrion-geo/maplibre";
+import { googleStreetViewURLTiles } from "pentatrion-geo/api";
 import { useAppDispatch, useAppSelector } from "~/store";
 import {
   coordsChanged,

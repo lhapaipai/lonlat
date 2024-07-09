@@ -1,5 +1,5 @@
 // import { ResizeArea } from "pentatrion-design";
-import { GApiWrapper, StreetView, googleLibraries } from "pentatrion-geo";
+import { GApiWrapper, StreetView, googleLibraries } from "pentatrion-geo/api";
 import { googleMapsApiToken } from "~/config/constants";
 import {
   Pov,

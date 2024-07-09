@@ -14,10 +14,10 @@ export default {
     "../../node_modules/pentatrion-design/hooks/**/*.js",
     "../../node_modules/pentatrion-design/redux/**/*.js",
 
-    "./node_modules/pentatrion-geo/api/**/*.{ts,tsx}",
-    "./node_modules/pentatrion-geo/components/**/*.{ts,tsx}",
-    "./node_modules/pentatrion-geo/geo-options/**/*.{ts,tsx}",
-    "./node_modules/pentatrion-geo/maplibre/**/*.{ts,tsx}",
+    "../pentatrion-geo/dist/api/**/*.js",
+    "../pentatrion-geo/dist/components/**/*.js",
+    "../pentatrion-geo/dist/geo-options/**/*.js",
+    "../pentatrion-geo/dist/maplibre/**/*.js",
   ],
   darkMode: ["class"],
   theme: {

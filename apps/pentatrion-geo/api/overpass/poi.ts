@@ -1,4 +1,4 @@
-import { PoiGeoOption, RouteFeatureResponse } from "../../types.d";
+import { PoiGeoOption, RouteFeatureResponse } from "../../types";
 import { fetchOverpassAPI, overpassServiceUrl } from "./config";
 import { lineString, point } from "@turf/helpers";
 import { along } from "@turf/along";

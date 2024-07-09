@@ -5,12 +5,11 @@ import {
 } from "@reduxjs/toolkit";
 import { RootState } from "~/store";
 import {
-  FeatureProperties,
-  GeoPointOption,
   getFeaturePointAltitude,
   isGeolocationGeoOption,
   reverseGeocodeLonLatFeaturePoint,
-} from "pentatrion-geo";
+} from "pentatrion-geo/geo-options";
+import { FeatureProperties, GeoPointOption } from "pentatrion-geo/types";
 import { Point } from "geojson";
 import { errorAdded } from "pentatrion-design/redux";
 import { parseHashString } from "~/lib/hash";

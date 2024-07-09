@@ -10,7 +10,7 @@ import { Button } from "pentatrion-design/components/button";
 import { NoDataOption } from "pentatrion-design/components/select";
 
 import { handleChangeSearchValue } from "../_mocks/town-api";
-import { GeoPointOption } from "../../types.d";
+import { GeoPointOption } from "../../types";
 
 import { isNoData, updateId, createNodataFeature } from "../../geo-options";
 import AutocompleteGeoOption from "../autocomplete/AutocompleteGeoOption";

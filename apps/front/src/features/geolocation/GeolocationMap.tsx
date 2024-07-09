@@ -1,4 +1,4 @@
-import { isGeolocationGeoOption } from "pentatrion-geo";
+import { isGeolocationGeoOption } from "pentatrion-geo/geo-options";
 import { selectValidDirectionWayPoints } from "~/features/direction/directionSlice";
 import { selectSearchFeature } from "~/features/search/searchSlice";
 import { useAppDispatch, useAppSelector } from "~/store";

@@ -6,7 +6,7 @@ import {
 } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
 import { selectSearchFeature } from "./searchSlice";
-import { getCoordsStr } from "pentatrion-geo";
+import { getCoordsStr } from "pentatrion-geo/geo-options";
 import {
   coordsUnitChanged,
   selectCoordsUnit,

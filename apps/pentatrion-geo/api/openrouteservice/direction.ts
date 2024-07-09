@@ -3,7 +3,7 @@ import {
   DirectionOptions,
   GeoPointOption,
   RouteFeatureResponse,
-} from "../../types.d";
+} from "../../types";
 import { ORSProfile } from "./api";
 import { fetchOpenRouteServiceAPI, openRouteServiceUrl } from "./config";
 import { nanoid } from "nanoid";

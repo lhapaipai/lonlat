@@ -139,8 +139,12 @@ export type APIEndpoints = {
 
   "/altimetrie/1.0/calcul/alti/rest/elevation.{format}": {
     responses: {
-      get: APISchemas["ElevationResponse"] | APISchemas["ElevationResponseZonly"];
-      post: APISchemas["ElevationResponse"] | APISchemas["ElevationResponseZonly"];
+      get:
+        | APISchemas["ElevationResponse"]
+        | APISchemas["ElevationResponseZonly"];
+      post:
+        | APISchemas["ElevationResponse"]
+        | APISchemas["ElevationResponseZonly"];
     };
     requests:
       | {
@@ -160,7 +164,7 @@ export type APIEndpoints = {
   };
   "/altimetrie/1.0/calcul/alti/rest/elevationLine.{format}": {
     responses: {
-      get: APISchemas["ElevationLineResponseZonly"];
+      get: unknown;
     };
     requests:
       | {
@@ -184,7 +188,9 @@ export type APIPaths = keyof APIEndpoints;
 
 export type APIRequests<T extends APIPaths> = APIEndpoints[T]["requests"];
 
-export type APIMethods<T extends APIPaths> = NonNullable<APIRequests<T>["method"]>;
+export type APIMethods<T extends APIPaths> = NonNullable<
+  APIRequests<T>["method"]
+>;
 
 export type APIRequest<T extends APIPaths, M extends APIMethods<T>> = Omit<
   {

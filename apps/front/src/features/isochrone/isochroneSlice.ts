@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { GeoPointOption, IsochroneGeoJSON, IsochroneOptions } from "pentatrion-geo";
+import { GeoPointOption, IsochroneOptions } from "pentatrion-geo/types";
+import { IsochroneGeoJSON } from "pentatrion-geo/api";
 import { RootState } from "~/store";
 
 type IsochroneState = {
@@ -25,14 +26,20 @@ const isochroneSlice = createSlice({
   name: "isochrone",
   initialState,
   reducers: {
-    referenceFeatureChanged(state, action: PayloadAction<GeoPointOption | null>) {
+    referenceFeatureChanged(
+      state,
+      action: PayloadAction<GeoPointOption | null>,
+    ) {
       state.referenceFeature = action.payload;
     },
 
     featureChanged(state, action: PayloadAction<IsochroneGeoJSON | null>) {
       state.feature = action.payload;
     },
-    costTypeChanged(state, action: PayloadAction<IsochroneOptions["costType"]>) {
+    costTypeChanged(
+      state,
+      action: PayloadAction<IsochroneOptions["costType"]>,
+    ) {
       if (state.costType === action.payload) {
         return;
       }
@@ -45,14 +52,20 @@ const isochroneSlice = createSlice({
         state.costValue = 30;
       }
     },
-    costValueChanged(state, action: PayloadAction<IsochroneOptions["costValue"]>) {
+    costValueChanged(
+      state,
+      action: PayloadAction<IsochroneOptions["costValue"]>,
+    ) {
       if (state.costValue === action.payload) {
         return;
       }
       state.costValue = action.payload;
       state.feature = null;
     },
-    directionChanged(state, action: PayloadAction<IsochroneOptions["direction"]>) {
+    directionChanged(
+      state,
+      action: PayloadAction<IsochroneOptions["direction"]>,
+    ) {
       if (state.direction === action.payload) {
         return;
       }
@@ -68,7 +81,10 @@ const isochroneSlice = createSlice({
     },
     constraintChanged(
       state,
-      action: PayloadAction<{ key: keyof IsochroneOptions["constraints"]; value: boolean }>,
+      action: PayloadAction<{
+        key: keyof IsochroneOptions["constraints"];
+        value: boolean;
+      }>,
     ) {
       const { key, value } = action.payload;
       if (state.constraints[key] === value) {
@@ -94,6 +110,7 @@ export const {
 } = isochroneSlice.actions;
 
 export const selectIsochrone = (state: RootState) => state.isochrone;
-export const selectIsochroneFeature = (state: RootState) => state.isochrone.feature;
+export const selectIsochroneFeature = (state: RootState) =>
+  state.isochrone.feature;
 export const selectIsochroneReferenceFeature = (state: RootState) =>
   state.isochrone.referenceFeature;

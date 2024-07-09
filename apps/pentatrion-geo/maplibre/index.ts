@@ -1,9 +1,4 @@
-export { FloatingPopup } from "./FloatingPopup";
-
-export { Pegman } from "./Pegman";
-export { RPegman } from "./RPegman";
-
-export { FrameRateControl } from "./control/FrameRateControl";
-export { RFrameRateControl } from "./control/RFrameRateControl";
-
+export * from "./floating-popup";
+export * from "./frame-rate-control";
 export * from "./lib";
+export * from "./pegman";

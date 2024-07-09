@@ -1,4 +1,4 @@
-import { GeoPointOption } from "../../types.d";
+import { GeoPointOption } from "../../types";
 
 export const featureOptions: GeoPointOption[] = [
   {

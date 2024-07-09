@@ -1,4 +1,4 @@
-import { DirectionOptions } from "pentatrion-geo";
+import { DirectionOptions } from "pentatrion-geo/types";
 import { createNodataFeature, isNoData } from "pentatrion-geo/geo-options";
 import { DirectionState } from "~/features/direction/directionSlice";
 import { parseGeoPoint, stringifyGeoPoint } from "./geoPoint";

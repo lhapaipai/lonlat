@@ -12,6 +12,7 @@
   "author": "Hugues Tavernier",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.12.4",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "eslint": "^8.57.0",
@@ -27,6 +28,6 @@
   },
   "dependencies": {
     "maplibre-react-components": "^0.1.3",
-    "pentatrion-design": "^0.1.1"
+    "pentatrion-design": "^0.1.2"
   }
 }

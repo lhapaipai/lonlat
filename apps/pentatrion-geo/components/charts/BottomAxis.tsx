@@ -5,7 +5,7 @@ interface Props extends ComponentProps<"g"> {
   xScale: ScaleLinear<number, number>;
 }
 
-export default function BottomAxis({ xScale, ...rest }: Props) {
+export function BottomAxis({ xScale, ...rest }: Props) {
   const ticks = useMemo(() => {
     return xScale.ticks().map((value) => ({ value, xOffset: xScale(value) }));
   }, [xScale]);
@@ -24,7 +24,13 @@ export default function BottomAxis({ xScale, ...rest }: Props) {
       />
       {ticks.map(({ value, xOffset }) => (
         <g key={value} transform={`translate(${xOffset}, 0)`}>
-          <line stroke="currentColor" y1="1" y2="6" opacity={0.1} strokeWidth={2}></line>
+          <line
+            stroke="currentColor"
+            y1="1"
+            y2="6"
+            opacity={0.1}
+            strokeWidth={2}
+          ></line>
           <text fill="currentColor" y="9" dy="0.71em">
             {value}
           </text>

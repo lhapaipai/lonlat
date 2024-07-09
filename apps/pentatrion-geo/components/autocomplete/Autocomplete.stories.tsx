@@ -10,8 +10,11 @@ import { Meta, ReactRenderer } from "@storybook/react";
 import { PartialStoryFn } from "@storybook/types";
 
 import { useState } from "react";
-import { handleChangeSearchValue, createUnknownFeature } from "../_mocks/town-api";
-import { GeoPointOption } from "../../types.d";
+import {
+  handleChangeSearchValue,
+  createUnknownFeature,
+} from "../_mocks/town-api";
+import { GeoPointOption } from "../../types";
 import AutocompleteGeoOption from "./AutocompleteGeoOption";
 import { featureOptions } from "./_featureOptionsMock";
 
@@ -34,7 +37,9 @@ export const SimpleFeature = () => {
   function handleClick(action: "random" | "unknown" | "unselect") {
     switch (action) {
       case "random":
-        setSelection(featureOptions[Math.floor(Math.random() * featureOptions.length)]);
+        setSelection(
+          featureOptions[Math.floor(Math.random() * featureOptions.length)],
+        );
         break;
       case "unknown":
         setSelection(createUnknownFeature());

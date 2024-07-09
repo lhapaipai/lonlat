@@ -1,21 +1,25 @@
 import {
-  createRasterStyle,
   getIgnDefaultScanURL,
   getIgnOrthophotoURL,
   getIgnScan25URL,
+} from "pentatrion-geo/api";
+import { createRasterStyle } from "pentatrion-geo/maplibre";
+import {
   googleOrthophotoURL,
   osmURL,
   swissDefaultURL,
   swissOrthophotoURL,
   swissScan25URL,
-} from "pentatrion-geo";
+} from "pentatrion-geo/url";
 import { ignToken, maptilerToken } from "~/config/constants";
 import { LngLatBounds, StyleSpecification } from "maplibre-gl";
 import { polygon } from "@turf/helpers";
 
 const mapTilerStreetsStyleUrl = `https://api.maptiler.com/maps/streets/style.json?key=${maptilerToken}`;
 
-const terrariumTiles = ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"];
+const terrariumTiles = [
+  "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
+];
 
 const googleStreetViewURLTiles = [
   "https://mts0.googleapis.com/vt?hl=en-US&lyrs=svv|cb_client:apiv3&style=40,18&x={x}&y={y}&z={z}",
@@ -70,7 +74,11 @@ export const baseLayers: BaseLayers = {
     "ign-plan_ign-standard",
     // "ign-plan_ign-standard-non-optimized",
   ],
-  ch: ["swisstopo-raster-orthophoto", "swisstopo-raster-default", "swisstopo-raster-default_25"],
+  ch: [
+    "swisstopo-raster-orthophoto",
+    "swisstopo-raster-default",
+    "swisstopo-raster-default_25",
+  ],
   world: [
     "osm-raster-default",
     // "google-raster-orthophoto",
@@ -131,7 +139,10 @@ export const baseLayersById = {
       '© <a href="https://www.ign.fr/">IGN</a>',
       18,
     ),
-    optionalLayers: [{ id: "ign-admin_express-adminexpress" }, { id: "ign-pci-pci" }],
+    optionalLayers: [
+      { id: "ign-admin_express-adminexpress" },
+      { id: "ign-pci-pci" },
+    ],
     country: "fr",
   } satisfies BaseLayerInfos,
   "ign-raster-scan_25": {
@@ -145,7 +156,10 @@ export const baseLayersById = {
       `© <a href="https://www.ign.fr/">IGN</a>`,
       16,
     ),
-    optionalLayers: [{ id: "ign-admin_express-adminexpress" }, { id: "ign-pci-pci" }],
+    optionalLayers: [
+      { id: "ign-admin_express-adminexpress" },
+      { id: "ign-pci-pci" },
+    ],
     country: "fr",
   } satisfies BaseLayerInfos,
   "ign-raster-orthophoto": {
@@ -154,7 +168,10 @@ export const baseLayersById = {
     dataType: "raster",
     label: "Satellite",
     offsetY: -108,
-    style: createRasterStyle([getIgnOrthophotoURL()], `© <a href="https://www.ign.fr/">IGN</a>`),
+    style: createRasterStyle(
+      [getIgnOrthophotoURL()],
+      `© <a href="https://www.ign.fr/">IGN</a>`,
+    ),
     optionalLayers: [
       { id: "ign-admin_express-adminexpress" },
       { id: "ign-pci-pci" },
@@ -172,7 +189,10 @@ export const baseLayersById = {
     offsetY: -162,
     style: "/assets/styles/ign/PLAN.IGN/standard.json",
     optionalLayers: [
-      { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
+      {
+        id: "ign-admin_express-adminexpress",
+        beforeId: "limite admin - limite de commune",
+      },
       { id: "ign-pci-pci", beforeId: "point coté" },
       { id: "hillshade", beforeId: "bati surfacique - zone batie" },
     ],
@@ -187,7 +207,10 @@ export const baseLayersById = {
     offsetY: -162,
     style: "/assets/styles/ign/PLAN.IGN/standard-non-optimized.json",
     optionalLayers: [
-      { id: "ign-admin_express-adminexpress", beforeId: "limite admin - limite de commune" },
+      {
+        id: "ign-admin_express-adminexpress",
+        beforeId: "limite admin - limite de commune",
+      },
       { id: "ign-pci-pci", beforeId: "point coté" },
       { id: "hillshade" },
     ],

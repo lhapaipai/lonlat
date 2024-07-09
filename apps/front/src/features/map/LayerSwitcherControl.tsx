@@ -19,7 +19,7 @@ import { createPortal } from "react-dom";
 import { useMap, useRControl } from "maplibre-react-components";
 import { memo, useEffect, useState } from "react";
 import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
-import { LayerButton } from "pentatrion-geo";
+import { LayerButton } from "pentatrion-geo/components";
 import { coordsChanged } from "~/features/street-view/streetViewSlice";
 import { selectDistractionFree } from "~/store/configSlice";
 import { useT } from "talkr";

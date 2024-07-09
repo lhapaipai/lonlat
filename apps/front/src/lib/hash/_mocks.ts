@@ -1,4 +1,4 @@
-import { GeoPointOption } from "pentatrion-geo";
+import { GeoPointOption } from "pentatrion-geo/types";
 
 export function createFakeFeature({
   lng = 5,

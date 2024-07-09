@@ -8,7 +8,7 @@ import {
   QualityType,
 } from "./api";
 import { campToCampApiUrl } from "./url";
-import { MountainGeoOption } from "../../types.d";
+import { MountainGeoOption } from "../../types";
 import { epsg3857to4326 } from "../../projection/reproject";
 
 import { nanoid } from "nanoid";

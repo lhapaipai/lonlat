@@ -3,12 +3,13 @@ import { useAppSelector } from "./store";
 import { selectSearchFeature } from "~/features/search/searchSlice";
 import { selectTab } from "./store/configSlice";
 import { selectValidDirectionWayPoints } from "~/features/direction/directionSlice";
+import { GeoPointOption } from "pentatrion-geo/types";
 import {
-  GeoPointOption,
   boundsContained,
   getBounds,
-  isGeolocationGeoOption,
-} from "pentatrion-geo";
+} from "pentatrion-geo/geo-options/geometry";
+import { isGeolocationGeoOption } from "pentatrion-geo/geo-options/geolocation";
+
 import { useMap } from "maplibre-react-components";
 import { selectBaseLayer } from "~/features/map/mapSlice";
 import { BaseLayers, countryBBoxes, layerCountry } from "~/features/map/layers";

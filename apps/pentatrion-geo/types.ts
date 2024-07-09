@@ -6,6 +6,7 @@ import {
   LineString,
   Point,
 } from "geojson";
+import { NoDataOption } from "pentatrion-design";
 
 export interface LngLatObj {
   lng: number;
@@ -97,6 +98,8 @@ export type AppGeoOption =
   | CustomGeoOption;
 
 export type GeoPointOption = GeoOption<Point>;
+
+export type WayPoint = GeoPointOption | NoDataOption;
 
 export type RouteProperties = {
   wayPoints: GeoPointOption[];

@@ -1,9 +1,8 @@
 import { memo, useMemo } from "react";
-import { PoiGeoOption, RouteFeatureResponse } from "../../types.d";
+import { PoiGeoOption, RouteFeatureResponse, WayPoint } from "../../types";
 import { ScaleLinear } from "d3";
 import nearestPointOnLine from "@turf/nearest-point-on-line";
 import { getIndexLetter } from "pentatrion-design";
-import { WayPoint } from "./types";
 
 interface Props {
   wayPoints?: WayPoint[] | null;
@@ -13,7 +12,13 @@ interface Props {
   route: RouteFeatureResponse;
 }
 
-function ChartMarkers({ wayPoints, pois, xScale, yScale, route }: Props) {
+export const ChartMarkers = memo(function ChartMarkers({
+  wayPoints,
+  pois,
+  xScale,
+  yScale,
+  route,
+}: Props) {
   const waypointsInfos = useMemo(() => {
     return wayPoints?.map((wayPoint) => {
       if (wayPoint.type !== "Feature") {
@@ -112,6 +117,4 @@ function ChartMarkers({ wayPoints, pois, xScale, yScale, route }: Props) {
       })}
     </g>
   );
-}
-
-export default memo(ChartMarkers);
+});

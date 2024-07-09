@@ -14,7 +14,7 @@ import ContextMenuManager from "./ContextMenuManager";
 
 import DirectionMap from "~/features/direction/DirectionMap";
 import SearchMap from "~/features/search/SearchMap";
-import { DOM } from "pentatrion-geo/maplibre/core/util/dom";
+import { DOM } from "pentatrion-geo/maplibre/core";
 import LayerSwitcherControl from "~/features/map/LayerSwitcherControl";
 
 import { useEffect, useRef, useState } from "react";
@@ -22,7 +22,7 @@ import { prepareStyle } from "~/features/map/util";
 import StreetViewMap from "~/features/street-view/StreetViewMap";
 import StreetViewWindow from "~/features/street-view/StreetViewWindow";
 import TabsControl from "./TabsControl";
-import { RFrameRateControl } from "pentatrion-geo";
+import { RFrameRateControl } from "pentatrion-geo/maplibre/frame-rate-control";
 import { debug } from "~/config/constants";
 import GeolocationMap from "~/features/geolocation/GeolocationMap";
 import IsochroneControl from "./features/isochrone/IsochroneControl";

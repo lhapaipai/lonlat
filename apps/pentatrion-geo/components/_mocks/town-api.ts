@@ -1,4 +1,4 @@
-import { GeoOption, GeoPointOption } from "../../types.d";
+import { GeoOption, GeoPointOption } from "../../types";
 import { filterFeature } from "../../geo-options";
 import { Point } from "geojson";
 
@@ -11,7 +11,9 @@ async function mockServerRequest(searchValue: string) {
   return filterFeature(features, searchValue);
 }
 
-export const handleChangeSearchValue = async (searchValue: string): Promise<GeoPointOption[]> => {
+export const handleChangeSearchValue = async (
+  searchValue: string,
+): Promise<GeoPointOption[]> => {
   const results = await mockServerRequest(searchValue);
   return results;
 };

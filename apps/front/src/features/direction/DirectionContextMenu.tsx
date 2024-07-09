@@ -15,10 +15,10 @@ import {
   directionWayPointInsertAt,
   selectDirectionWayPoints,
 } from "./directionSlice";
-import { createLonLatGeoOption } from "pentatrion-geo";
+import { createLonLatGeoOption } from "pentatrion-geo/geo-options/lonlat";
+import { isNoData } from "pentatrion-geo/geo-options/nodata";
 import { ReactElement } from "react";
 import { useT } from "talkr";
-import { isNoData } from "pentatrion-geo/geo-options";
 
 export default function DirectionContextMenu() {
   const dispatch = useAppDispatch();

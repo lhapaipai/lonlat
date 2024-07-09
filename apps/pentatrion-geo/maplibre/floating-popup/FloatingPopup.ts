@@ -1,10 +1,10 @@
 import { Evented, LngLat, LngLatLike, Map, MapMouseEvent } from "maplibre-gl";
-import { extend } from "./core/util/util";
-import { smartWrap } from "./core/util/smart_wrap";
-import { DOM } from "./core/util/dom";
+import { extend } from "../core/util/util";
+import { smartWrap } from "../core/util/smart_wrap";
+import { DOM } from "../core/util/dom";
 
 import type Point from "@mapbox/point-geometry";
-import VirtualElement from "./lib/VirtualElement";
+import VirtualElement from "../lib/VirtualElement";
 
 import {
   OffsetOptions,

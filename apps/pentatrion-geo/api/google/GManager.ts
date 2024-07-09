@@ -1,17 +1,18 @@
-import { LngLatObj } from "../../types.d";
+import { LngLatObj } from "../../types";
 import { getLngLatObj } from ".";
 
-const streetViewPanoramaDefaultOptions: google.maps.StreetViewPanoramaOptions = {
-  zoomControl: false,
-  imageDateControl: true,
-  addressControl: false,
-  // addressControlOptions: {
-  //   position: 6, // google.maps.ControlPosition.BOTTOM_CENTER,
-  // },
-  linksControl: false,
-  panControl: false,
-  enableCloseButton: true,
-};
+const streetViewPanoramaDefaultOptions: google.maps.StreetViewPanoramaOptions =
+  {
+    zoomControl: false,
+    imageDateControl: true,
+    addressControl: false,
+    // addressControlOptions: {
+    //   position: 6, // google.maps.ControlPosition.BOTTOM_CENTER,
+    // },
+    linksControl: false,
+    panControl: false,
+    enableCloseButton: true,
+  };
 
 /**
  * GManager instantiates only one streetview object within which it renders on demand.
@@ -83,7 +84,10 @@ export class GManager {
 
       GManager.panorama.addListener("pano_changed", GManager.onPosChanged);
       GManager.panorama.addListener("pov_changed", GManager.onPovChanged);
-      GManager.panorama.addListener("visible_changed", GManager.onVisibleChanged);
+      GManager.panorama.addListener(
+        "visible_changed",
+        GManager.onVisibleChanged,
+      );
     } else {
       const { position, pov } = options;
       position && GManager.panorama.setPosition(position);

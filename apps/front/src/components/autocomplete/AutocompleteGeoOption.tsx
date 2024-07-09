@@ -3,7 +3,7 @@ import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import { getOptionValue, useAutocomplete } from "pentatrion-design";
 import { useT } from "talkr";
-import { GeoPointOption } from "pentatrion-geo";
+import { GeoPointOption } from "pentatrion-geo/types";
 
 type Props = GeoPointOption;
 

@@ -1,4 +1,4 @@
-import { CustomGeoOption, GeoPointOption } from "pentatrion-geo";
+import { CustomGeoOption, GeoPointOption } from "pentatrion-geo/types";
 import { customRound } from "pentatrion-geo/geo-options/util";
 import { decode, encode } from "./util";
 import { Position } from "geojson";

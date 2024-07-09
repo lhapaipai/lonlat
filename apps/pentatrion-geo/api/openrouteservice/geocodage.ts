@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { AddressGeoOption, AddressType } from "../../types.d";
+import { AddressGeoOption, AddressType } from "../../types";
 import { SearchProperties } from "./api";
 import { fetchOpenRouteServiceAPI, openRouteServiceUrl } from "./config";
 import { Feature, Point } from "geojson";
@@ -80,7 +80,10 @@ function getContext(properties: SearchProperties) {
     case "localadmin":
     case "county":
     case "macrocounty": {
-      if (properties.localadmin && properties.localadmin !== properties.locality) {
+      if (
+        properties.localadmin &&
+        properties.localadmin !== properties.locality
+      ) {
         // Ossat, Marignier, Haute-Savoie
         context.push(properties.localadmin, properties.region);
       }

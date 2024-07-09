@@ -6,7 +6,7 @@ import {
   showAccuracyCircleChanged,
 } from "./geolocationSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { m2km } from "pentatrion-geo";
+import { m2km } from "pentatrion-geo/geo-options";
 
 export default function GeolocationInfos() {
   const geolocation = useAppSelector(selectGeolocation);
@@ -33,7 +33,9 @@ export default function GeolocationInfos() {
           </Checkbox>
           <Checkbox
             checked={geolocation.showAccuracyCircle}
-            onChange={(e) => dispatch(showAccuracyCircleChanged(e.target.checked))}
+            onChange={(e) =>
+              dispatch(showAccuracyCircleChanged(e.target.checked))
+            }
           >
             <span>{T("geolocation.showAccuracyCircle")}</span>
           </Checkbox>

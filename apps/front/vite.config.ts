@@ -13,6 +13,9 @@ export default defineConfig({
   build: {
     manifest: true,
   },
+  optimizeDeps: {
+    include: ["pentatrion-geo", "maplibre-gl"]
+  },
   resolve: {
     alias: {
       "~": resolve(projectDir, "src"),

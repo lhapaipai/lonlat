@@ -1,4 +1,7 @@
-import { createLonLatGeoOption, isGeolocationGeoOption } from "pentatrion-geo";
+import {
+  createLonLatGeoOption,
+  isGeolocationGeoOption,
+} from "pentatrion-geo/geo-options";
 import {
   GradientMarker,
   RGradientMarker,

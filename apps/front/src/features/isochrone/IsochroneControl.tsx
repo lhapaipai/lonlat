@@ -5,11 +5,8 @@ import {
   Select,
   SimpleTooltip,
 } from "pentatrion-design";
-import {
-  IsochroneGeoJSON,
-  IsochroneOptions,
-  ignIsochrone,
-} from "pentatrion-geo";
+import { IsochroneOptions } from "pentatrion-geo/types";
+import { IsochroneGeoJSON, ignIsochrone } from "pentatrion-geo/api";
 import { useRef, useState } from "react";
 import { useT } from "talkr";
 import { useAppDispatch, useAppSelector } from "~/store";

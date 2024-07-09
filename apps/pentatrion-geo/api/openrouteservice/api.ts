@@ -334,7 +334,9 @@ export type APISchemas = {
        * fords : gués
        * steps : escaliers
        */
-      avoid_features?: Array<"highways" | "tollways" | "ferries" | "fords" | "steps">;
+      avoid_features?: Array<
+        "highways" | "tollways" | "ferries" | "fords" | "steps"
+      >;
       /**
        * Specify which type of border crossing to avoid
        * @example controlled
@@ -346,7 +348,14 @@ export type APISchemas = {
        */
       avoid_countries?: Array<string>;
       /* Definition of the vehicle type. */
-      vehicle_type?: "hgv" | "bus" | "agricultural" | "delivery" | "forestry" | "goods" | "unknown";
+      vehicle_type?:
+        | "hgv"
+        | "bus"
+        | "agricultural"
+        | "delivery"
+        | "forestry"
+        | "goods"
+        | "unknown";
       /* Specifies additional routing parameters. For all profiles except `driving-car`. */
       profile_params?: {
         /** Describe additional weightings to be applied to edges on the routing. */
@@ -462,7 +471,7 @@ export type APISchemas = {
       avoid_polygons?: {
         empty?: boolean;
         /* Comprises areas to be avoided for the route. Formatted in GeoJSON as either a Polygon or Multipolygon object. */
-        [key: string]: {};
+        [key: string]: unknown;
       };
       /*
        * Specifies the parameters for generating round trip routes.
@@ -763,7 +772,9 @@ export type APIPaths = keyof APIEndpoints;
 
 export type APIRequests<T extends APIPaths> = APIEndpoints[T]["requests"];
 
-export type APIMethods<T extends APIPaths> = NonNullable<APIRequests<T>["method"]>;
+export type APIMethods<T extends APIPaths> = NonNullable<
+  APIRequests<T>["method"]
+>;
 
 export type APIRequest<T extends APIPaths, M extends APIMethods<T>> = Omit<
   {

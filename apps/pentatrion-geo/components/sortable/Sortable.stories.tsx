@@ -1,6 +1,9 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
-import { createUnknownFeature, handleChangeSearchValue } from "../_mocks/town-api";
+import {
+  createUnknownFeature,
+  handleChangeSearchValue,
+} from "../_mocks/town-api";
 import { Sortable } from "pentatrion-design/components/sortable";
 import { LazyAutocomplete } from "pentatrion-design/components/autocomplete";
 import { NotificationsProvider } from "pentatrion-design/components/notification";
@@ -8,7 +11,7 @@ import { Button } from "pentatrion-design/components/button";
 
 import { NoDataOption } from "pentatrion-design/components/select";
 
-import { GeoPointOption } from "../../types.d";
+import { GeoPointOption } from "../../types";
 
 import { isNoData, updateId, createNodataFeature } from "../../geo-options";
 import AutocompleteGeoOption from "../autocomplete/AutocompleteGeoOption";
@@ -36,11 +39,16 @@ export const WithAutocomplete = () => {
     createNodataFeature(),
   ]);
 
-  function handleChangeSelection(index: number, selection: GeoPointOption | null) {
+  function handleChangeSelection(
+    index: number,
+    selection: GeoPointOption | null,
+  ) {
     const itemId = items[index].id;
 
     const itemsCopy = [...items];
-    itemsCopy[index] = selection ? updateId(selection, itemId) : createNodataFeature(itemId);
+    itemsCopy[index] = selection
+      ? updateId(selection, itemId)
+      : createNodataFeature(itemId);
     setItems(itemsCopy);
   }
 
@@ -62,16 +70,28 @@ export const WithAutocomplete = () => {
 
   return (
     <>
-      <Sortable list={items} setList={setItems} animation={200} handle=".handle">
+      <Sortable
+        list={items}
+        setList={setItems}
+        animation={200}
+        handle=".handle"
+      >
         {items.map((item, index) => (
           <div key={item.id} className={twClasses.item}>
-            <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
+            <Button
+              icon
+              variant="text"
+              color="gray"
+              className="handle mr-2 cursor-row-resize"
+            >
               <i className="fe-braille"></i>
             </Button>
             <LazyAutocomplete<GeoPointOption>
               className="flex-1"
               selection={isNoData(item) ? null : item}
-              onChangeSelection={(selection) => handleChangeSelection(index, selection)}
+              onChangeSelection={(selection) =>
+                handleChangeSelection(index, selection)
+              }
               onChangeSearchValueCallback={handleChangeSearchValue}
               autocompleteOptionComponent={AutocompleteGeoOption}
             />
@@ -87,7 +107,9 @@ export const WithAutocomplete = () => {
         <Button onClick={() => handleClick("unknown")} className="mr-2">
           select Unknown at index 0
         </Button>
-        <Button onClick={() => handleClick("unselect")}>unselect at index 0</Button>
+        <Button onClick={() => handleClick("unselect")}>
+          unselect at index 0
+        </Button>
       </div>
     </>
   );

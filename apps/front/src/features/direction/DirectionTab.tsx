@@ -28,18 +28,18 @@ import {
   AppGeoOption,
   DirectionOptions,
   GeoPointOption,
-  c2cWaypointSearch,
+  GeoOption,
+} from "pentatrion-geo/types";
+import { c2cWaypointSearch, ignSearch, orsSearch } from "pentatrion-geo/api";
+import {
   coordsSearch,
   createNodataFeature,
   getHours,
-  GeoOption,
   getMinutes,
-  ignSearch,
   isNoData,
   m2km,
-  orsSearch,
   updateId,
-} from "pentatrion-geo";
+} from "pentatrion-geo/geo-options";
 import { selectViewState } from "~/features/map/mapSlice";
 import {
   SearchEngine,

@@ -24,10 +24,10 @@ export type APISchemas = {
     lat: number;
     lon: number;
     tags: {
-      name?: string;
-      natural?: string;
-      place?: string;
-      ele?: string;
+      // name?: string;
+      // natural?: string;
+      // place?: string;
+      // ele?: string;
       [key: string]: string;
     };
   };

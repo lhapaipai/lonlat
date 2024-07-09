@@ -1,9 +1,7 @@
 import { getIndexLetter } from "pentatrion-design";
-import {
-  createLonLatGeoOption,
-  lineString,
-  simplifyCoords,
-} from "pentatrion-geo";
+import { createLonLatGeoOption } from "pentatrion-geo/geo-options/lonlat";
+import { lineString } from "pentatrion-geo/lib/turf/helpers";
+import { simplifyCoords } from "pentatrion-geo/lib/simplify-js";
 import {
   type GradientMarker,
   RGradientMarker,

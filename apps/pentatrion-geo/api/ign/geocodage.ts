@@ -1,5 +1,5 @@
 import { fetchAPI } from "pentatrion-design/lib/fetch";
-import { AddressGeoOption, LngLatObj } from "../../types.d";
+import { AddressGeoOption, LngLatObj } from "../../types";
 import { getDepartmentName } from "../../geo-options";
 import {
   APIPaths,

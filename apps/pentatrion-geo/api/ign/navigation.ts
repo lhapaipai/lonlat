@@ -10,7 +10,7 @@ import {
   RouteFeatureResponse,
   GeoPointOption,
   IsochroneOptions,
-} from "../../types.d";
+} from "../../types";
 import { LineString, Position } from "geojson";
 import { dataGeoserviceUrl } from "./url";
 import { hashRoute } from "../../geo-options";

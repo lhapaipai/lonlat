@@ -1,16 +1,17 @@
+import { orsRoute, fetchOverpassPois } from "pentatrion-geo/api";
 import {
   createNodataFeature,
   filterDataFeatures,
+  reverseGeocodeLonLatFeaturePoint,
+  hashRoute,
+} from "pentatrion-geo/geo-options";
+import {
   GeoPointOption,
   RouteFeatureResponse,
   FeatureProperties,
-  reverseGeocodeLonLatFeaturePoint,
-  hashRoute,
   DirectionOptions,
-  orsRoute,
   PoiGeoOption,
-  fetchOverpassPois,
-} from "pentatrion-geo";
+} from "pentatrion-geo/types";
 import {
   createAsyncThunk,
   createListenerMiddleware,

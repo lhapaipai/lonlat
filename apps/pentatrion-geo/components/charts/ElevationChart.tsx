@@ -3,13 +3,12 @@ import { CSSProperties, useMemo, useRef, MouseEvent } from "react";
 import { useDimensions } from "./useDimensions";
 
 import { createPortal } from "react-dom";
-import BottomAxis from "./BottomAxis";
-import LeftAxis from "./LeftAxis";
-import { PoiGeoOption, RouteFeatureResponse } from "../../types.d";
+import { BottomAxis } from "./BottomAxis";
+import { LeftAxis } from "./LeftAxis";
+import { PoiGeoOption, RouteFeatureResponse, WayPoint } from "../../types";
 import { Position } from "geojson";
 import { customRound } from "../../geo-options";
-import ChartMarkers from "./ChartMarkers";
-import { WayPoint } from "./types";
+import { ChartMarkers } from "./ChartMarkers";
 import { simplify } from "../../lib";
 
 const defaultStyle: CSSProperties = {

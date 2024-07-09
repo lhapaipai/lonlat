@@ -1,4 +1,4 @@
-import { LngLatObj } from "../../types.d";
+import { LngLatObj } from "../../types";
 
 export interface GoogleLatLng {
   lat(): number;
@@ -12,6 +12,9 @@ export function getLngLatObj(position?: GoogleLatLng | null) {
   return { lng: position.lng(), lat: position.lat() };
 }
 
-export function arePositionLngLatEqual(position: GoogleLatLng, lngLat: LngLatObj): boolean {
+export function arePositionLngLatEqual(
+  position: GoogleLatLng,
+  lngLat: LngLatObj,
+): boolean {
   return position.lat() === lngLat.lat && position.lng() === lngLat.lng;
 }

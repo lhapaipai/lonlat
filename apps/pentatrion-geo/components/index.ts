@@ -1,3 +1,3 @@
-export { default as AutocompleteGeoOption } from "./autocomplete/AutocompleteGeoOption";
-export { default as LayerButton } from "./layer-switcher/LayerButton";
-export { ElevationChart } from "./charts/ElevationChart";
+export * from "./autocomplete";
+export * from "./charts";
+export * from "./layer-switcher";

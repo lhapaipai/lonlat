@@ -1,4 +1,4 @@
-import { ElevationChart } from "pentatrion-geo";
+import { ElevationChart } from "pentatrion-geo/components/charts";
 import { useAppDispatch, useAppSelector } from "~/store";
 import {
   directionFocusCoordinatesChanged,
