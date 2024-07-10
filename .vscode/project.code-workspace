@@ -21,8 +21,8 @@
       "path": "../apps/elevation",
     },
     {
-      "name": "extra/assets",
-      "path": "../extra/assets",
+      "name": "extra",
+      "path": "../extra",
     },
   ],
   "settings": {},

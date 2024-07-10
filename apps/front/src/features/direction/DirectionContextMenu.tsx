@@ -1,8 +1,8 @@
 import {
+  getIndexLetter,
   ContextMenu,
   ContextMenuItem,
   ContextMenuItemMouseEvent,
-  getIndexLetter,
 } from "pentatrion-design";
 import { useAppDispatch, useAppSelector } from "~/store";
 import {
@@ -17,13 +17,24 @@ import {
 } from "./directionSlice";
 import { createLonLatGeoOption } from "pentatrion-geo/geo-options/lonlat";
 import { isNoData } from "pentatrion-geo/geo-options/nodata";
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import { useT } from "talkr";
 
 export default function DirectionContextMenu() {
   const dispatch = useAppDispatch();
   const canvasRef = useCanvasRef();
   const { T } = useT();
+
+  useEffect(() => {
+    const ref = canvasRef.current;
+    function handleContextMenu(e: MouseEvent) {
+      console.log("onContextMenu", e);
+    }
+    ref.addEventListener("contextmenu", handleContextMenu);
+    return () => {
+      ref.removeEventListener("contextmenu", handleContextMenu);
+    };
+  }, [canvasRef]);
 
   const wayPoints = useAppSelector(selectDirectionWayPoints);
 

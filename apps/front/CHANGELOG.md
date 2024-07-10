@@ -1,3 +1,10 @@
+## 0.2.1 (2024-07-10)
+
+- Fix context menu with touch screen
+- Fix z-index with gradient marker
+- streetview layer opacity enhancement
+- Fix layers always enabled
+
 ## 0.2.0 (2024-07-09)
 
 - Elevation charts

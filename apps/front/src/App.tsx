@@ -1,4 +1,4 @@
-import { ContextMenuEventDispatcher, RMap } from "maplibre-react-components";
+import { RMap, ContextMenuEventAdapter } from "maplibre-react-components";
 import {
   AttributionControl,
   Map,
@@ -134,7 +134,7 @@ function App() {
             onMounted={handleAfterMapInstanciation}
           >
             {debug && <RFrameRateControl />}
-            <ContextMenuEventDispatcher />
+            <ContextMenuEventAdapter />
             <TabsControl />
             <LayerSwitcherControl />
             <MapFlyer />

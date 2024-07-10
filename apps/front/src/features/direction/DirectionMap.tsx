@@ -169,6 +169,12 @@ export default function DirectionMap() {
     dispatch(directionFocusCoordinatesChanged(null));
   }
 
+  function handleTouchScreenClickHalo(evt: MapLayerMouseEvent) {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      evt.preventDefault();
+    }
+  }
+
   return (
     <>
       {simplifiedRoute && (
@@ -190,6 +196,7 @@ export default function DirectionMap() {
             id="direction-road-halo"
             onMouseMove={handleRouteMouseMove}
             onMouseLeave={handleRouteMouseLeave}
+            onClick={handleTouchScreenClickHalo}
             type="line"
             {...roadHaloPaintStyle}
             source="direction-route"
@@ -211,7 +218,7 @@ export default function DirectionMap() {
           />
 
           <RLayer
-            id="direction-road-"
+            id="direction-road"
             key="direction-road"
             type="line"
             layout={roadLayerStyle.layout}

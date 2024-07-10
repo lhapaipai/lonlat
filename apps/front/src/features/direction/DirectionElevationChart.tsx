@@ -28,7 +28,7 @@ export default function DirectionElevationChart() {
   const pois = useAppSelector(selectDirectionPois);
   const focusCoordinates = useAppSelector(selectDirectionFocusCoordinates);
   const dispatch = useAppDispatch();
-  if (!route || !pois) {
+  if (!route) {
     return null;
   }
 
