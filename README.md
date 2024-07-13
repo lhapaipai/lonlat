@@ -2,19 +2,42 @@
   <img width="128" src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/logo/logo-shadow.svg" alt="Lonlat logo">
 </p>
 
-## Prérequis (Nodejs)
+## Organisation des fichiers
 
-On passera par volta pour installer node (ce qui nous permet d'utiliser différentes version de node sur un même système)
+```bash
+.
+└── apps
+    ├── front # application principale
+    ├── pentatrion-geo # librairie de composants
+    └── sandbox # fragments de l'application utilisés pour les tests préalables
+```
+
+## Prérequis
+
+On passera par volta pour installer Node JS (ce qui nous permet d'utiliser différentes version de node sur un même système). l'application utilise les workspaces avec pnpm vous aurez donc également besoin d'installer pnpm.
 
 ```bash
 # install Volta
 curl https://get.volta.sh | bash
 
-# install Node
-volta install node@20
+npm i -g pnpm
+```
 
-# start using Node
-node --version
+Pour installer certains services tiers en local il faudra également installer Docker.
+
+## Installation
+
+```bash
+pnpm install
+```
+
+vous aurez besoin de créer un fichier de variables d'environnement pour l'application principale afin de paramétrer les connexions avec les services tiers.
+
+```bash
+# apps/front/.env.local
+VITE_MAPTILER_TOKEN=
+VITE_GOOGLE_MAPS_API_TOKEN=
+VITE_OPENROUTESERVICE_TOKEN=
 ```
 
 ## Services tiers
@@ -33,12 +56,43 @@ pour le service google StreetView il faudra également activer le service Maps J
 
 pour les services de l'IGN et Overpass API il n'y a pas besoin de renseigner de TOKEN.
 
-### services en local
+enfin la variable `VITE_MAPTILER_TOKEN` n'a pas besoin d'être précisé car l'application n'utilise plus (pour le moment) le service.
+
+## Dévelopement
+
+```bash
+# si vous hébergez des instances des services tiers (voir ci-dessous services en local)
+docker compose up
+
+pnpm run dev
+```
+
+la commandes dev lance en parallèle la commande dev pour `apps/front` et la commande dev pour `apps/pentatrion-geo`.
+
+l'application est disponible à l'adresse `http://localhost:5173`.
+
+### Services en local
 
 Afin d'être libre de faire tous nos tests sans limites il est possible
 de créer des instances des services `OpenRouteService` et `Overpass API` sur notre machine avec Docker.
 
-#### OpenRouteService avec Docker
+```bash
+docker compose up
+```
+
+Overpass API sera disponible depuis ce point d'entrée `http://localhost:7777` et OpenRouteService sera disponible sans jeton sur ce point d'entrée `http://localhost:8080/ors`.
+
+il faudra donc renseigner les variables d'environnement
+
+```bash
+# apps/front/.env.development.local
+VITE_OVERPASS_URL="http://localhost:7777"
+VITE_OPENROUTESERVICE_URL="http://localhost:8080/ors"
+```
+
+Remarque : sans configuration Overpass API et OpenRouteService seront fonctionnels sur le pays de Monaco. Pour une configuration sur votre propre zone géographique voir la suite.
+
+#### Personnalisation OpenRouteService avec Docker
 
 documentation :
 https://giscience.github.io/openrouteservice/run-instance/running-with-docker
@@ -116,7 +170,7 @@ services:
 
 vous pouvez maintenant renseigner la variable d'environnement `VITE_OPENROUTESERVICE_URL="http://localhost:8080/ors"` dans votre fichier `apps/front/.env.development.local`. La variable d'environnement `VITE_OPENROUTESERVICE_TOKEN` n'est plus nécessaire.
 
-#### Overpass API avec Docker
+#### Personnalisation Overpass API avec Docker
 
 il faudra surcharger la variable d'environnement `OVERPASS_PLANET_URL` par notre
 propre url de données extraites. remarque l'extraction doit être au format `.osm.bz2`.
@@ -153,20 +207,6 @@ lorsque le traitement est terminé la commande doit se fermer il faut le relance
 vous pouvez maintenant renseigner la variable d'environnement `VITE_OVERPASS_URL="http://localhost:7777"` dans votre fichier `apps/front/.env.development.local`.
 
 
-## Installation
-
-```bash
-pnpm install
-```
-
-## Dévelopement
-
-```bash
-# si vous hébergez des instances des services tiers
-docker compose up
-
-pnpm run dev
-```
 
 ## Applications
 
