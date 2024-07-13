@@ -43,10 +43,10 @@ de créer des instances des services `OpenRouteService` et `Overpass API` sur no
 documentation :
 https://giscience.github.io/openrouteservice/run-instance/running-with-docker
 
-Télécharger sur le site geofabrik : `https://download.geofabrik.de/europe/france.html` un fichier de données osm pour la région de votre choix et placez le dans le dossier `./docker/ors/files`.
+Télécharger sur le site [geofabrik](https://download.geofabrik.de/europe.html) un fichier de données osm pour la région de votre choix et placez le dans le dossier `./docker/data`.
 
-openstreetmap.fr propose des extractions par départements
-http://download.openstreetmap.fr/extracts/europe/france/
+openstreetmap.fr propose également des extractions plus petites par départements [lien](http://download.openstreetmap.fr/extracts/europe/france/)
+
 
 créez un fichier `docker-compose.override.yml` et référencez votre fichier dans la variable d'environnement `ors.engine.source_file`.
 
