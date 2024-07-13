@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <script
+      defer
+      type="text/javascript"
+      src="https://www.peakfinder.com/script/peakfinder.1.0.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <div id="root">
+      <div id="sidebar">
+        <div>
+          <button id="rotation-button">rotation +90 deg</button>
+          <span id="rotation-value">0</span>deg
+        </div>
+        <div>
+          <button id="altitude-up-button">altitude +10 deg</button>
+          <button id="altitude-down-button">altitude -10 deg</button>
+          <span id="altitude-value">0</span>deg
+        </div>
+        <div>
+          <button id="fov-up-button">fov +5 deg</button>
+          <button id="fov-down-button">fov -5 deg</button>
+          <span id="fov-value">45</span>deg
+        </div>
+        <div>
+          <button id="elevation-up-button">elevation +100 m</button>
+          <button id="elevation-down-button">elevation -100 m</button>
+          <span id="elevation-value">0</span>m
+        </div>
+        <div>
+          <button id="viewpoint-chamonix-button">chamonix</button>
+          <button id="viewpoint-mole-button">mole</button>
+        </div>
+
+      </div>
+      <canvas id="pfcanvas" ></canvas></canvas>
+      <div id="pfcanvasprogress">
+        <div class="spinner" id="spinner">
+        </div>
+        Chargement
+      </div>
+    </div>
+    <script type="module" src="./main.tsx"></script>
+  </body>
+</html>

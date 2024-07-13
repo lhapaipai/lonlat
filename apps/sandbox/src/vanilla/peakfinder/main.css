@@ -1,0 +1,35 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+#sidebar {
+  width: 300px;
+  background-color: #eee;
+}
+#pfcanvas {
+  flex: 1;
+}
+
+#pfcanvasprogress {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
