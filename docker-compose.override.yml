@@ -1,0 +1,10 @@
+services:
+  ors-app:
+    environment:
+      ors.engine.source_file: /home/ors/files/haute_savoie-latest.osm.pbf
+  overpass-api:
+    environment:
+      # OVERPASS_PLANET_URL: https://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.bz2
+      OVERPASS_PLANET_URL: file:///data/haute_savoie-latest.osm.bz2
+    volumes:
+      - /mnt/partage/cartographie/overpass-docker-ht-savoie:/db
