@@ -1,5 +1,6 @@
 import { ComponentProps, RefObject, useCallback, useEffect } from "react";
 import clsx from "clsx";
+import { useEventCallback } from "pentatrion-design";
 
 interface Props extends ComponentProps<"div"> {
   name: string;
@@ -36,8 +37,14 @@ export function ResizeArea({
     };
   }, [name, position]);
 
-  const handlePointerMove = useCallback(
-    (e: MouseEvent) => {
+  const handlePointerMove = useEventCallback(
+    (e: MouseEvent | TouchEvent) => {
+      console.log("handlePointerMove", e);
+
+      const compatibleEvt = (e as TouchEvent).touches
+        ? (e as TouchEvent).touches[0]
+        : (e as MouseEvent);
+
       const cssVarName = `--sidebar-${name}-${["top", "bottom"].includes(position) ? "height" : "width"}`;
       let cssVarValue;
 
@@ -46,16 +53,16 @@ export function ResizeArea({
       ).getBoundingClientRect();
       switch (position) {
         case "top":
-          cssVarValue = containerRect.bottom - e.pageY;
+          cssVarValue = containerRect.bottom - compatibleEvt.pageY;
           break;
         case "right":
-          cssVarValue = e.pageX - containerRect.left;
+          cssVarValue = compatibleEvt.pageX - containerRect.left;
           break;
         case "left":
-          cssVarValue = containerRect.right - e.pageX;
+          cssVarValue = containerRect.right - compatibleEvt.pageX;
           break;
         case "bottom":
-          cssVarValue = e.pageY - containerRect.top;
+          cssVarValue = compatibleEvt.pageY - containerRect.top;
           break;
       }
       document.documentElement.style.setProperty(
@@ -66,25 +73,37 @@ export function ResizeArea({
         document.documentElement.style.removeProperty(cssVarName);
       };
     },
-    [name, position, container],
+    // 500,
+    // [name, position, container],
   );
 
   const handlePointerUp = useCallback(() => {
-    const handler = handlePointerMove;
-    document.removeEventListener("pointermove", handler);
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+
+    document.removeEventListener(
+      isTouchDevice ? "touchmove" : "pointermove",
+      handlePointerMove,
+    );
     document.documentElement.classList.remove(
       "cursor-row-resize",
       "cursor-col-resize",
     );
-
-    return () => {
-      document.removeEventListener("pointermove", handler);
-    };
   }, [handlePointerMove]);
 
   function handlePointerDown() {
-    document.addEventListener("pointerup", handlePointerUp, { once: true });
-    document.addEventListener("pointermove", handlePointerMove);
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    document.addEventListener(
+      isTouchDevice ? "touchend" : "pointerup",
+      handlePointerUp,
+      { once: true },
+    );
+    document.addEventListener(
+      isTouchDevice ? "touchmove" : "pointermove",
+      handlePointerMove,
+      {
+        passive: true,
+      },
+    );
     if (["top", "bottom"].includes(position)) {
       document.documentElement.classList.add(`cursor-row-resize`);
     } else {
@@ -94,6 +113,12 @@ export function ResizeArea({
 
   return (
     <div className={clsx(["p8n-resize-area", position, className])} {...rest}>
+      <button
+        onTouchStart={handlePointerDown}
+        className="absolute left-1/2 flex h-8 w-full -translate-x-1/2 items-center justify-center md:hidden"
+      >
+        <span className="relative mx-auto h-1 w-12 rounded-sm bg-gray-2"></span>
+      </button>
       <button
         className="area-button"
         type="button"

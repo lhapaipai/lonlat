@@ -59,9 +59,12 @@ export default function SearchInput() {
 
   useEffect(() => {
     setTimeout(() => {
-      (
-        document.querySelector("input[type='search']") as HTMLInputElement
-      )?.focus();
+      const search = document.querySelector(
+        "input[type='search']",
+      ) as HTMLInputElement;
+      if (search && search.value === "") {
+        search.focus();
+      }
     });
   }, []);
 
