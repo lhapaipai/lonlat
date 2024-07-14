@@ -37,7 +37,7 @@ import { nearestPointOnLine } from "@turf/nearest-point-on-line";
 import { useMemo, useState } from "react";
 import { Feature, LineString } from "geojson";
 import { selectViewStateZoom } from "~/features/map/mapSlice";
-import { selectReadOnly } from "~/store/configSlice";
+import { selectReadOnly } from "~/features/config/configSlice";
 
 function lonlatToleranceByZoom(zoom: number) {
   if (zoom < 7) {

@@ -1,8 +1,8 @@
 import { describe, test, expect } from "vitest";
-import { parseSearch, stringifySearch } from "./search";
+import { parseSearch, stringifySearch } from "./hash";
 import { createFakeFeature } from "./_mocks";
 
-describe("hashUtil", () => {
+describe("search.hash", () => {
   test("stringifySearch", () => {
     expect(
       stringifySearch({

@@ -10,7 +10,7 @@ import {
 
 import { searchFeatureChanged, selectSearchFeature } from "./searchSlice";
 import { useAppDispatch, useAppSelector } from "~/store";
-import { selectReadOnly } from "~/store/configSlice";
+import { selectReadOnly } from "~/features/config/configSlice";
 
 export default function SearchMap() {
   const dispatch = useAppDispatch();

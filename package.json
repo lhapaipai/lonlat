@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "maplibre-react-components": "^0.1.4",
-    "pentatrion-design": "^0.1.2"
+    "pentatrion-design": "^0.1.3"
   }
 }

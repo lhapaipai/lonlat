@@ -56,7 +56,7 @@ pour le service google StreetView il faudra également activer le service Maps J
 
 pour les services de l'IGN et Overpass API il n'y a pas besoin de renseigner de TOKEN.
 
-enfin la variable `VITE_MAPTILER_TOKEN` n'a pas besoin d'être précisé car l'application n'utilise plus (pour le moment) le service.
+enfin la variable `VITE_MAPTILER_TOKEN` n'a pas besoin d'être précisée car l'application n'utilise plus (pour le moment) le service.
 
 ## Dévelopement
 
@@ -97,7 +97,7 @@ Remarque : sans configuration Overpass API et OpenRouteService seront fonctionne
 documentation :
 https://giscience.github.io/openrouteservice/run-instance/running-with-docker
 
-Télécharger sur le site [geofabrik](https://download.geofabrik.de/europe.html) un fichier de données osm pour la région de votre choix et placez le dans le dossier `./docker/data`.
+Télécharger sur le site [geofabrik](https://download.geofabrik.de/europe.html) un fichier de données osm pour la région de votre choix et placez le dans le dossier `./docker/data` (qui est mappée vers le chemin `/home/ors/files` dans le service `ors-app`).
 
 openstreetmap.fr propose également des extractions plus petites par départements [lien](http://download.openstreetmap.fr/extracts/europe/france/)
 
@@ -130,7 +130,7 @@ vous devrez ensuite lancer la commande `docker compose up ors-app` pour lancer l
 - monaco : quelques secondes
 - rhône-alpes : 10 minutes
 
-pour tester si la construction a réussi vous pouvez lancer sur la console la commande suivante en indiquant des coordonnées qui sont dans la zone que vous avez téléchargé.
+pour tester si la construction a réussi vous pouvez lancer sur la console la commande suivante en indiquant des coordonnées qui sont dans la zone que vous avez téléchargée.
 
 ```bash
 curl "http://localhost:8080/ors/v2/directions/driving-car?start=6.5055,46.0894&end=6.4853,46.0769"
@@ -168,7 +168,7 @@ services:
 +      REBUILD_GRAPHS: False
 ```
 
-vous pouvez maintenant renseigner la variable d'environnement `VITE_OPENROUTESERVICE_URL="http://localhost:8080/ors"` dans votre fichier `apps/front/.env.development.local`. La variable d'environnement `VITE_OPENROUTESERVICE_TOKEN` n'est plus nécessaire.
+au prochain démarrage le service de routage sera alors accessible immédiatement.
 
 #### Personnalisation Overpass API avec Docker
 
@@ -204,13 +204,10 @@ docker compose up overpass-api
 
 lorsque le traitement est terminé la commande doit se fermer il faut le relancer une nouvelle fois pour que le service soit opérationel.
 
-vous pouvez maintenant renseigner la variable d'environnement `VITE_OVERPASS_URL="http://localhost:7777"` dans votre fichier `apps/front/.env.development.local`.
-
-
 
 ## Applications
 
-### [LonLat App](https://lonlat.org)
+### [LonLat Front](https://lonlat.org)
 
 <a href="https://lonlat.org">
 <img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/front.jpg" alt="Lonlat App" />
@@ -218,21 +215,8 @@ vous pouvez maintenant renseigner la variable d'environnement `VITE_OVERPASS_URL
 
 
 
-Copier le fichier `.env` vers `.env.local` et renseigner les variables d'environnements
 
-- mapTiler : pour la carte : Monde > Plan
-- googleMapsApi : pour le street view
-- openrouteservice : pour les itinéraires et la recherche mondiale.
-
-```bash
-cd apps/front
-cp .env .env.local
-pnpm dev
-```
-
-
-
-### [Maplibre react sandbox](https://maplibre-react-sandbox.lonlat.pentatrion.com)
+### [LonLat sandbox](https://maplibre-react-sandbox.lonlat.pentatrion.com)
 
 <a href="https://maplibre-react-sandbox.lonlat.pentatrion.com/">
 <img src="https://raw.githubusercontent.com/lhapaipai/lonlat/main/extra/assets/public/graphics/screenshots/maplibre-react-sandbox.jpg" alt="Maplibre react sandbox" />
@@ -242,5 +226,5 @@ pnpm dev
 
 ## Mises à jour des paquets
 
-eslint doit rester en version ^8 car les paquets `@typescript-eslint/...` ne sont pas encore compatible eslint v9
+eslint doit rester en version ^8 car les paquets `@typescript-eslint/...` ne sont pas encore compatibles eslint v9
 .

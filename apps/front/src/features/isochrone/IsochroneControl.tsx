@@ -23,7 +23,7 @@ import {
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useRControl } from "maplibre-react-components";
 import { createPortal } from "react-dom";
-import { selectDistractionFree } from "~/store/configSlice";
+import { selectDistractionFree } from "~/features/config/configSlice";
 import clsx from "clsx";
 
 const profileOptions = [

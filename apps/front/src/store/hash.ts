@@ -1,14 +1,21 @@
 import { SearchState } from "~/features/search/searchSlice";
 import { MapState } from "~/features/map/mapSlice";
-import { HashData } from "./hash.d";
-import { parseSearch, stringifySearch } from "./search";
-import { stringifyMap, parseMapHash } from "./map";
 import { DirectionState } from "~/features/direction/directionSlice";
-import { parseDirection, stringifyDirection } from "./direction";
-import { parseConfig, stringifyConfig } from "./config";
-import { ConfigState } from "~/store/configSlice";
+import { ConfigState } from "~/features/config/configSlice";
+
+import { parseSearch, stringifySearch } from "~/features/search/hash";
+import { stringifyMap, parseMapHash } from "~/features/map/hash";
+import { parseDirection, stringifyDirection } from "~/features/direction/hash";
+import { parseConfig, stringifyConfig } from "~/features/config/hash";
 
 type Mode = "v"; /* verbose */
+
+export type HashData = {
+  config: ConfigState | null;
+  direction: DirectionState | null;
+  map: MapState | null;
+  search: SearchState | null;
+};
 
 export function getHashString(
   mapState: MapState,

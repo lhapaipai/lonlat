@@ -6,7 +6,7 @@ import {
   notificationSlice,
 } from "pentatrion-design/redux";
 import { ViewStateListenerMiddleware } from "./stateStorage";
-import configSlice, { modeChangedAction } from "./configSlice";
+import configSlice, { modeChangedAction } from "~/features/config/configSlice";
 import searchSlice, {
   searchFeatureListenerMiddleware,
 } from "~/features/search/searchSlice";
@@ -20,7 +20,7 @@ import mapSlice from "~/features/map/mapSlice";
 import streetViewSlice from "~/features/street-view/streetViewSlice";
 import geolocationSlice from "~/features/geolocation/geolocationSlice";
 import isochroneSlice from "~/features/isochrone/isochroneSlice";
-import { parseHashString } from "~/lib/hash";
+import { parseHashString } from "./hash";
 
 const store = configureStore({
   reducer: {

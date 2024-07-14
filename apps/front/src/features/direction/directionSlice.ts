@@ -29,13 +29,13 @@ import {
   openRouteServiceUrl,
   overpassUrl,
 } from "~/config/constants";
-import { parseHashString } from "~/lib/hash";
-// import { tabChanged } from "~/store/configSlice";
+import { parseHashString } from "~/store/hash";
+// import { tabChanged } from "~/features/config/configSlice";
 
 type WayPoint = GeoPointOption | NoDataOption;
 
 export type DirectionState = {
-  elevationChart: boolean;
+  showElevationProfile: boolean;
   pois: PoiFeatureCollectionResponse | null;
   focusCoordinates: Position | null;
   wayPoints: WayPoint[];
@@ -54,7 +54,7 @@ const hashInfos = parseHashString(window.location.hash);
 const initialState: DirectionState = hashInfos?.direction
   ? hashInfos.direction
   : {
-      elevationChart: false,
+      showElevationProfile: false,
       pois: null,
       focusCoordinates: null,
       wayPoints: [createNodataFeature(), createNodataFeature()],
@@ -80,8 +80,11 @@ const directionSlice = createSlice({
     ) {
       state.focusCoordinates = action.payload;
     },
-    directionElevationChartChanged(state, action: PayloadAction<boolean>) {
-      state.elevationChart = action.payload;
+    directionShowElevationProfileChanged(
+      state,
+      action: PayloadAction<boolean>,
+    ) {
+      state.showElevationProfile = action.payload;
     },
     directionPoisChanged(
       state,
@@ -186,7 +189,7 @@ const directionSlice = createSlice({
 export default directionSlice.reducer;
 
 export const {
-  directionElevationChartChanged,
+  directionShowElevationProfileChanged,
   directionPoisChanged,
   directionFocusCoordinatesChanged,
   directionWayPointsAddedFromSearch,
@@ -204,7 +207,7 @@ export const {
 export const selectDirectionFocusCoordinates = (state: RootState) =>
   state.direction.focusCoordinates;
 export const selectDirectionElevationChart = (state: RootState) =>
-  state.direction.elevationChart;
+  state.direction.showElevationProfile;
 export const selectDirectionPois = (state: RootState) => state.direction.pois;
 export const selectDirectionProfile = (state: RootState) =>
   state.direction.profile;
@@ -291,12 +294,12 @@ directionRouteListenerMiddleware.startListening({
   matcher: isAnyOf(
     fetchRoute.fulfilled,
     directionRouteChanged,
-    directionElevationChartChanged,
+    directionShowElevationProfileChanged,
   ),
   effect: (_, { dispatch, getState }) => {
     const state = getState() as RootState;
 
-    if (!state.direction.elevationChart) {
+    if (!state.direction.showElevationProfile) {
       /**
        * user has hidden the chart, points of interest were visible
        * and the route has changed

@@ -1,5 +1,5 @@
 import { useAppSelector } from "./store";
-import { selectTab } from "./store/configSlice";
+import { selectTab } from "~/features/config/configSlice";
 import SearchContextMenu from "~/features/search/SearchContextMenu";
 import DirectionContextMenu from "~/features/direction/DirectionContextMenu";
 import { ReactElement, memo } from "react";

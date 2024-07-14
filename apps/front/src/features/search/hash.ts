@@ -1,5 +1,5 @@
 import { SearchState } from "~/features/search/searchSlice";
-import { parseGeoPoint, stringifyGeoPoint } from "./geoPoint";
+import { parseGeoPoint, stringifyGeoPoint } from "~/lib/hashUtil";
 
 export function stringifySearch(
   search: SearchState,

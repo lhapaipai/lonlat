@@ -3,7 +3,7 @@ import { RootState } from "~/store";
 import { france, marignier } from "~/features/map/util";
 import { debug } from "~/config/constants";
 import { BaseLayerId, OptionalLayerId } from "./layers";
-import { parseHashString } from "~/lib/hash";
+import { parseHashString } from "~/store/hash";
 
 export type ViewState = {
   center: [number, number];

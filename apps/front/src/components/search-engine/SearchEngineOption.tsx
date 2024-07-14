@@ -2,12 +2,13 @@ import { useListItem } from "@floating-ui/react";
 import { Option, useSelect } from "pentatrion-design";
 import clsx from "clsx";
 
-export type StarOption = Option & {
-  icon: string;
+export type SearchEngineOptionProps = Option & {
+  icon?: string;
 };
 
-export function SearchEngineOption({ icon, label }: StarOption) {
-  const { activeIndex, selectedIndex, getItemProps, handleSelect } = useSelect();
+export function SearchEngineOption({ icon, label }: SearchEngineOptionProps) {
+  const { activeIndex, selectedIndex, getItemProps, handleSelect } =
+    useSelect();
 
   const { ref, index } = useListItem({ label });
   const isActive = activeIndex === index;
@@ -24,7 +25,7 @@ export function SearchEngineOption({ icon, label }: StarOption) {
         onClick: () => handleSelect(index),
       })}
     >
-      <i className={clsx(icon, "mr-2")}></i>
+      {icon && <i className={clsx(icon, "mr-2")}></i>}
       {label}
     </button>
   );

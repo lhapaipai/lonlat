@@ -11,7 +11,7 @@ import {
   coordsUnitChanged,
   selectCoordsUnit,
   tabChanged,
-} from "~/store/configSlice";
+} from "~/features/config/configSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useCallback, useState } from "react";

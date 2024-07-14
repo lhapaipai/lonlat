@@ -21,7 +21,7 @@ import { memo, useEffect, useState } from "react";
 import { Button, ButtonGroup, useOnClickOutside } from "pentatrion-design";
 import { LayerButton } from "pentatrion-geo/components";
 import { coordsChanged } from "~/features/street-view/streetViewSlice";
-import { selectDistractionFree } from "~/store/configSlice";
+import { selectDistractionFree } from "~/features/config/configSlice";
 import { useT } from "talkr";
 import {
   selectBaseLayer,

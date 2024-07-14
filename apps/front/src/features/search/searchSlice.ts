@@ -12,7 +12,7 @@ import {
 import { FeatureProperties, GeoPointOption } from "pentatrion-geo/types";
 import { Point } from "geojson";
 import { errorAdded } from "pentatrion-design/redux";
-import { parseHashString } from "~/lib/hash";
+import { parseHashString } from "~/store/hash";
 
 export type SearchFeature = GeoPointOption | null;
 

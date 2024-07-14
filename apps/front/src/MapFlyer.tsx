@@ -1,7 +1,7 @@
 import { memo, useEffect } from "react";
 import { useAppSelector } from "./store";
 import { selectSearchFeature } from "~/features/search/searchSlice";
-import { selectTab } from "./store/configSlice";
+import { selectTab } from "~/features/config/configSlice";
 import { selectValidDirectionWayPoints } from "~/features/direction/directionSlice";
 import { GeoPointOption } from "pentatrion-geo/types";
 import { getBounds } from "pentatrion-geo/geo-options/geometry";

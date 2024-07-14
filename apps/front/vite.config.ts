@@ -14,7 +14,8 @@ export default defineConfig({
     manifest: true,
   },
   optimizeDeps: {
-    include: ["pentatrion-geo", "maplibre-gl"]
+    // needsInterop: ["maplibre-gl"],
+    // include: ["pentatrion-geo", "maplibre-gl"],
   },
   resolve: {
     alias: {
@@ -41,5 +42,19 @@ export default defineConfig({
     setupFiles: ["./vitest-setup.ts"],
     include: ["src/**/*.test.ts?(x)"],
     watch: false,
+    deps: {
+      optimizer: {
+        web: {
+          enabled: true,
+          /**
+           * maplibre-react-components depends on maplibre-gl which is
+           * a commonjs package. we need to explicitely inform vite
+           * to pre-bundle maplibre-react-components because we need
+           * maplibre-gl to be exported as ESM.
+           */
+          include: ["maplibre-react-components", "maplibre-gl"],
+        },
+      },
+    },
   },
 });

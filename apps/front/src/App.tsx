@@ -35,8 +35,8 @@ import DirectionElevationChart from "./features/direction/DirectionElevationChar
 import { useEventCallback } from "pentatrion-design";
 import { selectMap, viewStateChanged } from "./features/map/mapSlice";
 
-function handleAfterMapInstanciation(map: Map) {
-  console.log("handleAfterMapInstanciation", map._loaded);
+function onMounted(map: Map) {
+  console.log("onMounted", map._loaded);
   map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {
     if (!map.hasImage("oneway")) {
       map.addImage("oneway", img.data);
@@ -129,9 +129,11 @@ function App() {
             onMoveEnd={handleMoveEnd}
             initialCenter={viewState.center}
             initialZoom={viewState.zoom}
+            initialBearing={viewState.bearing}
+            initialPitch={viewState.pitch}
             initialAttributionControl={false}
             mapStyle={uncontrolledStyle}
-            onMounted={handleAfterMapInstanciation}
+            onMounted={onMounted}
           >
             {debug && <RFrameRateControl />}
             <ContextMenuEventAdapter />

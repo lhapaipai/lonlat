@@ -13,19 +13,19 @@ import {
   searchEngines,
   selectReadOnly,
   selectSearchEngine,
-} from "~/store/configSlice";
+} from "~/features/config/configSlice";
 import { selectViewState } from "~/features/map/mapSlice";
 
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import {
   inputSearchDebounceDelay,
   openRouteServiceToken,
 } from "~/config/constants";
 import {
   SearchEngineOption,
-  StarOption,
+  SearchEngineOptionProps,
 } from "~/components/search-engine/SearchEngineOption";
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import { iconBySearchEngine } from "~/components/search-engine/util";
@@ -46,7 +46,7 @@ export default function SearchInput() {
   const searchEngine = useAppSelector(selectSearchEngine);
   const { T } = useT();
   const [showGeolocationInfos, setShowGeolocationInfos] = useState(false);
-  const searchEngineOptions = useMemo<StarOption[]>(() => {
+  const searchEngineOptions = useMemo<SearchEngineOptionProps[]>(() => {
     return searchEngines.map((s) => ({
       value: s,
       label: T(`searchEngine.${s}.label`),
@@ -56,6 +56,14 @@ export default function SearchInput() {
   const geolocation = useAppSelector(selectGeolocation);
 
   let suffix: ReactNode;
+
+  useEffect(() => {
+    setTimeout(() => {
+      (
+        document.querySelector("input[type='search']") as HTMLInputElement
+      )?.focus();
+    });
+  }, []);
 
   if (feature) {
     suffix =

@@ -1,4 +1,4 @@
-import { SearchEngine } from "~/store/configSlice";
+import { SearchEngine } from "~/features/config/configSlice";
 
 export function iconBySearchEngine(searchEngine: SearchEngine) {
   switch (searchEngine) {

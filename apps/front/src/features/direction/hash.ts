@@ -1,12 +1,12 @@
 import { DirectionOptions } from "pentatrion-geo/types";
 import { createNodataFeature, isNoData } from "pentatrion-geo/geo-options";
 import { DirectionState } from "~/features/direction/directionSlice";
-import { parseGeoPoint, stringifyGeoPoint } from "./geoPoint";
-import { encodeBool } from "./util";
+import { encodeBool, parseGeoPoint, stringifyGeoPoint } from "~/lib/hashUtil";
 
 export function stringifyDirection(direction: DirectionState): string | null {
   try {
     const {
+      showElevationProfile,
       wayPoints,
       constraints: { avoidBorders, avoidHighways, avoidTollways },
       optimization,
@@ -23,7 +23,7 @@ export function stringifyDirection(direction: DirectionState): string | null {
       })
       .join("^");
 
-    return `${profile}|${optimization}|${encodeBool(avoidHighways)}|${encodeBool(avoidTollways)}|${encodeBool(avoidBorders)}|${wayPointsStr}`;
+    return `${profile}|${optimization}|${encodeBool(avoidHighways)}|${encodeBool(avoidTollways)}|${encodeBool(avoidBorders)}|${encodeBool(showElevationProfile)}|${wayPointsStr}`;
   } catch (e) {
     return null;
   }
@@ -42,6 +42,7 @@ export function parseDirection(
       avoidHighways,
       avoidTollways,
       avoidBorders,
+      showElevationProfile,
       waypointsStr,
     ] = directionStr.split("|");
 
@@ -53,7 +54,7 @@ export function parseDirection(
     });
 
     return {
-      elevationChart: false,
+      showElevationProfile: showElevationProfile === "1",
       pois: null,
       focusCoordinates: null,
       wayPoints: waypoints,

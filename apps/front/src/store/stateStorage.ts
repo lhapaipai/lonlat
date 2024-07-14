@@ -1,10 +1,18 @@
-import { baseLayerChanged, viewStateChanged } from "~/features/map/mapSlice";
+import {
+  baseLayerChanged,
+  optionalLayerToggled,
+  terrainToggled,
+  viewStateChanged,
+} from "~/features/map/mapSlice";
 import { createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 import { RootState } from ".";
 import { customReplaceState } from "~/lib/util";
-import { getHashString } from "~/lib/hash";
-import { readOnlyChanged } from "./configSlice";
-import { fetchRoute } from "~/features/direction/directionSlice";
+import { getHashString } from "./hash";
+import { readOnlyChanged } from "~/features/config/configSlice";
+import {
+  directionShowElevationProfileChanged,
+  fetchRoute,
+} from "~/features/direction/directionSlice";
 import { searchFeatureChanged } from "~/features/search/searchSlice";
 
 export const ViewStateListenerMiddleware = createListenerMiddleware();
@@ -12,7 +20,10 @@ ViewStateListenerMiddleware.startListening({
   matcher: isAnyOf(
     viewStateChanged,
     baseLayerChanged,
+    optionalLayerToggled,
+    terrainToggled,
     fetchRoute.fulfilled,
+    directionShowElevationProfileChanged,
     searchFeatureChanged,
     readOnlyChanged,
   ),

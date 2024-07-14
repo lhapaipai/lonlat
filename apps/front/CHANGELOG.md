@@ -1,3 +1,8 @@
+## 0.2.2
+
+- dev third parties managed with docker
+- better hash string for direction (relief/showElevationProfile)
+
 ## 0.2.1 (2024-07-10)
 
 - Fix context menu with touch screen

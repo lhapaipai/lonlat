@@ -14,7 +14,8 @@
     "tsc:check": "tsc --noEmit",
     "test": "vitest",
     "test-run": "vitest --run",
-    "ci": "pnpm lint:check && pnpm tsc:check && pnpm test-run"
+    "ci:commit": "pnpm lint:check && pnpm tsc:check",
+    "ci:push": "pnpm lint:check && pnpm tsc:check && pnpm test-run"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.19",

@@ -19,7 +19,7 @@ import {
   optimizationChanged,
   profileChanged,
   constraintChanged,
-  directionElevationChartChanged,
+  directionShowElevationProfileChanged,
   selectDirectionWayPoints,
   selectDirectionRoute,
   selectDirectionElevationChart,
@@ -47,7 +47,7 @@ import {
   searchEngines,
   selectReadOnly,
   selectSearchEngine,
-} from "~/store/configSlice";
+} from "~/features/config/configSlice";
 import { useReduxNotifications } from "pentatrion-design/redux";
 import { useT } from "talkr";
 import { useCallback, useMemo, useState } from "react";
@@ -58,7 +58,7 @@ import {
 import { SearchEngineSelection } from "~/components/search-engine/SearchEngineSelection";
 import {
   SearchEngineOption,
-  StarOption,
+  SearchEngineOptionProps,
 } from "~/components/search-engine/SearchEngineOption";
 import { iconBySearchEngine } from "~/components/search-engine/util";
 import AutocompleteGeoOption from "~/components/autocomplete/AutocompleteGeoOption";
@@ -86,7 +86,7 @@ export default function DirectionTab() {
   const profile = useAppSelector((state: RootState) => state.direction.profile);
   const route = useAppSelector(selectDirectionRoute);
   const readOnly = useAppSelector(selectReadOnly);
-  const elevationChart = useAppSelector(selectDirectionElevationChart);
+  const showElevationProfile = useAppSelector(selectDirectionElevationChart);
 
   const dispatch = useAppDispatch();
   const { notifyError } = useReduxNotifications();
@@ -141,7 +141,7 @@ export default function DirectionTab() {
     );
   }
 
-  const searchEngineOptions = useMemo<StarOption[]>(() => {
+  const searchEngineOptions = useMemo<SearchEngineOptionProps[]>(() => {
     return searchEngines.map((s) => ({
       value: s,
       label: T(`searchEngine.${s}.label`),
@@ -482,9 +482,11 @@ export default function DirectionTab() {
                 className="min-w-0 flex-1 justify-center"
                 variant="text"
                 color="gray"
-                selected={elevationChart === true}
+                selected={showElevationProfile === true}
                 onClick={() =>
-                  dispatch(directionElevationChartChanged(!elevationChart))
+                  dispatch(
+                    directionShowElevationProfileChanged(!showElevationProfile),
+                  )
                 }
               >
                 <i className="fe-chart"></i>

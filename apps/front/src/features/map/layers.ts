@@ -2,8 +2,8 @@ import {
   getIgnDefaultScanURL,
   getIgnOrthophotoURL,
   getIgnScan25URL,
-} from "pentatrion-geo/api";
-import { createRasterStyle } from "pentatrion-geo/maplibre";
+} from "pentatrion-geo/api/ign";
+import { createRasterStyle } from "pentatrion-geo/maplibre/lib";
 import {
   googleOrthophotoURL,
   osmURL,
@@ -12,7 +12,7 @@ import {
   swissScan25URL,
 } from "pentatrion-geo/url";
 import { ignToken, maptilerToken } from "~/config/constants";
-import { LngLatBounds, StyleSpecification } from "maplibre-gl";
+import { LngLatBounds, type StyleSpecification } from "maplibre-gl";
 import { polygon } from "@turf/helpers";
 
 const mapTilerStreetsStyleUrl = `https://api.maptiler.com/maps/streets/style.json?key=${maptilerToken}`;

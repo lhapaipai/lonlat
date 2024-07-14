@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppDispatch, RootState } from ".";
-import { parseHashString } from "~/lib/hash";
+import { AppDispatch, RootState } from "~/store";
+import { parseHashString } from "~/store/hash";
 import { getColorScheme } from "~/lib/util";
 
 export type ViewState = {

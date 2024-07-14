@@ -2,6 +2,7 @@
 ors:
   engine:
     source_file: /home/ors/files/example-heidelberg.osm.pbf
+    # see: https://giscience.github.io/openrouteservice/run-instance/configuration/ors/engine/profiles
     profiles:
       car:
         profile: driving-car

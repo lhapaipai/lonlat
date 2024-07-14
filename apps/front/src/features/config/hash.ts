@@ -1,5 +1,5 @@
-import { ConfigState } from "~/store/configSlice";
-import { getColorScheme } from "../util";
+import { ConfigState } from "./configSlice";
+import { getColorScheme } from "~/lib/util";
 
 export function stringifyConfig(configState: ConfigState) {
   const unusualConfig: {
