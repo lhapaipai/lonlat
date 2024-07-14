@@ -1,5 +1,7 @@
 ## 0.2.2
 
+- add React.StrictMode
+- add sky
 - dev third parties managed with docker
 - better hash string for direction (relief/showElevationProfile)
 - direction add approach lines

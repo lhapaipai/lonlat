@@ -36,9 +36,9 @@ import { useEventCallback } from "pentatrion-design";
 import { selectMap, viewStateChanged } from "./features/map/mapSlice";
 
 function onMounted(map: Map) {
-  console.log("onMounted", map._loaded);
   map.loadImage("/assets/graphics/icons/arrow.png").then((img) => {
-    if (!map.hasImage("oneway")) {
+    // map can be removed with React.StrictMode
+    if (!map._removed && !map.hasImage("oneway")) {
       map.addImage("oneway", img.data);
     }
   });
@@ -60,6 +60,7 @@ function onMounted(map: Map) {
       bottomContainer,
     );
   }
+
   // @ts-ignore position added above
   map.addControl(new AttributionControl(), "bottom");
 }
@@ -125,6 +126,7 @@ function App() {
       <div className="flex h-full w-full flex-1 flex-col">
         <div ref={principalRef} id="principal" className="flex-1">
           <RMap
+            maxPitch={85}
             onZoomEnd={(e) => void console.log(e.target.getZoom())}
             onMoveEnd={handleMoveEnd}
             initialCenter={viewState.center}

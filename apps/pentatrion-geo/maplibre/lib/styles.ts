@@ -25,5 +25,9 @@ export function createRasterStyle(
         maxzoom: 20,
       },
     ],
+    sky: {
+      "sky-color": "#38bdf8",
+      "fog-color": "#374151",
+    },
   };
 }

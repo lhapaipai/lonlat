@@ -12,7 +12,7 @@ import { NotificationConsumer } from "pentatrion-design/redux";
 import fr from "./i18n/fr.json";
 import React from "react";
 
-const strict = false;
+const strict = true;
 
 const container = (
   <Provider store={store}>
