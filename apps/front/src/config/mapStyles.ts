@@ -33,6 +33,7 @@ export const roadLayerCasingStyle: {
   paintTemp?: LineLayerSpecification["paint"];
 } = {
   layout: {
+    "line-cap": "round",
     "line-join": "round",
     "line-round-limit": 1,
   },
@@ -53,6 +54,7 @@ export const roadLayerStyle: {
   paintTemp?: LineLayerSpecification["paint"];
 } = {
   layout: {
+    "line-cap": "round",
     "line-join": "round",
     "line-round-limit": 1,
   },
@@ -81,14 +83,29 @@ export const roadLayerAccomplishedStyle: {
   },
 };
 
+export const approachLayerStyle: {
+  paint?: LineLayerSpecification["paint"];
+  layout?: LineLayerSpecification["layout"];
+} = {
+  layout: {
+    "line-join": "round",
+    "line-round-limit": 1,
+  },
+  paint: {
+    "line-color": "#3993bc",
+    "line-width": 4,
+    "line-dasharray": [1, 1],
+  },
+};
+
 export const waypointsLayerStyle: {
   paint?: CircleLayerSpecification["paint"];
   layout?: CircleLayerSpecification["layout"];
 } = {
   paint: {
     "circle-pitch-alignment": "map",
-    "circle-color": "#111",
-    "circle-radius": 5,
+    "circle-color": "#3993bc",
+    "circle-radius": 4,
   },
 };
 

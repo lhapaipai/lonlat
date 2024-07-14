@@ -86,7 +86,7 @@ export default function DirectionContextMenu() {
   for (let i = 1; i < wayPoints.length; i++) {
     contextItems.push(
       <ContextMenuItem
-        className="discret"
+        className="h-6 text-gray-6"
         key={`direction-inter-${i}`}
         icon={<i className="fe-point-inter"></i>}
         label={T("contextMenu.directionInter")}

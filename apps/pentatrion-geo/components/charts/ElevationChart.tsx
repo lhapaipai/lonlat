@@ -193,8 +193,7 @@ export function ElevationChart({
                   y2={size.height}
                   fill="none"
                   strokeWidth={2}
-                  stroke="black"
-                  opacity={0.1}
+                  stroke="#ffe822"
                 />
                 <path
                   clipPath="url(#graph-selection)"

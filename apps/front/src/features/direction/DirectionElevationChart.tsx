@@ -36,7 +36,7 @@ export default function DirectionElevationChart() {
     <div className="bg-default h-full w-full" style={paddings}>
       <div className="h-full w-full rounded-t-2xl bg-gray-0 shadow"></div>
       <ElevationChart
-        tolerance={0.05}
+        tolerance={0.1}
         showExtremas={false}
         style={chartStyle}
         route={route}

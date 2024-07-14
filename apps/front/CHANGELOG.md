@@ -2,6 +2,7 @@
 
 - dev third parties managed with docker
 - better hash string for direction (relief/showElevationProfile)
+- direction add approach lines
 
 ## 0.2.1 (2024-07-10)
 

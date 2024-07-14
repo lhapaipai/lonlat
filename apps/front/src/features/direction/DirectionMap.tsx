@@ -13,6 +13,7 @@ import {
 import {
   directionFocusCoordinatesChanged,
   directionWayPointChanged,
+  selectDirectionApproachWalk,
   selectDirectionFocusCoordinates,
   selectDirectionPois,
   selectDirectionProfile,
@@ -30,6 +31,7 @@ import {
   roadArrowLayerStyle,
   roadHaloPaintStyle,
   roadLayerAccomplishedStyle,
+  approachLayerStyle,
 } from "~/config/mapStyles";
 import { MapLayerMouseEvent } from "maplibre-gl";
 import { point } from "@turf/helpers";
@@ -78,6 +80,7 @@ export default function DirectionMap() {
   const directionWaypointsGeojson = useAppSelector(
     selectDirectionWayPointsGeojson,
   );
+  const approachWalkGeojson = useAppSelector(selectDirectionApproachWalk);
   const pois = useAppSelector(selectDirectionPois);
   const focusCoordinates = useAppSelector(selectDirectionFocusCoordinates);
   const profile = useAppSelector(selectDirectionProfile);
@@ -256,8 +259,27 @@ export default function DirectionMap() {
           <RLayer
             id="direction-waypoints"
             type="circle"
+            minzoom={13}
             {...waypointsLayerStyle}
             source="direction-waypoints"
+            beforeId="point coté"
+          />
+        </>
+      )}
+      {approachWalkGeojson && (
+        <>
+          <RSource
+            id="direction-approach"
+            key="direction-approach"
+            type="geojson"
+            data={approachWalkGeojson}
+          />
+          <RLayer
+            id="direction-approach-line"
+            type="line"
+            minzoom={13}
+            {...approachLayerStyle}
+            source="direction-approach"
             beforeId="point coté"
           />
         </>

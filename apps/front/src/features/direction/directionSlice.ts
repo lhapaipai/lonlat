@@ -23,13 +23,14 @@ import {
 import { RootState } from "~/store";
 import { NoDataOption } from "pentatrion-design";
 import { errorAdded } from "pentatrion-design/redux";
-import { FeatureCollection, Point, Position } from "geojson";
+import { FeatureCollection, LineString, Point, Position } from "geojson";
 import {
   openRouteServiceToken,
   openRouteServiceUrl,
   overpassUrl,
 } from "~/config/constants";
 import { parseHashString } from "~/store/hash";
+import { lineString, point } from "@turf/helpers";
 // import { tabChanged } from "~/features/config/configSlice";
 
 type WayPoint = GeoPointOption | NoDataOption;
@@ -226,7 +227,38 @@ export const selectDirectionWayPointsGeojson = createSelector(
     }
     return {
       type: "FeatureCollection",
-      features: route.properties.wayPoints,
+      features: [
+        ...route.properties.wayPoints,
+        point(route.geometry.coordinates[0]),
+        point(
+          route.geometry.coordinates[route.geometry.coordinates.length - 1],
+        ),
+      ],
+    };
+  },
+);
+
+export const selectDirectionApproachWalk = createSelector(
+  selectDirectionRoute,
+  (route): null | FeatureCollection<LineString> => {
+    if (!route) {
+      return null;
+    }
+    /**
+     * wayPoints are already validWaypoints
+     */
+    const first = route.properties.wayPoints[0];
+    const last =
+      route.properties.wayPoints[route.properties.wayPoints.length - 1];
+    return {
+      type: "FeatureCollection",
+      features: [
+        lineString([first.geometry.coordinates, route.geometry.coordinates[0]]),
+        lineString([
+          route.geometry.coordinates[route.geometry.coordinates.length - 1],
+          last.geometry.coordinates,
+        ]),
+      ],
     };
   },
 );

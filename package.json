@@ -30,7 +30,7 @@
     "node": "20.14.0"
   },
   "dependencies": {
-    "maplibre-react-components": "^0.1.4",
+    "maplibre-react-components": "^0.1.5",
     "pentatrion-design": "^0.1.3"
   }
 }
