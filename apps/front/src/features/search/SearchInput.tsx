@@ -58,6 +58,10 @@ export default function SearchInput() {
   let suffix: ReactNode;
 
   useEffect(() => {
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    if (isTouchDevice) {
+      return;
+    }
     setTimeout(() => {
       const search = document.querySelector(
         "input[type='search']",

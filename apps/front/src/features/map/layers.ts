@@ -71,7 +71,7 @@ export const baseLayers: BaseLayers = {
     "ign-raster-default_scan",
     "ign-raster-scan_25",
     "ign-raster-orthophoto",
-    "ign-plan_ign-standard",
+    "ign-plan_ign-standard-modern",
     // "ign-plan_ign-standard-non-optimized",
   ],
   ch: [
@@ -177,6 +177,24 @@ export const baseLayersById = {
       { id: "ign-pci-pci" },
       { id: "ign-isohypse-isohypse_monochrome_marron" },
       { id: "ign-plan_ign-toponymes" },
+    ],
+    country: "fr",
+  } satisfies BaseLayerInfos,
+  "ign-plan_ign-standard-modern": {
+    id: "ign-plan_ign-standard",
+    type: "base",
+    dataType: "vector",
+    label: "Plan",
+    description: "",
+    offsetY: -162,
+    style: "/assets/styles/ign/PLAN.IGN/standard-modern.json",
+    optionalLayers: [
+      {
+        id: "ign-admin_express-adminexpress",
+        beforeId: "limite admin - limite de commune",
+      },
+      { id: "ign-pci-pci", beforeId: "point coté" },
+      { id: "hillshade", beforeId: "bati surfacique - zone batie" },
     ],
     country: "fr",
   } satisfies BaseLayerInfos,

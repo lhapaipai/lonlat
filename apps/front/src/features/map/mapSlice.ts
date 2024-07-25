@@ -25,7 +25,7 @@ const hashInfos = parseHashString(window.location.hash);
 const initialState: MapState = hashInfos?.map
   ? hashInfos.map
   : {
-      baseLayer: "ign-raster-default_scan",
+      baseLayer: "ign-plan_ign-standard-modern",
       viewState: {
         center: debug
           ? [marignier.lng, marignier.lat]

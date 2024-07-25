@@ -126,7 +126,7 @@ export const france =
     ? {
         lng: 2.5,
         lat: 46.5,
-        zoom: 6,
+        zoom: 5,
       }
     : {
         lng: 2.5,
