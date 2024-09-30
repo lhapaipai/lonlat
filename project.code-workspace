@@ -2,27 +2,27 @@
   "folders": [
     {
       "name": "ROOT",
-      "path": "../",
+      "path": ".",
     },
     {
       "name": "apps/front",
-      "path": "../apps/front",
+      "path": "apps/front",
     },
     {
       "name": "apps/pentatrion-geo",
-      "path": "../apps/pentatrion-geo",
+      "path": "apps/pentatrion-geo",
     },
     {
       "name": "apps/sandbox",
-      "path": "../apps/sandbox",
+      "path": "apps/sandbox",
     },
     {
       "name": "apps/elevation",
-      "path": "../apps/elevation",
+      "path": "apps/elevation",
     },
     {
       "name": "extra",
-      "path": "../extra",
+      "path": "extra",
     },
   ],
   "settings": {},

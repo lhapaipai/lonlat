@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import glsl from "vite-plugin-glsl";
 
 const projectDir = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(projectDir, "../..");
@@ -12,7 +13,7 @@ function examplePath(dirname: string) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), glsl()],
   build: {
     rollupOptions: {
       input: {
