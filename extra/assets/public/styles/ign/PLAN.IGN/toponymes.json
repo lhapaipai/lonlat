@@ -8,7 +8,7 @@
     }
   },
   "sprite": "https://data.geopf.fr/annexes/ressources/vectorTiles/styles/PLAN.IGN/sprite/PlanIgn",
-  "glyphs": "/assets/styles/ign/fonts/{fontstack}/{range}.pbf",
+  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
   "transition": { "duration": 300, "delay": 0 },
   "layers": [
     {
@@ -27,7 +27,19 @@
       "paint": {
         "line-color": "#AB81CC",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1.1, 15, 1.7, 16, 2, 17, 3.5],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1.1,
+          15,
+          1.7,
+          16,
+          2,
+          17,
+          3.5
+        ],
         "line-dasharray": [6, 2]
       }
     },
@@ -47,7 +59,19 @@
       "paint": {
         "line-color": "#B3989A",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1.75, 15, 3, 16, 4.2, 17, 9.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1.75,
+          15,
+          3,
+          16,
+          4.2,
+          17,
+          9.5
+        ]
       }
     },
     {
@@ -66,7 +90,19 @@
       "paint": {
         "line-color": "#FFFFFF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.9, 16, 2.7, 17, 5.8],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.9,
+          16,
+          2.7,
+          17,
+          5.8
+        ],
         "line-dasharray": [1, 0.2]
       }
     },
@@ -86,7 +122,19 @@
       "paint": {
         "line-color": "#B3989A",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2
+        ],
         "line-dasharray": [1, 3]
       }
     },
@@ -106,7 +154,19 @@
       "paint": {
         "line-color": "#B3989A",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2
+        ],
         "line-dasharray": [4, 3]
       }
     },
@@ -126,7 +186,19 @@
       "paint": {
         "line-color": "#B3989A",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2
+        ]
       }
     },
     {
@@ -144,7 +216,19 @@
       "paint": {
         "line-color": "#AFAFAF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ],
         "line-dasharray": [2, 2]
       }
     },
@@ -208,7 +292,19 @@
       "paint": {
         "line-color": "#AFAFAF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ]
       }
     },
     {
@@ -217,7 +313,13 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "maxzoom": 20,
-      "filter": ["match", ["get", "symbo"], ["NON_CLASSEE_4_SOU", "NON_CLASSEE_SOU"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["NON_CLASSEE_4_SOU", "NON_CLASSEE_SOU"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -226,7 +328,19 @@
       "paint": {
         "line-color": "#AFAFAF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ]
       }
     },
     {
@@ -238,7 +352,13 @@
       "filter": [
         "match",
         ["get", "symbo"],
-        ["BRET_LOCALE_SOU", "LOCALE_1_SOU", "LOCALE_2_SOU", "LOCALE_3_SOU", "LOCALE_4_SOU"],
+        [
+          "BRET_LOCALE_SOU",
+          "LOCALE_1_SOU",
+          "LOCALE_2_SOU",
+          "LOCALE_3_SOU",
+          "LOCALE_4_SOU"
+        ],
         true,
         false
       ],
@@ -249,7 +369,21 @@
       },
       "paint": {
         "line-color": "rgba(130, 130, 130, 0.5)",
-        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2, 14, 3.5, 15, 6, 16, 8.4, 17, 18.3]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          2,
+          14,
+          3.5,
+          15,
+          6,
+          16,
+          8.4,
+          17,
+          18.3
+        ]
       }
     },
     {
@@ -268,7 +402,21 @@
       "paint": {
         "line-color": "#C8C8C8",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2, 14, 3.5, 15, 6, 16, 8.4, 17, 18.3]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          2,
+          14,
+          3.5,
+          15,
+          6,
+          16,
+          8.4,
+          17,
+          18.3
+        ]
       }
     },
     {
@@ -522,7 +670,19 @@
       "paint": {
         "line-color": "#DCDCDC",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.3, 15, 4.1, 16, 6.3, 17, 13.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.3,
+          15,
+          4.1,
+          16,
+          6.3,
+          17,
+          13.5
+        ]
       }
     },
     {
@@ -585,7 +745,19 @@
       "paint": {
         "line-color": "#F2F5FF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.3, 15, 4.1, 16, 6.3, 17, 13.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.3,
+          15,
+          4.1,
+          16,
+          6.3,
+          17,
+          13.5
+        ]
       }
     },
     {
@@ -594,7 +766,13 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sou",
       "maxzoom": 20,
-      "filter": ["match", ["get", "symbo"], ["NON_CLASSEE_4_SOU", "NON_CLASSEE_SOU"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["NON_CLASSEE_4_SOU", "NON_CLASSEE_SOU"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -603,7 +781,19 @@
       "paint": {
         "line-color": "#DCDCDC",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.3, 15, 4.1, 16, 6.3, 17, 13.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.3,
+          15,
+          4.1,
+          16,
+          6.3,
+          17,
+          13.5
+        ]
       }
     },
     {
@@ -615,7 +805,13 @@
       "filter": [
         "match",
         ["get", "symbo"],
-        ["BRET_LOCALE_SOU", "LOCALE_1_SOU", "LOCALE_2_SOU", "LOCALE_3_SOU", "LOCALE_4_SOU"],
+        [
+          "BRET_LOCALE_SOU",
+          "LOCALE_1_SOU",
+          "LOCALE_2_SOU",
+          "LOCALE_3_SOU",
+          "LOCALE_4_SOU"
+        ],
         true,
         false
       ],
@@ -841,7 +1037,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F3C66D", 17, "#F2DDB3"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F3C66D",
+          17,
+          "#F2DDB3"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -959,7 +1163,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F2BA59", 17, "#F2C261"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F2BA59",
+          17,
+          "#F2C261"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -1107,7 +1319,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#9B5CCC", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#9B5CCC",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -1140,9 +1360,29 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#8C7274", 18, "#C8C8C8"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#8C7274",
+          18,
+          "#C8C8C8"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1.75, 15, 3, 16, 4.2, 17, 9.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1.75,
+          15,
+          3,
+          16,
+          4.2,
+          17,
+          9.5
+        ]
       }
     },
     {
@@ -1160,7 +1400,19 @@
       "paint": {
         "line-color": "#FFFFFF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.9, 16, 2.7, 17, 5.8],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.9,
+          16,
+          2.7,
+          17,
+          5.8
+        ],
         "line-dasharray": [1, 0.2]
       }
     },
@@ -1177,9 +1429,31 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#8C7274", 18, "#F8E5D5"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#8C7274",
+          18,
+          "#F8E5D5"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2, 18, 5],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2,
+          18,
+          5
+        ],
         "line-dasharray": [1, 3]
       }
     },
@@ -1196,9 +1470,31 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#8C7274", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#8C7274",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2, 18, 6],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2,
+          18,
+          6
+        ],
         "line-dasharray": [4, 3]
       }
     },
@@ -1215,9 +1511,31 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#8C7274", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#8C7274",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2, 18, 7]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2,
+          18,
+          7
+        ]
       }
     },
     {
@@ -1233,9 +1551,29 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 12, "#646464", 17, "#8C8C8C"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          12,
+          "#646464",
+          17,
+          "#8C8C8C"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ],
         "line-dasharray": [2, 2]
       }
     },
@@ -1337,9 +1675,29 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#969696", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#969696",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ]
       }
     },
     {
@@ -1347,16 +1705,42 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route",
-      "filter": ["match", ["get", "symbo"], ["NON_CLASSEE", "NON_CLASSEE_4"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["NON_CLASSEE", "NON_CLASSEE_4"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#969696", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#969696",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ]
       }
     },
     {
@@ -1392,7 +1776,21 @@
           "#FFFFFF"
         ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2, 14, 3.5, 15, 6, 16, 8.4, 17, 18.3]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          2,
+          14,
+          3.5,
+          15,
+          6,
+          16,
+          8.4,
+          17,
+          18.3
+        ]
       }
     },
     {
@@ -1411,7 +1809,21 @@
       "paint": {
         "line-color": "#C8C8C8",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2, 14, 3.5, 15, 6, 16, 8.4, 17, 18.3]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          2,
+          14,
+          3.5,
+          15,
+          6,
+          16,
+          8.4,
+          17,
+          18.3
+        ]
       }
     },
     {
@@ -1423,7 +1835,13 @@
       "filter": [
         "match",
         ["get", "symbo"],
-        ["BRET_REGIONALE", "REGIONALE_1", "REGIONALE_2", "REGIONALE_3", "REGIONALE_4"],
+        [
+          "BRET_REGIONALE",
+          "REGIONALE_1",
+          "REGIONALE_2",
+          "REGIONALE_3",
+          "REGIONALE_4"
+        ],
         true,
         false
       ],
@@ -1510,7 +1928,13 @@
       "filter": [
         "match",
         ["get", "symbo"],
-        ["BRET_PRINCIPALE", "PRINCIPALE_1", "PRINCIPALE_2", "PRINCIPALE_3", "PRINCIPALE_4"],
+        [
+          "BRET_PRINCIPALE",
+          "PRINCIPALE_1",
+          "PRINCIPALE_2",
+          "PRINCIPALE_3",
+          "PRINCIPALE_4"
+        ],
         true,
         false
       ],
@@ -1520,7 +1944,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#E2A52A", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#E2A52A",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -1582,7 +2014,13 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "minzoom": 8,
-      "filter": ["match", ["get", "symbo"], ["AUTOROU_LIBRE", "AUTOROU_PEAGE"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["AUTOROU_LIBRE", "AUTOROU_PEAGE"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1682,7 +2120,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F18800", 17, "#F2B230"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F18800",
+          17,
+          "#F2B230"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -1716,7 +2162,19 @@
       "paint": {
         "line-color": "#EDF1FF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.3, 15, 4.1, 16, 6.3, 17, 13.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.3,
+          15,
+          4.1,
+          16,
+          6.3,
+          17,
+          13.5
+        ]
       }
     },
     {
@@ -1725,7 +2183,13 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "maxzoom": 20,
-      "filter": ["match", ["get", "symbo"], ["NON_CLASSEE", "NON_CLASSEE_4"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["NON_CLASSEE", "NON_CLASSEE_4"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -1734,7 +2198,19 @@
       "paint": {
         "line-color": "#FFFFFF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.3, 15, 4.1, 16, 6.3, 17, 13.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.3,
+          15,
+          4.1,
+          16,
+          6.3,
+          17,
+          13.5
+        ]
       }
     },
     {
@@ -1843,7 +2319,13 @@
       "filter": [
         "match",
         ["get", "symbo"],
-        ["BRET_REGIONALE", "REGIONALE_1", "REGIONALE_2", "REGIONALE_3", "REGIONALE_4"],
+        [
+          "BRET_REGIONALE",
+          "REGIONALE_1",
+          "REGIONALE_2",
+          "REGIONALE_3",
+          "REGIONALE_4"
+        ],
         true,
         false
       ],
@@ -1948,7 +2430,13 @@
       "filter": [
         "match",
         ["get", "symbo"],
-        ["BRET_PRINCIPALE", "PRINCIPALE_1", "PRINCIPALE_2", "PRINCIPALE_3", "PRINCIPALE_4"],
+        [
+          "BRET_PRINCIPALE",
+          "PRINCIPALE_1",
+          "PRINCIPALE_2",
+          "PRINCIPALE_3",
+          "PRINCIPALE_4"
+        ],
         true,
         false
       ],
@@ -2046,14 +2534,28 @@
       "source": "plan_ign",
       "source-layer": "routier_route",
       "maxzoom": 20,
-      "filter": ["match", ["get", "symbo"], ["AUTOROU_LIBRE", "AUTOROU_PEAGE"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["AUTOROU_LIBRE", "AUTOROU_PEAGE"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F18800", 17, "#F2B230"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F18800",
+          17,
+          "#F2B230"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -2083,7 +2585,13 @@
       "source-layer": "routier_route",
       "minzoom": 13,
       "maxzoom": 20,
-      "filter": ["match", ["get", "symbo"], ["AUTOROU_LIBRE", "AUTOROU_PEAGE"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["AUTOROU_LIBRE", "AUTOROU_PEAGE"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -2238,7 +2746,19 @@
           "#FFFFFF"
         ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.3, 15, 4.1, 16, 6.3, 17, 13.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.3,
+          15,
+          4.1,
+          16,
+          6.3,
+          17,
+          13.5
+        ]
       }
     },
     {
@@ -2254,9 +2774,29 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 13, "#BEBEBE", 17, "#646464"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          13,
+          "#BEBEBE",
+          17,
+          "#646464"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1.6, 15, 2.9, 16, 4.4, 17, 6.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1.6,
+          15,
+          2.9,
+          16,
+          4.4,
+          17,
+          6.5
+        ]
       }
     },
     {
@@ -2277,9 +2817,29 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#C8C8C8", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#C8C8C8",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.2, 15, 3.8, 16, 5.4, 17, 11.8]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.2,
+          15,
+          3.8,
+          16,
+          5.4,
+          17,
+          11.8
+        ]
       }
     },
     {
@@ -2303,7 +2863,19 @@
       "paint": {
         "line-color": "#FFFFFF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 0.7, 15, 1.1, 16, 1.7, 17, 3.8]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          0.7,
+          15,
+          1.1,
+          16,
+          1.7,
+          17,
+          3.8
+        ]
       }
     },
     {
@@ -2339,7 +2911,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#9B5CCC", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#9B5CCC",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -2372,9 +2952,29 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#8C7274", 18, "#C8C8C8"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#8C7274",
+          18,
+          "#C8C8C8"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1.75, 15, 3, 16, 4.2, 17, 9.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1.75,
+          15,
+          3,
+          16,
+          4.2,
+          17,
+          9.5
+        ]
       }
     },
     {
@@ -2391,7 +2991,19 @@
       },
       "paint": {
         "line-color": "#FFFFFF",
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.9, 16, 2.7, 17, 5.8],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.9,
+          16,
+          2.7,
+          17,
+          5.8
+        ],
         "line-dasharray": [1, 0.2]
       },
       "line-opacity": {
@@ -2414,9 +3026,31 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#8C7274", 18, "#EBEBEB"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#8C7274",
+          18,
+          "#EBEBEB"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2, 18, 5],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2,
+          18,
+          5
+        ],
         "line-dasharray": [1, 3]
       }
     },
@@ -2433,9 +3067,31 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#8C7274", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#8C7274",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2, 18, 6],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2,
+          18,
+          6
+        ],
         "line-dasharray": [4, 3]
       }
     },
@@ -2452,9 +3108,31 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#8C7274", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#8C7274",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 1, 15, 1.2, 16, 1.4, 17, 2, 18, 7]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          1,
+          15,
+          1.2,
+          16,
+          1.4,
+          17,
+          2,
+          18,
+          7
+        ]
       }
     },
     {
@@ -2470,9 +3148,29 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 12, "#646464", 17, "#8C8C8C"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          12,
+          "#646464",
+          17,
+          "#8C8C8C"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8],
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ],
         "line-dasharray": [2, 2]
       }
     },
@@ -2543,9 +3241,29 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#969696", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#969696",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ]
       }
     },
     {
@@ -2553,16 +3271,42 @@
       "type": "line",
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
-      "filter": ["match", ["get", "symbo"], ["NON_CLASSEE_4_SUP", "NON_CLASSEE_SUP"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["NON_CLASSEE_4_SUP", "NON_CLASSEE_SUP"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#969696", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#969696",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 3.2, 15, 5.4, 16, 7.7, 17, 16.8]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          3.2,
+          15,
+          5.4,
+          16,
+          7.7,
+          17,
+          16.8
+        ]
       }
     },
     {
@@ -2573,7 +3317,13 @@
       "filter": [
         "match",
         ["get", "symbo"],
-        ["BRET_LOCALE_SUP", "LOCALE_1_SUP", "LOCALE_2_SUP", "LOCALE_3_SUP", "LOCALE_4_SUP"],
+        [
+          "BRET_LOCALE_SUP",
+          "LOCALE_1_SUP",
+          "LOCALE_2_SUP",
+          "LOCALE_3_SUP",
+          "LOCALE_4_SUP"
+        ],
         true,
         false
       ],
@@ -2597,7 +3347,21 @@
           "#FFFFFF"
         ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2, 14, 3.5, 15, 6, 16, 8.4, 17, 18.3]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          2,
+          14,
+          3.5,
+          15,
+          6,
+          16,
+          8.4,
+          17,
+          18.3
+        ]
       }
     },
     {
@@ -2616,7 +3380,21 @@
       "paint": {
         "line-color": "#C8C8C8",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2, 14, 3.5, 15, 6, 16, 8.4, 17, 18.3]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          2,
+          14,
+          3.5,
+          15,
+          6,
+          16,
+          8.4,
+          17,
+          18.3
+        ]
       }
     },
     {
@@ -2737,7 +3515,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 17, "#E2A52A", 18, "#FFFFFF"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          17,
+          "#E2A52A",
+          18,
+          "#FFFFFF"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -2936,7 +3722,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F18800", 17, "#F2B230"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F18800",
+          17,
+          "#F2B230"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -2970,7 +3764,19 @@
       "paint": {
         "line-color": "#EDF1FF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.3, 15, 4.1, 16, 6.3, 17, 13.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.3,
+          15,
+          4.1,
+          16,
+          6.3,
+          17,
+          13.5
+        ]
       }
     },
     {
@@ -2979,7 +3785,13 @@
       "source": "plan_ign",
       "source-layer": "routier_route_sup",
       "maxzoom": 20,
-      "filter": ["match", ["get", "symbo"], ["NON_CLASSEE_4_SUP", "NON_CLASSEE_SUP"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["NON_CLASSEE_4_SUP", "NON_CLASSEE_SUP"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -2988,7 +3800,19 @@
       "paint": {
         "line-color": "#FFFFFF",
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
-        "line-width": ["interpolate", ["linear"], ["zoom"], 14, 2.3, 15, 4.1, 16, 6.3, 17, 13.5]
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          2.3,
+          15,
+          4.1,
+          16,
+          6.3,
+          17,
+          13.5
+        ]
       }
     },
     {
@@ -3000,7 +3824,13 @@
       "filter": [
         "match",
         ["get", "symbo"],
-        ["BRET_LOCALE_SUP", "LOCALE_1_SUP", "LOCALE_2_SUP", "LOCALE_3_SUP", "LOCALE_4_SUP"],
+        [
+          "BRET_LOCALE_SUP",
+          "LOCALE_1_SUP",
+          "LOCALE_2_SUP",
+          "LOCALE_3_SUP",
+          "LOCALE_4_SUP"
+        ],
         true,
         false
       ],
@@ -3210,7 +4040,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F3C66D", 17, "#F2DDB3"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F3C66D",
+          17,
+          "#F2DDB3"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -3247,7 +4085,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F3C66D", 17, "#F2DDB3"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F3C66D",
+          17,
+          "#F2DDB3"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -3288,7 +4134,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F18800", 17, "#F2B230"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F18800",
+          17,
+          "#F2B230"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -3364,7 +4218,15 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": ["interpolate", ["linear"], ["zoom"], 9, "#F18800", 17, "#F2B230"],
+        "line-color": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          "#F18800",
+          17,
+          "#F2B230"
+        ],
         "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0.6, 14, 0.4],
         "line-width": [
           "interpolate",
@@ -3501,7 +4363,13 @@
       "source": "plan_ign",
       "source-layer": "limite_lin",
       "minzoom": 2,
-      "filter": ["match", ["get", "symbo"], ["LIM_ETAT", "LIM_ETAT_ETRANGER"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["LIM_ETAT", "LIM_ETAT_ETRANGER"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -3536,7 +4404,13 @@
       "source": "plan_ign",
       "source-layer": "limite_lin",
       "minzoom": 7,
-      "filter": ["match", ["get", "symbo"], ["LIM_ETAT", "LIM_ETAT_ETRANGER"], true, false],
+      "filter": [
+        "match",
+        ["get", "symbo"],
+        ["LIM_ETAT", "LIM_ETAT_ETRANGER"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "line-cap": "butt",
@@ -3993,7 +4867,13 @@
       "source-layer": "toponyme_routier_liaison_lin",
       "minzoom": 8,
       "maxzoom": 20,
-      "filter": ["match", ["get", "txt_typo"], ["LIAISON_MAR", "LIAISON_MARITIME"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["LIAISON_MAR", "LIAISON_MARITIME"],
+        true,
+        false
+      ],
       "layout": {
         "symbol-placement": "line",
         "text-field": ["to-string", ["get", "texte"]],
@@ -4128,7 +5008,13 @@
       "filter": [
         "all",
         ["==", ["get", "txt_typo"], "divers_bati"],
-        ["match", ["get", "symbo"], ["CENTRALE_ELECTRIQUE", "HIPPODROME", "STADE"], true, false]
+        [
+          "match",
+          ["get", "symbo"],
+          ["CENTRALE_ELECTRIQUE", "HIPPODROME", "STADE"],
+          true,
+          false
+        ]
       ],
       "layout": {
         "visibility": "visible",
@@ -4150,7 +5036,13 @@
       "filter": [
         "all",
         ["==", ["get", "txt_typo"], "divers_bati"],
-        ["match", ["get", "symbo"], ["CENTRALE_ELECTRIQUE", "HIPPODROME", "STADE"], true, false]
+        [
+          "match",
+          ["get", "symbo"],
+          ["CENTRALE_ELECTRIQUE", "HIPPODROME", "STADE"],
+          true,
+          false
+        ]
       ],
       "layout": {
         "visibility": "visible",
@@ -4583,7 +5475,13 @@
       "type": "symbol",
       "source": "plan_ign",
       "source-layer": "toponyme_limite_ponc",
-      "filter": ["match", ["get", "txt_typo"], ["LIM_MILI_3", "LIM_MILI_4"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["LIM_MILI_3", "LIM_MILI_4"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
@@ -4807,7 +5705,13 @@
       "type": "symbol",
       "source": "plan_ign",
       "source-layer": "toponyme_oro_lin",
-      "filter": ["match", ["get", "txt_typo"], ["ORO_GORGE_2", "ORO_SOMMET_3"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["ORO_GORGE_2", "ORO_SOMMET_3"],
+        true,
+        false
+      ],
       "layout": {
         "symbol-placement": "line",
         "text-field": ["to-string", ["get", "texte"]],
@@ -4832,7 +5736,14 @@
       "filter": [
         "match",
         ["get", "txt_typo"],
-        ["GORGE", "GROTTE", "ORO_GORGE_2", "ORO_SOMMET_3", "TYPO_G_8", "TYPO_G_9"],
+        [
+          "GORGE",
+          "GROTTE",
+          "ORO_GORGE_2",
+          "ORO_SOMMET_3",
+          "TYPO_G_8",
+          "TYPO_G_9"
+        ],
         true,
         false
       ],
@@ -4859,7 +5770,14 @@
       "filter": [
         "match",
         ["get", "txt_typo"],
-        ["HYD_SURF_4", "HYD_SURF_4_T", "HYD_SURF_5", "HYD_SURF_5_T", "SOURCE", "TYPO_D_8"],
+        [
+          "HYD_SURF_4",
+          "HYD_SURF_4_T",
+          "HYD_SURF_5",
+          "HYD_SURF_5_T",
+          "SOURCE",
+          "TYPO_D_8"
+        ],
         true,
         false
       ],
@@ -4883,7 +5801,13 @@
       "type": "symbol",
       "source": "plan_ign",
       "source-layer": "toponyme_localite_ponc",
-      "filter": ["match", ["get", "txt_typo"], ["BAT_QUARTIER", "BAT_QUARTIER_T"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["BAT_QUARTIER", "BAT_QUARTIER_T"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
@@ -4986,7 +5910,13 @@
       "filter": [
         "all",
         ["==", ["get", "symbo"], "LIEU-DIT_NON_HABITE"],
-        ["match", ["get", "txt_typo"], ["TYPO_B_7", "TYPO_B_8", "TYPO_B_9"], true, false]
+        [
+          "match",
+          ["get", "txt_typo"],
+          ["TYPO_B_7", "TYPO_B_8", "TYPO_B_9"],
+          true,
+          false
+        ]
       ],
       "layout": {
         "visibility": "visible",
@@ -5011,7 +5941,13 @@
       "filter": [
         "all",
         ["==", ["get", "symbo"], "BOIS"],
-        ["match", ["get", "txt_typo"], ["TYPO_F_6", "TYPO_F_7", "TYPO_F_8"], true, false]
+        [
+          "match",
+          ["get", "txt_typo"],
+          ["TYPO_F_6", "TYPO_F_7", "TYPO_F_8"],
+          true,
+          false
+        ]
       ],
       "layout": {
         "visibility": "visible",
@@ -5035,7 +5971,13 @@
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 11,
       "maxzoom": 13,
-      "filter": ["match", ["get", "txt_typo"], ["BAT_HAMEAU", "BAT_HAMEAU_T"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["BAT_HAMEAU", "BAT_HAMEAU_T"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
@@ -5062,7 +6004,13 @@
       "source-layer": "toponyme_localite_ponc",
       "minzoom": 7,
       "maxzoom": 13,
-      "filter": ["match", ["get", "txt_typo"], ["TYPO_A_6", "TYPO_A_7"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["TYPO_A_6", "TYPO_A_7"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
@@ -5414,7 +6362,19 @@
         "visibility": "visible",
         "symbol-placement": "point",
         "text-field": ["to-string", ["get", "texte"]],
-        "text-size": ["interpolate", ["linear"], ["zoom"], 9, 13, 10, 15, 15, 15, 17, 18],
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          13,
+          10,
+          15,
+          15,
+          15,
+          17,
+          18
+        ],
         "text-allow-overlap": true,
         "text-padding": 10,
         "text-font": ["Source Sans Pro Bold"]
@@ -5552,7 +6512,13 @@
       "type": "symbol",
       "source": "plan_ign",
       "source-layer": "toponyme_limite_ponc",
-      "filter": ["match", ["get", "txt_typo"], ["LIM_MILI_1", "LIM_MILI_2"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["LIM_MILI_1", "LIM_MILI_2"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
@@ -5574,7 +6540,13 @@
       "source": "plan_ign",
       "source-layer": "toponyme_limite_ponc",
       "minzoom": 8,
-      "filter": ["match", ["get", "txt_typo"], ["PARC_MARIN_1", "PARC_MARIN_2"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["PARC_MARIN_1", "PARC_MARIN_2"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
@@ -5672,7 +6644,13 @@
       "filter": [
         "match",
         ["get", "txt_typo"],
-        ["ORO_CAP_1", "ORO_ILE_2", "ORO_RELIEF_2", "ORO_RELIEF_2_T", "ORO_SOMMET_1"],
+        [
+          "ORO_CAP_1",
+          "ORO_ILE_2",
+          "ORO_RELIEF_2",
+          "ORO_RELIEF_2_T",
+          "ORO_SOMMET_1"
+        ],
         true,
         false
       ],
@@ -5717,7 +6695,19 @@
         "visibility": "visible",
         "symbol-placement": "point",
         "text-field": ["to-string", ["get", "texte"]],
-        "text-size": ["interpolate", ["linear"], ["zoom"], 9, 13, 10, 15, 13, 15, 16, 19],
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          13,
+          10,
+          15,
+          13,
+          15,
+          16,
+          19
+        ],
         "text-allow-overlap": false,
         "text-padding": 1,
         "text-font": ["Source Sans Pro Bold"]
@@ -5784,12 +6774,30 @@
       "source": "plan_ign",
       "source-layer": "toponyme_hydro_ponc",
       "minzoom": 5,
-      "filter": ["match", ["get", "txt_typo"], ["HYD_SURF_2", "TYPO_D_2", "moyen"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["HYD_SURF_2", "TYPO_D_2", "moyen"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
         "text-field": ["to-string", ["get", "texte"]],
-        "text-size": ["interpolate", ["linear"], ["zoom"], 5, 12, 6, 18, 10, 17, 18, 21],
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          5,
+          12,
+          6,
+          18,
+          10,
+          17,
+          18,
+          21
+        ],
         "text-allow-overlap": false,
         "text-padding": 10,
         "text-font": ["Source Sans Pro Bold"]
@@ -5805,12 +6813,28 @@
       "type": "symbol",
       "source": "plan_ign",
       "source-layer": "toponyme_hydro_ponc",
-      "filter": ["match", ["get", "txt_typo"], ["TYPO_D_3", "TYPO_D_4"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["TYPO_D_3", "TYPO_D_4"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
         "text-field": ["to-string", ["get", "texte"]],
-        "text-size": ["interpolate", ["linear"], ["zoom"], 9, 15, 10, 17, 18, 21],
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          9,
+          15,
+          10,
+          17,
+          18,
+          21
+        ],
         "text-allow-overlap": false,
         "text-padding": 10,
         "text-font": ["Source Sans Pro Bold"]
@@ -6091,7 +7115,13 @@
       "source": "plan_ign",
       "source-layer": "toponyme_oro_ponc",
       "minzoom": 8,
-      "filter": ["match", ["get", "txt_typo"], ["TYPO_G_2", "TYPO_G_3"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["TYPO_G_2", "TYPO_G_3"],
+        true,
+        false
+      ],
       "layout": {
         "visibility": "visible",
         "symbol-placement": "point",
@@ -6112,7 +7142,13 @@
       "type": "symbol",
       "source": "plan_ign",
       "source-layer": "toponyme_hydro_lin",
-      "filter": ["match", ["get", "txt_typo"], ["ORO_GLACIER_1", "ORO_GLACIER_2"], true, false],
+      "filter": [
+        "match",
+        ["get", "txt_typo"],
+        ["ORO_GLACIER_1", "ORO_GLACIER_2"],
+        true,
+        false
+      ],
       "layout": {
         "symbol-placement": "line",
         "text-field": ["to-string", ["get", "texte"]],
@@ -6205,7 +7241,17 @@
         "visibility": "visible",
         "symbol-placement": "point",
         "text-field": ["to-string", ["get", "texte"]],
-        "text-size": ["interpolate", ["linear"], ["zoom"], 4, 16, 6, 30, 10, 25],
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          4,
+          16,
+          6,
+          30,
+          10,
+          25
+        ],
         "text-allow-overlap": true,
         "text-padding": 10,
         "text-font": ["Source Sans Pro Bold"]
@@ -6226,7 +7272,13 @@
       "filter": [
         "match",
         ["get", "txt_typo"],
-        ["BAT_COMMUNE-2", "BAT_COMMUNE_2", "BAT_COMMUNE_2_T", "TYPO_A_2", "commune 2"],
+        [
+          "BAT_COMMUNE-2",
+          "BAT_COMMUNE_2",
+          "BAT_COMMUNE_2_T",
+          "TYPO_A_2",
+          "commune 2"
+        ],
         true,
         false
       ],
@@ -6325,7 +7377,13 @@
       "maxzoom": 20,
       "filter": [
         "all",
-        ["match", ["get", "symbo"], ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"], true, false],
+        [
+          "match",
+          ["get", "symbo"],
+          ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"],
+          true,
+          false
+        ],
         ["==", ["get", "txt_typo"], "TYPO_A_8"]
       ],
       "layout": {
@@ -6354,7 +7412,13 @@
       "maxzoom": 20,
       "filter": [
         "all",
-        ["match", ["get", "symbo"], ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"], true, false],
+        [
+          "match",
+          ["get", "symbo"],
+          ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"],
+          true,
+          false
+        ],
         ["==", ["get", "txt_typo"], "TYPO_A_7"]
       ],
       "layout": {
@@ -6383,7 +7447,13 @@
       "maxzoom": 20,
       "filter": [
         "all",
-        ["match", ["get", "symbo"], ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"], true, false],
+        [
+          "match",
+          ["get", "symbo"],
+          ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"],
+          true,
+          false
+        ],
         ["match", ["get", "txt_typo"], ["TYPO_A_5", "TYPO_A_6"], true, false]
       ],
       "layout": {
@@ -6441,7 +7511,13 @@
       "maxzoom": 16,
       "filter": [
         "all",
-        ["match", ["get", "symbo"], ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"], true, false],
+        [
+          "match",
+          ["get", "symbo"],
+          ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"],
+          true,
+          false
+        ],
         ["==", ["get", "txt_typo"], "TYPO_A_4"]
       ],
       "layout": {
@@ -6470,7 +7546,13 @@
       "maxzoom": 16,
       "filter": [
         "all",
-        ["match", ["get", "symbo"], ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"], true, false],
+        [
+          "match",
+          ["get", "symbo"],
+          ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"],
+          true,
+          false
+        ],
         ["==", ["get", "txt_typo"], "TYPO_A_3"]
       ],
       "layout": {
@@ -6499,7 +7581,13 @@
       "maxzoom": 16,
       "filter": [
         "all",
-        ["match", ["get", "symbo"], ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"], true, false],
+        [
+          "match",
+          ["get", "symbo"],
+          ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"],
+          true,
+          false
+        ],
         ["==", ["get", "txt_typo"], "TYPO_A_2"]
       ],
       "layout": {
@@ -6570,7 +7658,13 @@
       "maxzoom": 16,
       "filter": [
         "all",
-        ["match", ["get", "symbo"], ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"], true, false],
+        [
+          "match",
+          ["get", "symbo"],
+          ["COMMUNE_CHEF_LIEU", "COMMUNE_FUSIONNEE"],
+          true,
+          false
+        ],
         ["==", ["get", "txt_typo"], "TYPO_A_1"]
       ],
       "layout": {
