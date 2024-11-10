@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "~/store";
-import { france, marignier } from "~/features/map/util";
-import { debug } from "~/config/constants";
+import { marignier } from "~/features/map/util";
 import { BaseLayerId, OptionalLayerId } from "./layers";
 import { parseHashString } from "~/store/hash";
 
@@ -25,12 +24,10 @@ const hashInfos = parseHashString(window.location.hash);
 const initialState: MapState = hashInfos?.map
   ? hashInfos.map
   : {
-      baseLayer: "ign-plan_ign-standard-modern",
+      baseLayer: "ign-raster-default_scan",
       viewState: {
-        center: debug
-          ? [marignier.lng, marignier.lat]
-          : [france.lng, france.lat],
-        zoom: debug ? marignier.zoom : france.zoom,
+        center: [marignier.lng, marignier.lat],
+        zoom: marignier.zoom,
         pitch: 0,
         bearing: 0,
       },

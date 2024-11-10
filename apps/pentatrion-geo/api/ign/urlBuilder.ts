@@ -1,4 +1,8 @@
-import { geoplatformeWMTSEndpoint, legacyWMTSEndpoint } from "./url";
+import {
+  geoplatformeWMTSEndpoint,
+  geoplatformeWMTSPrivateEndpoint,
+  legacyWMTSEndpoint,
+} from "./url";
 
 export type ignSearchParams = {
   SERVICE: "WMTS";
@@ -35,7 +39,10 @@ export class urlBuilder {
     this.isGeoplateforme = isGeoplateforme;
   }
 
-  public set<K extends keyof ignSearchParams>(key: K, value: ignSearchParams[K]) {
+  public set<K extends keyof ignSearchParams>(
+    key: K,
+    value: ignSearchParams[K],
+  ) {
     this.params[key] = value;
     return this;
   }
@@ -65,7 +72,9 @@ export class urlBuilder {
   public getUrl() {
     return (
       (this.isGeoplateforme
-        ? geoplatformeWMTSEndpoint
+        ? this.token === null
+          ? geoplatformeWMTSEndpoint
+          : geoplatformeWMTSPrivateEndpoint
         : legacyWMTSEndpoint.replace("{TOKEN}", this.getToken())) +
       "?" +
       // we can't use new URLSearchParams(this.params).toString() because

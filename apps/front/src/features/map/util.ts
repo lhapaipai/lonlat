@@ -119,7 +119,7 @@ export async function prepareStyle(
 export const marignier = {
   lng: 6.498,
   lat: 46.089,
-  zoom: 14,
+  zoom: 12,
 };
 export const france =
   document.documentElement.clientWidth > 768

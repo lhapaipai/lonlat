@@ -1,0 +1,239 @@
+{
+  "version": 8,
+  "name": "ADMIN_EXPRESS",
+  "glyphs": "https://data.geopf.fr/annexes/ressources/vectorTiles/fonts/{fontstack}/{range}.pbf",
+  "sources": {
+    "adminexpress": {
+      "type": "vector",
+      "tiles": ["https://data.geopf.fr/tms/1.0.0/ADMIN_EXPRESS/{z}/{x}/{y}.pbf"]
+    }
+  },
+  "transition": { "duration": 300, "delay": 0 },
+  "layers": [
+    {
+      "id": "chef_lieu",
+      "type": "circle",
+      "source": "adminexpress",
+      "source-layer": "chflieu_commune",
+      "paint": {
+        "circle-color": "#273d9d",
+        "circle-stroke-color": "rgba(0, 0, 0, 1)",
+        "circle-radius": 5,
+        "circle-stroke-width": 1
+      }
+    },
+    {
+      "id": "commune_limites",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "commune",
+      "minzoom": 12,
+      "paint": { "line-color": "#e49b67", "line-width": 2 }
+    },
+    {
+      "id": "arrondissement_limites",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "arrondissement",
+      "paint": {
+        "line-color": "#000000",
+        "line-width": 0.5
+      }
+    },
+    {
+      "id": "canton_limites",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "canton",
+      "paint": {
+        "line-color": {
+          "stops": [
+            [11, "#b81414"],
+            [12, "#d65c5c"]
+          ]
+        },
+        "line-width": {
+          "stops": [
+            [11, 2],
+            [12, 6]
+          ]
+        },
+        "line-opacity": {
+          "stops": [
+            [11, 1],
+            [12, 0.4]
+          ]
+        }
+      }
+    },
+    {
+      "id": "epci_limites",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "epci",
+      "paint": {
+        "line-color": {
+          "stops": [
+            [9, "#b814b8"],
+            [14, "#c270c2"]
+          ]
+        },
+        "line-width": {
+          "stops": [
+            [9, 1],
+            [14, 10]
+          ]
+        },
+        "line-opacity": {
+          "stops": [
+            [9, 1],
+            [14, 0.4]
+          ]
+        }
+      }
+    },
+    {
+      "id": "departement",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "departement",
+      "paint": {
+        "line-color": "#000000",
+        "line-width": 1
+      }
+    },
+    {
+      "id": "region",
+      "type": "line",
+      "source": "adminexpress",
+      "source-layer": "region",
+      "paint": {
+        "line-color": "#000000",
+        "line-width": 2
+      }
+    },
+    {
+      "id": "capitale_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "commune",
+      "minzoom": 6,
+      "maxzoom": 11,
+      "filter": ["all", ["==", "statut", "Capitale d'état"]],
+      "layout": {
+        "text-field": "{nom}",
+        "text-allow-overlap": false,
+        "text-offset": [0, -2],
+        "icon-text-fit": "none",
+        "text-size": 13,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#273d9d",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "prefecture_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "commune",
+      "minzoom": 6,
+      "maxzoom": 11,
+      "filter": ["all", ["==", "statut", "Préfecture"]],
+      "layout": {
+        "text-field": "{nom}",
+        "text-allow-overlap": false,
+        "text-offset": [0, -2],
+        "icon-text-fit": "none",
+        "text-size": 13,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#273d9d",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "chef_lieu_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "chflieu_commune",
+      "minzoom": 14,
+      "layout": {
+        "text-field": "{nom}",
+        "text-allow-overlap": false,
+        "text-offset": [0, -2],
+        "icon-text-fit": "none",
+        "text-size": 12,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-color": "#273d9d",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "commune_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "commune",
+      "minzoom": 13,
+      "layout": {
+        "text-field": "{nom}",
+        "text-size": 12,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": { "text-halo-color": "#ffffff", "text-halo-width": 2 }
+    },
+    {
+      "id": "epci_labels",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "epci",
+      "layout": {
+        "text-size": 13,
+        "text-font": ["Source Sans Pro Bold"],
+        "text-field": "{nom}"
+      },
+      "paint": {
+        "text-color": "#b814b8",
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "departement_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "departement",
+      "maxzoom": 11,
+      "layout": {
+        "text-field": "{nom}",
+        "icon-size": 1,
+        "text-size": 12,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 2
+      }
+    },
+    {
+      "id": "region_label",
+      "type": "symbol",
+      "source": "adminexpress",
+      "source-layer": "region",
+      "maxzoom": 12,
+      "layout": {
+        "text-field": "{nom}",
+        "text-size": 14,
+        "text-font": ["Source Sans Pro Bold"]
+      },
+      "paint": { "text-halo-color": "rgba(255, 255, 255, 1)" }
+    }
+  ]
+}
